@@ -29,7 +29,7 @@ Este sitio, concentra toda la información de las propuestas educativas, servici
 
 **Clonar el repositorio:**
 
-#### `git clone ...`
+#### `git clone https://github.com/pentflacso/portal.git`
 
 **Instalar las dependencias:**
 
