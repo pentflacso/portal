@@ -1,0 +1,30 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.highlight{
+    @include font-level-1; 
+    font-weight: 400;
+    line-height: 130%;
+    color: $deep-blue;
+    width: calc(750px + (2290 - 750) * ((100vw - 1200px) / (3840 - 1200))); 
+    span{
+        position: relative; 
+        z-index: 2;         
+        &::before {
+            background-color: #ffd658;
+            content: "";
+            position: absolute;
+            z-index: -1;
+            height: calc(6px + (18 - 6) * ((100vw - 1200px) / (3840 - 1200)));                       
+            width: 101%;
+            left: -0.5%;
+            right: 0;
+            bottom: calc(-2px + (-8 - -2) * ((100vw - 1200px) / (3840 - 1200)));
+        }
+    }     
+    &.margin_bottom_0{
+        margin-bottom: calc(70px + (200 - 70) * ((100vw - 1200px) / (3840 - 1200)));
+    }
+    &.margin_bottom_1{
+        margin-bottom: calc(28px + (68 - 28) * ((100vw - 1200px) / (3840 - 1200)));
+    }
+}

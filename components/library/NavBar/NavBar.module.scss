@@ -1,0 +1,49 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.navbar{
+    position: fixed;
+    z-index: 100;
+    background-color: $white;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: 
+    calc(15px + (20 - 15) * ((100vw - 1200px) / (3840 - 1200)))
+    calc(36px + (200 - 36) * ((100vw - 1200px) / (3840 - 1200)))
+    ;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .brand{        
+        line-height: 0px;
+        img{
+            width: calc(114px + (300 - 114) * ((100vw - 1200px) / (3840 - 1200)));
+            height: auto;
+            @media screen and (max-width: 1024px){  
+                width: calc(85px + (250 - 85) * ((100vw - 300px) / (1200 - 300)));       
+            }
+        }        
+    }
+
+   .menu_btn{
+        background-color: $white;
+        @include font-level-4;
+        font-weight: 400;
+        color: #032e59;
+        text-decoration: none;
+        border: $line-1 solid $green-2;
+        border-radius: 50px;
+        padding:
+        calc(8px + (22 - 8) * ((100vw - 1200px) / (3840 - 1200)))
+        calc(16px + (62 - 16) * ((100vw - 1200px) / (3840 - 1200)));
+        &:hover{
+            background-color: $green-2;
+            transition: all .1s;
+        }
+        &:active{
+            filter: brightness(90%);
+            transform: scale(0.96);
+        }
+    }    
+}

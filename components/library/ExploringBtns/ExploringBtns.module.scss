@@ -1,0 +1,24 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.wrapper{   
+    margin-bottom: calc(70px + (220 - 70) * ((100vw - 1200px) / (3840 - 1200)));
+
+    .btn{
+        display: block;
+        width: 100%;
+        @include font-level-2; 
+        font-weight: 400;
+        text-decoration: none;
+        color: $deep-blue;
+
+        span{
+            display: block;
+            @include container-width-1; 
+            max-width: 0 auto;
+        }
+
+        &:hover{
+            background-color: $yellow-2;
+        }
+    }
+}
