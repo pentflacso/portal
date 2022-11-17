@@ -1,0 +1,153 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.acordeon{
+    width: calc(1032px + (3000 - 1032) * ((100vw - 1200px) / (3840 - 1200)));
+    margin: 0 auto;
+
+    @media screen and (max-width: 1025px){  
+        width: calc(270px + (1050 - 270) * ((100vw - 300px) / (1200 - 300)));
+        margin: 
+        0 
+        auto 
+        calc(32px + (80 - 32) * ((100vw - 300px) / (1200 - 300)))
+        auto;           
+    }
+
+    .area{
+            position: relative;
+            cursor: pointer;
+            overflow: hidden;
+            height: auto;
+            transition: all .3s;                  
+            margin: 0 auto;                
+            border-bottom: calc(0.5px + (1 - 0.5) * ((100vw - 1200px) / (3840 - 1200))) solid #032e59;
+            @media screen and (max-width: 1025px){
+                border-top: calc(0.5px + (1 - 0.5) * ((100vw - 300px) / (1024 - 300))) solid #032e59;
+                border-bottom: calc(0.5px + (1 - 0.5) * ((100vw - 300px) / (1024 - 300))) solid #032e59;                        
+                opacity: .15;
+                &:nth-child(2), &:nth-child(3), &:nth-child(4){
+                    margin-top: calc(-0.5px + (-1 - -0.5) * ((100vw - 300px) / (1024 - 300)));
+                }
+            }
+            &:first-of-type{
+                border-top: calc(0.5px + (1 - 0.5) * ((100vw - 1200px) / (3840 - 1200))) solid #032e59;
+                @media screen and (max-width: 1025px){
+                    border-top: calc(0.5px + (1 - 0.5) * ((100vw - 300px) / (1024 - 300))) solid #032e59;
+                }
+            }                    
+
+            &.cerrar{
+                transition: all .5s;
+                .wrapper{
+                    padding-bottom: calc(24px + (66 - 24) * ((100vw - 1200px) / (3840 - 1200)));
+                    transition: all .3s;
+                    @media screen and (max-width: 1025px){ 
+                        padding-bottom: calc(14px + (90 - 14) * ((100vw - 300px) / (1200 - 300)));
+                    }
+
+                    .panel{    
+                        transition: all .3s;
+
+                        h3{
+                            color: #032e59;
+                            height: auto;
+                            margin-bottom: calc(14px + (34 - 14) * ((100vw - 1200px) / (3840 - 1200)));
+                        }
+                        .js_link{
+                            background-color: #ffd658;
+                        }
+                    }
+                }
+            }
+
+        .wrapper{
+            width: calc(935px + (2440 - 935) * ((100vw - 1200px) / (3840 - 1200)));
+            margin: 0 auto;   
+            transition: all .3s;    
+            @media screen and (max-width: 1025px){ 
+                width: 87.5%; 
+            }  
+                    
+            .panel{
+                transition: all .3s;
+                position: relative;
+                &:hover{
+                    transition: all .2s;
+
+                    h3{
+                        color: #032e59;
+                    }
+                }    
+
+                h3{
+                    font-size: calc(28px + (66 - 28) * ((100vw - 1200px) / (3840 - 1200)));
+                    font-weight: 400;
+                    color: #032e59;                       
+                    line-height: 120%;
+                    height: auto;
+                    margin: calc(24px + (66 - 24) * ((100vw - 1200px) / (3840 - 1200))) 0;
+                    transition: all .5s;
+                    @media screen and (max-width: 1025px){  
+                        font-size: calc(16px + (40 - 16) * ((100vw - 300px) / (1200 - 300)));
+                        font-weight: 500;
+                        padding:
+                        calc(13px + (22 - 13) * ((100vw - 300px) / (1025 - 300)))
+                        0
+                        calc(2px + (4 - 2) * ((100vw - 300px) / (1025 - 300)))
+                        0
+                        ;      
+                    }
+                }
+                
+                .js_link{
+                    position: absolute;
+                    color: #032e59;
+                    font-weight: 400;
+                    font-size: calc(16px + (40 - 16) * ((100vw - 1200px) / (3840 - 1200)));
+                    width: calc(35px + (80 - 35) * ((100vw - 1200px) / (3840 - 1200)));
+                    height: calc(35px + (80 - 35) * ((100vw - 1200px) / (3840 - 1200)));
+                    top: 0;
+                    right: 4px;
+                    border-radius: 50%;
+                    padding: 0;
+                    transform-origin: 50% 50%;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    text-decoration: none;
+                    border: calc(2px + (3 - 2) * ((100vw - 1200px) / (3840 - 1200))) solid transparent;
+                    @media screen and (max-width: 1025px){  
+                        display: none;   
+                    }
+                    &:hover{
+                        border: calc(2px + (3 - 2) * ((100vw - 1200px) / (3840 - 1200))) solid #ffd658;
+                    }                                                
+                }
+            }
+            
+            .contenido{
+                height: 0;
+                cursor: text;
+                padding: 0;
+                @media screen and (max-width: 1025px){
+                    height: auto;
+                    padding-bottom: calc(26px + (50 - 26) * ((100vw - 300px) / (1025 - 300)));
+                }
+                p{                                                      
+                    font-size: calc(16px + (26 - 16) * ((100vw - 1200px) / (3840 - 1200)));
+                    line-height: 144%;
+                    max-width: calc(640px + (1050 - 640) * ((100vw - 1200px) / (3840 - 1200)));
+                    color: #032e59;
+                    margin: 0;
+                    @media screen and (max-width: 1025px){  
+                        font-size: calc(11px + (20 - 11) * ((100vw - 300px) / (1025 - 300))); 
+                        max-width: 100%;                             
+                    }
+                    strong{
+                        font-weight: 700;
+                    }
+                }            
+            }
+        }
+    }
+}

@@ -1,0 +1,24 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.footer_site{     
+    background-color: $deep-blue;
+    width: 100%;
+    min-height: 500px;
+
+    .wrapper{
+        @include container-width-1;
+        display: grid;
+        grid-template-areas: 'left right';
+        grid-template-columns: 50% 50%;
+        color: $white;
+
+        .col_left{
+            grid-area: left;
+
+        }
+        .col_right{
+            grid-area: right;
+
+        }
+    }
+}
