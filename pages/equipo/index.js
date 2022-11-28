@@ -6,6 +6,10 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./equipo.module.scss";
 
 export default function Equipo(){
+
+    // Armar un array de objeto con la data que utilizaremos en el componente Swiper y el contenedor con el listado del Equipo.
+
+
     return(
     <>
         <PageHeading title="<h1>Somos un <span>equipo de especialistas</span><br /> en educación y tecnologías digitales</h1>" margin_bottom_type={0} />
@@ -29,7 +33,24 @@ export default function Equipo(){
             <SwiperSlide>3</SwiperSlide> 
             <SwiperSlide>4</SwiperSlide>               
         </Swiper> 
-        <h3>Equipo listado HTML</h3>
+
+
+        <div className={styles.team_container}>
+
+            {/* // ejemplo 
+
+            data.map((e, i) => {
+                return (
+                <>
+                    listado correspondiente a Dirección general
+                </>                                          
+                );
+            })
+            
+            */} 
+
+        </div>
+
     </>
     )
 }

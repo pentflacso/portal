@@ -14,7 +14,7 @@ export default function Novedades(){
     
     return(
     <>
-        <PageHeading title="<h1>Ofrecemos <span>propuestas de formación</span> para innovar en educación y tecnologías</h1>" margin_bottom_type={0} />
+        <PageHeading title="<h1><span>Novedades</span></h1>" margin_bottom_type={0} />
         <NewsNav />
         <ArticlesList />
         <TextMarquee />
