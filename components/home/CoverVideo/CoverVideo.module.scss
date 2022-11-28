@@ -1,0 +1,8 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.container{
+    background-color: $green-3;
+    width: calc(1128px + (3440 - 1128) * ((100vw - 1200px) / (3840 - 1200)));
+    height: 70vh;
+    margin: 0 auto;
+}

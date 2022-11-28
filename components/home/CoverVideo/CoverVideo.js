@@ -1,5 +1,7 @@
+import styles from "./CoverVideo.module.scss";
+
 export default function CoverVideo(){
     return(
-        <h1>CoverVideo</h1>
+        <div className={styles.container} />
     );
 }

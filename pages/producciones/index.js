@@ -14,7 +14,7 @@ export default function Producciones(){
     
     return(
     <>
-        <PageHeading title="<h1>Ofrecemos <span>propuestas de formación</span> para innovar en educación y tecnologías</h1>" margin_bottom_type={1} />
+        <PageHeading title="<h1><span>Producciones</span></h1>" margin_bottom_type={1} />
         <ProductionsNav />
         <ArticlesList />
         <TextMarquee />
