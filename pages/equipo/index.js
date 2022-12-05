@@ -7,8 +7,9 @@ import styles from "./equipo.module.scss";
 
 export default function Equipo(){
 
-    // Armar un array de objeto con la data que utilizaremos en el componente Swiper y el contenedor con el listado del Equipo.
-
+    // Armar un array de objeto con la data que utilizaremos en el componente Swiper y el contenedor con el listado del Equipo. - El nombre deberá ser teamData. 
+    
+    // Ejemplo: const teamData = [ {name: 'Fabio Tarasow', areas: [{area: 'direccionGeneral'}, {area: 'docenciaEID'}]} ]
 
     return(
     <>
@@ -37,12 +38,16 @@ export default function Equipo(){
 
         <div className={styles.team_container}>
 
+            {/* Mostrar el listado de integrantes dentro del área al que corresponda, mediante el método MAP y condicionales ternarios. */}
+
             {/* // ejemplo 
 
             data.map((e, i) => {
                 return (
                 <>
-                    listado correspondiente a Dirección general
+                    <div className={styles.team_area}>
+                        listado correspondiente a Dirección general
+                    </div>
                 </>                                          
                 );
             })
