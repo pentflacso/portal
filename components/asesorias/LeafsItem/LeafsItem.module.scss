@@ -1,0 +1,20 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.container{
+    background-color: aqua;
+
+    .wrapper{
+        @include container-width-1;
+        display: flex;
+        .leaf_item{
+            background-color: antiquewhite;
+            height: 400px;
+            width: calc(100% / 4);
+            border-right: solid 2px #000000;
+            &:nth-of-type(1){
+                background-color: red;
+                //transform: translate(-61%, 0%) matrix(1, 0, 0, 1, 0, 0);
+            }
+        }
+    }    
+}
