@@ -12,6 +12,14 @@
             font-weight: 400;
             text-decoration: none;
             color: $deep-blue;
+            padding:
+            calc(24px + (84 - 24) * ((100vw - 1200px) / (3840 - 1200))) 
+            0
+            ;
+            border-bottom: solid $line-1 $gray-5;
+            &:first-of-type{
+                border-top: solid $line-1 $gray-5;
+            }
 
             span{
                 display: block;
@@ -20,7 +28,11 @@
             }
 
             .description_marquee{
+                display: flex;
+                align-items: center;
                 position: absolute;
+                top: 0;
+                bottom: 0;
                 background-color: $yellow-2;
             }
 
