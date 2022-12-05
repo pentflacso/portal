@@ -22,11 +22,15 @@ export default function Home(){
 
         <CoverVideo />
 
-        <TextMarquee data="EXPLORAR&nbsp;-&nbsp;INVESTIGAR&nbsp;-&nbsp;APRENDER&nbsp;-&nbsp;DESCUBRIR&nbsp;-&nbsp;"/>
+        <div className={styles.marquee_1}>
+            <TextMarquee data="EXPLORAR&nbsp;-&nbsp;INVESTIGAR&nbsp;-&nbsp;APRENDER&nbsp;-&nbsp;DESCUBRIR&nbsp;-&nbsp;"/>
+        </div>
 
         <SectionSelector />
 
-        <TextMarquee data="NOVEDADES&nbsp;-&nbsp;NOVEDADES&nbsp;-&nbsp;"/>
+        <div className={styles.marquee_1}>
+            <TextMarquee data="NOVEDADES&nbsp;-&nbsp;NOVEDADES&nbsp;-&nbsp;"/>
+        </div>
 
         <div className={styles.carrousel_novedades}>
             <Swiper

@@ -5,7 +5,8 @@
     height: calc(320px + (880 - 320) * ((100vw - 1200px) / (3840 - 1200)));
     display: grid;
     grid-template-areas: 'nombre-docente imagen-docente texto-docente';
-    grid-template-columns: calc(100% / 3) calc(100% / 3) calc(100% / 3);               
+    grid-template-columns: calc(100% / 3) calc(100% / 3) calc(100% / 3);    
+    margin-bottom: calc(85px + (350 - 85) * ((100vw - 1200px) / (3840 - 1200)));           
     @media screen and (max-width: 1025px){ 
         grid-template-areas: 'imagen-docente' 'nombre-docente' 'texto-docente'; 
         grid-template-columns: 100% 100% 100%;   
@@ -184,6 +185,7 @@
             line-height: 144%;
             color: #032e59;
             margin-top: 0;
+            margin-bottom: calc(35px + (85 - 35) * ((100vw - 1200px) / (3840 - 1200)));
             strong{
                 font-weight: 400;
                 border-bottom: calc(2px + (4 - 2) * ((100vw - 1200px) / (3840 - 1200))) solid #ffd658;

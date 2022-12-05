@@ -1,7 +1,7 @@
 @import "../../../styles/themeStyles.module.scss";
 
 .text_marquee{    
-    font-size: calc(140px + (450 - 140) * ((100vw - 1200px) / (3840 - 1200)));
+    font-size: calc(140px + (440 - 140) * ((100vw - 1200px) / (3840 - 1200)));
     font-weight: 700;
     line-height: 120%;
     text-transform: uppercase;

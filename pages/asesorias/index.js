@@ -38,40 +38,42 @@ export default function Asesorias(){
             <TextMarquee data="PROYECTOS&nbsp;—&nbsp;" />
         </div>
 
-        <Swiper
-            modules={[Navigation, FreeMode]}
-            spaceBetween={0}
-            slidesPerView={"auto"}
-            navigation   
-            freeMode={true}   
-            grabCursor={true} 
-        >     
-            <SwiperSlide>
-                <article className={styles.card}>
-                    <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />
-                    <h5>Galeno Aprender +</h5>                    
-                </article>  
-            </SwiperSlide> 
-            <SwiperSlide>
-                <article className={styles.card}>
-                    <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />
-                    <h5>utopía FBB</h5>                    
-                </article>  
-            </SwiperSlide> 
-            <SwiperSlide>
-                <article className={styles.card}>
-                    <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />
-                    <h5>Galeno Aprender +</h5>                    
-                </article>         
-            </SwiperSlide>   
-            <SwiperSlide>
-                <article className={styles.card}>
-                    <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />
-                    <h5>Galeno Aprender +</h5>                    
-                </article>         
-            </SwiperSlide> 
-             
-        </Swiper>
+        <div className={styles.carrousel_proyects}>
+            <Swiper
+                modules={[Navigation, FreeMode]}
+                spaceBetween={0}
+                slidesPerView={"auto"}
+                navigation   
+                freeMode={true}   
+                grabCursor={true} 
+            >     
+                <SwiperSlide>
+                    <article className={styles.card}>
+                        <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />
+                        <h5>Galeno Aprender +</h5>                    
+                    </article>  
+                </SwiperSlide> 
+                <SwiperSlide>
+                    <article className={styles.card}>
+                        <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />
+                        <h5>utopía FBB</h5>                    
+                    </article>  
+                </SwiperSlide> 
+                <SwiperSlide>
+                    <article className={styles.card}>
+                        <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />
+                        <h5>Galeno Aprender +</h5>                    
+                    </article>         
+                </SwiperSlide>   
+                <SwiperSlide>
+                    <article className={styles.card}>
+                        <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />
+                        <h5>Galeno Aprender +</h5>                    
+                    </article>         
+                </SwiperSlide> 
+                
+            </Swiper>
+        </div>
 
         <div className={styles.marquee_1}>
             <TextMarquee data="CLIENTES&nbsp;—&nbsp;ALIANZAS&nbsp;—&nbsp;" />
