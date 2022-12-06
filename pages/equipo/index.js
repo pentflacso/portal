@@ -9,7 +9,8 @@ export default function Equipo(){
 
     // Armar un array de objeto con la data que utilizaremos en el componente Swiper y el contenedor con el listado del Equipo. - El nombre deberá ser teamData. 
     
-    // Ejemplo: const teamData = [ {name: 'Fabio Tarasow', areas: [{area: 'direccionGeneral'}, {area: 'docenciaEID'}]} ]
+    // Ejemplo: const teamData = [ {name: 'Fabio Tarasow', areas: ['direccionGeneral', 'docenciaEID'} ]
+
 
     return(
     <>
@@ -42,20 +43,17 @@ export default function Equipo(){
 
             {/* // ejemplo 
 
-            data.map((e, i) => {
+            teamData.map((data, i) => {
                 return (
                 <>
-                    <div className={styles.team_area}>
-                        listado correspondiente a Dirección general
-                    </div>
+                
                 </>                                          
                 );
             })
             
-            */} 
+            */}          
 
         </div>
-
     </>
     )
 }
