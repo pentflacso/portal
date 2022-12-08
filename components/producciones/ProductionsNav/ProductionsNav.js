@@ -2,7 +2,6 @@ export default function ProductionsNav(){
     return(
         <>
             <h1>ProductionsNav</h1>
-            <p>cambio Martin</p>
         </>
     );
 }
