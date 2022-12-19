@@ -6,6 +6,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./equipo.module.scss";
 
 export default function Equipo(){
+
+    // Armar un array de objeto con la data que utilizaremos en el componente Swiper y el contenedor con el listado del Equipo. - El nombre deberá ser teamData. 
+    
+    // Ejemplo: const teamData = [ {name: 'Fabio Tarasow', areas: ['direccionGeneral', 'docenciaEID'} ]
+
+
     return(
     <>
         <PageHeading title="<h1>Somos un <span>equipo de especialistas</span><br /> en educación y tecnologías digitales</h1>" margin_bottom_type={0} />
@@ -29,7 +35,25 @@ export default function Equipo(){
             <SwiperSlide>3</SwiperSlide> 
             <SwiperSlide>4</SwiperSlide>               
         </Swiper> 
-        <h3>Equipo listado HTML</h3>
+
+
+        <div className={styles.team_container}>
+
+            {/* Mostrar el listado de integrantes dentro del área al que corresponda, mediante el método MAP y condicionales ternarios. */}
+
+            {/* // ejemplo 
+
+            teamData.map((data, i) => {
+                return (
+                <>
+                
+                </>                                          
+                );
+            })
+            
+            */}          
+
+        </div>
     </>
     )
 }

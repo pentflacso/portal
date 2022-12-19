@@ -1,5 +1,10 @@
+
 export default function TwoColumsText(){
     return(
-        <h3>TwoColumsText</h3>
+        <div>
+            paragraph
+            <p>cambio Rama</p>
+            <p>cambio Rama2</p>
+        </div>        
     );
 }

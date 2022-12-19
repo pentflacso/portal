@@ -1,10 +1,12 @@
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import ProductionsNav from '../../components/producciones/ProductionsNav/ProductionsNav';
-import ProductionArticlesList from '../../components/producciones/ProductionArticlesList/ProductionArticlesList';
+import ArticlesList from '../../components/library/ArticlesList/ArticlesList';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
 
 export default function Producciones(){
+
+    // Aquí colocamos el array de objetos (articlesData) con la data que irá al componente ArticlesList
 
     const exploringBtnsData = [
         {title: 'Formación', path: 'formacion'},
@@ -14,9 +16,9 @@ export default function Producciones(){
     
     return(
     <>
-        <PageHeading title="<h1>Ofrecemos <span>propuestas de formación</span> para innovar en educación y tecnologías</h1>" margin_bottom_type={1} />
+        <PageHeading title="<h1><span>Producciones</span></h1>" margin_bottom_type={1} />
         <ProductionsNav />
-        <ProductionArticlesList />
+        <ArticlesList />
         <TextMarquee />
         <ExploringBtns data={exploringBtnsData} />
     </>

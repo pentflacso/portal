@@ -1,0 +1,50 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.wrapper{
+    .marquee_btns{   
+        margin-bottom: calc(70px + (220 - 70) * ((100vw - 1200px) / (3840 - 1200)));
+
+        .btn{
+            position: relative;
+            display: block;
+            width: 100%;
+            @include font-level-2; 
+            font-weight: 400;
+            text-decoration: none;
+            color: $deep-blue;
+            padding:
+            calc(24px + (84 - 24) * ((100vw - 1200px) / (3840 - 1200))) 
+            0
+            ;
+            border-bottom: solid $line-1 $gray-5;
+            &:first-of-type{
+                border-top: solid $line-1 $gray-5;
+            }
+
+            span{
+                display: block;
+                @include container-width-1; 
+                max-width: 0 auto;
+            }
+
+            .description_marquee{
+                display: flex;
+                align-items: center;
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                background-color: $yellow-2;
+            }
+
+        }
+    }
+    .show_all_btn{
+        @include container-width-1; 
+        margin:
+        0
+        auto
+        calc(70px + (220 - 70) * ((100vw - 1200px) / (3840 - 1200)))
+        auto
+        ;
+    }
+}

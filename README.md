@@ -42,6 +42,12 @@ Este sitio, concentra toda la información de las propuestas educativas, servici
 Abrir [http://localhost:3000](http://localhost:3000) para ver el proyecto en el navegador.
 
 
+## Deploy
+
+Testing: https://pent-portal-testing.vercel.app/
+Producción: https://pent-portal.vercel.app/
+
+
 ## Prototipo
 
 Figma: https://www.figma.com/file/NHVSnwrsZf84g9eCVV1849/Portal-PENT-2022?node-id=664%3A2&t=x67bQ5CNfBg5xb0I-1
