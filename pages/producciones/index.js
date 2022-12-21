@@ -5,6 +5,7 @@ import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
 
 export default function Producciones(){
+    
 
     const dataArticles = [
         {
