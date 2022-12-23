@@ -4,7 +4,7 @@ import styles from "./ArticlesList.module.scss";
 export default function ArticlesList({ data, dataLimit }){
 
     const [pagination, setPagination] = React.useState(6);
-    const [dataPagination, setDataPagination] = React.useState(dataLimit);
+    const [dataPagination, setDataPagination] = React.useState(data);
 
     
 
@@ -14,7 +14,7 @@ export default function ArticlesList({ data, dataLimit }){
                 <div className={styles.cards}>
                    
                     <div className={styles.col_left}>
-                        {dataPagination.map((data, i) => {
+                        {data.map((data, i) => {
                             return (
                                 <React.Fragment key={i}>
                                     { i % 2 === 0 ?
@@ -27,7 +27,7 @@ export default function ArticlesList({ data, dataLimit }){
                     </div>
 
                     <div className={styles.col_right}>
-                        {dataPagination.map((data, i) => {
+                        {data.map((data, i) => {
                             return (
                                 <React.Fragment key={i}>
                                     { i % 2 !== 0 ?
