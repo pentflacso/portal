@@ -3,7 +3,7 @@ import styles from "./ArticlesCard.module.scss";
 export default function ArticlesCard({section, category, title, authors, description, hashtags}){
   if(section === "producciones"){
     return( 
-    <div className={styles.cardList}>
+    <div className={styles.wrapper}>
         <span className={styles.category}>{category}</span>                        
         <h4>{title} <span className={styles.authors}>Por - { authors } </span></h4>
 
@@ -16,7 +16,7 @@ export default function ArticlesCard({section, category, title, authors, descrip
     );
   }else if(section === "novedades"){
     return( 
-    <div className={styles.cardList}>
+    <div className={styles.wrapper}>
         <span className={styles.category}>{category}</span>                        
         <h4>{title} <span className={styles.authors}>Por - { authors } </span></h4>
 
