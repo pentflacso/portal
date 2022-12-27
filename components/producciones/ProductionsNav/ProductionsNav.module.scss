@@ -1,25 +1,22 @@
-@import "../../styles/themeStyles.module.scss";
+@import "../../../styles/themeStyles.module.scss";
 
-.filter_hashtags_demo{
-    background-color: antiquewhite;
-    margin: 40px 0 40px 0;
-    .btn_filter{
-        margin-left: 20px;
-        font-size: 20px;
-        &.active{
-            background-color: red;
-        }
+.wrapper{
+    display: flex;
+    align-items: center;
+
+    .menu_btn{
+        @include btn-ver-mas;
     }
-}
 
-.filter_Authors_demo{
-    background-color: rgb(166, 244, 255);
-    margin: 40px 0 40px 0;
-    .btn_filter{
-        margin-left: 20px;
-        font-size: 20px;
-        &.active{
-            background-color: red;
+    .hashtags{
+        background-color: antiquewhite;
+        margin: 40px;
+        .btn_filter{
+            margin-left: 20px;
+            font-size: 20px;
+            &.active{
+                background-color: red;
+            }
         }
     }
 }

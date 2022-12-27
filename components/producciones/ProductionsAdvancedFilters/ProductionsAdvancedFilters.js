@@ -1,21 +1,9 @@
 import { useAppContext } from '../../../context/AppContext';
-import { useEffect } from 'react';
 import styles from "./ProductionsAdvancedFilters.module.scss";
 
-export default function ProductionsAdvancedFilters(){
+export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus, stateCurrentHashtag }){
 
-    const { dataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, setQueryArticles } = useAppContext();
-
-
-    const stateCurrentHashtag = (hashtag) => {
-        if(hashtag === 'all'){
-            setCurrentArticleHashtag('all')
-        } else if (hashtag === currentArticleHashtag) {
-            setCurrentArticleHashtag('all')
-        } else if (hashtag !== currentArticleHashtag){
-            setCurrentArticleHashtag(hashtag)
-        }       
-    }
+    const { hashtagsArticlesList, currentArticleHashtag, authorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, setQueryArticles } = useAppContext();
 
     const statecurrentAuthor = (author) => {
         if (author === 'all'){
@@ -26,49 +14,14 @@ export default function ProductionsAdvancedFilters(){
             setCurrentArticleAuthor(author)   
         }  
     }
-
-
-    function isInHashtagsList( hashtag ) {  
-        const findToName = hashtagsArticlesList.find(value => value.name === hashtag);
-        return hashtag === undefined ? undefined : findToName === undefined;   
-    }
-
-    function isInAuthorsList( author ) {  
-        const findToName = authorsArticlesList.find(value => value.name === author);
-        return author === undefined ? undefined : findToName === undefined;   
-    }
-
-    function addHashtag( hashtag ) {
-        isInHashtagsList(hashtag) && setHashtagsArticlesList( [...hashtagsArticlesList, {name: hashtag }] )   
-    } 
-
-    function addAuthor( author ) {
-        isInAuthorsList(author) && setAuthorsArticlesList( [...authorsArticlesList, {name: author }] )   
-    }
-
-
-    useEffect(() => {
-        if(dataArticles !== undefined){
-            dataArticles.map((articles) => {
-                articles.hashtags.map((hashtag) => {
-                    return (
-                        addHashtag(hashtag) 
-                    );     
-                })  
-                articles.authors.map((author) => {
-                    return (
-                        addAuthor(author) 
-                    );     
-                })        
-            })
-        }        
-    }, [dataArticles, hashtagsArticlesList, authorsArticlesList]);     
-    
+ 
 
     return(
         <div className={styles.wrapper}>
 
-            <input onChange={(e) => setQueryArticles(e.target.value)} type="text" placeholder='buscar' />
+            <input onChange={(e) => setQueryArticles(e.target.value)} type="text" placeholder='buscar' className={styles.search_bar} />
+
+            <button type="button" className={styles.menu_btn} onClick={ () => changeAdvancedFilterStatus(false) }>Cerrar filtros</button> 
 
             <div className={styles.hashtags}>
 
