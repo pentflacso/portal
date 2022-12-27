@@ -1,0 +1,20 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.wrapper{
+    @include container-width-1;
+
+    .containerList{
+        display: flex;
+        justify-content: space-between;
+
+        .col_left, .col_right{
+            width: 48%
+        }  
+    }
+
+    .show_more{
+        @include btn-ver-mas;    
+        display: block;
+        margin: 0 auto 15vh auto;
+    }
+}

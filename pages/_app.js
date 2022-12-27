@@ -1,4 +1,4 @@
-// import AppContext from '../context/AppContext';
+import AppContext from '../context/AppContext';
 import Head from "next/head";
 import CustomScrollbar from '../customScrollbar/CustomScrollbar';
 import NavBar from '../components/library/NavBar/NavBar';
@@ -16,13 +16,13 @@ export default function App({ Component, pageProps }) {
         </Head>
 
         <main className="main-container">
-            {/* <AppContext> */}        
+            <AppContext>       
                 <NavBar />
                 <CustomScrollbar>             
                     <Component {...pageProps} />                    
                     <Footer />
                 </CustomScrollbar>
-            {/* </AppContext> */}
+            </AppContext>
         </main>
     </>
     );

@@ -1,0 +1,52 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.cardList{
+    background-color: #F0F0F0;
+    color:$deep-blue;
+    font-weight: 400;
+    margin-bottom: 8%;
+    padding: 10%;
+
+    .category, p, li{
+        @include font-level-4;
+    }
+
+    .category{
+        border-bottom: 3px solid $yellow-1;
+        margin-bottom: 8%;
+        display: inline-block;
+    }
+
+    h4{
+        @include font-level-1;
+        font-weight: 400;
+        margin-bottom: 8%;
+
+        .authors{
+            color: #032E594D;
+        }
+    }
+    
+    p{
+        margin-bottom: 8%;       
+
+    }
+
+    .hashtags{
+        border-top: 1px solid #032E5932;
+        padding: 5% 0;
+
+        ul{
+            padding: 0;
+            list-style: none;
+
+            li{
+                display: inline-block;
+                margin-right: 5%;
+                color: $green-1;
+            }
+
+        }
+
+    }
+}
