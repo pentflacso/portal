@@ -1,7 +1,7 @@
+import ProductionsAdvancedFilters from "../ProductionsAdvancedFilters/ProductionsAdvancedFilters";
+
 export default function ProductionsNav(){
     return(
-        <>
-            <h1>ProductionsNav</h1>
-        </>
+        <ProductionsAdvancedFilters />
     );
 }
