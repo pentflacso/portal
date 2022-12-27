@@ -1,11 +1,17 @@
 @import "../../../styles/themeStyles.module.scss";
 
-.cardList{
+.wrapper{
     background-color: #F0F0F0;
     color:$deep-blue;
     font-weight: 400;
     margin-bottom: 8%;
     padding: 10%;
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-delay: 0.1s;
+    animation-duration: 0.4s;
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;
 
     .category, p, li{
         @include font-level-4;
@@ -48,5 +54,16 @@
 
         }
 
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
     }
 }

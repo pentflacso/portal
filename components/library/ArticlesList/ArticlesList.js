@@ -44,32 +44,32 @@ export default function ArticlesList({ data, section }){
         <div className={styles.wrapper}>
 
             <div className={styles.containerList}>
-                   
-                <div className={styles.col_left}>
-                    {dataLimit.map((data, key) => {
-                        return (
-                            <Fragment key={key}>                    
-                                { key % 2 === 0 ? 
-                                    <ArticlesCard section={ section } { ...data}  /> 
-                                    : ""
-                                }
-                            </Fragment>                                        
-                        );
-                    })}
-                </div>
 
-                <div className={styles.col_right}>
-                    {dataLimit.map((data, key) => {
-                        return (
-                            <Fragment key={key}>                    
-                                { key % 2 !== 0 ? 
-                                    <ArticlesCard section={ section } {...data} /> 
-                                    : ""
-                                }
-                            </Fragment>                                        
-                        );
-                    })}
-                </div>
+                {dataLimit.length !== 0 ?  
+                <>
+                    <div className={styles.col_left}>
+                        {dataLimit.map((data, key) => {
+                            return (
+                                <Fragment key={key}>                    
+                                    { key % 2 === 0 && <ArticlesCard section={ section } { ...data}  /> }
+                                </Fragment>                                        
+                            );
+                        })}
+                    </div>
+
+                    <div className={styles.col_right}>
+                        {dataLimit.map((data, key) => {
+                            return (
+                                <Fragment key={key}>                    
+                                    { key % 2 !== 0 && <ArticlesCard section={ section } {...data} /> }
+                                </Fragment>                                        
+                            );
+                        })}
+                    </div>
+                </>
+                : <p>No se encontraron resultados</p>
+                }
+
             </div>
 
             {availablePlusData && <button type="button" onClick={() => handleChangePagination()} className={styles.show_more}>Ver más {section}</button>} 
