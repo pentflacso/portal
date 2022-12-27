@@ -28,10 +28,10 @@ export default function Document() {
       </Head>
 
       <body>
+        <div id="modal-root" />
         <div id="navbar-root" />
         <Main />
-        <NextScript />        
-        {/* <div id="modal-root" /> */}
+        <NextScript />           
       </body>
 
     </Html>

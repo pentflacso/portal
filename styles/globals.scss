@@ -29,6 +29,13 @@ button{
   z-index: 2100;
 }
 
+#modal-root{
+  position: absolute;  
+  left: 0;
+  right: 0;
+  z-index: 2200;
+}
+
 
 // Custom Scrollbar
 
