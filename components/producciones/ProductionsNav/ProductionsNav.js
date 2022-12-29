@@ -12,10 +12,13 @@ export default function ProductionsNav(){
     const [advancedFilterStatus, setAdvancedFilterStatus] = useState(false);
 
 
+    //Muestra u oculta los filtros avanzados 
     function changeAdvancedFilterStatus(value) {
         advancedFilterStatus !== value && setAdvancedFilterStatus(value);
     }
 
+    
+    //Cambia el estado con el hashtags seleccionado
 
     const stateCurrentHashtag = (hashtag) => {
         if(hashtag === 'all'){
@@ -28,6 +31,8 @@ export default function ProductionsNav(){
     }
 
 
+    //Chequea si un determinado hashtags o autor ya se encuentra en su listado  
+
     function isInHashtagsList( hashtag ) {  
         const findToName = hashtagsArticlesList.find(value => value.name === hashtag);
         return hashtag === undefined ? undefined : findToName === undefined;   
@@ -38,6 +43,10 @@ export default function ProductionsNav(){
         return author === undefined ? undefined : findToName === undefined;   
     }
 
+
+    //Estas funciones reciben por parámetro el nombre de los autores y hashtags
+    //Se ejecuta una función que chequea si ya se encuentran en el listado que almacena los autores y hashtags, y en caso de ser negativo, envían el nombre al estado que contiene el listado correspondiente
+
     function addHashtag( hashtag ) {
         isInHashtagsList(hashtag) && setHashtagsArticlesList( [...hashtagsArticlesList, {name: hashtag }] )   
     } 
@@ -46,6 +55,8 @@ export default function ProductionsNav(){
         isInAuthorsList(author) && setAuthorsArticlesList( [...authorsArticlesList, {name: author }] )   
     }
 
+
+    //Mapea los artículos y envía el nombre de los autores y hashtags a las funciones addHashtag o addAuthor, según corresponda
 
     useEffect(() => {
         if(dataArticles !== undefined){
@@ -68,7 +79,7 @@ export default function ProductionsNav(){
     return(
         <>
             {
-                advancedFilterStatus === true &&  reactDom.createPortal(<ProductionsAdvancedFilters changeAdvancedFilterStatus={changeAdvancedFilterStatus} stateCurrentHashtag={stateCurrentHashtag} />, document.getElementById("modal-root"))
+                advancedFilterStatus === true && reactDom.createPortal(<ProductionsAdvancedFilters changeAdvancedFilterStatus={changeAdvancedFilterStatus} stateCurrentHashtag={stateCurrentHashtag} />, document.getElementById("modal-root"))
             }
 
             <div className={styles.wrapper}>
