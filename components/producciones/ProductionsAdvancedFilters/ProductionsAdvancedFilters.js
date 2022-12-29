@@ -5,6 +5,9 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
 
     const { hashtagsArticlesList, currentArticleHashtag, authorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, setQueryArticles } = useAppContext();
 
+
+    //Cambia el estado con el autor seleccionado
+
     const statecurrentAuthor = (author) => {
         if (author === 'all'){
             setCurrentArticleAuthor('all')
