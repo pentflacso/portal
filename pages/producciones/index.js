@@ -103,12 +103,20 @@ export default function Producciones(){
         {title: 'Asesorías', path: 'asesorias'}
     ]
 
+
+    //Traemos lo que necesitamos de AppContext
+
     const { dataArticles, setDataArticles, currentArticleHashtag, currentArticleAuthor, searchInArticles } = useAppContext();    
+
+
+    //Mandamos la data a dataArticles dentro de AppContext
 
     useEffect(() => {
         dataArticles === undefined && setDataArticles(data)      
     }, []); 
 
+
+    //Filtramos la data a partir del estado actual de los filtros de hashtag y autores
 
     useEffect(() => {         
         if(currentArticleHashtag === 'all' && currentArticleAuthor === 'all' ){
