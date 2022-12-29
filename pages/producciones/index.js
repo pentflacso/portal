@@ -98,9 +98,9 @@ export default function Producciones(){
     ]
 
     const exploringBtnsData = [
-        {title: 'Formación', path: 'formacion'},
-        {title: 'Investigación', path: 'investigacion'},
-        {title: 'Asesorías', path: 'asesorias'}
+        {title: 'Propuestas de formación', path: 'formacion'},
+        {title: 'Asesorías y soluciones a medida ', path: 'asesorias'},
+        {title: 'Investigación y divulgación', path: 'investigacion'}        
     ]
 
 
@@ -140,7 +140,10 @@ export default function Producciones(){
         
         {dataArticles !== undefined && <ArticlesList data={searchInArticles(dataArticles)} section="producciones" />}        
 
-        <TextMarquee />
+        <div className={styles.marquee}>
+            <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+        </div>
+
         <ExploringBtns data={exploringBtnsData} />
     </>
     )

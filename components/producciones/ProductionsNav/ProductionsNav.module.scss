@@ -3,20 +3,31 @@
 .wrapper{
     display: flex;
     align-items: center;
+    @include container-width-1;
 
     .menu_btn{
         @include btn-ver-mas;
     }
 
     .hashtags{
-        background-color: antiquewhite;
-        margin: 40px;
+        width: 85%; 
+        margin: 40px 5% 40px 0;  
+             
         .btn_filter{
-            margin-left: 20px;
-            font-size: 20px;
-            &.active{
-                background-color: red;
-            }
+            @include btn-ver-mas;
+            border-color: $gray-2;
+            margin: 6px 0;
+            @media screen and (min-width: 1024px){
+                &:hover{
+                    background-color: $gray-6;
+                    border-color: $gray-2;
+                    color: $deep-blue;
+                }
+                &.active{
+                    background-color: $green-2;
+                    border-color: $green-2;
+                }
+            }            
         }
     }
 }
