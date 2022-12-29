@@ -77,34 +77,21 @@ button{
       .swiper-slide {
         box-sizing: border-box;
         width: auto;
-        &:first-of-type{
-            margin-left: calc(74px + (272 - 74) * ((100vw - 1200px) / (3840 - 1200)));
-            @media screen and (max-width: 1024px){
-                margin-left: calc(18px + (60 - 18) * ((100vw - 300px) / (1024 - 300)));
-            }
-        }
-        &:last-of-type{
-            margin-right: calc(30px + (225 - 30) * ((100vw - 1200px) / (3840 - 1200)));
-            @media screen and (max-width: 1024px){
-                margin-right: calc(18px + (60 - 18) * ((100vw - 300px) / (1024 - 300)));
-            }
-        }
       }
     }  
     .swiper-button-prev, .swiper-button-next{
-        display: none;
+      //display: none;
       position: absolute;
-      background: rgb(23,18,66);   
+      background: rgb(255, 255, 255);   
       top: 0;
       bottom: 0;
       margin-top: auto;
       margin-bottom: auto;
       width: calc(56px + (126 - 56) * ((100vw - 1200px) / (3840 - 1200)));
-      height: calc(26px + (78 - 26) * ((100vw - 1200px) / (3840 - 1200)));    
-      color: #9a9aac; 
+      height: 100%;    
+      color: #032E59; 
       @media screen and (max-width: 1024px){
         width: calc(46px + (100 - 46) * ((100vw - 300px) / (1024 - 300)));
-        height: calc(21px + (46 - 21) * ((100vw - 300px) / (1024 - 300)));
       }
       &::after{
         display: flex;
@@ -112,11 +99,11 @@ button{
         align-items: center;
         width: calc(26px + (78 - 26) * ((100vw - 1200px) / (3840 - 1200)));
         height: calc(26px + (78 - 26) * ((100vw - 1200px) / (3840 - 1200))); 
-        background-color: rgb(23,18,66);
+        background-color: rgb(255, 255, 255);
         border-radius: 50%;
         font-size: calc(15px + (42 - 15) * ((100vw - 1200px) / (3840 - 1200)));
         font-weight: bold;
-        border: calc(1.5px + (2.5 - 1.5) * ((100vw - 1200px) / (3840 - 1200))) solid #9a9aac;
+        border: calc(1.5px + (2.5 - 1.5) * ((100vw - 1200px) / (3840 - 1200))) solid #032E59;
         @media screen and (max-width: 1024px){
           width: calc(21px + (46 - 21) * ((100vw - 300px) / (1024 - 300)));
           height: calc(21px + (46 - 21) * ((100vw - 300px) / (1024 - 300))); 
@@ -128,22 +115,22 @@ button{
       }
       @media screen and (min-width: 1025px){
         &:hover{
-          color: rgb(23,18,66); 
+          color: rgb(255, 255, 255); 
           &::after{
-            background-color: #ff6954;
-            border: calc(1.5px + (2.5 - 1.5) * ((100vw - 1200px) / (3840 - 1200))) solid #ff6954;
+            background-color: #032E59;
+            border: calc(1.5px + (2.5 - 1.5) * ((100vw - 1200px) / (3840 - 1200))) solid #032E59;
           }
         }
       }
     }  
     .swiper-button-prev{
-      background: linear-gradient(90deg, rgba(23,18,66,1) 0%, rgba(23,18,66,1) 28%, rgba(23,18,66,0) 100%);
+      background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 28%, rgba(255, 255, 255, 0) 100%);
       left: 0;
       justify-content: left;    
     }
     .swiper-button-next{
-      background: rgb(23,18,66);
-      background: linear-gradient(-90deg, rgba(23,18,66,1) 0%, rgba(23,18,66,1) 28%, rgba(23,18,66,0) 100%);
+      background: rgb(255, 255, 255);
+      background: linear-gradient(-90deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 28%, rgba(255, 255, 255, 0) 100%);
       right: 0;
       justify-content: right;  
     }

@@ -1,1 +1,5 @@
 @import "../../styles/themeStyles.module.scss";
+
+.marquee{
+    margin-bottom: calc(42px + (145 - 42) * ((100vw - 1200px) / (3840 - 1200)));
+}
