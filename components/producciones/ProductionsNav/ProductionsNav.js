@@ -86,7 +86,7 @@ export default function ProductionsNav(){
 
             <div className={styles.wrapper}>
 
-                <div className={styles.hashtags}>
+                <div className={`${styles.hashtags} swiper-btns`}>
 
                     <Swiper
                     modules={[Navigation, FreeMode]}

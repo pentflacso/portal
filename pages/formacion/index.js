@@ -14,7 +14,7 @@ export default function Formacion(){
             <TextMarquee data="POSGRADOS&nbsp;—&nbsp;CURSOS&nbsp;—&nbsp;" />
         </div>
 
-        <div className={styles.carrousel_formacion}>
+        <div className={`${styles.carrousel_formacion} swiper-cards`}>
             <Swiper
                 modules={[Navigation, FreeMode]}
                 spaceBetween={0}
