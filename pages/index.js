@@ -32,7 +32,7 @@ export default function Home(){
             <TextMarquee data="NOVEDADES&nbsp;-&nbsp;NOVEDADES&nbsp;-&nbsp;"/>
         </div>
 
-        <div className={styles.carrousel_novedades}>
+        <div className={`${styles.carrousel_novedades} swiper-cards`}>
             <Swiper
                 modules={[Navigation, FreeMode]}
                 spaceBetween={0}
