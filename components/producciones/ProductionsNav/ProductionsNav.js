@@ -77,7 +77,6 @@ export default function ProductionsNav(){
         }        
     }, [dataArticles, hashtagsArticlesList, authorsArticlesList]); 
 
-
     return(
         <>
             {
