@@ -1,0 +1,128 @@
+{
+    "data": 
+        {
+            "PageHeading": "<h1>Somos un <span>equipo de especialistas</span><br /> en educación y tecnologías digitales</h1>",
+            "TwoColumnsText": "El PENT surge como un proyecto, FLACSO Argentina, work encompasses graphics and identity, strategy and positioning, products and packaging, exhibitions and installations, websites and digital experiences, advertising and communications, data visualizations and typefaces, sound motion. Se genera ante la necesidad de desarrollar nuevas miradas y construir conocimiento en torno a las transformaciones y desafíos presentes en el campo de la educación. Entre ellos, cambios en las formas de circulación y apropiación del conocimiento, en los modos de intervención docente.",
+            "marquee":  "Somos un equipo de especialistas en educación y tecnologías digitales",
+        
+            "team": [{
+                "cargo": "Dirección general",
+                "equipo": [{"nombre": "Christian Milillo"},
+                            {"nombre": "Fabio Tarasow"}, 
+                            {"nombre": "Mónica Trech"}, 
+                            {"nombre": "Gisela Schwartzman"}]
+            
+                },
+                {
+                "cargo": "Coordinación Diplomas Superiores",
+                    "equipo": [{"nombre": "Corina Rogovsky"}, 
+                                {"nombre": "Susana De Lorenzi"}]
+                
+                },
+                {
+            "cargo": "Coordinación Especialización",
+            "equipo": [{"nombre": "Graciela Caldeiro"}]
+        
+        },
+        {
+            "cargo": "Coordinación Usina de Experiencias",
+            "equipo": [{"nombre": "Cecilia Criscuolo"}]
+        
+        },
+        {
+            "cargo": "Coordinación de investigación",
+            "equipo": [{"nombre": "Silvina Casablancas"}]
+        
+        },
+        {
+            "cargo": "Administración",
+            "equipo": [{"nombre": "Maira Visacovsky"},
+                        {"nombre": "Candelaria Bensadón"},  
+                        {"nombre": "Fabián Pérez"}]
+        
+        },
+        {
+        "cargo": "Docentes invitados",
+        "equipo": [{"nombre": "Débora Schneider"},
+                    {"nombre": "Mariano Palamidessi"}, 
+                    {"nombre": "Diego Albarraciín"}, 
+                    {"nombre": "Elena Barberá"},
+                    {"nombre": "Marta Mena"},
+                    {"nombre": "Gabriela Sacco"},
+                    {"nombre": "Nicolás Pedregal"},
+                    {"nombre": "Inés Dussel"},
+                    {"nombre": "Paula Pérez"},
+                    {"nombre": "Mariana Landau"},
+                    {"nombre": "Valeria Kelly"}]
+        },
+        {
+            "cargo": "Comunicación",
+            "equipo": [{"nombre": "Eugenia Bosch"},  
+                        {"nombre": "Martín Tejada"}]
+        
+        },
+        {
+            "cargo": "Gestión de contenidos",
+            "equipo": [{"nombre": "Milagros Langhi"},  
+                        {"nombre": "Sol Sogari"}]
+        
+        },
+        {
+            "cargo": "Desarrollo institucional",
+            "equipo": [{"nombre": "Guillermo Pleitavino"}]
+        
+        },
+        {
+            "cargo": "Docencia, investigación y cooperación institucional",
+            "equipo": [{"nombre": "Adriana Mazza"},
+                        {"nombre": "Alejandro Alfonso"}, 
+                        {"nombre": "Alejandro Cota"}, 
+                        {"nombre": "Ariel Fumagalli"},
+                        {"nombre": "Bárbara Torti"},
+                        {"nombre": "Bettina Berlin"},
+                        {"nombre": "Carolina Wojtun"},
+                        {"nombre": "Cecilia Criscuolo"},
+                        {"nombre": "Christian Milillo"},
+                        {"nombre": "Corina Rogovsky"},
+                        {"nombre": "Eugenia Bosch"}, 
+                        {"nombre": "Fabio Tarasow"}, 
+                        {"nombre": "Fernando Pinzón"},
+                        {"nombre": "Francisco Cardozo"},
+                        {"nombre": "Francisco Chamorro"},
+                        {"nombre": "Gabriela Raynaudo"},
+                        {"nombre": "Gisela Schwartzman"},
+                        {"nombre": "Graciela Caldeiro"},
+                        {"nombre": "Graciela Inés Manzur"},
+                        {"nombre": "Laura Parmigiano"}, 
+                        {"nombre": "Marcela Ordiz"}, 
+                        {"nombre": "Martín Gauto"},
+                        {"nombre": "Milagros Langhi"},
+                        {"nombre": "Mónica Trech"},
+                        {"nombre": "Mónica Zega de Krutli"},
+                        {"nombre": "Monserrat Pose"},
+                        {"nombre": "Nahuel González"},
+                        {"nombre": "Rosa Gamboa"},
+                        {"nombre": "Silvina Casablancas"}, 
+                        {"nombre": "Sol Sogari"}, 
+                        {"nombre": "Soledad Arréguez"},
+                        {"nombre": "Susana De Lorenzi"},
+                        {"nombre": "Tamara Blustein"},
+                        {"nombre": "Valeria Odetti"},
+                        {"nombre": "Verónica Luna"},
+                        {"nombre": "Virginia Jalley"}]
+            },
+            {
+                "cargo": "Desarrollos tecnológicos y comunicación visual",
+                "equipo": [{"nombre": "Christian Milillo"},
+                            {"nombre": "Ariel Fumagalli"}, 
+                            {"nombre": "Marco Filetto"}, 
+                            {"nombre": "Martín Gauto"},
+                            {"nombre": "Martín Tejada"},
+                            {"nombre": "Melisa Quiroga"},
+                            {"nombre": "Victoria Frosi"},
+                            {"nombre": "Ramiro Landeo"},
+                            {"nombre": "Yanina Fernández"}]
+                }]
+        }
+    
+    }

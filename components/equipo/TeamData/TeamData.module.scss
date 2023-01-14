@@ -1,0 +1,19 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.wrapper {
+    @include container-width-1;
+    column-count: 4;
+    column-gap: 50px;
+    color: $deep-blue;
+    line-height: 140%;
+    margin-bottom: calc(74px + (272 - 74) * ((100vw - 1200px) / (3840 - 1200)));
+    @include font-level-4;
+}
+
+.link{
+  color: rgba(3, 46, 89, 0.5);
+  text-decoration: none;
+  &:hover{
+    color:$deep-blue;
+  }
+}
