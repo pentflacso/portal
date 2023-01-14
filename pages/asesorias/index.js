@@ -38,7 +38,7 @@ export default function Asesorias(){
             <TextMarquee data="PROYECTOS&nbsp;—&nbsp;" />
         </div>
 
-        <div className={styles.carrousel_proyects}>
+        <div className={`${styles.carrousel_proyects} swiper-cards`}>
             <Swiper
                 modules={[Navigation, FreeMode]}
                 spaceBetween={0}

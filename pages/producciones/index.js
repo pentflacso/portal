@@ -1,30 +1,75 @@
+import { useAppContext } from '../../context/AppContext';
+import { useEffect } from 'react';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import ProductionsNav from '../../components/producciones/ProductionsNav/ProductionsNav';
-import ArticlesList from '../../components/producciones/ArticlesList/ArticlesList';
+import ArticlesList from '../../components/library/ArticlesList/ArticlesList';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
+import styles from "./producciones.module.scss";
 
-export default function Producciones(){
-
-    // Aquí colocamos el array de objetos (articlesData) con la data que irá al componente ArticlesList
+function Producciones(d){  
+    const data = Object.values(d);
 
     const exploringBtnsData = [
-        {title: 'Formación', path: 'formacion'},
-        {title: 'Investigación', path: 'investigacion'},
-        {title: 'Asesorías', path: 'asesorias'}
+        {title: 'Propuestas de formación', path: 'formacion'},
+        {title: 'Asesorías y soluciones a medida ', path: 'asesorias'},
+        {title: 'Investigación y divulgación', path: 'investigacion'}        
     ]
+
+    //Traemos lo que necesitamos de AppContext
+
+    const { dataArticles, setDataArticles, currentArticleHashtag, currentArticleAuthor, searchInArticles } = useAppContext();    
+
+
+    //Mandamos la data a dataArticles dentro de AppContext
+
+    useEffect(() => {
+        dataArticles === undefined && setDataArticles(data)      
+    }, []); 
+
+
+    //Filtramos la data a partir del estado actual de los filtros de hashtag y autores
+
+    useEffect(() => {         
+        if(currentArticleHashtag === 'all' && currentArticleAuthor === 'all' ){
+            return setDataArticles(data)
+        } else if(currentArticleHashtag !== 'all' && currentArticleAuthor !== 'all'){
+            const filteredByHashtag = data.filter((article) => article.hashtags.includes(currentArticleHashtag))            
+            return setDataArticles(filteredByHashtag.filter((article) => article.authors.includes(currentArticleAuthor)))
+        } else if(currentArticleHashtag !== 'all' && currentArticleAuthor === 'all'){            
+            return setDataArticles(data.filter((article) => article.hashtags.includes(currentArticleHashtag)))           
+        } else if(currentArticleHashtag === 'all' && currentArticleAuthor !== 'all'){
+            return setDataArticles(data.filter((article) => article.authors.includes(currentArticleAuthor)))
+        }            
+    }, [currentArticleHashtag, currentArticleAuthor]);
     
+ 
     return(
     <>
         <PageHeading title="<h1><span>Producciones</span></h1>" margin_bottom_type={1} />
-        <ProductionsNav />
 
-        {/* Enviar articlesData como propiedad "data" al componente ArticlesList */}
-        <ArticlesList />
+        <ProductionsNav />     
+        
+        {dataArticles !== undefined && <ArticlesList data={searchInArticles(dataArticles)} section="producciones" />}        
 
-        <TextMarquee />
-        hola
+        <div className={styles.marquee}>
+            <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+        </div>
+
+
         <ExploringBtns data={exploringBtnsData} />
     </>
     )
 }
+
+
+export async function getServerSideProps() {
+    // Fetch data from external API
+    const res = await fetch(`https://flacso.pent.org.ar/api/produciones.json`)
+    const data = await res.json()
+
+    // Pass data to the page via props
+    return { props:  {...data}   }
+  }
+
+  export default Producciones;

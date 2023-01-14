@@ -1,0 +1,82 @@
+import { useEffect, useState, Fragment  } from 'react';
+import ArticlesCard from '../ArticlesCard/ArticlesCard';
+import styles from "./ArticlesList.module.scss";
+
+
+export default function ArticlesList({ data, section }){
+
+    //Data a utilizar
+    const [dataToUse, setDataToUse] = useState(data);
+    //Data limitada por cantidad a mostrar 
+    const [dataLimit, setDataLimit] = useState(data.slice(0,6));
+    //Contador
+    const [itemCount, setItemCount] = useState(6);    
+    //Estado del boton de carga de data
+    const [availablePlusData, setAvailablePlusData] = useState(true);
+
+
+    //Al cambiar la data actualiza los siguientes estados
+    useEffect(() => {
+        setDataToUse(data)
+        setDataLimit(data.slice(0,6))
+        setItemCount(6)
+    }, [data]); 
+
+
+    //Función botón de carga de data
+    const handleChangePagination = () => {
+        setItemCount(itemCount + 6);
+    };
+
+
+    //Cada vez que el contador o la data a utilizar cambia, se ejecuta el siguiente condicional
+    useEffect(() => {       
+        if(dataToUse.length >= 7){
+            setAvailablePlusData(true)
+            setDataLimit(dataToUse.slice(0, itemCount))
+        } else if(dataToUse.length < itemCount){
+            setAvailablePlusData(false)
+        }
+
+        dataLimit.length < itemCount && setAvailablePlusData(false)
+        
+    }, [itemCount, dataToUse]);  
+
+
+    return( 
+        <div className={styles.wrapper}>
+
+            <div className={styles.containerList}>
+
+                {dataLimit.length !== 0 ?  
+                <>
+                    <div className={styles.col_left}>
+                        {dataLimit.map((data, key) => {
+                            return (
+                                <Fragment key={key}>                    
+                                    { key % 2 === 0 && <ArticlesCard section={ section } { ...data}  /> }
+                                </Fragment>                                        
+                            );
+                        })}
+                    </div>
+
+                    <div className={styles.col_right}>
+                        {dataLimit.map((data, key) => {
+                            return (
+                                <Fragment key={key}>                    
+                                    { key % 2 !== 0 && <ArticlesCard section={ section } {...data} /> }
+                                </Fragment>                                        
+                            );
+                        })}
+                    </div>
+                </>
+                : <p>No se encontraron resultados</p>
+                }
+
+            </div>
+
+            {availablePlusData && <button type="button" onClick={() => handleChangePagination()} className={styles.show_more}>Ver más {section}</button>} 
+
+        </div>         
+    );
+}

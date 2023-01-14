@@ -38,7 +38,7 @@ export default function Investigacion(){
             <TextMarquee data="PROYECTOS&nbsp;—&nbsp;PROYECTOS&nbsp;—&nbsp;" />
         </div>
 
-        <div className={styles.carrousel_projects}>
+        <div className={`${styles.carrousel_projects} swiper-cards`}>
             <Swiper
                 modules={[Navigation, FreeMode]}
                 spaceBetween={0}
