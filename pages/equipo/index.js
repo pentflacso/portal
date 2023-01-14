@@ -1,59 +1,62 @@
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import TwoColumsText from '../../components/equipo/TwoColumsText/TwoColumsText';
+import TeamData from '../../components/equipo/TeamData/TeamData';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./equipo.module.scss";
 
-export default function Equipo(){
 
+
+function Equipo(data){
+/* console.log(data) */
     // Armar un array de objeto con la data que utilizaremos en el componente Swiper y el contenedor con el listado del Equipo. - El nombre deberá ser teamData. 
     
     // Ejemplo: const teamData = [ {name: 'Fabio Tarasow', areas: ['direccionGeneral', 'docenciaEID'} ]
-
+   
 
     return(
     <>
-        <PageHeading title="<h1>Somos un <span>equipo de especialistas</span><br /> en educación y tecnologías digitales</h1>" margin_bottom_type={0} />
 
-        <TwoColumsText />
+        <PageHeading title={data.PageHeading} margin_bottom_type={0} />
+
+        <TwoColumsText texto={data.TwoColumnsText}/>
 
         <div className={styles.marquee_1}>
-            <TextMarquee data="CONOCENOS&nbsp;—&nbsp;CONOCENOS&nbsp;—&nbsp;" />
+            <TextMarquee data={data.marquee} />
         </div>
 
         <Swiper
             modules={[Navigation, FreeMode]}
-            spaceBetween={0}
+            spaceBetween={50}
             slidesPerView={"auto"}
             navigation   
             freeMode={true}   
             grabCursor={true} 
-        >     
-            <SwiperSlide>1</SwiperSlide>    
-            <SwiperSlide>2</SwiperSlide> 
-            <SwiperSlide>3</SwiperSlide> 
-            <SwiperSlide>4</SwiperSlide>               
+        >   
+        {
+        data.members.map((item, key) => (
+          <SwiperSlide key={key} className={styles.swiperTeam}><a className={styles.link} href={item.url} target="_blank"><div><img src={item.img}/></div><h3>{item.nombre}</h3></a></SwiperSlide>
+          ))
+        }
+                           
         </Swiper> 
 
-
+        
         <div className={styles.team_container}>
-
-            {/* Mostrar el listado de integrantes dentro del área al que corresponda, mediante el método MAP y condicionales ternarios. */}
-
-            {/* // ejemplo 
-
-            teamData.map((data, i) => {
-                return (
-                <>
-                
-                </>                                          
-                );
-            })
-            
-            */}          
-
+        <TeamData team={data.team}/>
         </div>
     </>
     )
 }
+
+export async function getServerSideProps() {
+    // Fetch data from external API
+    const res = await fetch(`https://flacso.pent.org.ar/api/equipo.php`)
+    const data = await res.json()
+  
+    // Pass data to the page via props
+    return { props: data.data  }
+  }
+
+  export default Equipo
