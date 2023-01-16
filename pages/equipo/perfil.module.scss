@@ -1,3 +1,9 @@
 @import "../../styles/themeStyles.module.scss";
 
-
+.twoColumns {
+    @include container-width-1;
+    column-count: 2;
+    column-gap: 100px;
+    color: $deep-blue;
+    @include font-level-4;
+}

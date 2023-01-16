@@ -1,9 +1,9 @@
 import PageHeading from '../../components/library/PageHeading/PageHeading';
-import TwoColumsText from '../../components/equipo/TwoColumsText/TwoColumsText';
 import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
-import styles from "./equipo.module.scss";
-
+import styles from "./perfil.module.scss";
+import ArticlesCard from '../../components/library/ArticlesCard/ArticlesCard';
+import SectionTitle from '../../components/library/SectionTitle/SectionTitle';
 
 
 function Perfil(data){
@@ -18,22 +18,26 @@ function Perfil(data){
 
         <PageHeading title={data.name} margin_bottom_type={0} />
 
-        <h2>{data.description}</h2>
-
+        <div className={styles.twoColumns}>
+        <div><h2>{data.description}</h2>
         <p>{data.cv}</p>
+        </div>
+        <img src={data.picture}/>
+        </div>
 
+        <SectionTitle title="Producciones" />
 
         <Swiper
             modules={[Navigation, FreeMode]}
             spaceBetween={50}
-            slidesPerView={"auto"}
+            slidesPerView={2}
             navigation   
             freeMode={true}   
             grabCursor={true} 
         >   
         {
         data.productions.map((item, key) => (
-          <SwiperSlide key={key} className={styles.swiperTeam}><a className={styles.link} href={item.url} target="_blank"><div><img src={item.img}/></div><h3>{item.nombre}</h3></a></SwiperSlide>
+          <SwiperSlide key={key}><ArticlesCard className={styles.card} section="producciones" { ...item}  /></SwiperSlide>
           ))
         }
                            
