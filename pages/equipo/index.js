@@ -1,5 +1,6 @@
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import TwoColumsText from '../../components/equipo/TwoColumsText/TwoColumsText';
+import Link from 'next/link';
 import TeamData from '../../components/equipo/TeamData/TeamData';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import { Navigation, FreeMode } from 'swiper';
@@ -36,7 +37,7 @@ function Equipo(data){
         >   
         {
         data.members.map((item, key) => (
-          <SwiperSlide key={key} className={styles.swiperTeam}><a className={styles.link} href={item.url} target="_blank"><div><img src={item.img}/></div><h3>{item.nombre}</h3></a></SwiperSlide>
+          <SwiperSlide key={key} className={styles.swiperTeam}><Link className={styles.link} href={item.url} ><div><img src={item.img}/></div><h3>{item.nombre}</h3></Link></SwiperSlide>
           ))
         }
                            

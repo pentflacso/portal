@@ -1,0 +1,8 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.title{
+    @include container-width-1;
+    border-bottom: 1px solid rgba(3, 46, 89, 0.25);
+    color: $deep-blue;
+    @include font-level-4;
+}

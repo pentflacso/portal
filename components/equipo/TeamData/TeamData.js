@@ -1,5 +1,7 @@
-import styles from "./TeamData.module.scss";
+
 import React from 'react'
+import Link from 'next/link';
+import styles from "./TeamData.module.scss";
 
 const Equipo = ({team}) => {
     
@@ -13,7 +15,7 @@ const Equipo = ({team}) => {
           <h4>{item.cargo}</h4>
           
           {item.equipo.map(persona => (
-            <a className={styles.link} href={persona.url} target="_blank"><p key={persona.nombre}>{persona.nombre}</p></a>
+            <Link className={styles.link} href={persona.url ? persona.url : "/" } ><p key={persona.nombre}>{persona.nombre}</p></Link>
           ))}
           <br/></div>
           ))
