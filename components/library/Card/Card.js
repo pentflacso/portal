@@ -1,9 +1,22 @@
 import styles from "./Card.module.scss";
+import Link from "next/link";
 
-export default function Card({category, lead , title, subtitle , description, hashtags, date, button, height, layout, img}){
+export default function Card({category, lead , title, subtitle , description, hashtags, date, button, height, layout, img, url}){
+
     return( 
-    <div className={styles.wrapper}>
-        {layout == "imgTop" && img ? <img src={ img.src } alt={ img.alt } /> :""}
+    <Link 
+      className={ 
+        height ?
+          height == "hidden" ? 
+            img ? `${styles.card} ${styles.height}` : `${styles.wrapper} ${styles.height}` 
+            : img ? styles.card : styles.wrapper 
+        : img ? styles.card : styles.wrapper
+      }
+      href={url}
+      rel="noopener noreferrer" 
+      target={layout ? "_blank" : ""}
+    >
+        {layout == "imgTop" && img ? <img src={ img[0] } alt={ img[1] } className={styles.imgTop} /> :""}
 
         { lead ? <div><span className={styles.lead}>{lead}</span></div>: "" }
         
@@ -15,9 +28,8 @@ export default function Card({category, lead , title, subtitle , description, ha
 
         {category ?
           <p className={styles.info}>
-            <span className={styles.category}>{category} -</span> 
-            <span className={styles.date}>{date}</span>
-            
+            <span className={styles.category}>{category} {date ? "- ": ""}</span> 
+            {date ? <span className={styles.date}>{date}</span>: ""}
           </p> : ""
         }
         
@@ -29,11 +41,11 @@ export default function Card({category, lead , title, subtitle , description, ha
           </div> : ""
         }
 
-        {layout == "imgBottom" && img ? <img src={ img.src } alt={ img.alt } /> :""}
+        {layout == "imgBottom" && img ? <img src={ img[0] } alt={ img[1] } /> :""}
         
-        {button ? <button>Más información</button> :""}
+        {button ? <button>Más información</button> : ""}
 
-    </div> 
+    </Link> 
     );
 
 }
