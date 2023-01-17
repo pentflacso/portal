@@ -1,5 +1,6 @@
 import { useEffect, useState, Fragment  } from 'react';
-import ArticlesCard from '../ArticlesCard/ArticlesCard';
+//import ArticlesCard from '../ArticlesCard/ArticlesCard';
+import Card from '../Card/Card';
 import styles from "./ArticlesList.module.scss";
 
 
@@ -54,7 +55,7 @@ export default function ArticlesList({ data, section }){
                         {dataLimit.map((data, key) => {
                             return (
                                 <Fragment key={key}>                    
-                                    { key % 2 === 0 && <ArticlesCard section={ section } { ...data}  /> }
+                                    { key % 2 === 0 && <Card section={ section } { ...data}  /> }
                                 </Fragment>                                        
                             );
                         })}
@@ -64,7 +65,7 @@ export default function ArticlesList({ data, section }){
                         {dataLimit.map((data, key) => {
                             return (
                                 <Fragment key={key}>                    
-                                    { key % 2 !== 0 && <ArticlesCard section={ section } {...data} /> }
+                                    { key % 2 !== 0 && <Card section={ section } {...data} /> }
                                 </Fragment>                                        
                             );
                         })}
