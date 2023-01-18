@@ -1,7 +1,7 @@
 import styles from "./Card.module.scss";
 import Link from "next/link";
 
-export default function Card({category, lead , title, subtitle , description, hashtags, date, button, height, layout, img, url}){
+export default function Card({category, lead , title, subtitle , description, hashtags, date, cta, height, layout, img, url}){
 
     return( 
     <Link 
@@ -16,7 +16,8 @@ export default function Card({category, lead , title, subtitle , description, ha
       rel="noopener noreferrer" 
       target={layout ? "_blank" : ""}
     >
-        {layout == "imgTop" && img ? <img src={ img[0] } alt={ img[1] } className={styles.imgTop} /> :""}
+        {(layout == "imgTop" || !layout) && img ? 
+          <img src={ img } alt={ title } className={styles.imgTop} /> :""}
 
         { lead ? <div><span className={styles.lead}>{lead}</span></div>: "" }
         
@@ -41,9 +42,9 @@ export default function Card({category, lead , title, subtitle , description, ha
           </div> : ""
         }
 
-        {layout == "imgBottom" && img ? <img src={ img[0] } alt={ img[1] } /> :""}
+        {layout == "imgBottom" && img ? <img src={ img } alt={ title } /> :""}
         
-        {button ? <button>Más información</button> : ""}
+        {cta ? <button>{ cta }</button> : ""}
 
     </Link> 
     );
