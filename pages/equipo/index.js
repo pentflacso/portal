@@ -10,10 +10,7 @@ import styles from "./equipo.module.scss";
 
 
 function Equipo(data){
-/* console.log(data) */
-    // Armar un array de objeto con la data que utilizaremos en el componente Swiper y el contenedor con el listado del Equipo. - El nombre deberá ser teamData. 
-    
-    // Ejemplo: const teamData = [ {name: 'Fabio Tarasow', areas: ['direccionGeneral', 'docenciaEID'} ]
+
    
 
     return(

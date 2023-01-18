@@ -2,15 +2,11 @@ import PageHeading from '../../components/library/PageHeading/PageHeading';
 import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./perfil.module.scss";
-import ArticlesCard from '../../components/library/ArticlesCard/ArticlesCard';
+import Card from '../../components/library/Card/Card';
 import SectionTitle from '../../components/library/SectionTitle/SectionTitle';
 
 
 function Perfil(data){
-/* console.log(data) */
-    // Armar un array de objeto con la data que utilizaremos en el componente Swiper y el contenedor con el listado del Equipo. - El nombre deberá ser teamData. 
-    
-    // Ejemplo: const teamData = [ {name: 'Fabio Tarasow', areas: ['direccionGeneral', 'docenciaEID'} ]
    
 
     return(
@@ -25,6 +21,7 @@ function Perfil(data){
         <img src={data.picture}/>
         </div>
 
+        <div className={styles.container}>
         <SectionTitle title="Producciones" />
 
         <Swiper
@@ -37,11 +34,11 @@ function Perfil(data){
         >   
         {
         data.productions.map((item, key) => (
-          <SwiperSlide key={key}><ArticlesCard className={styles.card} section="producciones" { ...item}  /></SwiperSlide>
+          <SwiperSlide key={key}><Card { ...item}  /></SwiperSlide>
           ))
         }
                            
-        </Swiper> 
+        </Swiper></div>
 
     </>
     )

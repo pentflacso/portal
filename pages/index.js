@@ -5,9 +5,11 @@ import SectionSelector from '../components/home/SectionSelector/SectionSelector'
 import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import NewsSelector from '../components/home/NewsSelector/NewsSelector';
+import Card from '../components/library/Card/Card';
 import styles from "./index.module.scss";
 
-export default function Home(){
+function Home(d){
+    const data = Object.values(d);
 
     const NewsData = [
         {title: 'Un sincrónico para pensar lo sincrónico', description: 'Many desktop publishing packages and web', path_id: 'formacion'},
@@ -36,39 +38,18 @@ export default function Home(){
             <Swiper
                 modules={[Navigation, FreeMode]}
                 spaceBetween={0}
-                slidesPerView={"auto"}
+                slidesPerView={2.5}
                 navigation   
                 freeMode={true}   
                 grabCursor={true} 
-            >     
-                <SwiperSlide>
-                    <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank" className={styles.card}>                        
-                        <h5>¡Capacitate en e-learning!</h5>
-                        <p>Lanzamos la diplomatura con diferentes especialistas para claves de la educación en línea, diferentes especialistas sobre cuestiones claves de la educación en línea, claves de la edu.</p>
-                        <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />                    
-                    </a>
-                </SwiperSlide>    
-                <SwiperSlide>
-                    <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank" className={styles.card}>                        
-                        <h5>Desarrollamos el portal utopía para Fundación Bunge y Born</h5>
-                        <p>Conversamos con diferentes especialistas sobre cuestiones claves de la educación en línea, diferentes especialistas sobre cuestiones claves de la educación en línea,claves de la edu.</p>  
-                        <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />                  
-                    </a>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank" className={styles.card}>                        
-                        <h5>¡Capacitate en e-learning!</h5>
-                        <p>Lanzamos la diplomatura con diferentes especialistas para claves de la educación en línea, diferentes especialistas sobre cuestiones claves de la educación en línea, claves de la edu.</p>
-                        <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />                    
-                    </a>
-                </SwiperSlide>    
-                <SwiperSlide>
-                    <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank" className={styles.card}>                        
-                        <h5>Desarrollamos el portal utopía para Fundación Bunge y Born</h5>
-                        <p>Conversamos con diferentes especialistas sobre cuestiones claves de la educación en línea, diferentes especialistas sobre cuestiones claves de la educación en línea,claves de la edu.</p>
-                        <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />                    
-                    </a>
-                </SwiperSlide>               
+            >
+
+                {data.map((d, key)=>(
+                    <SwiperSlide key={key}>
+                        <Card {...d} />
+                    </SwiperSlide> 
+                ))}  
+
             </Swiper>
         </div>
 
@@ -76,3 +57,14 @@ export default function Home(){
     </>
     );
 }
+
+export async function getServerSideProps() {
+    // Fetch data from external API
+    const res = await fetch(`https://flacso.pent.org.ar/api/home.json`)
+    const data = await res.json()
+
+    // Pass data to the page via props
+    return { props:  {...data}   }
+  }
+
+  export default Home;

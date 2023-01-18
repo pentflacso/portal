@@ -8,13 +8,32 @@ import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns'
 import styles from "./producciones.module.scss";
 
 function Producciones(d){  
-    const data = Object.values(d);
+    let data = Object.values(d);
 
     const exploringBtnsData = [
         {title: 'Propuestas de formación', path: 'formacion'},
         {title: 'Asesorías y soluciones a medida ', path: 'asesorias'},
         {title: 'Investigación y divulgación', path: 'investigacion'}        
     ]
+
+    //Incorporar Subtitulo
+    // data = data.map((d, key)=>{
+    //     const author = d.authors.map((a, key, array) => {    
+    //         if(key > 0) {  
+    //             if(key !== array.length -1) { 
+    //                 return ", " + a 
+    //             }else{ 
+    //                 return " y " + a
+    //             }
+    //         }else{
+    //             return a
+    //         };
+    //     })
+        
+    //     const subtitle = "Por - " + author.join("")
+
+    //     return { ...d, subtitle: subtitle}
+    // })
 
     //Traemos lo que necesitamos de AppContext
 

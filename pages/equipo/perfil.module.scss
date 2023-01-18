@@ -7,3 +7,7 @@
     color: $deep-blue;
     @include font-level-4;
 }
+
+.container{
+    @include container-width-1;
+}

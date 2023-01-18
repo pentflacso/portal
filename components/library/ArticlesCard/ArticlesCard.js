@@ -4,8 +4,8 @@ export default function ArticlesCard({section, category, title, authors, descrip
   if(section === "producciones"){
     return( 
     <div className={styles.wrapper}>
-        <span className={styles.category}>{category}</span>                        
-        <h4>{title} <span className={styles.authors}>Por - { authors } </span></h4>
+        <span className={styles.category}>{category}</span>            
+        <h4>{title} <span className={styles.authors}>Por - { authors } </span></h4> 
 
         <p>{ description }</p>
 

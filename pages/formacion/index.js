@@ -4,67 +4,61 @@ import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import Quotes from '../../components/library/Quotes/Quotes';
 import styles from "./formacion.module.scss";
+import Card from '../../components/library/Card/Card';
 
-export default function Formacion(){
+export default function Formacion(data){
+    console.log(data)
     return(
     <>
-        <PageHeading title="<h1>Ofrecemos <span>propuestas de formación</span><br /> para innovar en educación y tecnologías<h1>" margin_bottom_type={0} />
+        <PageHeading title={data.PageHeading} margin_bottom_type={0} />
 
         <div className={styles.marquee_1}>
-            <TextMarquee data="POSGRADOS&nbsp;—&nbsp;CURSOS&nbsp;—&nbsp;" />
+            <TextMarquee data={data.marquee1} />
         </div>
 
-        <div className={`${styles.carrousel_formacion} swiper-cards`}>
-            <Swiper
-                modules={[Navigation, FreeMode]}
-                spaceBetween={0}
-                slidesPerView={"auto"}
-                navigation   
-                freeMode={true}   
-                grabCursor={true} 
-            >     
-                <SwiperSlide>
-                    <article className={styles.card}>
-                        <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />
-                        <h5>Posgrado en educación y nuevas tecnologías</h5>
-                        <p>Lanzamos la diplomatura con diferentes especialistas para claves de la educación en línea, diferentes especialistas sobre cuestiones claves de la educación en línea, claves de la edu.</p>
-                        <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank">Más información</a>
-                    </article>
-                </SwiperSlide>    
-                <SwiperSlide>
-                    <article className={styles.card}>
-                        <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />
-                        <h5>Posgrado en educación y nuevas tecnologías</h5>
-                        <p>Lanzamos la diplomatura con diferentes especialistas para claves de la educación en línea, diferentes especialistas sobre cuestiones claves de la educación en línea, claves de la edu.</p>
-                        <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank">Más información</a>
-                    </article>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <article className={styles.card}>
-                        <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />
-                        <h5>Posgrado en educación y nuevas tecnologías</h5>
-                        <p>Lanzamos la diplomatura con diferentes especialistas para claves de la educación en línea, diferentes especialistas sobre cuestiones claves de la educación en línea, claves de la edu.</p>
-                        <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank">Más información</a>
-                    </article>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <article className={styles.card}>
-                        <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />
-                        <h5>Posgrado en educación y nuevas tecnologías</h5>
-                        <p>Lanzamos la diplomatura con diferentes especialistas para claves de la educación en línea, diferentes especialistas sobre cuestiones claves de la educación en línea, claves de la edu.</p>
-                        <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank">Más información</a>
-                    </article>
-                </SwiperSlide>              
-            </Swiper> 
-        </div>
+        <Swiper
+            modules={[Navigation, FreeMode]}
+            spaceBetween={0}
+            slidesPerView={2.5}
+            navigation={{
+                nextEl: ".nextTest",
+                prevEl: ".prevTest"
+              }}   
+            freeMode={true}   
+            grabCursor={true} 
+            
+        >   
+        {
+        data.courses.map((item, key) => (
+          <SwiperSlide key={key}><Card { ...item}  /></SwiperSlide>
+          ))
+        }
+          <div>
+          <div className={styles.prevTest}></div>  
+          <div className={styles.nextTest}></div>
+          </div>               
+        </Swiper>
 
         <div className={styles.marquee_1}>
-            <TextMarquee data="+6000 ESTUDIANTES&nbsp;&nbsp;" />
+            <TextMarquee data={data.marquee2} />
         </div>
 
         <div className={styles.quotes_container}>
-            <Quotes />
+        
+        
+          <Quotes items={data.quotes}/>
+          
+        
         </div>    
     </>
     )
 }
+
+export async function getServerSideProps() {
+    // Fetch data from external API
+    const res = await fetch(`https://flacso.pent.org.ar/api/formacion.php`)
+    const data = await res.json()
+  
+    // Pass data to the page via props
+    return { props: data.data  }
+  }

@@ -19,7 +19,7 @@ export default function AppProvider({ children }) {
   //Guarda lo que el usuario escribe en la barra de búsqueda
   const [queryArticles, setQueryArticles] = useState('');
   
-  const queryArticlesKeys = ["category", "title", "description"]
+  const queryArticlesKeys = ["lead", "title", "description"]
 
 
   //Filtra dataArticles, a partir de lo que el usuario escribe en el input que se encuentra en ProductionsAdvancedFilters
