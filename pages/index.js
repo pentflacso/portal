@@ -38,7 +38,7 @@ function Home(d){
             <Swiper
                 modules={[Navigation, FreeMode]}
                 spaceBetween={0}
-                slidesPerView={"auto"}
+                slidesPerView={2.5}
                 navigation   
                 freeMode={true}   
                 grabCursor={true} 

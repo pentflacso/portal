@@ -104,7 +104,7 @@ $line-1: calc(1.5px + (3 - 1.5) * ((100vw - 1200px) / (3840 - 1200)));
     display: flex;
     flex-wrap: wrap;
     background-color: $gray-6;
-    width: calc(450px + (1150 - 450) * ((100vw - 1200px) / (3840 - 1200)));
+    //width: calc(450px + (1150 - 450) * ((100vw - 1200px) / (3840 - 1200)));
     padding: calc(15px + (60 - 15) * ((100vw - 1200px) / (3840 - 1200)));
     margin-left: calc(32px + (82 - 32) * ((100vw - 1200px) / (3840 - 1200)));
     color: $deep-blue;  
