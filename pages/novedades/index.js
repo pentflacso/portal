@@ -43,9 +43,11 @@ function Novedades(d){
                 </Swiper>
                 </div>
             </div>
-        <ArticlesList data={data} section="novedades" />
+        <ArticlesList data={data} />
 
-        <TextMarquee />
+        <div className={styles.marquee}>
+            <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+        </div>
         <ExploringBtns data={exploringBtnsData} />
     </>
     )

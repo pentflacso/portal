@@ -1,5 +1,4 @@
 import { useEffect, useState, Fragment  } from 'react';
-//import ArticlesCard from '../ArticlesCard/ArticlesCard';
 import Card from '../Card/Card';
 import styles from "./ArticlesList.module.scss";
 

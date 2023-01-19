@@ -30,7 +30,7 @@ export default function Card({category, lead , title, subtitle , description, ha
         {category ?
           <p className={styles.info}>
             <span className={styles.category}>{category} {date ? "- ": ""}</span> 
-            {date ? <span className={styles.date}>{date}</span>: ""}
+            {date ? <span className={styles.date}> {date}</span>: ""}
           </p> : ""
         }
         
