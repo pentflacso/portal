@@ -20,10 +20,7 @@ export default function Formacion(data){
             modules={[Navigation, FreeMode]}
             spaceBetween={0}
             slidesPerView={2.5}
-            navigation={{
-                nextEl: ".nextTest",
-                prevEl: ".prevTest"
-              }}   
+            navigation   
             freeMode={true}   
             grabCursor={true} 
             
@@ -33,10 +30,7 @@ export default function Formacion(data){
           <SwiperSlide key={key}><Card { ...item}  /></SwiperSlide>
           ))
         }
-          <div>
-          <div className={styles.prevTest}></div>  
-          <div className={styles.nextTest}></div>
-          </div>               
+                         
         </Swiper>
 
         <div className={styles.marquee_1}>
