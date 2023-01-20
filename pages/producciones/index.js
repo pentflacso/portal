@@ -69,7 +69,7 @@ function Producciones(d){
 
         <ProductionsNav />     
         
-        {dataArticles !== undefined && <ArticlesList data={searchInArticles(dataArticles)} section="producciones" />}        
+        {dataArticles !== undefined && <ArticlesList data={searchInArticles(dataArticles)} />}        
 
         <div className={styles.marquee}>
             <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />

@@ -3,3 +3,82 @@
 .marquee{
     margin-bottom: calc(42px + (145 - 42) * ((100vw - 1200px) / (3840 - 1200)));
 }
+
+
+.twoColumns {
+    @include container-width-1;
+    display: grid;
+    grid-template-columns: 46% 46%;
+    grid-gap: 8%;
+    color: $deep-blue;
+    @include font-level-4;
+
+    h1{
+        font-weight: 400;
+        margin-bottom: 8%;
+    }
+
+    h3, h4{
+        margin-bottom: 8%;
+
+
+    }
+
+    a{
+        color: $deep-blue;
+    }
+
+    p{
+        margin-bottom: 8%;
+    }
+
+    .arrowBack{
+        margin-bottom: 8%;
+        a{
+            border-bottom: 3px solid $yellow-1;
+            text-decoration: none;
+            @include font-level-4;
+        }
+    }
+
+
+    .col_left{
+        .btn{
+            @include btn-ver-mas;
+            border-color: $deep-blue;
+            margin: 6px 6px 6px 0;
+            @media screen and (min-width: 1024px){
+                &:hover{
+                    background-color: $gray-6;
+                    border-color: $gray-2;
+                    color: $deep-blue;
+                }
+            }            
+        }
+
+        .hashtags{
+            padding: 0 0 8%;
+
+            ul{
+                padding: 0;
+                list-style: none;
+    
+                li{
+                    display: inline-block;
+                    margin-right: 5%;
+                    color: $green-1;
+                }
+    
+            }
+        }
+    }
+
+    .col_right{ 
+        .card{
+            @include basic-card-1;
+            margin-left: 0;
+        }
+        
+    }
+
+}

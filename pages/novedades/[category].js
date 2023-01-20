@@ -8,8 +8,7 @@ import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./novedades.module.scss";
 
-
- function Index(d){
+function Index(d){
     const data = Object.values(d);
 
     //Router
@@ -45,14 +44,15 @@ import styles from "./novedades.module.scss";
                                     </SwiperSlide>
                                 );
                             })}
-                 
-                </Swiper>
+                    </Swiper>
                 </div>
             </div>
 
-        <ArticlesList data={data} section="novedades" />
+        <ArticlesList data={data} />
 
-        <TextMarquee />
+        <div className={styles.marquee}>
+            <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+        </div>
         <ExploringBtns data={exploringBtnsData} />
     </>
     )
