@@ -14,8 +14,10 @@ function Index(data){
     <>
         <div className={styles.twoColumns}>  
             <div className={styles.col_left}>
-                <Link href="/producciones">Ver producciones</Link>
-                <h2>{data.title}</h2>
+                <div className={styles.arrowBack}>
+                    <Link href="/producciones">Ver producciones</Link>
+                </div>
+                <h1>{data.title}</h1>
 
                 <p dangerouslySetInnerHTML={{__html: data.subtitle}} />
 
@@ -36,6 +38,10 @@ function Index(data){
 
             </div>
             <div className={styles.col_right}>
+            { data.img ? <img src={ data.img } alt={ data.title } className={styles.imgTop} /> : ""}
+
+
+
                 { data.description ?           
                 <div dangerouslySetInnerHTML={{__html: data.description }} /> :
                 ""}

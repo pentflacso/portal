@@ -8,6 +8,32 @@
     color: $deep-blue;
     @include font-level-4;
 
+    h1{
+        font-weight: 400;
+        margin-bottom: 8%;
+    }
+
+    h3, h4{
+        margin-bottom: 8%;
+    }
+
+    a{
+        color: $deep-blue;
+    }
+
+    p{
+        margin-bottom: 8%;
+    }
+
+    .arrowBack{
+        margin-bottom: 8%;
+        a{
+            border-bottom: 3px solid $yellow-1;
+            text-decoration: none;
+            @include font-level-4;
+        }
+    }
+
 
     .col_left{
         .info{
@@ -46,7 +72,7 @@
 .btn_share{
     @include btn-ver-mas;
     border-color: $deep-blue;
-    margin: 6px 0;
+    margin-bottom: 8%;
     @media screen and (min-width: 1024px){
         &:hover{
             background-color: $gray-6;

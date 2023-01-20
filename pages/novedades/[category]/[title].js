@@ -19,8 +19,10 @@ function Index(data){
         <>  
         <div className={styles.twoColumns}>  
             <div className={styles.col_left}>
-                <Link href="/novedades">Ver novedades</Link>
-                <h2>{data.title}</h2>
+                <div className={styles.arrowBack}>
+                    <Link href="/novedades">Ver novedades</Link>
+                </div>
+                <h1>{data.title}</h1>
                 
                 <p className={styles.info}>
                     <span className={styles.category}>{data.category} {data.date ? "- ": ""}</span> 
