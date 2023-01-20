@@ -20,7 +20,7 @@ export default function Formacion(data){
             modules={[Navigation, FreeMode]}
             spaceBetween={0}
             slidesPerView={2.5}
-            navigation   
+            navigation={false}
             freeMode={true}   
             grabCursor={true} 
             
