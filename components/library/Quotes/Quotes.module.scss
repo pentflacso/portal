@@ -1,9 +1,12 @@
 @import "../../../styles/themeStyles.module.scss";
 
+
+
 .data_wrapper{
     display: grid;
     grid-template-areas: 'img text';
     grid-template-columns: 25% 75%;  
+    padding-bottom: 75px;
 
     .img_cont{
         grid-area: img;    

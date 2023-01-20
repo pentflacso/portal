@@ -1,17 +1,18 @@
 import { data } from "jquery";
 import styles from "./Quotes.module.scss";
-import { Navigation, FreeMode } from 'swiper';
+import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
+import {SwiperNavigator, SwiperNavigatorClasses} from '../SwiperNavigator/SwiperNavigator';
 
 export default function Quotes({items}){
     return(
     <>
         <Swiper
-            modules={[Navigation, FreeMode]}
+            modules={[Navigation]}
             spaceBetween={50}
             slidesPerView={1}
-            navigation   
-            freeMode={true}   
+            navigation={SwiperNavigatorClasses}   
+               
             grabCursor={true} 
         > 
         {
@@ -31,6 +32,9 @@ export default function Quotes({items}){
       </div></SwiperSlide>
           ))
         }
+        
+        <SwiperNavigator/>
+         
         </Swiper>
         
     </>

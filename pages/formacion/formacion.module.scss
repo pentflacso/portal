@@ -4,24 +4,6 @@
     margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
 }
 
-.nextTest
-{position: absolute;
-top: 0;
-right: 0;
-width: 50px;
-height: 50px;
-z-index: 4000;
-background-color: red;}
-
-.prevTest
-{position: absolute;
-top: 0;
-left: 0;
-width: 50px;
-height: 50px;
-z-index: 4000;
-background-color: red;}
-
 .quotes_container{
     @include container-width-1;
     margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
