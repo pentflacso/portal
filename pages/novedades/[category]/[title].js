@@ -19,6 +19,7 @@ function Index(data){
         <>  
         <div className={styles.twoColumns}>  
             <div className={styles.col_left}>
+                <Link href="/novedades">Ver novedades</Link>
                 <h2>{data.title}</h2>
                 
                 <p className={styles.info}>
