@@ -1,0 +1,21 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.wrapper{
+    @include container-width-1;
+    margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+
+    .containerList{
+        display: flex;
+        justify-content: space-between;
+
+        .col_left, .col_right{
+            width: 48%
+        }  
+    }
+
+    .show_more{
+        @include btn-ver-mas;    
+        display: block;
+        margin: 0 auto 15vh auto;
+    }
+}
