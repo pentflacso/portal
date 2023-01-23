@@ -10,7 +10,7 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
+  "license": "ISC, MIT",
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.2.0",
     "@fortawesome/free-solid-svg-icons": "^6.2.0",
@@ -24,5 +24,12 @@
     "sass": "^1.55.0",
     "smooth-scrollbar": "^8.8.1",
     "swiper": "^8.4.4"
+  },
+  "devDependencies": {
+    "vite": "^2.7.0"
   }
+  
+  
 }
+
+

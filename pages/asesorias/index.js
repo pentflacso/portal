@@ -9,9 +9,13 @@ import BrandsMarquee from '../../components/asesorias/BrandsMarquee/BrandsMarque
 import Quotes from '../../components/library/Quotes/Quotes';
 import ParagraphAndButton from '../../components/asesorias/ParagraphAndButton/ParagraphAndButton';
 import styles from "./asesorias.module.scss";
+import Card from '../../components/library/Card/Card';
+import React, { useRef, useState } from "react";
+import { EffectCards } from "swiper";
+import CarrouselCards from '../../components/asesorias/CarrouselCards/CarrouselCards';
 
-export default function Asesorias(){
-
+export default function Asesorias(data){
+console.log(data)
     const keyFeatures = [
         {img: '/assets/images/icon_asesorias_proceso_1.svg', description: 'Definimos la estrategia pedagógica según las necesidades.'},
         {img: '/assets/images/icon_asesorias_proceso_2.svg', description: 'Creamos contenidos, recursos educativos y materiales didácticos.'}, {img: '/assets/images/icon_asesorias_proceso_3.svg', description: 'Diseñamos y construimos entornos virtuales, sitios y plataformas, LMS y CMS.'},
@@ -20,28 +24,31 @@ export default function Asesorias(){
 
     return(
     <>
-        <PageHeading title="<h1>Creamos <span>experiencias de formación</span> únicas, a la medida de cada organización</h1>" margin_bottom_type={0} />
+        <PageHeading title={data.PageHeading} margin_bottom_type={0} />
+        
+        <CarrouselCards items={data.courses} margin_bottom_type={0} />
 
-        <LeafsItem />
+        {/* <LeafsItem /> */}
 
         <div className={styles.marquee_1}>
-            <TextMarquee data="SABEMOS HACER&nbsp;—&nbsp;" />
+            <TextMarquee data={data.marquee1} />
         </div>
 
+
         <div className={styles.highlight_paragraph}>
-            <HighlightParagraph title="Nuestro <span>equipo multidisciplinario</span> trabaja con un enfoque tecnopedagógico desde la definición de los objetivos hasta el último pixel, en conjunto con cada institución." />
+            <HighlightParagraph title={data.paragraph1} />
         </div>
 
         <KeysBox data={keyFeatures} />
 
         <div className={styles.marquee_1}>
-            <TextMarquee data="PROYECTOS&nbsp;—&nbsp;" />
+            <TextMarquee data={data.marquee2} />
         </div>
 
         <div className={`${styles.carrousel_proyects} swiper-cards`}>
             <Swiper
                 modules={[Navigation, FreeMode]}
-                spaceBetween={0}
+                spaceBetween={150}
                 slidesPerView={"auto"}
                 navigation   
                 freeMode={true}   
@@ -76,30 +83,39 @@ export default function Asesorias(){
         </div>
 
         <div className={styles.marquee_1}>
-            <TextMarquee data="CLIENTES&nbsp;—&nbsp;ALIANZAS&nbsp;—&nbsp;" />
+            <TextMarquee data={data.marquee3} />
         </div>
 
         <div className={styles.highlight_paragraph}>
-            <HighlightParagraph title="Hemos trabajado con <span>más de 50</span> instituciones, empresas, organismos y organizaciones en toda Latinoamérica." />
+            <HighlightParagraph title={data.paragraph2} />
         </div>
 
         <div className={styles.brands_marquee}>
-            <BrandsMarquee />
+            <BrandsMarquee partners={data.partners}/>
         </div>
 
         <div className={styles.quotes_container}>
-            <Quotes />
+          <Quotes items={data.quotes}/>
         </div>
 
         <div className={styles.marquee_1}>
-            <TextMarquee data="TRABAJEMOS JUNTOS&nbsp;—&nbsp;" />
+            <TextMarquee data={data.marquee4} />
         </div>
 
         <ParagraphAndButton 
-            paragraph='<p>Si estás pensando en llevar a cabo propuestas educativas con tecnología en tu organización, escribinos a <a href="https://www.google.com/" target="_blank">asesorias@pent.org.ar</a>.</p>' 
+            paragraph={data.paragraph3}
             iconBtn='/assets/images/mail_icon.svg'
             urlBtn='https://www.google.com/'
         />
     </>
     )
 }
+
+export async function getServerSideProps() {
+    // Fetch data from external API
+    const res = await fetch(`https://flacso.pent.org.ar/api/asesorias.php`)
+    const data = await res.json()
+  
+    // Pass data to the page via props
+    return { props: data.data  }
+  }
