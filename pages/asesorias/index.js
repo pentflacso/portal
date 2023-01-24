@@ -15,7 +15,7 @@ import { EffectCards } from "swiper";
 import CarrouselCards from '../../components/asesorias/CarrouselCards/CarrouselCards';
 
 export default function Asesorias(data){
-console.log(data)
+
     const keyFeatures = [
         {img: '/assets/images/icon_asesorias_proceso_1.svg', description: 'Definimos la estrategia pedagógica según las necesidades.'},
         {img: '/assets/images/icon_asesorias_proceso_2.svg', description: 'Creamos contenidos, recursos educativos y materiales didácticos.'}, {img: '/assets/images/icon_asesorias_proceso_3.svg', description: 'Diseñamos y construimos entornos virtuales, sitios y plataformas, LMS y CMS.'},
