@@ -3,13 +3,12 @@ import Card from '../Card/Card';
 import styles from "./ArticlesNov.module.scss";
 
 
-export default function ArticlesNov({ data, section }){
- 
+export default function ArticlesNov({ data, category , section }){
 	//Cantidad de notas a pedir
 	const NOTES_TO_FETCH = 12;
 	//cantidad de notas a mostrar
 	const NOTES_TO_SHOW = NOTES_TO_FETCH / 2;
-	
+
 	//Notas que se muestran - desde 0 hasta el indicado
 	const [notesToShow, setNotesToShow] = useState(
 		data.slice(0, NOTES_TO_SHOW)
@@ -25,7 +24,14 @@ export default function ArticlesNov({ data, section }){
 
 	//Estado del boton para mostrar notas
 	const [showLoadMore, setShowLoadMore] = useState(true);
-
+	
+    //Si se cambia la categoria reseteo informacion
+    useEffect(() =>{
+        setNotesToShow(data.slice(0, NOTES_TO_SHOW));        
+        setNotesOffset(NOTES_TO_FETCH);
+        setCachedNotes(data.slice(NOTES_TO_SHOW));
+        setShowLoadMore(true);
+    }, [category])
 
     const handleChangePagination = async (e) => {
 		e.preventDefault();
@@ -40,9 +46,10 @@ export default function ArticlesNov({ data, section }){
 
             }else{
                 try{
-                    console.log(`https://flacso.pent.org.ar/api/novedades-${NOTES_TO_FETCH + notesOffset}-${notesOffset}.json`);
+                    //console.log(`/dataNovedades/${category ? category + "/": ""}novedades-${NOTES_TO_FETCH + notesOffset}-${notesOffset}.json`);
 
-                    const res = await fetch(`/dataNovedades/novedades-${NOTES_TO_FETCH + notesOffset}-${notesOffset}.json`);
+                    const res = await fetch(`/dataNovedades/${category ? category + "/": ""}novedades-${NOTES_TO_FETCH + notesOffset}-${notesOffset}.json`);
+                    //const res = await fetch(`/dataNovedades/novedades-${NOTES_TO_FETCH + notesOffset}-${notesOffset}.json`);
 
                     const newNotes = await res.json();
 
@@ -65,7 +72,6 @@ export default function ArticlesNov({ data, section }){
 				notesToShow.concat(cachedNotes.slice(0, NOTES_TO_SHOW))
 			);
 			setCachedNotes(cachedNotes.slice(NOTES_TO_SHOW));
-            console.log("Else cache Note: ", cachedNotes.length, " NOTES_TO_SHOW: ", NOTES_TO_SHOW)
 		}     
 	};
 
