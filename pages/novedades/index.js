@@ -57,8 +57,8 @@ function Novedades(d){
 
 export async function getServerSideProps() {
     // Fetch data from external API
-    const res = await fetch(`https://flacso.pent.org.ar/api/novedades.json`)
-    const data = await res.json()
+    const res = await fetch(`https://flacso.pent.org.ar/api/novedades-12-0.json`)   
+   const data = await res.json()
 
     // Pass data to the page via props
     return { props:  {...data }   }
