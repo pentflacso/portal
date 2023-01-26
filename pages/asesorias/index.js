@@ -16,11 +16,6 @@ import CarrouselCards from '../../components/asesorias/CarrouselCards/CarrouselC
 
 export default function Asesorias(data){
 
-    const keyFeatures = [
-        {img: '/assets/images/icon_asesorias_proceso_1.svg', description: 'Definimos la estrategia pedagógica según las necesidades.'},
-        {img: '/assets/images/icon_asesorias_proceso_2.svg', description: 'Creamos contenidos, recursos educativos y materiales didácticos.'}, {img: '/assets/images/icon_asesorias_proceso_3.svg', description: 'Diseñamos y construimos entornos virtuales, sitios y plataformas, LMS y CMS.'},
-        {img: '/assets/images/icon_asesorias_proceso_4.svg', description: 'Brindamos soporte técnico, capacitamos y acompañamos.'}
-    ]
 
     return(
     <>
@@ -39,7 +34,7 @@ export default function Asesorias(data){
             <HighlightParagraph title={data.paragraph1} />
         </div>
 
-        <KeysBox data={keyFeatures} />
+        <KeysBox data={data.keyFeatures} />
 
         <div className={styles.marquee_1}>
             <TextMarquee data={data.marquee2} />
@@ -48,36 +43,22 @@ export default function Asesorias(data){
         <div className={`${styles.carrousel_proyects} swiper-cards`}>
             <Swiper
                 modules={[Navigation, FreeMode]}
-                spaceBetween={150}
+                spaceBetween={25}
                 slidesPerView={"auto"}
                 navigation   
                 freeMode={true}   
                 grabCursor={true} 
-            >     
-                <SwiperSlide>
+            >   
+            {
+        data.articles.map((item, key) => (
+            <SwiperSlide >
                     <article className={styles.card}>
-                        <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />
-                        <h5>Galeno Aprender +</h5>                    
+                        <img src={item.img} />
+                        <h5>{item.description}</h5>                    
                     </article>  
-                </SwiperSlide> 
-                <SwiperSlide>
-                    <article className={styles.card}>
-                        <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />
-                        <h5>utopía FBB</h5>                    
-                    </article>  
-                </SwiperSlide> 
-                <SwiperSlide>
-                    <article className={styles.card}>
-                        <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />
-                        <h5>Galeno Aprender +</h5>                    
-                    </article>         
-                </SwiperSlide>   
-                <SwiperSlide>
-                    <article className={styles.card}>
-                        <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />
-                        <h5>Galeno Aprender +</h5>                    
-                    </article>         
-                </SwiperSlide> 
+                </SwiperSlide>
+          ))
+        } 
                 
             </Swiper>
         </div>
