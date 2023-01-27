@@ -1,26 +1,28 @@
 import Marquee from "react-fast-marquee";
 import styles from "./BrandsMarquee.module.scss";
 
-export default function BrandsMarquee(){
+
+
+export default function BrandsMarquee({ partners }){
+
+const middleIndex = Math.floor(partners.length / 2);
+const leftArray = partners.slice(0, middleIndex);
+const rightArray = partners.slice(middleIndex);
+    
     return(
+    
     <>
-        <Marquee speed="100" gradientWidth="0" direction="right">
-            <img src="/assets/images/brand_demo_1.svg" alt="Nombre empresa" className={styles.brand} />
-            <img src="/assets/images/brand_demo_2.svg" alt="Nombre empresa" className={styles.brand} />
-            <img src="/assets/images/brand_demo_3.svg" alt="Nombre empresa" className={styles.brand} />
-            <img src="/assets/images/brand_demo_4.svg" alt="Nombre empresa" className={styles.brand} />
-            <img src="/assets/images/brand_demo_1.svg" alt="Nombre empresa" className={styles.brand} />
-            <img src="/assets/images/brand_demo_3.svg" alt="Nombre empresa" className={styles.brand} />
-            <img src="/assets/images/brand_demo_4.svg" alt="Nombre empresa" className={styles.brand} />
-        </Marquee>
-        <Marquee speed="100" gradientWidth="0" direction="left">
-            <img src="/assets/images/brand_demo_6.svg" alt="Nombre empresa" className={styles.brand} />
-            <img src="/assets/images/brand_demo_7.svg" alt="Nombre empresa" className={styles.brand} />
-            <img src="/assets/images/brand_demo_8.svg" alt="Nombre empresa" className={styles.brand} />
-            <img src="/assets/images/brand_demo_6.svg" alt="Nombre empresa" className={styles.brand} />
-            <img src="/assets/images/brand_demo_7.svg" alt="Nombre empresa" className={styles.brand} />
-            <img src="/assets/images/brand_demo_8.svg" alt="Nombre empresa" className={styles.brand} />
-        </Marquee> 
+      <Marquee speed="100" gradientWidth="0" direction="right">
+        {leftArray.map((item, index) => (
+          <img key={index} src={item.img}/>
+        ))}
+      </Marquee>
+      <Marquee speed="100" gradientWidth="0" direction="left">
+        {rightArray.map((item, index) => (
+            <img key={index} src={item.img}/>
+        ))}
+      </Marquee>
     </>
+        
     );
 }

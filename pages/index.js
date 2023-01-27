@@ -11,27 +11,20 @@ import styles from "./index.module.scss";
 function Home(d){
     const data = Object.values(d);
 
-    const NewsData = [
-        {title: 'Un sincrónico para pensar lo sincrónico', description: 'Many desktop publishing packages and web', path_id: 'formacion'},
-        {title: 'Una travesía con senderos, fronteras y horizontes para capacitarse', description: 'Many desktop publishing packages and web', path_id: 'formacion'},
-        {title: 'Aprendizaje por indagación para potenciar un rol activo', description: 'Many desktop publishing packages and web', path_id: 'formacion'},
-        {title: 'Enseñar, aprender y trabajar en línea', description: 'Many desktop publishing packages and web', path_id: 'formacion'}
-    ]
-
     return(
     <>
-        <HomeHeading title="Somos un espacio de <span>capacitación</span><br /> en educación y tecnologías digitales" />
+        <HomeHeading title={d.PageHeading} />
 
         <CoverVideo />
 
         <div className={styles.marquee_1}>
-            <TextMarquee data="EXPLORAR&nbsp;-&nbsp;INVESTIGAR&nbsp;-&nbsp;APRENDER&nbsp;-&nbsp;DESCUBRIR&nbsp;-&nbsp;"/>
+            <TextMarquee data={d.marquee1}/>
         </div>
 
-        <SectionSelector />
+        <SectionSelector data={d.MemberData} />
 
         <div className={styles.marquee_1}>
-            <TextMarquee data="NOVEDADES&nbsp;-&nbsp;NOVEDADES&nbsp;-&nbsp;"/>
+            <TextMarquee data={d.marquee2} />
         </div>
 
         <div className={`${styles.carrousel_novedades} swiper-cards`}>
@@ -44,7 +37,7 @@ function Home(d){
                 grabCursor={true} 
             >
 
-                {data.map((d, key)=>(
+                {d.courses.map((d, key)=>(
                     <SwiperSlide key={key}>
                         <Card {...d} />
                     </SwiperSlide> 
@@ -53,7 +46,7 @@ function Home(d){
             </Swiper>
         </div>
 
-        <NewsSelector data={NewsData} />
+        <NewsSelector data={d.NewsData} />
     </>
     );
 }

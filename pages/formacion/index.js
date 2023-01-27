@@ -18,7 +18,7 @@ export default function Formacion(data){
 
         <Swiper
             modules={[Navigation, FreeMode]}
-            spaceBetween={0}
+            spaceBetween={50}
             slidesPerView={2.5}
             navigation={false}
             freeMode={true}   
@@ -27,7 +27,7 @@ export default function Formacion(data){
         >   
         {
         data.courses.map((item, key) => (
-          <SwiperSlide key={key}><Card { ...item}  /></SwiperSlide>
+          <SwiperSlide key={key}><Card { ...item} /></SwiperSlide>
           ))
         }
                          

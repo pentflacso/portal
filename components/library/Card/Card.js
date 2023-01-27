@@ -1,21 +1,25 @@
 import styles from "./Card.module.scss";
 import Link from "next/link";
+import React, { useRef, useState } from "react";
 
 export default function Card({category, lead , title, subtitle , description, hashtags, date, cta, height, layout, img, url}){
 
+  const ComponentContainer= cta ? React.Fragment : Link
+
     return( 
-    <Link 
-      className={ 
+    
+    <ComponentContainer 
+      
+      href={url}
+      rel="noopener noreferrer" 
+      target={layout ? "_blank" : ""}
+    ><div className={ 
         height ?
           height == "hidden" ? 
             img ? `${styles.card} ${styles.height}` : `${styles.wrapper} ${styles.height}` 
             : img ? styles.card : styles.wrapper 
         : img ? styles.card : styles.wrapper
-      }
-      href={url}
-      rel="noopener noreferrer" 
-      target={layout ? "_blank" : ""}
-    >
+      }>
         {(layout == "imgTop" || !layout) && img ? 
           <img src={ img } alt={ title } className={styles.imgTop} /> :""}
 
@@ -44,9 +48,20 @@ export default function Card({category, lead , title, subtitle , description, ha
 
         {layout == "imgBottom" && img ? <img src={ img } alt={ title } /> :""}
         
-        {cta ? <button>{ cta }</button> : ""}
+        {cta ? <Link 
+      className={ 
+        height ?
+          height == "hidden" ? 
+            img ? `${styles.card} ${styles.height}` : `${styles.wrapper} ${styles.height}` 
+            : img ? styles.card : styles.wrapper 
+        : img ? styles.card : styles.wrapper
+      }
+      href={url}
+      rel="noopener noreferrer" 
+      target={layout ? "_blank" : ""}
+    >{ cta }</Link> : ""}
 
-    </Link> 
+    </div></ComponentContainer> 
     );
 
 }
