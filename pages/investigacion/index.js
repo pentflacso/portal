@@ -8,6 +8,8 @@ import HighlightParagraph from '../../components/library/HighlightParagraph/High
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
 import styles from "./investigacion.module.scss";
 import Card from '../../components/library/Card/Card';
+import {SwiperNavigator, SwiperNavigatorClasses} from '../../components/library/SwiperNavigator/SwiperNavigator';
+
 
 export default function Investigacion(data){
 
@@ -35,18 +37,19 @@ export default function Investigacion(data){
 
         <div>
             <Swiper
-                modules={[Navigation, FreeMode]}
+                modules={[Navigation]}
                 spaceBetween={20}
                 slidesPerView={2.5}
-                navigation={false}   
-                freeMode={true}   
+                navigation={SwiperNavigatorClasses}   
                 grabCursor={true} 
             >     
                 {
                 data.articles.map((item, key) => (
                 <SwiperSlide key={key}><Card { ...item} /></SwiperSlide>
+                
                 ))
-                }                         
+                }<SwiperNavigator/>
+                                         
             </Swiper> 
         </div>
 

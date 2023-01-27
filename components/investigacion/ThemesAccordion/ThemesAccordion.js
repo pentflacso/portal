@@ -7,6 +7,7 @@ import $ from 'jquery';
 import styles from "./ThemesAccordion.module.scss";
 
 
+
 export default function ThemesAccordion({data}){
 
     

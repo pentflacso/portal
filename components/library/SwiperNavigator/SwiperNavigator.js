@@ -6,9 +6,9 @@ export const SwiperNavigatorClasses={
 export function SwiperNavigator(){
     return(
         <div style={NavigatorSeparator}> 
-<div className="NavigatorPrev" style={NavigatorPrev}></div>  
-<div className="NavigatorNext" style={NavigatorNext}></div>
-</div> 
+        <div className="NavigatorPrev" style={NavigatorPrev}></div>  
+        <div className="NavigatorNext" style={NavigatorNext}></div>
+        </div> 
     );
 }
 
