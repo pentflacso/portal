@@ -9,7 +9,8 @@ function Index(data){
         {title: 'Formación', path: 'formacion'},
         {title: 'Producciones', path: 'producciones'},
         {title: 'Asesorías', path: 'asesorias'}
-    ]    
+    ]
+
     return(
     <>
         <div className={styles.twoColumns}>  
@@ -19,7 +20,16 @@ function Index(data){
                 </div>
                 <h1>{data.title}</h1>
 
-                <p dangerouslySetInnerHTML={{__html: data.subtitle}} />
+                { data.authors ?
+                    <div className={styles.authors}>
+                        {data.authors.map((a, key) => (
+                            <Link key={key} href={a.url} target="_blank">
+                                <span className={styles.img}><img src={a.img} alt={a.name} /></span>
+                                <span className={styles.imgName}>{a.name}</span>
+                            </Link>
+                         ) ) } 
+                    </div> : ""
+                }
 
                 { data.hashtags ?
                     <div className={styles.hashtags}>
@@ -27,14 +37,11 @@ function Index(data){
                     </div> : ""
                 }
 
-                { data.download ?
-                <Link className={`${styles.btn} ${styles.btn_download}`} href={data.download} target="_blank">Descargar</Link> :
-                ""} 
+                <Link className={`${styles.btn} ${styles.btn_file}`} href="#" target="_blank">Descargar</Link>
 
                 { data.share ?
                 <Link className={styles.btn} href={data.share} target="_blank">Compartir</Link> :
                 ""}
-
 
             </div>
             <div className={styles.col_right}>
@@ -46,11 +53,11 @@ function Index(data){
                 <div dangerouslySetInnerHTML={{__html: data.description }} /> :
                 ""}
 
-                { data.cite || data.licence ?
+                { data.quote || data.license ?
                     <div className={styles.card}> 
-                    { data.cite ? <div className={styles.cite} dangerouslySetInnerHTML={{__html: "<h4>Cómo citar</h4>"+ data.cite }}/> : "" } 
+                    { data.quote ? <div className={styles.quote} dangerouslySetInnerHTML={{__html: "<h4>Cómo citar</h4>"+ data.quote }}/> : "" } 
                     
-                    { data.licence ? <div className={styles.licence} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ data.licence }}/> : "" }
+                    { data.license ? <div className={styles.license} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ data.license }}/> : "" }
                     
                     </div>
                 : "" }

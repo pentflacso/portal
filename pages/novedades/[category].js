@@ -3,7 +3,8 @@ import PageHeading from '../../components/library/PageHeading/PageHeading';
 import Link from 'next/link';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
-import ArticlesList from '../../components/library/ArticlesList/ArticlesList';
+//import ArticlesList from '../../components/library/ArticlesList/ArticlesList';
+import ArticlesNov from '../../components/library/ArticlesNov/ArticlesNov';
 import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./novedades.module.scss";
@@ -48,7 +49,7 @@ function Index(d){
                 </div>
             </div>
 
-        <ArticlesList data={data} />
+        <ArticlesNov data={data} category={category} />
 
         <div className={styles.marquee}>
             <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />

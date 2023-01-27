@@ -33,12 +33,11 @@ function Index(data){
                 <div dangerouslySetInnerHTML={{__html: data.description }} /> :
                 ""}
 
-                { data.share ?
-                <Link className={styles.btn_share} href={data.share} target="_blank">Compartir</Link> :
-                ""}
 
-                { data.licence ?
-                    <div className={styles.licence} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ data.licence }}/> : 
+                <Link className={styles.btn_share} href="#" target="_blank">Compartir</Link>
+
+                { data.license ?
+                    <div className={styles.license} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ data.license }}/> : 
                 ""}
 
             </div>

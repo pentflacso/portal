@@ -71,6 +71,33 @@
     
             }
         }
+        .authors{
+                display: grid;
+                grid-template-columns: auto auto;
+                grid-gap: 1vw;
+                margin-bottom: 8%;                    
+            a{
+                display: grid;
+                grid-template-columns: calc(30px + 55 * (100vw - 1200px) / 2640) auto;
+                grid-gap: 1vw 2vw;
+                        
+                .img{
+                    display: inline-block;
+                    width: calc(30px + 55*(100vw - 1200px)/2640);
+                    height: calc(30px + 55*(100vw - 1200px)/2640);
+                    overflow: hidden;
+                    border-radius: 100%;
+
+                    img{
+                        width: 100%;
+                    }
+                }
+
+                .imgName{
+                    line-height: 200%;
+                }
+            }
+        }
     }
 
     .col_right{ 

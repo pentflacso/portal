@@ -15,26 +15,7 @@ function Producciones(d){
         {title: 'Asesorías y soluciones a medida ', path: 'asesorias'},
         {title: 'Investigación y divulgación', path: 'investigacion'}        
     ]
-
-    //Incorporar Subtitulo
-    // data = data.map((d, key)=>{
-    //     const author = d.authors.map((a, key, array) => {    
-    //         if(key > 0) {  
-    //             if(key !== array.length -1) { 
-    //                 return ", " + a 
-    //             }else{ 
-    //                 return " y " + a
-    //             }
-    //         }else{
-    //             return a
-    //         };
-    //     })
-        
-    //     const subtitle = "Por - " + author.join("")
-
-    //     return { ...d, subtitle: subtitle}
-    // })
-
+    
     //Traemos lo que necesitamos de AppContext
 
     const { dataArticles, setDataArticles, currentArticleHashtag, currentArticleAuthor, searchInArticles } = useAppContext();    
