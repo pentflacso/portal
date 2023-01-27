@@ -1,0 +1,22 @@
+[
+    {
+        "category": "Prensa",
+        "title": "Noticia 37",
+        "description": "Compartimos la entrevista realizada a Fabio Tarasow en la Feria del Libro publicada por Infobae.",
+        "date": "2 de Junio de 2022",
+        "url": "/novedades/prensa/la-tecnologia-combustible-de-la-imaginacion-pedagogica"
+    }, {
+        "category": "Empleos",
+        "title": "Noticia 38",
+        "date": "16 de Mayo de 2022",
+        "url": "/novedades/empleo/el-Colegio-la-salle-florida-busca-disenador-a-grafico-a-o-multimedial"	
+        
+    }, {
+        "category": "Evento",
+        "title": "Noticia 39",
+        "description": "Compartimos la entrevista realizada a Fabio Tarasow en la Feria del Libro publicada por Infobae.",
+        "date": "18 de Mayo de 2022",
+        "url": "https://www.google.com/"	
+        
+    }  
+]

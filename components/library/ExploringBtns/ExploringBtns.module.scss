@@ -3,7 +3,7 @@
 .wrapper{   
     margin-bottom: calc(70px + (220 - 70) * ((100vw - 1200px) / (3840 - 1200)));
 
-    .btn{
+    .btn, .btnMedium{
         display: block;
         width: 100%;
         @include font-level-2; 
@@ -25,6 +25,13 @@
 
         &:hover{
             background-color: $yellow-2;
+        }
+    }
+
+    .btnMedium{
+        @include font-level-3;
+        span{
+            display: inline;
         }
     }
 }

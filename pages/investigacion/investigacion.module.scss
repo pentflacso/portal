@@ -9,7 +9,9 @@
     margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
 }
 
-.carrousel_projects{
+
+
+/* .carrousel_projects{
     margin-bottom: calc(85px + (350 - 85) * ((100vw - 1200px) / (3840 - 1200)));
     .card{
         background-color: $gray-6;
@@ -36,4 +38,4 @@
             @include btn-ver-mas;
         }
     }
-}
+} */

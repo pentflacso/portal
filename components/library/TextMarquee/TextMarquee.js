@@ -5,7 +5,7 @@ export default function TextMarquee({ data }){
     return(
         <>
         <Marquee speed="140" gradientWidth="0" direction="left">
-            <h2 dangerouslySetInnerHTML={{__html: data }} className={styles.text_marquee} />
+            <h2 className={styles.text_marquee}>{data}</h2>
         </Marquee> 
         </>
     );

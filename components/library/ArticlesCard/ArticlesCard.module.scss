@@ -23,6 +23,19 @@
         display: inline-block;
     }
 
+    .info{
+        margin-bottom: 8%;   
+
+        .category{
+            border-bottom: none;
+            margin-bottom: 0;
+            color: $green-1;
+        }
+        .date{
+            color: #032E594D;
+        }
+    }
+
     h4{
         @include font-level-1;
         font-weight: 400;

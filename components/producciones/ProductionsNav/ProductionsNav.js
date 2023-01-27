@@ -77,9 +77,9 @@ export default function ProductionsNav(){
         }        
     }, [dataArticles, hashtagsArticlesList, authorsArticlesList]); 
 
-
     return(
         <>
+
             {
                 advancedFilterStatus === true && reactDom.createPortal(<ProductionsAdvancedFilters changeAdvancedFilterStatus={changeAdvancedFilterStatus} stateCurrentHashtag={stateCurrentHashtag} />, document.getElementById("modal-root"))
             }
@@ -115,5 +115,6 @@ export default function ProductionsNav(){
             
             </div>                     
         </>       
+
     );
 }

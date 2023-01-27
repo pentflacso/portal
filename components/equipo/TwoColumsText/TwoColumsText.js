@@ -1,10 +1,9 @@
+import styles from "./TwoColumsText.module.scss";
 
-export default function TwoColumsText(){
+export default function TwoColumsText({texto}){
     return(
-        <div>
-            paragraph
-            <p>cambio Rama</p>
-            <p>cambio Rama2</p>
+        <div className={styles.wrapper}>
+            <p>{texto}</p>
         </div>        
     );
 }

@@ -1,0 +1,36 @@
+@import "../../styles/themeStyles.module.scss";
+
+.marquee{
+    margin-bottom: calc(42px + (145 - 42) * ((100vw - 1200px) / (3840 - 1200)));
+}
+
+
+.wrapper{
+    display: flex;
+    align-items: center;
+    @include container-width-1;
+
+    .menu_btn{
+        @include btn-ver-mas;
+    }
+    .category{
+        width: 85%; 
+        margin: 40px 5% 40px 0;  
+        .btn_filter{
+            @include btn-ver-mas;
+            border-color: $gray-2;
+            margin: 6px 0;
+            @media screen and (min-width: 1024px){
+                &:hover{
+                    background-color: $gray-6;
+                    border-color: $gray-2;
+                    color: $deep-blue;
+                }
+                &.active{
+                    background-color: $green-2;
+                    border-color: $green-2;
+                }
+            }            
+        }
+    }
+}

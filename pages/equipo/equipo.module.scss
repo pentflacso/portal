@@ -2,4 +2,14 @@
 
 .marquee_1{
     margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+    margin-top: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+}
+
+.swiperTeam{
+    margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+    a{text-decoration: none;
+    color: $deep-blue};
+    img{
+        width: calc(285px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+    }
 }

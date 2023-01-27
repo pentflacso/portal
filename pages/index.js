@@ -5,74 +5,59 @@ import SectionSelector from '../components/home/SectionSelector/SectionSelector'
 import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import NewsSelector from '../components/home/NewsSelector/NewsSelector';
+import Card from '../components/library/Card/Card';
 import styles from "./index.module.scss";
 
-export default function Home(){
-
-    const NewsData = [
-        {title: 'Un sincrónico para pensar lo sincrónico', description: 'Many desktop publishing packages and web', path_id: 'formacion'},
-        {title: 'Una travesía con senderos, fronteras y horizontes para capacitarse', description: 'Many desktop publishing packages and web', path_id: 'formacion'},
-        {title: 'Aprendizaje por indagación para potenciar un rol activo', description: 'Many desktop publishing packages and web', path_id: 'formacion'},
-        {title: 'Enseñar, aprender y trabajar en línea', description: 'Many desktop publishing packages and web', path_id: 'formacion'}
-    ]
+function Home(d){
+    const data = Object.values(d);
 
     return(
     <>
-        <HomeHeading title="Somos un espacio de <span>capacitación</span><br /> en educación y tecnologías digitales" />
+        <HomeHeading title={d.PageHeading} />
 
         <CoverVideo />
 
         <div className={styles.marquee_1}>
-            <TextMarquee data="EXPLORAR&nbsp;-&nbsp;INVESTIGAR&nbsp;-&nbsp;APRENDER&nbsp;-&nbsp;DESCUBRIR&nbsp;-&nbsp;"/>
+            <TextMarquee data={d.marquee1}/>
         </div>
 
-        <SectionSelector />
+        <SectionSelector data={d.MemberData} />
 
         <div className={styles.marquee_1}>
-            <TextMarquee data="NOVEDADES&nbsp;-&nbsp;NOVEDADES&nbsp;-&nbsp;"/>
+            <TextMarquee data={d.marquee2} />
         </div>
 
         <div className={`${styles.carrousel_novedades} swiper-cards`}>
             <Swiper
                 modules={[Navigation, FreeMode]}
                 spaceBetween={0}
-                slidesPerView={"auto"}
+                slidesPerView={2.5}
                 navigation   
                 freeMode={true}   
                 grabCursor={true} 
-            >     
-                <SwiperSlide>
-                    <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank" className={styles.card}>                        
-                        <h5>¡Capacitate en e-learning!</h5>
-                        <p>Lanzamos la diplomatura con diferentes especialistas para claves de la educación en línea, diferentes especialistas sobre cuestiones claves de la educación en línea, claves de la edu.</p>
-                        <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />                    
-                    </a>
-                </SwiperSlide>    
-                <SwiperSlide>
-                    <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank" className={styles.card}>                        
-                        <h5>Desarrollamos el portal utopía para Fundación Bunge y Born</h5>
-                        <p>Conversamos con diferentes especialistas sobre cuestiones claves de la educación en línea, diferentes especialistas sobre cuestiones claves de la educación en línea,claves de la edu.</p>  
-                        <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />                  
-                    </a>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank" className={styles.card}>                        
-                        <h5>¡Capacitate en e-learning!</h5>
-                        <p>Lanzamos la diplomatura con diferentes especialistas para claves de la educación en línea, diferentes especialistas sobre cuestiones claves de la educación en línea, claves de la edu.</p>
-                        <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />                    
-                    </a>
-                </SwiperSlide>    
-                <SwiperSlide>
-                    <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank" className={styles.card}>                        
-                        <h5>Desarrollamos el portal utopía para Fundación Bunge y Born</h5>
-                        <p>Conversamos con diferentes especialistas sobre cuestiones claves de la educación en línea, diferentes especialistas sobre cuestiones claves de la educación en línea,claves de la edu.</p>
-                        <img src="/assets/images/img_formacion_demo_1.jpg" alt="foto posgrado" />                    
-                    </a>
-                </SwiperSlide>               
+            >
+
+                {d.courses.map((d, key)=>(
+                    <SwiperSlide key={key}>
+                        <Card {...d} />
+                    </SwiperSlide> 
+                ))}  
+
             </Swiper>
         </div>
 
-        <NewsSelector data={NewsData} />
+        <NewsSelector data={d.NewsData} />
     </>
     );
 }
+
+export async function getServerSideProps() {
+    // Fetch data from external API
+    const res = await fetch(`https://flacso.pent.org.ar/api/home.json`)
+    const data = await res.json()
+
+    // Pass data to the page via props
+    return { props:  {...data}   }
+  }
+
+  export default Home;
