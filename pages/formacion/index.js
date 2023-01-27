@@ -16,6 +16,7 @@ export default function Formacion(data){
             <TextMarquee data={data.marquee1} />
         </div>
 
+
         <Swiper
             modules={[Navigation, FreeMode]}
             spaceBetween={50}
@@ -32,6 +33,7 @@ export default function Formacion(data){
         }
                          
         </Swiper>
+
 
         <div className={styles.marquee_1}>
             <TextMarquee data={data.marquee2} />

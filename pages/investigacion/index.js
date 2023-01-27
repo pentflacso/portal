@@ -35,7 +35,9 @@ export default function Investigacion(data){
             <TextMarquee data={data.marquee2} />
         </div>
 
+
         <div>
+
             <Swiper
                 modules={[Navigation]}
                 spaceBetween={20}
