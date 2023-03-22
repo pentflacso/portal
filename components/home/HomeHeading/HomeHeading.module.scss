@@ -20,6 +20,10 @@
             left: -0.5%;
             right: 0;
             bottom: calc(-2px + (-8 - -2) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1025px){ 
+                height: calc(5px + (15 - 5) * ((100vw - 300px) / (1024 - 300)));  
+                bottom: calc(-2px + (-8 - -2) * ((100vw - 300px) / (1024 - 300)));
+            } 
         }
     }
 }

@@ -6,18 +6,22 @@ import styles from "./TeamData.module.scss";
 const Equipo = ({team}) => {
     
     return (
+
       <div className={styles.wrapper}>
-      <h1>Equipo</h1><br />
+
+      <h2>Equipo</h2>
       
       {
-        team.map(item => (
-          <div>
-          <h4>{item.cargo}</h4>
-          
-          {item.equipo.map(persona => (
-            <Link className={styles.link} href={persona.url ? persona.url : "/" } ><p key={persona.nombre}>{persona.nombre}</p></Link>
-          ))}
-          <br/></div>
+        team.map((item, i)  => (
+          <div key={i} className={styles.team_area}>
+
+            <h5>{item.cargo}</h5>
+            
+            {item.equipo.map((persona, i) => (
+              <Link key={i} className={styles.member} href={persona.url ? persona.url : "/" }>{persona.nombre}</Link>
+            ))}
+
+          </div>
           ))
       }
       

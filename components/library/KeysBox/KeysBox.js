@@ -8,8 +8,8 @@ export default function KeysBox({ data }){
             {data.map((keyFeatures, i) => {   
               return (  
                 <div className={styles.key_features} key={i}>
-                <img src={keyFeatures.img} alt="Icono" />
-                <p>{keyFeatures.description}</p>
+                    <img src={keyFeatures.img} alt="Icono" />
+                    <p>{keyFeatures.description}</p>
                 </div>           
             )})} 
            

@@ -1,7 +1,7 @@
 @import "../../../styles/themeStyles.module.scss";
 
 .wrapper{   
-    margin-bottom: calc(70px + (220 - 70) * ((100vw - 1200px) / (3840 - 1200)));
+    margin-bottom: calc(80px + (250 - 80) * ((100vw - 1200px) / (3840 - 1200)));
 
     .btn, .btnMedium{
         display: block;

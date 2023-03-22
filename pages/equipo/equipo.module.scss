@@ -1,15 +1,43 @@
 @import "../../styles/themeStyles.module.scss";
 
 .marquee_1{
-    margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
-    margin-top: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+    margin-bottom: calc(40px + (200 - 40) * ((100vw - 1200px) / (3840 - 1200)));    
 }
 
-.swiperTeam{
+.carrousel_members{
     margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
-    a{text-decoration: none;
-    color: $deep-blue};
-    img{
-        width: calc(285px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+
+    .member{
+        display: block;
+        width: calc(231px + (710 - 231) * ((100vw - 1200px) / (3840 - 1200)));        
+        margin-left: calc(32px + (82 - 32) * ((100vw - 1200px) / (3840 - 1200)));
+        text-decoration: none;
+
+        .img_container{
+            background-color: $gray-6;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            height: calc(320px + (1000 - 320) * ((100vw - 1200px) / (3840 - 1200)));
+            margin-bottom: calc(8px + (24 - 8) * ((100vw - 1200px) / (3840 - 1200)));            
+            transition: all .3s; 
+            img{
+                width: 100%;
+                height: auto;
+            }
+        }
+
+        h5{
+            @include font-level-3;
+            font-weight: 400;
+            color: $deep-blue;
+        }
+        @media screen and (min-width: 1025px){
+            &:hover{
+                .img_container{
+                    background-color: $green-2;
+                }        
+            }
+        }
     }
 }

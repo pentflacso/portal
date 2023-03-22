@@ -84,34 +84,30 @@ export default function ProductionsNav(){
                 advancedFilterStatus === true && reactDom.createPortal(<ProductionsAdvancedFilters changeAdvancedFilterStatus={changeAdvancedFilterStatus} stateCurrentHashtag={stateCurrentHashtag} />, document.getElementById("modal-root"))
             }
 
-            <div className={styles.wrapper}>
-
-                <div className={`${styles.hashtags} swiper-btns`}>
-
-                    <Swiper
-                    modules={[Navigation, FreeMode]}
-                    spaceBetween={10}
-                    slidesPerView={"auto"}
-                    navigation   
-                    freeMode={true}>
-
-                        <SwiperSlide>  
+            <div className={styles.wrapper}>     
+                <Swiper
+                modules={[Navigation, FreeMode]}
+                spaceBetween={10}
+                slidesPerView={"auto"}
+                navigation   
+                freeMode={true}
+                className={`${styles.hashtags} swiper-btns`}
+                >
+                    <SwiperSlide>  
                         <button onClick={ () => stateCurrentHashtag('all') } className={currentArticleHashtag === 'all'  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>Ver todo</button> 
-                        </SwiperSlide>  
+                    </SwiperSlide>  
 
-                        {hashtagsArticlesList && hashtagsArticlesList.map((hashtag) => {
-                            return (  
+                    {hashtagsArticlesList && hashtagsArticlesList.map((hashtag) => {
+                        return (  
                             <SwiperSlide key={hashtag.name}>
                                 <button onClick={ () => stateCurrentHashtag(hashtag.name) } className={currentArticleHashtag === hashtag.name  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>{hashtag.name}</button>  
                             </SwiperSlide>
-                            );
-                        })}
+                        );
+                    })}
                         
-                    </Swiper>
+                </Swiper>
 
-                </div>
-
-                <button type="button" className={styles.menu_btn} onClick={ () => changeAdvancedFilterStatus(true) }>Filtros</button>
+                <button type="button" className={styles.menu_btn} onClick={ () => changeAdvancedFilterStatus(true) }>Filtros <img src="/assets/icons/filter_icon.svg" alt="icono de filtro" className={styles.filter_icon}/></button>
             
             </div>                     
         </>       

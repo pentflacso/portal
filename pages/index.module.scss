@@ -2,14 +2,32 @@
 
 .marquee_1{
     margin-bottom: calc(45px + (245 - 45) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(40px + (900 - 40) * ((100vw - 300px) / (1024 - 300)));
+    }
 }
 
 .carrousel_novedades{
-    margin-bottom: calc(85px + (350 - 85) * ((100vw - 1200px) / (3840 - 1200)));
-    .card{
-        @include basic-card-1;
-        p{
-            margin-bottom: calc(20px + (40 - 20) * ((100vw - 1200px) / (3840 - 1200)));
-        }
+    margin-bottom: calc(55px + (310 - 55) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(35px + (900 - 35) * ((100vw - 300px) / (1024 - 300)));
+    }
+    .card_new{
+        @include basic-card-1;        
+        .info{
+            height: calc(186px + (526 - 186) * ((100vw - 1200px) / (3840 - 1200)));
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            @media screen and (max-width: 1024px){
+                height: calc(180px + (526 - 180) * ((100vw - 300px) / (1024 - 300)));
+            }
+            h5{
+                margin-bottom: 0;
+            }
+            p{
+                margin-bottom: calc(20px + (40 - 20) * ((100vw - 1200px) / (3840 - 1200)));
+            }
+        }        
     }
 }

@@ -1,15 +1,49 @@
 @import "../../../../styles/themeStyles.module.scss";
 
-.wrapper{
+.overlay{
     background-color: rgba(255,255,255, .6);
     position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    backdrop-filter: blur(10px);
-    a, .menu_btn{
-        @include btn-ver-mas;
-        background-color: $white;
+    backdrop-filter: blur(15px);
+
+    .wrapper{   
+        display: flex;
+        justify-content: right;
+        padding: 
+        calc(35px + (80 - 35) * ((100vw - 1200px) / (3840 - 1200)))
+        calc(35px + (370 - 35) * ((100vw - 1200px) / (3840 - 1200)))
+        0
+        calc(35px + (370 - 35) * ((100vw - 1200px) / (3840 - 1200)))
+        ;    
+
+        a{
+            @include btn-ver-mas;
+            background-color: $white;
+            border-color: $green-2; 
+            margin-right: calc(12px + (30 - 12) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (min-width: 1024px){
+                &:hover{
+                    background-color: $green-2;
+                    border-color: $green-2;
+                    color: $deep-blue;
+                }
+            }
+        }
+
+        .menu_btn{
+            @include btn-ver-mas;
+            background-color: $white;
+            border-color: $green-2;  
+            @media screen and (min-width: 1024px){
+                &:hover{
+                    background-color: $green-2;
+                    border-color: $green-2;
+                    color: $deep-blue;
+                }
+            }      
+        }
     }
 }

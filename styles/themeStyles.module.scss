@@ -18,35 +18,35 @@ $white: #FFFFFF;
 // Typography Levels
 
 @mixin font-level-1 {
-    font-size: calc(28px + (90 - 28) * ((100vw - 1200px) / (3840 - 1200)));
-    /* @media screen and (max-width: 1024px){
-        font-size: calc(17px + (38 - 17) * ((100vw - 300px) / (1024 - 300)));
-    } */
+    font-size: calc(29px + (92 - 29) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        font-size: calc(26px + (92 - 29) * ((100vw - 300px) / (1024 - 300)));
+    }
 }
 
 @mixin font-level-2 {
     font-size: calc(27px + (70 - 27) * ((100vw - 1200px) / (3840 - 1200)));
-    /* @media screen and (max-width: 1024px){
-        font-size: calc(17px + (38 - 17) * ((100vw - 300px) / (1024 - 300)));
-    } */
+    @media screen and (max-width: 1024px){
+        font-size: calc(18px + (92 - 18) * ((100vw - 300px) / (1024 - 300)));
+    }
 }
 
 @mixin font-level-3 {
-    font-size: calc(18px + (58 - 18) * ((100vw - 1200px) / (3840 - 1200)));
-    /* @media screen and (max-width: 1024px){
-        font-size: calc(17px + (38 - 17) * ((100vw - 300px) / (1024 - 300)));
-    } */
+    font-size: calc(18px + (48 - 18) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        font-size: calc(18px + (92 - 18) * ((100vw - 300px) / (1024 - 300)));
+    }
 }
 
 @mixin font-level-4 {
     font-size: calc(14.5px + (36 - 14.5) * ((100vw - 1200px) / (3840 - 1200)));
-    /* @media screen and (max-width: 1024px){
-        font-size: calc(16px + (36 - 16) * ((100vw - 1200px) / (3840 - 1200)));
-    } */
+    @media screen and (max-width: 1024px){
+        font-size: calc(12px + (92 - 12) * ((100vw - 300px) / (1024 - 300)));
+    }
 }
 
 @mixin font-level-5 {
-    font-size: calc(28px + (68 - 28) * ((100vw - 1200px) / (3840 - 1200)));
+    font-size: calc(12px + (30 - 12) * ((100vw - 1200px) / (3840 - 1200)));
     /* @media screen and (max-width: 1024px){
         font-size: calc(17px + (38 - 17) * ((100vw - 300px) / (1024 - 300)));
     } */
@@ -56,13 +56,17 @@ $white: #FFFFFF;
 // Lines
 
 $line-1: calc(1.5px + (3 - 1.5) * ((100vw - 1200px) / (3840 - 1200)));
+$line-2: calc(3px + (6 - 3) * ((100vw - 1200px) / (3840 - 1200)));
 
 
 // Containers Width
 
 @mixin container-width-1 {
-    width: calc(1018px + (3000 - 1018) * ((100vw - 1200px) / (3840 - 1200)));
+    width: calc(1018px + (2800 - 1018) * ((100vw - 1200px) / (3840 - 1200)));
     margin: 0 auto;
+    @media screen and (max-width: 1024px){
+        width: calc(260px + (900 - 260) * ((100vw - 300px) / (1024 - 300)));
+    }
 }
 
 
@@ -75,10 +79,10 @@ $line-1: calc(1.5px + (3 - 1.5) * ((100vw - 1200px) / (3840 - 1200)));
     line-height: 100%;
     text-decoration: none;    
     color: $deep-blue;    
-    border: $line-1 solid $deep-blue;
+    border: $line-1 solid $gray-3;
     border-radius: 50px;
     padding:
-    calc(7px + (22 - 7) * ((100vw - 1200px) / (3840 - 1200)))
+    calc(9px + (26 - 9) * ((100vw - 1200px) / (3840 - 1200)))
     calc(14px + (40 - 14) * ((100vw - 1200px) / (3840 - 1200)))
     ;
     transition: all .3s; 
@@ -92,6 +96,7 @@ $line-1: calc(1.5px + (3 - 1.5) * ((100vw - 1200px) / (3840 - 1200)));
     @media screen and (min-width: 1024px){
         &:hover{
             background-color: $deep-blue;
+            border-color: $deep-blue;
             color: $white;
         }
     }
@@ -104,11 +109,15 @@ $line-1: calc(1.5px + (3 - 1.5) * ((100vw - 1200px) / (3840 - 1200)));
     display: flex;
     flex-wrap: wrap;
     background-color: $gray-6;
-    //width: calc(450px + (1150 - 450) * ((100vw - 1200px) / (3840 - 1200)));
+    width: calc(450px + (1150 - 450) * ((100vw - 1200px) / (3840 - 1200)));
     padding: calc(15px + (60 - 15) * ((100vw - 1200px) / (3840 - 1200)));
-    //margin-left: calc(32px + (82 - 32) * ((100vw - 1200px) / (3840 - 1200)));
+    margin-left: calc(32px + (82 - 32) * ((100vw - 1200px) / (3840 - 1200)));
     color: $deep-blue;  
-    text-decoration: none;
+    text-decoration: none;    
+    @media screen and (max-width: 1024px){
+        width: calc(250px + (850 - 250) * ((100vw - 300px) / (1024 - 300)));
+        padding: calc(12px + (24 - 12) * ((100vw - 300px) / (1024 - 300)));
+    } 
     img{
         width: 100%;
         height: auto;
@@ -122,6 +131,43 @@ $line-1: calc(1.5px + (3 - 1.5) * ((100vw - 1200px) / (3840 - 1200)));
     p{
         @include font-level-4; 
         font-weight: 400;
-        line-height: 132%;
+        line-height: 140%;
+    }
+    a{
+        @include btn-ver-mas;
+    }
+}
+
+@mixin basic-card-2 {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: $gray-6;
+    width: calc(500px + (1295 - 500) * ((100vw - 1200px) / (3840 - 1200)));
+    padding: calc(25px + (80 - 25) * ((100vw - 1200px) / (3840 - 1200)));
+    margin-left: calc(32px + (82 - 32) * ((100vw - 1200px) / (3840 - 1200)));
+    color: $deep-blue;  
+    text-decoration: none;    
+    span{
+        @include font-level-4; 
+        font-weight: 400;
+        line-height: 110%;
+        border-bottom: $line-2 solid $yellow-1;
+        margin-bottom: calc(32px + (100 - 32) * ((100vw - 1200px) / (3840 - 1200)));
+    }
+    h5{
+        @include font-level-2; 
+        font-weight: 400;
+        line-height: 130%;
+        width: 100%;
+        margin-bottom: calc(32px + (100 - 32) * ((100vw - 1200px) / (3840 - 1200)));
+    }
+    p{
+        @include font-level-4; 
+        font-weight: 400;
+        line-height: 140%;
+        margin-bottom: calc(40px + (130 - 40) * ((100vw - 1200px) / (3840 - 1200)));
+    }
+    a{
+        @include btn-ver-mas;
     }
 }

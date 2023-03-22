@@ -5,6 +5,8 @@ import ProductionsNav from '../../components/producciones/ProductionsNav/Product
 import ArticlesList from '../../components/library/ArticlesList/ArticlesList';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
+import { gsap, Back, Elastic } from 'gsap';
+import $ from "jquery";
 import styles from "./producciones.module.scss";
 
 function Producciones(d){  
@@ -42,11 +44,57 @@ function Producciones(d){
             return setDataArticles(data.filter((article) => article.authors.includes(currentArticleAuthor)))
         }            
     }, [currentArticleHashtag, currentArticleAuthor]);
+
+
+    //Follow cursor 
+
+    useEffect(() => {
+
+        const ball = document.querySelector(".cursor_ver");
+        gsap.set(".cursor_ver", {xPercent: -50, yPercent: -70});       
+        const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+        const mouse = { x: pos.x, y: pos.y };
+        const speed = 0.25;
+        const xSet = gsap.quickSetter(ball, "x", "px");
+        const ySet = gsap.quickSetter(ball, "y", "px");
+        
+        window.addEventListener("mousemove", e => {
+            mouse.x = e.x;
+            mouse.y = e.y; 
+        });
+        
+        gsap.ticker.add(() => {
+            // adjust speed for higher refresh monitors
+            const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
+            pos.x += (mouse.x - pos.x) * dt;
+            pos.y += (mouse.y - pos.y) * dt;
+            xSet(pos.x);
+            ySet(pos.y);
+        });
+
+        $('.clickable').on("mouseenter", function mouseEnterContainer() {
+            gsap.to(".cursor_ver", {
+                duration: 0.8,
+                scale: 1,
+                opacity: 1,
+                ease: Elastic.easeOut.config( 1, 0.6)
+            });
+        });
+        $('.clickable').on("mouseleave", function mouseLeaveContainer() {
+            gsap.to(".cursor_ver", {
+                duration: 0.8,
+                scale: 0,
+                opacity: 0,
+                ease: Back.easeOut.config(3)
+            });
+        }); 
+
+    }, []);
     
  
     return(
     <>
-        <PageHeading title="<h1><span>Producciones</span></h1>" margin_bottom_type={1} />
+        <PageHeading title="<span>Producciones</span>" margin_bottom_type={1} />
 
         <ProductionsNav />     
         

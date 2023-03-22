@@ -6,7 +6,7 @@
     grid-template-areas: 'paragraph btn';
     grid-template-columns: 80% 20%;   
     position: relative;
-    margin-bottom: calc(70px + (220 - 70) * ((100vw - 1200px) / (3840 - 1200)));
+    margin-bottom: calc(115px + (420 - 115) * ((100vw - 1200px) / (3840 - 1200)));
     
     .paragraph{
         grid-area: paragraph;        
@@ -39,8 +39,8 @@
     
     .btn{
         grid-area: btn;
-        width: 300px;
-        height: 300px;
+        width: calc(122px + (390 - 122) * ((100vw - 1200px) / (3840 - 1200)));
+        height: calc(122px + (390 - 122) * ((100vw - 1200px) / (3840 - 1200)));
         display: flex;
         justify-content: center;
         align-items: center;
@@ -49,9 +49,22 @@
         background-color: $green-2;
         border-radius: 50%;
         user-select: none;
+        transition: all .1s;
         img{
             width: 40%;
             height: auto;
+        }
+        @media screen and (min-width: 1025px){
+            &:hover{
+                background-color: $deep-blue;
+                img{
+                    filter: grayscale(100%) brightness(20);
+                }
+            }
+            &:active{
+                filter: brightness(90%);
+                transform: scale(0.9);
+            }
         }
     }
     span{

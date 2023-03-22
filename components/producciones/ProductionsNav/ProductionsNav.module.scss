@@ -2,21 +2,44 @@
 
 .wrapper{
     display: flex;
-    align-items: center;
+    align-items: baseline;
+    justify-content: space-between;
     @include container-width-1;
 
     .menu_btn{
         @include btn-ver-mas;
+        display: flex;
+        .filter_icon{
+            display: flex;
+            align-items: center;
+            width: calc(18px + (46 - 18) * ((100vw - 1200px) / (3840 - 1200)));
+            height: auto;
+            margin-left: calc(10px + (28 - 10) * ((100vw - 1200px) / (3840 - 1200)));
+        }
+        @media screen and (min-width: 1025px){
+            &:hover{
+                .filter_icon{
+                    filter: grayscale(100%) brightness(20);                           
+                }                    
+            }
+            &:active{
+                filter: brightness(90%);
+                transform: scale(0.95);
+            }
+        }
     }
 
     .hashtags{
-        width: 85%; 
-        margin: 40px 5% 40px 0;  
+        width: calc(880px + (2400 - 880) * ((100vw - 1200px) / (3840 - 1200))); 
+        margin:
+        0
+        0
+        calc(75px + (235 - 75) * ((100vw - 1200px) / (3840 - 1200)))
+        0;  
              
         .btn_filter{
             @include btn-ver-mas;
             border-color: $gray-2;
-            margin: 6px 0;
             @media screen and (min-width: 1024px){
                 &:hover{
                     background-color: $gray-6;

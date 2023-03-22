@@ -3,7 +3,13 @@
 .wrapper {
     @include container-width-1;
     column-count: 2;
-    column-gap: 100px;
-    color: $deep-blue;
-    @include font-level-4;
+    column-gap: calc(50px + (120 - 50) * ((100vw - 1200px) / (3840 - 1200)));
+    margin-bottom: calc(50px + (250 - 50) * ((100vw - 1200px) / (3840 - 1200)));
+    p{
+        @include font-level-4;
+        font-weight: 400;
+        line-height: 140%;
+        color: $deep-blue;
+        
+    }    
 }

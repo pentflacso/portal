@@ -3,7 +3,7 @@ import Card from '../Card/Card';
 import styles from "./ArticlesNov.module.scss";
 
 
-export default function ArticlesNov({ data, category , section }){
+export default function ArticlesNov({ data, category }){
 	//Cantidad de notas a pedir
 	const NOTES_TO_FETCH = 12;
 	//cantidad de notas a mostrar
@@ -107,7 +107,7 @@ export default function ArticlesNov({ data, category , section }){
 
             </div>
 
-            {showLoadMore && <button type="button" onClick={handleChangePagination} className={styles.show_more}>Ver más {section}</button>} 
+            {showLoadMore && <button type="button" onClick={handleChangePagination} className={styles.show_more}>Ver más novedades</button>} 
 
         </div>         
     );

@@ -27,16 +27,17 @@ export default function NewsSelector({ data }){
                     return (               
                         
                     <Link href={`/${e.path_id}`} className={`${styles.btn} news-${i}`} key={i}>
+                        <div className={styles.arrow} />
                         { showNews === i &&
                             <div className={styles.description_marquee}>
-                                <Marquee speed="50" gradientWidth="0" direction="left">
+                                <Marquee speed="150" gradientWidth="0" direction="left">
                                     <div dangerouslySetInnerHTML={{__html: e.description }} />
                                     <div dangerouslySetInnerHTML={{__html: e.description }} />
                                     <div dangerouslySetInnerHTML={{__html: e.description }} />
                                 </Marquee>      
                             </div>      
                         }         
-                        <span>{e.title}</span>                
+                        <span>{e.title}</span>                                       
                     </Link>                 
                                                         
                     );
@@ -44,7 +45,7 @@ export default function NewsSelector({ data }){
             </div>
 
             <div className={styles.show_all_btn}>
-                <Link href={`/novedades`}>Ver todo</Link> 
+                <Link href={`/novedades`}>Ver todas las novedades <span className={styles.arrow}><img src="/assets/icons/arrow_next_icon.svg" alt="botón flecha"/></span></Link> 
             </div>
 
         </div>

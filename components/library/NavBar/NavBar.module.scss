@@ -3,17 +3,24 @@
 .navbar{
     position: fixed;
     z-index: 100;
-    background-color: $white;
+    background-color: rgba(255,255,255,.9);
     top: 0;
     left: 0;
     right: 0;
     padding: 
     calc(15px + (20 - 15) * ((100vw - 1200px) / (3840 - 1200)))
-    calc(36px + (200 - 36) * ((100vw - 1200px) / (3840 - 1200)))
+    calc(35px + (370 - 35) * ((100vw - 1200px) / (3840 - 1200)))
     ;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
+    backdrop-filter: blur(10px);
+    @media screen and (max-width: 1024px){  
+        padding: 
+        calc(8px + (16 - 8) * ((100vw - 300px) / (1200 - 300)))
+        calc(10px + (20 - 10) * ((100vw - 300px) / (1200 - 300)))
+        ;     
+    }
 
     .brand{        
         line-height: 0px;
@@ -27,7 +34,7 @@
     }
 
    .menu_btn{
-        background-color: $white;
+        background-color: transparent;
         @include font-level-4;
         font-weight: 400;
         color: #032e59;
@@ -37,6 +44,12 @@
         padding:
         calc(8px + (22 - 8) * ((100vw - 1200px) / (3840 - 1200)))
         calc(16px + (62 - 16) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){  
+            padding: 
+            calc(6px + (16 - 6) * ((100vw - 300px) / (1200 - 300)))
+            calc(10px + (20 - 10) * ((100vw - 300px) / (1200 - 300)))
+            ;     
+        }
         &:hover{
             background-color: $green-2;
             transition: all .1s;
