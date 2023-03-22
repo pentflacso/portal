@@ -22,6 +22,7 @@
                 calc(12px + (24 - 12) * ((100vw - 300px) / (1024 - 300)))
                 0
                 ;
+                font-weight: 500;
             }
             &:first-of-type{
                 border-top: $line-1 solid $gray-5;
@@ -52,6 +53,9 @@
                 display: block;
                 @include container-width-1; 
                 max-width: 0 auto;
+                @media screen and (max-width: 1024px){
+                    padding-right: calc(40px + (24 - 40) * ((100vw - 300px) / (1024 - 300)));
+                }
             }
 
             .description_marquee{
@@ -74,11 +78,12 @@
         auto
         ;
         @media screen and (max-width: 1024px){
-            margin-bottom: calc(40px + (80 - 40) * ((100vw - 300px) / (1024 - 300)));
+            margin-bottom: calc(60px + (80 - 60) * ((100vw - 300px) / (1024 - 300)));
         }
         a{
             position: relative;
             @include font-level-2; 
+            font-weight: 500;
             text-decoration: none;
             color: $deep-blue;
             .arrow{ 

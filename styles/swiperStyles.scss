@@ -14,19 +14,25 @@
 
   &.swiper-cards{
     padding-bottom: calc(56px + (176 - 56) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+      padding-bottom: calc(40px + (80 - 40) * ((100vw - 300px) / (1024 - 300)));
+    }
 
     .swiper-wrapper{   
       .swiper-slide {
+        @media screen and (max-width: 1024px){
+          margin-left: calc(15px + (40 - 15) * ((100vw - 300px) / (1024 - 300)));
+        }
         &:first-of-type{
           margin-left: calc(60px + (438 - 60) * ((100vw - 1200px) / (3840 - 1200)));
           @media screen and (max-width: 1024px){
-              margin-left: calc(6px + (60 - 6) * ((100vw - 300px) / (1024 - 300)));
+              margin-left: calc(10px + (100 - 10) * ((100vw - 300px) / (1024 - 300)));
           }
         }
         &:last-of-type{
           margin-right: calc(92px + (520 - 92) * ((100vw - 1200px) / (3840 - 1200)));
           @media screen and (max-width: 1024px){
-            margin-right: calc(18px + (60 - 18) * ((100vw - 300px) / (1024 - 300)));
+            margin-right: calc(10px + (100 - 10) * ((100vw - 300px) / (1024 - 300)));
           }
         }
       }
@@ -77,12 +83,18 @@
     .swiper-button-prev{
       left: auto;
       right: calc(134px + (656 - 134) * ((100vw - 1200px) / (3840 - 1200))); 
+      @media screen and (max-width: 1024px){
+        right: calc(40px + (90 - 40) * ((100vw - 300px) / (1024 - 300)));
+      }
       &::after{
         background-image: url(../public/assets/icons/arrow_prev_icon.svg);
       }
     }
     .swiper-button-next{
       right: calc(85px + (525 - 85) * ((100vw - 1200px) / (3840 - 1200))); 
+      @media screen and (max-width: 1024px){
+        right: calc(10px + (22 - 10) * ((100vw - 300px) / (1024 - 300)));
+      }
       &::after{
         background-image: url(../public/assets/icons/arrow_next_icon.svg);
       }

@@ -10,7 +10,7 @@
 .carrousel_novedades{
     margin-bottom: calc(55px + (310 - 55) * ((100vw - 1200px) / (3840 - 1200)));
     @media screen and (max-width: 1024px){
-        margin-bottom: calc(35px + (80 - 35) * ((100vw - 300px) / (1024 - 300)));
+        margin-bottom: calc(40px + (90 - 40) * ((100vw - 300px) / (1024 - 300)));
     }
     .card_new{
         @include basic-card-1;        
@@ -20,10 +20,13 @@
             flex-direction: column;
             justify-content: space-between;
             @media screen and (max-width: 1024px){
-                height: calc(160px + (320 - 160) * ((100vw - 300px) / (1024 - 300)));
+                height: calc(160px + (300 - 160) * ((100vw - 300px) / (1024 - 300)));
             }
             h5{
                 margin-bottom: 0;
+                @media screen and (max-width: 1024px){
+                    font-weight: 500;
+                }
             }
             p{
                 margin-bottom: calc(20px + (40 - 20) * ((100vw - 1200px) / (3840 - 1200)));
