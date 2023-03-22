@@ -7,6 +7,10 @@
     line-height: 130%;
     color: $deep-blue;
     margin-bottom: calc(70px + (220 - 70) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1025px){ 
+        line-height: 120%;
+        margin-bottom: calc(30px + (80 - 30) * ((100vw - 300px) / (1024 - 300)));
+    } 
     span{
         position: relative; 
         z-index: 2;         
@@ -21,8 +25,8 @@
             right: 0;
             bottom: calc(-2px + (-8 - -2) * ((100vw - 1200px) / (3840 - 1200)));
             @media screen and (max-width: 1025px){ 
-                height: calc(5px + (15 - 5) * ((100vw - 300px) / (1024 - 300)));  
-                bottom: calc(-2px + (-8 - -2) * ((100vw - 300px) / (1024 - 300)));
+                height: calc(4px + (15 - 4) * ((100vw - 300px) / (1024 - 300)));  
+                bottom: calc(-1px + (-8 - -1) * ((100vw - 300px) / (1024 - 300)));
             } 
         }
     }
