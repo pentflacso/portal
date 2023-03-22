@@ -27,7 +27,7 @@ $white: #FFFFFF;
 @mixin font-level-2 {
     font-size: calc(27px + (70 - 27) * ((100vw - 1200px) / (3840 - 1200)));
     @media screen and (max-width: 1024px){
-        font-size: calc(16px + (40 - 16) * ((100vw - 300px) / (1024 - 300)));
+        font-size: calc(17px + (48 - 17) * ((100vw - 300px) / (1024 - 300)));
     }
 }
 
@@ -41,7 +41,7 @@ $white: #FFFFFF;
 @mixin font-level-4 {
     font-size: calc(14.5px + (36 - 14.5) * ((100vw - 1200px) / (3840 - 1200)));
     @media screen and (max-width: 1024px){
-        font-size: calc(11px + (21 - 11) * ((100vw - 300px) / (1024 - 300)));
+        font-size: calc(11.5px + (28 - 11.5) * ((100vw - 300px) / (1024 - 300)));
     }
 }
 
@@ -65,7 +65,7 @@ $line-2: calc(3px + (6 - 3) * ((100vw - 1200px) / (3840 - 1200)));
     width: calc(1018px + (2800 - 1018) * ((100vw - 1200px) / (3840 - 1200)));
     margin: 0 auto;
     @media screen and (max-width: 1024px){
-        width: calc(260px + (832 - 260) * ((100vw - 300px) / (1024 - 300)));
+        width: calc(270px + (832 - 270) * ((100vw - 300px) / (1024 - 300)));
     }
 }
 
@@ -115,7 +115,7 @@ $line-2: calc(3px + (6 - 3) * ((100vw - 1200px) / (3840 - 1200)));
     color: $deep-blue;  
     text-decoration: none;    
     @media screen and (max-width: 1024px){
-        width: calc(250px + (620 - 250) * ((100vw - 300px) / (1024 - 300)));
+        width: calc(255px + (740 - 255) * ((100vw - 300px) / (1024 - 300)));
         padding: calc(12px + (24 - 12) * ((100vw - 300px) / (1024 - 300)));
         margin-left: 0;
     } 
