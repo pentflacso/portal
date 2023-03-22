@@ -2,7 +2,7 @@
 
 .container{
     background-color: $green-3;
-    width: calc(1128px + (3080 - 1128) * ((100vw - 1200px) / (3840 - 1200)));
+    width: calc(1128px + (3101 - 1128) * ((100vw - 1200px) / (3840 - 1200)));
     height: calc(600px + (1638 - 600) * ((100vw - 1200px) / (3840 - 1200)));
     margin:
     0
@@ -11,11 +11,11 @@
     auto
     ;
     @media screen and (max-width: 1024px){
-        width: calc(280px + (900 - 280) * ((100vw - 300px) / (1024 - 300)));
+        width: calc(280px + (988 - 280) * ((100vw - 300px) / (1024 - 300)));
         margin:
         0
         auto
-        calc(40px + (900 - 40) * ((100vw - 300px) / (1024 - 300)))
+        calc(40px + (80 - 40) * ((100vw - 300px) / (1024 - 300)))
         auto
         ;
     }

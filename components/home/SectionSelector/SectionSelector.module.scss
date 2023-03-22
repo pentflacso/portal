@@ -11,7 +11,7 @@
         grid-template-areas: 'imagen-docente' 'nombre-docente' 'texto-docente'; 
         grid-template-columns: 100% 100% 100%;   
         height: auto; 
-        margin-bottom: calc(40px + (900 - 40) * ((100vw - 300px) / (1024 - 300)));
+        margin-bottom: calc(40px + (80 - 40) * ((100vw - 300px) / (1024 - 300)));
     } 
 
     .cta_title{

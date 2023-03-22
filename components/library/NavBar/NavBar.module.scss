@@ -28,7 +28,7 @@
             width: calc(114px + (300 - 114) * ((100vw - 1200px) / (3840 - 1200)));
             height: auto;
             @media screen and (max-width: 1024px){  
-                width: calc(85px + (250 - 85) * ((100vw - 300px) / (1200 - 300)));       
+                width: calc(85px + (185 - 85) * ((100vw - 300px) / (1200 - 300)));       
             }
         }        
     }
