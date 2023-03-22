@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import LeafsItem from '../../components/asesorias/LeafsItem/LeafsItem';
 import HighlightParagraph from '../../components/library/HighlightParagraph/HighlightParagraph';
@@ -8,22 +9,65 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import BrandsMarquee from '../../components/asesorias/BrandsMarquee/BrandsMarquee';
 import Quotes from '../../components/library/Quotes/Quotes';
 import ParagraphAndButton from '../../components/asesorias/ParagraphAndButton/ParagraphAndButton';
+import { gsap, Back, Elastic } from 'gsap';
+import $ from "jquery";
 import styles from "./asesorias.module.scss";
-import Card from '../../components/library/Card/Card';
-import React, { useRef, useState } from "react";
-import { EffectCards } from "swiper";
-import CarrouselCards from '../../components/asesorias/CarrouselCards/CarrouselCards';
+//import Card from '../../components/library/Card/Card';
+//import React, { useRef, useState } from "react";
+//import CarrouselCards from '../../components/asesorias/CarrouselCards/CarrouselCards';
 
 export default function Asesorias(data){
+
+    useEffect(() => {
+
+        // Follow custom cursor
+        const ball = document.querySelector(".cursor_ver");
+        gsap.set(".cursor_ver", {xPercent: -50, yPercent: -70});       
+        const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+        const mouse = { x: pos.x, y: pos.y };
+        const speed = 0.25;
+        const xSet = gsap.quickSetter(ball, "x", "px");
+        const ySet = gsap.quickSetter(ball, "y", "px");
+        
+        window.addEventListener("mousemove", e => {
+            mouse.x = e.x;
+            mouse.y = e.y; 
+        });
+        
+        gsap.ticker.add(() => {
+            // adjust speed for higher refresh monitors
+            const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
+            pos.x += (mouse.x - pos.x) * dt;
+            pos.y += (mouse.y - pos.y) * dt;
+            xSet(pos.x);
+            ySet(pos.y);
+        });
+        $(`.${styles.card_proyect}`).on("mouseenter", function mouseEnterContainer() {
+            gsap.to(".cursor_ver", {
+                duration: 0.8,
+                scale: 1,
+                opacity: 1,
+                ease: Elastic.easeOut.config( 1, 0.6)
+            });
+        });
+        $(`.${styles.card_proyect}`).on("mouseleave", function mouseLeaveContainer() {
+            gsap.to(".cursor_ver", {
+                duration: 0.8,
+                scale: 0,
+                opacity: 0,
+                ease: Back.easeOut.config(3)
+            });
+        });                    
+    }, []);
 
 
     return(
     <>
         <PageHeading title={data.PageHeading} margin_bottom_type={0} />
-        
-        <CarrouselCards items={data.courses} margin_bottom_type={0} />
 
-        {/* <LeafsItem /> */}
+        <LeafsItem items={data.courses} />
+        
+        {/* <CarrouselCards items={data.courses} margin_bottom_type={0} /> */}        
 
         <div className={styles.marquee_1}>
             <TextMarquee data={data.marquee1} />
@@ -33,35 +77,37 @@ export default function Asesorias(data){
         <div className={styles.highlight_paragraph}>
             <HighlightParagraph title={data.paragraph1} />
         </div>
-
-        <KeysBox data={data.keyFeatures} />
+        
+        <div className={styles.keys_box}>
+            <KeysBox data={data.keyFeatures} />
+        </div>
 
         <div className={styles.marquee_1}>
             <TextMarquee data={data.marquee2} />
         </div>
 
-        <div className={`${styles.carrousel_proyects} swiper-cards`}>
-            <Swiper
-                modules={[Navigation, FreeMode]}
-                spaceBetween={25}
-                slidesPerView={"auto"}
-                navigation   
-                freeMode={true}   
-                grabCursor={true} 
-            >   
+
+        <Swiper
+            modules={[Navigation, FreeMode]}
+            spaceBetween={0}
+            slidesPerView={"auto"}
+            navigation={true}  
+            freeMode={true}   
+            grabCursor={false}    
+            className={`${styles.carrousel_proyects} swiper-cards`}       
+        >   
             {
-        data.articles.map((item, key) => (
-            <SwiperSlide >
-                    <article className={styles.card}>
+            data.articles.map((item, i) => (
+                <SwiperSlide key={i}>
+                    <article className={styles.card_proyect}>
                         <img src={item.img} />
                         <h5>{item.description}</h5>                    
-                    </article>  
+                    </article>            
                 </SwiperSlide>
-          ))
-        } 
-                
-            </Swiper>
-        </div>
+                ))
+            }                            
+        </Swiper>
+        
 
         <div className={styles.marquee_1}>
             <TextMarquee data={data.marquee3} />
@@ -74,10 +120,9 @@ export default function Asesorias(data){
         <div className={styles.brands_marquee}>
             <BrandsMarquee partners={data.partners}/>
         </div>
-
-        <div className={styles.quotes_container}>
-          <Quotes items={data.quotes}/>
-        </div>
+     
+        
+        <Quotes items={data.quotes}/>         
 
         <div className={styles.marquee_1}>
             <TextMarquee data={data.marquee4} />

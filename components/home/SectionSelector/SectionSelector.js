@@ -2,9 +2,7 @@ import { useState } from 'react';
 import { useRouter } from "next/router";
 import styles from "./SectionSelector.module.scss";
 
-export default function SectionSelector({data}){
-console.log(data)
-    
+export default function SectionSelector({data}){    
 
     const [ titleSelected, setTitleSelected ] = useState('fabio-t');
     const router = useRouter();
@@ -43,7 +41,6 @@ console.log(data)
 
             <div className={styles.texto_docente}>
                 {data.map((data) => {
-                    console.log(data)
                     return (
                     <div key={data.id}>
                         { titleSelected === `${data.id}` &&

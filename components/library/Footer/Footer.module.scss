@@ -3,22 +3,173 @@
 .footer_site{     
     background-color: $deep-blue;
     width: 100%;
-    min-height: 500px;
 
     .wrapper{
         @include container-width-1;
-        display: grid;
-        grid-template-areas: 'left right';
-        grid-template-columns: 50% 50%;
-        color: $white;
-
-        .col_left{
-            grid-area: left;
-
+        h4{
+            @include font-level-2;
+            font-weight: 400;
+            color: $green-2;
+            margin-bottom: calc(25px + (65 - 25) * ((100vw - 1200px) / (3840 - 1200)));
         }
-        .col_right{
-            grid-area: right;
 
+        p{
+            @include font-level-4;
+            font-weight: 300;
+            line-height: 140%;
+            margin-bottom: calc(25px + (65 - 25) * ((100vw - 1200px) / (3840 - 1200)));
+            span{
+                color: $green-2;
+            }
+        }
+        .info_top{
+            display: grid;
+            grid-template-areas: 'left right';
+            grid-template-columns: 63% 37%;
+            color: $white;
+            padding: 
+            calc(65px + (265 - 65) * ((100vw - 1200px) / (3840 - 1200)))
+            0
+            calc(45px + (200 - 45) * ((100vw - 1200px) / (3840 - 1200)))
+            0
+            ;       
+            @media screen and (max-width: 1025px){ 
+                grid-template-areas: 'left' 'right';
+                grid-template-columns: 100% 100%;
+            }  
+
+            .col_left{
+                grid-area: left;
+            }
+            .col_right{
+                grid-area: right;
+                .input_group{  
+                    position: relative;                  
+                    .input_email{
+                        width: 100%;
+                        background-color: transparent;
+                        border-top-style: none;
+                        border-right-style: none;
+                        border-left-style: none;
+                        border-bottom: solid $line-1 $white;  
+                        @include font-level-4;
+                        font-family: 'Roboto', sans-serif;
+                        font-weight: 300;                        
+                        line-height: 100%;
+                        color: $white; 
+                        padding:
+                        calc(8px + (26 - 8) * ((100vw - 1200px) / (3840 - 1200)))
+                        0
+                        calc(18px + (56 - 18) * ((100vw - 1200px) / (3840 - 1200)))
+                        0
+                        ;
+                        &::placeholder {                      
+                            color: $gray-2;
+                        }
+                        &:focus {
+                            outline: none;
+                            &::placeholder {                      
+                                color: transparent;
+                            }
+                        }
+                    }
+                    .btn_send{
+                        position: absolute;
+                        top: 0;
+                        right: 0;
+                        width: calc(36px + (96 - 36) * ((100vw - 1200px) / (3840 - 1200)));
+                        height: calc(36px + (96 - 36) * ((100vw - 1200px) / (3840 - 1200)));
+                        background-color: $green-2;
+                        background-image: url(../../../public/assets/icons/arrow_next_icon.svg);
+                        background-repeat: no-repeat;
+                        background-position: center;
+                        background-size: 55%;    
+                        border-radius: 50%;
+                        @media screen and (min-width: 1025px){
+                            &:hover{
+                                background-color: $white; 
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .info_bottom{
+            display: grid;
+            grid-template-areas: 'left right';
+            grid-template-columns: 63% 37%;
+            color: $white;
+            padding: 
+            0
+            0
+            calc(35px + (120 - 35) * ((100vw - 1200px) / (3840 - 1200)))
+            0
+            ;
+            @media screen and (max-width: 1025px){ 
+                grid-template-areas: 'left' 'right';
+                grid-template-columns: 100% 100%;
+            } 
+
+            .col_left{
+                grid-area: left;
+                p{
+                    margin-bottom: 0;
+                }
+            }
+            .col_right{
+                grid-area: right;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+
+                h4{
+                    margin-bottom: 0;
+                }
+
+                .social_media{
+                    display: flex;
+                    .social_media_btn{  
+                            position: relative;    
+                            width: calc(36px + (96 - 36) * ((100vw - 1200px) / (3840 - 1200)));
+                            height: calc(36px + (96 - 36) * ((100vw - 1200px) / (3840 - 1200))); 
+                            background-color: $green-2;                
+                            border-radius: 50%;
+                            border: calc(1.5px + (2.5 - 1.5) * ((100vw - 1200px) / (3840 - 1200))) solid #032E59;
+                            margin-right: calc(6px + (16 - 6) * ((100vw - 1200px) / (3840 - 1200)));
+                            @media screen and (min-width: 1025px){
+                                &:hover{
+                                    background-color: $white; 
+                                }
+                            }
+
+                        &.facebook{
+                            &::after{
+                                content: url('../../../public/assets/icons/facebook_icon.svg');
+                            }                       
+                        }
+                        &.twitter{
+                            &::after{
+                                content: url('../../../public/assets/icons/twitter_icon.svg');
+                            } 
+                        }
+                        &.instagram{
+                            &::after{
+                                content: url('../../../public/assets/icons/instagram_icon.svg');
+                            }
+                        }
+                        &.linkedin{
+                            &::after{
+                                content: url('../../../public/assets/icons/linkedin_icon.svg');
+                            }
+                        }
+                        &.youtube{
+                            &::after{
+                                content: url('../../../public/assets/icons/youtube_icon.svg');
+                            }
+                        }
+                    }
+                }
+            }            
         }
     }
 }

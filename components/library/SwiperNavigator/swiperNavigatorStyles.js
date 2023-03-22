@@ -26,7 +26,7 @@ transform: "rotate(180deg)"
 }
 
 export const NavigatorSeparator={
-borderTop: "1px solid rgba(3, 46, 89, 0.25)",
+//borderTop: "1px solid rgba(3, 46, 89, 0.25)",
 height: "70px"
 }
 

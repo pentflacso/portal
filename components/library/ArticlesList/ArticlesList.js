@@ -3,7 +3,7 @@ import Card from '../Card/Card';
 import styles from "./ArticlesList.module.scss";
 
 
-export default function ArticlesList({ data, section }){
+export default function ArticlesList({ data }){
 
     //Data a utilizar
     const [dataToUse, setDataToUse] = useState(data);
@@ -44,7 +44,8 @@ export default function ArticlesList({ data, section }){
 
 
     return( 
-        <div className={styles.wrapper}>
+        <div className={styles.wrapper
+        }>
 
             <div className={styles.containerList}>
 
@@ -75,7 +76,7 @@ export default function ArticlesList({ data, section }){
 
             </div>
 
-            {availablePlusData && <button type="button" onClick={() => handleChangePagination()} className={styles.show_more}>Ver más {section}</button>} 
+            {availablePlusData && <button type="button" onClick={() => handleChangePagination()} className={styles.show_more}>Ver más producciones</button>} 
 
         </div>         
     );

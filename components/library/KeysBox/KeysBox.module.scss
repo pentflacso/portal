@@ -6,10 +6,22 @@
 
     .key_features{
         width: 25%;
-        border-left: $line-1 solid $gray-4;
+        border-left: $line-1 solid $gray-5;
+        padding: 
+        calc(15px + (45 - 15) * ((100vw - 1200px) / (3840 - 1200)))
+        calc(20px + (55 - 20) * ((100vw - 1200px) / (3840 - 1200)))
+        ;
+
+        img{
+            height: calc(82px + (225 - 82) * ((100vw - 1200px) / (3840 - 1200)));
+            width: auto;            
+            margin-bottom: calc(36px + (145 - 36) * ((100vw - 1200px) / (3840 - 1200)));
+        }
+
         p{
             @include font-level-3;
             font-weight: 400;
+            line-height: 130%;
             color: $deep-blue;
         }
         

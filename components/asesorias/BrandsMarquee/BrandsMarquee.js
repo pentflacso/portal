@@ -14,12 +14,12 @@ const rightArray = partners.slice(middleIndex);
     <>
       <Marquee speed="100" gradientWidth="0" direction="right">
         {leftArray.map((item, index) => (
-          <img key={index} src={item.img}/>
+          <img key={index} src={item.img} className={styles.brand}/>
         ))}
       </Marquee>
       <Marquee speed="100" gradientWidth="0" direction="left">
         {rightArray.map((item, index) => (
-            <img key={index} src={item.img}/>
+            <img key={index} src={item.img} className={styles.brand}/>
         ))}
       </Marquee>
     </>
