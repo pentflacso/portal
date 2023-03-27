@@ -4,11 +4,17 @@
     overflow: hidden;
     margin-top: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
     margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        overflow: auto;
+    }
 
     .wrapper{
         @include container-width-1;
         height: calc(494px + (1397 - 494) * ((100vw - 1200px) / (3840 - 1200)));
         position: relative;
+        @media screen and (max-width: 1024px){
+            height: auto;
+        }
 
         .leaf_item{
             position: absolute;
@@ -23,6 +29,12 @@
             cursor: pointer;
             transition: all .3s;
             transition-timing-function: ease-out;
+            @media screen and (max-width: 1024px){
+                position: relative;
+                width: 100%;
+                margin-bottom: calc(15px + (25 - 15) * ((100vw - 300px) / (1024 - 300)));
+                box-shadow: none;
+            }
             img{
                 width: 100%;
                 height: auto;
@@ -46,11 +58,17 @@
             }
             &:nth-of-type(2){
                 z-index: 3;
-                right: calc(278px + (708 - 278) * ((100vw - 1200px) / (3840 - 1200)));                
+                right: calc(278px + (708 - 278) * ((100vw - 1200px) / (3840 - 1200)));    
+                @media screen and (max-width: 1024px){
+                    right: 0;
+                }            
             }
             &:nth-of-type(3){
                 z-index: 2; 
-                right: calc(138px + (355 - 138) * ((100vw - 1200px) / (3840 - 1200)));             
+                right: calc(138px + (355 - 138) * ((100vw - 1200px) / (3840 - 1200)));  
+                @media screen and (max-width: 1024px){
+                    right: 0;
+                }           
             }
             &:nth-of-type(4){
                 z-index: 1; 

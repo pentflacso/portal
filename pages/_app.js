@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import AppContext from '../context/AppContext';
 import Head from "next/head";
 import CustomScrollbar from '../customScrollbar/CustomScrollbar';
@@ -9,7 +10,17 @@ import 'swiper/css/navigation';
 import "../styles/swiperStyles.scss";
 
 export default function App({ Component, pageProps }) {
-    
+
+    const [ windowSize, setWindowSize ] = useState(0);
+
+    useEffect(() => {
+        setWindowSize(window.innerWidth);    
+        window.addEventListener("resize", () => {
+          setWindowSize(window.innerWidth);            
+        } );    
+    }, []);
+
+
     return(
     <>
         <Head>
@@ -19,10 +30,19 @@ export default function App({ Component, pageProps }) {
         <main className="main-container">
             <AppContext>       
                 <NavBar />
-                <CustomScrollbar>             
+                {windowSize >= 1025 ?
+                <>
+                    <CustomScrollbar>            
+                        <Component {...pageProps} />                    
+                        <Footer />
+                    </CustomScrollbar>
+                </>
+                :
+                <>
                     <Component {...pageProps} />                    
                     <Footer />
-                </CustomScrollbar>
+                </>
+                }
             </AppContext>
 
             <div className="cursor_leer">

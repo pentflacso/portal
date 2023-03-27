@@ -102,19 +102,20 @@
 
     &.quotes{    
       padding-bottom: calc(90px + (240 - 90) * ((100vw - 1200px) / (3840 - 1200)));
+      @media screen and (max-width: 1024px){
+        padding-bottom: 0;
+      }
+      
       .swiper-wrapper{   
         .swiper-slide {
-          &:first-of-type{
+          @media screen and (max-width: 1024px){
             margin-left: 0;
-            @media screen and (max-width: 1024px){
-                margin-left: 0;
-            }
+          }
+          &:first-of-type{
+            margin-left: 0;            
           }
           &:last-of-type{
               margin-right: 0;
-              @media screen and (max-width: 1024px){
-                  margin-right: 0;
-              }
           }
         }
       }

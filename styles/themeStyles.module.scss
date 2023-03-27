@@ -20,7 +20,7 @@ $white: #FFFFFF;
 @mixin font-level-1 {
     font-size: calc(29px + (92 - 29) * ((100vw - 1200px) / (3840 - 1200)));
     @media screen and (max-width: 1024px){
-        font-size: calc(26px + (76 - 26) * ((100vw - 300px) / (1024 - 300)));
+        font-size: calc(25px + (88 - 25) * ((100vw - 300px) / (1024 - 300)));
     }
 }
 
@@ -65,7 +65,7 @@ $line-2: calc(3px + (6 - 3) * ((100vw - 1200px) / (3840 - 1200)));
     width: calc(1018px + (2800 - 1018) * ((100vw - 1200px) / (3840 - 1200)));
     margin: 0 auto;
     @media screen and (max-width: 1024px){
-        width: calc(270px + (832 - 270) * ((100vw - 300px) / (1024 - 300)));
+        width: calc(270px + (980 - 270) * ((100vw - 300px) / (1024 - 300)));
     }
 }
 
