@@ -3,6 +3,9 @@
 .quotes_container{
     position: relative;
     margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(40px + (100 - 40) * ((100vw - 300px) / (1024 - 300)));
+    }
     
     .card{
         width: 100vw;
@@ -12,12 +15,21 @@
             display: grid;
             grid-template-areas: 'img text';
             grid-template-columns: 25% 75%;
+            @media screen and (max-width: 1024px){
+                grid-template-areas: 'text' 'img';
+                grid-template-columns: 100% 100%;
+                height: auto;
+                //margin-bottom: calc(40px + (110 - 40) * ((100vw - 300px) / (1024 - 300)));
+            }
 
             .img_cont{
                 grid-area: img;  
                 img{
                     width: 100%;
                     height: auto;
+                    @media screen and (max-width: 1024px){
+                        width: calc(100px + (110 - 100) * ((100vw - 300px) / (1024 - 300)));
+                    }
                 }
             }
 
@@ -27,6 +39,9 @@
                 flex-direction: column;
                 justify-content: space-between;
                 padding-left: calc(40px + (100 - 40) * ((100vw - 1200px) / (3840 - 1200)));
+                @media screen and (max-width: 1024px){
+                    padding-left: 0;
+                }
 
                 h4{
                     @include font-level-2; 
@@ -57,5 +72,8 @@
         right: 0;
         bottom: calc(50px + (140 - 50) * ((100vw - 1200px) / (3840 - 1200)));
         border-bottom: $line-1 solid $gray-5;
+        @media screen and (max-width: 1024px){
+            display: none;
+        }
     }
 }

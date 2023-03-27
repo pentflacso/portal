@@ -15,7 +15,7 @@
     justify-content: space-between;
     align-items: flex-end;
     backdrop-filter: blur(10px);
-    @media screen and (max-width: 1024px){  
+    @media screen and (max-width: 1024px){   
         padding: 
         calc(8px + (16 - 8) * ((100vw - 300px) / (1200 - 300)))
         calc(10px + (20 - 10) * ((100vw - 300px) / (1200 - 300)))

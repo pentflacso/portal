@@ -3,6 +3,9 @@
 .wrapper{
     @include container-width-1;
     display: flex;
+    @media screen and (max-width: 1024px){
+        display: block;
+    }
 
     .key_features{
         width: 25%;
@@ -11,11 +14,19 @@
         calc(15px + (45 - 15) * ((100vw - 1200px) / (3840 - 1200)))
         calc(20px + (55 - 20) * ((100vw - 1200px) / (3840 - 1200)))
         ;
+        @media screen and (max-width: 1024px){
+            width: 100%;
+            margin-bottom: calc(36px + (145 - 36) * ((100vw - 300px) / (1200 - 300)));
+        }
 
         img{
             height: calc(82px + (225 - 82) * ((100vw - 1200px) / (3840 - 1200)));
             width: auto;            
             margin-bottom: calc(36px + (145 - 36) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1024px){
+                height: calc(82px + (225 - 82) * ((100vw - 300px) / (1200 - 300)));
+                margin-bottom: calc(25px + (40 - 25) * ((100vw - 300px) / (1200 - 300)));
+            }
         }
 
         p{

@@ -2,13 +2,14 @@
 
 .marquee_1{
     margin-bottom: calc(50px + (200 - 50) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(30px + (100 - 30) * ((100vw - 300px) / (1024 - 300)));
+    }
 }
 
 .marquee_2{
     margin-bottom: calc(80px + (280 - 80) * ((100vw - 1200px) / (3840 - 1200)));
 }
-
-
 
 .carrousel_formacion{    
     margin-bottom: calc(35px + (150 - 35) * ((100vw - 1200px) / (3840 - 1200)));    

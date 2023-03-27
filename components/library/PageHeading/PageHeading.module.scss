@@ -8,7 +8,11 @@
         font-weight: 400;
         line-height: 130%;
         color: $deep-blue;
-        //width: calc(520px + (1700 - 520) * ((100vw - 1200px) / (3840 - 1200))); 
+        @media screen and (max-width: 1024px){
+            br{
+                display: none;
+            }
+        } 
         span{
             position: relative; 
             z-index: 2;         
@@ -28,6 +32,9 @@
 
     &.margin_bottom_0{
         margin-bottom: calc(70px + (220 - 70) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(40px + (110 - 40) * ((100vw - 300px) / (1024 - 300)));
+        }
     }
 
     &.margin_bottom_1{

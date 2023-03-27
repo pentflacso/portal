@@ -14,9 +14,11 @@ html, body, #__next {
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Roboto', sans-serif; 
     overscroll-behavior-y: none;
-
     overflow: hidden;  
-
+    @media screen and (max-width: 1024px){
+      overflow: visible; 
+      padding-top: calc(35px + (80 - 35) * ((100vw - 300px) / (1024 - 300)));
+    }
 }
 
 button{
@@ -47,9 +49,6 @@ button{
   min-width: 100vw;
   height: 100vh;
   padding-top: calc(150px + (400 - 150) * ((100vw - 1200px) / (3840 - 1200)));
-  @media screen and (max-width: 1024px){
-    padding-top: calc(110px + (250 - 110) * ((100vw - 300px) / (1024 - 300)));
-  }
 }
 
 .scrollbar-track{
@@ -58,18 +57,7 @@ button{
   
   .scrollbar-thumb{
     background: #02172d!important;
-    border-radius: 0!important; 
-    @media screen and (max-width: 1025px){  
-      width: 4px;
-      left: auto;
-      right: 0;
-    }
-    
-    .scrollbar-thumb-y{
-      @media screen and (max-width: 1025px){
-        height: 56px;
-      }
-    }         
+    border-radius: 0!important;          
   }
 }
 
