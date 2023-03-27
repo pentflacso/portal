@@ -27,7 +27,7 @@ $white: #FFFFFF;
 @mixin font-level-2 {
     font-size: calc(27px + (70 - 27) * ((100vw - 1200px) / (3840 - 1200)));
     @media screen and (max-width: 1024px){
-        font-size: calc(17px + (48 - 17) * ((100vw - 300px) / (1024 - 300)));
+        font-size: calc(17px + (60 - 17) * ((100vw - 300px) / (1024 - 300)));
     }
 }
 
@@ -56,6 +56,7 @@ $white: #FFFFFF;
 // Lines
 
 $line-1: calc(1.5px + (3 - 1.5) * ((100vw - 1200px) / (3840 - 1200)));
+$line-1-mobile: calc(1.5px + (2 - 1.5) * ((100vw - 300px) / (1024 - 300)));
 $line-2: calc(3px + (6 - 3) * ((100vw - 1200px) / (3840 - 1200)));
 
 
@@ -88,6 +89,7 @@ $line-2: calc(3px + (6 - 3) * ((100vw - 1200px) / (3840 - 1200)));
     transition: all .3s; 
     cursor: pointer;
     @media screen and (max-width: 1024px){
+        border: $line-1-mobile solid $gray-3;
         padding:
         calc(6px + (18 - 6) * ((100vw - 300px) / (1024 - 300)))
         calc(9px + (24 - 9) * ((100vw - 300px) / (1024 - 300)))
@@ -115,7 +117,7 @@ $line-2: calc(3px + (6 - 3) * ((100vw - 1200px) / (3840 - 1200)));
     color: $deep-blue;  
     text-decoration: none;    
     @media screen and (max-width: 1024px){
-        width: calc(255px + (740 - 255) * ((100vw - 300px) / (1024 - 300)));
+        width: calc(255px + (880 - 255) * ((100vw - 300px) / (1024 - 300)));
         padding: calc(12px + (24 - 12) * ((100vw - 300px) / (1024 - 300)));
         margin-left: 0;
     } 
@@ -128,6 +130,9 @@ $line-2: calc(3px + (6 - 3) * ((100vw - 1200px) / (3840 - 1200)));
         font-weight: 400;
         line-height: 130%;
         margin-bottom: calc(50px + (150 - 50) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(25px + (75 - 25) * ((100vw - 300px) / (1024 - 300)));
+        }
     }
     p{
         @include font-level-4; 

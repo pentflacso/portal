@@ -17,9 +17,15 @@
         @include basic-card-1; 
         img{
             margin-bottom: calc(20px + (40 - 20) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1024px){
+                margin-bottom: calc(10px + (30 - 10) * ((100vw - 300px) / (1024 - 300)));
+            } 
         }
         p{
             margin-bottom: calc(25px + (75 - 25) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1024px){
+                margin-bottom: calc(20px + (55 - 20) * ((100vw - 300px) / (1024 - 300)));
+            } 
         }
     }
 }

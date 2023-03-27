@@ -10,7 +10,7 @@
     -webkit-text-stroke: calc(1.7px + (5.2 - 1.7) * ((100vw - 1200px) / (3840 - 1200))) $green-2;
     margin: 0;
     @media screen and (max-width: 1025px){  
-        font-size: calc(60px + (180 - 60) * ((100vw - 300px) / (1200 - 300)));     
-        -webkit-text-stroke: calc(1.2px + (2.6 - 1.2) * ((100vw - 300px) / (1200 - 300))) $green-2;              
+        font-size: calc(60px + (200 - 60) * ((100vw - 300px) / (1200 - 300)));     
+        -webkit-text-stroke: calc(1.5px + (4 - 1.5) * ((100vw - 300px) / (1200 - 300))) $green-2;              
     }
 }

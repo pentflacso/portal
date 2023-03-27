@@ -15,7 +15,7 @@
   &.swiper-cards{
     padding-bottom: calc(56px + (176 - 56) * ((100vw - 1200px) / (3840 - 1200)));
     @media screen and (max-width: 1024px){
-      padding-bottom: calc(40px + (80 - 40) * ((100vw - 300px) / (1024 - 300)));
+      padding-bottom: calc(50px + (110 - 50) * ((100vw - 300px) / (1024 - 300)));
     }
 
     .swiper-wrapper{   
@@ -26,13 +26,13 @@
         &:first-of-type{
           margin-left: calc(60px + (438 - 60) * ((100vw - 1200px) / (3840 - 1200)));
           @media screen and (max-width: 1024px){
-              margin-left: calc(10px + (100 - 10) * ((100vw - 300px) / (1024 - 300)));
+              margin-left: calc(10px + (20 - 10) * ((100vw - 300px) / (1024 - 300)));
           }
         }
         &:last-of-type{
           margin-right: calc(92px + (520 - 92) * ((100vw - 1200px) / (3840 - 1200)));
           @media screen and (max-width: 1024px){
-            margin-right: calc(10px + (100 - 10) * ((100vw - 300px) / (1024 - 300)));
+            margin-right: calc(10px + (20 - 10) * ((100vw - 300px) / (1024 - 300)));
           }
         }
       }
@@ -49,8 +49,9 @@
       border: $line-1 solid $gray-3;
       transition: all .1s; 
       @media screen and (max-width: 1024px){
-        width: calc(21px + (46 - 21) * ((100vw - 300px) / (1024 - 300)));
-        height: calc(21px + (46 - 21) * ((100vw - 300px) / (1024 - 300))); 
+        width: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300)));
+        height: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300))); 
+        border: $line-1-mobile solid $gray-3;
       }
       &::after{
         position: absolute;
@@ -84,7 +85,7 @@
       left: auto;
       right: calc(134px + (656 - 134) * ((100vw - 1200px) / (3840 - 1200))); 
       @media screen and (max-width: 1024px){
-        right: calc(40px + (90 - 40) * ((100vw - 300px) / (1024 - 300)));
+        right: calc(50px + (110 - 50) * ((100vw - 300px) / (1024 - 300)));
       }
       &::after{
         background-image: url(../public/assets/icons/arrow_prev_icon.svg);
