@@ -12,6 +12,22 @@
         margin-bottom: calc(30px + (80 - 30) * ((100vw - 300px) / (1024 - 300)));
     } 
     span{
+        background-image: url(../../../public/assets/images/line_bottom_yellow.svg);
+        background-repeat: repeat-x;
+        background-size: 
+        calc(30px + (100 - 30) * ((100vw - 1200px) / (3840 - 1200)))
+        calc(10px + (20 - 10) * ((100vw - 1200px) / (3840 - 1200)));
+        background-position: bottom;
+        padding-bottom: calc(4px + (8 - 4) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            background-size: 
+            calc(21px + (80 - 21) * ((100vw - 300px) / (1024 - 300)))
+            calc(10px + (20 - 10) * ((100vw - 300px) / (1024 - 300)));
+            background-position: bottom;
+            padding-bottom: calc(4px + (8 - 4) * ((100vw - 300px) / (1024 - 300)));
+        }
+    }
+    /* span{
         position: relative; 
         z-index: 2;         
         &::before {              
@@ -29,5 +45,5 @@
                 bottom: calc(-1px + (-8 - -1) * ((100vw - 300px) / (1024 - 300)));
             } 
         }
-    }
+    } */
 }
