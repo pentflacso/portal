@@ -77,7 +77,7 @@ function Perfil(data){
                 spaceBetween={0}
                 slidesPerView={"auto"}
                 navigation={true}  
-                freeMode={true}   
+                freeMode={false}   
                 grabCursor={true} 
                 className={`${styles.carrousel_novedades} swiper-cards`}
             >
