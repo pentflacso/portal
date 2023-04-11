@@ -24,7 +24,7 @@
             grid-template-areas: 'close' 'btns';
             grid-template-columns: 100% 100%;
             padding: 
-            calc(25px + (35 - 25) * ((100vw - 300px) / (1200 - 300)))
+            calc(22px + (36 - 22) * ((100vw - 300px) / (1200 - 300)))
             calc(10px + (20 - 10) * ((100vw - 300px) / (1200 - 300)))
             0
             calc(10px + (20 - 10) * ((100vw - 300px) / (1200 - 300)))
@@ -34,13 +34,16 @@
         .sections{
             grid-area: btns;
             a{
-                @include btn-ver-mas;
+                @include btn-ver-mas;                
                 background-color: $white;
                 border-color: $green-2; 
                 margin-right: calc(12px + (30 - 12) * ((100vw - 1200px) / (3840 - 1200)));
                 @media screen and (max-width: 1024px){
+                    @include font-level-2;
                     display: table;
-                    margin-bottom: calc(8px + (16 - 8) * ((100vw - 300px) / (1200 - 300)));
+                    margin-left: auto;
+                    margin-right: 0;
+                    margin-bottom: calc(10px + (30 - 10) * ((100vw - 300px) / (1200 - 300)));
                 }
                 @media screen and (min-width: 1024px){
                     &:hover{
@@ -54,8 +57,8 @@
         
         .close_btn{
             grid-area: close;
-            @media screen and (max-width: 1024px){
-                margin-bottom: calc(25px + (40 - 25) * ((100vw - 300px) / (1200 - 300)));
+            @media screen and (max-width: 1024px){                
+                margin-bottom: calc(25px + (100 - 25) * ((100vw - 300px) / (1200 - 300)));
             }
             .menu_btn{                
                 @include btn-ver-mas;

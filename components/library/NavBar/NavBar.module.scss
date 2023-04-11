@@ -45,9 +45,10 @@
         calc(8px + (22 - 8) * ((100vw - 1200px) / (3840 - 1200)))
         calc(16px + (62 - 16) * ((100vw - 1200px) / (3840 - 1200)));
         @media screen and (max-width: 1024px){  
+            border: $line-1-mobile solid $green-2;
             padding: 
-            calc(6px + (16 - 6) * ((100vw - 300px) / (1200 - 300)))
-            calc(10px + (20 - 10) * ((100vw - 300px) / (1200 - 300)))
+            calc(6px + (14 - 6) * ((100vw - 300px) / (1200 - 300)))
+            calc(12px + (36 - 12) * ((100vw - 300px) / (1200 - 300)))
             ;     
         }
         &:hover{
