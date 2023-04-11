@@ -107,7 +107,7 @@ export default function Investigacion(data){
                 spaceBetween={0}
                 slidesPerView={"auto"}
                 navigation={true}  
-                freeMode={true}   
+                freeMode={false}   
                 grabCursor={true}  
                 className={`${styles.carrousel_projects} swiper-cards`}         
             >   

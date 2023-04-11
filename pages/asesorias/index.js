@@ -88,7 +88,7 @@ export default function Asesorias(data){
             spaceBetween={0}
             slidesPerView={"auto"}
             navigation={true}  
-            freeMode={true}   
+            freeMode={false}   
             grabCursor={false}    
             className={`${styles.carrousel_proyects} swiper-cards`}       
         >   
