@@ -78,7 +78,8 @@ $line-2: calc(3px + (6 - 3) * ((100vw - 1200px) / (3840 - 1200)));
     @include font-level-4;
     font-weight: 400;
     text-decoration: none;    
-    color: $deep-blue;    
+    color: $deep-blue;  
+    //line-height: 100%;  
     border: $line-1 solid $gray-3;
     border-radius: 50px;
     padding:

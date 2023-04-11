@@ -34,30 +34,22 @@
     }
 
    .menu_btn{
+        @include btn-ver-mas;
         background-color: transparent;
-        @include font-level-4;
-        font-weight: 400;
-        color: #032e59;
-        text-decoration: none;
-        border: $line-1 solid $green-2;
-        border-radius: 50px;
-        padding:
-        calc(8px + (22 - 8) * ((100vw - 1200px) / (3840 - 1200)))
-        calc(16px + (62 - 16) * ((100vw - 1200px) / (3840 - 1200)));
+        border-color: $green-2;  
         @media screen and (max-width: 1024px){  
-            border: $line-1-mobile solid $green-2;
-            padding: 
-            calc(6px + (14 - 6) * ((100vw - 300px) / (1200 - 300)))
-            calc(12px + (36 - 12) * ((100vw - 300px) / (1200 - 300)))
-            ;     
+            border-color: $green-2;
         }
-        &:hover{
-            background-color: $green-2;
-            transition: all .1s;
-        }
-        &:active{
-            filter: brightness(90%);
-            transform: scale(0.96);
-        }
+        @media screen and (min-width: 1024px){
+            &:hover{
+                background-color: $green-2;
+                border-color: $green-2;
+                color: $deep-blue;
+            }
+            &:active{
+                filter: brightness(90%);
+                transform: scale(0.96);
+            }
+        } 
     }    
 }

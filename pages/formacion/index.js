@@ -92,7 +92,7 @@ export default function Formacion(data){
                 spaceBetween={0}
                 slidesPerView={"auto"}
                 navigation={false}  
-                freeMode={true}   
+                freeMode={false}   
                 grabCursor={true}    
                 className={`${styles.carrousel_formacion} swiper-cards`}       
             >   

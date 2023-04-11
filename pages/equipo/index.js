@@ -71,7 +71,7 @@ export default function Equipo(data){
             spaceBetween={0}
             slidesPerView={"auto"}
             navigation={true}  
-            freeMode={true}   
+            freeMode={false}   
             grabCursor={false}  
             className={`${styles.carrousel_members} swiper-cards members`}                       
         >   
