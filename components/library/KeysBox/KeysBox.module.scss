@@ -15,25 +15,45 @@
         calc(20px + (55 - 20) * ((100vw - 1200px) / (3840 - 1200)))
         ;
         @media screen and (max-width: 1024px){
+            display: flex;
+            align-items: center;            
             width: 100%;
-            margin-bottom: calc(36px + (145 - 36) * ((100vw - 300px) / (1200 - 300)));
+            border-left: $line-1-mobile solid $gray-5;
+            padding: 
+            calc(5px + (45 - 5) * ((100vw - 300px) / (1200 - 300)))
+            0
+            calc(5px + (45 - 5) * ((100vw - 300px) / (1200 - 300)))
+            calc(10px + (55 - 10) * ((100vw - 300px) / (1200 - 300)))
+            ;
+            margin-bottom: calc(30px + (80 - 30) * ((100vw - 300px) / (1200 - 300)));
         }
 
-        img{
+        .icon{
             height: calc(82px + (225 - 82) * ((100vw - 1200px) / (3840 - 1200)));
-            width: auto;            
-            margin-bottom: calc(36px + (145 - 36) * ((100vw - 1200px) / (3840 - 1200)));
+            margin-bottom: calc(36px + (145 - 36) * ((100vw - 1200px) / (3840 - 1200)));            
             @media screen and (max-width: 1024px){
-                height: calc(82px + (225 - 82) * ((100vw - 300px) / (1200 - 300)));
-                margin-bottom: calc(25px + (40 - 25) * ((100vw - 300px) / (1200 - 300)));
+                display: flex;
+                justify-content: center;
+                height: calc(50px + (200 - 50) * ((100vw - 300px) / (1200 - 300)));
+                width: calc(110px + (510 - 110) * ((100vw - 300px) / (1200 - 300)));
+                margin-right: calc(22px + (88 - 22) * ((100vw - 300px) / (1200 - 300)));
+                margin-bottom: 0;
             }
-        }
+            img{
+                height: calc(82px + (225 - 82) * ((100vw - 1200px) / (3840 - 1200)));
+                width: auto;                            
+                @media screen and (max-width: 1024px){
+                    height: calc(50px + (200 - 50) * ((100vw - 300px) / (1200 - 300)));
+                }
+            }
+        }        
 
         p{
             @include font-level-3;
             font-weight: 400;
             line-height: 130%;
             color: $deep-blue;
+            width: 100%;
         }
         
     }

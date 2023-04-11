@@ -2,6 +2,9 @@
 
 .wrapper{   
     margin-bottom: calc(80px + (250 - 80) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(48px + (180 - 48) * ((100vw - 300px) / (1024 - 300)));
+    }
 
     .btn, .btnMedium{
         display: block;
@@ -10,9 +13,11 @@
         font-weight: 400;
         text-decoration: none;
         color: $deep-blue;
-        padding:
-        calc(24px + (84 - 24) * ((100vw - 1200px) / (3840 - 1200))) 0 ;
+        padding: calc(24px + (84 - 24) * ((100vw - 1200px) / (3840 - 1200))) 0 ;
         border-bottom: solid $line-1 $gray-5;
+        @media screen and (max-width: 1024px){
+            padding: calc(14px + (54 - 14) * ((100vw - 300px) / (1024 - 300))) 0 ;
+        }
         &:first-of-type{
             border-top: solid $line-1 $gray-5;
         }
@@ -23,8 +28,10 @@
             max-width: 0 auto;
         }
 
-        &:hover{
-            background-color: $yellow-2;
+        @media screen and (min-width: 1024px){
+            &:hover{
+                background-color: $yellow-2;
+            }
         }
     }
 

@@ -11,11 +11,17 @@
         .col_left, .col_right{
             width: 48%
         }  
+        .content{
+            width: 100%;
+        }
     }
 
     .show_more{
         @include btn-ver-mas;    
         display: block;
         margin: 0 auto 15vh auto;
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(50px + (175 - 50) * ((100vw - 300px) / (1024 - 300)));
+        }
     }
 }

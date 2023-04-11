@@ -20,7 +20,7 @@ $white: #FFFFFF;
 @mixin font-level-1 {
     font-size: calc(29px + (92 - 29) * ((100vw - 1200px) / (3840 - 1200)));
     @media screen and (max-width: 1024px){
-        font-size: calc(25px + (88 - 25) * ((100vw - 300px) / (1024 - 300)));
+        font-size: calc(23.5px + (85.5 - 23.5) * ((100vw - 300px) / (1024 - 300)));
     }
 }
 
@@ -34,7 +34,7 @@ $white: #FFFFFF;
 @mixin font-level-3 {
     font-size: calc(18px + (48 - 18) * ((100vw - 1200px) / (3840 - 1200)));
     @media screen and (max-width: 1024px){
-        font-size: calc(18px + (92 - 18) * ((100vw - 300px) / (1024 - 300)));
+        font-size: calc(14px + (48 - 14) * ((100vw - 300px) / (1024 - 300)));
     }
 }
 
@@ -153,12 +153,20 @@ $line-2: calc(3px + (6 - 3) * ((100vw - 1200px) / (3840 - 1200)));
     margin-left: calc(32px + (82 - 32) * ((100vw - 1200px) / (3840 - 1200)));
     color: $deep-blue;  
     text-decoration: none;    
+    @media screen and (max-width: 1024px){
+        width: 100%;
+        padding: calc(12px + (34 - 12) * ((100vw - 300px) / (1024 - 300)));
+        margin-left: 0;
+    }
     span{
         @include font-level-4; 
         font-weight: 400;
         line-height: 110%;
         border-bottom: $line-2 solid $yellow-1;
         margin-bottom: calc(32px + (100 - 32) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(25px + (75 - 25) * ((100vw - 300px) / (1024 - 300)));
+        }
     }
     h5{
         @include font-level-2; 
@@ -166,12 +174,18 @@ $line-2: calc(3px + (6 - 3) * ((100vw - 1200px) / (3840 - 1200)));
         line-height: 130%;
         width: 100%;
         margin-bottom: calc(32px + (100 - 32) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(15px + (55 - 15) * ((100vw - 300px) / (1024 - 300)));
+        }
     }
     p{
         @include font-level-4; 
         font-weight: 400;
         line-height: 140%;
         margin-bottom: calc(40px + (130 - 40) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(25px + (75 - 25) * ((100vw - 300px) / (1024 - 300)));
+        }
     }
     a{
         @include btn-ver-mas;

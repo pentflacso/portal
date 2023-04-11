@@ -1,3 +1,4 @@
+import { useAppContext } from '../../../context/AppContext';
 import { useEffect, useState } from 'react';
 import Marquee from "react-fast-marquee";
 import Link from "next/link";
@@ -6,6 +7,7 @@ import $ from "../../../node_modules/jquery";
 
 export default function NewsSelector({ data }){
     
+    const { windowSize } = useAppContext();
     const [ showNews, setShowNews ] = useState('none');
 
     return(
@@ -14,33 +16,48 @@ export default function NewsSelector({ data }){
                 {data.map((e, i) => {
                     
                     useEffect(() => {
-
-                        $(`.${styles.btn}.news-${i}`).on("mouseenter", function mouseEnterBtns() {
-                            setShowNews(i);
-                        });
-                        $(`.${styles.btn}.news-${i}`).on("mouseleave", function mouseEnterBtns() {
-                            setShowNews('none');                 
-                        });
-
+                        if(windowSize >= 1025){                            
+                            $(`.${styles.btn}.news-${i}`).on("mouseenter", function mouseEnterBtns() {
+                                setShowNews(i);
+                            });
+                            $(`.${styles.btn}.news-${i}`).on("mouseleave", function mouseEnterBtns() {
+                                setShowNews('none');                 
+                            });
+                        }
                     }, []);
-
-                    return (               
-                        
+                    
+                    return (         
                     <Link href={`/${e.path_id}`} className={`${styles.btn} news-${i}`} key={i}>
                         <div className={styles.arrow} />
-                        { showNews === i &&
-                            <div className={styles.description_marquee}>
-                                <Marquee speed="150" gradientWidth="0" direction="left">
-                                    <div dangerouslySetInnerHTML={{__html: e.description }} />
-                                    <div dangerouslySetInnerHTML={{__html: e.description }} />
-                                    <div dangerouslySetInnerHTML={{__html: e.description }} />
-                                </Marquee>      
-                            </div>      
-                        }         
-                        <span>{e.title}</span>                                       
-                    </Link>                 
-                                                        
+
+                        {windowSize >= 1025 ? 
+                        <>
+                            { showNews === i &&
+                                <div className={styles.description_marquee}>
+                                    <Marquee speed="150" gradientWidth="0" direction="left">
+                                        <div dangerouslySetInnerHTML={{__html: e.description }} />
+                                        <div dangerouslySetInnerHTML={{__html: e.description }} />
+                                        <div dangerouslySetInnerHTML={{__html: e.description }} />
+                                    </Marquee>      
+                                </div>      
+                            }
+                        </>
+                        :                     
+                        <div className={styles.description_marquee}>
+                            <h4>{e.title}&nbsp;—&nbsp;</h4>
+                            <p dangerouslySetInnerHTML={{__html: e.description }} />
+                        </div>                 
+                        }
+
+                        {windowSize >= 1025 ?   
+                        <>
+                            <span>{e.title}</span> 
+                        </>                             
+                        : ''       
+                        }                                  
+                    </Link>                                              
                     );
+
                 })}                                 
             </div>
 

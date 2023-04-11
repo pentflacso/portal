@@ -124,6 +124,9 @@
     
     &.members{    
       padding-bottom: calc(90px + (240 - 90) * ((100vw - 1200px) / (3840 - 1200)));
+      @media screen and (max-width: 1024px){
+        padding-bottom: calc(55px + (130 - 55) * ((100vw - 300px) / (1024 - 300)));
+      }
     }
   } 
 

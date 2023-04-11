@@ -1,5 +1,7 @@
 import { useAppContext } from '../../../context/AppContext';
 import { useState, useEffect } from 'react';
+import { Navigation } from 'swiper';
+import { Swiper, SwiperSlide } from "swiper/react";
 import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
 import styles from "./LeafsItem.module.scss";
@@ -79,8 +81,7 @@ export default function LeafsItem({ items }){
     return(
 
         <div className={styles.container}>
-            {windowSize >= 1025 ?
-            <>
+            {windowSize >= 1025 ?           
             <div className={`${styles.wrapper} ${leafsPosition}`}>
                 {
                     items.map((item, i) => {                   
@@ -93,24 +94,27 @@ export default function LeafsItem({ items }){
                         );
                     })
                 }
-            </div>
-            </>
+            </div>         
             :
-            <>
-            <div className={`${styles.wrapper}`}>
-                {
-                    items.map((item, i) => {                   
-                        return ( 
-                            <div key={i} className={styles.leaf_item}>
-                                <img src={item.img} alt="imagen" />
-                                <h5>{item.title}</h5>
-                                <p>{item.description}</p>
-                            </div> 
-                        );
-                    })
-                }
-            </div>
-            </>
+            <Swiper
+                modules={[Navigation]}
+                spaceBetween={0}
+                slidesPerView={"auto"}
+                navigation={true}    
+                className={`${styles.carrousel_formacion} swiper-cards`}       
+            >   
+            {
+            items.map((item, i) => (
+            <SwiperSlide key={i}>
+                <div className={styles.item_slide}>
+                    <img src={item.img} alt="imagen" />
+                    <h5>{item.title}</h5>
+                    <p>{item.description}</p>
+                </div>            
+            </SwiperSlide>
+            ))
+            }                            
+            </Swiper>
             }
 
         </div>        

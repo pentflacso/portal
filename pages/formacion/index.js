@@ -113,12 +113,10 @@ export default function Formacion(data){
         :
         <>
             <Swiper
-                modules={[Navigation, FreeMode]}
+                modules={[Navigation]}
                 spaceBetween={0}
                 slidesPerView={"auto"}
-                navigation={false}  
-                freeMode={false}   
-                grabCursor={true}    
+                navigation={false}     
                 className={`${styles.carrousel_formacion} swiper-cards`}       
             >   
             {

@@ -1,17 +1,27 @@
 @import "../../styles/themeStyles.module.scss";
 
 .marquee_1{
-    margin-bottom: calc(40px + (200 - 40) * ((100vw - 1200px) / (3840 - 1200)));    
+    margin-bottom: calc(40px + (200 - 40) * ((100vw - 1200px) / (3840 - 1200)));   
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(30px + (100 - 30) * ((100vw - 300px) / (1024 - 300)));
+    } 
 }
 
 .carrousel_members{
     margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(60px + (180 - 60) * ((100vw - 300px) / (1024 - 300)));
+    } 
 
     .member{
         display: block;
         width: calc(231px + (710 - 231) * ((100vw - 1200px) / (3840 - 1200)));        
         margin-left: calc(32px + (82 - 32) * ((100vw - 1200px) / (3840 - 1200)));
         text-decoration: none;
+        @media screen and (max-width: 1024px){
+            width: calc(180px + (600 - 180) * ((100vw - 300px) / (1024 - 300)));
+            margin-left: 0;
+        }
 
         .img_container{
             background-color: $gray-6;
@@ -21,6 +31,10 @@
             height: calc(320px + (1000 - 320) * ((100vw - 1200px) / (3840 - 1200)));
             margin-bottom: calc(8px + (24 - 8) * ((100vw - 1200px) / (3840 - 1200)));            
             transition: all .3s; 
+            @media screen and (max-width: 1024px){
+                height: calc(245px + (800 - 245) * ((100vw - 300px) / (1024 - 300)));
+                margin-bottom: calc(8px + (24 - 8) * ((100vw - 300px) / (1024 - 300)));         
+            }
             img{
                 width: 100%;
                 height: auto;
