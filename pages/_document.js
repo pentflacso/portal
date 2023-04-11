@@ -21,7 +21,6 @@ export default function Document() {
         <link rel="manifest" href="favicon/manifest.json" />
         <meta name="msapplication-TileColor" content="#ffffff" />
         <meta name="msapplication-TileImage" content="favicon/ms-icon-144x144.png" /> 
-        <meta name="theme-color" content="#032E59" />
 
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

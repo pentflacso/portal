@@ -5,11 +5,18 @@
     column-count: 2;
     column-gap: calc(50px + (120 - 50) * ((100vw - 1200px) / (3840 - 1200)));
     margin-bottom: calc(50px + (250 - 50) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        column-count: 1;
+        column-gap: 0;
+        margin-bottom: calc(30px + (100 - 30) * ((100vw - 300px) / (1024 - 300)));
+    }
     p{
         @include font-level-4;
         font-weight: 400;
         line-height: 140%;
         color: $deep-blue;
-        
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(25px + (55 - 25) * ((100vw - 300px) / (1024 - 300)));
+        }        
     }    
 }

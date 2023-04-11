@@ -12,9 +12,7 @@ import ParagraphAndButton from '../../components/asesorias/ParagraphAndButton/Pa
 import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
 import styles from "./asesorias.module.scss";
-//import Card from '../../components/library/Card/Card';
-//import React, { useRef, useState } from "react";
-//import CarrouselCards from '../../components/asesorias/CarrouselCards/CarrouselCards';
+
 
 export default function Asesorias(data){
 
@@ -65,9 +63,7 @@ export default function Asesorias(data){
     <>
         <PageHeading title={data.PageHeading} margin_bottom_type={0} />
 
-        <LeafsItem items={data.courses} />
-        
-        {/* <CarrouselCards items={data.courses} margin_bottom_type={0} /> */}        
+        <LeafsItem items={data.courses} />       
 
         <div className={styles.marquee_1}>
             <TextMarquee data={data.marquee1} />

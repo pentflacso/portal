@@ -36,6 +36,9 @@
         0
         calc(75px + (235 - 75) * ((100vw - 1200px) / (3840 - 1200)))
         0;  
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(50px + (150 - 50) * ((100vw - 300px) / (1024 - 300)));
+        }
              
         .btn_filter{
             @include btn-ver-mas;

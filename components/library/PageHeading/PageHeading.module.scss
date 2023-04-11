@@ -49,15 +49,21 @@
     &.margin_bottom_0{
         margin-bottom: calc(70px + (220 - 70) * ((100vw - 1200px) / (3840 - 1200)));
         @media screen and (max-width: 1024px){
-            margin-bottom: calc(40px + (110 - 40) * ((100vw - 300px) / (1024 - 300)));
+            margin-bottom: calc(40px + (140 - 40) * ((100vw - 300px) / (1024 - 300)));
         }
     }
 
     &.margin_bottom_1{
         margin-bottom: calc(40px + (140 - 40) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(30px + (110 - 30) * ((100vw - 300px) / (1024 - 300)));
+        }
     }
 
     &.margin_bottom_2{
         margin-bottom: calc(90px + (220 - 90) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(50px + (150 - 50) * ((100vw - 300px) / (1024 - 300)));
+        }
     }
 }

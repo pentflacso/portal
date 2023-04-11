@@ -3,6 +3,9 @@
 .wrapper{
     .marquee_btns{   
         margin-bottom: calc(35px + (110 - 35) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(18px + (68 - 18) * ((100vw - 300px) / (1024 - 300)));
+        }
 
         .btn{
             position: relative;
@@ -19,7 +22,7 @@
             border-bottom: $line-1 solid $gray-5;
             @media screen and (max-width: 1024px){
                 padding:
-                calc(18px + (40 - 18) * ((100vw - 300px) / (1024 - 300)))
+                calc(18px + (64 - 18) * ((100vw - 300px) / (1024 - 300)))
                 0
                 ;
             }
@@ -44,7 +47,9 @@
                 border-radius: 50%;
                 z-index: 10;
                 @media screen and (max-width: 1024px){
-                    display: none;
+                    width: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300)));
+                    height: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300))); 
+                    right: calc(10px + (22 - 10) * ((100vw - 300px) / (1024 - 300)));
                 }
             }
 
@@ -64,6 +69,28 @@
                 top: 0;
                 bottom: 0;
                 background-color: $yellow-2;
+                span{
+                    display: inline;                    
+                }
+                h4, p{
+                    font-weight: 400;
+                }
+                @media screen and (max-width: 1024px){
+                    position: relative;
+                    display: block;
+                    background-color: transparent;
+                    @include container-width-1;   
+                    padding-right: calc(50px + (150 - 50) * ((100vw - 300px) / (1024 - 300)));
+                    h4, p{
+                        display: inline;
+                    }   
+                    p{
+                        color: $gray-2;
+                    }               
+                    span{
+                        display: none;                    
+                    }
+                }
             }
 
         }
@@ -96,6 +123,12 @@
                 background-color: $white;                
                 border-radius: 50%;
                 border: $line-1 solid $gray-3;
+                @media screen and (max-width: 1024px){
+                    width: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300)));
+                    height: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300))); 
+                    margin-left: calc(4px + (8 - 4) * ((100vw - 300px) / (1024 - 300)));
+                    border: $line-1-mobile solid $gray-3;
+                }
                 img{
                     width: 55%;
                     height: auto;

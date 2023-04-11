@@ -1,9 +1,12 @@
+import { useAppContext } from '../../../context/AppContext';
 import { useEffect, useState, Fragment  } from 'react';
 import Card from '../Card/Card';
 import styles from "./ArticlesList.module.scss";
 
 
 export default function ArticlesList({ data }){
+
+    const { windowSize } = useAppContext();
 
     //Data a utilizar
     const [dataToUse, setDataToUse] = useState(data);
@@ -49,6 +52,8 @@ export default function ArticlesList({ data }){
 
             <div className={styles.containerList}>
 
+            {windowSize >= 1025 ?
+            <>
                 {dataLimit.length !== 0 ?  
                 <>
                     <div className={styles.col_left}>
@@ -73,6 +78,23 @@ export default function ArticlesList({ data }){
                 </>
                 : <p>No se encontraron resultados</p>
                 }
+            </>
+            :
+            <>
+                {dataLimit.length !== 0 ?  
+                    <div className={styles.content}>
+                        {dataLimit.map((data, key) => {
+                            return (
+                                <Fragment key={key}>                    
+                                    <Card { ...data}/>
+                                </Fragment>                                        
+                            );
+                        })}
+                    </div>
+                : <p>No se encontraron resultados</p>
+                }
+            </>
+            }
 
             </div>
 

@@ -5,6 +5,11 @@
     column-count: 4;
     column-gap: calc(74px + (272 - 74) * ((100vw - 1200px) / (3840 - 1200)));
     margin-bottom: calc(74px + (272 - 74) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+      column-count: 2;
+      column-gap: calc(25px + (125 - 25) * ((100vw - 300px) / (1024 - 300)));
+      margin-bottom: calc(60px + (180 - 60) * ((100vw - 300px) / (1024 - 300)));
+    } 
 
     h2{
       @include font-level-1;
@@ -12,11 +17,18 @@
       line-height: 60%;
       color: $deep-blue;
       margin-bottom: calc(48px + (100 - 48) * ((100vw - 1200px) / (3840 - 1200)));
+      @media screen and (max-width: 1024px){
+        margin-bottom: calc(30px + (110 - 30) * ((100vw - 300px) / (1024 - 300)));
+      }
     }
 
     .team_area{
       margin-bottom: calc(22px + (50 - 22) * ((100vw - 1200px) / (3840 - 1200)));
       padding-left: calc(1px + (3 - 1) * ((100vw - 1200px) / (3840 - 1200)));
+      @media screen and (max-width: 1024px){
+        margin-bottom: calc(15px + (45 - 15) * ((100vw - 300px) / (1024 - 300)));
+        padding-left: 0;
+      }
       &:last-of-type{
         margin-bottom: 0;
         padding-bottom: calc(125px + (315 - 125) * ((100vw - 1200px) / (3840 - 1200)));

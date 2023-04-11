@@ -2,16 +2,10 @@
 
 .acordeon{
     width: calc(1128px + (3102 - 1128) * ((100vw - 1200px) / (3840 - 1200)));
-    margin: 0 auto;
-
-   /*  @media screen and (max-width: 1025px){  
-        width: calc(270px + (1050 - 270) * ((100vw - 300px) / (1200 - 300)));
-        margin: 
-        0 
-        auto 
-        calc(32px + (80 - 32) * ((100vw - 300px) / (1200 - 300)))
-        auto;           
-    } */
+    margin: 0 auto;  
+    @media screen and (max-width: 1024px){
+        @include container-width-1; 
+    }
 
     .area{
             position: relative;
@@ -21,19 +15,14 @@
             transition: all .3s;                  
             margin: 0 auto;                
             border-bottom: $line-1 solid $gray-5;
-/*             @media screen and (max-width: 1025px){
-                border-top: calc(0.5px + (1 - 0.5) * ((100vw - 300px) / (1024 - 300))) solid #032e59;
-                border-bottom: calc(0.5px + (1 - 0.5) * ((100vw - 300px) / (1024 - 300))) solid #032e59;                        
-                opacity: .15;
-                &:nth-child(2), &:nth-child(3), &:nth-child(4){
-                    margin-top: calc(-0.5px + (-1 - -0.5) * ((100vw - 300px) / (1024 - 300)));
-                }
-            } */
+            @media screen and (max-width: 1024px){
+                border-bottom: $line-1-mobile solid $gray-5;                     
+            }
             &:first-of-type{
                 border-top: $line-1 solid $gray-5;
-/*                 @media screen and (max-width: 1025px){
-                    border-top: calc(0.5px + (1 - 0.5) * ((100vw - 300px) / (1024 - 300))) solid #032e59;
-                } */
+                @media screen and (max-width: 1024px){
+                    border-top: $line-1-mobile solid $gray-5;                       
+                }
             }                    
 
             &.cerrar{
@@ -41,9 +30,9 @@
                 .wrapper{
                     padding-bottom: calc(24px + (66 - 24) * ((100vw - 1200px) / (3840 - 1200)));
                     transition: all .3s;
-/*                     @media screen and (max-width: 1025px){ 
-                        padding-bottom: calc(14px + (90 - 14) * ((100vw - 300px) / (1200 - 300)));
-                    } */
+                    @media screen and (max-width: 1024px){
+                        padding-bottom: calc(18px + (72 - 18) * ((100vw - 300px) / (1024 - 300)));
+                    }
 
                     .panel{    
                         transition: all .3s;
@@ -52,6 +41,9 @@
                             color: $deep-blue;
                             height: auto;
                             margin-bottom: calc(25px + (100 - 25) * ((100vw - 1200px) / (3840 - 1200)));
+                            @media screen and (max-width: 1024px){
+                                margin-bottom: calc(12px + (44 - 12) * ((100vw - 300px) / (1024 - 300)));
+                            }
                         }
                         .js_link{
                             background-color: $green-2;
@@ -62,10 +54,7 @@
 
         .wrapper{
             @include container-width-1;   
-            transition: all .3s;    
-/*             @media screen and (max-width: 1025px){ 
-                width: 87.5%; 
-            } */  
+            transition: all .3s;   
                     
             .panel{
                 transition: all .3s;
@@ -86,16 +75,11 @@
                     height: auto;
                     margin: calc(24px + (66 - 24) * ((100vw - 1200px) / (3840 - 1200))) 0;
                     transition: all .5s;
-/*                     @media screen and (max-width: 1025px){  
-                        font-size: calc(16px + (40 - 16) * ((100vw - 300px) / (1200 - 300)));
-                        font-weight: 500;
-                        padding:
-                        calc(13px + (22 - 13) * ((100vw - 300px) / (1025 - 300)))
-                        0
-                        calc(2px + (4 - 2) * ((100vw - 300px) / (1025 - 300)))
-                        0
-                        ;      
-                    } */
+                    @media screen and (max-width: 1024px){
+                        line-height: 135%;
+                        margin: calc(14px + (54 - 14) * ((100vw - 300px) / (1024 - 300))) 0;
+                        padding-right: calc(50px + (150 - 50) * ((100vw - 300px) / (1024 - 300)));
+                    }
                 }
                 
                 .js_link{
@@ -115,9 +99,14 @@
                     align-items: center;
                     text-decoration: none;
                     border: $line-1 solid transparent;
-/*                     @media screen and (max-width: 1025px){  
-                        display: none;   
-                    } */
+                    @media screen and (max-width: 1024px){
+                        width: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300)));
+                        height: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300))); 
+                        font-size: calc(13px + (32 - 13) * ((100vw - 300px) / (1024 - 300)));
+                        border: $line-1-mobile solid transparent;
+                        top: calc(-2px + (18 - -2) * ((100vw - 300px) / (1024 - 300)));
+                        right: 2px;
+                    }
                     &:hover{
                         border: $line-1 solid $green-2;
                     }                                                
@@ -128,20 +117,17 @@
                 height: 0;
                 cursor: text;
                 padding: 0;
-/*                 @media screen and (max-width: 1025px){
-                    height: auto;
-                    padding-bottom: calc(26px + (50 - 26) * ((100vw - 300px) / (1025 - 300)));
-                } */
                 p{                                                      
                     @include font-level-4;
                     line-height: 144%;
                     max-width: calc(550px + (1550 - 550) * ((100vw - 1200px) / (3840 - 1200)));
                     color: $deep-blue;
                     margin: 0;
-/*                     @media screen and (max-width: 1025px){  
-                        font-size: calc(11px + (20 - 11) * ((100vw - 300px) / (1025 - 300))); 
-                        max-width: 100%;                             
-                    } */
+                    @media screen and (max-width: 1024px){
+                        line-height: 140%;
+                        max-width: 100%;
+                        padding-right: calc(50px + (150 - 50) * ((100vw - 300px) / (1024 - 300)));
+                    }
                     strong{
                         font-weight: 700;
                     }

@@ -2,22 +2,38 @@
 
 .marquee_1{
     margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(30px + (100 - 30) * ((100vw - 300px) / (1024 - 300)));
+    }
 }
 
 .highlight_paragraph{
     @include container-width-1;
     margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(45px + (145 - 45) * ((100vw - 300px) / (1024 - 300)));
+    }
 }
 
 .keys_box{
-    margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+    margin-bottom: calc(110px + (290 - 110) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(75px + (165 - 75) * ((100vw - 300px) / (1024 - 300)));
+    }
 }
 
 .carrousel_proyects{
     margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(35px + (100 - 35) * ((100vw - 300px) / (1024 - 300)));
+    }
     .card_proyect{
         width: calc(450px + (1320 - 450) * ((100vw - 1200px) / (3840 - 1200)));
         margin-left: calc(32px + (82 - 32) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            width: calc(255px + (880 - 255) * ((100vw - 300px) / (1024 - 300)));
+            margin-left: 0;
+        }
         img{
             width: 100%;
             height: auto;
@@ -33,4 +49,7 @@
 
 .brands_marquee{
     margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(35px + (100 - 35) * ((100vw - 300px) / (1024 - 300)));
+    }
 }

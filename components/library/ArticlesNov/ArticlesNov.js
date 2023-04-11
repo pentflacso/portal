@@ -1,9 +1,13 @@
+import { useAppContext } from '../../../context/AppContext';
 import { useEffect, useState, Fragment  } from 'react';
 import Card from '../Card/Card';
 import styles from "./ArticlesNov.module.scss";
 
 
 export default function ArticlesNov({ data, category }){
+
+    const { windowSize } = useAppContext();
+
 	//Cantidad de notas a pedir
 	const NOTES_TO_FETCH = 12;
 	//cantidad de notas a mostrar
@@ -80,6 +84,8 @@ export default function ArticlesNov({ data, category }){
 
             <div className={styles.containerList}>
 
+            {windowSize >= 1025 ?
+            <>
                 {notesToShow.length !== 0 ?  
                 <>
                     <div className={styles.col_left}>
@@ -104,6 +110,23 @@ export default function ArticlesNov({ data, category }){
                 </>
                 : <p>No se encontraron resultados</p>
                 }
+            </>
+            :
+            <>
+                {notesToShow.length !== 0 ?
+                    <div className={styles.content}>
+                        {notesToShow.map((data, key) => {
+                            return (
+                                <Fragment key={key}>                    
+                                   <Card { ...data}/>
+                                </Fragment>                                        
+                            );
+                        })}
+                    </div>
+                : <p>No se encontraron resultados</p>
+                }
+            </>
+            }
 
             </div>
 
