@@ -5,6 +5,7 @@
 {
     margin: 0;
     box-sizing: border-box;
+    text-size-adjust: 50%;
 }
 
 html, body, #__next {
@@ -12,7 +13,6 @@ html, body, #__next {
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    text-size-adjust: none;
     font-family: 'Roboto', sans-serif; 
     overscroll-behavior-y: none;
     overflow: hidden;  
