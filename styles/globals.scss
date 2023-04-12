@@ -12,12 +12,12 @@ html, body, #__next {
     margin: 0;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    text-size-adjust: none;
     font-family: 'Roboto', sans-serif; 
     overscroll-behavior-y: none;
     overflow: hidden;  
     @media screen and (max-width: 1024px){
-      //chequear 100vw
-      width: 100vw;
+      width: 100%;
       overflow: visible; 
       overscroll-behavior-y: auto;
       padding-top: calc(35px + (80 - 35) * ((100vw - 300px) / (1024 - 300)));
