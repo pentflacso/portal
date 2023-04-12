@@ -41,14 +41,14 @@ $white: #FFFFFF;
 @mixin font-level-4 {
     font-size: calc(14.5px + (36 - 14.5) * ((100vw - 1200px) / (3840 - 1200)));
     @media screen and (max-width: 1024px){
-        font-size: calc(11.5px + (28 - 11.5) * ((100vw - 300px) / (1024 - 300)));
+        font-size: calc(12px + (28 - 12) * ((100vw - 300px) / (1024 - 300)));
     }
 }
 
 @mixin font-level-5 {
     font-size: calc(12px + (30 - 12) * ((100vw - 1200px) / (3840 - 1200)));
     @media screen and (max-width: 1024px){
-        font-size: calc(9px + (28 - 9) * ((100vw - 300px) / (1024 - 300)));
+        font-size: calc(10px + (28 - 10) * ((100vw - 300px) / (1024 - 300)));
     }
 }
 

@@ -20,7 +20,7 @@
             flex-direction: column;
             justify-content: space-between;
             @media screen and (max-width: 1024px){
-                height: calc(160px + (360 - 160) * ((100vw - 300px) / (1024 - 300)));
+                height: calc(164px + (360 - 164) * ((100vw - 300px) / (1024 - 300)));
             }
             h5{
                 margin-bottom: 0;
