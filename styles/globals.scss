@@ -16,6 +16,8 @@ html, body, #__next {
     overscroll-behavior-y: none;
     overflow: hidden;  
     @media screen and (max-width: 1024px){
+      //chequear 100vw
+      width: 100vw;
       overflow: visible; 
       overscroll-behavior-y: auto;
       padding-top: calc(35px + (80 - 35) * ((100vw - 300px) / (1024 - 300)));
