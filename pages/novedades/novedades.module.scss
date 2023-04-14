@@ -12,6 +12,9 @@
     display: flex;
     align-items: center;
     @include container-width-1;
+    @media screen and (max-width: 1024px){
+        width: 100%;
+    }
 
     .menu_btn{
         @include btn-ver-mas;
@@ -24,23 +27,27 @@
         calc(75px + (235 - 75) * ((100vw - 1200px) / (3840 - 1200)))
         0;  
         @media screen and (max-width: 1024px){
+            width: 95%;
             margin-bottom: calc(50px + (150 - 50) * ((100vw - 300px) / (1024 - 300)));
         }
         .btn_filter{
             @include btn-ver-mas;
             border-color: $gray-2;
             text-transform: capitalize;
-            margin: 6px 0;
+            margin-right: calc(6px + (20 - 6) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1024px){
+                margin-right: calc(5px + (10 - 5) * ((100vw - 300px) / (1024 - 300)));
+            }
+            &.active{
+                background-color: $green-2;
+                border-color: $green-2;
+            }
             @media screen and (min-width: 1024px){
                 &:hover{
                     background-color: $gray-6;
                     border-color: $gray-2;
                     color: $deep-blue;
-                }
-                &.active{
-                    background-color: $green-2;
-                    border-color: $green-2;
-                }
+                }                
             }            
         }
     }

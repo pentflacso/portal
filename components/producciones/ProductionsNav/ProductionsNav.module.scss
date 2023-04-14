@@ -5,6 +5,9 @@
     align-items: baseline;
     justify-content: space-between;
     @include container-width-1;
+    @media screen and (max-width: 1024px){
+        width: 100%;
+    }
 
     .menu_btn{
         @include btn-ver-mas;
@@ -15,6 +18,20 @@
             width: calc(18px + (46 - 18) * ((100vw - 1200px) / (3840 - 1200)));
             height: auto;
             margin-left: calc(10px + (28 - 10) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1024px){
+                width: calc(13px + (28 - 13) * ((100vw - 300px) / (1024 - 300)));
+                margin: 0 auto;
+            }
+        }
+        @media screen and (max-width: 1024px){
+            padding: 0;
+            display: inline-block;
+            margin-right: calc(12px + (22 - 12) * ((100vw - 300px) / (1024 - 300)));
+            width: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300)));
+            height: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300))); 
+            span{
+                display: none;
+            }
         }
         @media screen and (min-width: 1025px){
             &:hover{
@@ -37,22 +54,27 @@
         calc(75px + (235 - 75) * ((100vw - 1200px) / (3840 - 1200)))
         0;  
         @media screen and (max-width: 1024px){
+            width: calc(250px + (920 - 250) * ((100vw - 300px) / (1024 - 300))); 
             margin-bottom: calc(50px + (150 - 50) * ((100vw - 300px) / (1024 - 300)));
         }
              
         .btn_filter{
             @include btn-ver-mas;
             border-color: $gray-2;
+            margin-right: calc(6px + (20 - 6) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1024px){
+                margin-right: calc(5px + (10 - 5) * ((100vw - 300px) / (1024 - 300)));
+            }
+            &.active{
+                background-color: $green-2;
+                border-color: $green-2;
+            }
             @media screen and (min-width: 1024px){
                 &:hover{
                     background-color: $gray-6;
                     border-color: $gray-2;
                     color: $deep-blue;
-                }
-                &.active{
-                    background-color: $green-2;
-                    border-color: $green-2;
-                }
+                }                
             }            
         }
     }
