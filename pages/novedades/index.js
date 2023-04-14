@@ -77,10 +77,11 @@ function Novedades(d){
         <div className={styles.filters_cont}>
             <Swiper
             modules={[Navigation, FreeMode]}
-            spaceBetween={10}
+            spaceBetween={0}
             slidesPerView={"auto"}
-            navigation   
-            freeMode={true} 
+            navigation={true}  
+            freeMode={true}
+            grabCursor={true}
             className={`${styles.category} swiper-btns`}    
             >       
                 <SwiperSlide> 

@@ -83,14 +83,15 @@ export default function ProductionsNav(){
             {
                 advancedFilterStatus === true && reactDom.createPortal(<ProductionsAdvancedFilters changeAdvancedFilterStatus={changeAdvancedFilterStatus} stateCurrentHashtag={stateCurrentHashtag} />, document.getElementById("modal-root"))
             }
-
+   
             <div className={styles.wrapper}>     
                 <Swiper
                 modules={[Navigation, FreeMode]}
-                spaceBetween={10}
+                spaceBetween={0}
                 slidesPerView={"auto"}
-                navigation   
+                navigation={true}  
                 freeMode={true}
+                grabCursor={true}
                 className={`${styles.hashtags} swiper-btns`}
                 >
                     <SwiperSlide>  
@@ -107,7 +108,7 @@ export default function ProductionsNav(){
                         
                 </Swiper>
 
-                <button type="button" className={styles.menu_btn} onClick={ () => changeAdvancedFilterStatus(true) }>Filtros <img src="/assets/icons/filter_icon.svg" alt="icono de filtro" className={styles.filter_icon}/></button>
+                <button type="button" className={styles.menu_btn} onClick={ () => changeAdvancedFilterStatus(true) }><span>Filtros</span><img src="/assets/icons/filter_icon.svg" alt="icono de filtro" className={styles.filter_icon}/></button>
             
             </div>                     
         </>       

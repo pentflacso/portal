@@ -21,14 +21,27 @@
             0
             calc(30px + (120 - 30) * ((100vw - 1200px) / (3840 - 1200)))
             0;   
+            @media screen and (max-width: 1024px){
+                padding:
+                calc(21px + (34 - 21) * ((100vw - 300px) / (1024 - 300))) 
+                0
+                calc(14px + (20 - 14) * ((100vw - 300px) / (1024 - 300))) 
+                0;
+            }
 
             .close_btn, .btn_filter{
                 @include btn-ver-mas;
+                @media screen and (max-width: 1024px){
+                    margin-bottom: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300)));
+                }
             }
 
             .close_btn{
                 display: flex;
                 margin-left: auto;
+                @media screen and (max-width: 1024px){
+                    margin-right: -5px;
+                }
             }
 
             .search_bar{     
@@ -53,6 +66,17 @@
                 0
                 ;
                 margin-bottom: calc(32px + (62 - 32) * ((100vw - 1200px) / (3840 - 1200)));
+                @media screen and (max-width: 1024px){
+                    @include container-width-1;  
+                    background-size: calc(14px + (36 - 14) * ((100vw - 300px) / (1024 - 300))) auto; 
+                    padding:
+                    calc(7px + (22 - 7) * ((100vw - 300px) / (1024 - 300)))
+                    calc(14px + (40 - 14) * ((100vw - 300px) / (1024 - 300)))
+                    calc(7px + (22 - 7) * ((100vw - 300px) / (1024 - 300)))
+                    0
+                    ;
+                    margin-bottom: calc(15px + (35 - 15) * ((100vw - 300px) / (1024 - 300)));
+                }
                 &::placeholder {                      
                     color: $gray-2;
                 }
@@ -68,6 +92,10 @@
                 @include inner-width;
                 margin-bottom: calc(54px + (136 - 54) * ((100vw - 1200px) / (3840 - 1200)));
                 display: flex;
+                @media screen and (max-width: 1024px){
+                    @include container-width-1;  
+                    margin-bottom: calc(35px + (80 - 35) * ((100vw - 300px) / (1024 - 300)));
+                }
                 .switch_btn{
                     @include font-level-4;
                     color: $deep-blue;
@@ -81,9 +109,15 @@
                         height: auto;
                         margin-left: calc(6px + (10 - 6) * ((100vw - 1200px) / (3840 - 1200)));
                         transition: all .1s; 
+                        @media screen and (max-width: 1024px){
+                            width: calc(6px + (12 - 6) * ((100vw - 300px) / (1024 - 300)));
+                        }
                     }
                     &:first-of-type{
                         margin-right: calc(32px + (62 - 32) * ((100vw - 1200px) / (3840 - 1200)));
+                        @media screen and (max-width: 1024px){
+                            margin-right: calc(16px + (46 - 16) * ((100vw - 300px) / (1024 - 300)));
+                        }
                     }
                     &.active{
                         opacity: 1;
@@ -96,6 +130,9 @@
 
             .filter_tags{
                 @include inner-width;
+                @media screen and (max-width: 1024px){
+                    @include container-width-1;  
+                }
                 .btn_filter{
                     margin: 
                     0
@@ -103,6 +140,13 @@
                     calc(8px + (24 - 8) * ((100vw - 1200px) / (3840 - 1200)))
                     0;
                     color: $gray-1;
+                    @media screen and (max-width: 1024px){
+                        margin: 
+                        0
+                        calc(4px + (10 - 4) * ((100vw - 300px) / (1024 - 300)))
+                        calc(6px + (14 - 6) * ((100vw - 300px) / (1024 - 300)))
+                        0;
+                    }
                     @media screen and (min-width: 1024px){
                         &:hover{
                             color: $white;

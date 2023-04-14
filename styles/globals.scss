@@ -45,6 +45,10 @@ button{
   left: 0;
   right: 0;
   z-index: 2200;
+  @media screen and (max-width: 1024px){
+    position: fixed;  
+    top: 0;
+  }
 }
 
 
