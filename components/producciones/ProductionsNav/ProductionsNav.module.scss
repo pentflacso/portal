@@ -48,19 +48,15 @@
 
     .hashtags{
         width: calc(880px + (2400 - 880) * ((100vw - 1200px) / (3840 - 1200))); 
-        margin:
-        0
-        0
-        calc(75px + (235 - 75) * ((100vw - 1200px) / (3840 - 1200)))
-        0;  
+        margin: 0;  
         @media screen and (max-width: 1024px){
             width: calc(250px + (920 - 250) * ((100vw - 300px) / (1024 - 300))); 
-            margin-bottom: calc(50px + (150 - 50) * ((100vw - 300px) / (1024 - 300)));
         }
              
         .btn_filter{
             @include btn-ver-mas;
-            border-color: $gray-2;
+            background-color: $white;
+            color: $gray-1;
             margin-right: calc(6px + (20 - 6) * ((100vw - 1200px) / (3840 - 1200)));
             @media screen and (max-width: 1024px){
                 margin-right: calc(5px + (10 - 5) * ((100vw - 300px) / (1024 - 300)));
@@ -68,6 +64,11 @@
             &.active{
                 background-color: $green-2;
                 border-color: $green-2;
+                color: $deep-blue;
+                &:hover{
+                    background-color: $green-2;
+                    border-color: $green-2;
+                }
             }
             @media screen and (min-width: 1024px){
                 &:hover{

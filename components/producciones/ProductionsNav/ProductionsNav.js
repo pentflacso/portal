@@ -9,7 +9,7 @@ import styles from "./ProductionsNav.module.scss";
 
 export default function ProductionsNav(){
 
-    const { dataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList } = useAppContext();
+    const { dataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, scrollbarCurrent } = useAppContext();
     
     const [advancedFilterStatus, setAdvancedFilterStatus] = useState(false);
 
@@ -77,9 +77,9 @@ export default function ProductionsNav(){
         }        
     }, [dataArticles, hashtagsArticlesList, authorsArticlesList]); 
 
+
     return(
         <>
-
             {
                 advancedFilterStatus === true && reactDom.createPortal(<ProductionsAdvancedFilters changeAdvancedFilterStatus={changeAdvancedFilterStatus} stateCurrentHashtag={stateCurrentHashtag} />, document.getElementById("modal-root"))
             }
@@ -90,7 +90,7 @@ export default function ProductionsNav(){
                 spaceBetween={0}
                 slidesPerView={"auto"}
                 navigation={true}  
-                freeMode={true}
+                freeMode={false}
                 grabCursor={true}
                 className={`${styles.hashtags} swiper-btns`}
                 >

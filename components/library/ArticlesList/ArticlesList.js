@@ -47,8 +47,7 @@ export default function ArticlesList({ data }){
 
 
     return( 
-        <div className={styles.wrapper
-        }>
+        <div className={styles.wrapper}>
 
             <div className={styles.containerList}>
 

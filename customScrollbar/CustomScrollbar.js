@@ -15,7 +15,7 @@ export default function Layout({ children, ...rest }) {
 
     scrollbar.current = SmoothScrollbar.init(contentScroll, {
       damping: 0.075,
-      delegateTo: document.querySelector('#content-root'),
+      delegateTo: document.querySelector('#scroll-container'),
     });
 
     scrollbar.current.setPosition(0, 0);
@@ -45,18 +45,19 @@ export default function Layout({ children, ...rest }) {
       }, 1000);      
 
 
-    return () => {      
-      if (scrollbar.current) {
+   // return () => {      
+     /*  if (scrollbar.current) {
         scrollbar.current.destroy();
         scrollbar.current = null;
-      }
-    };
+      } */
+
+    //};
     
   }, []);
 
 
   return (
-    <div data-scrollbar ref={$content} {...rest} id="#content-root">
+    <div data-scrollbar ref={$content} {...rest} id="scroll-container">
       <div className="container">{children}</div>
     </div>
   );

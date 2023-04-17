@@ -1,11 +1,13 @@
 import { useRouter } from 'next/router';
+import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
+import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import Link from 'next/link';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
-//import ArticlesList from '../../components/library/ArticlesList/ArticlesList';
 import ArticlesNov from '../../components/library/ArticlesNov/ArticlesNov';
+import Footer from '../../components/library/Footer/Footer';
 import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { gsap, Back, Elastic } from 'gsap';
@@ -19,6 +21,8 @@ function Index(d){
     //Router
     const router = useRouter();
     const {category} = router.query;
+
+    const { windowSize } = useAppContext(); 
 
     const exploringBtnsData = [
         {title: 'Formación', path: 'formacion'},
@@ -76,10 +80,11 @@ function Index(d){
 
     return(
     <>
-        <PageHeading title="<h1><span>Novedades</span></h1>" margin_bottom_type={1} />
-
-        <div className={styles.filters_cont}>
-            <Swiper
+        {windowSize >= 1025 ?
+        <CustomScrollbar> 
+            <PageHeading title="<h1><span>Novedades</span></h1>" margin_bottom_type={1} />
+            <div className={styles.filters_cont}>
+                <Swiper
                 modules={[Navigation, FreeMode]}
                 spaceBetween={0}
                 slidesPerView={"auto"}
@@ -100,14 +105,46 @@ function Index(d){
                         })}
                 </Swiper>          
             </div>
-
-        <ArticlesNov data={data} category={category} />
-
-        <div className={styles.marquee}>
-            <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
-        </div>
-
-        <ExploringBtns data={exploringBtnsData} />
+            <ArticlesNov data={data} category={category} />
+            <div className={styles.marquee}>
+                <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+            </div>
+            <ExploringBtns data={exploringBtnsData} />
+            <Footer />
+        </CustomScrollbar> 
+        :
+        <>
+            <PageHeading title="<h1><span>Novedades</span></h1>" margin_bottom_type={1} />
+            <div className={styles.filters_cont}>
+                <Swiper
+                modules={[Navigation, FreeMode]}
+                spaceBetween={0}
+                slidesPerView={"auto"}
+                navigation={true}  
+                freeMode={true}
+                grabCursor={true}
+                className={`${styles.category} swiper-btns`}
+                >             
+                    <SwiperSlide> 
+                        <Link href="/novedades/" className={styles.btn_filter}>Todos</Link>
+                    </SwiperSlide>
+                        {filtro && filtro.map((c, key) => {
+                            return (
+                                <SwiperSlide key={key}> 
+                                    <Link href={"/novedades/"+ c} className={category == c ? `${styles.btn_filter} ${styles.active}` : styles.btn_filter }>{c}</Link>
+                                </SwiperSlide>
+                            );
+                        })}
+                </Swiper>          
+            </div>
+            <ArticlesNov data={data} category={category} />
+            <div className={styles.marquee}>
+                <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+            </div>
+            <ExploringBtns data={exploringBtnsData} />
+            <Footer />
+        </>
+       }
     </>
     )
 }

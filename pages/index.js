@@ -1,19 +1,22 @@
+import { useAppContext } from '../context/AppContext';
 import { useEffect } from 'react';
+import CustomScrollbar from '../customScrollbar/CustomScrollbar';
 import HomeHeading from '../components/home/HomeHeading/HomeHeading';
 import CoverVideo from '../components/home/CoverVideo/CoverVideo';
 import TextMarquee from '../components/library/TextMarquee/TextMarquee';
 import SectionSelector from '../components/home/SectionSelector/SectionSelector';
+import Footer from '../components/library/Footer/Footer';
 import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import NewsSelector from '../components/home/NewsSelector/NewsSelector';
-//import Card from '../components/library/Card/Card';
 import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
 import styles from "./index.module.scss";
 
+
 function Home(d){
 
-    // const data = Object.values(d); Esta const quedó declarada pero no se usa
+    const { windowSize } = useAppContext();   
 
 
     useEffect(() => {
@@ -61,21 +64,17 @@ function Home(d){
 
     return(
     <>
-        <HomeHeading title={d.PageHeading} />
-
-        <CoverVideo />
-
-        <div className={styles.marquee_1}>
-            <TextMarquee data={d.marquee1}/>
-        </div>
-
-        <SectionSelector data={d.MemberData} />
-
-        <div className={styles.marquee_1}>
-            <TextMarquee data={d.marquee2} />
-        </div>
-
-     
+        {windowSize >= 1025 ?
+        <CustomScrollbar>  
+            <HomeHeading title={d.PageHeading} />
+            <CoverVideo />
+            <div className={styles.marquee_1}>
+                <TextMarquee data={d.marquee1}/>
+            </div>
+            <SectionSelector data={d.MemberData} />
+            <div className={styles.marquee_1}>
+                <TextMarquee data={d.marquee2} />
+            </div>    
             <Swiper
                 modules={[Navigation, FreeMode]}
                 spaceBetween={0}
@@ -85,7 +84,6 @@ function Home(d){
                 grabCursor={true} 
                 className={`${styles.carrousel_novedades} swiper-cards`}
             >
-
                 {d.courses.map((d, i)=>(
                     <SwiperSlide key={i}>
                         <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank" className={styles.card_new}>
@@ -93,23 +91,51 @@ function Home(d){
                                 <h5>{d.title}</h5>
                                 <p>{d.description}</p>
                             </div>                       
-                        <img src={d.img} alt="foto posgrado" />                    
+                            <img src={d.img} alt="foto posgrado" />                    
                         </a>
                     </SwiperSlide> 
-
-                    /* 
-                    No tengo forma de customizar los estilos desde el style module del index, esto es fundamental, porque en cada caso cambian bastante y a su vez, la idea es manejar todo desde el sistema de diseño. Tener todo en un solo componente complica bastante los ajustes.
-
-                    <SwiperSlide key={key}>
-                        <Card {...d} />
-                    </SwiperSlide>  */
                 ))} 
-
-            </Swiper>
-   
-
-        <NewsSelector data={d.NewsData} />        
-    </>
+            </Swiper>  
+            <NewsSelector data={d.NewsData} />  
+            <Footer />    
+        </CustomScrollbar> 
+        :
+        <>
+            <HomeHeading title={d.PageHeading} />
+            <CoverVideo />
+            <div className={styles.marquee_1}>
+                <TextMarquee data={d.marquee1}/>
+            </div>
+            <SectionSelector data={d.MemberData} />
+            <div className={styles.marquee_1}>
+                <TextMarquee data={d.marquee2} />
+            </div>    
+            <Swiper
+                modules={[Navigation, FreeMode]}
+                spaceBetween={0}
+                slidesPerView={"auto"}
+                navigation={true}  
+                freeMode={false}   
+                grabCursor={true} 
+                className={`${styles.carrousel_novedades} swiper-cards`}
+            >
+                {d.courses.map((d, i)=>(
+                    <SwiperSlide key={i}>
+                        <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank" className={styles.card_new}>
+                            <div className={styles.info}>
+                                <h5>{d.title}</h5>
+                                <p>{d.description}</p>
+                            </div>                       
+                            <img src={d.img} alt="foto posgrado" />                    
+                        </a>
+                    </SwiperSlide> 
+                ))} 
+            </Swiper>  
+            <NewsSelector data={d.NewsData} />  
+            <Footer /> 
+        </>
+        }
+    </>   
     );
 }
 
@@ -120,6 +146,6 @@ export async function getServerSideProps() {
 
     // Pass data to the page via props
     return { props:  {...data}   }
-  }
+}
 
-  export default Home;
+export default Home;

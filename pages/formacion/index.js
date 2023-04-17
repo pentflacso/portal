@@ -1,10 +1,12 @@
 import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
+import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import Quotes from '../../components/library/Quotes/Quotes';
+import Footer from '../../components/library/Footer/Footer';
 import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
 import styles from "./formacion.module.scss";
@@ -79,14 +81,12 @@ export default function Formacion(data){
 
     return(
     <>
-        <PageHeading title={data.PageHeading} margin_bottom_type={0} />
-
-        <div className={styles.marquee_1}>
-            <TextMarquee data={data.marquee1} />
-        </div>
-
         {windowSize >= 1025 ?
-        <>
+        <CustomScrollbar> 
+            <PageHeading title={data.PageHeading} margin_bottom_type={0} />
+            <div className={styles.marquee_1}>
+                <TextMarquee data={data.marquee1} />
+            </div>    
             <Swiper
                 modules={[Navigation, FreeMode]}
                 spaceBetween={0}
@@ -96,51 +96,57 @@ export default function Formacion(data){
                 grabCursor={true}    
                 className={`${styles.carrousel_formacion} swiper-cards`}       
             >   
-            {
-            data.courses.map((item, i) => (
-            <SwiperSlide key={i}>
-                <article className={styles.card}>
-                    <img src={item.img} alt="foto posgrado" />
-                    <h5>{item.title}</h5>
-                    <p>{item.description}</p>
-                    <a href={item.url} rel="noopener noreferrer" target="_blank" className="cta_btn">{item.cta}</a>
-                </article>            
-            </SwiperSlide>
-            ))
-            }                            
-            </Swiper>
-        </>
+            {data.courses.map((item, i) => (
+                <SwiperSlide key={i}>
+                    <article className={styles.card}>
+                        <img src={item.img} alt="foto posgrado" />
+                        <h5>{item.title}</h5>
+                        <p>{item.description}</p>
+                        <a href={item.url} rel="noopener noreferrer" target="_blank" className="cta_btn">{item.cta}</a>
+                    </article>            
+                </SwiperSlide>
+            ))}                            
+            </Swiper>   
+            <div className={styles.marquee_2}>
+                <TextMarquee data={data.marquee2} />
+            </div>       
+            <Quotes items={data.quotes}/>      
+            <Footer />
+        </CustomScrollbar>  
         :
         <>
+            <PageHeading title={data.PageHeading} margin_bottom_type={0} />
+            <div className={styles.marquee_1}>
+                <TextMarquee data={data.marquee1} />
+            </div>    
             <Swiper
-                modules={[Navigation]}
+                modules={[Navigation, FreeMode]}
                 spaceBetween={0}
                 slidesPerView={"auto"}
-                navigation={false}     
+                navigation={true}  
+                freeMode={false}   
+                grabCursor={false}    
                 className={`${styles.carrousel_formacion} swiper-cards`}       
             >   
-            {
-            data.courses.map((item, i) => (
-            <SwiperSlide key={i}>
-                <article className={styles.card}>
-                    <img src={item.img} alt="foto posgrado" />
-                    <h5>{item.title}</h5>
-                    <p>{item.description}</p>
-                    <a href={item.url} rel="noopener noreferrer" target="_blank" className="cta_btn">{item.cta}</a>
-                </article>            
-            </SwiperSlide>
-            ))
-            }                            
-            </Swiper>
-        </>
+            {data.courses.map((item, i) => (
+                <SwiperSlide key={i}>
+                    <article className={styles.card}>
+                        <img src={item.img} alt="foto posgrado" />
+                        <h5>{item.title}</h5>
+                        <p>{item.description}</p>
+                        <a href={item.url} rel="noopener noreferrer" target="_blank" className="cta_btn">{item.cta}</a>
+                    </article>            
+                </SwiperSlide>
+            ))}                            
+            </Swiper>   
+            <div className={styles.marquee_2}>
+                <TextMarquee data={data.marquee2} />
+            </div>       
+            <Quotes items={data.quotes}/>      
+            <Footer />
+        </>   
         }
-
-        <div className={styles.marquee_2}>
-            <TextMarquee data={data.marquee2} />
-        </div>       
-        
-        <Quotes items={data.quotes}/>         
-    </>
+    </>   
     )
 }
 
@@ -151,4 +157,4 @@ export async function getServerSideProps() {
   
     // Pass data to the page via props
     return { props: data.data  }
-  }
+}

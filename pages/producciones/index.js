@@ -1,16 +1,21 @@
 import { useAppContext } from '../../context/AppContext';
-import { useEffect } from 'react';
+import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
+import { useEffect, useState } from 'react';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import ProductionsNav from '../../components/producciones/ProductionsNav/ProductionsNav';
 import ArticlesList from '../../components/library/ArticlesList/ArticlesList';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
+import Footer from '../../components/library/Footer/Footer';
 import { gsap, Back, Elastic } from 'gsap';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import $ from "jquery";
 import styles from "./producciones.module.scss";
 
+
 function Producciones(d){  
-    let data = Object.values(d);
+
+    let data = Object.values(d);   
 
     const exploringBtnsData = [
         {title: 'Propuestas de formación', path: 'formacion'},
@@ -20,7 +25,7 @@ function Producciones(d){
     
     //Traemos lo que necesitamos de AppContext
 
-    const { dataArticles, setDataArticles, currentArticleHashtag, currentArticleAuthor, searchInArticles } = useAppContext();    
+    const { dataArticles, setDataArticles, currentArticleHashtag, currentArticleAuthor, searchInArticles, windowSize } = useAppContext();    
 
 
     //Mandamos la data a dataArticles dentro de AppContext
@@ -43,12 +48,12 @@ function Producciones(d){
         } else if(currentArticleHashtag === 'all' && currentArticleAuthor !== 'all'){
             return setDataArticles(data.filter((article) => article.authors.includes(currentArticleAuthor)))
         }            
-    }, [currentArticleHashtag, currentArticleAuthor]);
+    }, [currentArticleHashtag, currentArticleAuthor]);    
 
-
-    //Follow cursor 
 
     useEffect(() => {
+        
+        //Follow cursor 
 
         const ball = document.querySelector(".cursor_ver");
         gsap.set(".cursor_ver", {xPercent: -50, yPercent: -70});       
@@ -90,23 +95,67 @@ function Producciones(d){
         }); 
 
     }, []);
-    
- 
+
+
+    useEffect(() => {
+
+        if(windowSize >= 1025 ){
+
+            ScrollTrigger.create({
+                trigger: `.page-heading`,
+                start: "top top", 
+                end: '+=5000%',
+                //end: () => `+=${pinTarget.clientHeight }`,
+                //end: '+=' + alto, 
+                //end: () => "+=" +  final,
+                //end: '+=' + (heightPinOff * 100) + '%',
+                //end: () => '+=100%',                
+                pin: `.fixable`,
+                pinSpacing: false,
+                scrub: true,
+                //markers: true
+            });       
+
+            return () => {
+                ScrollTrigger.getAll().forEach(t => t.kill());  
+            };         
+        }      
+
+    }, [windowSize]);
+
+
+
     return(
     <>
-        <PageHeading title="<span>Producciones</span>" margin_bottom_type={1} />
-
-        <ProductionsNav />     
-        
-        {dataArticles !== undefined && <ArticlesList data={searchInArticles(dataArticles)} />}        
-
-        <div className={styles.marquee}>
-            <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
-        </div>
-
-
-
-        <ExploringBtns data={exploringBtnsData} />
+        {windowSize >= 1025 ?
+        <CustomScrollbar>              
+            <div className="page-heading">
+                <PageHeading title="<span>Producciones</span>" margin_bottom_type={1} />        
+            </div>     
+            <div className={`${styles.productions_nav} fixable`}>
+                <ProductionsNav />   
+            </div>       
+            {dataArticles !== undefined && <ArticlesList data={searchInArticles(dataArticles)} />}      
+            <div className={styles.marquee}>
+                <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+            </div>
+            <ExploringBtns data={exploringBtnsData} />
+            <Footer />
+        </CustomScrollbar>  
+        :
+        <>
+            <PageHeading title="<span>Producciones</span>" margin_bottom_type={1} />
+            <div className={`${styles.productions_nav} fixable`}>
+                <ProductionsNav />   
+            </div>       
+            {dataArticles !== undefined && <ArticlesList data={searchInArticles(dataArticles)} />}        
+            <div className={styles.marquee}>
+                <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+            </div>
+            <ExploringBtns data={exploringBtnsData} />
+            <Footer />            
+        </>
+        }
     </>
     )
 }

@@ -1,5 +1,8 @@
+import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
+import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
 import Link from 'next/link';
+import Footer from '../../components/library/Footer/Footer';
 import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { gsap, Back, Elastic } from 'gsap';
@@ -8,6 +11,8 @@ import styles from "./perfil.module.scss";
 
 
 function Perfil(data){   
+
+    const { windowSize } = useAppContext();
 
     useEffect(() => {
 
@@ -55,24 +60,21 @@ function Perfil(data){
 
     return(
     <>
-        <div className={styles.pin_block}>
-
-            <div className={styles.col_left}>
-                <Link className={styles.back_arrow} href="/equipo"><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver equipo</strong></span></Link>
-                <h2 className={styles.name_and_position}>{data.name}<br /><span>{data.description}</span></h2>
-                <div className={styles.cv} dangerouslySetInnerHTML={{__html: data.cv }} />
+        {windowSize >= 1025 ?
+        <CustomScrollbar> 
+            <div className={styles.pin_block}>
+                <div className={styles.col_left}>
+                    <Link className={styles.back_arrow} href="/equipo"><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver equipo</strong></span></Link>
+                    <h2 className={styles.name_and_position}>{data.name}<br /><span>{data.description}</span></h2>
+                    <div className={styles.cv} dangerouslySetInnerHTML={{__html: data.cv }} />
+                </div>
+                <div className={styles.col_right}>
+                    <img src={data.picture} alt={`Imagen de ${data.name}`} />
+                </div>
             </div>
-
-            <div className={styles.col_right}>
-                <img src={data.picture} alt={`Imagen de ${data.name}`} />
-            </div>
-
-        </div>
-
-        <div className={styles.producciones}>
-            <h3>producciones</h3>
-
-            <Swiper
+            <div className={styles.producciones}>
+                <h3>producciones</h3>
+                <Swiper
                 modules={[Navigation, FreeMode]}
                 spaceBetween={0}
                 slidesPerView={"auto"}
@@ -80,8 +82,7 @@ function Perfil(data){
                 freeMode={false}   
                 grabCursor={true} 
                 className={`${styles.carrousel_novedades} swiper-cards`}
-            >
-
+                >
                 {data.productions.map((data, i)=>(
                     <SwiperSlide key={i}>                                        
                         <Link href={data.url} className={`${styles.card} clickable`}>   
@@ -92,10 +93,48 @@ function Perfil(data){
                         </Link>                     
                     </SwiperSlide> 
                 ))} 
-
-            </Swiper>
-
-        </div>
+                </Swiper>
+            </div>
+            <Footer />
+        </CustomScrollbar> 
+        :
+        <>
+            <div className={styles.pin_block}>
+                <div className={styles.col_left}>
+                    <Link className={styles.back_arrow} href="/equipo"><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver equipo</strong></span></Link>
+                    <h2 className={styles.name_and_position}>{data.name}<br /><span>{data.description}</span></h2>
+                    <div className={styles.cv} dangerouslySetInnerHTML={{__html: data.cv }} />
+                </div>
+                <div className={styles.col_right}>
+                    <img src={data.picture} alt={`Imagen de ${data.name}`} />
+                </div>
+            </div>
+            <div className={styles.producciones}>
+                <h3>producciones</h3>
+                <Swiper
+                modules={[Navigation, FreeMode]}
+                spaceBetween={0}
+                slidesPerView={"auto"}
+                navigation={true}  
+                freeMode={false}   
+                grabCursor={false} 
+                className={`${styles.carrousel_novedades} swiper-cards`}
+                >
+                {data.productions.map((data, i)=>(
+                    <SwiperSlide key={i}>                                        
+                        <Link href={data.url} className={`${styles.card} clickable`}>   
+                            <span>{data.lead}</span>
+                            <h5>{data.title}&nbsp;<span>{data.subtitle}</span></h5>
+                            { data.description && <p>{data.description}</p> }  
+                            <ul className={styles.hashtags}>{ data.hashtags.map((hashtags , i) => <li key={i}>{hashtags}</li>) }</ul>                          
+                        </Link>                     
+                    </SwiperSlide> 
+                ))} 
+                </Swiper>
+            </div>
+            <Footer />
+        </>
+       }
     </>
     )
 }

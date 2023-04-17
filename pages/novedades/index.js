@@ -1,10 +1,12 @@
+import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
+import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import Link from 'next/link';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
-// import ArticlesList from '../../components/library/ArticlesList/ArticlesList';
 import ArticlesNov from '../../components/library/ArticlesNov/ArticlesNov';
+import Footer from '../../components/library/Footer/Footer';
 import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { gsap, Back, Elastic } from 'gsap';
@@ -15,6 +17,8 @@ import styles from "./novedades.module.scss";
 function Novedades(d){
 
     const data = Object.values(d);
+
+    const { windowSize } = useAppContext();  
 
     const exploringBtnsData = [
         {title: 'Formación', path: 'formacion'},
@@ -72,39 +76,73 @@ function Novedades(d){
 
     return(
     <>
-        <PageHeading title="<span>Novedades</span>" margin_bottom_type={1} />
+        {windowSize >= 1025 ?
+        <CustomScrollbar> 
+            <PageHeading title="<span>Novedades</span>" margin_bottom_type={1} />
+            <div className={styles.filters_cont}>
+                <Swiper
+                modules={[Navigation, FreeMode]}
+                spaceBetween={0}
+                slidesPerView={"auto"}
+                navigation={true}  
+                freeMode={false}
+                grabCursor={true}
+                className={`${styles.category} swiper-btns`}    
+                >       
+                    <SwiperSlide> 
+                        <Link href="/novedades/" className={`${styles.btn_filter} ${styles.active}`}>Todos</Link>
+                    </SwiperSlide>
 
-        <div className={styles.filters_cont}>
-            <Swiper
-            modules={[Navigation, FreeMode]}
-            spaceBetween={0}
-            slidesPerView={"auto"}
-            navigation={true}  
-            freeMode={true}
-            grabCursor={true}
-            className={`${styles.category} swiper-btns`}    
-            >       
-                <SwiperSlide> 
-                    <Link href="/novedades/" className={`${styles.btn_filter} ${styles.active}`}>Todos</Link>
-                </SwiperSlide>
+                    {filtro && filtro.map((category, i) => {
+                        return (  
+                            <SwiperSlide key={i}>
+                                <Link href={"/novedades/"+ category} className={styles.btn_filter}>{category}</Link>  
+                            </SwiperSlide> 
+                        );
+                    })}
+                </Swiper>          
+            </div>            
+            <ArticlesNov data={data} />
+            <div className={styles.marquee}>
+                <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+            </div>
+            <ExploringBtns data={exploringBtnsData} />
+            <Footer />
+        </CustomScrollbar> 
+        :
+        <>
+            <PageHeading title="<span>Novedades</span>" margin_bottom_type={1} />
+            <div className={styles.filters_cont}>
+                <Swiper
+                modules={[Navigation, FreeMode]}
+                spaceBetween={0}
+                slidesPerView={"auto"}
+                navigation={true}  
+                freeMode={false}
+                grabCursor={true}
+                className={`${styles.category} swiper-btns`}    
+                >       
+                    <SwiperSlide> 
+                        <Link href="/novedades/" className={`${styles.btn_filter} ${styles.active}`}>Todos</Link>
+                    </SwiperSlide>
 
-                {filtro && filtro.map((category, i) => {
-                    return (  
-                        <SwiperSlide key={i}>
-                            <Link href={"/novedades/"+ category} className={styles.btn_filter}>{category}</Link>  
-                        </SwiperSlide> 
-                    );
-                })}
-            </Swiper>          
-        </div>
-            
-        <ArticlesNov data={data} />
-
-        <div className={styles.marquee}>
-            <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
-        </div>
-
-        <ExploringBtns data={exploringBtnsData} />
+                    {filtro && filtro.map((category, i) => {
+                        return (  
+                            <SwiperSlide key={i}>
+                                <Link href={"/novedades/"+ category} className={styles.btn_filter}>{category}</Link>  
+                            </SwiperSlide> 
+                        );
+                    })}
+                </Swiper>          
+            </div>            
+            <ArticlesNov data={data} />
+            <div className={styles.marquee}>
+                <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+            </div>
+            <ExploringBtns data={exploringBtnsData} />
+            <Footer />
+        </>
+       }
     </>
     )
 }
