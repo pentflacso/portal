@@ -149,8 +149,10 @@
                     }
                     @media screen and (min-width: 1024px){
                         &:hover{
-                            color: $white;
-                        }
+                            background-color: $gray-6;
+                            border-color: $gray-2;
+                            color: $deep-blue;
+                        }                
                     }
                     &.active{
                         background-color: $green-2;

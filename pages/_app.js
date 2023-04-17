@@ -1,25 +1,12 @@
-import { useEffect, useState } from 'react';
 import AppContext from '../context/AppContext';
 import Head from "next/head";
-import CustomScrollbar from '../customScrollbar/CustomScrollbar';
 import NavBar from '../components/library/NavBar/NavBar';
-import Footer from '../components/library/Footer/Footer';
 import "../styles/globals.scss";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import "../styles/swiperStyles.scss";
 
 export default function App({ Component, pageProps }) {
-
-    const [ windowSize, setWindowSize ] = useState(0);
-
-    useEffect(() => {
-        setWindowSize(window.innerWidth);    
-        window.addEventListener("resize", () => {
-          setWindowSize(window.innerWidth);            
-        } );    
-    }, []);
-
 
     return(
     <>
@@ -29,21 +16,10 @@ export default function App({ Component, pageProps }) {
         </Head>
 
         <main className="main-container">
+
             <AppContext>       
                 <NavBar />
-                {windowSize >= 1025 ?
-                <>
-                    <CustomScrollbar>            
-                        <Component {...pageProps} />                    
-                        <Footer />
-                    </CustomScrollbar>
-                </>
-                :
-                <>
-                    <Component {...pageProps} />                    
-                    <Footer />
-                </>
-                }
+                <Component {...pageProps} />                    
             </AppContext>
 
             <div className="cursor_leer">

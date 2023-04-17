@@ -1,4 +1,6 @@
+import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
+import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import KeysBox from '../../components/library/KeysBox/KeysBox';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
@@ -7,14 +9,15 @@ import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import HighlightParagraph from '../../components/library/HighlightParagraph/HighlightParagraph';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
+import Footer from '../../components/library/Footer/Footer';
 import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
 import styles from "./investigacion.module.scss";
-//import Card from '../../components/library/Card/Card';
-//import {SwiperNavigator, SwiperNavigatorClasses} from '../../components/library/SwiperNavigator/SwiperNavigator';
 
 
 export default function Investigacion(data){
+
+    const { windowSize } = useAppContext();   
 
     const exploringBtnsData = [
         {title: 'Formación', path: 'formacion'},
@@ -83,25 +86,21 @@ export default function Investigacion(data){
 
     return(
     <>
-        <PageHeading title={data.PageHeading} margin_bottom_type={2} />
-
-        <div className={styles.keys_box}>
-            <KeysBox data={data.keyFeatures} />
-        </div>
-
-        <div className={styles.marquee_1}>
-            <TextMarquee data={data.marquee1} />
-        </div>
-
-        <div className={styles.themes_accordion}>
-            <ThemesAccordion data={data.accordion} />
-        </div>
-        
-        <div className={styles.marquee_1}>
-            <TextMarquee data={data.marquee2} />
-        </div>
-
- 
+        {windowSize >= 1025 ?
+        <CustomScrollbar> 
+            <PageHeading title={data.PageHeading} margin_bottom_type={2} />
+            <div className={styles.keys_box}>
+                <KeysBox data={data.keyFeatures} />
+            </div>
+            <div className={styles.marquee_1}>
+                <TextMarquee data={data.marquee1} />
+            </div>
+            <div className={styles.themes_accordion}>
+                <ThemesAccordion data={data.accordion} />
+            </div>        
+            <div className={styles.marquee_1}>
+                <TextMarquee data={data.marquee2} />
+            </div> 
             <Swiper
                 modules={[Navigation, FreeMode]}
                 spaceBetween={0}
@@ -111,8 +110,7 @@ export default function Investigacion(data){
                 grabCursor={true}  
                 className={`${styles.carrousel_projects} swiper-cards`}         
             >   
-            {
-            data.articles.map((item, key) => (
+            {data.articles.map((item, key) => (
                 <SwiperSlide key={key}>
                     <article className={styles.card}>
                         <span>{item.lead}</span>
@@ -121,21 +119,62 @@ export default function Investigacion(data){
                         <a href={item.url} rel="noopener noreferrer" target="_blank" className="cta_btn">{item.cta}</a>
                     </article>            
                 </SwiperSlide>
-            ))
-            }
-                            
-            </Swiper>
-    
-
-        <div className={styles.marquee_1}>
-            <TextMarquee data={data.marquee3} />
-        </div>
-
-        <div className={styles.highlight_paragraph}>
-            <HighlightParagraph title={data.paragraph1} />
-        </div>
-        
-        <ExploringBtns data={exploringBtnsData} />
+            ))}                            
+            </Swiper>  
+            <div className={styles.marquee_1}>
+                <TextMarquee data={data.marquee3} />
+            </div>
+            <div className={styles.highlight_paragraph}>
+                <HighlightParagraph title={data.paragraph1} />
+            </div>            
+            <ExploringBtns data={exploringBtnsData} />
+            <Footer />
+        </CustomScrollbar> 
+        :
+        <>
+            <PageHeading title={data.PageHeading} margin_bottom_type={2} />
+            <div className={styles.keys_box}>
+                <KeysBox data={data.keyFeatures} />
+            </div>
+            <div className={styles.marquee_1}>
+                <TextMarquee data={data.marquee1} />
+            </div>
+            <div className={styles.themes_accordion}>
+                <ThemesAccordion data={data.accordion} />
+            </div>        
+            <div className={styles.marquee_1}>
+                <TextMarquee data={data.marquee2} />
+            </div> 
+            <Swiper
+                modules={[Navigation, FreeMode]}
+                spaceBetween={0}
+                slidesPerView={"auto"}
+                navigation={true}  
+                freeMode={false}   
+                grabCursor={true}  
+                className={`${styles.carrousel_projects} swiper-cards`}         
+            >   
+            {data.articles.map((item, key) => (
+                <SwiperSlide key={key}>
+                    <article className={styles.card}>
+                        <span>{item.lead}</span>
+                        <h5>{item.title}</h5>
+                        <p>{item.description}</p>
+                        <a href={item.url} rel="noopener noreferrer" target="_blank" className="cta_btn">{item.cta}</a>
+                    </article>            
+                </SwiperSlide>
+            ))}                            
+            </Swiper>  
+            <div className={styles.marquee_1}>
+                <TextMarquee data={data.marquee3} />
+            </div>
+            <div className={styles.highlight_paragraph}>
+                <HighlightParagraph title={data.paragraph1} />
+            </div>            
+            <ExploringBtns data={exploringBtnsData} />
+            <Footer />
+        </>
+        }
     </>
     )
 }
