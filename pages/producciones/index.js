@@ -1,6 +1,6 @@
 import { useAppContext } from '../../context/AppContext';
 import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import ProductionsNav from '../../components/producciones/ProductionsNav/ProductionsNav';
 import ArticlesList from '../../components/library/ArticlesList/ArticlesList';
@@ -16,7 +16,7 @@ import styles from "./producciones.module.scss";
 function Producciones(d){  
 
     let data = Object.values(d);   
-
+    
     const exploringBtnsData = [
         {title: 'Propuestas de formación', path: 'formacion'},
         {title: 'Asesorías y soluciones a medida ', path: 'asesorias'},
@@ -98,30 +98,44 @@ function Producciones(d){
 
 
     useEffect(() => {
+   
+       /*   const obs = new ResizeObserver(function(entries) {
+            //console.log(entries[0].contentRect.height)
+            setAlto(entries[0].contentRect.height)
+        })  */
 
-        if(windowSize >= 1025 ){
-
+        if(windowSize >= 1025 ){    
+            
+    /*        obs.observe(document.querySelector(".main-container"));    
+            console.log(alto)   
+ */
             ScrollTrigger.create({
                 trigger: `.page-heading`,
                 start: "top top", 
-                end: '+=5000%',
-                //end: () => `+=${pinTarget.clientHeight }`,
-                //end: '+=' + alto, 
-                //end: () => "+=" +  final,
-                //end: '+=' + (heightPinOff * 100) + '%',
-                //end: () => '+=100%',                
-                pin: `.fixable`,
+                end: '+=5000%',             
+                pin: `.${styles.productions_nav}`,
                 pinSpacing: false,
                 scrub: true,
-                //markers: true
+               // markers: true
             });       
+
+            /* setTimeout(function(){
+                ScrollTrigger.create({
+                    trigger: `.${styles.marquee}`,
+                    start: "top center", 
+                    end: "top center",
+                    onEnter: () => gsap.to(`.${styles.productions_nav}`, {opacity: "0", display:"none", duration: 0.2}),
+                    onEnterBack: () => gsap.to(`.${styles.productions_nav}`, {opacity: "1", display:"block", duration: 0.2}),
+                    //markers: true
+                });  
+            }, 100); */
 
             return () => {
                 ScrollTrigger.getAll().forEach(t => t.kill());  
             };         
         }      
-
-    }, [windowSize]);
+        
+    }, [windowSize]); 
 
 
 
@@ -132,10 +146,12 @@ function Producciones(d){
             <div className="page-heading">
                 <PageHeading title="<span>Producciones</span>" margin_bottom_type={1} />        
             </div>     
-            <div className={`${styles.productions_nav} fixable`}>
+            <div className={`${styles.productions_nav}`}>
                 <ProductionsNav />   
             </div>       
-            {dataArticles !== undefined && <ArticlesList data={searchInArticles(dataArticles)} />}      
+            {dataArticles !== undefined && 
+                <ArticlesList data={searchInArticles(dataArticles)}/>
+            }      
             <div className={styles.marquee}>
                 <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
             </div>
@@ -145,7 +161,7 @@ function Producciones(d){
         :
         <>
             <PageHeading title="<span>Producciones</span>" margin_bottom_type={1} />
-            <div className={`${styles.productions_nav} fixable`}>
+            <div className={`${styles.productions_nav}`}>
                 <ProductionsNav />   
             </div>       
             {dataArticles !== undefined && <ArticlesList data={searchInArticles(dataArticles)} />}        

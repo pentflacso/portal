@@ -1,11 +1,13 @@
 import { useAppContext } from '../../context/AppContext';
+import { useEffect } from 'react';
 import { Fragment } from 'react';
 import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
-import Footer from '../../components/library/Footer/Footer';
-import styles from './produccion.module.scss';
+import Footer from '../../components/library/Footer/Footer'
 import Link from 'next/link';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import styles from './produccion.module.scss';
 
 
 function Index(data){
@@ -17,6 +19,31 @@ function Index(data){
         {title: 'Asesorías y soluciones a medida', path: 'asesorias'},
         {title: 'Investigación y divulgación', path: 'investigacion'}
     ]
+
+
+    useEffect(() => {   
+
+        if(windowSize >= 1025 ){    
+
+            const heightPinOff = document.querySelector(`.${styles.pin_block}`).offsetHeight;
+
+            ScrollTrigger.create({
+                trigger: `.main-container`,
+                start: "top top", 
+                end: () => `+=${heightPinOff} center`,            
+                pin: `.${styles.col_left}`,
+                pinSpacing: false,
+                scrub: true,
+                //markers: true
+            });       
+ 
+            return () => {
+                ScrollTrigger.getAll().forEach(t => t.kill());  
+            };         
+        }      
+         
+     }, [windowSize]); 
+
 
     return(
     <>
