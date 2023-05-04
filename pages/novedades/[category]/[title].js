@@ -1,9 +1,17 @@
+import { useAppContext } from '../../../context/AppContext';
+import { useEffect } from 'react';
+import CustomScrollbar from '../../../customScrollbar/CustomScrollbar';
 import TextMarquee from '../../../components/library/TextMarquee/TextMarquee';
 import ExploringBtns from '../../../components/library/ExploringBtns/ExploringBtns';
-import styles from './title.module.scss';
+import Footer from '../../../components/library/Footer/Footer';
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import Link from 'next/link';
+import styles from './title.module.scss';
 
 function Index(data){
+
+    const { windowSize } = useAppContext();
+
     const DescriptionexploringBtn = [
         {title: 'VII Jornadas de Educación a Distancia y Universidad', path: 'formacion'},
         {title: 'Metaverso: ¿un nuevo territorio para enseñar y aprender en línea?', path: 'producciones'},
@@ -11,47 +19,113 @@ function Index(data){
     ]
 
     const exploringBtnsData = [
-        {title: 'Formación', path: 'formacion'},
-        {title: 'Producciones', path: 'producciones'},
-        {title: 'Asesorías', path: 'asesorias'}
+        {title: 'Propuestas de formación', path: 'formacion'},
+        {title: 'Asesorías y soluciones a medida', path: 'asesorias'},
+        {title: 'Nuestras producciones', path: 'producciones'}        
     ]
+
+    useEffect(() => {   
+
+        if(windowSize >= 1025 ){    
+
+            const heightPinOff = document.querySelector(`.${styles.pin_block}`).offsetHeight;
+
+            ScrollTrigger.create({
+                trigger: `.main-container`,
+                start: "top top", 
+                end: () => `+=${heightPinOff} center`,            
+                pin: `.${styles.col_right}`,
+                pinSpacing: false,
+                scrub: true,
+                //markers: true
+            });       
+ 
+            return () => {
+                ScrollTrigger.getAll().forEach(t => t.kill());  
+            };         
+        }      
+         
+     }, [windowSize]); 
+
+
     return(
-        <>  
-        <div className={styles.twoColumns}>  
-            <div className={styles.col_left}>
-                <div className={styles.arrowBack}>
-                    <Link href="/novedades">Ver novedades</Link>
+    <>
+        {windowSize >= 1025 ?
+        <CustomScrollbar>   
+            <div className={styles.pin_block}>  
+                <div className={styles.col_left}>
+
+                    <Link className={styles.back_arrow} href="/novedades"><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver novedades</strong></span></Link>
+
+                    <h1>{data.title}</h1>
+                    
+                    <p className={styles.info}>
+                        {data.category} {data.date ? <>— <span>{data.date}</span></> : ''}
+                    </p>
+
+                    { data.description ?           
+                    <div dangerouslySetInnerHTML={{__html: data.description }} /> :
+                    ""}
+
+                    <Link className={styles.share_btn} href="#" target="_blank">Compartir</Link>
+
+                    { data.license ?
+                        <div className={styles.legal}>                         
+                            <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ data.license }}/>                  
+                        </div>
+                    : "" }
+
                 </div>
-                <h1>{data.title}</h1>
-                
-                <p className={styles.info}>
-                    <span className={styles.category}>{data.category} {data.date ? "- ": ""}</span> 
-                    {data.date ? <span className={styles.date}> {data.date}</span>: ""}
-                </p>
-
-                { data.description ?           
-                <div dangerouslySetInnerHTML={{__html: data.description }} /> :
-                ""}
-
-
-                <Link className={styles.btn_share} href="#" target="_blank">Compartir</Link>
-
-                { data.license ?
-                    <div className={styles.license} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ data.license }}/> : 
-                ""}
-
+                <div className={styles.col_right}>
+                    <h4>Ultimas novedades</h4>
+                    <ExploringBtns data={DescriptionexploringBtn} dataStyle="btnMedium" /> 
+                </div>
             </div>
-            <div className={styles.col_right}>
-                <h4>Ultimas novedades</h4>
-                <ExploringBtns data={DescriptionexploringBtn} dataStyle="btnMedium" />       
-
+            <div className={styles.marquee}>
+                <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
             </div>
-        </div>
-        <div className={styles.marquee}>
-            <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
-        </div>
-        <ExploringBtns data={exploringBtnsData} />        
-        </>             
+            <ExploringBtns data={exploringBtnsData} />       
+            <Footer />
+        </CustomScrollbar> 
+        :
+        <> 
+            <div className={styles.pin_block}>  
+                <div className={styles.col_left}>
+
+                    <Link className={styles.back_arrow} href="/novedades"><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver novedades</strong></span></Link>
+
+                    <h1>{data.title}</h1>
+                    
+                    <p className={styles.info}>
+                        {data.category} {data.date ? <>— <span>{data.date}</span></> : ''}
+                    </p>
+
+                    { data.description ?           
+                    <div dangerouslySetInnerHTML={{__html: data.description }} /> :
+                    ""}
+
+                    <Link className={styles.share_btn} href="#" target="_blank">Compartir</Link>
+
+                    { data.license ?
+                        <div className={styles.legal}>                         
+                            <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ data.license }}/>                  
+                        </div>
+                    : "" }
+
+                </div>
+                <div className={styles.col_right}>
+                    <h4>Ultimas novedades</h4>
+                    <ExploringBtns data={DescriptionexploringBtn} dataStyle="btnMedium" /> 
+                </div>
+            </div>
+            <div className={styles.marquee}>
+                <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+            </div>
+            <ExploringBtns data={exploringBtnsData} />       
+            <Footer />       
+        </>
+        }
+    </>             
     )
 }
 

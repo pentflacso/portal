@@ -9,7 +9,7 @@ import styles from "./ProductionsNav.module.scss";
 
 export default function ProductionsNav(){
 
-    const { dataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, scrollbarCurrent } = useAppContext();
+    const { dataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList } = useAppContext();
     
     const [advancedFilterStatus, setAdvancedFilterStatus] = useState(false);
 

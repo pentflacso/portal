@@ -10,7 +10,6 @@
 
 .filters_cont{
     display: flex;
-    align-items: center;
     @include container-width-1;
     @media screen and (max-width: 1024px){
         width: 100%;
@@ -20,14 +19,15 @@
         @include btn-ver-mas;
     }
     .category{
-        width: 85%; 
-        margin:
+        width: 100%;  
+        padding: 
+        calc(35px + (130 - 35) * ((100vw - 1200px) / (3840 - 1200)))
         0
+        calc(10px + (20 - 10) * ((100vw - 1200px) / (3840 - 1200))) 
         0
-        calc(75px + (235 - 75) * ((100vw - 1200px) / (3840 - 1200)))
-        0;  
+        ;
+        margin-bottom: calc(65px + (214 - 65) * ((100vw - 1200px) / (3840 - 1200)));  
         @media screen and (max-width: 1024px){
-            width: 95%;
             margin-bottom: calc(50px + (150 - 50) * ((100vw - 300px) / (1024 - 300)));
         }
         .btn_filter{
