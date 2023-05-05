@@ -1,12 +1,44 @@
-import styles from "./Card.module.scss";
+import { useAppContext } from '../../../context/AppContext';
+import { useEffect } from 'react';
 import Link from "next/link";
+import { gsap, Back, Elastic } from 'gsap';
+import $ from "jquery";
+import styles from "./Card.module.scss";
 
-export default function Card({ lead, title, subtitle, description, category, hashtags, date, url}){
+
+export default function Card({ lead, title, subtitle, description, category, hashtags, date, url }){
+
+  const { windowSize } = useAppContext();   
 
 
-    return( 
+  useEffect(() => {
+
+    if(windowSize >= 1025 ){   
+        
+      $(`.${styles.card}`).on("mouseenter", function mouseEnterContainer() {
+          gsap.to(".cursor_ver", {
+              duration: 0.8,
+              scale: 1,
+              opacity: 1,
+              ease: Elastic.easeOut.config( 1, 0.6)
+          });
+      });
+      $(`.${styles.card}`).on("mouseleave", function mouseLeaveContainer() {
+          gsap.to(".cursor_ver", {
+              duration: 0.8,
+              scale: 0,
+              opacity: 0,
+              ease: Back.easeOut.config(3)
+          });
+      }); 
+    }
+
+  }, [windowSize]);
+
+
+  return( 
     
-    <Link href={url} className={lead ? `${styles.card} clickable` : `${styles.card} ${styles.new} clickable`}>
+    <Link href={url} className={lead ? `${styles.card}` : `${styles.card} ${styles.new}`}>
         { lead
         ?
           <>
@@ -23,5 +55,5 @@ export default function Card({ lead, title, subtitle, description, category, has
           </>
         }
     </Link> 
-    );
+  );
 }

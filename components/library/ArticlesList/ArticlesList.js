@@ -56,20 +56,20 @@ export default function ArticlesList({ data }){
                 {dataLimit.length !== 0 ?  
                 <>
                     <div className={styles.col_left}>
-                        {dataLimit.map((data, key) => {
+                        {dataLimit.map((data, i) => {
                             return (
-                                <Fragment key={key}>                    
-                                    { key % 2 === 0 && <Card { ...data}  /> }
+                                <Fragment key={i}>                    
+                                    { i % 2 === 0 && <Card { ...data} /> }
                                 </Fragment>                                        
                             );
                         })}
                     </div>
 
                     <div className={styles.col_right}>
-                        {dataLimit.map((data, key) => {
+                        {dataLimit.map((data, i) => {
                             return (
-                                <Fragment key={key}>                    
-                                    { key % 2 !== 0 && <Card {...data} /> }
+                                <Fragment key={i}>                    
+                                    { i % 2 !== 0 && <Card {...data} /> }
                                 </Fragment>                                        
                             );
                         })}
@@ -82,9 +82,9 @@ export default function ArticlesList({ data }){
             <>
                 {dataLimit.length !== 0 ?  
                     <div className={styles.content}>
-                        {dataLimit.map((data, key) => {
+                        {dataLimit.map((data, i) => {
                             return (
-                                <Fragment key={key}>                    
+                                <Fragment key={i}>                    
                                     <Card { ...data}/>
                                 </Fragment>                                        
                             );
