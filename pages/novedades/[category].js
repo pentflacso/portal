@@ -37,81 +37,74 @@ function Index(d){
 
     useEffect(() => {
 
-        // Follow custom cursor
-        const ball = document.querySelector(".cursor_ver");
-        gsap.set(".cursor_ver", {xPercent: -50, yPercent: -70});       
-        const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-        const mouse = { x: pos.x, y: pos.y };
-        const speed = 0.25;
-        const xSet = gsap.quickSetter(ball, "x", "px");
-        const ySet = gsap.quickSetter(ball, "y", "px");
-        
-        window.addEventListener("mousemove", e => {
-            mouse.x = e.x;
-            mouse.y = e.y; 
-        });
-        
-        gsap.ticker.add(() => {
-            // adjust speed for higher refresh monitors
-            const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
-            pos.x += (mouse.x - pos.x) * dt;
-            pos.y += (mouse.y - pos.y) * dt;
-            xSet(pos.x);
-            ySet(pos.y);
-        });
-        $('.clickable').on("mouseenter", function mouseEnterContainer() {
-            gsap.to(".cursor_ver", {
-                duration: 0.8,
-                scale: 1,
-                opacity: 1,
-                ease: Elastic.easeOut.config( 1, 0.6)
+        if(windowSize >= 1025 ){    
+
+            // Follow custom cursor
+            const ball = document.querySelector(".cursor_ver");
+            gsap.set(".cursor_ver", {xPercent: -50, yPercent: -70});       
+            const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+            const mouse = { x: pos.x, y: pos.y };
+            const speed = 0.25;
+            const xSet = gsap.quickSetter(ball, "x", "px");
+            const ySet = gsap.quickSetter(ball, "y", "px");
+            
+            window.addEventListener("mousemove", e => {
+                mouse.x = e.x;
+                mouse.y = e.y; 
             });
-        });
-        $('.clickable').on("mouseleave", function mouseLeaveContainer() {
-            gsap.to(".cursor_ver", {
-                duration: 0.8,
-                scale: 0,
-                opacity: 0,
-                ease: Back.easeOut.config(3)
-            });
-        });                    
-    }, []);
+            
+            gsap.ticker.add(() => {
+                // adjust speed for higher refresh monitors
+                const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
+                pos.x += (mouse.x - pos.x) * dt;
+                pos.y += (mouse.y - pos.y) * dt;
+                xSet(pos.x);
+                ySet(pos.y);
+            });       
+        }        
+
+    }, [windowSize]);
 
 
     return(
     <>
         {windowSize >= 1025 ?
-        <CustomScrollbar> 
-            <PageHeading title="<h1><span>Novedades</span></h1>" margin_bottom_type={1} />
-            <div className={styles.filters_cont}>
-                <Swiper
-                modules={[Navigation, FreeMode]}
-                spaceBetween={0}
-                slidesPerView={"auto"}
-                navigation={true}  
-                freeMode={true}
-                grabCursor={true}
-                className={`${styles.category} swiper-btns`}
-                >             
-                    <SwiperSlide> 
-                        <Link href="/novedades/" className={styles.btn_filter}>Todos</Link>
-                    </SwiperSlide>
-                        {filtro && filtro.map((c, key) => {
-                            return (
-                                <SwiperSlide key={key}> 
-                                    <Link href={"/novedades/"+ c} className={category == c ? `${styles.btn_filter} ${styles.active}` : styles.btn_filter }>{c}</Link>
-                                </SwiperSlide>
-                            );
-                        })}
-                </Swiper>          
+        <>
+            <CustomScrollbar> 
+                <PageHeading title="<h1><span>Novedades</span></h1>" margin_bottom_type={1} />
+                <div className={styles.filters_cont}>
+                    <Swiper
+                    modules={[Navigation, FreeMode]}
+                    spaceBetween={0}
+                    slidesPerView={"auto"}
+                    navigation={true}  
+                    freeMode={true}
+                    grabCursor={true}
+                    className={`${styles.category} swiper-btns`}
+                    >             
+                        <SwiperSlide> 
+                            <Link href="/novedades/" className={styles.btn_filter}>Todos</Link>
+                        </SwiperSlide>
+                            {filtro && filtro.map((c, key) => {
+                                return (
+                                    <SwiperSlide key={key}> 
+                                        <Link href={"/novedades/"+ c} className={category == c ? `${styles.btn_filter} ${styles.active}` : styles.btn_filter }>{c}</Link>
+                                    </SwiperSlide>
+                                );
+                            })}
+                    </Swiper>          
+                </div>
+                <ArticlesNov data={data} category={category} />
+                <div className={styles.marquee}>
+                    <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                </div>
+                <ExploringBtns data={exploringBtnsData} />
+                <Footer />
+            </CustomScrollbar> 
+            <div className="cursor_ver">
+                <div className="circle"><span>Ver</span></div>
             </div>
-            <ArticlesNov data={data} category={category} />
-            <div className={styles.marquee}>
-                <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
-            </div>
-            <ExploringBtns data={exploringBtnsData} />
-            <Footer />
-        </CustomScrollbar> 
+        </>
         :
         <>
             <PageHeading title="<h1><span>Novedades</span></h1>" margin_bottom_type={1} />

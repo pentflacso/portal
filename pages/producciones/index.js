@@ -52,63 +52,33 @@ function Producciones(d){
 
 
     useEffect(() => {
-        
-        //Follow cursor 
-
-        const ball = document.querySelector(".cursor_ver");
-        gsap.set(".cursor_ver", {xPercent: -50, yPercent: -70});       
-        const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
-        const mouse = { x: pos.x, y: pos.y };
-        const speed = 0.25;
-        const xSet = gsap.quickSetter(ball, "x", "px");
-        const ySet = gsap.quickSetter(ball, "y", "px");
-        
-        window.addEventListener("mousemove", e => {
-            mouse.x = e.x;
-            mouse.y = e.y; 
-        });
-        
-        gsap.ticker.add(() => {
-            // adjust speed for higher refresh monitors
-            const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
-            pos.x += (mouse.x - pos.x) * dt;
-            pos.y += (mouse.y - pos.y) * dt;
-            xSet(pos.x);
-            ySet(pos.y);
-        });
-
-        $('.clickable').on("mouseenter", function mouseEnterContainer() {
-            gsap.to(".cursor_ver", {
-                duration: 0.8,
-                scale: 1,
-                opacity: 1,
-                ease: Elastic.easeOut.config( 1, 0.6)
-            });
-        });
-        $('.clickable').on("mouseleave", function mouseLeaveContainer() {
-            gsap.to(".cursor_ver", {
-                duration: 0.8,
-                scale: 0,
-                opacity: 0,
-                ease: Back.easeOut.config(3)
-            });
-        }); 
-
-    }, []);
-
-
-    useEffect(() => {
-   
-       /*   const obs = new ResizeObserver(function(entries) {
-            //console.log(entries[0].contentRect.height)
-            setAlto(entries[0].contentRect.height)
-        })  */
 
         if(windowSize >= 1025 ){    
+
+            //Follow cursor 
+            const ball = document.querySelector(".cursor_ver");
+            gsap.set(".cursor_ver", {xPercent: -50, yPercent: -70});       
+            const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
+            const mouse = { x: pos.x, y: pos.y };
+            const speed = 0.25;
+            const xSet = gsap.quickSetter(ball, "x", "px");
+            const ySet = gsap.quickSetter(ball, "y", "px");
             
-    /*        obs.observe(document.querySelector(".main-container"));    
-            console.log(alto)   
- */
+            window.addEventListener("mousemove", e => {
+                mouse.x = e.x;
+                mouse.y = e.y; 
+            });
+            
+            gsap.ticker.add(() => {
+                // adjust speed for higher refresh monitors
+                const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
+                pos.x += (mouse.x - pos.x) * dt;
+                pos.y += (mouse.y - pos.y) * dt;
+                xSet(pos.x);
+                ySet(pos.y);
+            });
+
+            //Pin Production Nav
             ScrollTrigger.create({
                 trigger: `.page-heading`,
                 start: "top top", 
@@ -142,22 +112,27 @@ function Producciones(d){
     return(
     <>
         {windowSize >= 1025 ?
-        <CustomScrollbar>              
-            <div className="page-heading">
-                <PageHeading title="<span>Producciones</span>" margin_bottom_type={1} />        
-            </div>     
-            <div className={`${styles.productions_nav}`}>
-                <ProductionsNav />   
-            </div>       
-            {dataArticles !== undefined && 
-                <ArticlesList data={searchInArticles(dataArticles)}/>
-            }      
-            <div className={styles.marquee}>
-                <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+        <>
+            <CustomScrollbar>              
+                <div className="page-heading">
+                    <PageHeading title="<span>Producciones</span>" margin_bottom_type={1} />        
+                </div>     
+                <div className={`${styles.productions_nav}`}>
+                    <ProductionsNav />   
+                </div>       
+                {dataArticles !== undefined && 
+                    <ArticlesList data={searchInArticles(dataArticles)}/>
+                }      
+                <div className={styles.marquee}>
+                    <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                </div>
+                <ExploringBtns data={exploringBtnsData} />
+                <Footer />
+            </CustomScrollbar>  
+            <div className="cursor_ver">
+                <div className="circle"><span>Ver</span></div>
             </div>
-            <ExploringBtns data={exploringBtnsData} />
-            <Footer />
-        </CustomScrollbar>  
+        </>
         :
         <>
             <PageHeading title="<span>Producciones</span>" margin_bottom_type={1} />
