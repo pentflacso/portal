@@ -7,7 +7,7 @@ import ArticlesList from '../../components/library/ArticlesList/ArticlesList';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
 import Footer from '../../components/library/Footer/Footer';
-import { gsap, Back, Elastic } from 'gsap';
+import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import $ from "jquery";
 import styles from "./producciones.module.scss";
