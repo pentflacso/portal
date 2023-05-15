@@ -61,6 +61,20 @@ button{
   min-width: 100vw;
   height: 100vh;
   padding-top: calc(150px + (400 - 150) * ((100vw - 1200px) / (3840 - 1200)));
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: .6s;  
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
 }
 
 .scrollbar-track{
@@ -94,14 +108,14 @@ button{
       align-items: center;
       background-color: $yellow-2;
       border-radius: 50%;
-      width: 115px;
-      height: 115px;
+      width: calc(95px + (200 - 95) * ((100vw - 1200px) / (3840 - 1200)));
+      height: calc(95px + (200 - 95) * ((100vw - 1200px) / (3840 - 1200)));
       
       span{
-          color: #000;
-          font-size: 20px;
-          line-height: 100%;
+          @include font-level-4;
           font-weight: 400;
+          line-height: 100%;
+          color: $deep-blue;          
       }
       
   }
@@ -111,7 +125,7 @@ button{
   .circle{
     background-color: $yellow-2;
     border-radius: 50%;
-    width: 58px;
-    height: 58px;
+    width: calc(40px + (70 - 40) * ((100vw - 1200px) / (3840 - 1200)));
+    height: calc(40px + (70 - 40) * ((100vw - 1200px) / (3840 - 1200)));
   }
 }

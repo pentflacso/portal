@@ -7,7 +7,7 @@ gsap.registerPlugin(TextPlugin);
 export default function HomeHeading({ title }){
 
     const element = useRef(null);
-    const captions = ["capacitación", "investigación", "desarrollo", "innovación"];
+    const captions = ["capacitación", "investigación", "creación", "innovación"];
     const tl = gsap.timeline({ repeat: -1 });
  
     useLayoutEffect(() => {
@@ -28,7 +28,7 @@ export default function HomeHeading({ title }){
         return () => ctx.revert(); 
 
     }, []);
-    
+
 
     return(
         <h1 className={styles.heading}>Somos un espacio<br className={styles.mobile} /> de <span ref={element} /><br />en educación y tecnologías digitales</h1>
