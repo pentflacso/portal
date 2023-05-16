@@ -20,7 +20,7 @@ html, body, #__next {
     overflow: hidden;  
     @media screen and (max-width: 1024px){
       width: 100%;
-      overflow: visible; 
+      overflow-y: visible; 
       overscroll-behavior-y: auto;
       padding-top: calc(35px + (80 - 35) * ((100vw - 300px) / (1024 - 300)));
     }
@@ -60,21 +60,7 @@ button{
 [data-scrollbar] {
   min-width: 100vw;
   height: 100vh;
-  padding-top: calc(150px + (400 - 150) * ((100vw - 1200px) / (3840 - 1200)));
-  opacity: 0;
-  animation-name: fadeIn;
-  animation-duration: .6s;  
-  animation-timing-function: ease-in-out;
-  animation-fill-mode: forwards;
-}
-
-@keyframes fadeIn {
-  0% {
-      opacity: 0;
-  }
-  100% {
-      opacity: 1;
-  }
+  padding-top: calc(150px + (400 - 150) * ((100vw - 1200px) / (3840 - 1200)));  
 }
 
 .scrollbar-track{
@@ -87,6 +73,22 @@ button{
   }
 }
 
+.contents-fade{
+  opacity: 0;
+  animation-name: fadeIn;
+  animation-duration: .6s;  
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;  
+}
+
+@keyframes fadeIn {
+  0% {
+      opacity: 0;
+  }
+  100% {
+      opacity: 1;
+  }
+}
 
 //cursor follow ball
 

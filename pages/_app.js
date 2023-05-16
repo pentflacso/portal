@@ -18,7 +18,7 @@ export default function App({ Component, pageProps }) {
         <main className="main-container">
 
             <AppContext>       
-                <NavBar />
+                <NavBar/>
                 <Component {...pageProps} />                    
             </AppContext>
 

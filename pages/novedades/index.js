@@ -9,8 +9,7 @@ import ArticlesNov from '../../components/library/ArticlesNov/ArticlesNov';
 import Footer from '../../components/library/Footer/Footer';
 import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { gsap, Back, Elastic } from 'gsap';
-import $ from "jquery";
+import { gsap } from 'gsap';
 import styles from "./novedades.module.scss";
 
 
@@ -63,10 +62,10 @@ function Novedades(d){
 
 
     return(
-    <>
+    <>       
         {windowSize >= 1025 ?
-        <>
-            <CustomScrollbar> 
+        <>            
+            <CustomScrollbar>    
                 <PageHeading title="<span>Novedades</span>" margin_bottom_type={1} />
                 <div className={styles.filters_cont}>
                     <Swiper
@@ -134,7 +133,7 @@ function Novedades(d){
             </div>
             <ExploringBtns data={exploringBtnsData} />
             <Footer />
-        </>
+        </> 
        }
     </>
     )

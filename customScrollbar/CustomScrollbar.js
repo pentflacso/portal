@@ -45,20 +45,17 @@ export default function Layout({ children, ...rest }) {
       }, 1000);      
 
 
-   // return () => {      
-     /*  if (scrollbar.current) {
+ /*   return () => {      
+       if (scrollbar.current) {
         scrollbar.current.destroy();
         scrollbar.current = null;
-      } */
-
-    //};
+      } 
+    }; */
     
   }, []);
 
 
   return (
-    <div data-scrollbar ref={$content} {...rest} id="scroll-container">
-      <div className="container">{children}</div>
-    </div>
+    <div data-scrollbar ref={$content} {...rest} id="scroll-container">{children}</div>
   );
 }
