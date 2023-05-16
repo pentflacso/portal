@@ -66,12 +66,6 @@
 }
 
 .overlay{
-    //background-color: rgba(3, 46, 89, .5);
-    //background-color:rgba(33,35,36,.5);
-    //background-color:rgba(255,255,255,.6);
-    //background-color:rgba(255,255,255,.3);
-    //background-color:rgb(123, 197, 182, .3);
-    //background-color:rgba(105, 105, 105, 0.5);
     background-color: rgba(33,35,36,.4);
     position: fixed;
     z-index: 110;
@@ -79,8 +73,6 @@
     bottom: 0;
     left: 0;
     right: 0;  
-    //backdrop-filter: blur(6px);
-    //backdrop-filter: blur(3px);
     animation-name: fadeIn;
     animation-duration: 0.2s;
     animation-timing-function: ease-in-out;

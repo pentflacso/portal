@@ -74,59 +74,61 @@ export default function Asesorias(data){
     return(
     <>
         {windowSize >= 1025 ?
-        <>
+        <>            
             <CustomScrollbar> 
-                <PageHeading title={data.PageHeading} margin_bottom_type={0} />
-                <LeafsItem items={data.courses} />      
-                <div className={styles.marquee_1}>
-                    <TextMarquee data={data.marquee1} />
+                <div className="contents-fade"> 
+                    <PageHeading title={data.PageHeading} margin_bottom_type={0} />
+                    <LeafsItem items={data.courses} />      
+                    <div className={styles.marquee_1}>
+                        <TextMarquee data={data.marquee1} />
+                    </div>
+                    <div className={styles.highlight_paragraph}>
+                        <HighlightParagraph title={data.paragraph1} />
+                    </div>        
+                    <div className={styles.keys_box}>
+                        <KeysBox data={data.keyFeatures} />
+                    </div>
+                    <div className={styles.marquee_1}>
+                        <TextMarquee data={data.marquee2} />
+                    </div>
+                    <Swiper
+                        modules={[Navigation, FreeMode]}
+                        spaceBetween={0}
+                        slidesPerView={"auto"}
+                        navigation={true}  
+                        freeMode={false}   
+                        grabCursor={false}    
+                        className={`${styles.carrousel_proyects} swiper-cards`}       
+                    >   
+                    {data.articles.map((item, i) => (
+                        <SwiperSlide key={i}>
+                            <article className={styles.card_proyect}>
+                                <img src={item.img} />
+                                <h5>{item.description}</h5>                    
+                            </article>            
+                        </SwiperSlide>
+                    ))}                            
+                    </Swiper>      
+                    <div className={styles.marquee_1}>
+                        <TextMarquee data={data.marquee3} />
+                    </div>
+                    <div className={styles.highlight_paragraph}>
+                        <HighlightParagraph title={data.paragraph2} />
+                    </div>
+                    <div className={styles.brands_marquee}>
+                        <BrandsMarquee partners={data.partners}/>
+                    </div>   
+                    <Quotes items={data.quotes}/>        
+                    <div className={styles.marquee_1}>
+                        <TextMarquee data={data.marquee4} />
+                    </div>
+                    <ParagraphAndButton 
+                        paragraph={data.paragraph3}
+                        iconBtn='/assets/images/mail_icon.svg'
+                        urlBtn='https://www.google.com/'
+                    />
+                    <Footer />
                 </div>
-                <div className={styles.highlight_paragraph}>
-                    <HighlightParagraph title={data.paragraph1} />
-                </div>        
-                <div className={styles.keys_box}>
-                    <KeysBox data={data.keyFeatures} />
-                </div>
-                <div className={styles.marquee_1}>
-                    <TextMarquee data={data.marquee2} />
-                </div>
-                <Swiper
-                    modules={[Navigation, FreeMode]}
-                    spaceBetween={0}
-                    slidesPerView={"auto"}
-                    navigation={true}  
-                    freeMode={false}   
-                    grabCursor={false}    
-                    className={`${styles.carrousel_proyects} swiper-cards`}       
-                >   
-                {data.articles.map((item, i) => (
-                    <SwiperSlide key={i}>
-                        <article className={styles.card_proyect}>
-                            <img src={item.img} />
-                            <h5>{item.description}</h5>                    
-                        </article>            
-                    </SwiperSlide>
-                ))}                            
-                </Swiper>      
-                <div className={styles.marquee_1}>
-                    <TextMarquee data={data.marquee3} />
-                </div>
-                <div className={styles.highlight_paragraph}>
-                    <HighlightParagraph title={data.paragraph2} />
-                </div>
-                <div className={styles.brands_marquee}>
-                    <BrandsMarquee partners={data.partners}/>
-                </div>   
-                <Quotes items={data.quotes}/>        
-                <div className={styles.marquee_1}>
-                    <TextMarquee data={data.marquee4} />
-                </div>
-                <ParagraphAndButton 
-                    paragraph={data.paragraph3}
-                    iconBtn='/assets/images/mail_icon.svg'
-                    urlBtn='https://www.google.com/'
-                />
-                <Footer />
             </CustomScrollbar> 
             <div className="cursor_dot">
                 <div className="circle" />
@@ -136,7 +138,7 @@ export default function Asesorias(data){
             </div>
         </>
         :
-        <>
+        <div className="contents-fade">
             <PageHeading title={data.PageHeading} margin_bottom_type={0} />
             <LeafsItem items={data.courses} />      
             <div className={styles.marquee_1}>
@@ -188,7 +190,7 @@ export default function Asesorias(data){
                 urlBtn='https://www.google.com/'
             />
             <Footer />
-        </>
+        </div>
         }
     </> 
     )

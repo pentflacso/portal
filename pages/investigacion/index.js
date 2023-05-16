@@ -92,54 +92,56 @@ export default function Investigacion(data){
         {windowSize >= 1025 ?
         <>
             <CustomScrollbar> 
-                <PageHeading title={data.PageHeading} margin_bottom_type={2} />
-                <div className={styles.keys_box}>
-                    <KeysBox data={data.keyFeatures} />
+                <div className="contents-fade">
+                    <PageHeading title={data.PageHeading} margin_bottom_type={2} />
+                    <div className={styles.keys_box}>
+                        <KeysBox data={data.keyFeatures} />
+                    </div>
+                    <div className={styles.marquee_1}>
+                        <TextMarquee data={data.marquee1} />
+                    </div>
+                    <div className={styles.themes_accordion}>
+                        <ThemesAccordion data={data.accordion} />
+                    </div>        
+                    <div className={styles.marquee_1}>
+                        <TextMarquee data={data.marquee2} />
+                    </div> 
+                    <Swiper
+                        modules={[Navigation, FreeMode]}
+                        spaceBetween={0}
+                        slidesPerView={"auto"}
+                        navigation={true}  
+                        freeMode={false}   
+                        grabCursor={true}  
+                        className={`${styles.carrousel_projects} swiper-cards`}         
+                    >   
+                    {data.articles.map((item, key) => (
+                        <SwiperSlide key={key}>
+                            <article className={styles.card}>
+                                <span>{item.lead}</span>
+                                <h5>{item.title}</h5>
+                                <p>{item.description}</p>
+                                <a href={item.url} rel="noopener noreferrer" target="_blank" className="cta_btn">{item.cta}</a>
+                            </article>            
+                        </SwiperSlide>
+                    ))}                            
+                    </Swiper>  
+                    <div className={styles.marquee_1}>
+                        <TextMarquee data={data.marquee3} />
+                    </div>
+                    <div className={styles.highlight_paragraph}>
+                        <HighlightParagraph title={data.paragraph1} />
+                    </div>            
+                    <ExploringBtns data={exploringBtnsData} />
+                    <Footer />
                 </div>
-                <div className={styles.marquee_1}>
-                    <TextMarquee data={data.marquee1} />
-                </div>
-                <div className={styles.themes_accordion}>
-                    <ThemesAccordion data={data.accordion} />
-                </div>        
-                <div className={styles.marquee_1}>
-                    <TextMarquee data={data.marquee2} />
-                </div> 
-                <Swiper
-                    modules={[Navigation, FreeMode]}
-                    spaceBetween={0}
-                    slidesPerView={"auto"}
-                    navigation={true}  
-                    freeMode={false}   
-                    grabCursor={true}  
-                    className={`${styles.carrousel_projects} swiper-cards`}         
-                >   
-                {data.articles.map((item, key) => (
-                    <SwiperSlide key={key}>
-                        <article className={styles.card}>
-                            <span>{item.lead}</span>
-                            <h5>{item.title}</h5>
-                            <p>{item.description}</p>
-                            <a href={item.url} rel="noopener noreferrer" target="_blank" className="cta_btn">{item.cta}</a>
-                        </article>            
-                    </SwiperSlide>
-                ))}                            
-                </Swiper>  
-                <div className={styles.marquee_1}>
-                    <TextMarquee data={data.marquee3} />
-                </div>
-                <div className={styles.highlight_paragraph}>
-                    <HighlightParagraph title={data.paragraph1} />
-                </div>            
-                <ExploringBtns data={exploringBtnsData} />
-                <Footer />
             </CustomScrollbar>
             {/* <div className="cursor_deslizar">
                 <div className="circle"><span>Deslizar</span></div>
             </div> */}
         </> 
         :
-        <>
+        <div className="contents-fade">
             <PageHeading title={data.PageHeading} margin_bottom_type={2} />
             <div className={styles.keys_box}>
                 <KeysBox data={data.keyFeatures} />
@@ -181,7 +183,7 @@ export default function Investigacion(data){
             </div>            
             <ExploringBtns data={exploringBtnsData} />
             <Footer />
-        </>
+        </div>
         }
     </>
     )

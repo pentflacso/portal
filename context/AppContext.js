@@ -23,6 +23,8 @@ export default function AppProvider({ children }) {
 
   const [ windowSize, setWindowSize ] = useState(0);
 
+  const [isLoading, setLoadingState] = useState(false);
+
 
   //Filtra dataArticles, a partir de lo que el usuario escribe en el input que se encuentra en ProductionsAdvancedFilters
 
@@ -38,6 +40,6 @@ export default function AppProvider({ children }) {
   }, []);
 
   return (
-    <AppContext.Provider value={{ dataArticles, setDataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, queryArticles, setQueryArticles, searchInArticles, windowSize }}> {children} </AppContext.Provider>
+    <AppContext.Provider value={{ dataArticles, setDataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, queryArticles, setQueryArticles, searchInArticles, windowSize, isLoading, setLoadingState }}> {children} </AppContext.Provider>
   );
 }

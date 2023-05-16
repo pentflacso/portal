@@ -1,6 +1,6 @@
 import { useAppContext } from '../../context/AppContext';
 import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
-import { useEffect } from 'react';
+import { useRef, useEffect } from 'react';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import ProductionsNav from '../../components/producciones/ProductionsNav/ProductionsNav';
 import ArticlesList from '../../components/library/ArticlesList/ArticlesList';
@@ -9,13 +9,15 @@ import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns'
 import Footer from '../../components/library/Footer/Footer';
 import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-import $ from "jquery";
 import styles from "./producciones.module.scss";
 
 
 function Producciones(d){  
 
-    let data = Object.values(d);   
+    let data = Object.values(d);
+    const content = useRef();   
+    const pageHeading = useRef();
+    const productionsNav = useRef();
     
     const exploringBtnsData = [
         {title: 'Propuestas de formación', path: 'formacion'},
@@ -53,6 +55,8 @@ function Producciones(d){
 
     useEffect(() => {
 
+        let ctx;
+
         if(windowSize >= 1025 ){    
 
             //Follow cursor 
@@ -78,16 +82,20 @@ function Producciones(d){
                 ySet(pos.y);
             });
 
+            
             //Pin Production Nav
-            ScrollTrigger.create({
-                trigger: `.page-heading`,
-                start: "top top", 
-                end: '+=5000%',             
-                pin: `.${styles.productions_nav}`,
-                pinSpacing: false,
-                scrub: true,
-               // markers: true
-            });       
+
+            ctx = gsap.context(() => {                
+                ScrollTrigger.create({
+                   trigger: pageHeading.current,
+                   start: "top top", 
+                   end: '+=5000%',             
+                   pin: productionsNav.current,
+                   pinSpacing: false,
+                   scrub: true,
+                   //markers: true
+               });         
+            }, content);          
 
             /* setTimeout(function(){
                 ScrollTrigger.create({
@@ -98,43 +106,46 @@ function Producciones(d){
                     onEnterBack: () => gsap.to(`.${styles.productions_nav}`, {opacity: "1", display:"block", duration: 0.2}),
                     //markers: true
                 });  
-            }, 100); */
+            }, 100); */      
+        }  
 
-            return () => {
-                ScrollTrigger.getAll().forEach(t => t.kill());  
-            };         
-        }      
-        
+        return () => {
+            if(windowSize >= 1025 ){    
+                ctx.revert()
+            }
+        }
+
     }, [windowSize]); 
-
 
 
     return(
     <>
         {windowSize >= 1025 ?
-        <>
-            <CustomScrollbar>              
-                <div className="page-heading">
-                    <PageHeading title="<span>Producciones</span>" margin_bottom_type={1} />        
-                </div>     
-                <div className={`${styles.productions_nav}`}>
-                    <ProductionsNav />   
-                </div>       
-                {dataArticles !== undefined && 
-                    <ArticlesList data={searchInArticles(dataArticles)}/>
-                }      
-                <div className={styles.marquee}>
-                    <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
-                </div>
-                <ExploringBtns data={exploringBtnsData} />
-                <Footer />
+        <> 
+            <CustomScrollbar >    
+                <div ref={content} className="contents-fade">    
+                    <div className="page-heading" ref={pageHeading}>
+                        <PageHeading title="<span>Producciones</span>" margin_bottom_type={1}    />        
+                    </div>     
+                    <div className={`${styles.productions_nav}`} ref={productionsNav}>
+                        <ProductionsNav/>   
+                    </div>       
+                    {dataArticles !== undefined && 
+                        <ArticlesList data={searchInArticles(dataArticles)}/>
+                    }      
+                    <div className={styles.marquee}>
+                        <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                    </div>
+                    <ExploringBtns data={exploringBtnsData} />
+                    <Footer />
+                </div>   
             </CustomScrollbar>  
             <div className="cursor_ver">
                 <div className="circle"><span>Ver</span></div>
             </div>
-        </>
+        </>     
         :
-        <>
+        <div className="contents-fade">    
             <PageHeading title="<span>Producciones</span>" margin_bottom_type={1} />
             <div className={`${styles.productions_nav}`}>
                 <ProductionsNav />   
@@ -144,8 +155,8 @@ function Producciones(d){
                 <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
             </div>
             <ExploringBtns data={exploringBtnsData} />
-            <Footer />            
-        </>
+            <Footer />           
+        </div>
         }
     </>
     )
