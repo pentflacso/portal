@@ -1,73 +1,25 @@
 import { useAppContext } from '../../../context/AppContext';
-import { useState, useEffect } from 'react';
-import { useRouter } from "next/router";
 import Link from "next/link";
-import { gsap, Power1 } from 'gsap';
-import Loader from '../../../components/library/Loader/Loader';
 import styles from "./NavBar.module.scss";
 
 export default function NavBar(){
-
-    const router = useRouter('/');
-    const { isLoading, setLoadingState } = useAppContext(); 
-    const [ currentRoute, setCurrentRoute] = useState('');
-    const [ menuState, setMenuState ] = useState(false);
-    const [ menuBtnAnimation, setBtnAnimation ] = useState(false);
-
-    useEffect(() =>{   
-        setCurrentRoute(router.route);
-    }, [router]);
-
-    function changeMenuState(value) {
-      menuState !== value && setMenuState(value);
-    } 
-
-    const handleClose = () => {        
-        gsap.to(`.${styles.overlay}`, {
-            duration: .3,
-            opacity: 0,            
-            ease: Power1.easeInOut
-        });
-        setTimeout(() => {
-            setBtnAnimation(true)
-            changeMenuState(false)
-        }, 300);       
-    }
-
-    const changePage = (url) => {   
-        if(url === '/' && url !== currentRoute){
-            setLoadingState(true);        
-            setTimeout(() => {
-                setLoadingState(false);
-            }, 1000); 
-        } else if(url === currentRoute){
-            handleClose();
-        } else{
-            setLoadingState(true);        
-            setTimeout(() => {
-                setLoadingState(false);
-            }, 1100); 
-            setTimeout(() => {
-                handleClose();
-            }, 300);  
-        }           
-    }
-
+    
+    const { isLoading, changePage, currentRoute, handleClose, menuOverlay, menuBtnAnimation, menuState, changeMenuState, blurToPage } = useAppContext();            
 
     return(
     <>
         <nav className={styles.navbar}>
             <div className={styles.nav_btns}>
 
-                <Link href='/' className={styles.brand} onClick={ () => changePage('/') }><img src="/assets/images/marca_flacso_pent.svg" alt="Marca FLACSO PENT" /></Link>  
+                <Link href='/' className={styles.brand} onClick={ () => blurToPage() }><img src="/assets/images/marca_flacso_pent.svg" alt="Marca FLACSO PENT" /></Link>  
 
-                { !menuState && <button type="button" className={!menuBtnAnimation ? styles.menu_btn : `${styles.menu_btn} ${styles.grow}`} onClick={ () => changeMenuState(true) }>Menú</button> }
+                { !menuState && <button type="button" className={!menuBtnAnimation ? styles.menu_btn : `${styles.menu_btn} ${styles.grow}`} onClick={ () => changeMenuState(true) }>Menú</button> }                
 
             </div>  
         </nav>
 
         { menuState &&
-            <div className={styles.overlay}>
+            <div className={styles.overlay} ref={menuOverlay}> 
                 <div className={styles.wrapper}>
                     <div className={styles.sections}>
                         <Link href='/formacion' onClick={ () => changePage('/formacion') } className={currentRoute === '/formacion' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Formación</Link>
@@ -80,9 +32,9 @@ export default function NavBar(){
                     <button type="button" className={styles.close_btn} onClick={ () => handleClose() }><span/><span/></button> 
                 </div>
             </div>
-        }
+        } 
 
-        {isLoading && <Loader />}
+        {isLoading && <div className={styles.blur_overlay} />}       
     </>
     );
 }

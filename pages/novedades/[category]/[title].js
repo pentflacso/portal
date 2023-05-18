@@ -10,7 +10,7 @@ import styles from './title.module.scss';
 
 function Index(data){
 
-    const { windowSize } = useAppContext();
+    const { windowSize, blurToPage } = useAppContext();
 
     const DescriptionexploringBtn = [
         {title: 'VII Jornadas de Educación a Distancia y Universidad', path: 'formacion'},
@@ -56,7 +56,7 @@ function Index(data){
                 <div className={styles.pin_block}>  
                     <div className={styles.col_left}>
 
-                        <Link className={styles.back_arrow} href="/novedades"><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver novedades</strong></span></Link>
+                        <Link className={styles.back_arrow} href="/novedades" onClick={ () => blurToPage() }><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver novedades</strong></span></Link>
 
                         <h1>{data.title}</h1>
                         
@@ -94,7 +94,7 @@ function Index(data){
             <div className={styles.pin_block}>  
                 <div className={styles.col_left}>
 
-                    <Link className={styles.back_arrow} href="/novedades"><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver novedades</strong></span></Link>
+                    <Link className={styles.back_arrow} href="/novedades" onClick={ () => blurToPage() }><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver novedades</strong></span></Link>
 
                     <h1>{data.title}</h1>
                     

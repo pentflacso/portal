@@ -43,6 +43,12 @@
                 border-color: $green-2;
             }
             @media screen and (min-width: 1024px){
+                &.active{
+                    &:hover{
+                        background-color: $green-2;
+                        border-color: $green-2;
+                    } 
+                }
                 &:hover{
                     background-color: $gray-6;
                     border-color: $gray-2;
