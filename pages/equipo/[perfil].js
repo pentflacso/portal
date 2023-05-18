@@ -12,7 +12,7 @@ import styles from "./perfil.module.scss";
 
 function Perfil(data){   
 
-    const { windowSize } = useAppContext();
+    const { windowSize, blurToPage } = useAppContext();
 
     useEffect(() => {
 
@@ -69,7 +69,7 @@ function Perfil(data){
                 <div className="contents-fade">
                     <div className={styles.pin_block}>
                         <div className={styles.col_left}>
-                            <Link className={styles.back_arrow} href="/equipo"><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver equipo</strong></span></Link>
+                            <Link className={styles.back_arrow} href="/equipo" onClick={ () => blurToPage()}><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver equipo</strong></span></Link>
                             <h2 className={styles.name_and_position}>{data.name}<br /><span>{data.description}</span></h2>
                             <div className={styles.cv} dangerouslySetInnerHTML={{__html: data.cv }} />
                         </div>
@@ -111,7 +111,7 @@ function Perfil(data){
         <div className="contents-fade">
             <div className={styles.pin_block}>
                 <div className={styles.col_left}>
-                    <Link className={styles.back_arrow} href="/equipo"><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver equipo</strong></span></Link>
+                    <Link className={styles.back_arrow} href="/equipo" onClick={ () => blurToPage()}><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver equipo</strong></span></Link>
                     <h2 className={styles.name_and_position}>{data.name}<br /><span>{data.description}</span></h2>
                     <div className={styles.cv} dangerouslySetInnerHTML={{__html: data.cv }} />
                 </div>

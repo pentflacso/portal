@@ -16,7 +16,7 @@ import styles from "./equipo.module.scss";
 
 export default function Equipo(data){
 
-    const { windowSize } = useAppContext();
+    const { windowSize, blurToPage } = useAppContext();
 
     useEffect(() => {
 
@@ -86,8 +86,9 @@ export default function Equipo(data){
                     className={`${styles.carrousel_members} swiper-cards members`}                       
                     >   
                     {data.members.map((item, i) => (
+                        
                         <SwiperSlide key={i}>
-                            <Link className={styles.member} href={item.url}>
+                            <Link className={styles.member} href={item.url} onClick={ () => blurToPage() }>
                                 <div className={styles.img_container}>
                                     <img src={item.img}/>
                                 </div>
@@ -122,7 +123,7 @@ export default function Equipo(data){
             >   
             {data.members.map((item, i) => (
                 <SwiperSlide key={i}>
-                    <Link className={styles.member} href={item.url}>
+                    <Link className={styles.member} href={item.url} onClick={ () => blurToPage() }>
                         <div className={styles.img_container}>
                             <img src={item.img}/>
                         </div>
