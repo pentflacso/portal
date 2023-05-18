@@ -4,14 +4,14 @@ import styles from "./NavBar.module.scss";
 
 export default function NavBar(){
     
-    const { isLoading, changePage, currentRoute, handleClose, menuOverlay, menuBtnAnimation, menuState, changeMenuState, blurToPage } = useAppContext();            
+    const { isLoading, changePage, currentRoute, handleClose, menuOverlay, menuBtnAnimation, menuState, changeMenuState, goToPage } = useAppContext();            
 
     return(
     <>
         <nav className={styles.navbar}>
             <div className={styles.nav_btns}>
 
-                <Link href='/' className={styles.brand} onClick={ () => blurToPage() }><img src="/assets/images/marca_flacso_pent.svg" alt="Marca FLACSO PENT" /></Link>  
+                <Link href='/' className={styles.brand} onClick={ () => goToPage() }><img src="/assets/images/marca_flacso_pent.svg" alt="Marca FLACSO PENT" /></Link>  
 
                 { !menuState && <button type="button" className={!menuBtnAnimation ? styles.menu_btn : `${styles.menu_btn} ${styles.grow}`} onClick={ () => changeMenuState(true) }>Menú</button> }                
 
@@ -34,7 +34,7 @@ export default function NavBar(){
             </div>
         } 
 
-        {isLoading && <div className={styles.fade_overlay} />}       
+        <div className={isLoading ? `${styles.fade_overlay}` : `${styles.fade_overlay} ${styles.off}`} />     
     </>
     );
 }

@@ -16,7 +16,7 @@ import styles from "./equipo.module.scss";
 
 export default function Equipo(data){
 
-    const { windowSize, blurToPage } = useAppContext();
+    const { windowSize, goToPage } = useAppContext();
 
     useEffect(() => {
 
@@ -70,43 +70,40 @@ export default function Equipo(data){
         {windowSize >= 1025 ?
         <>
             <CustomScrollbar> 
-                <div className="contents-fade">
-                    <PageHeading title={data.PageHeading} margin_bottom_type={0} />
-                    <TwoColumsText texto={data.TwoColumnsText}/>
-                    <div className={styles.marquee_1}>
-                        <TextMarquee data={data.marquee} />
-                    </div>        
-                    <Swiper
-                    modules={[Navigation, FreeMode]}
-                    spaceBetween={0}
-                    slidesPerView={"auto"}
-                    navigation={true}  
-                    freeMode={false}   
-                    grabCursor={false}  
-                    className={`${styles.carrousel_members} swiper-cards members`}                       
-                    >   
-                    {data.members.map((item, i) => (
-                        
-                        <SwiperSlide key={i}>
-                            <Link className={styles.member} href={item.url} onClick={ () => blurToPage() }>
-                                <div className={styles.img_container}>
-                                    <img src={item.img}/>
-                                </div>
-                                <h5>{item.nombre}</h5>
-                            </Link>            
-                        </SwiperSlide>
-                    ))}                            
-                    </Swiper>       
-                    <TeamData team={data.team}/>
-                    <Footer />
-                </div> 
+                <PageHeading title={data.PageHeading} margin_bottom_type={0} />
+                <TwoColumsText texto={data.TwoColumnsText}/>
+                <div className={styles.marquee_1}>
+                    <TextMarquee data={data.marquee} />
+                </div>        
+                <Swiper
+                modules={[Navigation, FreeMode]}
+                spaceBetween={0}
+                slidesPerView={"auto"}
+                navigation={true}  
+                freeMode={false}   
+                grabCursor={false}  
+                className={`${styles.carrousel_members} swiper-cards members`}                       
+                >   
+                {data.members.map((item, i) => (                        
+                    <SwiperSlide key={i}>
+                        <Link className={styles.member} href={item.url} onClick={ () => goToPage() }>
+                            <div className={styles.img_container}>
+                                <img src={item.img}/>
+                            </div>
+                            <h5>{item.nombre}</h5>
+                        </Link>            
+                    </SwiperSlide>
+                ))}                            
+                </Swiper>       
+                <TeamData team={data.team}/>
+                <Footer />
             </CustomScrollbar> 
             <div className="cursor_conocer">
                 <div className="circle"><span>Conocer</span></div>
             </div>
         </>
         :
-        <div className="contents-fade">
+        <>
             <PageHeading title={data.PageHeading} margin_bottom_type={0} />
             <TwoColumsText texto={data.TwoColumnsText}/>
             <div className={styles.marquee_1}>
@@ -123,7 +120,7 @@ export default function Equipo(data){
             >   
             {data.members.map((item, i) => (
                 <SwiperSlide key={i}>
-                    <Link className={styles.member} href={item.url} onClick={ () => blurToPage() }>
+                    <Link className={styles.member} href={item.url} onClick={ () => goToPage() }>
                         <div className={styles.img_container}>
                             <img src={item.img}/>
                         </div>
@@ -134,7 +131,7 @@ export default function Equipo(data){
             </Swiper>       
             <TeamData team={data.team}/>
             <Footer />
-        </div> 
+        </> 
        }
     </>
     )
