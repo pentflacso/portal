@@ -72,48 +72,46 @@ function Home(d){
     <>
         {windowSize >= 1025 ?
         <>
-            <CustomScrollbar>
-             <div className="contents-fade">                   
-                    <HomeHeading title={d.PageHeading} />
-                    <CoverVideo />
-                    <div className={styles.marquee_1}>
-                        <TextMarquee data={d.marquee1}/>
-                    </div>
-                    <SectionSelector data={d.MemberData} />
-                    <div className={styles.marquee_1}>
-                        <TextMarquee data={d.marquee2} />
-                    </div>    
-                    <Swiper
-                        modules={[Navigation, FreeMode]}
-                        spaceBetween={0}
-                        slidesPerView={"auto"}
-                        navigation={true}  
-                        freeMode={false}   
-                        grabCursor={true} 
-                        className={`${styles.carrousel_novedades} swiper-cards`}
-                    >
-                        {d.courses.map((d, i)=>(
-                            <SwiperSlide key={i}>
-                                <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank" className={styles.card_new}>
-                                    <div className={styles.info}>
-                                        <h5>{d.title}</h5>
-                                        <p>{d.description}</p>
-                                    </div>                       
-                                    <img src={d.img} alt="foto posgrado" />                    
-                                </a>
-                            </SwiperSlide> 
-                        ))} 
-                    </Swiper>  
-                    <NewsSelector data={d.NewsData} />  
-                    <Footer />  
-                </div>  
+            <CustomScrollbar>                
+                <HomeHeading title={d.PageHeading} />
+                <CoverVideo />
+                <div className={styles.marquee_1}>
+                    <TextMarquee data={d.marquee1}/>
+                </div>
+                <SectionSelector data={d.MemberData} />
+                <div className={styles.marquee_1}>
+                    <TextMarquee data={d.marquee2} />
+                </div>    
+                <Swiper
+                    modules={[Navigation, FreeMode]}
+                    spaceBetween={0}
+                    slidesPerView={"auto"}
+                    navigation={true}  
+                    freeMode={false}   
+                    grabCursor={true} 
+                    className={`${styles.carrousel_novedades} swiper-cards`}
+                >
+                    {d.courses.map((d, i)=>(
+                        <SwiperSlide key={i}>
+                            <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank" className={styles.card_new}>
+                                <div className={styles.info}>
+                                    <h5>{d.title}</h5>
+                                    <p>{d.description}</p>
+                                </div>                       
+                                <img src={d.img} alt="foto posgrado" />                    
+                            </a>
+                        </SwiperSlide> 
+                    ))} 
+                </Swiper>  
+                <NewsSelector data={d.NewsData} />  
+                <Footer />    
             </CustomScrollbar> 
             <div className="cursor_leer">
                 <div className="circle"><span>Leer</span></div>
             </div>
         </>
         :
-        <div className="contents-fade"> 
+        <> 
             <HomeHeading title={d.PageHeading} />
             <CoverVideo />
             <div className={styles.marquee_1}>
@@ -146,7 +144,7 @@ function Home(d){
             </Swiper>  
             <NewsSelector data={d.NewsData} />  
             <Footer /> 
-        </div>
+        </>
         }
     </>   
     );

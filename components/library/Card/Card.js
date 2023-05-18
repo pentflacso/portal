@@ -8,7 +8,7 @@ import styles from "./Card.module.scss";
 
 export default function Card({ lead, title, subtitle, description, category, hashtags, date, url }){
 
-  const { windowSize } = useAppContext();   
+  const { windowSize, goToPage } = useAppContext();   
 
 
   useEffect(() => {
@@ -38,7 +38,7 @@ export default function Card({ lead, title, subtitle, description, category, has
 
   return( 
     
-    <Link href={url} className={lead ? `${styles.card}` : `${styles.card} ${styles.new}`}>
+    <Link href={url} className={lead ? `${styles.card}` : `${styles.card} ${styles.new}`} onClick={ () => goToPage()}>
         { lead
         ?
           <>

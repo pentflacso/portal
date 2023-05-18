@@ -123,7 +123,7 @@ function Producciones(d){
         {windowSize >= 1025 ?
         <> 
             <CustomScrollbar >    
-                <div ref={content} className="contents-fade">    
+                <div ref={content}>    
                     <div className="page-heading" ref={pageHeading}>
                         <PageHeading title="<span>Producciones</span>" margin_bottom_type={1}    />        
                     </div>     
@@ -145,7 +145,7 @@ function Producciones(d){
             </div>
         </>     
         :
-        <div className="contents-fade">    
+        <>    
             <PageHeading title="<span>Producciones</span>" margin_bottom_type={1} />
             <div className={`${styles.productions_nav}`}>
                 <ProductionsNav />   
@@ -156,7 +156,7 @@ function Producciones(d){
             </div>
             <ExploringBtns data={exploringBtnsData} />
             <Footer />           
-        </div>
+        </>
         }
     </>
     )

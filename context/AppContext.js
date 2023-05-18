@@ -43,7 +43,13 @@ export default function AppProvider({ children }) {
 
   useEffect(() =>{   
     setCurrentRoute(router.route);
-  }, [router]);
+  }, [router.route]);
+
+  useEffect(() =>{   
+    router.events.on("routeChangeComplete", () => {
+      setLoadingState(false);
+    });
+  }, []);
 
   const handleClose = () => {   
     if(menuOverlay !== undefined){
@@ -61,29 +67,20 @@ export default function AppProvider({ children }) {
 
   const changePage = (url) => {   
     if(url === '/' && url !== currentRoute){
-        setLoadingState(true);        
-        setTimeout(() => {
-            setLoadingState(false);
-        }, 1600); 
+        setLoadingState(true);       
     } else if(url === currentRoute){
         handleClose();
     } else{
         setLoadingState(true);        
-        setTimeout(() => {
-            setLoadingState(false);
-        }, 1600); 
         setTimeout(() => {
             handleClose();
         }, 300);  
     }           
   }
 
-  const blurToPage = () => {
+  const goToPage = () => {
     if(currentRoute !== '/'){   
-      setLoadingState(true);        
-      setTimeout(() => {
-        setLoadingState(false);
-      }, 1600);     
+      setLoadingState(true);            
     }      
   }
 
@@ -102,6 +99,6 @@ export default function AppProvider({ children }) {
   }, []);
 
   return (
-    <AppContext.Provider value={{ dataArticles, setDataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, queryArticles, setQueryArticles, searchInArticles, windowSize, isLoading, setLoadingState, currentRoute, setCurrentRoute, menuBtnAnimation, changePage, handleClose, menuOverlay, changeMenuState, menuState, setMenuState, blurToPage }}> {children} </AppContext.Provider>
+    <AppContext.Provider value={{ dataArticles, setDataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, queryArticles, setQueryArticles, searchInArticles, windowSize, isLoading, setLoadingState, currentRoute, setCurrentRoute, menuBtnAnimation, changePage, handleClose, menuOverlay, changeMenuState, menuState, setMenuState, goToPage }}> {children} </AppContext.Provider>
   );
 }
