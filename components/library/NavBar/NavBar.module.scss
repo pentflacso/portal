@@ -180,15 +180,16 @@
     }
 }
 
-.blur_overlay{
+.fade_overlay{
+    background-color: $white;
     position: fixed;
     top: 0;
     right: 0;
     bottom: 0;
     left: 0;
     z-index: 90;  
-    animation-name: blurInAndOut;
-    animation-duration: 1.5s;  
+    animation-name: fadeInAndOut;
+    animation-duration: 1.2s;  
     animation-timing-function: ease-in-out;
     animation-fill-mode: forwards;  
 }
@@ -213,14 +214,14 @@
     }
 }
 
-@keyframes blurInAndOut {
+@keyframes fadeInAndOut {
     0% {
-        backdrop-filter: blur(0px);
+        opacity: 0;
     }
     50% {
-        backdrop-filter: blur(30px);
+        opacity: 1;
     }
     100% {
-       backdrop-filter: blur(0px);
+        opacity: 0;
     }
 }
