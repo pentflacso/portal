@@ -34,7 +34,7 @@ export default function NavBar(){
             </div>
         } 
 
-        {isLoading && <div className={styles.blur_overlay} />}       
+        {isLoading && <div className={styles.fade_overlay} />}       
     </>
     );
 }
