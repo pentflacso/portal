@@ -1,6 +1,7 @@
 import { useAppContext } from '../context/AppContext';
 import { useEffect } from 'react';
 import CustomScrollbar from '../customScrollbar/CustomScrollbar';
+import MetaTags from '../components/library/MetaTags/MetaTags';
 import HomeHeading from '../components/home/HomeHeading/HomeHeading';
 import CoverVideo from '../components/home/CoverVideo/CoverVideo';
 import TextMarquee from '../components/library/TextMarquee/TextMarquee';
@@ -70,6 +71,13 @@ function Home(d){
 
     return(
     <>
+        <MetaTags
+            pageTitle={'FLACSO | PENT — Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
+            shareTitle={'FLACSO | PENT'}
+            keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
+            description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
+        />
+
         {windowSize >= 1025 ?
         <>
             <CustomScrollbar>                

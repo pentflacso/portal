@@ -15,9 +15,9 @@ export default function HomeHeading({ title }){
         let ctx = gsap.context(() => {
 
             for (let i = 0; i < captions.length; i++) {
-                tl.to(element.current, { duration: 3 }).fromTo(
+                tl.to(element.current, { duration: 2 }).fromTo(
                     element.current,
-                { text: element.current, opacity: 0 },
+                { text: element.current, opacity: 1 },
                 { text: captions[i], duration: 1, opacity: 1 },
                 "<"
                 );

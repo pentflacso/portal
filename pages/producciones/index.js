@@ -1,6 +1,7 @@
 import { useAppContext } from '../../context/AppContext';
 import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
 import { useRef, useEffect } from 'react';
+import MetaTags from '../../components/library/MetaTags/MetaTags';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import ProductionsNav from '../../components/producciones/ProductionsNav/ProductionsNav';
 import ArticlesList from '../../components/library/ArticlesList/ArticlesList';
@@ -120,6 +121,13 @@ function Producciones(d){
 
     return(
     <>
+        <MetaTags
+            pageTitle={'Producciones — FLACSO | PENT'}
+            shareTitle={'FLACSO | PENT'}
+            keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
+            description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
+        />
+
         {windowSize >= 1025 ?
         <> 
             <CustomScrollbar >    

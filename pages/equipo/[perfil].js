@@ -1,5 +1,6 @@
 import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
+import MetaTags from '../../components/library/MetaTags/MetaTags';
 import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
 import Link from 'next/link';
 import Footer from '../../components/library/Footer/Footer';
@@ -63,6 +64,13 @@ function Perfil(data){
 
     return(
     <>
+        <MetaTags
+            pageTitle={'Equipo — FLACSO | PENT'}
+            shareTitle={'FLACSO | PENT'}
+            keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
+            description={'Somos un equipo de especialistas en educación y tecnologías digitales'}
+        />
+
         {windowSize >= 1025 ?
         <>
             <CustomScrollbar> 

@@ -1,5 +1,6 @@
 import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
+import MetaTags from '../../components/library/MetaTags/MetaTags';
 import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
@@ -81,6 +82,13 @@ export default function Formacion(data){
 
     return(
     <>
+        <MetaTags
+            pageTitle={'Formación — FLACSO | PENT'}
+            shareTitle={'FLACSO | PENT'}
+            keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
+            description={'Ofrecemos propuestas de formación para innovar en educación y tecnologías'}
+        />
+
         {windowSize >= 1025 ?
         <>
             <CustomScrollbar> 

@@ -11,7 +11,16 @@ export default function NavBar(){
         <nav className={styles.navbar}>
             <div className={styles.nav_btns}>
 
-                <Link href='/' className={styles.brand} onClick={ () => goToPage() }><img src="/assets/images/marca_flacso_pent.svg" alt="Marca FLACSO PENT" /></Link>  
+                {currentRoute === '/' 
+                ?
+                    <h1 className={styles.brand}>
+                        <Link href='/' onClick={ () => goToPage() }><span>FLACSO PENT</span></Link>
+                    </h1>
+                :
+                    <h3 className={styles.brand}>
+                        <Link href='/' onClick={ () => goToPage() }><span>FLACSO PENT</span></Link>
+                    </h3>
+                }                
 
                 { !menuState && <button type="button" className={!menuBtnAnimation ? styles.menu_btn : `${styles.menu_btn} ${styles.grow}`} onClick={ () => changeMenuState(true) }>Menú</button> }                
 

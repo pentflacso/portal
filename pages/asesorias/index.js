@@ -1,5 +1,6 @@
 import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
+import MetaTags from '../../components/library/MetaTags/MetaTags';
 import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import LeafsItem from '../../components/asesorias/LeafsItem/LeafsItem';
@@ -73,6 +74,13 @@ export default function Asesorias(data){
 
     return(
     <>
+        <MetaTags
+            pageTitle={'Asesorias — FLACSO | PENT'}
+            shareTitle={'FLACSO | PENT'}
+            keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
+            description={'Creamos experiencias de formación únicas, a la medida de cada organización.'}
+        />
+
         {windowSize >= 1025 ?
         <>            
             <CustomScrollbar> 
