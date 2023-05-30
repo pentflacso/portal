@@ -1,5 +1,6 @@
 import { useAppContext } from '../../../context/AppContext';
 import { useEffect } from 'react';
+import MetaTags from '../../../components/library/MetaTags/MetaTags';
 import CustomScrollbar from '../../../customScrollbar/CustomScrollbar';
 import TextMarquee from '../../../components/library/TextMarquee/TextMarquee';
 import ExploringBtns from '../../../components/library/ExploringBtns/ExploringBtns';
@@ -50,6 +51,13 @@ function Index(data){
 
     return(
     <>
+        <MetaTags
+            pageTitle={'Novedades — FLACSO | PENT'}
+            shareTitle={'FLACSO | PENT'}
+            keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
+            description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
+        />
+    
         {windowSize >= 1025 ?
         <CustomScrollbar>   
             <div className={styles.pin_block}>  

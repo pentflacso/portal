@@ -1,5 +1,6 @@
 import { useAppContext } from '../../context/AppContext';
 //import { useEffect } from 'react';
+import MetaTags from '../../components/library/MetaTags/MetaTags';
 import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import KeysBox from '../../components/library/KeysBox/KeysBox';
@@ -89,6 +90,13 @@ export default function Investigacion(data){
 
     return(
     <>
+        <MetaTags
+            pageTitle={'Investigacion — FLACSO | PENT'}
+            shareTitle={'FLACSO | PENT'}
+            keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
+            description={'Nos apasiona investigar y compartir conocimiento con la comunidad.'}
+        />
+
         {windowSize >= 1025 ?
         <>
             <CustomScrollbar> 

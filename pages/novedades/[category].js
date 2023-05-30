@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
+import MetaTags from '../../components/library/MetaTags/MetaTags';
 import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import Link from 'next/link';
@@ -10,8 +11,7 @@ import ArticlesNov from '../../components/library/ArticlesNov/ArticlesNov';
 import Footer from '../../components/library/Footer/Footer';
 import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
-import { gsap, Back, Elastic } from 'gsap';
-import $ from "jquery";
+import { gsap } from 'gsap';
 import styles from "./novedades.module.scss";
 
 function Index(d){
@@ -68,6 +68,13 @@ function Index(d){
 
     return(
     <>
+        <MetaTags
+            pageTitle={'Novedades — FLACSO | PENT'}
+            shareTitle={'FLACSO | PENT'}
+            keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
+            description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
+        />
+    
         {windowSize >= 1025 ?
         <>
             <CustomScrollbar> 
