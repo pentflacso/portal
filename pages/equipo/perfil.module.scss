@@ -42,7 +42,7 @@
             }                       
         }
 
-        h2{
+        .name_and_position{
             @include font-level-1; 
             font-weight: 400;
             color: $deep-blue;
@@ -95,7 +95,7 @@
         margin-bottom: calc(35px + (135 - 35) * ((100vw - 300px) / (1024 - 300)));
     } 
 
-    h3{
+    h2{
         @include container-width-1;
         @include font-level-4;
         color: $deep-blue;

@@ -70,16 +70,62 @@ export default function Equipo(data){
     <>
         <MetaTags
             pageTitle={'Equipo — FLACSO | PENT'}
-            shareTitle={'FLACSO | PENT'}
-            keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
-            description={'Somos un equipo de especialistas en educación y tecnologías digitales'}
+            shareTitle={'Equipo — FLACSO | PENT'}
+            keywords={'especialistas, equipo, profesionales, disciplinas, interdiscipinario, expertise, administración, coordinación, desarrollo institucional, comunicación, desarrollo, docentes, gestión de contenidos, diseño, programación, diplomas superiores, especialización, posgrado, quiénes somos, acerca de'}
+            description={'Somos un equipo de especialistas en educación y tecnologías digitales.'}
         />
 
         {windowSize >= 1025 ?
         <>
             <CustomScrollbar> 
                 <PageHeading title={data.PageHeading} margin_bottom_type={0} />
+
+                <section>
+                    <TwoColumsText texto={data.TwoColumnsText}/>
+                </section>
+
+                <section>
+                    <div className={styles.marquee_1}>
+                        <TextMarquee data={data.marquee} />
+                    </div>        
+                    <Swiper
+                    modules={[Navigation, FreeMode]}
+                    spaceBetween={0}
+                    slidesPerView={"auto"}
+                    navigation={true}  
+                    freeMode={false}   
+                    grabCursor={false}  
+                    className={`${styles.carrousel_members} swiper-cards members`}                       
+                    >   
+                    {data.members.map((item, i) => (                        
+                        <SwiperSlide key={i}>
+                            <Link className={styles.member} href={item.url} onClick={ () => goToPage() }>
+                                <div className={styles.img_container}>
+                                    <img src={item.img}/>
+                                </div>
+                                <h5>{item.nombre}</h5>
+                            </Link>            
+                        </SwiperSlide>
+                    ))}                            
+                    </Swiper>       
+                    <TeamData team={data.team}/>
+                </section>
+
+                <Footer />
+            </CustomScrollbar> 
+            <div className="cursor_conocer">
+                <div className="circle"><span>Conocer</span></div>
+            </div>
+        </>
+        :
+        <>
+            <PageHeading title={data.PageHeading} margin_bottom_type={0} />
+
+            <section>
                 <TwoColumsText texto={data.TwoColumnsText}/>
+            </section>
+
+            <section>
                 <div className={styles.marquee_1}>
                     <TextMarquee data={data.marquee} />
                 </div>        
@@ -92,7 +138,7 @@ export default function Equipo(data){
                 grabCursor={false}  
                 className={`${styles.carrousel_members} swiper-cards members`}                       
                 >   
-                {data.members.map((item, i) => (                        
+                {data.members.map((item, i) => (
                     <SwiperSlide key={i}>
                         <Link className={styles.member} href={item.url} onClick={ () => goToPage() }>
                             <div className={styles.img_container}>
@@ -104,40 +150,8 @@ export default function Equipo(data){
                 ))}                            
                 </Swiper>       
                 <TeamData team={data.team}/>
-                <Footer />
-            </CustomScrollbar> 
-            <div className="cursor_conocer">
-                <div className="circle"><span>Conocer</span></div>
-            </div>
-        </>
-        :
-        <>
-            <PageHeading title={data.PageHeading} margin_bottom_type={0} />
-            <TwoColumsText texto={data.TwoColumnsText}/>
-            <div className={styles.marquee_1}>
-                <TextMarquee data={data.marquee} />
-            </div>        
-            <Swiper
-            modules={[Navigation, FreeMode]}
-            spaceBetween={0}
-            slidesPerView={"auto"}
-            navigation={true}  
-            freeMode={false}   
-            grabCursor={false}  
-            className={`${styles.carrousel_members} swiper-cards members`}                       
-            >   
-            {data.members.map((item, i) => (
-                <SwiperSlide key={i}>
-                    <Link className={styles.member} href={item.url} onClick={ () => goToPage() }>
-                        <div className={styles.img_container}>
-                            <img src={item.img}/>
-                        </div>
-                        <h5>{item.nombre}</h5>
-                    </Link>            
-                </SwiperSlide>
-            ))}                            
-            </Swiper>       
-            <TeamData team={data.team}/>
+            </section>
+
             <Footer />
         </> 
        }

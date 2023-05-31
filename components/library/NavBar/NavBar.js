@@ -7,7 +7,7 @@ export default function NavBar(){
     const { isLoading, changePage, currentRoute, handleClose, menuOverlay, menuBtnAnimation, menuState, changeMenuState, goToPage } = useAppContext();            
 
     return(
-    <>
+    <header>
         <nav className={styles.navbar}>
             <div className={styles.nav_btns}>
 
@@ -32,7 +32,7 @@ export default function NavBar(){
                 <div className={styles.wrapper}>
                     <div className={styles.sections}>
                         <Link href='/formacion' onClick={ () => changePage('/formacion') } className={currentRoute === '/formacion' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Formación</Link>
-                        <Link href='/asesorias' onClick={ () => changePage('/asesorias') }className={currentRoute === '/asesorias' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Asesorias</Link>
+                        <Link href='/asesorias' onClick={ () => changePage('/asesorias') }className={currentRoute === '/asesorias' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Asesorías</Link>
                         <Link href='/producciones' onClick={ () => changePage('/producciones') } className={currentRoute === '/producciones' || currentRoute === '/producciones/[produccion]' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Producciones</Link>
                         <Link href='/investigacion' onClick={ () => changePage('/investigacion') } className={currentRoute === '/investigacion' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Investigación</Link>
                         <Link href='/novedades' onClick={ () => changePage('/novedades') } className={currentRoute === '/novedades' || currentRoute === '/novedades/[category]' || currentRoute === '/novedades/[category]/[title]' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Novedades</Link>
@@ -44,6 +44,6 @@ export default function NavBar(){
         } 
 
         <div className={isLoading ? `${styles.fade_overlay}` : `${styles.fade_overlay} ${styles.off}`} />     
-    </>
+    </header>
     );
 }

@@ -72,10 +72,10 @@ function Home(d){
     return(
     <>
         <MetaTags
-            pageTitle={'FLACSO | PENT — Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
-            shareTitle={'FLACSO | PENT'}
-            keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
-            description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
+            pageTitle={'FLACSO | PENT — Un espacio de capacitación, investigación, creación e innovación en educación y tecnologías digitales.'}
+            shareTitle={'FLACSO | PENT — Un espacio de capacitación, investigación, creación e innovación en educación y tecnologías digitales.'}
+            keywords={'flacso, pent, posgrado, educación, tecnologías, tics, educación en línea, fabio tarasow, christian milillo, monica trech, gisela schwartzman, tecnologías digitales, tecnologías de la información y la comunicación, cursos, talleres, diplomaturas, flacso, facultad latinoamericana de ciencias sociales, tecnología educativa, innovación educativa, EdTech, contacto, newsletter, redes sociales'}
+            description={'Somos un espacio de capacitación, investigación, creación e innovación en educación y tecnologías digitales.'}
         />
 
         {windowSize >= 1025 ?
@@ -83,10 +83,61 @@ function Home(d){
             <CustomScrollbar>                
                 <HomeHeading title={d.PageHeading} />
                 <CoverVideo />
+
+                <section>
+                    <div className={styles.marquee_1}>
+                        <TextMarquee data={d.marquee1}/>
+                    </div>
+                    <SectionSelector data={d.MemberData} />
+                </section>
+
+                <section>
+                    <div className={styles.marquee_1}>
+                        <TextMarquee data={d.marquee2} />
+                    </div>    
+                    <Swiper
+                        modules={[Navigation, FreeMode]}
+                        spaceBetween={0}
+                        slidesPerView={"auto"}
+                        navigation={true}  
+                        freeMode={false}   
+                        grabCursor={true} 
+                        className={`${styles.carrousel_novedades} swiper-cards`}
+                    >
+                        {d.courses.map((d, i)=>(
+                            <SwiperSlide key={i}>
+                                <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank" className={styles.card_new}>
+                                    <div className={styles.info}>
+                                        <h5>{d.title}</h5>
+                                        <p>{d.description}</p>
+                                    </div>                       
+                                    <img src={d.img} alt="foto posgrado" />                    
+                                </a>
+                            </SwiperSlide> 
+                        ))} 
+                    </Swiper>  
+                    <NewsSelector data={d.NewsData} />  
+                </section>
+
+                <Footer />    
+            </CustomScrollbar> 
+            <div className="cursor_leer">
+                <div className="circle"><span>Leer</span></div>
+            </div>
+        </>
+        :
+        <> 
+            <HomeHeading title={d.PageHeading} />
+            <CoverVideo />
+
+            <section>
                 <div className={styles.marquee_1}>
                     <TextMarquee data={d.marquee1}/>
                 </div>
                 <SectionSelector data={d.MemberData} />
+            </section>
+
+            <section>
                 <div className={styles.marquee_1}>
                     <TextMarquee data={d.marquee2} />
                 </div>    
@@ -112,45 +163,8 @@ function Home(d){
                     ))} 
                 </Swiper>  
                 <NewsSelector data={d.NewsData} />  
-                <Footer />    
-            </CustomScrollbar> 
-            <div className="cursor_leer">
-                <div className="circle"><span>Leer</span></div>
-            </div>
-        </>
-        :
-        <> 
-            <HomeHeading title={d.PageHeading} />
-            <CoverVideo />
-            <div className={styles.marquee_1}>
-                <TextMarquee data={d.marquee1}/>
-            </div>
-            <SectionSelector data={d.MemberData} />
-            <div className={styles.marquee_1}>
-                <TextMarquee data={d.marquee2} />
-            </div>    
-            <Swiper
-                modules={[Navigation, FreeMode]}
-                spaceBetween={0}
-                slidesPerView={"auto"}
-                navigation={true}  
-                freeMode={false}   
-                grabCursor={true} 
-                className={`${styles.carrousel_novedades} swiper-cards`}
-            >
-                {d.courses.map((d, i)=>(
-                    <SwiperSlide key={i}>
-                        <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank" className={styles.card_new}>
-                            <div className={styles.info}>
-                                <h5>{d.title}</h5>
-                                <p>{d.description}</p>
-                            </div>                       
-                            <img src={d.img} alt="foto posgrado" />                    
-                        </a>
-                    </SwiperSlide> 
-                ))} 
-            </Swiper>  
-            <NewsSelector data={d.NewsData} />  
+            </section>
+
             <Footer /> 
         </>
         }

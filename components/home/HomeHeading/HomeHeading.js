@@ -31,6 +31,8 @@ export default function HomeHeading({ title }){
 
 
     return(
-        <h1 className={styles.heading}>Somos un espacio<br className={styles.mobile} /> de <span ref={element} /><br />en educación y tecnologías digitales</h1>
+        <header>
+            <h1 className={styles.heading}>Somos un espacio<br className={styles.mobile} /> de <span ref={element} /><br />en educación y tecnologías digitales</h1>
+        </header>
     );
 }

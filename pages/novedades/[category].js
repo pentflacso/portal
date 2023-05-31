@@ -79,6 +79,51 @@ function Index(d){
         <>
             <CustomScrollbar> 
                 <PageHeading title="<h1><span>Novedades</span></h1>" margin_bottom_type={1} />
+
+                <section>
+                    <div className={styles.filters_cont}>
+                        <Swiper
+                        modules={[Navigation, FreeMode]}
+                        spaceBetween={0}
+                        slidesPerView={"auto"}
+                        navigation={true}  
+                        freeMode={true}
+                        grabCursor={true}
+                        className={`${styles.category} swiper-btns`}
+                        >             
+                            <SwiperSlide> 
+                                <Link href="/novedades/" className={styles.btn_filter}>Todos</Link>
+                            </SwiperSlide>
+                                {filtro && filtro.map((c, key) => {
+                                    return (
+                                        <SwiperSlide key={key}> 
+                                            <Link href={"/novedades/"+ c} className={category == c ? `${styles.btn_filter} ${styles.active}` : styles.btn_filter }>{c}</Link>
+                                        </SwiperSlide>
+                                    );
+                                })}
+                        </Swiper>          
+                    </div>
+                    <ArticlesNov data={data} category={category} />
+                </section>
+
+                <section>
+                    <div className={styles.marquee}>
+                        <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                    </div>
+                    <ExploringBtns data={exploringBtnsData} />
+                </section>
+
+                <Footer />
+            </CustomScrollbar> 
+            <div className="cursor_ver">
+                <div className="circle"><span>Ver</span></div>
+            </div>
+        </>
+        :
+        <>
+            <PageHeading title="<h1><span>Novedades</span></h1>" margin_bottom_type={1} />
+
+            <section>
                 <div className={styles.filters_cont}>
                     <Swiper
                     modules={[Navigation, FreeMode]}
@@ -102,46 +147,15 @@ function Index(d){
                     </Swiper>          
                 </div>
                 <ArticlesNov data={data} category={category} />
+            </section>
+
+            <section>
                 <div className={styles.marquee}>
                     <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
                 </div>
                 <ExploringBtns data={exploringBtnsData} />
-                <Footer />
-            </CustomScrollbar> 
-            <div className="cursor_ver">
-                <div className="circle"><span>Ver</span></div>
-            </div>
-        </>
-        :
-        <>
-            <PageHeading title="<h1><span>Novedades</span></h1>" margin_bottom_type={1} />
-            <div className={styles.filters_cont}>
-                <Swiper
-                modules={[Navigation, FreeMode]}
-                spaceBetween={0}
-                slidesPerView={"auto"}
-                navigation={true}  
-                freeMode={true}
-                grabCursor={true}
-                className={`${styles.category} swiper-btns`}
-                >             
-                    <SwiperSlide> 
-                        <Link href="/novedades/" className={styles.btn_filter}>Todos</Link>
-                    </SwiperSlide>
-                        {filtro && filtro.map((c, key) => {
-                            return (
-                                <SwiperSlide key={key}> 
-                                    <Link href={"/novedades/"+ c} className={category == c ? `${styles.btn_filter} ${styles.active}` : styles.btn_filter }>{c}</Link>
-                                </SwiperSlide>
-                            );
-                        })}
-                </Swiper>          
-            </div>
-            <ArticlesNov data={data} category={category} />
-            <div className={styles.marquee}>
-                <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
-            </div>
-            <ExploringBtns data={exploringBtnsData} />
+            </section>
+
             <Footer />
         </>
        }

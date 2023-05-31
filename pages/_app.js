@@ -8,11 +8,9 @@ import "../styles/swiperStyles.scss";
 export default function App({ Component, pageProps }) {
 
     return(
-        <main className="main-container">
-            <AppContext>       
-                <NavBar/>
-                <Component {...pageProps} />                    
-            </AppContext>
-        </main>
+        <AppContext>       
+            <NavBar/>
+            <Component {...pageProps} />                    
+        </AppContext>
     );
 }
