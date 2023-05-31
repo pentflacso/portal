@@ -76,16 +76,18 @@ function Perfil(data){
             <CustomScrollbar> 
                 <div className={styles.pin_block}>
                     <div className={styles.col_left}>
-                        <Link className={styles.back_arrow} href="/equipo" onClick={ () => goToPage()}><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver equipo</strong></span></Link>
-                        <h2 className={styles.name_and_position}>{data.name}<br /><span>{data.description}</span></h2>
-                        <div className={styles.cv} dangerouslySetInnerHTML={{__html: data.cv }} />
+                        <header>
+                            <Link className={styles.back_arrow} href="/equipo" onClick={ () => goToPage()}><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver equipo</strong></span></Link>
+                            <h1 className={styles.name_and_position}>{data.name}<br /><span>{data.description}</span></h1>
+                        </header>
+                        <article className={styles.cv} dangerouslySetInnerHTML={{__html: data.cv }} />
                     </div>
                     <div className={styles.col_right}>
                         <img src={data.picture} alt={`Imagen de ${data.name}`} />
                     </div>
                 </div>
-                <div className={styles.producciones}>
-                    <h3>Producciones</h3>
+                <section className={styles.producciones}>
+                    <h2>Producciones</h2>
                     <Swiper
                     modules={[Navigation, FreeMode]}
                     spaceBetween={0}
@@ -106,7 +108,7 @@ function Perfil(data){
                         </SwiperSlide> 
                     ))} 
                     </Swiper>
-                </div>
+                </section>
                 <Footer />
             </CustomScrollbar> 
             <div className="cursor_ver">
@@ -117,16 +119,18 @@ function Perfil(data){
         <>
             <div className={styles.pin_block}>
                 <div className={styles.col_left}>
-                    <Link className={styles.back_arrow} href="/equipo" onClick={ () => goToPage()}><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver equipo</strong></span></Link>
-                    <h2 className={styles.name_and_position}>{data.name}<br /><span>{data.description}</span></h2>
-                    <div className={styles.cv} dangerouslySetInnerHTML={{__html: data.cv }} />
+                    <header>
+                        <Link className={styles.back_arrow} href="/equipo" onClick={ () => goToPage()}><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver equipo</strong></span></Link>
+                        <h1 className={styles.name_and_position}>{data.name}<br /><span>{data.description}</span></h1>
+                    </header>
+                    <article className={styles.cv} dangerouslySetInnerHTML={{__html: data.cv }} />
                 </div>
                 <div className={styles.col_right}>
                     <img src={data.picture} alt={`Imagen de ${data.name}`} />
                 </div>
             </div>
-            <div className={styles.producciones}>
-                <h3>Producciones</h3>
+            <section className={styles.producciones}>
+                <h2>Producciones</h2>
                 <Swiper
                 modules={[Navigation, FreeMode]}
                 spaceBetween={0}
@@ -147,7 +151,7 @@ function Perfil(data){
                     </SwiperSlide> 
                 ))} 
                 </Swiper>
-            </div>
+            </section>
             <Footer />
         </>
        }

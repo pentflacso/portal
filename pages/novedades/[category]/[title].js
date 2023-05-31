@@ -63,36 +63,44 @@ function Index(data){
             <div className={styles.pin_block}>  
                 <div className={styles.col_left}>
 
-                    <Link className={styles.back_arrow} href="/novedades" onClick={ () => goToPage() }><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver novedades</strong></span></Link>
+                    <header>
+                        <Link className={styles.back_arrow} href="/novedades" onClick={ () => goToPage() }><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver novedades</strong></span></Link>
 
-                    <h1>{data.title}</h1>
-                        
-                    <p className={styles.info}>
-                        {data.category} {data.date ? <>— <span>{data.date}</span></> : ''}
-                    </p>
+                        <h1>{data.title}</h1>
+                            
+                        <p className={styles.info}>
+                            {data.category} {data.date ? <>— <span>{data.date}</span></> : ''}
+                        </p>
+                    </header>
 
-                    { data.description ?           
-                        <div dangerouslySetInnerHTML={{__html: data.description }} /> :
-                    ""}
+                    <article>
+                        { data.description ?           
+                            <div dangerouslySetInnerHTML={{__html: data.description }} /> :
+                        ""}
 
-                    <Link className={styles.share_btn} href="#" target="_blank">Compartir</Link>
+                        <Link className={styles.share_btn} href="#" target="_blank">Compartir</Link>
 
-                    { data.license ?
-                        <div className={styles.legal}>                         
-                            <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ data.license }}/>                  
-                        </div>
-                    : "" }
+                        { data.license ?
+                            <div className={styles.legal}>                         
+                                <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ data.license }}/>                  
+                            </div>
+                        : "" }
+                    </article>
 
                 </div>
-                <div className={styles.col_right}>
-                    <h4>Ultimas novedades</h4>
+                <section className={styles.col_right}>
+                    <h2>Ultimas novedades</h2>
                     <ExploringBtns data={DescriptionexploringBtn} dataStyle="btnMedium" /> 
+                </section>
+            </div>
+
+            <section>
+                <div className={styles.marquee}>
+                    <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
                 </div>
-            </div>
-            <div className={styles.marquee}>
-                <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
-            </div>
-            <ExploringBtns data={exploringBtnsData} />       
+                <ExploringBtns data={exploringBtnsData} />      
+            </section> 
+
             <Footer />
         </CustomScrollbar> 
         :
@@ -100,36 +108,44 @@ function Index(data){
             <div className={styles.pin_block}>  
                 <div className={styles.col_left}>
 
-                    <Link className={styles.back_arrow} href="/novedades" onClick={ () => goToPage() }><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver novedades</strong></span></Link>
+                    <header>
+                        <Link className={styles.back_arrow} href="/novedades" onClick={ () => goToPage() }><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver novedades</strong></span></Link>
 
-                    <h1>{data.title}</h1>
-                    
-                    <p className={styles.info}>
-                        {data.category} {data.date ? <>— <span>{data.date}</span></> : ''}
-                    </p>
+                        <h1>{data.title}</h1>
+                        
+                        <p className={styles.info}>
+                            {data.category} {data.date ? <>— <span>{data.date}</span></> : ''}
+                        </p>
+                    </header>
 
-                    { data.description ?           
-                    <div dangerouslySetInnerHTML={{__html: data.description }} /> :
-                    ""}
+                    <article>
+                        { data.description ?           
+                        <div dangerouslySetInnerHTML={{__html: data.description }} /> :
+                        ""}
 
-                    <Link className={styles.share_btn} href="#" target="_blank">Compartir</Link>
+                        <Link className={styles.share_btn} href="#" target="_blank">Compartir</Link>
 
-                    { data.license ?
-                        <div className={styles.legal}>                         
-                            <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ data.license }}/>                  
-                        </div>
-                    : "" }
+                        { data.license ?
+                            <div className={styles.legal}>                         
+                                <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ data.license }}/>                  
+                            </div>
+                        : "" }
+                    </article>
 
                 </div>
-                <div className={styles.col_right}>
-                    <h4>Ultimas novedades</h4>
+                <section  className={styles.col_right}>
+                    <h2>Ultimas novedades</h2>
                     <ExploringBtns data={DescriptionexploringBtn} dataStyle="btnMedium" /> 
+                </section>
+            </div>
+
+            <section>
+                <div className={styles.marquee}>
+                    <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
                 </div>
-            </div>
-            <div className={styles.marquee}>
-                <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
-            </div>
-            <ExploringBtns data={exploringBtnsData} />       
+                <ExploringBtns data={exploringBtnsData} />    
+            </section>
+
             <Footer />       
         </>
         }

@@ -66,43 +66,50 @@ function Novedades(d){
     <>  
         <MetaTags
             pageTitle={'Novedades — FLACSO | PENT'}
-            shareTitle={'FLACSO | PENT'}
-            keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
-            description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
+            shareTitle={'Novedades — FLACSO | PENT'}
+            keywords={'novedades, noticias, entrevistas, prensa, conversatorios, conferencias, testimonios, empleo, búsqueda laboral, eventos, charlas, institucional, lanzamientos'}
+            description={'Enterate de las novedades más recientes del PENT FLACSO.'}
         />
 
         {windowSize >= 1025 ?
         <>            
             <CustomScrollbar>    
                 <PageHeading title="<span>Novedades</span>" margin_bottom_type={1} />
-                <div className={styles.filters_cont}>
-                    <Swiper
-                    modules={[Navigation, FreeMode]}
-                    spaceBetween={0}
-                    slidesPerView={"auto"}
-                    navigation={true}  
-                    freeMode={false}
-                    grabCursor={true}
-                    className={`${styles.category} swiper-btns`}    
-                    >       
-                        <SwiperSlide> 
-                            <Link href="/novedades/" className={`${styles.btn_filter} ${styles.active}`}>Todos</Link>
-                        </SwiperSlide>
 
-                        {filtro && filtro.map((category, i) => {
-                            return (  
-                                <SwiperSlide key={i}>
-                                    <Link href={"/novedades/"+ category} className={styles.btn_filter}>{category}</Link>  
-                                </SwiperSlide> 
-                            );
-                        })}
-                    </Swiper>          
-                </div>            
-                <ArticlesNov data={data} />
-                <div className={styles.marquee}>
-                    <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
-                </div>
-                <ExploringBtns data={exploringBtnsData} />
+                <section>
+                    <div className={styles.filters_cont}>
+                        <Swiper
+                        modules={[Navigation, FreeMode]}
+                        spaceBetween={0}
+                        slidesPerView={"auto"}
+                        navigation={true}  
+                        freeMode={false}
+                        grabCursor={true}
+                        className={`${styles.category} swiper-btns`}    
+                        >       
+                            <SwiperSlide> 
+                                <Link href="/novedades/" className={`${styles.btn_filter} ${styles.active}`}>Todos</Link>
+                            </SwiperSlide>
+
+                            {filtro && filtro.map((category, i) => {
+                                return (  
+                                    <SwiperSlide key={i}>
+                                        <Link href={"/novedades/"+ category} className={styles.btn_filter}>{category}</Link>  
+                                    </SwiperSlide> 
+                                );
+                            })}
+                        </Swiper>          
+                    </div>            
+                    <ArticlesNov data={data} />
+                </section>
+
+                <section>
+                    <div className={styles.marquee}>
+                        <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                    </div>
+                    <ExploringBtns data={exploringBtnsData} />
+                </section>
+                
                 <Footer />
             </CustomScrollbar> 
             <div className="cursor_ver">

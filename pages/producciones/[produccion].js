@@ -58,7 +58,7 @@ function Index(data){
         {windowSize >= 1025 ?
         <CustomScrollbar> 
             <div className={styles.pin_block}> 
-                <div className={styles.col_left}>                
+                <header className={styles.col_left}>                
                      <Link className={styles.back_arrow} href="/producciones" onClick={ () => goToPage()}><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver producciones</strong></span></Link>
                     <h1>{data.title}</h1>
                     { data.authors ?
@@ -75,8 +75,8 @@ function Index(data){
                     { data.hashtags && <ul className={styles.hashtags}>{ data.hashtags.map((hashtags , key) => <li key={key}>{hashtags}</li>) }</ul> }
                     <Link className={`${styles.btn} ${styles.download}`} href="#" target="_blank"><span><img src="/assets/icons/download_icon.svg" alt="icono de descarga"/>Descargar</span></Link>
                     { data.share && <Link className={`${styles.btn} ${styles.share}`} href={data.share} target="_blank">Compartir</Link> }
-                </div>
-                <div className={styles.col_right}>
+                </header>
+                <article className={styles.col_right}>
                     { data.img ? <img src={ data.img } alt={ data.title } className={styles.imgTop} /> : ""}
                     { data.description && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.description }} /> }
                     { data.quote || data.license ?
@@ -86,18 +86,22 @@ function Index(data){
                             { data.license ? <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ data.license }}/> : "" }                    
                         </div>
                     : "" }
+                </article>
+            </div>
+
+            <section>
+                <div className={styles.marquee}>
+                    <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
                 </div>
-            </div>
-            <div className={styles.marquee}>
-                <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
-            </div>
-            <ExploringBtns data={exploringBtnsData} />   
+                <ExploringBtns data={exploringBtnsData} />  
+            </section>
+
             <Footer />
         </CustomScrollbar> 
         :
         <>
             <div className={styles.pin_block}> 
-                <div className={styles.col_left}>                
+                <header className={styles.col_left}>                
                     <Link className={styles.back_arrow} href="/producciones" onClick={ () => goToPage()}><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver producciones</strong></span></Link>
                     <h1>{data.title}</h1>
                     { data.authors ?
@@ -114,8 +118,8 @@ function Index(data){
                     { data.hashtags && <ul className={styles.hashtags}>{ data.hashtags.map((hashtags , key) => <li key={key}>{hashtags}</li>) }</ul> }
                     <Link className={`${styles.btn} ${styles.download}`} href="#" target="_blank"><span><img src="/assets/icons/download_icon.svg" alt="icono de descarga"/>Descargar</span></Link>
                     { data.share && <Link className={`${styles.btn} ${styles.share}`} href={data.share} target="_blank">Compartir</Link> }
-                </div>
-                <div className={styles.col_right}>
+                </header>
+                <article className={styles.col_right}>
                     { data.img ? <img src={ data.img } alt={ data.title } className={styles.imgTop} /> : ""}
                     { data.description && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.description }} /> }
                     { data.quote || data.license ?
@@ -125,12 +129,16 @@ function Index(data){
                             { data.license ? <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ data.license }}/> : "" }                    
                         </div>
                     : "" }
+                </article>
+            </div>
+
+            <section>
+                <div className={styles.marquee}>
+                    <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
                 </div>
-            </div>
-            <div className={styles.marquee}>
-                <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
-            </div>
-            <ExploringBtns data={exploringBtnsData} />   
+                <ExploringBtns data={exploringBtnsData} />  
+            </section> 
+
             <Footer />
         </>
         }

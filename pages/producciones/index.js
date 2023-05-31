@@ -1,6 +1,6 @@
 import { useAppContext } from '../../context/AppContext';
 import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, Fragment } from 'react';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import ProductionsNav from '../../components/producciones/ProductionsNav/ProductionsNav';
@@ -123,28 +123,33 @@ function Producciones(d){
     <>
         <MetaTags
             pageTitle={'Producciones — FLACSO | PENT'}
-            shareTitle={'FLACSO | PENT'}
-            keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
-            description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
+            shareTitle={'Producciones — FLACSO | PENT'}
+            keywords={'publicaciones, producciones, papers, artículos, trabajos académicos, ponencias, conferencias, divulgación académica, abstract, material didáctico, material didáctico hipermedial, actualización profesional, aplicaciones digitales, aprendizaje en línea, ciudadanía digital, comunidades de práctica, consumos culturales, didáctica, dispositivos tecnopedagógicos, educación en línea, entornos digitales, formación docente, inclusión, infancias, jóvenes, materiales didácticos, metodología de investigación, microlearning, neurociencias, políticas tecno-educativas, programación, redes sociales, subjetividades, tendencias educativas, tutoría y moderación'}
+            description={'Publicaciones del equipo del PENT.'}
         />
 
         {windowSize >= 1025 ?
         <> 
             <CustomScrollbar >    
                 <div ref={content}>    
-                    <div className="page-heading" ref={pageHeading}>
-                        <PageHeading title="<span>Producciones</span>" margin_bottom_type={1}    />        
-                    </div>     
-                    <div className={`${styles.productions_nav}`} ref={productionsNav}>
-                        <ProductionsNav/>   
-                    </div>       
-                    {dataArticles !== undefined && 
-                        <ArticlesList data={searchInArticles(dataArticles)}/>
-                    }      
-                    <div className={styles.marquee}>
-                        <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
-                    </div>
-                    <ExploringBtns data={exploringBtnsData} />
+                    <div ref={pageHeading}>
+                        <PageHeading title="<span>Producciones</span>" margin_bottom_type={1} />        
+                    </div> 
+
+                    <section>    
+                        <div className={`${styles.productions_nav}`} ref={productionsNav}>
+                            <ProductionsNav/>   
+                        </div>       
+                        {dataArticles !== undefined && <ArticlesList data={searchInArticles(dataArticles)}/>}     
+                    </section> 
+
+                    <section> 
+                        <div className={styles.marquee}>
+                            <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                        </div>
+                        <ExploringBtns data={exploringBtnsData} />
+                    </section>
+
                     <Footer />
                 </div>   
             </CustomScrollbar>  
@@ -155,14 +160,21 @@ function Producciones(d){
         :
         <>    
             <PageHeading title="<span>Producciones</span>" margin_bottom_type={1} />
-            <div className={`${styles.productions_nav}`}>
-                <ProductionsNav />   
-            </div>       
-            {dataArticles !== undefined && <ArticlesList data={searchInArticles(dataArticles)} />}        
-            <div className={styles.marquee}>
-                <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
-            </div>
-            <ExploringBtns data={exploringBtnsData} />
+
+            <section>  
+                <div className={`${styles.productions_nav}`}>
+                    <ProductionsNav />   
+                </div>       
+                {dataArticles !== undefined && <ArticlesList data={searchInArticles(dataArticles)} />}    
+            </section>
+
+            <section>
+                <div className={styles.marquee}>
+                    <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                </div>
+                <ExploringBtns data={exploringBtnsData} />
+            </section>
+
             <Footer />           
         </>
         }
