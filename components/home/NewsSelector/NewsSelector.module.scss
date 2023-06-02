@@ -2,9 +2,9 @@
 
 .wrapper{
     .marquee_btns{   
-        margin-bottom: calc(35px + (110 - 35) * ((100vw - 1200px) / (3840 - 1200)));
+        margin-bottom: calc(32px + (100 - 32) * ((100vw - 1200px) / (3840 - 1200)));
         @media screen and (max-width: 1024px){
-            margin-bottom: calc(18px + (68 - 18) * ((100vw - 300px) / (1024 - 300)));
+            margin-bottom: calc(14px + (64 - 14) * ((100vw - 300px) / (1024 - 300)));
         }
 
         .btn{
@@ -107,26 +107,26 @@
             margin-bottom: calc(60px + (160 - 60) * ((100vw - 300px) / (1024 - 300)));
         }
         a{
-            position: relative;
+            display: flex;
+            align-items: center;
+            width: fit-content;
             @include font-level-2; 
             font-weight: 400;
             text-decoration: none;
             color: $deep-blue;
             .arrow{ 
-                position: absolute;
-                top: 0;
-                bottom: 0;          
-                margin-top: auto;
-                margin-bottom: auto;            
+                display: inline-block;
+                position: relative;          
                 width: calc(36px + (96 - 36) * ((100vw - 1200px) / (3840 - 1200)));
                 height: calc(36px + (96 - 36) * ((100vw - 1200px) / (3840 - 1200)));
                 background-color: $white;                
                 border-radius: 50%;
                 border: $line-1 solid $gray-3;
+                margin-left: calc(8px + (20 - 8) * ((100vw - 1200px) / (3840 - 1200)));
                 @media screen and (max-width: 1024px){
                     width: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300)));
                     height: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300))); 
-                    margin-left: calc(4px + (8 - 4) * ((100vw - 300px) / (1024 - 300)));
+                    margin-left: calc(8px + (20 - 8) * ((100vw - 300px) / (1024 - 300)));
                     border: $line-1-mobile solid $gray-3;
                 }
                 img{
