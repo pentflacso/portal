@@ -14,7 +14,11 @@
     }
     
     .paragraph{
-        grid-area: paragraph;        
+        grid-area: paragraph;
+        margin-top: calc(25px + (85 - 25) * ((100vw - 1200px) / (3840 - 1200)));      
+        @media screen and (max-width: 1024px){
+            margin-top: 0;
+        }  
 
         p{
             @include font-level-1; 

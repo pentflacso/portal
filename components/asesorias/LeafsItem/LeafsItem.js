@@ -108,8 +108,10 @@ export default function LeafsItem({ items }){
             <SwiperSlide key={i}>
                 <div className={styles.item_slide}>
                     <img src={item.img} alt="imagen" />
-                    <h5>{item.title}</h5>
-                    <p>{item.description}</p>
+                    <div className={styles.info}>
+                        <h5>{item.title}</h5>
+                        <p>{item.description}</p>
+                    </div>
                 </div>            
             </SwiperSlide>
             ))
