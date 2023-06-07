@@ -140,7 +140,7 @@ export default function Asesorias(data){
                 </section>
 
                 <section>
-                    <div className={styles.marquee_1}>
+                    <div className={styles.marquee_2}>
                         <TextMarquee data={data.marquee4} />
                     </div>
                     <ParagraphAndButton 
@@ -217,7 +217,7 @@ export default function Asesorias(data){
             </section>
 
             <section>
-                <div className={styles.marquee_1}>
+                <div className={styles.marquee_2}>
                     <TextMarquee data={data.marquee4} />
                 </div>
                 <ParagraphAndButton 

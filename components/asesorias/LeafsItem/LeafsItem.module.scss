@@ -11,7 +11,7 @@
 
     .wrapper{
         @include container-width-1;
-        height: calc(494px + (1397 - 494) * ((100vw - 1200px) / (3840 - 1200)));
+        height: calc(494px + (1308 - 494) * ((100vw - 1200px) / (3840 - 1200)));
         position: relative;
         @media screen and (max-width: 1024px){
             height: auto;
@@ -22,7 +22,7 @@
             display: flex;
             flex-wrap: wrap;
             background-color: $gray-6;
-            width: calc(600px + (1740 - 600) * ((100vw - 1200px) / (3840 - 1200)));
+            width: calc(600px + (1540 - 600) * ((100vw - 1200px) / (3840 - 1200)));
             padding: calc(28px + (94 - 28) * ((100vw - 1200px) / (3840 - 1200)));
             color: $deep-blue;  
             text-decoration: none;  
@@ -84,11 +84,11 @@
                 }
                 &:nth-of-type(2){
                     z-index: 3;
-                    right: calc(278px + (708 - 278) * ((100vw - 1200px) / (3840 - 1200)));                
+                    right: calc(278px + (838 - 278) * ((100vw - 1200px) / (3840 - 1200)));                
                 }
                 &:nth-of-type(3){
                     z-index: 2; 
-                    right: calc(138px + (355 - 138) * ((100vw - 1200px) / (3840 - 1200)));            
+                    right: calc(138px + (415 - 138) * ((100vw - 1200px) / (3840 - 1200)));            
                 }
             }
         }
@@ -96,18 +96,18 @@
             .leaf_item{
                 &:nth-of-type(1){
                     z-index: 4;
-                    left: calc(-458px + (-1388 - -458) * ((100vw - 1200px) / (3840 - 1200)));            
+                    left: calc(-458px + (-1120 - -458) * ((100vw - 1200px) / (3840 - 1200)));            
                 }
                 &:nth-of-type(2){
                     z-index: 3;
-                    right: calc(278px + (708 - 278) * ((100vw - 1200px) / (3840 - 1200)));   
+                    right: calc(278px + (838 - 278) * ((100vw - 1200px) / (3840 - 1200)));   
                     &:hover{
                         background-color: $gray-6;
                     }              
                 }
                 &:nth-of-type(3){
                     z-index: 2; 
-                    right: calc(138px + (355 - 138) * ((100vw - 1200px) / (3840 - 1200)));             
+                    right: calc(138px + (415 - 138) * ((100vw - 1200px) / (3840 - 1200)));             
                 } 
             }
         }
@@ -115,15 +115,15 @@
             .leaf_item{
                 &:nth-of-type(1){
                     z-index: 4;
-                    left: calc(-458px + (-1388 - -458) * ((100vw - 1200px) / (3840 - 1200)));            
+                    left: calc(-458px + (-1120 - -458) * ((100vw - 1200px) / (3840 - 1200)));            
                 }
                 &:nth-of-type(2){
                     z-index: 3;
-                    right: calc(737px + (2097 - 737) * ((100vw - 1200px) / (3840 - 1200)));                
+                    right: calc(737px + (1953 - 737) * ((100vw - 1200px) / (3840 - 1200)));                
                 }
                 &:nth-of-type(3){
                     z-index: 2; 
-                    right: calc(138px + (355 - 138) * ((100vw - 1200px) / (3840 - 1200)));
+                    right: calc(138px + (415 - 138) * ((100vw - 1200px) / (3840 - 1200)));
                     &:hover{
                         background-color: $gray-6;
                     }              
@@ -134,15 +134,15 @@
             .leaf_item{
                 &:nth-of-type(1){
                     z-index: 4;
-                    left: calc(-458px + (-1388 - -458) * ((100vw - 1200px) / (3840 - 1200)));            
+                    left: calc(-458px + (-1120 - -458) * ((100vw - 1200px) / (3840 - 1200)));            
                 }
                 &:nth-of-type(2){
                     z-index: 3;
-                    right: calc(737px + (2097 - 737) * ((100vw - 1200px) / (3840 - 1200)));                
+                    right: calc(737px + (1953 - 737) * ((100vw - 1200px) / (3840 - 1200)));                
                 }
                 &:nth-of-type(3){
                     z-index: 2; 
-                    right: calc(598px + (1740 - 598) * ((100vw - 1200px) / (3840 - 1200)));;             
+                    right: calc(598px + (1542 - 598) * ((100vw - 1200px) / (3840 - 1200)));;             
                 }
                 &:nth-of-type(4){
                     &:hover{
@@ -154,18 +154,15 @@
     }  
     
     .item_slide{
-        @include basic-card-1;
+        @include basic-card-1;        
         img{
-            margin-bottom: calc(20px + (40 - 20) * ((100vw - 1200px) / (3840 - 1200)));
-            @media screen and (max-width: 1024px){
-                margin-bottom: calc(10px + (30 - 10) * ((100vw - 300px) / (1024 - 300)));
-            } 
+            margin-bottom: calc(10px + (30 - 10) * ((100vw - 300px) / (1024 - 300)));
         }
-        p{
-            margin-bottom: calc(25px + (75 - 25) * ((100vw - 1200px) / (3840 - 1200)));
-            @media screen and (max-width: 1024px){
-                margin-bottom: calc(20px + (55 - 20) * ((100vw - 300px) / (1024 - 300)));
-            } 
-        }
+        .info{
+            //height: calc(135px + (360 - 164) * ((100vw - 300px) / (1024 - 300)));
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }        
     }
 }
