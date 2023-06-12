@@ -35,6 +35,8 @@ export default function AppProvider({ children }) {
 
   const [ currentRoute, setCurrentRoute] = useState('');
 
+  const [ announcementStatus, setAnnouncementStatus ] = useState();  
+
   const menuOverlay = useRef();  
 
   function changeMenuState(value) {
@@ -99,6 +101,6 @@ export default function AppProvider({ children }) {
   }, []);
 
   return (
-    <AppContext.Provider value={{ dataArticles, setDataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, queryArticles, setQueryArticles, searchInArticles, windowSize, isLoading, setLoadingState, currentRoute, setCurrentRoute, menuBtnAnimation, changePage, handleClose, menuOverlay, changeMenuState, menuState, setMenuState, goToPage }}> {children} </AppContext.Provider>
+    <AppContext.Provider value={{ dataArticles, setDataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, queryArticles, setQueryArticles, searchInArticles, windowSize, isLoading, setLoadingState, currentRoute, setCurrentRoute, menuBtnAnimation, changePage, handleClose, menuOverlay, changeMenuState, menuState, setMenuState, goToPage, announcementStatus, setAnnouncementStatus }}> {children} </AppContext.Provider>
   );
 }
