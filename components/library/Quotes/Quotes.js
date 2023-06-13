@@ -1,8 +1,6 @@
-//import { data } from "jquery";
 import styles from "./Quotes.module.scss";
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
-//import {SwiperNavigator, SwiperNavigatorClasses} from '../SwiperNavigator/SwiperNavigator';
 
 export default function Quotes({items}){
     return(
@@ -14,11 +12,6 @@ export default function Quotes({items}){
             navigation={true}    
             grabCursor={true}
             className={`${styles.quotes_container} swiper-cards quotes`}
-            /* modules={[Navigation]}
-            spaceBetween={50}
-            slidesPerView={1}
-            navigation={SwiperNavigatorClasses}    
-            grabCursor={true} */ 
         > 
         {
             items.map((item, key) => (            
@@ -37,7 +30,6 @@ export default function Quotes({items}){
                 </SwiperSlide>
             ))
             }
-            {/* <SwiperNavigator/> */}    
             <div className={styles.line} />     
         </Swiper>         
     </>

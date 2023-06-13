@@ -50,6 +50,9 @@
                     line-height: 130%;
                     color: $deep-blue;
                     margin-bottom: calc(40px + (100 - 40) * ((100vw - 1200px) / (3840 - 1200)));
+                    @media screen and (max-width: 1024px){
+                        @include font-level-3; 
+                    }
                 }
 
                 p{
