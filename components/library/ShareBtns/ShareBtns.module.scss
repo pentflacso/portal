@@ -1,0 +1,63 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.overlay{
+    position: fixed;
+    background-color: aliceblue;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .close_btn{
+        grid-area: close;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $white;
+        border: $line-1 solid transparent;
+        width: calc(40px + (110 - 40) * ((100vw - 1200px) / (3840 - 1200)));
+        height: calc(40px + (110 - 40) * ((100vw - 1200px) / (3840 - 1200)));            
+        border-radius: 50%;   
+        @media screen and (max-width: 1024px){
+            border: $line-1-mobile solid $white;
+            width: calc(28px + (56 - 28) * ((100vw - 300px) / (1024 - 300)));
+            height: calc(28px + (56 - 28) * ((100vw - 300px) / (1024 - 300)));
+            margin-left: auto;
+            margin-bottom: calc(25px + (55 - 25) * ((100vw - 300px) / (1024 - 300)));
+        }
+        span{                    
+            position: absolute;
+            width: calc(20px + (46 - 20) * ((100vw - 1200px) / (3840 - 1200)));
+            height: calc(2.2px + (6 - 2.2) * ((100vw - 1200px) / (3840 - 1200)));
+            background-color: $deep-blue;
+            @media screen and (max-width: 1024px){
+                width: calc(15px + (32 - 15) * ((100vw - 300px) / (1024 - 300)));
+                height: calc(1.5px + (2.5 - 1.5) * ((100vw - 300px) / (1024 - 300)));
+            }
+            &:nth-of-type(1){
+                transform: rotate(-45deg);
+            }
+            &:nth-of-type(2){
+                transform: rotate(45deg);
+            }
+        }
+        @media screen and (min-width: 1025px){
+            &:hover{
+                border: $line-1 solid $deep-blue;
+                background-color: $deep-blue;
+                span{
+                    background-color: $white;
+                }
+            }
+        }
+    }
+
+    a{
+        @include font-level-4;
+        margin: 0 20px;
+    }
+}

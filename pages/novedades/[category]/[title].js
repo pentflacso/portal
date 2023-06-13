@@ -1,7 +1,8 @@
 import { useAppContext } from '../../../context/AppContext';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import MetaTags from '../../../components/library/MetaTags/MetaTags';
 import CustomScrollbar from '../../../customScrollbar/CustomScrollbar';
+import ShareBtns from '../../../components/library/ShareBtns/ShareBtns';
 import TextMarquee from '../../../components/library/TextMarquee/TextMarquee';
 import ExploringBtns from '../../../components/library/ExploringBtns/ExploringBtns';
 import Footer from '../../../components/library/Footer/Footer';
@@ -12,6 +13,8 @@ import styles from './title.module.scss';
 function Index(data){
 
     const { windowSize, goToPage } = useAppContext();
+
+    const [ shareModal, setShareModal ] = useState(false);  
 
     const DescriptionexploringBtn = [
         {title: 'VII Jornadas de Educación a Distancia y Universidad', path: 'formacion'},
@@ -57,6 +60,8 @@ function Index(data){
             keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
             description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
         />
+
+        {shareModal && <ShareBtns shareurl={'https://pent-portal-testing.vercel.app/'} setShareModal={setShareModal} />}
     
         {windowSize >= 1025 ?
         <CustomScrollbar>   
@@ -78,7 +83,7 @@ function Index(data){
                             <div dangerouslySetInnerHTML={{__html: data.description }} /> :
                         ""}
 
-                        <Link className={styles.share_btn} href="#" target="_blank">Compartir</Link>
+                        <button type="button" className={styles.share_btn} onClick={ () => setShareModal(true) }>Compartir</button> 
 
                         { data.license ?
                             <div className={styles.legal}>                         

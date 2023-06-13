@@ -2,7 +2,7 @@
 
 .announcement{
     position: fixed;
-    z-index: 3000;
+    z-index: 100;
     width: calc(1165px + (3300 - 1165) * ((100vw - 1200px) / (3840 - 1200)));
     margin: 0 auto;
     left: 0;
