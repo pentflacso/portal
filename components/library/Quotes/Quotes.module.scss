@@ -40,7 +40,7 @@
                 padding-left: calc(40px + (100 - 40) * ((100vw - 1200px) / (3840 - 1200)));
                 @media screen and (max-width: 1024px){
                     padding-left: 0;
-                    height: calc(195px + (620 - 195) * ((100vw - 300px) / (1024 - 300)));
+                    height: calc(180px + (520 - 180) * ((100vw - 300px) / (1024 - 300)));
                     margin-bottom: calc(15px + (35 - 15) * ((100vw - 300px) / (1024 - 300)));
                 }
 
