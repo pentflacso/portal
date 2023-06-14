@@ -23,7 +23,7 @@ export default function Quotes({items}){
                             </div>
                             <div className={styles.text_cont}>
                                 <h4>{item.description}</h4>
-                                <p><strong>{item.name}</strong><br />{item.subtitle}</p>
+                                <p><strong>{item.name}</strong><br /><span dangerouslySetInnerHTML={{__html: `${item.subtitle}` }} /></p> 
                             </div>
                         </div>
                     </div>
