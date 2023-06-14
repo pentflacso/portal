@@ -89,7 +89,7 @@ export default function LeafsItem({ items }){
                             <div key={i} className={styles.leaf_item} onClick={ () => changeCurrentLeaf(`leaf_${i}`)}>
                                 <img src={item.img} alt="imagen" />
                                 <h5>{item.title}</h5>
-                                <p dangerouslySetInnerHTML={{__html: `${item.description}` }} />
+                                <p>{item.description}</p>
                             </div> 
                         );
                     })
@@ -109,7 +109,7 @@ export default function LeafsItem({ items }){
                 <div className={styles.item_slide}>
                     <img src={item.img} alt="imagen" />
                     <h5>{item.title}</h5>
-                    <p dangerouslySetInnerHTML={{__html: `${item.description}` }} />
+                    <p>{item.description}</p>
                 </div>            
             </SwiperSlide>
             ))
