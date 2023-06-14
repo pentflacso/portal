@@ -46,11 +46,6 @@
                 @include font-level-4; 
                 font-weight: 400;
                 line-height: 140%;
-                br{
-                    @media screen and (min-width: 1025px){
-                        display: none;
-                    } 
-                }
             }
 
             &:nth-of-type(1){
