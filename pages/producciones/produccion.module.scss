@@ -68,27 +68,40 @@
             color: $deep-blue;
             font-weight: 400;
             line-height: 144%;
-            margin-bottom: calc(20px + (50 - 20) * ((100vw - 1200px) / (3840 - 1200)));
+            /* margin-bottom: calc(20px + (50 - 20) * ((100vw - 1200px) / (3840 - 1200)));
             @media screen and (max-width: 1024px){
                 margin-bottom: calc(15px + (50 - 15) * ((100vw - 300px) / (1024 - 300)));
+            } */
+            margin-bottom: calc(40px + (100 - 40) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1024px){
+                margin-bottom: calc(20px + (80 - 20) * ((100vw - 300px) / (1024 - 300)));
             }
             
             p{
                 margin: 0;
                 display: inline-block;
+                span{
+                    color: $green-1;
+                }
             }
             a{
-                color: $deep-blue;
+                color: $gray-2;
                 display: inline-block;
                 &:last-of-type{
                     span{
                         display: none;
                     }
                 }
+                @media screen and (min-width: 1025px){
+                    &:hover{
+                        color: $green-1;
+                    }
+                }
             }
         }
 
         .hashtags{
+            display: none;
             list-style: none;
             padding: 0;            
             margin-bottom: calc(40px + (100 - 40) * ((100vw - 1200px) / (3840 - 1200)));
@@ -107,38 +120,46 @@
             }
         }  
         
-        .btn{
-            @include btn-ver-mas;
-            border-color: $deep-blue;
-            &.download{
-                span{
-                    display: flex;
-                    align-items: center;
-                    img{
-                        width: calc(12px + (28 - 12) * ((100vw - 1200px) / (3840 - 1200)));
-                        height: auto;
-                        margin-right: calc(10px + (26 - 10) * ((100vw - 1200px) / (3840 - 1200)));
-                    }
-                }                                
-            }
-            @media screen and (min-width: 1024px){
-                &:hover{
-                    background-color: $deep-blue;
-                    border-color: $deep-blue;
-                    color: $white;
-                    &.download{
-                        span{
-                            img{
-                                filter: grayscale(100%) brightness(20);     
+        .btns{
+            display: flex;
+            .btn{
+                @include btn-ver-mas;
+                &.share{
+                    margin-right: calc(5px + (20 - 5) * ((100vw - 1200px) / (3840 - 1200)));
+                    @media screen and (max-width: 1024px){
+                        margin-right: calc(5px + (15 - 5) * ((100vw - 300px) / (1024 - 300))); 
+                    } 
+                }
+                &.download{
+                    span{
+                        display: flex;
+                        align-items: center;
+                        img{
+                            width: calc(12px + (28 - 12) * ((100vw - 1200px) / (3840 - 1200)));
+                            height: auto;
+                            margin-right: calc(10px + (26 - 10) * ((100vw - 1200px) / (3840 - 1200)));
+                            @media screen and (max-width: 1024px){
+                                width: calc(8px + (18 - 8) * ((100vw - 300px) / (1024 - 300))); 
                             }
-                        }                                
+                        }
+                    }                                
+                }
+                @media screen and (min-width: 1024px){
+                    &:hover{
+                        &.download{
+                            span{
+                                img{
+                                    filter: grayscale(100%) brightness(20);     
+                                }
+                            }                                
+                        }
                     }
-                }
-                &:active{
-                    filter: brightness(90%);
-                    transform: scale(0.95);
-                }
-            }            
+                    &:active{
+                        filter: brightness(90%);
+                        transform: scale(0.95);
+                    }
+                }            
+            }
         }
         
     }

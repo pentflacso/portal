@@ -88,16 +88,12 @@
 
         .share_btn{
             @include btn-ver-mas;
-            border-color: $deep-blue;
             margin-bottom: calc(35px + (105 - 35) * ((100vw - 1200px) / (3840 - 1200)));
             @media screen and (max-width: 1024px){
                 margin-bottom: calc(35px + (100 - 35) * ((100vw - 300px) / (1024 - 300))); 
             }
             @media screen and (min-width: 1024px){
                 &:hover{
-                    background-color: $deep-blue;
-                    border-color: $deep-blue;
-                    color: $white;
                     &.download{
                         span{
                             img{
