@@ -16,7 +16,7 @@ export default function ShareBtns({ shareurl, setShareModal}){
     const modalContent = (   
         <div className={!closeAnimation ? `${styles.overlay}` : `${styles.overlay} ${styles.close_animation}` }>
 
-            <button type="button" className={styles.close_btn} onClick={ () => closeShareModal() }><span/><span/></button> 
+            <button type="button" className={styles.close_btn} onClick={ () => closeShareModal() }>Cerrar</button> 
 
             <div className={styles.btns}>
                 <p>Compartir en:</p>

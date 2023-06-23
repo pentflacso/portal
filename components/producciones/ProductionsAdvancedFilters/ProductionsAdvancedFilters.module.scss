@@ -19,14 +19,39 @@
         animation-duration: 0.8s;  
         animation-timing-function: ease-in-out;
         animation-fill-mode: forwards; 
+
+        .close_btn{
+            @include btn-ver-mas;  
+            position: absolute;
+            z-index: 1000;
+            top: calc(27px + (72 - 27) * ((100vw - 1200px) / (3840 - 1200)));
+            right: calc(35px + (370 - 35) * ((100vw - 1200px) / (3840 - 1200)));
+            opacity: 0;
+            animation-name: fadeIn;
+            animation-delay: 0.7s;
+            animation-duration: 0.6s;  
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: forwards;              
+            @media screen and (min-width: 1025px){
+                &:hover{
+                    border: $line-1 solid $deep-blue;
+                    background-color: $deep-blue;
+                }
+            }
+            @media screen and (max-width: 1024px){
+                top: calc(21px + (34 - 21) * ((100vw - 300px) / (1024 - 300)));
+                right: calc(10px + (18 - 10) * ((100vw - 300px) / (1024 - 300)));
+            } 
+        }
+
         .wrapper{
             position: relative;
             @include container-width-1;  
             height: auto; 
             padding:
-            calc(98px + (230 - 98) * ((100vw - 1200px) / (3840 - 1200)))
+            calc(70px + (230 - 70) * ((100vw - 1200px) / (3840 - 1200)))
             0
-            calc(30px + (120 - 30) * ((100vw - 1200px) / (3840 - 1200)))
+            calc(25px + (60 - 25) * ((100vw - 1200px) / (3840 - 1200)))
             0;   
             opacity: 0;
             animation-name: fadeIn;
@@ -36,65 +61,40 @@
             animation-fill-mode: forwards; 
             @media screen and (max-width: 1024px){
                 padding:
-                calc(21px + (34 - 21) * ((100vw - 300px) / (1024 - 300))) 
+                calc(65px + (110 - 50) * ((100vw - 300px) / (1024 - 300))) 
                 0
-                calc(14px + (20 - 14) * ((100vw - 300px) / (1024 - 300))) 
+                calc(14px + (44 - 14) * ((100vw - 300px) / (1024 - 300))) 
                 0;
-            }
-
-            .close_btn, .btn_filter{
-                @include btn-ver-mas;
-                @media screen and (max-width: 1024px){
-                    margin-bottom: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300)));
-                }
-            }
-
-            .close_btn{
-                @include btn-ver-mas;
-                display: flex;
-                margin-left: auto;
-                opacity: 0;
-                animation-name: fadeIn;
-                animation-delay: 0.7s;
-                animation-duration: 0.6s;  
-                animation-timing-function: ease-in-out;
-                animation-fill-mode: forwards; 
-                @media screen and (max-width: 1024px){
-                    margin-right: -5px;
-                    margin-bottom: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300)));
-                }
-            }
-
+            }      
             
             .search_cont{
                 position: relative;
                 @include inner-width;
+                @media screen and (max-width: 1024px){
+                    @include container-width-1;
+                }
                 .clear_btn{
                     position: absolute;
-                    top:  calc(10px + (30 - 10) * ((100vw - 1200px) / (3840 - 1200)));
-                    right: calc(30px + (80 - 30) * ((100vw - 1200px) / (3840 - 1200)));
-                    width: calc(28px + (76 - 28) * ((100vw - 1200px) / (3840 - 1200)));
-                    height: calc(28px + (76 - 28) * ((100vw - 1200px) / (3840 - 1200)));
+                    top: calc(10px + (30 - 10) * ((100vw - 1200px) / (3840 - 1200)));
+                    right: 0;
+                    @include font-level-4;
+                    font-weight: 400;
                     background-color: $yellow-3;
                     display: flex;
                     justify-content: center;
                     align-items: center;
-                    border-radius: 50%;
-                    span{                    
-                        position: absolute;
-                        width: calc(16px + (46 - 16) * ((100vw - 1200px) / (3840 - 1200)));
-                        height: calc(2px + (5 - 2) * ((100vw - 1200px) / (3840 - 1200)));
-                        background-color: $deep-blue;
-                        @media screen and (max-width: 1024px){
-                            width: calc(15px + (32 - 15) * ((100vw - 300px) / (1024 - 300)));
-                            height: calc(1.5px + (2.5 - 1.5) * ((100vw - 300px) / (1024 - 300)));
-                        }
-                        &:nth-of-type(1){
-                            transform: rotate(-45deg);
-                        }
-                        &:nth-of-type(2){
-                            transform: rotate(45deg);
-                        }
+                    border-radius: 50px;
+                    padding:
+                    calc(4px + (10 - 4) * ((100vw - 1200px) / (3840 - 1200)))
+                    calc(8px + (20 - 8) * ((100vw - 1200px) / (3840 - 1200)))
+                    ;
+                    @media screen and (max-width: 1024px){
+                        font-size: calc(9px + (24 - 9) * ((100vw - 300px) / (1024 - 300)));
+                        top: calc(9px + (31 - 9) * ((100vw - 300px) / (1024 - 300)));
+                        padding:
+                        calc(2px + (5 - 2) * ((100vw - 300px) / (1024 - 300)))
+                        calc(5px + (15 - 5) * ((100vw - 300px) / (1024 - 300)))
+                        ;
                     }
                 }
                 .search_bar{     
@@ -103,7 +103,7 @@
                     background-color: transparent;
                     background-image: url(../../../public/assets/icons/lupa_icon.svg);
                     background-repeat: no-repeat;
-                    background-position: right center;
+                    background-position: left center;
                     background-size: calc(22px + (62 - 22) * ((100vw - 1200px) / (3840 - 1200))) auto;                 
                     @include font-level-2;
                     font-family: 'Roboto', sans-serif;
@@ -114,19 +114,19 @@
                     border-bottom: $line-1 solid $deep-blue;
                     padding:
                     calc(7px + (22 - 7) * ((100vw - 1200px) / (3840 - 1200)))
-                    calc(14px + (40 - 14) * ((100vw - 1200px) / (3840 - 1200)))
-                    calc(7px + (22 - 7) * ((100vw - 1200px) / (3840 - 1200)))
                     0
+                    calc(7px + (22 - 7) * ((100vw - 1200px) / (3840 - 1200)))
+                    calc(32px + (92 - 32) * ((100vw - 1200px) / (3840 - 1200)))
                     ;
-                    margin-bottom: calc(32px + (62 - 32) * ((100vw - 1200px) / (3840 - 1200)));
+                    margin-bottom: calc(20px + (60 - 20) * ((100vw - 1200px) / (3840 - 1200)));
                     @media screen and (max-width: 1024px){
-                        @include container-width-1;  
-                        background-size: calc(14px + (36 - 14) * ((100vw - 300px) / (1024 - 300))) auto; 
+                        font-size: calc(17px + (45 - 17) * ((100vw - 300px) / (1024 - 300)));
+                        background-size: calc(14px + (46 - 14) * ((100vw - 300px) / (1024 - 300))) auto; 
                         padding:
                         calc(7px + (22 - 7) * ((100vw - 300px) / (1024 - 300)))
-                        calc(14px + (40 - 14) * ((100vw - 300px) / (1024 - 300)))
-                        calc(7px + (22 - 7) * ((100vw - 300px) / (1024 - 300)))
                         0
+                        calc(7px + (22 - 7) * ((100vw - 300px) / (1024 - 300)))
+                        calc(20px + (70 - 20) * ((100vw - 300px) / (1024 - 300)))
                         ;
                         margin-bottom: calc(15px + (35 - 15) * ((100vw - 300px) / (1024 - 300)));
                     }
@@ -142,13 +142,13 @@
                 }
             }
 
-            .switch_filter{
+            .switch_filter{                
                 @include inner-width;
-                margin-bottom: calc(40px + (100 - 40) * ((100vw - 1200px) / (3840 - 1200)));
+                margin-bottom: calc(30px + (80 - 30) * ((100vw - 1200px) / (3840 - 1200)));
                 display: flex;
                 @media screen and (max-width: 1024px){
                     @include container-width-1;  
-                    margin-bottom: calc(35px + (80 - 35) * ((100vw - 300px) / (1024 - 300)));
+                    margin-bottom: calc(22px + (60 - 22) * ((100vw - 300px) / (1024 - 300)));
                 }
                 .switch_box{
                     position: relative;
@@ -159,6 +159,16 @@
                     }
                     &:nth-child(2){
                         width: calc(116px + (278 - 116) * ((100vw - 1200px) / (3840 - 1200)));
+                    }
+                    @media screen and (max-width: 1024px){
+                        height: calc(31px + (67 - 31) * ((100vw - 300px) / (1024 - 300)));
+                        &:nth-child(1){
+                            margin-right: calc(15px + (45 - 15) * ((100vw - 300px) / (1024 - 300)));
+                            width: calc(115px + (260 - 115) * ((100vw - 300px) / (1024 - 300)));
+                        }
+                        &:nth-child(2){
+                            width: calc(96px + (215 - 96) * ((100vw - 300px) / (1024 - 300)));
+                        }
                     }
                     .switch_btn{
                         position: absolute;
@@ -201,7 +211,14 @@
                     padding:
                     calc(2px + (4 - 2) * ((100vw - 1200px) / (3840 - 1200)))
                     calc(5px + (8 - 5) * ((100vw - 1200px) / (3840 - 1200)))
-                    ;                                         
+                    ;
+                    @media screen and (max-width: 1024px){
+                        right: calc(13px + (22 - 13) * ((100vw - 300px) / (1024 - 300)));
+                        padding:
+                        calc(2px + (4 - 2) * ((100vw - 300px) / (1024 - 300)))
+                        calc(5px + (10 - 5) * ((100vw - 300px) / (1024 - 300)))
+                        ;
+                    }                                         
                 }            
             }
 
@@ -211,6 +228,7 @@
                     @include container-width-1;  
                 }
                 .btn_filter{
+                    @include btn-ver-mas;
                     margin: 
                     0
                     calc(6px + (20 - 6) * ((100vw - 1200px) / (3840 - 1200)))

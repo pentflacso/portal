@@ -56,7 +56,7 @@ $white: #FFFFFF;
 @mixin font-level-6 {
     font-size: calc(10px + (20 - 10) * ((100vw - 1200px) / (3840 - 1200)));
     @media screen and (max-width: 1024px){
-        font-size: calc(10px + (22 - 10) * ((100vw - 300px) / (1024 - 300)));
+        font-size: calc(9px + (16 - 9) * ((100vw - 300px) / (1024 - 300)));
     }
 }
 

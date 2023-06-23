@@ -30,12 +30,13 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
         <div className={advancedFilterOutAnimation === true ? `${styles.wrapper} ${styles.animation_out}` : `${styles.wrapper}`}>
 
             <div className={styles.search_container}>
-                <div className={styles.wrapper}>
 
-                    <button type="button" className={styles.close_btn} onClick={ () => changeAdvancedFilterStatus(false) }>Cerrar</button>                    
+                <button type="button" className={styles.close_btn} onClick={ () => changeAdvancedFilterStatus(false) }>Cerrar</button>  
+
+                <div className={styles.wrapper}>                                      
 
                     <div className={styles.search_cont}>
-                        {queryArticles !== '' && <button type="button" className={styles.clear_btn} onClick={ () => setQueryArticles('') }><span/><span/></button>}
+                        {queryArticles !== '' && <button type="button" className={styles.clear_btn} onClick={ () => setQueryArticles('') }>Borrar</button>}
 
                         <input onChange={(e) => setQueryArticles(e.target.value)} type="text" placeholder='Buscar por palabras clave' value={queryArticles} className={styles.search_bar}/>
                     </div>                    
@@ -68,8 +69,6 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
                             showFilters === 'hashtags'                            
                             ?
                             <>
-                                {/* <button onClick={ () => stateCurrentHashtag('all') } className={currentArticleHashtag === 'all'  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>Ver todo</button> */}
-
                                 {hashtagsArticlesList && hashtagsArticlesList.map((hashtag) => {   
                                         return ( 
                                         <button key={hashtag.name} onClick={ () => stateCurrentHashtag(hashtag.name) } className={currentArticleHashtag === hashtag.name  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>{hashtag.name}</button>
@@ -79,8 +78,6 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
                             </>
                             :
                             <>
-                                {/* <button onClick={ () => statecurrentAuthor('all') } className={currentArticleAuthor === 'all'  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>Ver todo</button> */}
-
                                 {authorsArticlesList && authorsArticlesList.map((author) => {   
                                         return ( 
                                         <button key={author.name} onClick={ () => statecurrentAuthor(author.name) } className={currentArticleAuthor === author.name  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>{author.name}</button>
