@@ -12,6 +12,7 @@
     .menu_btn{
         @include btn-ver-mas;
         display: flex;
+        position: relative;
         .filter_icon{
             display: flex;
             align-items: center;
@@ -37,12 +38,29 @@
             &:hover{
                 .filter_icon{
                     filter: grayscale(100%) brightness(20);                           
-                }                    
+                }      
+                .counter{
+                    color: $deep-blue;
+                }              
             }
             &:active{
                 filter: brightness(90%);
                 transform: scale(0.95);
             }
+        }
+        .counter{
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $yellow-1;
+            color: $deep-blue;
+            font-weight: 500;
+            width: calc(24px + (64 - 24) * ((100vw - 1200px) / (3840 - 1200)));
+            height: calc(24px + (64 - 24) * ((100vw - 1200px) / (3840 - 1200)));
+            top: calc(-10px + (-24 - -10) * ((100vw - 1200px) / (3840 - 1200)));
+            right:calc(-8px + (-22 - -8) * ((100vw - 1200px) / (3840 - 1200)));
+            border-radius: 50%;
         }
     }
 

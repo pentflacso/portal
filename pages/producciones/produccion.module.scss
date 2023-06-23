@@ -81,7 +81,7 @@
                 margin: 0;
                 display: inline-block;
                 span{
-                    color: $green-1;
+                    color: $gray-2;
                 }
             }
             a{
@@ -99,26 +99,6 @@
                 }
             }
         }
-
-        .hashtags{
-            display: none;
-            list-style: none;
-            padding: 0;            
-            margin-bottom: calc(40px + (100 - 40) * ((100vw - 1200px) / (3840 - 1200)));
-            @media screen and (max-width: 1024px){
-                margin-bottom: calc(20px + (80 - 20) * ((100vw - 300px) / (1024 - 300)));
-            }
-    
-            li{
-                @include font-level-4;
-                color: $green-1;
-                display: inline-block;
-                margin-right: calc(12px + (60 - 12) * ((100vw - 1200px) / (3840 - 1200)));  
-                @media screen and (max-width: 1024px){
-                    margin-right: calc(10px + (30 - 10) * ((100vw - 300px) / (1024 - 300))); 
-                }              
-            }
-        }  
         
         .btns{
             display: flex;
@@ -196,6 +176,29 @@
                 }
             }
         }
+
+        .hashtags{
+            margin-bottom: calc(38px + (60 - 38) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1024px){
+                margin-bottom: calc(30px + (100 - 30) * ((100vw - 300px) / (1024 - 300))); 
+            }
+
+            p, button{
+                @include font-level-4;
+                display: inline-block;
+            }
+            p{color: $deep-blue;}
+
+            button{
+                color: $green-1;
+                padding: revert;
+                @media screen and (min-width: 1024px){
+                    &:hover{
+                        text-decoration: underline;
+                    }
+                } 
+            }
+        } 
 
         .legal{
             background-color: $gray-6;

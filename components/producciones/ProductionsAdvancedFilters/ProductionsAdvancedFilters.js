@@ -2,9 +2,9 @@ import { useAppContext } from '../../../context/AppContext';
 import { useState } from 'react';
 import styles from "./ProductionsAdvancedFilters.module.scss";
 
-export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus, stateCurrentHashtag }){
+export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus, stateCurrentHashtag, advancedFilterOutAnimation }){
 
-    const { hashtagsArticlesList, currentArticleHashtag, authorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, setQueryArticles } = useAppContext();
+    const { hashtagsArticlesList, currentArticleHashtag, authorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, queryArticles, setQueryArticles } = useAppContext();
 
     const [ showFilters, setShowFilters ] = useState('hashtags');
 
@@ -24,21 +24,43 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
             setCurrentArticleAuthor(author)   
         }  
     }
- 
+
 
     return(
-        <div className={styles.wrapper}>
+        <div className={advancedFilterOutAnimation === true ? `${styles.wrapper} ${styles.animation_out}` : `${styles.wrapper}`}>
 
             <div className={styles.search_container}>
                 <div className={styles.wrapper}>
 
-                    <button type="button" className={styles.close_btn} onClick={ () => changeAdvancedFilterStatus(false) }>Cerrar</button>
+                    <button type="button" className={styles.close_btn} onClick={ () => changeAdvancedFilterStatus(false) }>Cerrar</button>                    
 
-                    <input onChange={(e) => setQueryArticles(e.target.value)} type="text" placeholder='Buscar por palabras clave' className={styles.search_bar} /> 
+                    <div className={styles.search_cont}>
+                        {queryArticles !== '' && <button type="button" className={styles.clear_btn} onClick={ () => setQueryArticles('') }><span/><span/></button>}
+
+                        <input onChange={(e) => setQueryArticles(e.target.value)} type="text" placeholder='Buscar por palabras clave' value={queryArticles} className={styles.search_bar}/>
+                    </div>                    
 
                     <div className={styles.switch_filter}>
-                        <button type="button" className={showFilters === 'hashtags' ? `${styles.switch_btn} ${styles.active}` : `${styles.switch_btn}`} onClick={ () => changeShowFilters('hashtags') }>Filtrar por temática<span><img src="/assets/icons/triangle_icon.svg" alt="Icono de flecha" /></span></button>
-                        <button type="button" className={showFilters === 'authors' ? `${styles.switch_btn} ${styles.active}` : `${styles.switch_btn}`} onClick={ () => changeShowFilters('authors') }>Filtrar por autor<span><img src="/assets/icons/triangle_icon.svg" alt="Icono de flecha" /></span></button>
+
+                        
+                        
+                        <div className={styles.switch_box}>
+
+                            {currentArticleHashtag !== 'all' && <button onClick={ () => stateCurrentHashtag('all') } className={styles.clear_btn}>Quitar</button>}
+
+                            <button type="button" className={showFilters === 'hashtags' ? `${styles.switch_btn} ${styles.active}` : `${styles.switch_btn}`} onClick={ () => changeShowFilters('hashtags') }>Filtrar por temática<span><img src="/assets/icons/triangle_icon.svg" alt="Icono de flecha" /></span></button>
+                        </div>
+
+                        <div className={styles.switch_box}>
+
+                            {currentArticleAuthor !== 'all' && <button onClick={ () => statecurrentAuthor('all') } className={styles.clear_btn}>Quitar</button>}
+
+                            <button type="button" className={showFilters === 'authors' ? `${styles.switch_btn} ${styles.active}` : `${styles.switch_btn}`} onClick={ () => changeShowFilters('authors') }>Filtrar por autor<span><img src="/assets/icons/triangle_icon.svg" alt="Icono de flecha" /></span></button>
+
+                        </div>                        
+                        
+                        
+
                     </div>                    
 
                     <div className={styles.filter_tags}>                        
@@ -46,7 +68,7 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
                             showFilters === 'hashtags'                            
                             ?
                             <>
-                                <button onClick={ () => stateCurrentHashtag('all') } className={currentArticleHashtag === 'all'  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>Ver todo</button>
+                                {/* <button onClick={ () => stateCurrentHashtag('all') } className={currentArticleHashtag === 'all'  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>Ver todo</button> */}
 
                                 {hashtagsArticlesList && hashtagsArticlesList.map((hashtag) => {   
                                         return ( 
@@ -57,7 +79,7 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
                             </>
                             :
                             <>
-                                <button onClick={ () => statecurrentAuthor('all') } className={currentArticleAuthor === 'all'  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>Ver todo</button>
+                                {/* <button onClick={ () => statecurrentAuthor('all') } className={currentArticleAuthor === 'all'  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>Ver todo</button> */}
 
                                 {authorsArticlesList && authorsArticlesList.map((author) => {   
                                         return ( 
