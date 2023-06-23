@@ -23,11 +23,15 @@ export default function AppProvider({ children }) {
   //Guarda lo que el usuario escribe en la barra de búsqueda
   const [queryArticles, setQueryArticles] = useState('');
   
-  const queryArticlesKeys = ["lead", "title", "description"]
+  const queryArticlesKeys = ["lead", "title", "description"];
+
+  const [ articlesFiltersStatus, setArticlesFiltersStatus ] = useState({ hashtag: 0, author: 0, query: 0 });
+
+  const [ articlesFiltersCounter, setArticlesFiltersCounter] = useState(0);
 
   const [ windowSize, setWindowSize ] = useState(0);
 
-  const [isLoading, setLoadingState] = useState(false);
+  const [ isLoading, setLoadingState ] = useState(false);
 
   const [ menuState, setMenuState ] = useState(false);
 
@@ -51,7 +55,17 @@ export default function AppProvider({ children }) {
     router.events.on("routeChangeComplete", () => {
       setLoadingState(false);
     });
-  }, []);
+  }, []);  
+
+  
+  useEffect(() =>{   
+    setArticlesFiltersStatus({ ...articlesFiltersStatus, ["hashtag"] : currentArticleHashtag !== 'all' ? 1 : 0, ["author"] : currentArticleAuthor !== 'all' ? 1 : 0, ["query"] : queryArticles !== '' ? 1 : 0  });   
+  }, [currentArticleHashtag, currentArticleAuthor, queryArticles]);
+
+  useEffect(() =>{   
+    setArticlesFiltersCounter(articlesFiltersStatus.hashtag + articlesFiltersStatus.author + articlesFiltersStatus.query);  
+  }, [articlesFiltersStatus]);
+
 
   const handleClose = () => {   
     if(menuOverlay !== undefined){
@@ -101,6 +115,6 @@ export default function AppProvider({ children }) {
   }, []);
 
   return (
-    <AppContext.Provider value={{ dataArticles, setDataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, queryArticles, setQueryArticles, searchInArticles, windowSize, isLoading, setLoadingState, currentRoute, setCurrentRoute, menuBtnAnimation, changePage, handleClose, menuOverlay, changeMenuState, menuState, setMenuState, goToPage, announcementStatus, setAnnouncementStatus }}> {children} </AppContext.Provider>
+    <AppContext.Provider value={{ dataArticles, setDataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, queryArticles, setQueryArticles, searchInArticles, articlesFiltersCounter, windowSize, isLoading, setLoadingState, currentRoute, setCurrentRoute, menuBtnAnimation, changePage, handleClose, menuOverlay, changeMenuState, menuState, setMenuState, goToPage, announcementStatus, setAnnouncementStatus }}> {children} </AppContext.Provider>
   );
 }

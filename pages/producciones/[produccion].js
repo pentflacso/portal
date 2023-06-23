@@ -15,7 +15,7 @@ import styles from './produccion.module.scss';
 
 function Index(data){
 
-    const { windowSize, goToPage } = useAppContext();    
+    const { windowSize, goToPage, setCurrentArticleHashtag } = useAppContext();    
     const [ shareModal, setShareModal ] = useState(false);  
     const router = useRouter();
 
@@ -64,6 +64,14 @@ function Index(data){
         }
     };
 
+    const filterByTag = (value) => {
+        router.push('/producciones');
+        goToPage(); 
+        setTimeout(function(){
+            setCurrentArticleHashtag(value);  
+        }, 200);                   
+    };
+
 
     return(
     <>
@@ -94,7 +102,6 @@ function Index(data){
                                 ) ) } 
                             </div> : ""
                         }
-                        { data.hashtags && <ul className={styles.hashtags}>{ data.hashtags.map((hashtags , key) => <li key={key}>{hashtags}</li>) }</ul> }
                         
                         <div className={styles.btns}>
                             <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => setShareModal(true) }>Compartir</button>
@@ -106,6 +113,14 @@ function Index(data){
                     <article className={styles.col_right}>
                         { data.img ? <img src={ data.img } alt={ data.title } className={styles.imgTop} /> : ""}
                         { data.description && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.description }} /> }
+
+                        { data.hashtags && 
+                            <div className={styles.hashtags}>
+                                <p>Ver más de:</p>
+                                { data.hashtags.map((hashtags , key) => <button type="button" key={key} onClick={ () => filterByTag(`${hashtags}`)}>{hashtags}</button>) }                            
+                            </div>
+                        }
+
                         { data.quote || data.license ?
                             <div className={styles.legal}> 
                                 { data.quote ? <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Cómo citar</h4>"+ data.quote }}/> : "" } 
@@ -143,11 +158,9 @@ function Index(data){
                             ) ) } 
                         </div> : ""
                     }
-                    { data.hashtags && <ul className={styles.hashtags}>{ data.hashtags.map((hashtags , key) => <li key={key}>{hashtags}</li>) }</ul> }
 
                     <div className={styles.btns}>
                         <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => mobileShare() }>Compartir</button>
-
                         <Link className={`${styles.btn} ${styles.download}`} href="#" target="_blank"><span><img src="/assets/icons/download_icon.svg" alt="icono de descarga"/>Descargar</span></Link>  
                     </div> 
 
@@ -155,6 +168,12 @@ function Index(data){
                 <article className={styles.col_right}>
                     { data.img ? <img src={ data.img } alt={ data.title } className={styles.imgTop} /> : ""}
                     { data.description && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.description }} /> }
+                    { data.hashtags && 
+                        <div className={styles.hashtags}>
+                            <p>Ver más de:</p>
+                            { data.hashtags.map((hashtags , key) => <button type="button" key={key} onClick={ () => filterByTag(`${hashtags}`)}>{hashtags}</button>) }                            
+                        </div>
+                    }
                     { data.quote || data.license ?
                         <div className={styles.legal}> 
                             { data.quote ? <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Cómo citar</h4>"+ data.quote }}/> : "" } 

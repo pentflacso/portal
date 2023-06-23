@@ -9,14 +9,23 @@ import styles from "./ProductionsNav.module.scss";
 
 export default function ProductionsNav(){
 
-    const { dataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList } = useAppContext();
+    const { dataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, articlesFiltersCounter } = useAppContext();
     
     const [advancedFilterStatus, setAdvancedFilterStatus] = useState(false);
+    const [advancedFilterOutAnimation, setAdvancedFilterOutAnimation] = useState(false);
 
 
     //Muestra u oculta los filtros avanzados 
     function changeAdvancedFilterStatus(value) {
-        advancedFilterStatus !== value && setAdvancedFilterStatus(value);
+        if(value === true){
+            setAdvancedFilterStatus(true);
+            setAdvancedFilterOutAnimation(false);
+        } else{
+            setAdvancedFilterOutAnimation(true);
+            setTimeout(() => {
+                setAdvancedFilterStatus(false);
+            }, 600); 
+        }       
     }
 
     
@@ -81,7 +90,7 @@ export default function ProductionsNav(){
     return(
         <>
             {
-                advancedFilterStatus === true && reactDom.createPortal(<ProductionsAdvancedFilters changeAdvancedFilterStatus={changeAdvancedFilterStatus} stateCurrentHashtag={stateCurrentHashtag} />, document.getElementById("modal-root"))
+                advancedFilterStatus === true && reactDom.createPortal(<ProductionsAdvancedFilters changeAdvancedFilterStatus={changeAdvancedFilterStatus} stateCurrentHashtag={stateCurrentHashtag} advancedFilterOutAnimation={advancedFilterOutAnimation} />, document.getElementById("modal-root"))
             }
    
             <div className={styles.wrapper}>     
@@ -108,7 +117,7 @@ export default function ProductionsNav(){
                         
                 </Swiper>
 
-                <button type="button" className={styles.menu_btn} onClick={ () => changeAdvancedFilterStatus(true) }><span>Filtros</span><img src="/assets/icons/filter_icon.svg" alt="icono de filtro" className={styles.filter_icon}/></button>
+                <button type="button" className={styles.menu_btn} onClick={ () => changeAdvancedFilterStatus(true) }><span>Filtros</span><img src="/assets/icons/filter_icon.svg" alt="icono de filtro" className={styles.filter_icon}/>{articlesFiltersCounter > 0 && <span className={styles.counter}>{articlesFiltersCounter}</span>}</button>
             
             </div>                     
         </>       

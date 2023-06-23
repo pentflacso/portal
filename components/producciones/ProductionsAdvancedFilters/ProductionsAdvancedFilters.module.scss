@@ -10,10 +10,17 @@
     height: 100vh;    
 
     .search_container{
+        position: absolute;
+        z-index: 100;
+        top: -100vh;
         width: 100%;
-        background-color: rgba(255,255,255,.8);
-        backdrop-filter: blur(10px);
+        background-color: rgba(255,255,255,1);
+        animation-name: sliceDown;
+        animation-duration: 0.8s;  
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards; 
         .wrapper{
+            position: relative;
             @include container-width-1;  
             height: auto; 
             padding:
@@ -21,6 +28,12 @@
             0
             calc(30px + (120 - 30) * ((100vw - 1200px) / (3840 - 1200)))
             0;   
+            opacity: 0;
+            animation-name: fadeIn;
+            animation-delay: 0.5s;
+            animation-duration: 0.6s;  
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: forwards; 
             @media screen and (max-width: 1024px){
                 padding:
                 calc(21px + (34 - 21) * ((100vw - 300px) / (1024 - 300))) 
@@ -37,95 +50,159 @@
             }
 
             .close_btn{
+                @include btn-ver-mas;
                 display: flex;
                 margin-left: auto;
+                opacity: 0;
+                animation-name: fadeIn;
+                animation-delay: 0.7s;
+                animation-duration: 0.6s;  
+                animation-timing-function: ease-in-out;
+                animation-fill-mode: forwards; 
                 @media screen and (max-width: 1024px){
                     margin-right: -5px;
+                    margin-bottom: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300)));
                 }
             }
 
-            .search_bar{     
-                display: block;           
+            
+            .search_cont{
+                position: relative;
                 @include inner-width;
-                background-color: transparent;
-                background-image: url(../../../public/assets/icons/lupa_icon.svg);
-                background-repeat: no-repeat;
-                background-position: right center;
-                background-size: calc(22px + (62 - 22) * ((100vw - 1200px) / (3840 - 1200))) auto;                 
-                @include font-level-2;
-                font-family: 'Roboto', sans-serif;
-                font-weight: 400;
-                line-height: 100%; 
-                color: $deep-blue;   
-                border: none; 
-                border-bottom: $line-1 solid $deep-blue;
-                padding:
-                calc(7px + (22 - 7) * ((100vw - 1200px) / (3840 - 1200)))
-                calc(14px + (40 - 14) * ((100vw - 1200px) / (3840 - 1200)))
-                calc(7px + (22 - 7) * ((100vw - 1200px) / (3840 - 1200)))
-                0
-                ;
-                margin-bottom: calc(32px + (62 - 32) * ((100vw - 1200px) / (3840 - 1200)));
-                @media screen and (max-width: 1024px){
-                    @include container-width-1;  
-                    background-size: calc(14px + (36 - 14) * ((100vw - 300px) / (1024 - 300))) auto; 
+                .clear_btn{
+                    position: absolute;
+                    top:  calc(10px + (30 - 10) * ((100vw - 1200px) / (3840 - 1200)));
+                    right: calc(30px + (80 - 30) * ((100vw - 1200px) / (3840 - 1200)));
+                    width: calc(28px + (76 - 28) * ((100vw - 1200px) / (3840 - 1200)));
+                    height: calc(28px + (76 - 28) * ((100vw - 1200px) / (3840 - 1200)));
+                    background-color: $yellow-3;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 50%;
+                    span{                    
+                        position: absolute;
+                        width: calc(16px + (46 - 16) * ((100vw - 1200px) / (3840 - 1200)));
+                        height: calc(2px + (5 - 2) * ((100vw - 1200px) / (3840 - 1200)));
+                        background-color: $deep-blue;
+                        @media screen and (max-width: 1024px){
+                            width: calc(15px + (32 - 15) * ((100vw - 300px) / (1024 - 300)));
+                            height: calc(1.5px + (2.5 - 1.5) * ((100vw - 300px) / (1024 - 300)));
+                        }
+                        &:nth-of-type(1){
+                            transform: rotate(-45deg);
+                        }
+                        &:nth-of-type(2){
+                            transform: rotate(45deg);
+                        }
+                    }
+                }
+                .search_bar{     
+                    display: block;   
+                    width: 100%;      
+                    background-color: transparent;
+                    background-image: url(../../../public/assets/icons/lupa_icon.svg);
+                    background-repeat: no-repeat;
+                    background-position: right center;
+                    background-size: calc(22px + (62 - 22) * ((100vw - 1200px) / (3840 - 1200))) auto;                 
+                    @include font-level-2;
+                    font-family: 'Roboto', sans-serif;
+                    font-weight: 400;
+                    line-height: 100%; 
+                    color: $deep-blue;   
+                    border: none; 
+                    border-bottom: $line-1 solid $deep-blue;
                     padding:
-                    calc(7px + (22 - 7) * ((100vw - 300px) / (1024 - 300)))
-                    calc(14px + (40 - 14) * ((100vw - 300px) / (1024 - 300)))
-                    calc(7px + (22 - 7) * ((100vw - 300px) / (1024 - 300)))
+                    calc(7px + (22 - 7) * ((100vw - 1200px) / (3840 - 1200)))
+                    calc(14px + (40 - 14) * ((100vw - 1200px) / (3840 - 1200)))
+                    calc(7px + (22 - 7) * ((100vw - 1200px) / (3840 - 1200)))
                     0
                     ;
-                    margin-bottom: calc(15px + (35 - 15) * ((100vw - 300px) / (1024 - 300)));
-                }
-                &::placeholder {                      
-                    color: $gray-2;
-                }
-                &:focus {
-                    outline: none;
+                    margin-bottom: calc(32px + (62 - 32) * ((100vw - 1200px) / (3840 - 1200)));
+                    @media screen and (max-width: 1024px){
+                        @include container-width-1;  
+                        background-size: calc(14px + (36 - 14) * ((100vw - 300px) / (1024 - 300))) auto; 
+                        padding:
+                        calc(7px + (22 - 7) * ((100vw - 300px) / (1024 - 300)))
+                        calc(14px + (40 - 14) * ((100vw - 300px) / (1024 - 300)))
+                        calc(7px + (22 - 7) * ((100vw - 300px) / (1024 - 300)))
+                        0
+                        ;
+                        margin-bottom: calc(15px + (35 - 15) * ((100vw - 300px) / (1024 - 300)));
+                    }
                     &::placeholder {                      
-                        color: transparent;
+                        color: $gray-2;
+                    }
+                    &:focus {
+                        outline: none;
+                        &::placeholder {                      
+                            color: transparent;
+                        }
                     }
                 }
             }
 
             .switch_filter{
                 @include inner-width;
-                margin-bottom: calc(54px + (136 - 54) * ((100vw - 1200px) / (3840 - 1200)));
+                margin-bottom: calc(40px + (100 - 40) * ((100vw - 1200px) / (3840 - 1200)));
                 display: flex;
                 @media screen and (max-width: 1024px){
                     @include container-width-1;  
                     margin-bottom: calc(35px + (80 - 35) * ((100vw - 300px) / (1024 - 300)));
                 }
-                .switch_btn{
-                    @include font-level-4;
-                    color: $deep-blue;
-                    display: flex;     
-                    opacity: .4; 
-                    transition: all .1s;               
-                    span{
+                .switch_box{
+                    position: relative;
+                    height: calc(36px + (80 - 36) * ((100vw - 1200px) / (3840 - 1200)));
+                    &:nth-child(1){
+                        margin-right: calc(25px + (75 - 25) * ((100vw - 1200px) / (3840 - 1200)));
+                        width: calc(140px + (335 - 140) * ((100vw - 1200px) / (3840 - 1200)));
+                    }
+                    &:nth-child(2){
+                        width: calc(116px + (278 - 116) * ((100vw - 1200px) / (3840 - 1200)));
+                    }
+                    .switch_btn{
+                        position: absolute;
+                        bottom: 0;
                         display: flex;
                         align-items: center;
-                        width: calc(7px + (10 - 7) * ((100vw - 1200px) / (3840 - 1200)));
-                        height: auto;
-                        margin-left: calc(6px + (10 - 6) * ((100vw - 1200px) / (3840 - 1200)));
-                        transition: all .1s; 
-                        @media screen and (max-width: 1024px){
-                            width: calc(6px + (12 - 6) * ((100vw - 300px) / (1024 - 300)));
-                        }
-                    }
-                    &:first-of-type{
-                        margin-right: calc(32px + (62 - 32) * ((100vw - 1200px) / (3840 - 1200)));
-                        @media screen and (max-width: 1024px){
-                            margin-right: calc(16px + (46 - 16) * ((100vw - 300px) / (1024 - 300)));
-                        }
-                    }
-                    &.active{
-                        opacity: 1;
+                        @include font-level-4;
+                        color: $deep-blue;
+                        display: flex;     
+                        opacity: .4; 
+                        transition: all .1s;               
                         span{
-                            transform: rotate(180deg);
+                            display: flex;
+                            align-items: center;
+                            width: calc(7px + (15 - 7) * ((100vw - 1200px) / (3840 - 1200)));
+                            height: auto;
+                            margin-left: calc(6px + (10 - 6) * ((100vw - 1200px) / (3840 - 1200)));
+                            transition: all .1s; 
+                            @media screen and (max-width: 1024px){
+                                width: calc(6px + (12 - 6) * ((100vw - 300px) / (1024 - 300)));
+                            }
+                        }
+                        &.active{
+                            opacity: 1;
+                            span{
+                                transform: rotate(180deg);
+                            }
                         }
                     }
-                }
+                }    
+                .clear_btn{
+                    position: absolute;
+                    top: 0;
+                    right: calc(16px + (32 - 16) * ((100vw - 1200px) / (3840 - 1200)));
+                    @include font-level-6;
+                    font-weight: 400;
+                    color: $deep-blue;
+                    background-color: $yellow-3;
+                    border-radius: 50px;
+                    padding:
+                    calc(2px + (4 - 2) * ((100vw - 1200px) / (3840 - 1200)))
+                    calc(5px + (8 - 5) * ((100vw - 1200px) / (3840 - 1200)))
+                    ;                                         
+                }            
             }
 
             .filter_tags{
@@ -140,6 +217,12 @@
                     calc(8px + (24 - 8) * ((100vw - 1200px) / (3840 - 1200)))
                     0;
                     color: $gray-1;
+                    opacity: 0;
+                    transform: scale(0.8);
+                    animation-name: fadeInZoom;
+                    animation-duration: 0.6s;  
+                    animation-timing-function: ease-in-out;
+                    animation-fill-mode: forwards; 
                     @media screen and (max-width: 1024px){
                         margin: 
                         0
@@ -165,10 +248,90 @@
     }
 
     .overlay_close{
-        background-color: rgba(3, 46, 89, .85);
-        backdrop-filter: blur(6px);
+        background-color: rgba(33,35,36,.5);
         width: 100%;
         height: 100%;
         cursor: pointer;
+        opacity: 0;
+        animation-name: fadeIn;
+        animation-duration: 0.4s;  
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards; 
+    }
+
+    &.animation_out{
+        .search_container{
+            top: 0;
+            animation-name: sliceUp;
+            animation-duration: 0.6s;  
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: forwards; 
+        }
+        .overlay_close{
+            opacity: 1;
+            animation-name: fadeOut;
+            animation-delay: 0.3s;
+            animation-duration: 0.4s;  
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: forwards; 
+        }
+    }
+}
+
+@keyframes sliceDown {
+    0% {
+        top: -100vh;
+    }
+    100% {
+        top: 0;
+    }
+}
+
+@keyframes sliceUp {
+    0% {
+        top: 0;
+    }
+    100% {
+        top: -100vh;
+    }
+}
+
+@keyframes sliceDownFadeIn {
+    0% {
+        opacity: 0;
+        top: -50vh;
+    }
+    100% {
+        opacity: 1;
+        top: 0;
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInZoom {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
     }
 }
