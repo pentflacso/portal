@@ -101,7 +101,7 @@ function Index(data){
                                 <div dangerouslySetInnerHTML={{__html: data.description }} /> :
                             ""}
 
-                            <button type="button" className={styles.share_btn} onClick={ () => setShareModal(true) }>Compartir</button> 
+                            <button type="button" className={styles.share_btn} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button> 
 
                             { data.license ?
                                 <div className={styles.legal}>                         
@@ -147,7 +147,7 @@ function Index(data){
                         <div dangerouslySetInnerHTML={{__html: data.description }} /> :
                         ""}
 
-                        <button type="button" className={styles.share_btn} onClick={ () => mobileShare() }>Compartir</button> 
+                        <button type="button" className={styles.share_btn} onClick={ () => mobileShare() }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button> 
 
                         { data.license ?
                             <div className={styles.legal}>                         

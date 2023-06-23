@@ -61,6 +61,12 @@
             top: calc(-10px + (-24 - -10) * ((100vw - 1200px) / (3840 - 1200)));
             right:calc(-8px + (-22 - -8) * ((100vw - 1200px) / (3840 - 1200)));
             border-radius: 50%;
+            @media screen and (max-width: 1024px){
+                width: calc(16px + (36 - 16) * ((100vw - 300px) / (1024 - 300)));
+                height: calc(16px + (36 - 16) * ((100vw - 300px) / (1024 - 300)));
+                top: calc(-6px + (-14 - -6) * ((100vw - 300px) / (1024 - 300)));
+                right:calc(-6px + (-14 - -6) * ((100vw - 300px) / (1024 - 300)));
+            }
         }
     }
 

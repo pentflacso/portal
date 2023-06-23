@@ -104,7 +104,7 @@ function Index(data){
                         }
                         
                         <div className={styles.btns}>
-                            <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => setShareModal(true) }>Compartir</button>
+                            <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
 
                             <Link className={`${styles.btn} ${styles.download}`} href="#" target="_blank"><span><img src="/assets/icons/download_icon.svg" alt="icono de descarga"/>Descargar</span></Link>  
                         </div>                       
@@ -160,7 +160,7 @@ function Index(data){
                     }
 
                     <div className={styles.btns}>
-                        <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => mobileShare() }>Compartir</button>
+                        <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => mobileShare() }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
                         <Link className={`${styles.btn} ${styles.download}`} href="#" target="_blank"><span><img src="/assets/icons/download_icon.svg" alt="icono de descarga"/>Descargar</span></Link>  
                     </div> 
 
