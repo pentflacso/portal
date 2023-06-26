@@ -56,7 +56,7 @@
     &.margin_bottom_1{
         margin-bottom: calc(5px + (10 - 5) * ((100vw - 1200px) / (3840 - 1200)));
         @media screen and (max-width: 1024px){
-            margin-bottom: calc(30px + (110 - 30) * ((100vw - 300px) / (1024 - 300)));
+            margin-bottom: calc(25px + (50 - 25) * ((100vw - 300px) / (1024 - 300)));
         }
     }
 

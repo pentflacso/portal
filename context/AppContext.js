@@ -22,7 +22,7 @@ export default function AppProvider({ children }) {
   const [currentArticleAuthor, setCurrentArticleAuthor] = useState('all');
   //Guarda lo que el usuario escribe en la barra de búsqueda
   const [queryArticles, setQueryArticles] = useState('');
-  
+
   const queryArticlesKeys = ["lead", "title", "description"];
 
   const [ articlesFiltersStatus, setArticlesFiltersStatus ] = useState({ hashtag: 0, author: 0, query: 0 });
@@ -101,10 +101,46 @@ export default function AppProvider({ children }) {
   }
 
 
+  function normalizeText(text) {
+    const sustitutions = {
+      àáâãäå: "a",
+      ÀÁÂÃÄÅ: "A",
+      èéêë: "e",
+      ÈÉÊË: "E",
+      ìíîï: "i",
+      ÌÍÎÏ: "I",
+      òóôõö: "o",
+      ÒÓÔÕÖ: "O",
+      ùúûü: "u",
+      ÙÚÛÜ: "U",
+      ýÿ: "y",
+      ÝŸ: "Y",
+      ß: "ss",
+      ñ: "n",
+      Ñ: "N"
+    };
+
+    function getLetterReplacement(letter, replacements) {
+      const findKey = Object.keys(replacements).reduce(
+        (origin, item) => (item.includes(letter) ? item : origin),
+        false
+      );
+      return findKey !== false ? replacements[findKey] : letter;
+    }
+
+    return text
+      .split("")
+      .map((letter) => getLetterReplacement(letter, sustitutions))
+      .join("")
+      .replace(/\s+/g, '')
+      .toLowerCase();
+  }
+
+
   //Filtra dataArticles, a partir de lo que el usuario escribe en el input que se encuentra en ProductionsAdvancedFilters
 
   const searchInArticles = (dataArticles) => { 
-    return dataArticles.filter( (item) => queryArticlesKeys.some(key => item[key].toLowerCase().includes(queryArticles.toLowerCase())) );         
+    return dataArticles.filter( (item) => queryArticlesKeys.some(key => normalizeText(item[key]).includes(normalizeText(queryArticles))) );         
   };
 
   useEffect(() => {

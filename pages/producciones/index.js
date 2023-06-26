@@ -1,6 +1,6 @@
 import { useAppContext } from '../../context/AppContext';
 import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
-import { useRef, useEffect, Fragment } from 'react';
+import { useRef, useEffect } from 'react';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import ProductionsNav from '../../components/producciones/ProductionsNav/ProductionsNav';
@@ -108,12 +108,22 @@ function Producciones(d){
                     //markers: true
                 });  
             }, 100); */      
+        } else{
+            ctx = gsap.context(() => {                
+                ScrollTrigger.create({
+                   trigger: pageHeading.current,
+                   start: "50% top", 
+                   end: '+=5000%',             
+                   pin: productionsNav.current,
+                   pinSpacing: false,
+                   scrub: true,
+                   //markers: true
+               });         
+            }, content);
         }  
 
         return () => {
-            if(windowSize >= 1025 ){    
-                ctx.revert()
-            }
+            ctx.revert();
         }
 
     }, [windowSize]); 
@@ -158,24 +168,28 @@ function Producciones(d){
             </div>
         </>     
         :
-        <>    
-            <PageHeading title="<span>Producciones</span>" margin_bottom_type={1} />
-
-            <section>  
-                <div className={`${styles.productions_nav}`}>
-                    <ProductionsNav />   
-                </div>       
-                {dataArticles !== undefined && <ArticlesList data={searchInArticles(dataArticles)} />}    
-            </section>
-
-            <section>
-                <div className={styles.marquee}>
-                    <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+        <>  
+            <div ref={content}>   
+                <div ref={pageHeading}>
+                    <PageHeading title="<span>Producciones</span>" margin_bottom_type={1} />
                 </div>
-                <ExploringBtns data={exploringBtnsData} />
-            </section>
 
-            <Footer />           
+                <section>  
+                    <div className={`${styles.productions_nav}`} ref={productionsNav}>
+                        <ProductionsNav />   
+                    </div>       
+                    {dataArticles !== undefined && <ArticlesList data={searchInArticles(dataArticles)} />}    
+                </section>
+
+                <section>
+                    <div className={styles.marquee}>
+                        <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                    </div>
+                    <ExploringBtns data={exploringBtnsData} />
+                </section>
+
+                <Footer />   
+            </div>        
         </>
         }
     </>
