@@ -8,8 +8,9 @@ import ArticlesList from '../../components/library/ArticlesList/ArticlesList';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
 import Footer from '../../components/library/Footer/Footer';
-import { gsap } from 'gsap';
+import { gsap, Circ } from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import $ from "jquery";
 import styles from "./producciones.module.scss";
 
 
@@ -28,7 +29,7 @@ function Producciones(d){
     
     //Traemos lo que necesitamos de AppContext
 
-    const { dataArticles, setDataArticles, currentArticleHashtag, currentArticleAuthor, searchInArticles, windowSize } = useAppContext();    
+    const { dataArticles, setDataArticles, currentArticleHashtag, currentArticleAuthor, searchInArticles, windowSize, advancedFilterStatus } = useAppContext();    
 
 
     //Mandamos la data a dataArticles dentro de AppContext
@@ -58,7 +59,7 @@ function Producciones(d){
 
         let ctx;
 
-        if(windowSize >= 1025 ){    
+        if(windowSize >= 1025){    
 
             //Follow cursor 
             const ball = document.querySelector(".cursor_ver");
@@ -129,6 +130,31 @@ function Producciones(d){
     }, [windowSize]); 
 
 
+    useEffect(() => {
+        if(windowSize <= 1025 && window !== null){     
+
+            function scrollToNav(e) {
+                const btnId = e.target.dataset.id;            
+                if(btnId !== undefined){
+                    if(btnId.includes('triggerScrollTo')){
+                        gsap.to(window, {
+                        scrollTo:{y: pageHeading.current, offsetY: - pageHeading.current.offsetHeight},
+                        duration: 0.5,
+                        ease: Circ.easeOut
+                        });    
+                    }
+                } 
+            } 
+    
+            $(".filters").on('click', scrollToNav); 
+
+            return () => {
+                $(".filters").off();
+            };  
+        }      
+    }, [advancedFilterStatus]);
+
+
     return(
     <>
         <MetaTags
@@ -146,7 +172,7 @@ function Producciones(d){
                         <PageHeading title="<span>Producciones</span>" margin_bottom_type={1} />        
                     </div> 
 
-                    <section>    
+                    <section id="productions-nav">    
                         <div className={`${styles.productions_nav}`} ref={productionsNav}>
                             <ProductionsNav/>   
                         </div>       

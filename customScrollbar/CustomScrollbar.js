@@ -1,13 +1,21 @@
 import { useRef, useEffect } from 'react';
+import { useRouter } from "next/router";
+import { useAppContext } from '../context/AppContext';
 import SmoothScrollbar from 'smooth-scrollbar';
-import { gsap } from 'gsap';
+import { gsap, Circ } from 'gsap';
+import ScrollToPlugin from "../node_modules/gsap/ScrollToPlugin";
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
-gsap.registerPlugin(ScrollTrigger);
+import $ from "jquery";
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 export default function Layout({ children, ...rest }) {
   
   let $content = useRef();
   let scrollbar = useRef();
+
+  const router = useRouter();
+
+  const { advancedFilterStatus } = useAppContext();
 
   useEffect(() => {
 
@@ -42,8 +50,8 @@ export default function Layout({ children, ...rest }) {
           gsap.set(markers, { marginTop: -offset.y })
         });
       } 
-      }, 1000);      
-
+    }, 1000);    
+      
 
  /*   return () => {      
        if (scrollbar.current) {
@@ -52,7 +60,33 @@ export default function Layout({ children, ...rest }) {
       } 
     }; */
     
-  }, []);
+  }, []); 
+
+  
+  useEffect(() => {
+    if(router.route === '/producciones'){
+      
+      function scrollToNav(e) {
+        const btnId = e.target.dataset.id;
+        
+        if(btnId !== undefined){
+          if(btnId.includes('triggerScrollTo')){
+            gsap.to(scrollbar.current, {
+            scrollTo: {y: $("#productions-nav").offset().top + scrollbar.current.offset.y + 1},
+            duration: 1,
+            ease: Circ.easeOut
+            });
+          }
+        } 
+      } 
+
+      $(".filters").on('click', scrollToNav);   
+      
+      return () => {
+        $(".filters").off();
+      };
+    }
+  }, [advancedFilterStatus]);
 
 
   return (

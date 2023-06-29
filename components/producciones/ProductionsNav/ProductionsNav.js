@@ -9,9 +9,8 @@ import styles from "./ProductionsNav.module.scss";
 
 export default function ProductionsNav(){
 
-    const { dataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, articlesFiltersCounter } = useAppContext();
+    const { dataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, articlesFiltersCounter, advancedFilterStatus, setAdvancedFilterStatus } = useAppContext();
     
-    const [advancedFilterStatus, setAdvancedFilterStatus] = useState(false);
     const [advancedFilterOutAnimation, setAdvancedFilterOutAnimation] = useState(false);
 
 
@@ -93,7 +92,7 @@ export default function ProductionsNav(){
                 advancedFilterStatus === true && reactDom.createPortal(<ProductionsAdvancedFilters changeAdvancedFilterStatus={changeAdvancedFilterStatus} stateCurrentHashtag={stateCurrentHashtag} advancedFilterOutAnimation={advancedFilterOutAnimation} />, document.getElementById("modal-root"))
             }
    
-            <div className={styles.wrapper}>     
+            <div className={`${styles.wrapper} filters`}>     
                 <Swiper
                 modules={[Navigation, FreeMode]}
                 spaceBetween={0}
@@ -104,13 +103,13 @@ export default function ProductionsNav(){
                 className={`${styles.hashtags} swiper-btns`}
                 >
                     <SwiperSlide>  
-                        <button onClick={ () => stateCurrentHashtag('all') } className={currentArticleHashtag === 'all'  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>Ver todo</button> 
+                        <button type="button" data-id="triggerScrollTo" onClick={ () => stateCurrentHashtag('all') } className={currentArticleHashtag === 'all'  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>Ver todo</button> 
                     </SwiperSlide>  
 
                     {hashtagsArticlesList && hashtagsArticlesList.map((hashtag) => {
                         return (  
                             <SwiperSlide key={hashtag.name}>
-                                <button onClick={ () => stateCurrentHashtag(hashtag.name) } className={currentArticleHashtag === hashtag.name  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>{hashtag.name}</button>  
+                                <button type="button" data-id="triggerScrollTo" onClick={ () => stateCurrentHashtag(hashtag.name) } className={currentArticleHashtag === hashtag.name  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>{hashtag.name}</button>  
                             </SwiperSlide>
                         );
                     })}
