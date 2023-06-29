@@ -14,6 +14,12 @@
         .content{
             width: 100%;
         }
+
+        .no_data{
+            @include font-level-4;
+            font-style: 400;
+            color: $gray-1;
+        }
     }
 
     .show_more{

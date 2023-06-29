@@ -1,5 +1,5 @@
 import { useAppContext } from '../../../context/AppContext';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import styles from "./ProductionsAdvancedFilters.module.scss";
 
 export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus, stateCurrentHashtag, advancedFilterOutAnimation }){
@@ -25,20 +25,29 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
         }  
     }
 
+    useEffect(() => {
+        document.getElementById("searchBar").addEventListener("keyup", function(event) {
+            event.preventDefault();
+            if (event.key === 'Enter') {
+                changeAdvancedFilterStatus(false);
+            }
+        });    
+    }, []); 
+
 
     return(
-        <div className={advancedFilterOutAnimation === true ? `${styles.wrapper} ${styles.animation_out}` : `${styles.wrapper}`}>
+        <div className={advancedFilterOutAnimation === true ? `${styles.wrapper} ${styles.animation_out} filters` : `${styles.wrapper} filters`}>
 
             <div className={styles.search_container}>
 
-                <button type="button" className={styles.close_btn} onClick={ () => changeAdvancedFilterStatus(false) }>Cerrar</button>  
+                <button type="button" data-id="triggerScrollTo" className={styles.close_btn} onClick={ () => changeAdvancedFilterStatus(false) }>Cerrar</button>  
 
                 <div className={styles.wrapper}>                                      
 
                     <div className={styles.search_cont}>
-                        {queryArticles !== '' && <button type="button" className={styles.clear_btn} onClick={ () => setQueryArticles('') }>Borrar</button>}
+                        {queryArticles !== '' && <button type="button" data-id="triggerScrollTo" className={styles.clear_btn} onClick={ () => setQueryArticles('') }>Borrar</button>}
 
-                        <input onChange={(e) => setQueryArticles(e.target.value)} type="text" placeholder='Buscar por palabras clave' value={queryArticles} className={styles.search_bar}/>
+                        <input id="searchBar" onChange={(e) => setQueryArticles(e.target.value)} type="text" placeholder='Buscar por palabras clave' value={queryArticles} className={styles.search_bar}/>
                     </div>                    
 
                     <div className={styles.switch_filter}>
@@ -47,14 +56,14 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
                         
                         <div className={styles.switch_box}>
 
-                            {currentArticleHashtag !== 'all' && <button onClick={ () => stateCurrentHashtag('all') } className={styles.clear_btn}>Quitar</button>}
+                            {currentArticleHashtag !== 'all' && <button type="button" data-id="triggerScrollTo" onClick={ () => stateCurrentHashtag('all') } className={styles.clear_btn}>Quitar</button>}
 
                             <button type="button" className={showFilters === 'hashtags' ? `${styles.switch_btn} ${styles.active}` : `${styles.switch_btn}`} onClick={ () => changeShowFilters('hashtags') }>Filtrar por temática<span><img src="/assets/icons/triangle_icon.svg" alt="Icono de flecha" /></span></button>
                         </div>
 
                         <div className={styles.switch_box}>
 
-                            {currentArticleAuthor !== 'all' && <button onClick={ () => statecurrentAuthor('all') } className={styles.clear_btn}>Quitar</button>}
+                            {currentArticleAuthor !== 'all' && <button type="button" data-id="triggerScrollTo" onClick={ () => statecurrentAuthor('all') } className={styles.clear_btn}>Quitar</button>}
 
                             <button type="button" className={showFilters === 'authors' ? `${styles.switch_btn} ${styles.active}` : `${styles.switch_btn}`} onClick={ () => changeShowFilters('authors') }>Filtrar por autor<span><img src="/assets/icons/triangle_icon.svg" alt="Icono de flecha" /></span></button>
 
@@ -71,7 +80,7 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
                             <>
                                 {hashtagsArticlesList && hashtagsArticlesList.map((hashtag) => {   
                                         return ( 
-                                        <button key={hashtag.name} onClick={ () => stateCurrentHashtag(hashtag.name) } className={currentArticleHashtag === hashtag.name  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>{hashtag.name}</button>
+                                        <button type="button" key={hashtag.name} data-id="triggerScrollTo" onClick={ () => stateCurrentHashtag(hashtag.name) } className={currentArticleHashtag === hashtag.name  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>{hashtag.name}</button>
                                         );
                                     })
                                 }
@@ -80,7 +89,7 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
                             <>
                                 {authorsArticlesList && authorsArticlesList.map((author) => {   
                                         return ( 
-                                        <button key={author.name} onClick={ () => statecurrentAuthor(author.name) } className={currentArticleAuthor === author.name  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>{author.name}</button>
+                                        <button type="button" key={author.name} data-id="triggerScrollTo" onClick={ () => statecurrentAuthor(author.name) } className={currentArticleAuthor === author.name  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>{author.name}</button>
                                         );
                                     })
                                 }
@@ -91,7 +100,7 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
                 </div>
             </div>
 
-            <button type="button" className={styles.overlay_close} onClick={ () => changeAdvancedFilterStatus(false) } />
+            <button type="button" data-id="triggerScrollTo" className={styles.overlay_close} onClick={ () => changeAdvancedFilterStatus(false) } />
 
         </div>
     );

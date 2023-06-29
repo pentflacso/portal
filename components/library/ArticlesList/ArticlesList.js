@@ -75,7 +75,7 @@ export default function ArticlesList({ data }){
                         })}
                     </div>
                 </>
-                : <p>No se encontraron resultados</p>
+                : <p className={styles.no_data}>No se encontraron resultados</p>
                 }
             </>
             :
@@ -90,7 +90,7 @@ export default function ArticlesList({ data }){
                             );
                         })}
                     </div>
-                : <p>No se encontraron resultados</p>
+                : <p className={styles.no_data}>No se encontraron resultados</p>
                 }
             </>
             }
