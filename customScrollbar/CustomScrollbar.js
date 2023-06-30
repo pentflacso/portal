@@ -69,14 +69,12 @@ export default function Layout({ children, ...rest }) {
       function scrollToNav(e) {
         const btnId = e.target.dataset.id;
         
-        if(btnId !== undefined){
-          if(btnId.includes('triggerScrollTo')){
-            gsap.to(scrollbar.current, {
+        if(btnId !== undefined && btnId.includes('triggerScrollTo')){
+          gsap.to(scrollbar.current, {
             scrollTo: {y: $("#productions-nav").offset().top + scrollbar.current.offset.y + 1},
-            duration: 1,
+            duration: 0.8,
             ease: Circ.easeOut
-            });
-          }
+          });          
         } 
       } 
 
