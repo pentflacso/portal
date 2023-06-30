@@ -135,14 +135,12 @@ function Producciones(d){
 
             function scrollToNav(e) {
                 const btnId = e.target.dataset.id;            
-                if(btnId !== undefined){
-                    if(btnId.includes('triggerScrollTo')){
-                        gsap.to(window, {
+                if(btnId !== undefined && btnId.includes('triggerScrollTo')){                
+                    gsap.to(window, {
                         scrollTo:{y: pageHeading.current, offsetY: - pageHeading.current.offsetHeight},
                         duration: 0.5,
                         ease: Circ.easeOut
-                        });    
-                    }
+                    });                    
                 } 
             } 
     

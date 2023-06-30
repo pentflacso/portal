@@ -71,6 +71,14 @@
             line-height: 134%;
         }
     }
+
+    &.animation_out{
+        bottom: calc(10px + (24 - 10) * ((100vw - 1200px) / (3840 - 1200)));
+        animation-name: showOut;
+        animation-duration: 0.3s;
+        animation-timing-function: cubic-bezier(0.5,-2,2,2);
+        animation-fill-mode: forwards;
+    }
 }
 
 @keyframes showIn {
@@ -79,5 +87,14 @@
     }
     100% {
         bottom: calc(10px + (24 - 10) * ((100vw - 1200px) / (3840 - 1200)));
+    }
+}
+
+@keyframes showOut {
+    0% {
+        bottom: calc(10px + (24 - 10) * ((100vw - 1200px) / (3840 - 1200)));        
+    }
+    100% {
+        bottom: -100px;
     }
 }

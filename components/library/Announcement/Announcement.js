@@ -1,21 +1,22 @@
 import { useAppContext } from '../../../context/AppContext';
+import { useState } from 'react';
 import Link from "next/link";
-import { gsap } from 'gsap';
 import styles from "./Announcement.module.scss";
 
 export default function Announcement(){
 
     const { setAnnouncementStatus } = useAppContext();
+    const [announcementOutAnimation, setAnnouncementOutAnimation] = useState(false);
 
     function closeAnnouncement() {
-        gsap.to(`.${styles.announcement}`, {duration:1, ease: "sine.inOut", translateY: "1000px"});
+        setAnnouncementOutAnimation(true);
         setTimeout(() => {
             setAnnouncementStatus(false);
         }, "500");    
     }
 
     return( 
-        <div className={styles.announcement}>   
+        <div className={!announcementOutAnimation ? `${styles.announcement}` : `${styles.announcement} ${styles.animation_out}` }>   
 
             <button type="button" className={styles.close_btn} onClick={ () => closeAnnouncement() }><span/><span/></button> 
 
