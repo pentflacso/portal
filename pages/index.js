@@ -111,7 +111,7 @@ function Home(d){
                                         <h5>{d.title}</h5>
                                         <p>{d.description}</p>
                                     </div>                       
-                                    <img src={d.img} alt="foto posgrado" />                    
+                                    <img src={d.img_desk} alt="Imagen novedad destacada" />                    
                                 </a>
                             </SwiperSlide> 
                         ))} 
@@ -157,7 +157,7 @@ function Home(d){
                                     <h5>{d.title}</h5>
                                     <p>{d.description}</p>
                                 </div>                       
-                                <img src={d.img} alt="foto posgrado" />                    
+                                <img src={d.img_mobile} alt="Imagen novedad destacada" />                    
                             </a>
                         </SwiperSlide> 
                     ))} 
