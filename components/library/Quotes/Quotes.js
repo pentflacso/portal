@@ -3,6 +3,7 @@ import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function Quotes({items}){
+    //console.log(items);
     return(
     <>
         <Swiper
@@ -19,11 +20,11 @@ export default function Quotes({items}){
                     <div className={styles.card}>
                         <div className={styles.wrapper}>
                             <div className={styles.img_cont}>
-                                <img src={item.img} alt={item.name} />
+                                <img src={item.img} alt={item.name[0].value} />
                             </div>
                             <div className={styles.text_cont}>
-                                <h4>{item.description}</h4>
-                                <p><strong>{item.name}</strong><br /><span dangerouslySetInnerHTML={{__html: `${item.subtitle}` }} /></p> 
+                                <h4>{item.description[0].value}</h4>
+                                <p><strong>{item.name[0].value}</strong><br /><span dangerouslySetInnerHTML={{__html: `${item.subtitle[0].value}` }} /></p> 
                             </div>
                         </div>
                     </div>
