@@ -1,6 +1,6 @@
 import { useAppContext } from '../context/AppContext';
 import { useEffect } from 'react';
-import CustomScrollbar from '../customScrollbar/CustomScrollbar';
+import MainWrapper from '../components/library/MainWrapper/MainWrapper';
 import MetaTags from '../components/library/MetaTags/MetaTags';
 import HomeHeading from '../components/home/HomeHeading/HomeHeading';
 import CoverVideo from '../components/home/CoverVideo/CoverVideo';
@@ -22,7 +22,7 @@ function Home(d){
 
     useEffect(() => {
 
-        if(windowSize >= 1025 ){    
+        if(windowSize >= 1025){    
 
             // Follow custom cursor
             const ball = document.querySelector(".cursor_leer");
@@ -70,7 +70,7 @@ function Home(d){
 
 
     return(
-    <>
+    <>   
         <MetaTags
             pageTitle={'FLACSO | PENT — Un espacio de capacitación, investigación, creación e innovación en educación y tecnologías digitales.'}
             shareTitle={'FLACSO | PENT — Un espacio de capacitación, investigación, creación e innovación en educación y tecnologías digitales.'}
@@ -78,56 +78,10 @@ function Home(d){
             description={'Somos un espacio de capacitación, investigación, creación e innovación en educación y tecnologías digitales.'}
         />
 
-        {windowSize >= 1025 ?
-        <>
-            <CustomScrollbar>                
-                <HomeHeading title={d.PageHeading} />
-                <CoverVideo />
-
-                <section>
-                    <div className={styles.marquee_1}>
-                        <TextMarquee data={d.marquee1}/>
-                    </div>
-                    <SectionSelector data={d.MemberData} />
-                </section>
-
-                <section>
-                    <div className={styles.marquee_1}>
-                        <TextMarquee data={d.marquee2} />
-                    </div>    
-                    <Swiper
-                        modules={[Navigation, FreeMode]}
-                        spaceBetween={0}
-                        slidesPerView={"auto"}
-                        navigation={true}  
-                        freeMode={false}   
-                        grabCursor={true} 
-                        className={`${styles.carrousel_novedades} swiper-cards`}
-                    >
-                        {d.courses.map((d, i)=>(
-                            <SwiperSlide key={i}>
-                                <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank" className={styles.card_new}>
-                                    <div className={styles.info}>
-                                        <h5>{d.title}</h5>
-                                        <p>{d.description}</p>
-                                    </div>                       
-                                    <img src={d.img} alt="Imagen novedad destacada" />                    
-                                </a>
-                            </SwiperSlide> 
-                        ))} 
-                    </Swiper>  
-                    <NewsSelector data={d.NewsData} />  
-                </section>
-
-                <Footer />    
-            </CustomScrollbar> 
-            <div className="cursor_leer">
-                <div className="circle"><span>Leer</span></div>
-            </div>
-        </>
-        :
-        <> 
+        <MainWrapper>           
+     
             <HomeHeading title={d.PageHeading} />
+
             <CoverVideo />
 
             <section>
@@ -149,7 +103,7 @@ function Home(d){
                     freeMode={false}   
                     grabCursor={true} 
                     className={`${styles.carrousel_novedades} swiper-cards`}
-                >
+                    >
                     {d.courses.map((d, i)=>(
                         <SwiperSlide key={i}>
                             <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank" className={styles.card_new}>
@@ -163,12 +117,17 @@ function Home(d){
                     ))} 
                 </Swiper>  
                 <NewsSelector data={d.NewsData} />  
-            </section>
+                </section>
 
-            <Footer /> 
-        </>
+            <Footer />
+        </MainWrapper> 
+
+        {windowSize >= 1025 &&
+            <div className="cursor_leer">
+                <div className="circle"><span>Leer</span></div>
+            </div> 
         }
-    </>   
+    </>  
     );
 }
 
