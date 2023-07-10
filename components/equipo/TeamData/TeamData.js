@@ -4,7 +4,7 @@ import Link from 'next/link';
 import styles from "./TeamData.module.scss";
 
 const Equipo = ({team, title}) => {
-    
+  //console.log(team);
     return (
 
       <div className={styles.wrapper}>
@@ -15,12 +15,12 @@ const Equipo = ({team, title}) => {
         team.map((item, i)  => (
           <div key={i} className={styles.team_area}>
 
-            <h5>{item.cargo[0].value}</h5>
+            <h5>{item.cargo}</h5>
             
             {item.equipo.map((persona, i) => (
               <>
-              <Link key={i} className={styles.member} href={"/"}>{persona.nombre[0].value}</Link>
-              {console.log(persona.url)}
+              <Link key={i} className={styles.member} href={persona.alias ? persona.alias : "/"}>{persona.nombre}</Link>
+              
               
               </>
             ))}

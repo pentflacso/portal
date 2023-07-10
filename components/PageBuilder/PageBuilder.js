@@ -3,12 +3,14 @@ import { useAppContext } from '../../context/AppContext';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
 import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
+import HomeHeading from '../../components/home/HomeHeading/HomeHeading';
 import CoverVideo from '../../components/home/CoverVideo/CoverVideo';
 import KeysBox from '../../components/library/KeysBox/KeysBox';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import ThemesAccordion from '../../components/investigacion/ThemesAccordion/ThemesAccordion';
 import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
+import Link from 'next/link';
 import HighlightParagraph from '../../components/library/HighlightParagraph/HighlightParagraph';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
 import Quotes from '../../components/library/Quotes/Quotes';
@@ -17,13 +19,18 @@ import SectionSelector from '../../components/home/SectionSelector/SectionSelect
 import BrandsMarquee from '../../components/asesorias/BrandsMarquee/BrandsMarquee';
 import TwoColumsText from '../../components/equipo/TwoColumsText/TwoColumsText';
 import TeamData from '../../components/equipo/TeamData/TeamData';
+import NewsSelector from '../../components/home/NewsSelector/NewsSelector';
 import Footer from '../../components/library/Footer/Footer';
 
 //import { gsap, Back, Elastic } from 'gsap';
 //import $ from "jquery";
 
 export default function PageBuilder({data, stylesx}){
-    const { windowSize } = useAppContext();   
+    //const { windowSize } = useAppContext();   
+
+    //equipo
+    const { windowSize, goToPage } = useAppContext();
+
 
     const exploringBtnsData = [
         {title: 'Formación', path: 'formacion'},
@@ -42,16 +49,16 @@ export default function PageBuilder({data, stylesx}){
 
         {windowSize >= 1025 ?
         <>
-            <CustomScrollbar>
-
-
-
-
-                
+            <CustomScrollbar>   
                 {data ? data.map((data, i) => (
                     <>
-                        {data.block_type === "header" && 
-                            <PageHeading title={data.body} margin_bottom_type={2} key={i} />
+                        {(data.block_type === "highlighted" && i == 1) &&
+                            <PageHeading title={data.title[0].value} margin_bottom_type={2} key={i} />
+                        }
+
+
+                        {(data.block_type === "wordscover" && i == 1) &&
+                            <HomeHeading title={data.title} final={data.finalwords} initial={data.initialwords}  />
                         }
                         {data.block_type === "videocover" && 
                             <CoverVideo data={data} key={i} />
@@ -80,7 +87,7 @@ export default function PageBuilder({data, stylesx}){
                                 </div>  
                             </section>                        
                         }   
-                        {data.block_type === "highlighted" &&
+                        {(data.block_type === "highlighted" && i !== 1) &&
                             <section key={i}>
                                 <div className={stylesx.highlight_paragraph}>
                                     <HighlightParagraph title={data.title} />
@@ -107,6 +114,28 @@ export default function PageBuilder({data, stylesx}){
                                 <TeamData team={data.roster} title={data.block_title} />
                             </section>
                         }
+                        {data.block_type === "sliderperson" &&
+                                <Swiper
+                                modules={[Navigation, FreeMode]}
+                                spaceBetween={0}
+                                slidesPerView={"auto"}
+                                navigation={true}  
+                                freeMode={false}   
+                                grabCursor={false}  
+                                className={`${stylesx.carrousel_members} swiper-cards members`}                       
+                                >   
+                                {data.members.map((item, i) => (
+                                    <SwiperSlide key={i}>
+                                        <Link className={stylesx.member} href={item.alias} onClick={ () => goToPage() }>
+                                            <div className={stylesx.img_container}>
+                                                <img alt={item.alt} src={item.img.url}/>
+                                            </div>
+                                            <h5>{item.nombre}</h5>
+                                        </Link>            
+                                    </SwiperSlide>
+                                ))}                            
+                                </Swiper>
+                        }
                         {data.block_type === "info" &&
                                 <section key={i}>
                                 <ParagraphAndButton 
@@ -115,6 +144,9 @@ export default function PageBuilder({data, stylesx}){
                                     urlBtn={data.description[0].value}
                                 />
                             </section>                             
+                        }
+                        {data.block_type === "lastnews" &&
+                            <NewsSelector data={data.NewsData} />                              
                         }
 
 
