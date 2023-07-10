@@ -16,9 +16,9 @@ export async function getServerSideProps() {
     //Equipo
     //const res = await fetch(`https://redaccion.pent.org.ar/data/section/52`)    
     //Home
-    const res = await fetch(`https://redaccion.pent.org.ar/data/section/75`)    
+    //const res = await fetch(`https://redaccion.pent.org.ar/data/section/75`)    
     //Asesoria
-    //const res = await fetch(`https://redaccion.pent.org.ar/data/section/49`)
+    const res = await fetch(`https://redaccion.pent.org.ar/data/section/49`)
     //Investigacion
     //const res = await fetch(`https://redaccion.pent.org.ar/data/section/66`)
     //Formacion
