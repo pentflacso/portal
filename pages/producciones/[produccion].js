@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from "next/router";
 import { Fragment } from 'react';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
-import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
+import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
 import Footer from '../../components/library/Footer/Footer'
@@ -82,71 +82,16 @@ function Index(data){
             description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
         />        
 
-        {windowSize >= 1025 ?
-        <>
-            {shareModal && <ShareBtns shareurl={`https://pent-portal-testing.vercel.app${router.asPath}`} setShareModal={setShareModal} />}
+        {windowSize >= 1025 && shareModal && <ShareBtns shareurl={`https://pent-portal-testing.vercel.app${router.asPath}`} setShareModal={setShareModal} />}
 
-            <CustomScrollbar> 
-                <div className={styles.pin_block}> 
-                    <header className={styles.col_left}>                
-                        <Link className={styles.back_arrow} href="/producciones" onClick={ () => goToPage()}><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver producciones</strong></span></Link>
-                        <h1>{data.title}</h1>
-                        { data.authors ?
-                            <div className={styles.authors}>
-                                <p>{data.lead} | <span>Por —</span>&nbsp;</p>
-                                {data.authors.map((a, i) => (
-                                    <Fragment key={i}>
-                                    <Link  href={a.url} target="_blank">{a.name}<span>,</span></Link>
-                                    &nbsp;
-                                    </Fragment>
-                                ) ) } 
-                            </div> : ""
-                        }
-                        
-                        <div className={styles.btns}>
-                            <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
-
-                            <Link className={`${styles.btn} ${styles.download}`} href="#" target="_blank"><span><img src="/assets/icons/download_icon.svg" alt="icono de descarga"/>Descargar</span></Link>  
-                        </div>                       
-
-                    </header>
-                    <article className={styles.col_right}>
-                        { data.img ? <img src={ data.img } alt={ data.title } className={styles.imgTop} /> : ""}
-                        { data.description && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.description }} /> }
-
-                        { data.hashtags && 
-                            <div className={styles.hashtags}>
-                                <p>Ver más de:</p>
-                                { data.hashtags.map((hashtags , key) => <button type="button" key={key} onClick={ () => filterByTag(`${hashtags}`)}>{hashtags}</button>) }                            
-                            </div>
-                        }
-
-                        { data.quote || data.license ?
-                            <div className={styles.legal}> 
-                                { data.quote ? <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Cómo citar</h4>"+ data.quote }}/> : "" } 
-                                
-                                { data.license ? <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ data.license }}/> : "" }                    
-                            </div>
-                        : "" }
-                    </article>
-                </div>
-
-                <section>
-                    <div className={styles.marquee}>
-                        <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
-                    </div>
-                    <ExploringBtns data={exploringBtnsData} />  
-                </section>
-
-                <Footer />
-            </CustomScrollbar> 
-        </>
-        :
-        <>
+        <MainWrapper> 
             <div className={styles.pin_block}> 
-                <header className={styles.col_left}>                
+                <header className={styles.col_left}>  
+
                     <Link className={styles.back_arrow} href="/producciones" onClick={ () => goToPage()}><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver producciones</strong></span></Link>
+
                     <h1>{data.title}</h1>
+
                     { data.authors ?
                         <div className={styles.authors}>
                             <p>{data.lead} | <span>Por —</span>&nbsp;</p>
@@ -158,13 +103,19 @@ function Index(data){
                             ) ) } 
                         </div> : ""
                     }
-
+                        
                     <div className={styles.btns}>
-                        <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => mobileShare() }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
+                        {windowSize >= 1025 ?
+                            <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
+                        :
+                            <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => mobileShare() }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
+                        }
+                        
                         <Link className={`${styles.btn} ${styles.download}`} href="#" target="_blank"><span><img src="/assets/icons/download_icon.svg" alt="icono de descarga"/>Descargar</span></Link>  
-                    </div> 
+                    </div>                       
 
                 </header>
+
                 <article className={styles.col_right}>
                     { data.img ? <img src={ data.img } alt={ data.title } className={styles.imgTop} /> : ""}
                     { data.description && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.description }} /> }
@@ -176,8 +127,7 @@ function Index(data){
                     }
                     { data.quote || data.license ?
                         <div className={styles.legal}> 
-                            { data.quote ? <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Cómo citar</h4>"+ data.quote }}/> : "" } 
-                        
+                            { data.quote ? <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Cómo citar</h4>"+ data.quote }}/> : "" }                                
                             { data.license ? <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ data.license }}/> : "" }                    
                         </div>
                     : "" }
@@ -189,11 +139,10 @@ function Index(data){
                     <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
                 </div>
                 <ExploringBtns data={exploringBtnsData} />  
-            </section> 
+            </section>
 
             <Footer />
-        </>
-        }
+        </MainWrapper> 
     </>
     );
 }

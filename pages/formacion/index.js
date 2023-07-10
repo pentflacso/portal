@@ -1,7 +1,7 @@
 import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
-import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
+import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import { Navigation, FreeMode } from 'swiper';
@@ -89,24 +89,22 @@ export default function Formacion(data){
             description={'Ofrecemos propuestas de formación para innovar en educación y tecnologías.'}
         />
 
-        {windowSize >= 1025 ?
-        <>
-            <CustomScrollbar> 
-                <PageHeading title={data.PageHeading} margin_bottom_type={0} />
+        <MainWrapper> 
+            <PageHeading title={data.PageHeading} margin_bottom_type={0} />
 
-                <section>
-                    <div className={styles.marquee_1}>
-                        <TextMarquee data={data.marquee1} />
-                    </div>    
-                    <Swiper
-                        modules={[Navigation, FreeMode]}
-                        spaceBetween={0}
-                        slidesPerView={"auto"}
-                        navigation={false}  
-                        freeMode={false}   
-                        grabCursor={true}    
-                        className={`${styles.carrousel_formacion} swiper-cards`}       
-                    >   
+            <section>
+                <div className={styles.marquee_1}>
+                    <TextMarquee data={data.marquee1} />
+                </div>    
+                <Swiper
+                modules={[Navigation, FreeMode]}
+                spaceBetween={0}
+                slidesPerView={"auto"}
+                navigation={windowSize >= 1025 ? false : true}  
+                freeMode={false}   
+                grabCursor={true}    
+                className={`${styles.carrousel_formacion} swiper-cards`}       
+                >   
                     {data.courses.map((item, i) => (
                         <SwiperSlide key={i}>
                             <article className={styles.card}>
@@ -117,49 +115,6 @@ export default function Formacion(data){
                             </article>            
                         </SwiperSlide>
                     ))}                            
-                    </Swiper>   
-                </section>
-
-                <section>
-                    <div className={styles.marquee_2}>
-                        <TextMarquee data={data.marquee2} />
-                    </div>       
-                    <Quotes items={data.quotes}/>   
-                </section>  
-
-                <Footer />
-            </CustomScrollbar>  
-            <div className="cursor_deslizar">
-                <div className="circle"><span>Deslizar</span></div>
-            </div>
-        </>
-        :
-        <> 
-            <PageHeading title={data.PageHeading} margin_bottom_type={0} />
-
-            <section>
-                <div className={styles.marquee_1}>
-                    <TextMarquee data={data.marquee1} />
-                </div>    
-                <Swiper
-                    modules={[Navigation, FreeMode]}
-                    spaceBetween={0}
-                    slidesPerView={"auto"}
-                    navigation={true}  
-                    freeMode={false}   
-                    grabCursor={false}    
-                    className={`${styles.carrousel_formacion} swiper-cards`}       
-                >   
-                {data.courses.map((item, i) => (
-                    <SwiperSlide key={i}>
-                        <article className={styles.card}>
-                            <img src={item.img} alt="foto posgrado" />
-                            <h5>{item.title}</h5>
-                            <p>{item.description}</p>
-                            <a href={item.url} rel="noopener noreferrer" target="_blank" className="cta_btn">{item.cta}</a>
-                        </article>            
-                    </SwiperSlide>
-                ))}                            
                 </Swiper>   
             </section>
 
@@ -167,12 +122,17 @@ export default function Formacion(data){
                 <div className={styles.marquee_2}>
                     <TextMarquee data={data.marquee2} />
                 </div>       
-                <Quotes items={data.quotes}/>    
-            </section>
+                <Quotes items={data.quotes}/>   
+            </section>  
 
             <Footer />
-        </>   
-        }
+        </MainWrapper>  
+          
+        {windowSize >= 1025 &&
+            <div className="cursor_deslizar">
+                <div className="circle"><span>Deslizar</span></div>
+            </div>
+        }     
     </>   
     )
 }
