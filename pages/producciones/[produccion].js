@@ -25,6 +25,7 @@ function Index(data){
         {title: 'Investigación y divulgación', path: 'investigacion'}
     ]
 
+    
     useEffect(() => {   
 
         if(windowSize >= 1025 ){    
@@ -96,7 +97,7 @@ function Index(data){
                                 <p>{data.lead} | <span>Por —</span>&nbsp;</p>
                                 {data.authors.map((a, i) => (
                                     <Fragment key={i}>
-                                    <Link  href={a.url} target="_blank">{a.name}<span>,</span></Link>
+                                    <Link  href={a.link}>{a.title}<span>{i<data.authors.length -1 ? "," : ""}</span></Link>
                                     &nbsp;
                                     </Fragment>
                                 ) ) } 
@@ -106,13 +107,14 @@ function Index(data){
                         <div className={styles.btns}>
                             <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
 
-                            <Link className={`${styles.btn} ${styles.download}`} href="#" target="_blank"><span><img src="/assets/icons/download_icon.svg" alt="icono de descarga"/>Descargar</span></Link>  
+                            { data.download || data.link ? <Link className={`${styles.btn} ${styles.download}`} href={ data.download ? data.download : data.link } target="_blank"><span><img src="/assets/icons/download_icon.svg" alt="icono de descarga"/>{ data.download ? "Descargar" : "Acceder" }</span></Link> : "" }
+
                         </div>                       
 
                     </header>
                     <article className={styles.col_right}>
                         { data.img ? <img src={ data.img } alt={ data.title } className={styles.imgTop} /> : ""}
-                        { data.description && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.description }} /> }
+                        { data.body && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.body }} /> }
 
                         { data.hashtags && 
                             <div className={styles.hashtags}>
@@ -152,12 +154,13 @@ function Index(data){
                             <p>{data.lead} | <span>Por —</span>&nbsp;</p>
                             {data.authors.map((a, i) => (
                                 <Fragment key={i}>
-                                <Link  href={a.url} target="_blank">{a.name}<span>,</span></Link>
+                                <Link  href={a.link}>{a.title}<span>{i<data.authors.length -1 ? "," : ""}</span></Link>
                                 &nbsp;
                                 </Fragment>
                             ) ) } 
                         </div> : ""
                     }
+
 
                     <div className={styles.btns}>
                         <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => mobileShare() }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
@@ -167,7 +170,7 @@ function Index(data){
                 </header>
                 <article className={styles.col_right}>
                     { data.img ? <img src={ data.img } alt={ data.title } className={styles.imgTop} /> : ""}
-                    { data.description && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.description }} /> }
+                    { data.body && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.body }} /> }
                     { data.hashtags && 
                         <div className={styles.hashtags}>
                             <p>Ver más de:</p>
@@ -200,9 +203,9 @@ function Index(data){
 
 export async function getServerSideProps({query}) {
     // Fetch data from external API
-    const res = await fetch(`https://flacso.pent.org.ar/api/producciones/${query.produccion}.json`)
+    /* const res = await fetch(`https://flacso.pent.org.ar/api/producciones/${query.produccion}.json`) */
+    const res = await fetch(`https://redaccion.pent.org.ar/data/production/203`)
     const data = await res.json()
-
     // Pass data to the page via props
     return { props:  {...data }   }
 }

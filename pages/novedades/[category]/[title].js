@@ -29,6 +29,8 @@ function Index(data){
         {title: 'Nuestras producciones', path: 'producciones'}        
     ]
 
+    const license = `El texto de la nota ${ data.title } de Proyecto Educación y Nuevas Tecnologías se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Nota disponible en: <a href="${ data.url }" target="_blank">${ data.url }</a>`
+
     useEffect(() => {   
 
         if(windowSize >= 1025 ){    
@@ -97,15 +99,15 @@ function Index(data){
                         </header>
 
                         <article>
-                            { data.description ?           
-                                <div dangerouslySetInnerHTML={{__html: data.description }} /> :
+                            { data.body ?           
+                                <div dangerouslySetInnerHTML={{__html: data.body }} /> :
                             ""}
 
                             <button type="button" className={styles.share_btn} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button> 
 
-                            { data.license ?
+                            { license ?
                                 <div className={styles.legal}>                         
-                                    <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ data.license }}/>                  
+                                    <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ license }}/>                  
                                 </div>
                             : "" }
                         </article>
@@ -143,15 +145,15 @@ function Index(data){
                     </header>
 
                     <article>
-                        { data.description ?           
-                        <div dangerouslySetInnerHTML={{__html: data.description }} /> :
+                        { data.body ?           
+                        <div dangerouslySetInnerHTML={{__html: data.body }} /> :
                         ""}
 
                         <button type="button" className={styles.share_btn} onClick={ () => mobileShare() }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button> 
 
-                        { data.license ?
+                        { license ?
                             <div className={styles.legal}>                         
-                                <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ data.license }}/>                  
+                                <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ license }}/>                  
                             </div>
                         : "" }
                     </article>
@@ -179,8 +181,11 @@ function Index(data){
 
 export async function getServerSideProps({query}) {
     // Fetch data from external API
-    const res = await fetch(`https://flacso.pent.org.ar/api/novedades/${query.category}-${query.title}.json`)
+    /* const res = await fetch(`https://flacso.pent.org.ar/api/novedades/${query.category}-${query.title}.json`) */
+    
+    const res = await fetch(`https://redaccion.pent.org.ar/data/new/262`)
     const data = await res.json()
+    data.url = `https://flacso.pent.org.ar/novedades/${query.category}-${query.title}`
 
     // Pass data to the page via props
     return { props:  {...data }   }

@@ -78,58 +78,22 @@ function Perfil(data){
                     <div className={styles.col_left}>
                         <header>
                             <Link className={styles.back_arrow} href="/equipo" onClick={ () => goToPage()}><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver equipo</strong></span></Link>
-                            <h1 className={styles.name_and_position}>{data.name}<br /><span>{data.description}</span></h1>
+                            <h1 className={styles.name_and_position}>{data.title}<br /><span>{data.position}</span></h1>
                         </header>
-                        <article className={styles.cv} dangerouslySetInnerHTML={{__html: data.cv }} />
+                        <article className={styles.cv} dangerouslySetInnerHTML={{__html: data.body }} />
+                        <div className={styles.networks}>{data.networks.map((n, i) => (
+                            <span key={i}>
+                             <a target="_blank" href={n.src}>{n.title}</a>
+                            {i < data.networks.length -1 ? <strong>|</strong> : ""}
+                            </span>
+                        )) }</div>
                     </div>
                     <div className={styles.col_right}>
-                        <img src={data.picture} alt={`Imagen de ${data.name}`} />
+                        <img src={data.image} alt={`Imagen de ${data.title}`} />
                     </div>
                 </div>
-                <section className={styles.producciones}>
-                    <h2>Producciones</h2>
-                    <Swiper
-                    modules={[Navigation, FreeMode]}
-                    spaceBetween={0}
-                    slidesPerView={"auto"}
-                    navigation={true}  
-                    freeMode={false}   
-                    grabCursor={true} 
-                    className={`${styles.carrousel_novedades} swiper-cards`}
-                    >
-                    {data.productions.map((data, i)=>(
-                        <SwiperSlide key={i}>                                        
-                            <Link href={data.url} className={`${styles.card} clickable`}>   
-                                <span>{data.lead}</span>
-                                <h5>{data.title}&nbsp;<span>{data.subtitle}</span></h5>
-                                { data.description && <p>{data.description}</p> }  
-                                <ul className={styles.hashtags}>{ data.hashtags.map((hashtags , i) => <li key={i}>{hashtags}</li>) }</ul>                          
-                            </Link>                     
-                        </SwiperSlide> 
-                    ))} 
-                    </Swiper>
-                </section>
-                <Footer />
-            </CustomScrollbar> 
-            <div className="cursor_ver">
-                <div className="circle"><span>Ver</span></div>
-            </div>
-        </>
-        :
-        <>
-            <div className={styles.pin_block}>
-                <div className={styles.col_left}>
-                    <header>
-                        <Link className={styles.back_arrow} href="/equipo" onClick={ () => goToPage()}><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver equipo</strong></span></Link>
-                        <h1 className={styles.name_and_position}>{data.name}<br /><span>{data.description}</span></h1>
-                    </header>
-                    <article className={styles.cv} dangerouslySetInnerHTML={{__html: data.cv }} />
-                </div>
-                <div className={styles.col_right}>
-                    <img src={data.picture} alt={`Imagen de ${data.name}`} />
-                </div>
-            </div>
-            <section className={styles.producciones}>
+                {
+                data.productions && (<section  className={styles.producciones}>
                 <h2>Producciones</h2>
                 <Swiper
                 modules={[Navigation, FreeMode]}
@@ -151,7 +115,60 @@ function Perfil(data){
                     </SwiperSlide> 
                 ))} 
                 </Swiper>
-            </section>
+            </section>)
+            }
+                <Footer />
+            </CustomScrollbar> 
+            <div className="cursor_ver">
+                <div className="circle"><span>Ver</span></div>
+            </div>
+        </>
+        :
+        <>
+            <div className={styles.pin_block}>
+                <div className={styles.col_left}>
+                    <header>
+                        <Link className={styles.back_arrow} href="/equipo" onClick={ () => goToPage()}><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver equipo</strong></span></Link>
+                        <h1 className={styles.name_and_position}>{data.title}<br /><span>{data.position}</span></h1>
+                    </header>
+                    <article className={styles.cv} dangerouslySetInnerHTML={{__html: data.body }} />
+                    <div className={styles.networks}>{data.networks.map((n, i) => (
+                            <span key={i}>
+                             <a target="_blank" href={n.src}>{n.title}</a>
+                            {i < data.networks.length -1 ? <strong>|</strong> : ""}
+                            </span>
+                        )) }</div>
+                </div>
+                <div className={styles.col_right}>
+                    <img src={data.image} alt={`Imagen de ${data.title}`} />
+                </div>
+            </div>
+            {
+                data.productions && (<section  className={styles.producciones}>
+                <h2>Producciones</h2>
+                <Swiper
+                modules={[Navigation, FreeMode]}
+                spaceBetween={0}
+                slidesPerView={"auto"}
+                navigation={true}  
+                freeMode={false}   
+                grabCursor={false} 
+                className={`${styles.carrousel_novedades} swiper-cards`}
+                >
+                {data.productions.map((data, i)=>(
+                    <SwiperSlide key={i}>                                        
+                        <Link href={data.url} className={`${styles.card} clickable`}>   
+                            <span>{data.lead}</span>
+                            <h5>{data.title}&nbsp;<span>{data.subtitle}</span></h5>
+                            { data.description && <p>{data.description}</p> }  
+                            <ul className={styles.hashtags}>{ data.hashtags.map((hashtags , i) => <li key={i}>{hashtags}</li>) }</ul>                          
+                        </Link>                     
+                    </SwiperSlide> 
+                ))} 
+                </Swiper>
+            </section>)
+            }
+            
             <Footer />
         </>
        }
@@ -162,11 +179,12 @@ function Perfil(data){
 export async function getServerSideProps({query}) {
     // Fetch data from external API 
     console.log(query.perfil);
-    const res = await fetch(`https://flacso.pent.org.ar/api/perfil-${query.perfil}.php`)
+    // const res = await fetch(`https://flacso.pent.org.ar/api/perfil-${query.perfil}.php`)
+    const res = await fetch(`https://redaccion.pent.org.ar/data/person/10`)
     const data = await res.json()
   
     // Pass data to the page via props
-    return { props: data.data  }
+    return { props: data  }
   }
 
   export default Perfil
