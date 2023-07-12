@@ -1,7 +1,7 @@
-import { useAppContext } from '../../context/AppContext';
+/*import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
-import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
+import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import LeafsItem from '../../components/asesorias/LeafsItem/LeafsItem';
 import HighlightParagraph from '../../components/library/HighlightParagraph/HighlightParagraph';
@@ -14,12 +14,14 @@ import Quotes from '../../components/library/Quotes/Quotes';
 import ParagraphAndButton from '../../components/asesorias/ParagraphAndButton/ParagraphAndButton';
 import Footer from '../../components/library/Footer/Footer';
 import { gsap, Back, Elastic } from 'gsap';
-import $ from "jquery";
+import $ from "jquery";*/
 import styles from "./asesorias.module.scss";
 
+import PageBuilder from '../../components/PageBuilder/PageBuilder';
 
-export default function Asesorias(data){
 
+export default function Asesorias({data}){
+/*
     const { windowSize } = useAppContext();  
 
 
@@ -80,92 +82,13 @@ export default function Asesorias(data){
             keywords={'publicaciones, producciones, papers, artículos, trabajos académicos, ponencias, conferencias, divulgación académica, abstract, material didáctico, material didáctico hipermedial, actualización profesional, aplicaciones digitales, aprendizaje en línea, ciudadanía digital, comunidades de práctica, consumos culturales, didáctica, dispositivos tecnopedagógicos, educación en línea, entornos digitales, formación docente, inclusión, infancias, jóvenes, materiales didácticos, metodología de investigación, microlearning, neurociencias, políticas tecno-educativas, programación, redes sociales, subjetividades, tendencias educativas, tutoría y moderación'}
             description={'Publicaciones del equipo del PENT.'}
         />
-
-        {windowSize >= 1025 ?
-        <>            
-            <CustomScrollbar> 
-                <PageHeading title={data.PageHeading} margin_bottom_type={0} />
-
-                <section>
-                    <LeafsItem items={data.courses} />  
-                </section>
-
-                <section>
-                    <div className={styles.marquee_1}>
-                        <TextMarquee data={data.marquee1} />
-                    </div>
-                    <div className={styles.highlight_paragraph}>
-                        <HighlightParagraph title={data.paragraph1} />
-                    </div>        
-                    <div className={styles.keys_box}>
-                        <KeysBox data={data.keyFeatures} />
-                    </div>
-                </section>
-
-                <section>
-                    <div className={styles.marquee_1}>
-                        <TextMarquee data={data.marquee2} />
-                    </div>
-                    <Swiper
-                        modules={[Navigation, FreeMode]}
-                        spaceBetween={0}
-                        slidesPerView={"auto"}
-                        navigation={true}  
-                        freeMode={false}   
-                        grabCursor={false}    
-                        className={`${styles.carrousel_proyects} swiper-cards`}       
-                    >   
-                    {data.articles.map((item, i) => (
-                        <SwiperSlide key={i}>
-                            <article className={styles.card_proyect}>
-                                <img src={item.img} />
-                                <h5>{item.description}</h5>                    
-                            </article>            
-                        </SwiperSlide>
-                    ))}                            
-                    </Swiper>     
-                </section> 
-
-                <section>
-                    <div className={styles.marquee_1}>
-                        <TextMarquee data={data.marquee3} />
-                    </div>
-                    <div className={styles.highlight_paragraph}>
-                        <HighlightParagraph title={data.paragraph2} />
-                    </div>
-                    <div className={styles.brands_marquee}>
-                        <BrandsMarquee partners={data.partners}/>
-                    </div>   
-                    <Quotes items={data.quotes}/>  
-                </section>
-
-                <section>
-                    <div className={styles.marquee_2}>
-                        <TextMarquee data={data.marquee4} />
-                    </div>
-                    <ParagraphAndButton 
-                        paragraph={data.paragraph3}
-                        iconBtn='/assets/images/mail_icon.svg'
-                        urlBtn='https://www.google.com/'
-                    />
-                </section>
-
-                <Footer />
-            </CustomScrollbar> 
-            <div className="cursor_dot">
-                <div className="circle" />
-            </div>
-            <div className="cursor_ver">
-                <div className="circle"><span>Ver</span></div>
-            </div>
-        </>
-        :
-        <>
+          
+        <MainWrapper> 
             <PageHeading title={data.PageHeading} margin_bottom_type={0} />
 
             <section>
-             <LeafsItem items={data.courses} />    
-            </section>  
+                <LeafsItem items={data.courses} />  
+            </section>
 
             <section>
                 <div className={styles.marquee_1}>
@@ -200,8 +123,8 @@ export default function Asesorias(data){
                         </article>            
                     </SwiperSlide>
                 ))}                            
-                </Swiper>   
-            </section>
+                </Swiper>     
+            </section> 
 
             <section>
                 <div className={styles.marquee_1}>
@@ -213,7 +136,7 @@ export default function Asesorias(data){
                 <div className={styles.brands_marquee}>
                     <BrandsMarquee partners={data.partners}/>
                 </div>   
-                <Quotes items={data.quotes}/>     
+                <Quotes items={data.quotes}/>  
             </section>
 
             <section>
@@ -228,17 +151,34 @@ export default function Asesorias(data){
             </section>
 
             <Footer />
+        </MainWrapper> 
+            
+        {windowSize >= 1025 &&
+        <>
+            <div className="cursor_dot">
+                <div className="circle" />
+            </div>
+            <div className="cursor_ver">
+                <div className="circle"><span>Ver</span></div>
+            </div>
         </>
         }
     </> 
     )
+*/
+    if(Object.keys(data).length > 0){  
+        return(<PageBuilder data={ data } stylesx={styles} />)
+    }
+
 }
 
 export async function getServerSideProps() {
     // Fetch data from external API
-    const res = await fetch(`https://flacso.pent.org.ar/api/asesorias.php`)
+    //const res = await fetch(`https://flacso.pent.org.ar/api/asesorias.php`)
+    const res = await fetch(`https://redaccion.pent.org.ar/data/section/49`)
     const data = await res.json()
   
     // Pass data to the page via props
-    return { props: data.data  }
+    //return { props: data.data  }
+    return { props: data  }
 }

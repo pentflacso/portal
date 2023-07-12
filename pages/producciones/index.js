@@ -1,5 +1,5 @@
 import { useAppContext } from '../../context/AppContext';
-import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
+import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import { useRef, useEffect } from 'react';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
@@ -162,59 +162,34 @@ function Producciones(d){
             description={'Publicaciones del equipo del PENT.'}
         />
 
-        {windowSize >= 1025 ?
-        <> 
-            <CustomScrollbar >    
-                <div ref={content}>    
-                    <div ref={pageHeading}>
-                        <PageHeading title="<span>Producciones</span>" margin_bottom_type={1} />        
-                    </div> 
-
-                    <section id="productions-nav">    
-                        <div className={`${styles.productions_nav}`} ref={productionsNav}>
-                            <ProductionsNav/>   
-                        </div>       
-                        {dataArticles !== undefined && <ArticlesList data={searchInArticles(dataArticles)}/>}     
-                    </section> 
-
-                    <section> 
-                        <div className={styles.marquee}>
-                            <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
-                        </div>
-                        <ExploringBtns data={exploringBtnsData} />
-                    </section>
-
-                    <Footer />
-                </div>   
-            </CustomScrollbar>  
-            <div className="cursor_ver">
-                <div className="circle"><span>Ver</span></div>
-            </div>
-        </>     
-        :
-        <>  
-            <div ref={content}>   
+        <MainWrapper>    
+            <div ref={content}>    
                 <div ref={pageHeading}>
-                    <PageHeading title="<span>Producciones</span>" margin_bottom_type={1} />
-                </div>
+                    <PageHeading title="<span>Producciones</span>" margin_bottom_type={1} />        
+                </div> 
 
-                <section>  
+                <section id="productions-nav">    
                     <div className={`${styles.productions_nav}`} ref={productionsNav}>
-                        <ProductionsNav />   
+                        <ProductionsNav/>   
                     </div>       
-                    {dataArticles !== undefined && <ArticlesList data={searchInArticles(dataArticles)} />}    
-                </section>
+                    {dataArticles !== undefined && <ArticlesList data={searchInArticles(dataArticles)}/>}     
+                </section> 
 
-                <section>
+                <section> 
                     <div className={styles.marquee}>
                         <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
                     </div>
                     <ExploringBtns data={exploringBtnsData} />
                 </section>
 
-                <Footer />   
-            </div>        
-        </>
+                <Footer />
+            </div>   
+        </MainWrapper>  
+                        
+        {windowSize >= 1025 &&
+            <div className="cursor_ver">
+                <div className="circle"><span>Ver</span></div>
+            </div>
         }
     </>
     )

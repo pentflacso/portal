@@ -4,7 +4,7 @@ import Link from 'next/link';
 import styles from "./TeamData.module.scss";
 
 const Equipo = ({team, title}) => {
-  //console.log(team);
+  
     return (
 
       <div className={styles.wrapper}>

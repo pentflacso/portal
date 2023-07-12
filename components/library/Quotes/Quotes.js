@@ -3,7 +3,6 @@ import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function Quotes({items}){
-    //console.log(items);
     return(
     <>
         <Swiper

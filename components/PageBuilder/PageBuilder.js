@@ -40,8 +40,11 @@ export default function PageBuilder({data, stylesx}){
     ]
 
     function styleCard(typeCard){
-        if(typeCard == 0 && typeCard == 1){
+        if(typeCard == 0){
             return stylesx.carrousel_formacion;
+
+        }else if(typeCard == 1){
+            return stylesx.carrousel_novedades;
 
         }else if(typeCard == 3){
             return stylesx.carrousel_members;

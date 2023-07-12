@@ -107,7 +107,7 @@ export default function LeafsItem({ items }){
             items.map((item, i) => (
             <SwiperSlide key={i}>
                 <div className={styles.item_slide}>
-                    <img src={item.img} alt="imagen" />
+                    <img src={item.img.url} alt={item.img.alt} />
                     <h5>{item.title}</h5>
                     <p>{item.description}</p>
                 </div>            
