@@ -1,8 +1,7 @@
 import PageBuilder from '../../components/PageBuilder/PageBuilder';
 import styles from "./investigacion.module.scss";
 
-export default function Investigacion({data}){
-  console.log(data); 
+export default function Investigacion({data}){ 
     if(Object.keys(data).length > 0){  
         return(<PageBuilder data={ data } stylesx={styles} />)
     }

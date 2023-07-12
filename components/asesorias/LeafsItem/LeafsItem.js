@@ -87,7 +87,7 @@ export default function LeafsItem({ items }){
                     items.map((item, i) => {                   
                         return ( 
                             <div key={i} className={styles.leaf_item} onClick={ () => changeCurrentLeaf(`leaf_${i}`)}>
-                                <img src={item.img} alt="imagen" />
+                                <img src={item.img.url} alt={item.img.alt} />
                                 <h5>{item.title}</h5>
                                 <p>{item.description}</p>
                             </div> 

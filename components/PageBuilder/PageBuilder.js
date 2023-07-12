@@ -1,5 +1,5 @@
 import { useAppContext } from '../../context/AppContext';
-//import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
 import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
@@ -21,6 +21,7 @@ import TwoColumsText from '../../components/equipo/TwoColumsText/TwoColumsText';
 import TeamData from '../../components/equipo/TeamData/TeamData';
 import NewsSelector from '../../components/home/NewsSelector/NewsSelector';
 import Footer from '../../components/library/Footer/Footer';
+import LeafsItem from '../../components/asesorias/LeafsItem/LeafsItem';
 
 //import { gsap, Back, Elastic } from 'gsap';
 //import $ from "jquery";
@@ -37,6 +38,60 @@ export default function PageBuilder({data, stylesx}){
         {title: 'Producciones', path: 'producciones'},
         {title: 'Asesorías', path: 'asesorias'}
     ]
+
+    function styleCard(typeCard){
+        if(typeCard == 0 && typeCard == 1){
+            return stylesx.carrousel_formacion;
+
+        }else if(typeCard == 3){
+            return stylesx.carrousel_members;
+
+        } else if(typeCard == 4){
+            return stylesx.carrousel_projects;
+
+        } 
+    }
+
+    const FormatCard = ({type, alt, url, title, lead, href, description}) =>{     
+        if(type == 0){
+            return(
+                <article className={stylesx.card}>
+                    <img src={url} alt={alt} />
+                    <h5>{title}</h5>
+                    <p>{description}</p>
+                    <a href={url} rel="noopener noreferrer" target="_blank" className="cta_btn">Más información</a>
+                </article>
+            )
+
+        }else if(type == 1){
+            return(
+                <a href={href} rel="noopener noreferrer" target="_blank" className={stylesx.card_new}>
+                    <div className={stylesx.info}>
+                        <h5>{title}</h5>
+                        <p>{description}</p>
+                    </div>                       
+                    <img src={url} alt={alt} />                    
+                </a>
+            )
+            
+        }else if(type == 3){
+            return(    
+                <article className={stylesx.card_proyect}>
+                    <img alt={alt} src={url} />
+                    <h5>{title}</h5>                    
+                </article>
+            )
+        }else if(type == 4){
+            return(    
+                <article className={stylesx.card}>
+                    <span>{lead}</span>
+                    <h5>{title}</h5>
+                    <p>{description}</p>
+                    <a href={href} rel="noopener noreferrer" target="_blank" className="cta_btn">Más información</a>
+                </article> 
+            )
+        } 
+    }
 
     return(
     <>
@@ -115,29 +170,61 @@ export default function PageBuilder({data, stylesx}){
                             </section>
                         }
                         {data.block_type === "sliderperson" &&
-                                <Swiper
+                            <Swiper
+                            modules={[Navigation, FreeMode]}
+                            spaceBetween={0}
+                            slidesPerView={"auto"}
+                            navigation={true}  
+                            freeMode={false}   
+                            grabCursor={false}  
+                            className={`${stylesx.carrousel_members} swiper-cards members`}                       
+                            >   
+                            {data.members.map((item, i) => (
+                                <SwiperSlide key={i}>
+                                    <Link className={stylesx.member} href={item.alias} onClick={ () => goToPage() }>
+                                        <div className={stylesx.img_container}>
+                                            <img alt={item.alt} src={item.img.url}/>
+                                        </div>
+                                        <h5>{item.nombre}</h5>
+                                    </Link>            
+                                </SwiperSlide>
+                            ))}                            
+                            </Swiper>
+                        }
+                        {(data.block_type === "slidercard" && data.typeCard[0].value != 2) &&
+
+                            <Swiper
                                 modules={[Navigation, FreeMode]}
                                 spaceBetween={0}
                                 slidesPerView={"auto"}
                                 navigation={true}  
                                 freeMode={false}   
-                                grabCursor={false}  
-                                className={`${stylesx.carrousel_members} swiper-cards members`}                       
-                                >   
-                                {data.members.map((item, i) => (
+                                grabCursor={false}    
+                                className={`${styleCard(data.typeCard[0].value)} swiper-cards`}       
+                            >   
+                                {data.cards.map((item, i) => (
                                     <SwiperSlide key={i}>
-                                        <Link className={stylesx.member} href={item.alias} onClick={ () => goToPage() }>
-                                            <div className={stylesx.img_container}>
-                                                <img alt={item.alt} src={item.img.url}/>
-                                            </div>
-                                            <h5>{item.nombre}</h5>
-                                        </Link>            
+                                        <FormatCard 
+                                            type={data.typeCard[0].value} 
+                                            title={item.title} 
+                                            description={item.description}
+                                            url={item.img.url}
+                                            alt={item.img.alt}
+                                            lead={item.state} 
+                                            href={item.link.href}
+                                            cta={item.link.title}
+                                        />
                                     </SwiperSlide>
                                 ))}                            
-                                </Swiper>
+                            </Swiper>     
                         }
+                        {(data.block_type === "slidercard" && data.typeCard[0].value == 2) &&
+                            
+                            <LeafsItem items={data.cards} />   
+
+                        }                        
                         {data.block_type === "info" &&
-                                <section key={i}>
+                            <section key={i}>
                                 <ParagraphAndButton 
                                     paragraph={data.description[0].value}
                                     iconBtn={data.icon[0].img}
