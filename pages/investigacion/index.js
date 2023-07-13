@@ -18,7 +18,7 @@ import styles from "./investigacion.module.scss";
 
 export default function Investigacion(data){
 
-    const { windowSize } = useAppContext();   
+    const { windowSize, goToPage } = useAppContext();   
 
     const exploringBtnsData = [
         {title: 'Formación', path: 'formacion'},
@@ -134,7 +134,7 @@ export default function Investigacion(data){
                                 <span>{item.lead}</span>
                                 <h5>{item.title}</h5>
                                 <p>{item.description}</p>
-                                <a href={item.url} rel="noopener noreferrer" target="_blank" className="cta_btn">{item.cta}</a>
+                                <a href={item.url} className="cta_btn" onClick={ () => goToPage() }>{item.cta}</a>
                             </article>            
                         </SwiperSlide>
                     ))}                            
@@ -193,7 +193,7 @@ export default function Investigacion(data){
                             <span>{item.lead}</span>
                             <h5>{item.title}</h5>
                             <p>{item.description}</p>
-                            <a href={item.url} rel="noopener noreferrer" target="_blank" className="cta_btn">{item.cta}</a>
+                            <a href={item.url} className="cta_btn" onClick={ () => goToPage() }>{item.cta}</a>
                         </article>            
                     </SwiperSlide>
                 ))}                            
