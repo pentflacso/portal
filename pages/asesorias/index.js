@@ -1,30 +1,14 @@
-/*import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
-import MetaTags from '../../components/library/MetaTags/MetaTags';
-import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
-import PageHeading from '../../components/library/PageHeading/PageHeading';
-import LeafsItem from '../../components/asesorias/LeafsItem/LeafsItem';
-import HighlightParagraph from '../../components/library/HighlightParagraph/HighlightParagraph';
-import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
-import KeysBox from '../../components/library/KeysBox/KeysBox';
-import { Navigation, FreeMode } from 'swiper';
-import { Swiper, SwiperSlide } from "swiper/react";
-import BrandsMarquee from '../../components/asesorias/BrandsMarquee/BrandsMarquee';
-import Quotes from '../../components/library/Quotes/Quotes';
-import ParagraphAndButton from '../../components/asesorias/ParagraphAndButton/ParagraphAndButton';
-import Footer from '../../components/library/Footer/Footer';
+import { useAppContext } from '../../context/AppContext';
 import { gsap, Back, Elastic } from 'gsap';
-import $ from "jquery";*/
+import $ from "jquery";
+import MetaTags from '../../components/library/MetaTags/MetaTags';
+import PageBuilder from '../../components/PageBuilder/PageBuilder';
 import styles from "./asesorias.module.scss";
 
-import PageBuilder from '../../components/PageBuilder/PageBuilder';
-
-
 export default function Asesorias({data}){
-/*
     const { windowSize } = useAppContext();  
-
-
+  
     useEffect(() => {
 
         if(windowSize >= 1025 ){  
@@ -51,7 +35,7 @@ export default function Asesorias({data}){
                 xSet(pos.x);
                 ySet(pos.y);
             });
-
+            
             $(`.${styles.card_proyect}`).on("mouseenter", function mouseEnterContainer() {
                 gsap.to(".cursor_ver", {
                     duration: 0.8,
@@ -60,7 +44,7 @@ export default function Asesorias({data}){
                     ease: Elastic.easeOut.config( 1, 0.6)
                 });
             });
-
+            
             $(`.${styles.card_proyect}`).on("mouseleave", function mouseLeaveContainer() {
                 gsap.to(".cursor_ver", {
                     duration: 0.8,
@@ -69,20 +53,14 @@ export default function Asesorias({data}){
                     ease: Back.easeOut.config(3)
                 });
             });   
-
+            
         }              
     }, [windowSize]);
-
-
+    
+    
+    /*
     return(
-    <>
-        <MetaTags
-            pageTitle={'Asesorías — FLACSO | PENT'}
-            shareTitle={'Asesorías — FLACSO | PENT'}
-            keywords={'publicaciones, producciones, papers, artículos, trabajos académicos, ponencias, conferencias, divulgación académica, abstract, material didáctico, material didáctico hipermedial, actualización profesional, aplicaciones digitales, aprendizaje en línea, ciudadanía digital, comunidades de práctica, consumos culturales, didáctica, dispositivos tecnopedagógicos, educación en línea, entornos digitales, formación docente, inclusión, infancias, jóvenes, materiales didácticos, metodología de investigación, microlearning, neurociencias, políticas tecno-educativas, programación, redes sociales, subjetividades, tendencias educativas, tutoría y moderación'}
-            description={'Publicaciones del equipo del PENT.'}
-        />
-          
+    <> 
         <MainWrapper> 
             <PageHeading title={data.PageHeading} margin_bottom_type={0} />
 
@@ -152,33 +130,40 @@ export default function Asesorias({data}){
 
             <Footer />
         </MainWrapper> 
-            
-        {windowSize >= 1025 &&
-        <>
-            <div className="cursor_dot">
-                <div className="circle" />
-            </div>
-            <div className="cursor_ver">
-                <div className="circle"><span>Ver</span></div>
-            </div>
-        </>
-        }
     </> 
     )
 */
     if(Object.keys(data).length > 0){  
-        return(<PageBuilder data={ data } stylesx={styles} />)
+        return(
+            <>
+                <MetaTags
+                    pageTitle={'Asesorías — FLACSO | PENT'}
+                    shareTitle={'Asesorías — FLACSO | PENT'}
+                    keywords={'publicaciones, producciones, papers, artículos, trabajos académicos, ponencias, conferencias, divulgación académica, abstract, material didáctico, material didáctico hipermedial, actualización profesional, aplicaciones digitales, aprendizaje en línea, ciudadanía digital, comunidades de práctica, consumos culturales, didáctica, dispositivos tecnopedagógicos, educación en línea, entornos digitales, formación docente, inclusión, infancias, jóvenes, materiales didácticos, metodología de investigación, microlearning, neurociencias, políticas tecno-educativas, programación, redes sociales, subjetividades, tendencias educativas, tutoría y moderación'}
+                    description={'Publicaciones del equipo del PENT.'}
+                />
+                <PageBuilder data={ data } stylesx={styles} />
+                {windowSize >= 1025 &&
+                    <>
+                        <div className="cursor_dot">
+                            <div className="circle" />
+                        </div>
+                        <div className="cursor_ver">
+                            <div className="circle"><span>Ver</span></div>
+                        </div>
+                    </>
+                }                
+            </>
+        )
     }
 
 }
 
 export async function getServerSideProps() {
     // Fetch data from external API
-    //const res = await fetch(`https://flacso.pent.org.ar/api/asesorias.php`)
     const res = await fetch(`https://redaccion.pent.org.ar/data/section/49`)
     const data = await res.json()
   
     // Pass data to the page via props
-    //return { props: data.data  }
     return { props: data  }
 }

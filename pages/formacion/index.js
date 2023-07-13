@@ -1,28 +1,18 @@
-/*import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
-import MetaTags from '../../components/library/MetaTags/MetaTags';
-import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
-import PageHeading from '../../components/library/PageHeading/PageHeading';
-import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
-import { Navigation, FreeMode } from 'swiper';
-import { Swiper, SwiperSlide } from "swiper/react";
-import Quotes from '../../components/library/Quotes/Quotes';
-import Footer from '../../components/library/Footer/Footer';
+import { useAppContext } from '../../context/AppContext';
 import { gsap, Back, Elastic } from 'gsap';
-import $ from "jquery";*/
+import $ from "jquery";
+import MetaTags from '../../components/library/MetaTags/MetaTags';
+import PageBuilder from '../../components/PageBuilder/PageBuilder';
 import styles from "./formacion.module.scss";
 
-import PageBuilder from '../../components/PageBuilder/PageBuilder';
-
 export default function Formacion({data}){
-/*
     const { windowSize } = useAppContext();
     
-
     useEffect(() => {
-
+        
         if(windowSize >= 1025){
-
+            
             // Follow custom cursor
             const ball = document.querySelector(".cursor_deslizar");
             gsap.set(".cursor_deslizar", {xPercent: -50, yPercent: -70});       
@@ -79,17 +69,11 @@ export default function Formacion({data}){
             });     
         }           
     }, [windowSize]);
-
-
+    
+    
+    /*
     return(
-    <>
-        <MetaTags
-            pageTitle={'Formación — FLACSO | PENT'}
-            shareTitle={'Formación — FLACSO | PENT'}
-            keywords={'posgrado, diplomatura, diploma, diploma superior, cursos, usina de experiencias, formación, capacitación, educación en línea, educación, tecnologías, entornos virtuales multiplataforma, posgrado en educación y nuevas tecnologías, educación virtual, tecnología educativa, elearning, formación en línea, innovación educativa'}
-            description={'Ofrecemos propuestas de formación para innovar en educación y tecnologías.'}
-        />
-
+        <>
         <MainWrapper> 
             <PageHeading title={data.PageHeading} margin_bottom_type={0} />
 
@@ -138,7 +122,22 @@ export default function Formacion({data}){
     )
 */
     if(Object.keys(data).length > 0){  
-        return(<PageBuilder data={ data } stylesx={styles} />)
+        return(
+            <>
+                <MetaTags
+                    pageTitle={'Formación — FLACSO | PENT'}
+                    shareTitle={'Formación — FLACSO | PENT'}
+                    keywords={'posgrado, diplomatura, diploma, diploma superior, cursos, usina de experiencias, formación, capacitación, educación en línea, educación, tecnologías, entornos virtuales multiplataforma, posgrado en educación y nuevas tecnologías, educación virtual, tecnología educativa, elearning, formación en línea, innovación educativa'}
+                    description={'Ofrecemos propuestas de formación para innovar en educación y tecnologías.'}
+                />
+                <PageBuilder data={ data } stylesx={styles} />
+                {windowSize >= 1025 &&
+                    <div className="cursor_deslizar">
+                        <div className="circle"><span>Deslizar</span></div>
+                    </div>
+                }                 
+            </>
+        )
     }    
 }
 

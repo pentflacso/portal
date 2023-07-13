@@ -1,30 +1,19 @@
-/*import { useAppContext } from '../context/AppContext';
 import { useEffect } from 'react';
-import MainWrapper from '../components/library/MainWrapper/MainWrapper';
-import MetaTags from '../components/library/MetaTags/MetaTags';
-import HomeHeading from '../components/home/HomeHeading/HomeHeading';
-import CoverVideo from '../components/home/CoverVideo/CoverVideo';
-import TextMarquee from '../components/library/TextMarquee/TextMarquee';
-import SectionSelector from '../components/home/SectionSelector/SectionSelector';
-import Footer from '../components/library/Footer/Footer';
-import { Navigation, FreeMode } from 'swiper';
-import { Swiper, SwiperSlide } from "swiper/react";
-import NewsSelector from '../components/home/NewsSelector/NewsSelector';
+import { useAppContext } from '../context/AppContext';
 import { gsap, Back, Elastic } from 'gsap';
-import $ from "jquery";*/
+import $ from "jquery";
+import MetaTags from '../components/library/MetaTags/MetaTags';
+import PageBuilder from '../components/PageBuilder/PageBuilder';
 import styles from "./index.module.scss";
 
-import PageBuilder from '../components/PageBuilder/PageBuilder';
-
 function Home({data}){
-/*
+    
     const { windowSize } = useAppContext();   
 
-
     useEffect(() => {
-
+        
         if(windowSize >= 1025){    
-
+            
             // Follow custom cursor
             const ball = document.querySelector(".cursor_leer");
             gsap.set(".cursor_leer", {xPercent: -50, yPercent: -70});       
@@ -33,12 +22,12 @@ function Home({data}){
             const speed = 0.25;
             const xSet = gsap.quickSetter(ball, "x", "px");
             const ySet = gsap.quickSetter(ball, "y", "px");
-                    
+            
             window.addEventListener("mousemove", e => {
                 mouse.x = e.x;
                 mouse.y = e.y; 
             });
-                    
+            
             gsap.ticker.add(() => {
                 // adjust speed for higher refresh monitors
                 const dt = 1.0 - Math.pow(1.0 - speed, gsap.ticker.deltaRatio());
@@ -47,7 +36,7 @@ function Home({data}){
                 xSet(pos.x);
                 ySet(pos.y);
             });
-
+            
             $(`.${styles.card_new}`).on("mouseenter", function mouseEnterContainer() {
                 gsap.to(".cursor_leer", {
                     duration: 0.8,
@@ -56,7 +45,7 @@ function Home({data}){
                     ease: Elastic.easeOut.config( 1, 0.6)
                 });
             });
-
+            
             $(`.${styles.card_new}`).on("mouseleave", function mouseLeaveContainer() {
                 gsap.to(".cursor_leer", {
                     duration: 0.8,
@@ -66,19 +55,12 @@ function Home({data}){
                 });
             }); 
         }
-
+        
     }, [windowSize]);
-
-
+    
+   /* 
     return(
-    <>   
-        <MetaTags
-            pageTitle={'FLACSO | PENT — Un espacio de capacitación, investigación, creación e innovación en educación y tecnologías digitales.'}
-            shareTitle={'FLACSO | PENT — Un espacio de capacitación, investigación, creación e innovación en educación y tecnologías digitales.'}
-            keywords={'flacso, pent, posgrado, educación, tecnologías, tics, educación en línea, fabio tarasow, christian milillo, monica trech, gisela schwartzman, tecnologías digitales, tecnologías de la información y la comunicación, cursos, talleres, diplomaturas, flacso, facultad latinoamericana de ciencias sociales, tecnología educativa, innovación educativa, EdTech, contacto, newsletter, redes sociales'}
-            description={'Somos un espacio de capacitación, investigación, creación e innovación en educación y tecnologías digitales.'}
-        />
-
+    <>
         <MainWrapper>           
      
             <HomeHeading title={d.PageHeading} />
@@ -122,29 +104,37 @@ function Home({data}){
 
             <Footer />
         </MainWrapper> 
-
-        {windowSize >= 1025 &&
-            <div className="cursor_leer">
-                <div className="circle"><span>Leer</span></div>
-            </div> 
-        }
     </>  
     );
 */
-if(Object.keys(data).length > 0){  
-    return(<PageBuilder data={ data } stylesx={styles} />)
-}
-
+    if(Object.keys(data).length > 0){  
+        return(
+            <>
+                <MetaTags
+                    pageTitle={'FLACSO | PENT — Un espacio de capacitación, investigación, creación e innovación en educación y tecnologías digitales.'}
+                    shareTitle={'FLACSO | PENT — Un espacio de capacitación, investigación, creación e innovación en educación y tecnologías digitales.'}
+                    keywords={'flacso, pent, posgrado, educación, tecnologías, tics, educación en línea, fabio tarasow, christian milillo, monica trech, gisela schwartzman, tecnologías digitales, tecnologías de la información y la comunicación, cursos, talleres, diplomaturas, flacso, facultad latinoamericana de ciencias sociales, tecnología educativa, innovación educativa, EdTech, contacto, newsletter, redes sociales'}
+                    description={'Somos un espacio de capacitación, investigación, creación e innovación en educación y tecnologías digitales.'}
+                />    
+                <PageBuilder data={ data } stylesx={styles} />
+                
+                {windowSize >= 1025 &&
+                    <div className="cursor_leer">
+                        <div className="circle"><span>Leer</span></div>
+                    </div> 
+                }    
+            </>
+        
+        )
+    }
 }
 
 export async function getServerSideProps() {
     // Fetch data from external API
-    //const res = await fetch(`https://flacso.pent.org.ar/api/home.json`)
     const res = await fetch(`https://redaccion.pent.org.ar/data/section/75`)
     const data = await res.json()
 
     // Pass data to the page via props
-    //return { props:  {...data}   }
     return { props: data  }
 }
 
