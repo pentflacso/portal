@@ -8,7 +8,7 @@ import Footer from '../../components/library/Footer/Footer'
 import Link from 'next/link';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import ShareBtns from '../../components/library/ShareBtns/ShareBtns';
-import styles from './project.module.scss';
+import styles from './case.module.scss';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 
 
@@ -75,7 +75,7 @@ function Index(data){
     return(
     <>
         <MetaTags
-            pageTitle={'Investigacion — FLACSO | PENT'}
+            pageTitle={'Asesorias — FLACSO | PENT'}
             shareTitle={'FLACSO | PENT'}
             keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
             description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
@@ -89,7 +89,7 @@ function Index(data){
             
                 <div className={styles.pin_block}> 
                     <header className={styles.col_left}>                
-                        <Link className={styles.back_arrow} href="/investigacion"><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver investigaciones</strong></span></Link>
+                        <Link className={styles.back_arrow} href="/asesorias"><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver asesorías</strong></span></Link>
                         <h1>{data.title}</h1>
                         
                         <div className={styles.btns}>
@@ -126,8 +126,8 @@ function Index(data){
 
 export async function getServerSideProps({query}) {
     // Fetch data from external API
-    /* const res = await fetch(`https://flacso.pent.org.ar/api/investigacion/${query.investigacion}.json`) */
-    const res = await fetch(`https://redaccion.pent.org.ar/data/projects/6`)
+    /* const res = await fetch(`https://flacso.pent.org.ar/api/asesorias/${query.case}.json`) */
+    const res = await fetch(`https://redaccion.pent.org.ar/data/cases/7`)
     const data = await res.json()
     // Pass data to the page via props
     return { props:  {...data }   }
