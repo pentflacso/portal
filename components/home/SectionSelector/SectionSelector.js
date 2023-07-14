@@ -1,6 +1,6 @@
 import { useAppContext } from '../../../context/AppContext';
 import { useState } from 'react';
-import { useRouter } from "next/router";
+import Link from "next/link";
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./SectionSelector.module.scss";
@@ -9,16 +9,10 @@ export default function SectionSelector({data}){
 
     const { windowSize } = useAppContext();
     const [ titleSelected, setTitleSelected ] = useState('fabio-t');
-    const router = useRouter();
 
     const changeTitleStatus = (title) => {
         setTitleSelected(title);
     };
-
-    const goToPage = (path) => {
-        router.push(`${path}`);
-    };
-
 
     return(
 
@@ -51,8 +45,8 @@ export default function SectionSelector({data}){
                         <div key={data.id}>
                             { titleSelected === `${data.id}` &&
                             <> 
-                                <p dangerouslySetInnerHTML={{__html: data.description }} />
-                                <button type="button" onClick={ () => goToPage(`${data.linked_path}`)}>Conocer más</button>                                         
+                                <p dangerouslySetInnerHTML={{__html: data.description }} />      
+                                <Link href={`${data.linked_path}`} className={styles.go_to_page}>Conocer más</Link>                                  
                             </>
                             }                                        
                         </div>
@@ -80,7 +74,7 @@ export default function SectionSelector({data}){
                             </div>                            
                             <h4>{data.cta_title}</h4>
                             <p dangerouslySetInnerHTML={{__html: data.description }} />
-                            <button type="button" onClick={ () => goToPage(`${data.linked_path}`)}>Conocer más</button> 
+                            <Link href={`${data.linked_path}`} className={styles.go_to_page}>Conocer más</Link> 
                         </div>                   
                     </article>            
                 </SwiperSlide>

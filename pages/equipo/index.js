@@ -17,7 +17,7 @@ import styles from "./equipo.module.scss";
 
 export default function Equipo(data){
 
-    const { windowSize, goToPage } = useAppContext();
+    const { windowSize } = useAppContext();
 
     useEffect(() => {
 
@@ -97,7 +97,7 @@ export default function Equipo(data){
                 >   
                 {data.members.map((item, i) => (                        
                     <SwiperSlide key={i}>
-                        <Link className={styles.member} href={item.url} onClick={ () => goToPage() }>
+                        <Link className={styles.member} href={item.url}>
                             <div className={styles.img_container}>
                                 <img src={item.img}/>
                             </div>

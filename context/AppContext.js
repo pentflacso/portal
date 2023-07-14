@@ -53,11 +53,22 @@ export default function AppProvider({ children }) {
     setCurrentRoute(router.route);
   }, [router.route]);
 
-  useEffect(() =>{   
-    router.events.on("routeChangeComplete", () => {
-      setLoadingState(false);
+
+  useEffect(() =>{ 
+
+    router.events.on('routeChangeStart', (url) => {     
+      if(url !== currentRoute && url !== '/novedades/prensa' && url !== '/novedades/empleos' && url !== '/novedades/evento'){
+        setLoadingState(true);
+      } else{
+        setLoadingState(false);
+      }
     });
-  }, []);  
+
+    router.events.on("routeChangeComplete", () => {
+        setLoadingState(false);
+    });
+
+  }, [currentRoute]);  
 
   
   useEffect(() =>{   
@@ -84,22 +95,13 @@ export default function AppProvider({ children }) {
   }
 
   const changePage = (url) => {   
-    if(url === '/' && url !== currentRoute){
-        setLoadingState(true);       
-    } else if(url === currentRoute){
+    if(url === currentRoute){
         handleClose();
-    } else{
-        setLoadingState(true);        
+    } else{     
         setTimeout(() => {
             handleClose();
         }, 300);  
     }           
-  }
-
-  const goToPage = () => {
-    if(currentRoute !== '/'){   
-      setLoadingState(true);            
-    }      
   }
 
 
@@ -153,6 +155,6 @@ export default function AppProvider({ children }) {
   }, []);
 
   return (
-    <AppContext.Provider value={{ dataArticles, setDataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, queryArticles, setQueryArticles, searchInArticles, articlesFiltersCounter, windowSize, isLoading, setLoadingState, currentRoute, setCurrentRoute, menuBtnAnimation, advancedFilterStatus, setAdvancedFilterStatus, changePage, handleClose, menuOverlay, changeMenuState, menuState, setMenuState, goToPage, announcementStatus, setAnnouncementStatus }}> {children} </AppContext.Provider>
+    <AppContext.Provider value={{ dataArticles, setDataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, queryArticles, setQueryArticles, searchInArticles, articlesFiltersCounter, windowSize, isLoading, setLoadingState, currentRoute, setCurrentRoute, menuBtnAnimation, advancedFilterStatus, setAdvancedFilterStatus, changePage, handleClose, menuOverlay, changeMenuState, menuState, setMenuState, announcementStatus, setAnnouncementStatus }}> {children} </AppContext.Provider>
   );
 }

@@ -6,7 +6,7 @@ import styles from "./NavBar.module.scss";
 
 export default function NavBar(){
     
-    const { isLoading, changePage, currentRoute, handleClose, menuOverlay, menuBtnAnimation, menuState, changeMenuState, goToPage, announcementStatus, setAnnouncementStatus } = useAppContext();
+    const { isLoading, changePage, currentRoute, handleClose, menuOverlay, menuBtnAnimation, menuState, changeMenuState, announcementStatus, setAnnouncementStatus } = useAppContext();
     
     useEffect(() =>{   
         setAnnouncementStatus(true);
@@ -22,11 +22,11 @@ export default function NavBar(){
                     {currentRoute === '/' 
                     ?
                         <h1 className={styles.brand}>
-                            <Link href='/' onClick={ () => goToPage() }><span>FLACSO PENT</span></Link>
+                            <Link href='/'><span>FLACSO PENT</span></Link>
                         </h1>
                     :
                         <h3 className={styles.brand}>
-                            <Link href='/' onClick={ () => goToPage() }><span>FLACSO PENT</span></Link>
+                            <Link href='/'><span>FLACSO PENT</span></Link>
                         </h3>
                     }                
 
