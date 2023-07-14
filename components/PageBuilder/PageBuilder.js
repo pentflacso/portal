@@ -95,7 +95,7 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
     return(
     <>
             <MainWrapper>  
-                <section>
+                
                 {data ? data.map((data, i) => (
                     <>
                         {(data.block_type === "highlighted" && i == 1) &&
@@ -231,7 +231,7 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                 )): ""}
                 
                 {explorerBtn ? <ExploringBtns data={exploringBtnsData} /> : "" }
-                </section>
+                
                 <Footer />
             </MainWrapper>
         </> 
