@@ -62,6 +62,9 @@ export default function AppProvider({ children }) {
       } else{
         setLoadingState(false);
       }
+      if(currentRoute === '/novedades/[category]' && url === '/novedades'){
+        setLoadingState(false);
+      }
     });
 
     router.events.on("routeChangeComplete", () => {
