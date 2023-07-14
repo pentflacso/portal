@@ -1,3 +1,4 @@
+import { useAppContext } from '../../context/AppContext';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import HomeHeading from '../../components/home/HomeHeading/HomeHeading';
@@ -19,8 +20,16 @@ import NewsSelector from '../../components/home/NewsSelector/NewsSelector';
 import Footer from '../../components/library/Footer/Footer';
 import LeafsItem from '../../components/asesorias/LeafsItem/LeafsItem';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
+import { useEffect } from 'react';
 
 export default function PageBuilder({data, stylesx, explorerBtn}){
+
+    const { setDataStrip } = useAppContext();
+
+    useEffect(() => {
+         setDataStrip(data[0].strip);
+    }, [])
+
     const exploringBtnsData = [
         {title: 'Formación', path: 'formacion'},
         {title: 'Producciones', path: 'producciones'},
@@ -86,6 +95,7 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
     return(
     <>
             <MainWrapper>  
+                <section>
                 {data ? data.map((data, i) => (
                     <>
                         {(data.block_type === "highlighted" && i == 1) &&
@@ -219,7 +229,9 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                         }
                     </>
                 )): ""}
+                
                 {explorerBtn ? <ExploringBtns data={exploringBtnsData} /> : "" }
+                </section>
                 <Footer />
             </MainWrapper>
         </> 

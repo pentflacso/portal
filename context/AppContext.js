@@ -41,8 +41,11 @@ export default function AppProvider({ children }) {
     
   const [ advancedFilterStatus, setAdvancedFilterStatus ] = useState(false);
 
-  const [ announcementStatus, setAnnouncementStatus ] = useState();  
-
+  const [ announcementStatus, setAnnouncementStatus ] = useState();
+  
+  
+  const [ dataStrip, setDataStrip ] = useState();  
+  
   const menuOverlay = useRef();  
 
   function changeMenuState(value) {
@@ -153,6 +156,6 @@ export default function AppProvider({ children }) {
   }, []);
 
   return (
-    <AppContext.Provider value={{ dataArticles, setDataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, queryArticles, setQueryArticles, searchInArticles, articlesFiltersCounter, windowSize, isLoading, setLoadingState, currentRoute, setCurrentRoute, menuBtnAnimation, advancedFilterStatus, setAdvancedFilterStatus, changePage, handleClose, menuOverlay, changeMenuState, menuState, setMenuState, goToPage, announcementStatus, setAnnouncementStatus }}> {children} </AppContext.Provider>
+    <AppContext.Provider value={{ dataArticles, setDataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, queryArticles, setQueryArticles, searchInArticles, articlesFiltersCounter, windowSize, isLoading, setLoadingState, currentRoute, setCurrentRoute, menuBtnAnimation, advancedFilterStatus, setAdvancedFilterStatus, changePage, handleClose, menuOverlay, changeMenuState, menuState, setMenuState, goToPage, announcementStatus, setAnnouncementStatus, dataStrip, setDataStrip }}> {children} </AppContext.Provider>
   );
 }

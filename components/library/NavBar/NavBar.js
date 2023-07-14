@@ -5,8 +5,7 @@ import Announcement from '../Announcement/Announcement';
 import styles from "./NavBar.module.scss";
 
 export default function NavBar(){
-    
-    const { isLoading, changePage, currentRoute, handleClose, menuOverlay, menuBtnAnimation, menuState, changeMenuState, goToPage, announcementStatus, setAnnouncementStatus } = useAppContext();
+    const { isLoading, changePage, currentRoute, handleClose, menuOverlay, menuBtnAnimation, menuState, changeMenuState, goToPage, announcementStatus, setAnnouncementStatus, dataStrip } = useAppContext();
     
     useEffect(() =>{   
         setAnnouncementStatus(true);
@@ -54,7 +53,7 @@ export default function NavBar(){
             <div className={isLoading ? `${styles.fade_overlay}` : `${styles.fade_overlay} ${styles.off}`} />     
         </header>
 
-        {announcementStatus && <Announcement />}
+        {announcementStatus && <Announcement data={ dataStrip } />}
     </>
     );
 }
