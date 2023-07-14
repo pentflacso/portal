@@ -15,7 +15,7 @@ import styles from './produccion.module.scss';
 
 function Index(data){
 
-    const { windowSize, goToPage, setCurrentArticleHashtag } = useAppContext();    
+    const { windowSize, setCurrentArticleHashtag } = useAppContext();    
     const [ shareModal, setShareModal ] = useState(false);  
     const router = useRouter();
 
@@ -66,7 +66,6 @@ function Index(data){
 
     const filterByTag = (value) => {
         router.push('/producciones');
-        goToPage(); 
         setTimeout(function(){
             setCurrentArticleHashtag(value);  
         }, 200);                   
@@ -88,7 +87,7 @@ function Index(data){
             <div className={styles.pin_block}> 
                 <header className={styles.col_left}>  
 
-                    <Link className={styles.back_arrow} href="/producciones" onClick={ () => goToPage()}><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver producciones</strong></span></Link>
+                    <Link className={styles.back_arrow} href="/producciones"><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver producciones</strong></span></Link>
 
                     <h1>{data.title}</h1>
 
