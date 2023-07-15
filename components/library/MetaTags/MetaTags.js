@@ -10,7 +10,7 @@ export default function MetaTags({ pageTitle, shareTitle, keywords, description 
         <>
             <Head>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" />
-                <meta charset="UTF-8" />
+                <meta charSet="UTF-8" />
                 <meta name="language" content="es_ES" />         
                 <meta name="title" content={shareTitle} />
                 <meta name="description" content={description} />

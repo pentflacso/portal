@@ -2,8 +2,6 @@ import { useAppContext } from '../../../context/AppContext';
 import styles from "./CoverVideo.module.scss";
 
 export default function CoverVideo({data}){
-console.log(data);
-
     const { windowSize } = useAppContext();
     
     return(
