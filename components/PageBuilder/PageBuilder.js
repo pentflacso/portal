@@ -28,6 +28,8 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
 
     useEffect(() => {
          setDataStrip(data[0].strip);
+
+         console.log(data[0].strip);
     }, [])
 
     const exploringBtnsData = [

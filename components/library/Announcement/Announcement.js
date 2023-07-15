@@ -14,12 +14,15 @@ export default function Announcement({data}){
         }, "500");    
     }
 
-    return( 
-        <div className={!announcementOutAnimation ? `${styles.announcement}` : `${styles.announcement} ${styles.animation_out}` }>   
+   if(data.body ){ 
+        return( 
+            <div className={!announcementOutAnimation ? `${styles.announcement}` : `${styles.announcement} ${styles.animation_out}` }>   
 
-            <button type="button" className={styles.close_btn} onClick={ () => closeAnnouncement() }><span/><span/></button> 
-
-            <div className={styles.info} dangerouslySetInnerHTML={{ __html: data.body ? data.body : "" }}></div>          
-        </div>
-    );
+                <button type="button" className={styles.close_btn} onClick={ () => closeAnnouncement() }><span/><span/></button> 
+                
+                <div className={styles.info} dangerouslySetInnerHTML={{ __html:  data.body }}></div>          
+            
+            </div>
+        );
+    }
 }
