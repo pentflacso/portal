@@ -47,11 +47,6 @@ export default function SectionSelector({data}){
         setTitleSelected(title);
     };
 
-    const goToPage = (path) => {
-        router.push(`${path}`);
-    };
-
-
     return(
 
         <div className={styles.container}>
@@ -84,7 +79,7 @@ export default function SectionSelector({data}){
                             { titleSelected === `${data.id}` &&
                             <> 
                                 <p dangerouslySetInnerHTML={{__html: data.description }} />
-                                <button type="button" onClick={ () => goToPage(`${data.link}`)}>Conocer más</button>                                         
+                                <button type="button">Conocer más</button>                                         
                             </>
                             }                                        
                         </div>
@@ -112,7 +107,7 @@ export default function SectionSelector({data}){
                             </div>                            
                             <h4>{data.title}</h4>
                             <p dangerouslySetInnerHTML={{__html: data.description }} />
-                            <button type="button" onClick={ () => goToPage(`${data.link}`)}>Conocer más</button> 
+                            <button type="button">Conocer más</button> 
                         </div>                   
                     </article>            
                 </SwiperSlide>

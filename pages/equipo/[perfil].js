@@ -13,7 +13,7 @@ import styles from "./perfil.module.scss";
 
 function Perfil(data){   
 
-    const { windowSize, goToPage } = useAppContext();
+    const { windowSize } = useAppContext();
 
     useEffect(() => {
 
@@ -75,7 +75,7 @@ function Perfil(data){
             <div className={styles.pin_block}>
                 <div className={styles.col_left}>
                     <header>
-                        <Link className={styles.back_arrow} href="/equipo" onClick={ () => goToPage()}><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver equipo</strong></span></Link>
+                        <Link className={styles.back_arrow} href="/equipo"><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver equipo</strong></span></Link>
                         <h1 className={styles.name_and_position}>{data.name}<br /><span>{data.description}</span></h1>
                     </header>
                     <article className={styles.cv} dangerouslySetInnerHTML={{__html: data.cv }} />

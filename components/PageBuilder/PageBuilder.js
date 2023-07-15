@@ -173,7 +173,7 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                             >   
                             {data.members.map((item, m) => (
                                 <SwiperSlide key={m}>
-                                    <Link className={stylesx.member} href={item.alias} onClick={ () => goToPage() }>
+                                    <Link className={stylesx.member} href={item.alias}>
                                         <div className={stylesx.img_container}>
                                             <img alt={item.alt} src={item.img.url}/>
                                         </div>
