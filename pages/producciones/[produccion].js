@@ -66,6 +66,7 @@ function Index(data){
 
     const filterByTag = (value) => {
         router.push('/producciones');
+
         setTimeout(function(){
             setCurrentArticleHashtag(value);  
         }, 200);                   
@@ -80,6 +81,7 @@ function Index(data){
             keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
             description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
         />        
+
 
         
         <MainWrapper>
@@ -115,22 +117,9 @@ function Index(data){
                         { data.img ? <img src={ data.img } alt={ data.title } className={styles.imgTop} /> : ""}
                         { data.body && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.body }} /> }
 
-                        { data.hashtags && 
-                            <div className={styles.hashtags}>
-                                <p>Ver más de:</p>
-                                { data.hashtags.map((hashtags , key) => <button type="button" key={key} onClick={ () => filterByTag(`${hashtags}`)}>{hashtags}</button>) }                            
-                            </div>
-                        }
 
-                        { data.quote || data.license ?
-                            <div className={styles.legal}> 
-                                { data.quote ? <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Cómo citar</h4>"+ data.quote }}/> : "" } 
-                                
-                                { data.license ? <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ data.license }}/> : "" }                    
-                            </div>
-                        : "" }
-                    </article>
-                </div>
+                    <Link className={styles.back_arrow} href="/producciones"><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver producciones</strong></span></Link>
+
 
                 <section>
                     <div className={styles.marquee}>
@@ -143,6 +132,7 @@ function Index(data){
             
         </MainWrapper>
         
+
     </>
     );
 }

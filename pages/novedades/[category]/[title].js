@@ -78,6 +78,7 @@ function Index(data){
             shareTitle={'FLACSO | PENT'}
             keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
             description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
+
         />
 
         <MainWrapper>
@@ -133,6 +134,7 @@ function Index(data){
         
     </>  
 )           
+
 }
 
 export async function getServerSideProps({query}) {

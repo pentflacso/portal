@@ -1,27 +1,19 @@
-import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
-import MetaTags from '../../components/library/MetaTags/MetaTags';
-import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
-import PageHeading from '../../components/library/PageHeading/PageHeading';
-import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
-import { Navigation, FreeMode } from 'swiper';
-import { Swiper, SwiperSlide } from "swiper/react";
-import Quotes from '../../components/library/Quotes/Quotes';
-import Footer from '../../components/library/Footer/Footer';
+
+import { useAppContext } from '../../context/AppContext';
 import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
+import MetaTags from '../../components/library/MetaTags/MetaTags';
+import PageBuilder from '../../components/PageBuilder/PageBuilder';
 import styles from "./formacion.module.scss";
 
-
-export default function Formacion(data){
-
+export default function Formacion({data}){
     const { windowSize } = useAppContext();
     
-
     useEffect(() => {
-
+        
         if(windowSize >= 1025){
-
+            
             // Follow custom cursor
             const ball = document.querySelector(".cursor_deslizar");
             gsap.set(".cursor_deslizar", {xPercent: -50, yPercent: -70});       
@@ -78,35 +70,28 @@ export default function Formacion(data){
             });     
         }           
     }, [windowSize]);
-
-
+    
+    
+    /*
     return(
-    <>
-        <MetaTags
-            pageTitle={'Formación — FLACSO | PENT'}
-            shareTitle={'Formación — FLACSO | PENT'}
-            keywords={'posgrado, diplomatura, diploma, diploma superior, cursos, usina de experiencias, formación, capacitación, educación en línea, educación, tecnologías, entornos virtuales multiplataforma, posgrado en educación y nuevas tecnologías, educación virtual, tecnología educativa, elearning, formación en línea, innovación educativa'}
-            description={'Ofrecemos propuestas de formación para innovar en educación y tecnologías.'}
-        />
-
-        {windowSize >= 1025 ?
         <>
-            <CustomScrollbar> 
-                <PageHeading title={data.PageHeading} margin_bottom_type={0} />
 
-                <section>
-                    <div className={styles.marquee_1}>
-                        <TextMarquee data={data.marquee1} />
-                    </div>    
-                    <Swiper
-                        modules={[Navigation, FreeMode]}
-                        spaceBetween={0}
-                        slidesPerView={"auto"}
-                        navigation={false}  
-                        freeMode={false}   
-                        grabCursor={true}    
-                        className={`${styles.carrousel_formacion} swiper-cards`}       
-                    >   
+        <MainWrapper> 
+            <PageHeading title={data.PageHeading} margin_bottom_type={0} />
+
+            <section>
+                <div className={styles.marquee_1}>
+                    <TextMarquee data={data.marquee1} />
+                </div>    
+                <Swiper
+                modules={[Navigation, FreeMode]}
+                spaceBetween={0}
+                slidesPerView={"auto"}
+                navigation={windowSize >= 1025 ? false : true}  
+                freeMode={false}   
+                grabCursor={true}    
+                className={`${styles.carrousel_formacion} swiper-cards`}       
+                >   
                     {data.courses.map((item, i) => (
                         <SwiperSlide key={i}>
                             <article className={styles.card}>
@@ -117,49 +102,6 @@ export default function Formacion(data){
                             </article>            
                         </SwiperSlide>
                     ))}                            
-                    </Swiper>   
-                </section>
-
-                <section>
-                    <div className={styles.marquee_2}>
-                        <TextMarquee data={data.marquee2} />
-                    </div>       
-                    <Quotes items={data.quotes}/>   
-                </section>  
-
-                <Footer />
-            </CustomScrollbar>  
-            <div className="cursor_deslizar">
-                <div className="circle"><span>Deslizar</span></div>
-            </div>
-        </>
-        :
-        <> 
-            <PageHeading title={data.PageHeading} margin_bottom_type={0} />
-
-            <section>
-                <div className={styles.marquee_1}>
-                    <TextMarquee data={data.marquee1} />
-                </div>    
-                <Swiper
-                    modules={[Navigation, FreeMode]}
-                    spaceBetween={0}
-                    slidesPerView={"auto"}
-                    navigation={true}  
-                    freeMode={false}   
-                    grabCursor={false}    
-                    className={`${styles.carrousel_formacion} swiper-cards`}       
-                >   
-                {data.courses.map((item, i) => (
-                    <SwiperSlide key={i}>
-                        <article className={styles.card}>
-                            <img src={item.img} alt="foto posgrado" />
-                            <h5>{item.title}</h5>
-                            <p>{item.description}</p>
-                            <a href={item.url} rel="noopener noreferrer" target="_blank" className="cta_btn">{item.cta}</a>
-                        </article>            
-                    </SwiperSlide>
-                ))}                            
                 </Swiper>   
             </section>
 
@@ -167,21 +109,47 @@ export default function Formacion(data){
                 <div className={styles.marquee_2}>
                     <TextMarquee data={data.marquee2} />
                 </div>       
-                <Quotes items={data.quotes}/>    
-            </section>
+                <Quotes items={data.quotes}/>   
+            </section>  
 
             <Footer />
-        </>   
-        }
+        </MainWrapper>  
+          
+        {windowSize >= 1025 &&
+            <div className="cursor_deslizar">
+                <div className="circle"><span>Deslizar</span></div>
+            </div>
+        }     
     </>   
     )
+*/
+    if(Object.keys(data).length > 0){  
+        return(
+            <>
+                <MetaTags
+                    pageTitle={'Formación — FLACSO | PENT'}
+                    shareTitle={'Formación — FLACSO | PENT'}
+                    keywords={'posgrado, diplomatura, diploma, diploma superior, cursos, usina de experiencias, formación, capacitación, educación en línea, educación, tecnologías, entornos virtuales multiplataforma, posgrado en educación y nuevas tecnologías, educación virtual, tecnología educativa, elearning, formación en línea, innovación educativa'}
+                    description={'Ofrecemos propuestas de formación para innovar en educación y tecnologías.'}
+                />
+                <PageBuilder data={ data } stylesx={styles} />
+                {windowSize >= 1025 &&
+                    <div className="cursor_deslizar">
+                        <div className="circle"><span>Deslizar</span></div>
+                    </div>
+                }                 
+            </>
+        )
+    }    
 }
 
 export async function getServerSideProps() {
     // Fetch data from external API
-    const res = await fetch(`https://flacso.pent.org.ar/api/formacion.php`)
+    //const res = await fetch(`https://flacso.pent.org.ar/api/formacion.php`)
+    const res = await fetch(`https://redaccion.pent.org.ar/data/section/48`)
     const data = await res.json()
   
     // Pass data to the page via props
-    return { props: data.data  }
+    return { props: data  }
+    //return { props: data.data  }
 }

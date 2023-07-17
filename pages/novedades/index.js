@@ -1,7 +1,7 @@
 import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
-import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
+import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import Link from 'next/link';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
@@ -70,86 +70,52 @@ function Novedades(d){
             keywords={'novedades, noticias, entrevistas, prensa, conversatorios, conferencias, testimonios, empleo, búsqueda laboral, eventos, charlas, institucional, lanzamientos'}
             description={'Enterate de las novedades más recientes del PENT FLACSO.'}
         />
+           
+        <MainWrapper>    
+            <PageHeading title="<span>Novedades</span>" margin_bottom_type={1} />
 
-        {windowSize >= 1025 ?
-        <>            
-            <CustomScrollbar>    
-                <PageHeading title="<span>Novedades</span>" margin_bottom_type={1} />
+            <section>
+                <div className={styles.filters_cont}>
+                    <Swiper
+                    modules={[Navigation, FreeMode]}
+                    spaceBetween={0}
+                    slidesPerView={"auto"}
+                    navigation={true}  
+                    freeMode={false}
+                    grabCursor={true}
+                    className={`${styles.category} swiper-btns`}    
+                    >       
+                        <SwiperSlide> 
+                            <Link href="/novedades/" className={`${styles.btn_filter} ${styles.active}`}>Todos</Link>
+                        </SwiperSlide>
 
-                <section>
-                    <div className={styles.filters_cont}>
-                        <Swiper
-                        modules={[Navigation, FreeMode]}
-                        spaceBetween={0}
-                        slidesPerView={"auto"}
-                        navigation={true}  
-                        freeMode={false}
-                        grabCursor={true}
-                        className={`${styles.category} swiper-btns`}    
-                        >       
-                            <SwiperSlide> 
-                                <Link href="/novedades/" className={`${styles.btn_filter} ${styles.active}`}>Todos</Link>
-                            </SwiperSlide>
+                        {filtro && filtro.map((category, i) => {
+                            return (  
+                                <SwiperSlide key={i}>
+                                    <Link href={"/novedades/"+ category} className={styles.btn_filter}>{category}</Link>  
+                                </SwiperSlide> 
+                            );
+                        })}
+                    </Swiper>          
+                </div>            
+                <ArticlesNov data={data} />
+            </section>
 
-                            {filtro && filtro.map((category, i) => {
-                                return (  
-                                    <SwiperSlide key={i}>
-                                        <Link href={"/novedades/"+ category} className={styles.btn_filter}>{category}</Link>  
-                                    </SwiperSlide> 
-                                );
-                            })}
-                        </Swiper>          
-                    </div>            
-                    <ArticlesNov data={data} />
-                </section>
-
-                <section>
-                    <div className={styles.marquee}>
-                        <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
-                    </div>
-                    <ExploringBtns data={exploringBtnsData} />
-                </section>
+            <section>
+                <div className={styles.marquee}>
+                    <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                </div>
+                <ExploringBtns data={exploringBtnsData} />
+            </section>
                 
-                <Footer />
-            </CustomScrollbar> 
+            <Footer />
+        </MainWrapper> 
+            
+        {windowSize >= 1025 &&
             <div className="cursor_ver">
                 <div className="circle"><span>Ver</span></div>
             </div>
-        </>
-        :
-        <>
-            <PageHeading title="<span>Novedades</span>" margin_bottom_type={1} />
-            <div className={styles.filters_cont}>
-                <Swiper
-                modules={[Navigation, FreeMode]}
-                spaceBetween={0}
-                slidesPerView={"auto"}
-                navigation={true}  
-                freeMode={false}
-                grabCursor={true}
-                className={`${styles.category} swiper-btns`}    
-                >       
-                    <SwiperSlide> 
-                        <Link href="/novedades/" className={`${styles.btn_filter} ${styles.active}`}>Todos</Link>
-                    </SwiperSlide>
-
-                    {filtro && filtro.map((category, i) => {
-                        return (  
-                            <SwiperSlide key={i}>
-                                <Link href={"/novedades/"+ category} className={styles.btn_filter}>{category}</Link>  
-                            </SwiperSlide> 
-                        );
-                    })}
-                </Swiper>          
-            </div>            
-            <ArticlesNov data={data} />
-            <div className={styles.marquee}>
-                <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
-            </div>
-            <ExploringBtns data={exploringBtnsData} />
-            <Footer />
-        </> 
-       }
+        }        
     </>
     )
 }

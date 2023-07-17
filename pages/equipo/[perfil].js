@@ -71,6 +71,7 @@ function Perfil(data){
             description={'Somos un equipo de especialistas en educación y tecnologías digitales'}
         />
 
+
             <MainWrapper> 
                 <div className={styles.pin_block}>
                     <div className={styles.col_left}>
@@ -92,6 +93,7 @@ function Perfil(data){
                 </div>
                 {
                 data.productions && (<section  className={styles.producciones}>
+
                 <h2>Producciones</h2>
                 <Swiper
                 modules={[Navigation, FreeMode]}
@@ -99,7 +101,7 @@ function Perfil(data){
                 slidesPerView={"auto"}
                 navigation={true}  
                 freeMode={false}   
-                grabCursor={false} 
+                grabCursor={windowSize >= 1025 ? true : false} 
                 className={`${styles.carrousel_novedades} swiper-cards`}
                 >
                 {data.productions.map((data, i)=>(
@@ -113,15 +115,19 @@ function Perfil(data){
                     </SwiperSlide> 
                 ))} 
                 </Swiper>
+
             </section>)
             }
                 <Footer />
             </MainWrapper> 
+    
+            
+        {windowSize >= 1025 &&
             <div className="cursor_ver">
                 <div className="circle"><span>Ver</span></div>
             </div>
-        
-        
+        }     
+
     </>
     )
 }

@@ -15,6 +15,9 @@ export default function NewsSelector({ data }){
             <div className={styles.marquee_btns}>
                 {data.map((e, i) => {
                     
+                    if(i !== 4){
+
+
                     useEffect(() => {
                         if(windowSize >= 1025){                            
                             $(`.${styles.btn}.news-${i}`).on("mouseenter", function mouseEnterBtns() {
@@ -27,7 +30,7 @@ export default function NewsSelector({ data }){
                     }, []);
                     
                     return (         
-                    <Link href={`/${e.path_id}`} className={`${styles.btn} news-${i}`} key={i}>
+                    <Link href={`${e.path}`} className={`${styles.btn} news-${i}`} key={i}>
                         <div className={styles.arrow} />
 
                         {windowSize >= 1025 ? 
@@ -57,14 +60,18 @@ export default function NewsSelector({ data }){
                         }                                  
                     </Link>                                              
                     );
+                
+                }
 
-                })}                                 
+                })} 
+                
+                
             </div>
-
-            <div className={styles.show_all_btn}>
-                <Link href={`/novedades`}>Ver todas las novedades <span className={styles.arrow}><img src="/assets/icons/arrow_next_icon.svg" alt="botón flecha"/></span></Link> 
-            </div>
-
+            
+                <div className={styles.show_all_btn}>
+                    <Link href={data[4].path}>{data[4].title} <span className={styles.arrow}><img src="/assets/icons/arrow_next_icon.svg" alt="botón flecha"/></span></Link> 
+                </div>
+                  
         </div>
     );
 }
