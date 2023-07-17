@@ -3,8 +3,7 @@ import { useState } from 'react';
 import Link from "next/link";
 import styles from "./Announcement.module.scss";
 
-export default function Announcement(){
-
+export default function Announcement({data}){
     const { setAnnouncementStatus } = useAppContext();
     const [announcementOutAnimation, setAnnouncementOutAnimation] = useState(false);
 
@@ -15,16 +14,15 @@ export default function Announcement(){
         }, "500");    
     }
 
-    return( 
-        <div className={!announcementOutAnimation ? `${styles.announcement}` : `${styles.announcement} ${styles.animation_out}` }>   
+   if(data ){ 
+        return( 
+            <div className={!announcementOutAnimation ? `${styles.announcement}` : `${styles.announcement} ${styles.animation_out}` }>   
 
-            <button type="button" className={styles.close_btn} onClick={ () => closeAnnouncement() }><span/><span/></button> 
-
-            <div className={styles.info}>             
-
-                <p><strong>Incripción abierta</strong> — Posgrado en Educación y Nuevas Tecnologías — <Link href='https://pent.flacso.org.ar/posgrado/educacion-nuevas-tecnologias/' target="_blank"><span>Más información</span></Link></p> 
-
-            </div>          
-        </div>
-    );
+                <button type="button" className={styles.close_btn} onClick={ () => closeAnnouncement() }><span/><span/></button> 
+                
+                <div className={styles.info} dangerouslySetInnerHTML={{ __html:  data.body }}></div>          
+            
+            </div>
+        );
+    }
 }

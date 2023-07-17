@@ -13,6 +13,7 @@ import styles from './title.module.scss';
 
 function Index(data){
 
+
     const { windowSize } = useAppContext();
     const [ shareModal, setShareModal ] = useState(false); 
     const router = useRouter(); 

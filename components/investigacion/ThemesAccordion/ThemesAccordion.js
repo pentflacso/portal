@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 import { gsap } from "gsap/dist/gsap";
@@ -7,10 +7,25 @@ import $ from 'jquery';
 import styles from "./ThemesAccordion.module.scss";
 
 
-export default function ThemesAccordion({data}){    
+
+export default function ThemesAccordion({data}){
+
+    const [dataAccordion, setDataAccordion] = useState([]);
+
+    //Crea las variables que se consume de la API. 
+    useEffect(() => {
+        const newDataAccordion = data.map((item, index) => {
+          const id = `clave-${index + 1}`;
+          const title = item.title[0].value;
+          const description = item.description[0].value;
+    
+          return { id, title, description, key: index };
+        });
+    
+        setDataAccordion(newDataAccordion);
+    }, [data]);
 
     useEffect(() => {
-
         const accordion_items = $(".wrapper");
   
             function handlerClick() {
@@ -92,12 +107,11 @@ export default function ThemesAccordion({data}){
                 accordion_items[i].addEventListener('click' , handlerClick , false ) ; 
             }
 
-    }, []);
-
+    }, [dataAccordion]);
 
     return(
         <div className={styles.acordeon}>
-            {data.map((e, i) => {
+            {dataAccordion.map((e, i) => {
                 return (
                 <div key={i} className={`${styles.area} ${e.id}`}>
                     <div className={`${styles.wrapper} wrapper`}>

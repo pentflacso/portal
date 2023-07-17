@@ -1,6 +1,5 @@
-import { useAppContext } from '../../context/AppContext';
+/*import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
-import MetaTags from '../../components/library/MetaTags/MetaTags';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import TwoColumsText from '../../components/equipo/TwoColumsText/TwoColumsText';
@@ -11,11 +10,13 @@ import Footer from '../../components/library/Footer/Footer';
 import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import { gsap, Back, Elastic } from 'gsap';
-import $ from "jquery";
+import $ from "jquery";*/
+import MetaTags from '../../components/library/MetaTags/MetaTags';
+import PageBuilder from '../../components/PageBuilder/PageBuilder';
 import styles from "./equipo.module.scss";
 
 
-export default function Equipo(data){
+export default function Equipo({data}){
 
     const { windowSize } = useAppContext();
 
@@ -119,13 +120,28 @@ export default function Equipo(data){
         } 
     </>
     )
+    */
+    if(Object.keys(data).length > 0){  
+        return(
+            <>
+                <MetaTags
+                    pageTitle={'Equipo — FLACSO | PENT'}
+                    shareTitle={'Equipo — FLACSO | PENT'}
+                    keywords={'especialistas, equipo, profesionales, disciplinas, interdiscipinario, expertise, administración, coordinación, desarrollo institucional, comunicación, desarrollo, docentes, gestión de contenidos, diseño, programación, diplomas superiores, especialización, posgrado, quiénes somos, acerca de'}
+                    description={'Somos un equipo de especialistas en educación y tecnologías digitales.'}
+                />            
+                <PageBuilder data={ data } stylesx={styles} />
+            </>
+        )
+    }
+
 }
 
 export async function getServerSideProps() {
     // Fetch data from external API
-    const res = await fetch(`https://flacso.pent.org.ar/api/equipo.php`)
+    const res = await fetch(`https://redaccion.pent.org.ar/data/section/52`) 
     const data = await res.json()
   
     // Pass data to the page via props
-    return { props: data.data  }
+    return { props: data  }
   }
