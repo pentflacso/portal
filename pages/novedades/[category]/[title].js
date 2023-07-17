@@ -2,7 +2,6 @@ import { useAppContext } from '../../../context/AppContext';
 import { useEffect, useState } from 'react';
 import { useRouter } from "next/router";
 import MetaTags from '../../../components/library/MetaTags/MetaTags';
-import MainWrapper from '../../../components/library/MainWrapper/MainWrapper';
 import ShareBtns from '../../../components/library/ShareBtns/ShareBtns';
 import TextMarquee from '../../../components/library/TextMarquee/TextMarquee';
 import ExploringBtns from '../../../components/library/ExploringBtns/ExploringBtns';
@@ -10,9 +9,9 @@ import Footer from '../../../components/library/Footer/Footer';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import Link from 'next/link';
 import styles from './title.module.scss';
+import MainWrapper from '../../../components/library/MainWrapper/MainWrapper';
 
 function Index(data){
-
 
     const { windowSize } = useAppContext();
     const [ shareModal, setShareModal ] = useState(false); 
@@ -29,6 +28,8 @@ function Index(data){
         {title: 'Asesorías y soluciones a medida', path: 'asesorias'},
         {title: 'Nuestras producciones', path: 'producciones'}        
     ]
+
+    const license = `El texto de la nota ${ data.title } de Proyecto Educación y Nuevas Tecnologías se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Nota disponible en: <a href="${ data.url }" target="_blank">${ data.url }</a>`
 
     useEffect(() => {   
 
@@ -77,65 +78,72 @@ function Index(data){
             shareTitle={'FLACSO | PENT'}
             keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
             description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
-        />    
 
-        {windowSize >= 1025 && shareModal && <ShareBtns shareurl={`https://pent-portal-testing.vercel.app${router.asPath}`} setShareModal={setShareModal} />}
+        />
 
-        <MainWrapper>   
-            <div className={styles.pin_block}>  
-                <div className={styles.col_left}>
+        <MainWrapper>
 
-                    <header>
-                        <Link className={styles.back_arrow} href="/novedades"><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver novedades</strong></span></Link>
+            {shareModal && <ShareBtns shareurl={`https://pent-portal-testing.vercel.app${router.asPath}`} setShareModal={setShareModal} />}
 
-                        <h1>{data.title}</h1>
+                <div className={styles.pin_block}>  
+                    <div className={styles.col_left}>
+
+                        <header>
+                            <Link className={styles.back_arrow} href="/novedades" ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver novedades</strong></span></Link>
+
+                            <h1>{data.title}</h1>
                                 
-                        <p className={styles.info}>
-                            {data.category} {data.date ? <>— <span>{data.date}</span></> : ''}
-                        </p>
-                    </header>
+                            <p className={styles.info}>
+                                {data.category} {data.date ? <>— <span>{data.date}</span></> : ''}
+                            </p>
+                        </header>
 
-                    <article>
-                        { data.description ? <div dangerouslySetInnerHTML={{__html: data.description }} /> : ""}
+                        <article>
+                            { data.body ?           
+                                <div dangerouslySetInnerHTML={{__html: data.body }} /> :
+                            ""}
 
-                        {windowSize >= 1025 ?
-                            <button type="button" className={`${styles.btn} ${styles.share_btn}`} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
-                        :
-                            <button type="button" className={`${styles.btn} ${styles.share_btn}`} onClick={ () => mobileShare() }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
-                        }
-                        
-                        { data.license ?
-                            <div className={styles.legal}>                         
-                                <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ data.license }}/>                  
-                            </div>
-                        : "" }
-                    </article>
+                            <button type="button" className={styles.share_btn} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button> 
 
-                </div>
+                            { license ?
+                                <div className={styles.legal}>                         
+                                    <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ license }}/>                  
+                                </div>
+                            : "" }
+                        </article>
 
-                <section className={styles.col_right}>
+                    </div>
+                    <section className={styles.col_right}>
                         <h2>Ultimas novedades</h2>
                         <ExploringBtns data={DescriptionexploringBtn} dataStyle="btnMedium" /> 
-                </section>                
-            </div>
-
-            <section>
-                <div className={styles.marquee}>
-                    <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                    </section>
                 </div>
-                <ExploringBtns data={exploringBtnsData} />      
-            </section> 
 
-            <Footer />
+                <section>
+                    <div className={styles.marquee}>
+                        <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                    </div>
+                    <ExploringBtns data={exploringBtnsData} />      
+                </section> 
+
+                <Footer />
+            
+        
         </MainWrapper>
-    </>             
-    )
+        
+        
+    </>  
+)           
+
 }
 
 export async function getServerSideProps({query}) {
     // Fetch data from external API
-    const res = await fetch(`https://flacso.pent.org.ar/api/novedades/${query.category}-${query.title}.json`)
+    /* const res = await fetch(`https://flacso.pent.org.ar/api/novedades/${query.category}-${query.title}.json`) */
+    
+    const res = await fetch(`https://redaccion.pent.org.ar/data/new/262`)
     const data = await res.json()
+    data.url = `https://flacso.pent.org.ar/novedades/${query.category}-${query.title}`
 
     // Pass data to the page via props
     return { props:  {...data }   }

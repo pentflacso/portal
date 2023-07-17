@@ -1,7 +1,6 @@
 import { useAppContext } from '../../context/AppContext';
 import { useEffect, useState } from 'react';
 import { useRouter } from "next/router";
-import { Fragment } from 'react';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
@@ -9,8 +8,9 @@ import Footer from '../../components/library/Footer/Footer'
 import Link from 'next/link';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import ShareBtns from '../../components/library/ShareBtns/ShareBtns';
-import styles from './produccion.module.scss';
+import styles from './case.module.scss';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
+
 
 function Index(data){
 
@@ -65,8 +65,7 @@ function Index(data){
     };
 
     const filterByTag = (value) => {
-        router.push('/producciones');
-
+        router.push('/project');
         setTimeout(function(){
             setCurrentArticleHashtag(value);  
         }, 200);                   
@@ -76,12 +75,11 @@ function Index(data){
     return(
     <>
         <MetaTags
-            pageTitle={'Producciones — FLACSO | PENT'}
+            pageTitle={'Asesorias — FLACSO | PENT'}
             shareTitle={'FLACSO | PENT'}
             keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
             description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
         />        
-
 
         
         <MainWrapper>
@@ -91,24 +89,12 @@ function Index(data){
             
                 <div className={styles.pin_block}> 
                     <header className={styles.col_left}>                
-                        <Link className={styles.back_arrow} href="/producciones" ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver producciones</strong></span></Link>
+                        <Link className={styles.back_arrow} href="/asesorias"><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver asesorías</strong></span></Link>
                         <h1>{data.title}</h1>
-                        { data.authors ?
-                            <div className={styles.authors}>
-                                <p>{data.lead} | <span>Por —</span>&nbsp;</p>
-                                {data.authors.map((a, i) => (
-                                    <Fragment key={i}>
-                                    <Link  href={a.link}>{a.title}<span>{i<data.authors.length -1 ? "," : ""}</span></Link>
-                                    &nbsp;
-                                    </Fragment>
-                                ) ) } 
-                            </div> : ""
-                        }
                         
                         <div className={styles.btns}>
                             <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
 
-                            { data.download || data.link ? <Link className={`${styles.btn} ${styles.download}`} href={ data.download ? data.download : data.link } target="_blank"><span><img src="/assets/icons/download_icon.svg" alt="icono de descarga"/>{ data.download ? "Descargar" : "Acceder" }</span></Link> : "" }
 
                         </div>                       
 
@@ -117,9 +103,10 @@ function Index(data){
                         { data.img ? <img src={ data.img } alt={ data.title } className={styles.imgTop} /> : ""}
                         { data.body && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.body }} /> }
 
-
-                    <Link className={styles.back_arrow} href="/producciones"><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver producciones</strong></span></Link>
-
+                      
+                        
+                    </article>
+                </div>
 
                 <section>
                     <div className={styles.marquee}>
@@ -130,17 +117,17 @@ function Index(data){
 
                 <Footer />
             
-        </MainWrapper>
+                </MainWrapper>
         
-
+        
     </>
     );
 }
 
 export async function getServerSideProps({query}) {
     // Fetch data from external API
-    /* const res = await fetch(`https://flacso.pent.org.ar/api/producciones/${query.produccion}.json`) */
-    const res = await fetch(`https://redaccion.pent.org.ar/data/production/203`)
+    /* const res = await fetch(`https://flacso.pent.org.ar/api/asesorias/${query.case}.json`) */
+    const res = await fetch(`https://redaccion.pent.org.ar/data/cases/7`)
     const data = await res.json()
     // Pass data to the page via props
     return { props:  {...data }   }

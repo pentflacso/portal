@@ -1,7 +1,6 @@
 import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
-import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import Link from 'next/link';
 import Footer from '../../components/library/Footer/Footer';
 import { Navigation, FreeMode } from 'swiper';
@@ -9,6 +8,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
 import styles from "./perfil.module.scss";
+import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 
 
 function Perfil(data){   
@@ -71,20 +71,29 @@ function Perfil(data){
             description={'Somos un equipo de especialistas en educación y tecnologías digitales'}
         />
 
-        <MainWrapper> 
-            <div className={styles.pin_block}>
-                <div className={styles.col_left}>
-                    <header>
-                        <Link className={styles.back_arrow} href="/equipo"><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver equipo</strong></span></Link>
-                        <h1 className={styles.name_and_position}>{data.name}<br /><span>{data.description}</span></h1>
-                    </header>
-                    <article className={styles.cv} dangerouslySetInnerHTML={{__html: data.cv }} />
+
+            <MainWrapper> 
+                <div className={styles.pin_block}>
+                    <div className={styles.col_left}>
+                        <header>
+                            <Link className={styles.back_arrow} href="/equipo" ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver equipo</strong></span></Link>
+                            <h1 className={styles.name_and_position}>{data.title}<br /><span>{data.position}</span></h1>
+                        </header>
+                        <article className={styles.cv} dangerouslySetInnerHTML={{__html: data.body }} />
+                        <div className={styles.networks}>{data.networks.map((n, i) => (
+                            <span key={i}>
+                             <a target="_blank" href={n.src}>{n.title}</a>
+                            {i < data.networks.length -1 ? <strong>|</strong> : ""}
+                            </span>
+                        )) }</div>
+                    </div>
+                    <div className={styles.col_right}>
+                        <img src={data.image} alt={`Imagen de ${data.title}`} />
+                    </div>
                 </div>
-                <div className={styles.col_right}>
-                    <img src={data.picture} alt={`Imagen de ${data.name}`} />
-                </div>
-            </div>
-            <section className={styles.producciones}>
+                {
+                data.productions && (<section  className={styles.producciones}>
+
                 <h2>Producciones</h2>
                 <Swiper
                 modules={[Navigation, FreeMode]}
@@ -97,7 +106,7 @@ function Perfil(data){
                 >
                 {data.productions.map((data, i)=>(
                     <SwiperSlide key={i}>                                        
-                        <Link href={data.url} className={`${styles.card} clickable`}>   
+                        <Link href={data.link} className={`${styles.card} clickable`}>   
                             <span>{data.lead}</span>
                             <h5>{data.title}&nbsp;<span>{data.subtitle}</span></h5>
                             { data.description && <p>{data.description}</p> }  
@@ -106,15 +115,19 @@ function Perfil(data){
                     </SwiperSlide> 
                 ))} 
                 </Swiper>
-            </section>
-            <Footer />
-        </MainWrapper> 
+
+            </section>)
+            }
+                <Footer />
+            </MainWrapper> 
+    
             
         {windowSize >= 1025 &&
             <div className="cursor_ver">
                 <div className="circle"><span>Ver</span></div>
             </div>
         }     
+
     </>
     )
 }
@@ -122,11 +135,12 @@ function Perfil(data){
 export async function getServerSideProps({query}) {
     // Fetch data from external API 
     console.log(query.perfil);
-    const res = await fetch(`https://flacso.pent.org.ar/api/perfil-${query.perfil}.php`)
+    // const res = await fetch(`https://flacso.pent.org.ar/api/perfil-${query.perfil}.php`)
+    const res = await fetch(`https://redaccion.pent.org.ar/data/person/10`)
     const data = await res.json()
   
     // Pass data to the page via props
-    return { props: data.data  }
+    return { props: data  }
   }
 
   export default Perfil
