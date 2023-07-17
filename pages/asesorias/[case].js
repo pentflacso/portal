@@ -127,7 +127,7 @@ function Index(data){
 export async function getServerSideProps({query}) {
     // Fetch data from external API
     /* const res = await fetch(`https://flacso.pent.org.ar/api/asesorias/${query.case}.json`) */
-    const res = await fetch(`https://redaccion.pent.org.ar/data/cases/7`)
+    const res = await fetch(`https://redaccion.pent.org.ar/data/cases/${query.case}`)
     const data = await res.json()
     // Pass data to the page via props
     return { props:  {...data }   }
