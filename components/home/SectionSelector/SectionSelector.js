@@ -1,5 +1,5 @@
 import { useAppContext } from '../../../context/AppContext';
-import { useState } from 'react';
+import { useState , useEffect} from 'react';
 import Link from "next/link";
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
