@@ -2,7 +2,7 @@ import { useRouter } from 'next/router';
 import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
-import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
+import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import Link from 'next/link';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
@@ -73,54 +73,9 @@ function Index(d){
             shareTitle={'FLACSO | PENT'}
             keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
             description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
-        />
-    
-        {windowSize >= 1025 ?
-        <>
-            <CustomScrollbar> 
-                <PageHeading title="<h1><span>Novedades</span></h1>" margin_bottom_type={1} />
-
-                <section>
-                    <div className={styles.filters_cont}>
-                        <Swiper
-                        modules={[Navigation, FreeMode]}
-                        spaceBetween={0}
-                        slidesPerView={"auto"}
-                        navigation={true}  
-                        freeMode={true}
-                        grabCursor={true}
-                        className={`${styles.category} swiper-btns`}
-                        >             
-                            <SwiperSlide> 
-                                <Link href="/novedades/" className={styles.btn_filter}>Todos</Link>
-                            </SwiperSlide>
-                                {filtro && filtro.map((c, key) => {
-                                    return (
-                                        <SwiperSlide key={key}> 
-                                            <Link href={"/novedades/"+ c} className={category == c ? `${styles.btn_filter} ${styles.active}` : styles.btn_filter }>{c}</Link>
-                                        </SwiperSlide>
-                                    );
-                                })}
-                        </Swiper>          
-                    </div>
-                    <ArticlesNov data={data} category={category} />
-                </section>
-
-                <section>
-                    <div className={styles.marquee}>
-                        <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
-                    </div>
-                    <ExploringBtns data={exploringBtnsData} />
-                </section>
-
-                <Footer />
-            </CustomScrollbar> 
-            <div className="cursor_ver">
-                <div className="circle"><span>Ver</span></div>
-            </div>
-        </>
-        :
-        <>
+        />    
+     
+        <MainWrapper> 
             <PageHeading title="<h1><span>Novedades</span></h1>" margin_bottom_type={1} />
 
             <section>
@@ -137,13 +92,14 @@ function Index(d){
                         <SwiperSlide> 
                             <Link href="/novedades/" className={styles.btn_filter}>Todos</Link>
                         </SwiperSlide>
-                            {filtro && filtro.map((c, key) => {
-                                return (
-                                    <SwiperSlide key={key}> 
-                                        <Link href={"/novedades/"+ c} className={category == c ? `${styles.btn_filter} ${styles.active}` : styles.btn_filter }>{c}</Link>
-                                    </SwiperSlide>
-                                );
-                            })}
+
+                        {filtro && filtro.map((c, key) => {
+                            return (
+                                <SwiperSlide key={key}> 
+                                    <Link href={"/novedades/"+ c} className={category == c ? `${styles.btn_filter} ${styles.active}` : styles.btn_filter }>{c}</Link>
+                                </SwiperSlide>
+                            );
+                        })}
                     </Swiper>          
                 </div>
                 <ArticlesNov data={data} category={category} />
@@ -157,8 +113,13 @@ function Index(d){
             </section>
 
             <Footer />
-        </>
-       }
+        </MainWrapper>
+
+        {windowSize >= 1025 &&
+            <div className="cursor_ver">
+                <div className="circle"><span>Ver</span></div>
+            </div>
+        }   
     </>
     )
 }

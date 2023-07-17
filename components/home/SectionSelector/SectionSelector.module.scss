@@ -119,7 +119,7 @@
                 border-bottom: $line-2 solid $yellow-1;
             }
         }
-        button{
+        .go_to_page{
             @include btn-ver-mas;
         }
     }
@@ -173,7 +173,7 @@
             }
         }
     
-        button{
+        .go_to_page{
             @include btn-ver-mas;
         } 
     }       

@@ -1,23 +1,17 @@
 import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
-import MetaTags from '../../components/library/MetaTags/MetaTags';
-import CustomScrollbar from '../../customScrollbar/CustomScrollbar';
-import PageHeading from '../../components/library/PageHeading/PageHeading';
-import TwoColumsText from '../../components/equipo/TwoColumsText/TwoColumsText';
-import Link from 'next/link';
-import TeamData from '../../components/equipo/TeamData/TeamData';
-import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
-import Footer from '../../components/library/Footer/Footer';
-import { Navigation, FreeMode } from 'swiper';
-import { Swiper, SwiperSlide } from "swiper/react";
 import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
+
+
+import MetaTags from '../../components/library/MetaTags/MetaTags';
+import PageBuilder from '../../components/PageBuilder/PageBuilder';
 import styles from "./equipo.module.scss";
 
 
-export default function Equipo(data){
+export default function Equipo({data}){
 
-    const { windowSize, goToPage } = useAppContext();
+    const { windowSize } = useAppContext();
 
     useEffect(() => {
 
@@ -66,104 +60,32 @@ export default function Equipo(data){
     }, [windowSize]);
 
 
-    return(
-    <>
-        <MetaTags
-            pageTitle={'Equipo — FLACSO | PENT'}
-            shareTitle={'Equipo — FLACSO | PENT'}
-            keywords={'especialistas, equipo, profesionales, disciplinas, interdiscipinario, expertise, administración, coordinación, desarrollo institucional, comunicación, desarrollo, docentes, gestión de contenidos, diseño, programación, diplomas superiores, especialización, posgrado, quiénes somos, acerca de'}
-            description={'Somos un equipo de especialistas en educación y tecnologías digitales.'}
-        />
-
-        {windowSize >= 1025 ?
-        <>
-            <CustomScrollbar> 
-                <PageHeading title={data.PageHeading} margin_bottom_type={0} />
-
-                <section>
-                    <TwoColumsText texto={data.TwoColumnsText}/>
-                </section>
-
-                <section>
-                    <div className={styles.marquee_1}>
-                        <TextMarquee data={data.marquee} />
-                    </div>        
-                    <Swiper
-                    modules={[Navigation, FreeMode]}
-                    spaceBetween={0}
-                    slidesPerView={"auto"}
-                    navigation={true}  
-                    freeMode={false}   
-                    grabCursor={false}  
-                    className={`${styles.carrousel_members} swiper-cards members`}                       
-                    >   
-                    {data.members.map((item, i) => (                        
-                        <SwiperSlide key={i}>
-                            <Link className={styles.member} href={item.url} onClick={ () => goToPage() }>
-                                <div className={styles.img_container}>
-                                    <img src={item.img}/>
-                                </div>
-                                <h5>{item.nombre}</h5>
-                            </Link>            
-                        </SwiperSlide>
-                    ))}                            
-                    </Swiper>       
-                    <TeamData team={data.team}/>
-                </section>
-
-                <Footer />
-            </CustomScrollbar> 
+    if(Object.keys(data).length > 0){  
+        return(
+            <>
+                <MetaTags
+                    pageTitle={'Equipo — FLACSO | PENT'}
+                    shareTitle={'Equipo — FLACSO | PENT'}
+                    keywords={'especialistas, equipo, profesionales, disciplinas, interdiscipinario, expertise, administración, coordinación, desarrollo institucional, comunicación, desarrollo, docentes, gestión de contenidos, diseño, programación, diplomas superiores, especialización, posgrado, quiénes somos, acerca de'}
+                    description={'Somos un equipo de especialistas en educación y tecnologías digitales.'}
+                />            
+                <PageBuilder data={ data } stylesx={styles} />
+                {windowSize >= 1025 &&
             <div className="cursor_conocer">
                 <div className="circle"><span>Conocer</span></div>
             </div>
-        </>
-        :
-        <>
-            <PageHeading title={data.PageHeading} margin_bottom_type={0} />
+        } 
+            </>
+        )
+    }
 
-            <section>
-                <TwoColumsText texto={data.TwoColumnsText}/>
-            </section>
-
-            <section>
-                <div className={styles.marquee_1}>
-                    <TextMarquee data={data.marquee} />
-                </div>        
-                <Swiper
-                modules={[Navigation, FreeMode]}
-                spaceBetween={0}
-                slidesPerView={"auto"}
-                navigation={true}  
-                freeMode={false}   
-                grabCursor={false}  
-                className={`${styles.carrousel_members} swiper-cards members`}                       
-                >   
-                {data.members.map((item, i) => (
-                    <SwiperSlide key={i}>
-                        <Link className={styles.member} href={item.url} onClick={ () => goToPage() }>
-                            <div className={styles.img_container}>
-                                <img src={item.img}/>
-                            </div>
-                            <h5>{item.nombre}</h5>
-                        </Link>            
-                    </SwiperSlide>
-                ))}                            
-                </Swiper>       
-                <TeamData team={data.team}/>
-            </section>
-
-            <Footer />
-        </> 
-       }
-    </>
-    )
 }
 
 export async function getServerSideProps() {
     // Fetch data from external API
-    const res = await fetch(`https://flacso.pent.org.ar/api/equipo.php`)
+    const res = await fetch(`https://redaccion.pent.org.ar/data/section/52`) 
     const data = await res.json()
   
     // Pass data to the page via props
-    return { props: data.data  }
+    return { props: data  }
   }
