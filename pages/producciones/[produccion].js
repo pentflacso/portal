@@ -118,9 +118,8 @@ function Index(data){
                         { data.body && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.body }} /> }
 
 
-                    <Link className={styles.back_arrow} href="/producciones"><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver producciones</strong></span></Link>
-
-
+                    </article>
+                </div> 
                 <section>
                     <div className={styles.marquee}>
                         <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
