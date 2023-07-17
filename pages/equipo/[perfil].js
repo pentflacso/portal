@@ -136,7 +136,7 @@ export async function getServerSideProps({query}) {
     // Fetch data from external API 
     console.log(query.perfil);
     // const res = await fetch(`https://flacso.pent.org.ar/api/perfil-${query.perfil}.php`)
-    const res = await fetch(`https://redaccion.pent.org.ar/data/person/10`)
+    const res = await fetch(`https://redaccion.pent.org.ar/data/person/${query.perfil}`)
     const data = await res.json()
   
     // Pass data to the page via props
