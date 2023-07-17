@@ -23,8 +23,7 @@ import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns'
 import Footer from '../../components/library/Footer/Footer';
 
 export default function PageBuilder({data, stylesx, explorerBtn}){
-
-    const { setDataStrip } = useAppContext();
+    const { setDataStrip, windowSize } = useAppContext();
 
     useEffect(() => {
          setDataStrip(data[0].strip);
@@ -174,9 +173,16 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                                 modules={[Navigation, FreeMode]}
                                 spaceBetween={0}
                                 slidesPerView={"auto"}
-                                navigation={true}  
+                                navigation={
+                                    data.typeCard[0].value == 0 ? 
+                                        windowSize >= 1025 ? false : true 
+                                    : true
+                                }  
                                 freeMode={false}   
-                                grabCursor={false}    
+                                grabCursor={
+                                    data.typeCard[0].value != 3 ? 
+                                        true :false 
+                                }    
                                 className={`${styleCard(data.typeCard[0].value)} swiper-cards`}       
                             >   
                                 {data.cards.map((item, p) => (

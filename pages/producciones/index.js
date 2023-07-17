@@ -16,7 +16,9 @@ import styles from "./producciones.module.scss";
 
 function Producciones(d){  
 
-    let data = Object.values(d);
+    let  {strip, ...data}  = d;
+    data =  Object.values(data);
+
     const content = useRef();   
     const pageHeading = useRef();
     const productionsNav = useRef();
@@ -28,9 +30,12 @@ function Producciones(d){
     ]
     
     //Traemos lo que necesitamos de AppContext
-
-    const { dataArticles, setDataArticles, currentArticleHashtag, currentArticleAuthor, searchInArticles, windowSize, advancedFilterStatus } = useAppContext();    
-
+    
+    const { dataArticles, setDataArticles, currentArticleHashtag, currentArticleAuthor, searchInArticles, windowSize, advancedFilterStatus, setDataStrip } = useAppContext();    
+    
+    useEffect(() => {
+        setDataStrip(strip);
+   }, [])
 
     //Mandamos la data a dataArticles dentro de AppContext
 
@@ -198,7 +203,8 @@ function Producciones(d){
 
 export async function getServerSideProps() {
     // Fetch data from external API
-    const res = await fetch(`https://flacso.pent.org.ar/api/produciones.json`)
+    //const res = await fetch(`https://flacso.pent.org.ar/api/produciones.json`)
+    const res = await fetch(`https://redaccion.pent.org.ar/data/productions`);
     const data = await res.json()
 
     // Pass data to the page via props
