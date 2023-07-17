@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+
 import { useAppContext } from '../../context/AppContext';
 import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
@@ -74,6 +75,7 @@ export default function Formacion({data}){
     /*
     return(
         <>
+
         <MainWrapper> 
             <PageHeading title={data.PageHeading} margin_bottom_type={0} />
 

@@ -5,6 +5,7 @@ import Announcement from '../Announcement/Announcement';
 import styles from "./NavBar.module.scss";
 
 export default function NavBar(){
+
     const { isLoading, changePage, currentRoute, handleClose, menuOverlay, menuBtnAnimation, menuState, changeMenuState, announcementStatus, setAnnouncementStatus, dataStrip } = useAppContext();
     
     useEffect(() =>{   
@@ -26,6 +27,7 @@ export default function NavBar(){
                     :
                         <h3 className={styles.brand}>
                             <Link href='/' ><span>FLACSO PENT</span></Link>
+
                         </h3>
                     }                
 

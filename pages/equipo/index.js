@@ -17,7 +17,7 @@ import styles from "./equipo.module.scss";
 
 
 export default function Equipo({data}){
-/*
+
     const { windowSize } = useAppContext();
 
     useEffect(() => {

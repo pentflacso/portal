@@ -1,6 +1,6 @@
 import { useAppContext } from '../../../context/AppContext';
-import { useState, useEffect } from 'react';
-import { useRouter } from "next/router";
+import { useState } from 'react';
+import Link from "next/link";
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./SectionSelector.module.scss";
@@ -41,7 +41,6 @@ export default function SectionSelector({data}){
 
 
     const [ titleSelected, setTitleSelected ] = useState('fabio-t');
-    const router = useRouter();
 
     const changeTitleStatus = (title) => {
         setTitleSelected(title);
@@ -78,8 +77,8 @@ export default function SectionSelector({data}){
                         <div key={item}>
                             { titleSelected === `${data.id}` &&
                             <> 
-                                <p dangerouslySetInnerHTML={{__html: data.description }} />
-                                <button type="button">Conocer más</button>                                         
+                                <p dangerouslySetInnerHTML={{__html: data.description }} />      
+                                <Link href={`${data.linked_path}`} className={styles.go_to_page}>Conocer más</Link>                                  
                             </>
                             }                                        
                         </div>
@@ -107,7 +106,7 @@ export default function SectionSelector({data}){
                             </div>                            
                             <h4>{data.title}</h4>
                             <p dangerouslySetInnerHTML={{__html: data.description }} />
-                            <button type="button">Conocer más</button> 
+                            <Link href={`${data.linked_path}`} className={styles.go_to_page}>Conocer más</Link> 
                         </div>                   
                     </article>            
                 </SwiperSlide>

@@ -60,6 +60,7 @@ export default function Asesorias({data}){
     
     /*
     return(
+
     <> 
         <MainWrapper> 
             <PageHeading title={data.PageHeading} margin_bottom_type={0} />
@@ -130,6 +131,7 @@ export default function Asesorias({data}){
 
             <Footer />
         </MainWrapper> 
+
     </> 
     )
 */

@@ -84,11 +84,13 @@ function Index(data){
 
         {windowSize >= 1025 && shareModal && <ShareBtns shareurl={`https://pent-portal-testing.vercel.app${router.asPath}`} setShareModal={setShareModal} />}
 
+
         <MainWrapper> 
             <div className={styles.pin_block}> 
                 <header className={styles.col_left}>  
 
                     <Link className={styles.back_arrow} href="/producciones"><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver producciones</strong></span></Link>
+
 
                     <h1>{data.title}</h1>
 
