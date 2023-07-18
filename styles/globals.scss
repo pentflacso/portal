@@ -26,6 +26,10 @@ html, body, #__next {
     }
 }
 
+body{
+  background-color: $white;
+}
+
 button{
     background-color: transparent;
     outline: inherit;
