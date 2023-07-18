@@ -77,7 +77,7 @@
             }
         }
 
-        video{
+        video, img{
             width: 100%;
             height: auto;
             margin-bottom: calc(24px + (56 - 24) * ((100vw - 1200px) / (3840 - 1200)));
@@ -95,6 +95,7 @@
                     width: calc(14px + (34 - 14) * ((100vw - 1200px) / (3840 - 1200)));                       
                     height: auto;
                     margin-right: calc(10px + (26 - 10) * ((100vw - 1200px) / (3840 - 1200)));
+                    margin-bottom: 0;
                     @media screen and (max-width: 1024px){
                         width: calc(9px + (21 - 9) * ((100vw - 300px) / (1024 - 300))); 
                         margin-right: calc(8px + (16 - 8) * ((100vw - 300px) / (1024 - 300))); 
