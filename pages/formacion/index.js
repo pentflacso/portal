@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import { useAppContext } from '../../context/AppContext';
 import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
-import MetaTags from '../../components/library/MetaTags/MetaTags';
 import PageBuilder from '../../components/PageBuilder/PageBuilder';
 import styles from "./formacion.module.scss";
 
@@ -126,12 +125,6 @@ export default function Formacion({data}){
     if(Object.keys(data).length > 0){  
         return(
             <>
-                <MetaTags
-                    pageTitle={'Formación — FLACSO | PENT'}
-                    shareTitle={'Formación — FLACSO | PENT'}
-                    keywords={'posgrado, diplomatura, diploma, diploma superior, cursos, usina de experiencias, formación, capacitación, educación en línea, educación, tecnologías, entornos virtuales multiplataforma, posgrado en educación y nuevas tecnologías, educación virtual, tecnología educativa, elearning, formación en línea, innovación educativa'}
-                    description={'Ofrecemos propuestas de formación para innovar en educación y tecnologías.'}
-                />
                 <PageBuilder data={ data } stylesx={styles} />
                 {windowSize >= 1025 &&
                     <div className="cursor_deslizar">

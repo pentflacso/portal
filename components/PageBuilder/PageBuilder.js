@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import Link from 'next/link';
+import MetaTags from '../../components/library/MetaTags/MetaTags';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import HomeHeading from '../../components/home/HomeHeading/HomeHeading';
@@ -93,6 +94,13 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
 
     return(
     <>
+            <MetaTags
+                pageTitle={data[0].pageTitle}
+                shareTitle={data[0].shareTitle}
+                keywords={data[0].keywords}
+                description={data[0].description}
+            />
+
             <MainWrapper>  
                 
                 {data ? data.map((data, i) => (

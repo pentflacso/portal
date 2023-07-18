@@ -1,5 +1,5 @@
 import { useAppContext } from '../../../context/AppContext';
-import { useState , useEffect} from 'react';
+import { useState, useEffect } from 'react';
 import Link from "next/link";
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -78,7 +78,7 @@ export default function SectionSelector({data}){
                             { titleSelected === `${data.id}` &&
                             <> 
                                 <p dangerouslySetInnerHTML={{__html: data.description }} />      
-                                <Link href={`${data.linked_path}`} className={styles.go_to_page}>Conocer más</Link>                                  
+                                <Link href={`${data.link}`} className={styles.go_to_page}>Conocer más</Link>                                  
                             </>
                             }                                        
                         </div>
