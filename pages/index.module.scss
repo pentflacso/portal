@@ -15,18 +15,21 @@
     .card_new{
         @include basic-card-1;        
         .info{
-            height: calc(186px + (526 - 186) * ((100vw - 1200px) / (3840 - 1200)));
+            height: calc(166px + (430 - 166) * ((100vw - 1200px) / (3840 - 1200)));
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             @media screen and (max-width: 1024px){
-                height: calc(164px + (360 - 164) * ((100vw - 300px) / (1024 - 300)));
+                height: calc(130px + (300 - 130) * ((100vw - 300px) / (1024 - 300)));
             }
             h5{
                 margin-bottom: 0;
             }
             p{
                 margin-bottom: calc(20px + (40 - 20) * ((100vw - 1200px) / (3840 - 1200)));
+                @media screen and (max-width: 1024px){
+                    margin-bottom: calc(11px + (30 - 11) * ((100vw - 300px) / (1024 - 300)));
+                }
             }
         }        
     }
