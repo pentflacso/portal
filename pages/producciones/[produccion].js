@@ -12,9 +12,17 @@ import ShareBtns from '../../components/library/ShareBtns/ShareBtns';
 import styles from './produccion.module.scss';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 
-function Index(data){
+function Index(d){
 
-    const { windowSize, setCurrentArticleHashtag } = useAppContext();    
+    const { windowSize, setCurrentArticleHashtag, setDataStrip } = useAppContext();
+    
+    let  {strip, ...data}  = d;
+    data =  Object.values(data);
+
+    useEffect(() => {
+        setDataStrip(strip);
+    }, [])
+
     const [ shareModal, setShareModal ] = useState(false);  
     const router = useRouter();
 

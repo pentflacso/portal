@@ -11,9 +11,17 @@ import Link from 'next/link';
 import styles from './title.module.scss';
 import MainWrapper from '../../../components/library/MainWrapper/MainWrapper';
 
-function Index(data){
+function Index(d){
 
-    const { windowSize } = useAppContext();
+    let  {strip, ...data}  = d;
+    data =  Object.values(data);
+
+    const { windowSize, setDataStrip } = useAppContext();  
+
+    useEffect(() => {
+        setDataStrip(strip);
+    }, [])
+    
     const [ shareModal, setShareModal ] = useState(false); 
     const router = useRouter(); 
 
