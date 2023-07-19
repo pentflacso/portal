@@ -1,9 +1,0 @@
-@import "../../../styles/themeStyles.module.scss";
-
-.title{
-    border-bottom: 1px solid rgba(3, 46, 89, 0.25);
-    color: $deep-blue;
-    @include font-level-4;
-    margin: 8% 0;
-    font-weight: regular;
-}

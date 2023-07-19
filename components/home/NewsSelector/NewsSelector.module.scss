@@ -2,7 +2,10 @@
 
 .wrapper{
     .marquee_btns{   
-        margin-bottom: calc(70px + (220 - 70) * ((100vw - 1200px) / (3840 - 1200)));
+        margin-bottom: calc(32px + (100 - 32) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(14px + (64 - 14) * ((100vw - 300px) / (1024 - 300)));
+        }
 
         .btn{
             position: relative;
@@ -16,15 +19,47 @@
             calc(24px + (84 - 24) * ((100vw - 1200px) / (3840 - 1200))) 
             0
             ;
-            border-bottom: solid $line-1 $gray-5;
+            border-bottom: $line-1 solid $gray-5;
+            @media screen and (max-width: 1024px){
+                padding:
+                calc(18px + (64 - 18) * ((100vw - 300px) / (1024 - 300)))
+                0
+                ;
+            }
             &:first-of-type{
-                border-top: solid $line-1 $gray-5;
+                border-top: $line-1 solid $gray-5;
+            }
+
+            .arrow{
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                right: calc(86px + (524 - 86) * ((100vw - 1200px) / (3840 - 1200)));
+                margin-top: auto;
+                margin-bottom: auto;
+                width: calc(36px + (96 - 36) * ((100vw - 1200px) / (3840 - 1200)));
+                height: calc(36px + (96 - 36) * ((100vw - 1200px) / (3840 - 1200))); 
+                background-color: rgb(255, 255, 255);
+                background-image: url(../../../public/assets/icons/arrow_next_icon.svg);
+                background-repeat: no-repeat;
+                background-position: center;
+                background-size: 55%;    
+                border-radius: 50%;
+                z-index: 10;
+                @media screen and (max-width: 1024px){
+                    width: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300)));
+                    height: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300))); 
+                    right: calc(10px + (22 - 10) * ((100vw - 300px) / (1024 - 300)));
+                }
             }
 
             span{
                 display: block;
                 @include container-width-1; 
                 max-width: 0 auto;
+                @media screen and (max-width: 1024px){
+                    padding-right: calc(40px + (24 - 40) * ((100vw - 300px) / (1024 - 300)));
+                }
             }
 
             .description_marquee{
@@ -34,6 +69,28 @@
                 top: 0;
                 bottom: 0;
                 background-color: $yellow-2;
+                span{
+                    display: inline;                    
+                }
+                h4, p{
+                    font-weight: 400;
+                }
+                @media screen and (max-width: 1024px){
+                    position: relative;
+                    display: block;
+                    background-color: transparent;
+                    @include container-width-1;   
+                    padding-right: calc(50px + (150 - 50) * ((100vw - 300px) / (1024 - 300)));
+                    h4, p{
+                        display: inline;
+                    }   
+                    p{
+                        color: $gray-2;
+                    }               
+                    span{
+                        display: none;                    
+                    }
+                }
             }
 
         }
@@ -43,8 +100,57 @@
         margin:
         0
         auto
-        calc(70px + (220 - 70) * ((100vw - 1200px) / (3840 - 1200)))
+        calc(100px + (320 - 100) * ((100vw - 1200px) / (3840 - 1200)))
         auto
         ;
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(60px + (160 - 60) * ((100vw - 300px) / (1024 - 300)));
+        }
+        a{
+            display: flex;
+            align-items: center;
+            width: fit-content;
+            @include font-level-2; 
+            font-weight: 400;
+            text-decoration: none;
+            color: $deep-blue;
+            .arrow{ 
+                display: inline-block;
+                position: relative;          
+                width: calc(36px + (96 - 36) * ((100vw - 1200px) / (3840 - 1200)));
+                height: calc(36px + (96 - 36) * ((100vw - 1200px) / (3840 - 1200)));
+                background-color: $white;                
+                border-radius: 50%;
+                border: $line-1 solid $gray-3;
+                margin-left: calc(8px + (20 - 8) * ((100vw - 1200px) / (3840 - 1200)));
+                @media screen and (max-width: 1024px){
+                    width: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300)));
+                    height: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300))); 
+                    margin-left: calc(8px + (20 - 8) * ((100vw - 300px) / (1024 - 300)));
+                    border: $line-1-mobile solid $gray-3;
+                }
+                img{
+                    width: 55%;
+                    height: auto;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    margin: auto;
+                }
+            }
+            @media screen and (min-width: 1025px){
+                &:hover{
+                    .arrow{
+                        background-color: $deep-blue;
+                        border: $line-1 solid $deep-blue;     
+                        img{
+                            filter: grayscale(100%) brightness(20);
+                        }          
+                    }                    
+                }
+            }
+        }
     }
 }

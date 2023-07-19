@@ -1,9 +1,12 @@
+import { useAppContext } from '../../../context/AppContext';
 import { useEffect, useState, Fragment  } from 'react';
 import Card from '../Card/Card';
 import styles from "./ArticlesList.module.scss";
 
 
-export default function ArticlesList({ data, section }){
+export default function ArticlesList({ data }){
+
+    const { windowSize } = useAppContext();
 
     //Data a utilizar
     const [dataToUse, setDataToUse] = useState(data);
@@ -48,34 +51,53 @@ export default function ArticlesList({ data, section }){
 
             <div className={styles.containerList}>
 
+            {windowSize >= 1025 ?
+            <>
                 {dataLimit.length !== 0 ?  
                 <>
                     <div className={styles.col_left}>
-                        {dataLimit.map((data, key) => {
+                        {dataLimit.map((data, i) => {
                             return (
-                                <Fragment key={key}>                    
-                                    { key % 2 === 0 && <Card { ...data}  /> }
+                                <Fragment key={i}>                    
+                                    { i % 2 === 0 && <Card { ...data} /> }
                                 </Fragment>                                        
                             );
                         })}
                     </div>
 
                     <div className={styles.col_right}>
-                        {dataLimit.map((data, key) => {
+                        {dataLimit.map((data, i) => {
                             return (
-                                <Fragment key={key}>                    
-                                    { key % 2 !== 0 && <Card {...data} /> }
+                                <Fragment key={i}>                    
+                                    { i % 2 !== 0 && <Card {...data} /> }
                                 </Fragment>                                        
                             );
                         })}
                     </div>
                 </>
-                : <p>No se encontraron resultados</p>
+                : <p className={styles.no_data}>No se encontraron resultados</p>
                 }
+            </>
+            :
+            <>
+                {dataLimit.length !== 0 ?  
+                    <div className={styles.content}>
+                        {dataLimit.map((data, i) => {
+                            return (
+                                <Fragment key={i}>                    
+                                    <Card { ...data}/>
+                                </Fragment>                                        
+                            );
+                        })}
+                    </div>
+                : <p className={styles.no_data}>No se encontraron resultados</p>
+                }
+            </>
+            }
 
             </div>
 
-            {availablePlusData && <button type="button" onClick={() => handleChangePagination()} className={styles.show_more}>Ver más {section}</button>} 
+            {availablePlusData && <button type="button" onClick={() => handleChangePagination()} className={styles.show_more}>Ver más producciones</button>} 
 
         </div>         
     );

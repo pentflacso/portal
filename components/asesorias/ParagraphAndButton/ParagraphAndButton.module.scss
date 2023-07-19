@@ -6,10 +6,19 @@
     grid-template-areas: 'paragraph btn';
     grid-template-columns: 80% 20%;   
     position: relative;
-    margin-bottom: calc(70px + (220 - 70) * ((100vw - 1200px) / (3840 - 1200)));
+    margin-bottom: calc(115px + (420 - 115) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        grid-template-areas: 'paragraph btn';
+        grid-template-columns: 70% 30%;  
+        margin-bottom: calc(35px + (85 - 35) * ((100vw - 300px) / (1024 - 300)));
+    }
     
     .paragraph{
-        grid-area: paragraph;        
+        grid-area: paragraph;
+        margin-top: calc(25px + (85 - 25) * ((100vw - 1200px) / (3840 - 1200)));      
+        @media screen and (max-width: 1024px){
+            margin-top: 0;
+        }  
 
         p{
             @include font-level-1; 
@@ -17,30 +26,34 @@
             line-height: 130%;
             color: $deep-blue;
             width: calc(620px + (2000 - 620) * ((100vw - 1200px) / (3840 - 1200))); 
-            a{
-                position: relative; 
-                z-index: 2;    
-                text-decoration: none;   
-                color: $deep-blue;  
-                &::before {              
-                    background-color: #ffd658;
-                    content: "";
-                    position: absolute;
-                    z-index: -1;
-                    height: calc(6px + (18 - 6) * ((100vw - 1200px) / (3840 - 1200)));                       
-                    width: 101%;
-                    left: -0.5%;
-                    right: 0;
-                    bottom: calc(-2px + (-8 - -2) * ((100vw - 1200px) / (3840 - 1200)));
+            span{
+                background-image: url(../../../public/assets/images/line_bottom_yellow.svg);
+                background-repeat: repeat-x;
+                background-size: 
+                calc(30px + (100 - 30) * ((100vw - 1200px) / (3840 - 1200)))
+                calc(10px + (20 - 10) * ((100vw - 1200px) / (3840 - 1200)));
+                background-position: bottom;
+                padding-bottom: calc(4px + (8 - 4) * ((100vw - 1200px) / (3840 - 1200)));
+                @media screen and (max-width: 1024px){
+                    background-size: 
+                    calc(16px + (60 - 16) * ((100vw - 300px) / (1024 - 300)))
+                    calc(10px + (20 - 10) * ((100vw - 300px) / (1024 - 300)));
+                    background-position: bottom;
+                    padding-bottom: calc(5px + (8 - 5) * ((100vw - 300px) / (1024 - 300)));
                 }
+            } 
+            @media screen and (max-width: 1024px){
+                @include font-level-2; 
+                width: 100%; 
+                margin-bottom: calc(25px + (85 - 25) * ((100vw - 300px) / (1024 - 300)));
             }
         }
     }   
     
     .btn{
         grid-area: btn;
-        width: 300px;
-        height: 300px;
+        width: calc(122px + (390 - 122) * ((100vw - 1200px) / (3840 - 1200)));
+        height: calc(122px + (390 - 122) * ((100vw - 1200px) / (3840 - 1200)));
         display: flex;
         justify-content: center;
         align-items: center;
@@ -49,26 +62,28 @@
         background-color: $green-2;
         border-radius: 50%;
         user-select: none;
+        transition: all .1s;
         img{
             width: 40%;
             height: auto;
         }
-    }
-    span{
-        position: relative; 
-        z-index: 2;         
-        &::before {              
-            background-color: #ffd658;
-            content: "";
-            position: absolute;
-            z-index: -1;
-            height: calc(6px + (18 - 6) * ((100vw - 1200px) / (3840 - 1200)));                       
-            width: 101%;
-            left: -0.5%;
-            right: 0;
-            bottom: calc(-2px + (-8 - -2) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            position: relative;
+            width: calc(55px + (185 - 55) * ((100vw - 300px) / (1024 - 300)));
+            height: calc(55px + (185 - 55) * ((100vw - 300px) / (1024 - 300)));
+            margin-left: auto;
         }
-    }
-    
+        @media screen and (min-width: 1025px){
+            &:hover{
+                background-color: $deep-blue;
+                img{
+                    filter: grayscale(100%) brightness(20);
+                }
+            }
+            &:active{
+                filter: brightness(90%);
+                transform: scale(0.9);
+            }
+        }
+    }   
 }
-

@@ -1,9 +1,13 @@
+import { useAppContext } from '../../../context/AppContext';
 import { useEffect, useState, Fragment  } from 'react';
 import Card from '../Card/Card';
 import styles from "./ArticlesNov.module.scss";
 
 
-export default function ArticlesNov({ data, category , section }){
+export default function ArticlesNov({ data, category }){
+
+    const { windowSize } = useAppContext();
+
 	//Cantidad de notas a pedir
 	const NOTES_TO_FETCH = 12;
 	//cantidad de notas a mostrar
@@ -48,7 +52,7 @@ export default function ArticlesNov({ data, category , section }){
                 try{
                     //console.log(`/dataNovedades/${category ? category + "/": ""}novedades-${NOTES_TO_FETCH + notesOffset}-${notesOffset}.json`);
 
-                    const res = await fetch(`/dataNovedades/${category ? category + "/": ""}novedades-${NOTES_TO_FETCH + notesOffset}-${notesOffset}.json`);
+                    const res = await fetch(`https://redaccion.pent.org.ar/data/news/${category ? category: "all"}/${NOTES_TO_FETCH + notesOffset}/${notesOffset}`);
                     //const res = await fetch(`/dataNovedades/novedades-${NOTES_TO_FETCH + notesOffset}-${notesOffset}.json`);
 
                     const newNotes = await res.json();
@@ -80,6 +84,8 @@ export default function ArticlesNov({ data, category , section }){
 
             <div className={styles.containerList}>
 
+            {windowSize >= 1025 ?
+            <>
                 {notesToShow.length !== 0 ?  
                 <>
                     <div className={styles.col_left}>
@@ -104,10 +110,27 @@ export default function ArticlesNov({ data, category , section }){
                 </>
                 : <p>No se encontraron resultados</p>
                 }
+            </>
+            :
+            <>
+                {notesToShow.length !== 0 ?
+                    <div className={styles.content}>
+                        {notesToShow.map((data, key) => {
+                            return (
+                                <Fragment key={key}>                    
+                                   <Card { ...data}/>
+                                </Fragment>                                        
+                            );
+                        })}
+                    </div>
+                : <p>No se encontraron resultados</p>
+                }
+            </>
+            }
 
             </div>
 
-            {showLoadMore && <button type="button" onClick={handleChangePagination} className={styles.show_more}>Ver más {section}</button>} 
+            {showLoadMore && <button type="button" onClick={handleChangePagination} className={styles.show_more}>Ver más novedades</button>} 
 
         </div>         
     );

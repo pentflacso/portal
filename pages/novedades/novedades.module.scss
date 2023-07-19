@@ -2,34 +2,64 @@
 
 .marquee{
     margin-bottom: calc(42px + (145 - 42) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(30px + (100 - 30) * ((100vw - 300px) / (1024 - 300)));
+    }
 }
 
 
-.wrapper{
+.filters_cont{
     display: flex;
-    align-items: center;
     @include container-width-1;
+    @media screen and (max-width: 1024px){
+        width: 100%;
+    }
 
     .menu_btn{
         @include btn-ver-mas;
     }
     .category{
-        width: 85%; 
-        margin: 40px 5% 40px 0;  
+        width: 100%;  
+        padding: 
+        calc(38px + (130 - 38) * ((100vw - 1200px) / (3840 - 1200)))
+        0
+        calc(10px + (20 - 10) * ((100vw - 1200px) / (3840 - 1200))) 
+        0
+        ;
+        margin-bottom: calc(65px + (214 - 65) * ((100vw - 1200px) / (3840 - 1200)));  
+        @media screen and (max-width: 1024px){
+            padding: 
+            calc(20px + (50 - 20) * ((100vw - 300px) / (1024 - 300)))
+            0
+            calc(8px + (28 - 8) * ((100vw - 300px) / (1024 - 300)))
+            0
+            ;
+            margin-bottom: calc(25px + (100 - 25) * ((100vw - 300px) / (1024 - 300)));
+        }
         .btn_filter{
             @include btn-ver-mas;
             border-color: $gray-2;
-            margin: 6px 0;
+            text-transform: capitalize;
+            margin-right: calc(6px + (20 - 6) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1024px){
+                margin-right: calc(5px + (10 - 5) * ((100vw - 300px) / (1024 - 300)));
+            }
+            &.active{
+                background-color: $green-2;
+                border-color: $green-2;
+            }
             @media screen and (min-width: 1024px){
+                &.active{
+                    &:hover{
+                        background-color: $green-2;
+                        border-color: $green-2;
+                    } 
+                }
                 &:hover{
                     background-color: $gray-6;
                     border-color: $gray-2;
                     color: $deep-blue;
-                }
-                &.active{
-                    background-color: $green-2;
-                    border-color: $green-2;
-                }
+                }                
             }            
         }
     }

@@ -1,4 +1,7 @@
 .brand{
     width: calc(210px + (680 - 210) * ((100vw - 1200px) / (3840 - 1200)));
     height: auto;
+    @media screen and (max-width: 1024px){
+        width: calc(150px + (480 - 150) * ((100vw - 300px) / (1024 - 300)));
+    }
 }

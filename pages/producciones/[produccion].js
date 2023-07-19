@@ -1,82 +1,146 @@
+import { useAppContext } from '../../context/AppContext';
+import { useEffect, useState } from 'react';
+import { useRouter } from "next/router";
+import { Fragment } from 'react';
+import MetaTags from '../../components/library/MetaTags/MetaTags';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
-import styles from './producciones.module.scss';
+import Footer from '../../components/library/Footer/Footer'
 import Link from 'next/link';
-
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import ShareBtns from '../../components/library/ShareBtns/ShareBtns';
+import styles from './produccion.module.scss';
+import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 
 function Index(data){
+
+    const { windowSize, setCurrentArticleHashtag } = useAppContext();    
+    const [ shareModal, setShareModal ] = useState(false);  
+    const router = useRouter();
+
     const exploringBtnsData = [
-        {title: 'Formación', path: 'formacion'},
-        {title: 'Producciones', path: 'producciones'},
-        {title: 'Asesorías', path: 'asesorias'}
+        {title: 'Propuestas de formación', path: 'formacion'},        
+        {title: 'Asesorías y soluciones a medida', path: 'asesorias'},
+        {title: 'Investigación y divulgación', path: 'investigacion'}
     ]
+
+    
+    useEffect(() => {   
+
+        if(windowSize >= 1025 ){    
+
+            const heightPinOff = document.querySelector(`.${styles.pin_block}`).offsetHeight;
+
+            ScrollTrigger.create({
+                trigger: `#__next`,
+                start: "top top", 
+                end: () => `+=${heightPinOff} center`,            
+                pin: `.${styles.col_left}`,
+                pinSpacing: false,
+                scrub: true,
+                //markers: true
+            });       
+ 
+            return () => {
+                ScrollTrigger.getAll().forEach(t => t.kill());  
+            };         
+        }      
+         
+    }, [windowSize]); 
+  
+
+    const mobileShare = () => {
+        if (navigator.share) {
+          navigator
+            .share({
+              url: `https://pent-portal-testing.vercel.app${router.asPath}`,
+            })
+            .then(() => {
+              console.log("Successfully shared");
+            })
+            .catch((error) => {
+              console.error("Something went wrong", error);
+            });
+        }
+    };
+
+    const filterByTag = (value) => {
+        router.push('/producciones');
+
+        setTimeout(function(){
+            setCurrentArticleHashtag(value);  
+        }, 200);                   
+    };
+
 
     return(
     <>
-        <div className={styles.twoColumns}>  
-            <div className={styles.col_left}>
-                <div className={styles.arrowBack}>
-                    <Link href="/producciones">Ver producciones</Link>
-                </div>
-                <h1>{data.title}</h1>
-
-                { data.authors ?
-                    <div className={styles.authors}>
-                        {data.authors.map((a, key) => (
-                            <Link key={key} href={a.url} target="_blank">
-                                <span className={styles.img}><img src={a.img} alt={a.name} /></span>
-                                <span className={styles.imgName}>{a.name}</span>
-                            </Link>
-                         ) ) } 
-                    </div> : ""
-                }
-
-                { data.hashtags ?
-                    <div className={styles.hashtags}>
-                        <ul>{ data.hashtags.map((hashtags , key) => <li key={key}>{hashtags}</li>) }</ul>                            
-                    </div> : ""
-                }
-
-                <Link className={`${styles.btn} ${styles.btn_file}`} href="#" target="_blank">Descargar</Link>
-
-                { data.share ?
-                <Link className={styles.btn} href={data.share} target="_blank">Compartir</Link> :
-                ""}
-
-            </div>
-            <div className={styles.col_right}>
-            { data.img ? <img src={ data.img } alt={ data.title } className={styles.imgTop} /> : ""}
+        <MetaTags
+            pageTitle={'Producciones — FLACSO | PENT'}
+            shareTitle={'FLACSO | PENT'}
+            keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
+            description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
+        />        
 
 
+        
+        <MainWrapper>
 
-                { data.description ?           
-                <div dangerouslySetInnerHTML={{__html: data.description }} /> :
-                ""}
+            {shareModal && <ShareBtns shareurl={`https://pent-portal-testing.vercel.app${router.asPath}`} setShareModal={setShareModal} />}
 
-                { data.quote || data.license ?
-                    <div className={styles.card}> 
-                    { data.quote ? <div className={styles.quote} dangerouslySetInnerHTML={{__html: "<h4>Cómo citar</h4>"+ data.quote }}/> : "" } 
-                    
-                    { data.license ? <div className={styles.license} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ data.license }}/> : "" }
-                    
+            
+                <div className={styles.pin_block}> 
+                    <header className={styles.col_left}>                
+                        <Link className={styles.back_arrow} href="/producciones" ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver producciones</strong></span></Link>
+                        <h1>{data.title}</h1>
+                        { data.authors ?
+                            <div className={styles.authors}>
+                                <p>{data.lead} | <span>Por —</span>&nbsp;</p>
+                                {data.authors.map((a, i) => (
+                                    <Fragment key={i}>
+                                    <Link  href={a.link}>{a.title}<span>{i<data.authors.length -1 ? "," : ""}</span></Link>
+                                    &nbsp;
+                                    </Fragment>
+                                ) ) } 
+                            </div> : ""
+                        }
+                        
+                        <div className={styles.btns}>
+                            <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
+
+                            { data.download || data.link ? <Link className={`${styles.btn} ${styles.download}`} href={ data.download ? data.download : data.link } target="_blank"><span><img src="/assets/icons/download_icon.svg" alt="icono de descarga"/>{ data.download ? "Descargar" : "Acceder" }</span></Link> : "" }
+
+                        </div>                       
+
+                    </header>
+                    <article className={styles.col_right}>
+                        { data.img ? <img src={ data.img } alt={ data.title } className={styles.imgTop} /> : ""}
+                        { data.body && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.body }} /> }
+
+
+                    </article>
+                </div> 
+                <section>
+                    <div className={styles.marquee}>
+                        <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
                     </div>
-                : "" }
+                    <ExploringBtns data={exploringBtnsData} />  
+                </section>
 
-            </div>
-        </div>
-        <div className={styles.marquee}>
-            <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
-        </div>
-        <ExploringBtns data={exploringBtnsData} />     
+                <Footer />
+            
+        </MainWrapper>
+        
+
     </>
     );
 }
 
 export async function getServerSideProps({query}) {
     // Fetch data from external API
-    const res = await fetch(`https://flacso.pent.org.ar/api/producciones/${query.produccion}.json`)
+    /* const res = await fetch(`https://flacso.pent.org.ar/api/producciones/${query.produccion}.json`) */
+    const res = await fetch(`https://redaccion.pent.org.ar/data/production/203`)
     const data = await res.json()
-
     // Pass data to the page via props
     return { props:  {...data }   }
 }

@@ -3,39 +3,41 @@
 .highlight_paragraph{
     @include container-width-1;
     margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(35px + (120 - 35) * ((100vw - 300px) / (1024 - 300)));
+    }
 }
 
 .marquee_1{
     margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(35px + (115 - 35) * ((100vw - 300px) / (1024 - 300)));
+    }
 }
 
+.keys_box{
+    margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(65px + (165 - 65) * ((100vw - 300px) / (1024 - 300)));
+    }
+}
 
+.themes_accordion{
+    margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(65px + (185 - 65) * ((100vw - 300px) / (1024 - 300)));
+    }
+}
 
-/* .carrousel_projects{
-    margin-bottom: calc(85px + (350 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+ .carrousel_projects{
+    margin-bottom: calc(60px + (160 - 60) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(35px + (115 - 35) * ((100vw - 300px) / (1024 - 300)));
+    }
     .card{
-        background-color: $gray-6;
-        width: calc(250px + (1500 - 250) * ((100vw - 1200px) / (3840 - 1200)));
-        padding: calc(15px + (60 - 15) * ((100vw - 1200px) / (3840 - 1200)));
-        margin-left: calc(20px + (80 - 20) * ((100vw - 1200px) / (3840 - 1200)));
-        color: $deep-blue;  
-        img{
-            width: 100%;
-            height: auto;
-            margin-bottom: calc(20px + (40 - 20) * ((100vw - 1200px) / (3840 - 1200)));
-        }
-        h5{
-            @include font-level-2; 
-            font-weight: 400;
-            margin-bottom: calc(20px + (40 - 20) * ((100vw - 1200px) / (3840 - 1200)));
-        }
-        p{
-            @include font-level-4; 
-            font-weight: 400;
-            margin-bottom: calc(20px + (40 - 20) * ((100vw - 1200px) / (3840 - 1200)));
-        }
-        a{
-            @include btn-ver-mas;
+        @include basic-card-2; 
+        @media screen and (max-width: 1024px){
+            width: calc(255px + (880 - 255) * ((100vw - 300px) / (1024 - 300)));
         }
     }
-} */
+} 

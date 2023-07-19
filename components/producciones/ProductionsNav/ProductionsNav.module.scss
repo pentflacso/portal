@@ -2,31 +2,104 @@
 
 .wrapper{
     display: flex;
-    align-items: center;
+    align-items: baseline;
+    justify-content: space-between;
     @include container-width-1;
+    @media screen and (max-width: 1024px){
+        width: 100%;
+    }
 
     .menu_btn{
         @include btn-ver-mas;
+        display: flex;
+        position: relative;
+        .filter_icon{
+            display: flex;
+            align-items: center;
+            width: calc(18px + (46 - 18) * ((100vw - 1200px) / (3840 - 1200)));
+            height: auto;
+            margin-left: calc(10px + (28 - 10) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1024px){
+                width: calc(13px + (28 - 13) * ((100vw - 300px) / (1024 - 300)));
+                margin: 0 auto;
+            }
+        }
+        @media screen and (max-width: 1024px){
+            padding: 0;
+            display: inline-block;
+            margin-right: calc(12px + (22 - 12) * ((100vw - 300px) / (1024 - 300)));
+            width: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300)));
+            height: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300))); 
+            span{
+                display: none;
+            }
+        }
+        @media screen and (min-width: 1025px){
+            &:hover{
+                .filter_icon{
+                    filter: grayscale(100%) brightness(20);                           
+                }      
+                .counter{
+                    color: $deep-blue;
+                }              
+            }
+            &:active{
+                filter: brightness(90%);
+                transform: scale(0.95);
+            }
+        }
+        .counter{
+            position: absolute;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: $yellow-1;
+            color: $deep-blue;
+            font-weight: 500;
+            width: calc(24px + (64 - 24) * ((100vw - 1200px) / (3840 - 1200)));
+            height: calc(24px + (64 - 24) * ((100vw - 1200px) / (3840 - 1200)));
+            top: calc(-10px + (-24 - -10) * ((100vw - 1200px) / (3840 - 1200)));
+            right:calc(-8px + (-22 - -8) * ((100vw - 1200px) / (3840 - 1200)));
+            border-radius: 50%;
+            @media screen and (max-width: 1024px){
+                width: calc(16px + (36 - 16) * ((100vw - 300px) / (1024 - 300)));
+                height: calc(16px + (36 - 16) * ((100vw - 300px) / (1024 - 300)));
+                top: calc(-6px + (-14 - -6) * ((100vw - 300px) / (1024 - 300)));
+                right:calc(-6px + (-14 - -6) * ((100vw - 300px) / (1024 - 300)));
+            }
+        }
     }
 
     .hashtags{
-        width: 85%; 
-        margin: 40px 5% 40px 0;  
+        width: calc(880px + (2400 - 880) * ((100vw - 1200px) / (3840 - 1200))); 
+        margin: 0;  
+        @media screen and (max-width: 1024px){
+            width: calc(250px + (920 - 250) * ((100vw - 300px) / (1024 - 300))); 
+        }
              
         .btn_filter{
             @include btn-ver-mas;
-            border-color: $gray-2;
-            margin: 6px 0;
+            background-color: $white;
+            color: $gray-1;
+            margin-right: calc(6px + (20 - 6) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1024px){
+                margin-right: calc(5px + (10 - 5) * ((100vw - 300px) / (1024 - 300)));
+            }
+            &.active{
+                background-color: $green-2;
+                border-color: $green-2;
+                color: $deep-blue;
+                &:hover{
+                    background-color: $green-2;
+                    border-color: $green-2;
+                }
+            }
             @media screen and (min-width: 1024px){
                 &:hover{
                     background-color: $gray-6;
                     border-color: $gray-2;
                     color: $deep-blue;
-                }
-                &.active{
-                    background-color: $green-2;
-                    border-color: $green-2;
-                }
+                }                
             }            
         }
     }

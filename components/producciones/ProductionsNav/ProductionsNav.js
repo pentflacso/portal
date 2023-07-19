@@ -9,14 +9,22 @@ import styles from "./ProductionsNav.module.scss";
 
 export default function ProductionsNav(){
 
-    const { dataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList } = useAppContext();
+    const { dataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, articlesFiltersCounter, advancedFilterStatus, setAdvancedFilterStatus } = useAppContext();
     
-    const [advancedFilterStatus, setAdvancedFilterStatus] = useState(false);
+    const [advancedFilterOutAnimation, setAdvancedFilterOutAnimation] = useState(false);
 
 
     //Muestra u oculta los filtros avanzados 
     function changeAdvancedFilterStatus(value) {
-        advancedFilterStatus !== value && setAdvancedFilterStatus(value);
+        if(value === true){
+            setAdvancedFilterStatus(true);
+            setAdvancedFilterOutAnimation(false);
+        } else{
+            setAdvancedFilterOutAnimation(true);
+            setTimeout(() => {
+                setAdvancedFilterStatus(false);
+            }, 600); 
+        }       
     }
 
     
@@ -77,41 +85,38 @@ export default function ProductionsNav(){
         }        
     }, [dataArticles, hashtagsArticlesList, authorsArticlesList]); 
 
+
     return(
         <>
-
             {
-                advancedFilterStatus === true && reactDom.createPortal(<ProductionsAdvancedFilters changeAdvancedFilterStatus={changeAdvancedFilterStatus} stateCurrentHashtag={stateCurrentHashtag} />, document.getElementById("modal-root"))
+                advancedFilterStatus === true && reactDom.createPortal(<ProductionsAdvancedFilters changeAdvancedFilterStatus={changeAdvancedFilterStatus} stateCurrentHashtag={stateCurrentHashtag} advancedFilterOutAnimation={advancedFilterOutAnimation} />, document.getElementById("modal-root"))
             }
+   
+            <div className={`${styles.wrapper} filters`}>     
+                <Swiper
+                modules={[Navigation, FreeMode]}
+                spaceBetween={0}
+                slidesPerView={"auto"}
+                navigation={true}  
+                freeMode={false}
+                grabCursor={true}
+                className={`${styles.hashtags} swiper-btns`}
+                >
+                    <SwiperSlide>  
+                        <button type="button" data-id="triggerScrollTo" onClick={ () => stateCurrentHashtag('all') } className={currentArticleHashtag === 'all'  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>Ver todo</button> 
+                    </SwiperSlide>  
 
-            <div className={styles.wrapper}>
-
-                <div className={`${styles.hashtags} swiper-btns`}>
-
-                    <Swiper
-                    modules={[Navigation, FreeMode]}
-                    spaceBetween={10}
-                    slidesPerView={"auto"}
-                    navigation   
-                    freeMode={true}>
-
-                        <SwiperSlide>  
-                        <button onClick={ () => stateCurrentHashtag('all') } className={currentArticleHashtag === 'all'  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>Ver todo</button> 
-                        </SwiperSlide>  
-
-                        {hashtagsArticlesList && hashtagsArticlesList.map((hashtag) => {
-                            return (  
+                    {hashtagsArticlesList && hashtagsArticlesList.map((hashtag) => {
+                        return (  
                             <SwiperSlide key={hashtag.name}>
-                                <button onClick={ () => stateCurrentHashtag(hashtag.name) } className={currentArticleHashtag === hashtag.name  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>{hashtag.name}</button>  
+                                <button type="button" data-id="triggerScrollTo" onClick={ () => stateCurrentHashtag(hashtag.name) } className={currentArticleHashtag === hashtag.name  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>{hashtag.name}</button>  
                             </SwiperSlide>
-                            );
-                        })}
+                        );
+                    })}
                         
-                    </Swiper>
+                </Swiper>
 
-                </div>
-
-                <button type="button" className={styles.menu_btn} onClick={ () => changeAdvancedFilterStatus(true) }>Filtros</button>
+                <button type="button" className={styles.menu_btn} onClick={ () => changeAdvancedFilterStatus(true) }><span>Filtros</span><img src="/assets/icons/filter_icon.svg" alt="icono de filtro" className={styles.filter_icon}/>{articlesFiltersCounter > 0 && <span className={styles.counter}>{articlesFiltersCounter}</span>}</button>
             
             </div>                     
         </>       

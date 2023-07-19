@@ -6,6 +6,7 @@ $green-2: #7BC5B6;
 $green-3: #D4ECE7;
 $yellow-1: #FFD658;
 $yellow-2: #FFDB6B; 
+$yellow-3: #ffe28a;
 $gray-1: #8197AC;
 $gray-2: #A7B6C5;
 $gray-3: #B4C1CE;
@@ -18,51 +19,63 @@ $white: #FFFFFF;
 // Typography Levels
 
 @mixin font-level-1 {
-    font-size: calc(28px + (90 - 28) * ((100vw - 1200px) / (3840 - 1200)));
-    /* @media screen and (max-width: 1024px){
-        font-size: calc(17px + (38 - 17) * ((100vw - 300px) / (1024 - 300)));
-    } */
+    font-size: calc(29px + (92 - 29) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        font-size: calc(23.5px + (85.5 - 23.5) * ((100vw - 300px) / (1024 - 300)));
+    }
 }
 
 @mixin font-level-2 {
     font-size: calc(27px + (70 - 27) * ((100vw - 1200px) / (3840 - 1200)));
-    /* @media screen and (max-width: 1024px){
-        font-size: calc(17px + (38 - 17) * ((100vw - 300px) / (1024 - 300)));
-    } */
+    @media screen and (max-width: 1024px){
+        font-size: calc(17px + (60 - 17) * ((100vw - 300px) / (1024 - 300)));
+    }
 }
 
 @mixin font-level-3 {
-    font-size: calc(18px + (58 - 18) * ((100vw - 1200px) / (3840 - 1200)));
-    /* @media screen and (max-width: 1024px){
-        font-size: calc(17px + (38 - 17) * ((100vw - 300px) / (1024 - 300)));
-    } */
+    font-size: calc(18px + (48 - 18) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        font-size: calc(14px + (48 - 14) * ((100vw - 300px) / (1024 - 300)));
+    }
 }
 
 @mixin font-level-4 {
     font-size: calc(14.5px + (36 - 14.5) * ((100vw - 1200px) / (3840 - 1200)));
-    /* @media screen and (max-width: 1024px){
-        font-size: calc(16px + (36 - 16) * ((100vw - 1200px) / (3840 - 1200)));
-    } */
+    @media screen and (max-width: 1024px){
+        font-size: calc(12px + (28 - 12) * ((100vw - 300px) / (1024 - 300)));
+    }
 }
 
 @mixin font-level-5 {
-    font-size: calc(28px + (68 - 28) * ((100vw - 1200px) / (3840 - 1200)));
-    /* @media screen and (max-width: 1024px){
-        font-size: calc(17px + (38 - 17) * ((100vw - 300px) / (1024 - 300)));
-    } */
+    font-size: calc(12px + (30 - 12) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        font-size: calc(10px + (22 - 10) * ((100vw - 300px) / (1024 - 300)));
+    }
+}
+
+@mixin font-level-6 {
+    font-size: calc(10px + (20 - 10) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        font-size: calc(9px + (16 - 9) * ((100vw - 300px) / (1024 - 300)));
+    }
 }
 
 
 // Lines
 
 $line-1: calc(1.5px + (3 - 1.5) * ((100vw - 1200px) / (3840 - 1200)));
+$line-1-mobile: calc(1.5px + (2 - 1.5) * ((100vw - 300px) / (1024 - 300)));
+$line-2: calc(3px + (6 - 3) * ((100vw - 1200px) / (3840 - 1200)));
 
 
 // Containers Width
 
 @mixin container-width-1 {
-    width: calc(1018px + (3000 - 1018) * ((100vw - 1200px) / (3840 - 1200)));
+    width: calc(1018px + (2800 - 1018) * ((100vw - 1200px) / (3840 - 1200)));
     margin: 0 auto;
+    @media screen and (max-width: 1024px){
+        width: calc(270px + (980 - 270) * ((100vw - 300px) / (1024 - 300)));
+    }
 }
 
 
@@ -72,26 +85,28 @@ $line-1: calc(1.5px + (3 - 1.5) * ((100vw - 1200px) / (3840 - 1200)));
     display: inline-block;
     @include font-level-4;
     font-weight: 400;
-    line-height: 100%;
     text-decoration: none;    
-    color: $deep-blue;    
-    border: $line-1 solid $deep-blue;
+    color: $deep-blue;  
+    //line-height: 100%;  
+    border: $line-1 solid $gray-3;
     border-radius: 50px;
     padding:
-    calc(7px + (22 - 7) * ((100vw - 1200px) / (3840 - 1200)))
+    calc(9px + (26 - 9) * ((100vw - 1200px) / (3840 - 1200)))
     calc(14px + (40 - 14) * ((100vw - 1200px) / (3840 - 1200)))
     ;
     transition: all .3s; 
     cursor: pointer;
     @media screen and (max-width: 1024px){
-        padding:
-        calc(6px + (18 - 6) * ((100vw - 300px) / (1024 - 300)))
-        calc(9px + (24 - 9) * ((100vw - 300px) / (1024 - 300)))
-        ;
+        border: $line-1-mobile solid $gray-3;
+        padding: 
+        calc(6px + (14 - 6) * ((100vw - 300px) / (1200 - 300)))
+        calc(12px + (36 - 12) * ((100vw - 300px) / (1200 - 300)))
+        ; 
     } 
     @media screen and (min-width: 1024px){
         &:hover{
             background-color: $deep-blue;
+            border-color: $deep-blue;
             color: $white;
         }
     }
@@ -104,11 +119,16 @@ $line-1: calc(1.5px + (3 - 1.5) * ((100vw - 1200px) / (3840 - 1200)));
     display: flex;
     flex-wrap: wrap;
     background-color: $gray-6;
-    //width: calc(450px + (1150 - 450) * ((100vw - 1200px) / (3840 - 1200)));
+    width: calc(450px + (1150 - 450) * ((100vw - 1200px) / (3840 - 1200)));
     padding: calc(15px + (60 - 15) * ((100vw - 1200px) / (3840 - 1200)));
-    //margin-left: calc(32px + (82 - 32) * ((100vw - 1200px) / (3840 - 1200)));
+    margin-left: calc(32px + (82 - 32) * ((100vw - 1200px) / (3840 - 1200)));
     color: $deep-blue;  
-    text-decoration: none;
+    text-decoration: none;    
+    @media screen and (max-width: 1024px){
+        width: calc(255px + (880 - 255) * ((100vw - 300px) / (1024 - 300)));
+        padding: calc(12px + (24 - 12) * ((100vw - 300px) / (1024 - 300)));
+        margin-left: 0;
+    } 
     img{
         width: 100%;
         height: auto;
@@ -118,10 +138,64 @@ $line-1: calc(1.5px + (3 - 1.5) * ((100vw - 1200px) / (3840 - 1200)));
         font-weight: 400;
         line-height: 130%;
         margin-bottom: calc(50px + (150 - 50) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(25px + (75 - 25) * ((100vw - 300px) / (1024 - 300)));
+        }
     }
     p{
         @include font-level-4; 
         font-weight: 400;
-        line-height: 132%;
+        line-height: 140%;
+    }
+    a{
+        @include btn-ver-mas;
+    }
+}
+
+@mixin basic-card-2 {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: $gray-6;
+    width: calc(500px + (1295 - 500) * ((100vw - 1200px) / (3840 - 1200)));
+    padding: calc(25px + (80 - 25) * ((100vw - 1200px) / (3840 - 1200)));
+    margin-left: calc(32px + (82 - 32) * ((100vw - 1200px) / (3840 - 1200)));
+    color: $deep-blue;  
+    text-decoration: none;    
+    @media screen and (max-width: 1024px){
+        width: 100%;
+        padding: calc(12px + (34 - 12) * ((100vw - 300px) / (1024 - 300)));
+        margin-left: 0;
+    }
+    span{
+        @include font-level-4; 
+        font-weight: 400;
+        line-height: 110%;
+        border-bottom: $line-2 solid $yellow-1;
+        margin-bottom: calc(32px + (100 - 32) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(25px + (75 - 25) * ((100vw - 300px) / (1024 - 300)));
+        }
+    }
+    h5{
+        @include font-level-2; 
+        font-weight: 400;
+        line-height: 130%;
+        width: 100%;
+        margin-bottom: calc(32px + (100 - 32) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(15px + (55 - 15) * ((100vw - 300px) / (1024 - 300)));
+        }
+    }
+    p{
+        @include font-level-4; 
+        font-weight: 400;
+        line-height: 140%;
+        margin-bottom: calc(40px + (130 - 40) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(25px + (75 - 25) * ((100vw - 300px) / (1024 - 300)));
+        }
+    }
+    a{
+        @include btn-ver-mas;
     }
 }

@@ -1,0 +1,100 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.announcement{
+    position: fixed;
+    z-index: 100;
+    width: calc(1165px + (3300 - 1165) * ((100vw - 1200px) / (3840 - 1200)));
+    margin: 0 auto;
+    left: 0;
+    right: 0;
+    bottom: -100px;
+    background-color: $yellow-2;
+    padding: calc(12px + (40 - 12) * ((100vw - 1200px) / (3840 - 1200))) 0;
+    border-radius: calc(5px + (15 - 5) * ((100vw - 1200px) / (3840 - 1200)));
+    animation-name: showIn;
+    animation-delay: 0.3s;
+    animation-duration: 0.3s;
+    animation-timing-function: cubic-bezier(0.5,-2,2,2);
+    animation-fill-mode: forwards;
+    @media screen and (max-width: 1024px){
+        width: calc(290px + (1005 - 290) * ((100vw - 300px) / (1024 - 300)));
+        padding: 
+        calc(12px + (40 - 12) * ((100vw - 300px) / (1024 - 300))) 
+        calc(40px + (105 - 40) * ((100vw - 300px) / (1024 - 300)))
+        calc(12px + (40 - 12) * ((100vw - 300px) / (1024 - 300))) 
+        calc(12px + (40 - 12) * ((100vw - 300px) / (1024 - 300)))
+        ;
+        border-radius: calc(4px + (8 - 4) * ((100vw - 300px) / (1024 - 300)));
+    }
+
+    .close_btn{
+        position: absolute;
+        top: calc(12px + (40 - 12) * ((100vw - 1200px) / (3840 - 1200)));
+        right: calc(8px + (28 - 8) * ((100vw - 1200px) / (3840 - 1200)));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: calc(20px + (40 - 20) * ((100vw - 1200px) / (3840 - 1200)));
+        height: calc(20px + (40 - 20) * ((100vw - 1200px) / (3840 - 1200)));            
+        @media screen and (max-width: 1024px){
+            width: calc(28px + (56 - 28) * ((100vw - 300px) / (1024 - 300)));
+            height: calc(28px + (56 - 28) * ((100vw - 300px) / (1024 - 300)));
+        }
+        span{                    
+            position: absolute;
+            width: calc(16px + (36 - 16) * ((100vw - 1200px) / (3840 - 1200)));
+            height: calc(2.2px + (6 - 2.2) * ((100vw - 1200px) / (3840 - 1200)));
+            background-color: $deep-blue;
+            @media screen and (max-width: 1024px){
+                width: calc(15px + (32 - 15) * ((100vw - 300px) / (1024 - 300)));
+                height: calc(1.5px + (2.5 - 1.5) * ((100vw - 300px) / (1024 - 300)));
+            }
+            &:nth-of-type(1){
+                transform: rotate(-45deg);
+            }
+            &:nth-of-type(2){
+                transform: rotate(45deg);
+            }
+        }
+    }
+
+    .info{
+        @include container-width-1;
+        text-align: center;
+        @media screen and (max-width: 1024px){
+            width: auto;    
+            text-align: left;        
+        }
+        p, a{
+            @include font-level-4;
+            color: $deep-blue;
+            line-height: 134%;
+        }
+    }
+
+    &.animation_out{
+        bottom: calc(10px + (24 - 10) * ((100vw - 1200px) / (3840 - 1200)));
+        animation-name: showOut;
+        animation-duration: 0.3s;
+        animation-timing-function: cubic-bezier(0.5,-2,2,2);
+        animation-fill-mode: forwards;
+    }
+}
+
+@keyframes showIn {
+    0% {
+        bottom: -100px;
+    }
+    100% {
+        bottom: calc(10px + (24 - 10) * ((100vw - 1200px) / (3840 - 1200)));
+    }
+}
+
+@keyframes showOut {
+    0% {
+        bottom: calc(10px + (24 - 10) * ((100vw - 1200px) / (3840 - 1200)));        
+    }
+    100% {
+        bottom: -100px;
+    }
+}

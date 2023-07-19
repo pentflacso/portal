@@ -8,11 +8,15 @@
         font-weight: 400;
         line-height: 130%;
         color: $deep-blue;
-        width: calc(520px + (1700 - 520) * ((100vw - 1200px) / (3840 - 1200))); 
-        span{
+        @media screen and (max-width: 1024px){
+            br{
+                display: none;
+            }
+        } 
+        /* span{
             position: relative; 
             z-index: 2;         
-            &::before {              
+            &::before{              
                 background-color: #ffd658;
                 content: "";
                 position: absolute;
@@ -23,14 +27,43 @@
                 right: 0;
                 bottom: calc(-2px + (-8 - -2) * ((100vw - 1200px) / (3840 - 1200)));
             }
+        } */
+        span{
+            background-image: url(../../../public/assets/images/line_bottom_yellow.svg);
+            background-repeat: repeat-x;
+            background-size: 
+            calc(30px + (100 - 30) * ((100vw - 1200px) / (3840 - 1200)))
+            calc(10px + (20 - 10) * ((100vw - 1200px) / (3840 - 1200)));
+            background-position: bottom;
+            padding-bottom: calc(4px + (8 - 4) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1024px){
+                background-size: 
+                calc(21px + (80 - 21) * ((100vw - 300px) / (1024 - 300)))
+                calc(10px + (20 - 10) * ((100vw - 300px) / (1024 - 300)));
+                background-position: bottom;
+                padding-bottom: calc(4px + (8 - 4) * ((100vw - 300px) / (1024 - 300)));
+            }
         }
     }    
 
     &.margin_bottom_0{
         margin-bottom: calc(70px + (220 - 70) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(40px + (140 - 40) * ((100vw - 300px) / (1024 - 300)));
+        }
     }
 
     &.margin_bottom_1{
-        margin-bottom: calc(28px + (68 - 28) * ((100vw - 1200px) / (3840 - 1200)));
+        margin-bottom: calc(5px + (10 - 5) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(25px + (50 - 25) * ((100vw - 300px) / (1024 - 300)));
+        }
+    }
+
+    &.margin_bottom_2{
+        margin-bottom: calc(90px + (220 - 90) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(50px + (150 - 50) * ((100vw - 300px) / (1024 - 300)));
+        }
     }
 }

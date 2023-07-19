@@ -1,67 +1,59 @@
-import styles from "./Card.module.scss";
+import { useAppContext } from '../../../context/AppContext';
+import { useEffect } from 'react';
 import Link from "next/link";
-import React, { useRef, useState } from "react";
+import { gsap, Back, Elastic } from 'gsap';
+import $ from "jquery";
+import styles from "./Card.module.scss";
 
-export default function Card({category, lead , title, subtitle , description, hashtags, date, cta, height, layout, img, url}){
 
-  const ComponentContainer= cta ? React.Fragment : Link
+export default function Card({ lead, title, subtitle, description, category, hashtags, date, url }){
 
-    return( 
+  const { windowSize } = useAppContext();   
+
+
+  useEffect(() => {
+
+    if(windowSize >= 1025 ){   
+        
+      $(`.${styles.card}`).on("mouseenter", function mouseEnterContainer() {
+          gsap.to(".cursor_ver", {
+              duration: 0.8,
+              scale: 1,
+              opacity: 1,
+              ease: Elastic.easeOut.config( 1, 0.6)
+          });
+      });
+      $(`.${styles.card}`).on("mouseleave", function mouseLeaveContainer() {
+          gsap.to(".cursor_ver", {
+              duration: 0.8,
+              scale: 0,
+              opacity: 0,
+              ease: Back.easeOut.config(3)
+          });
+      }); 
+    }
+
+  }, [windowSize]);
+
+
+  return( 
     
-    <ComponentContainer 
-      
-      href={url}
-      rel="noopener noreferrer" 
-      target={layout ? "_blank" : ""}
-    ><div className={ 
-        height ?
-          height == "hidden" ? 
-            img ? `${styles.card} ${styles.height}` : `${styles.wrapper} ${styles.height}` 
-            : img ? styles.card : styles.wrapper 
-        : img ? styles.card : styles.wrapper
-      }>
-        {(layout == "imgTop" || !layout) && img ? 
-          <img src={ img } alt={ title } className={styles.imgTop} /> :""}
-
-        { lead ? <div><span className={styles.lead}>{lead}</span></div>: "" }
-        
-        <div className={styles.titles}>
-          <h4>{title}</h4>                       
-          
-          { subtitle ? <h5> {subtitle} </h5>: ""}
-        </div>
-
-        {category ?
-          <p className={styles.info}>
-            <span className={styles.category}>{category} {date ? "- ": ""}</span> 
-            {date ? <span className={styles.date}> {date}</span>: ""}
-          </p> : ""
+    <Link href={url} className={lead ? `${styles.card}` : `${styles.card} ${styles.new}`}>
+        { lead
+        ?
+          <>
+            <span>{lead}</span>
+            <h5>{title}&nbsp;<span>{subtitle}</span></h5>
+            { description && <p>{description}</p> }  
+            <ul className={styles.hashtags}>{ hashtags.map((hashtags , i) => <li key={i}>{hashtags}</li>) }</ul>                            
+          </>
+          :    
+          <>    
+            <h5>{title}</h5>
+            <p className={styles.info}>{category} —&nbsp;<span>{date}</span></p>
+            { description && <p>{description}</p> }
+          </>
         }
-        
-        <p>{ description }</p>
-
-        { hashtags ?
-          <div className={styles.hashtags}>
-              <ul>{ hashtags.map((hashtags , key) => <li key={key}>{hashtags}</li>) }</ul>                            
-          </div> : ""
-        }
-
-        {layout == "imgBottom" && img ? <img src={ img } alt={ title } /> :""}
-        
-        {cta ? <Link 
-      className={ 
-        height ?
-          height == "hidden" ? 
-            img ? `${styles.card} ${styles.height}` : `${styles.wrapper} ${styles.height}` 
-            : img ? styles.card : styles.wrapper 
-        : img ? styles.card : styles.wrapper
-      }
-      href={url}
-      rel="noopener noreferrer" 
-      target={layout ? "_blank" : ""}
-    >{ cta }</Link> : ""}
-
-    </div></ComponentContainer> 
-    );
-
+    </Link> 
+  );
 }

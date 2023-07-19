@@ -1,8 +1,13 @@
+@import "../styles/themeStyles.module.scss";
+
 // Normalize
 *
 {
     margin: 0;
     box-sizing: border-box;
+    -moz-text-size-adjust: none;
+    -webkit-text-size-adjust: none;
+    text-size-adjust: none;
 }
 
 html, body, #__next {
@@ -12,9 +17,17 @@ html, body, #__next {
     -moz-osx-font-smoothing: grayscale;
     font-family: 'Roboto', sans-serif; 
     overscroll-behavior-y: none;
-
     overflow: hidden;  
+    @media screen and (max-width: 1024px){
+      width: 100%;
+      overflow-y: visible; 
+      overscroll-behavior-y: auto;
+      padding-top: calc(35px + (80 - 35) * ((100vw - 300px) / (1024 - 300)));
+    }
+}
 
+body{
+  background-color: $white;
 }
 
 button{
@@ -36,18 +49,22 @@ button{
   left: 0;
   right: 0;
   z-index: 2200;
+  @media screen and (max-width: 1024px){
+    position: fixed;  
+    top: 0;
+  }
 }
 
+#scroll-container{
+  overflow: hidden!important;  
+}
 
 // Custom Scrollbar
 
 [data-scrollbar] {
   min-width: 100vw;
   height: 100vh;
-  padding-top: calc(150px + (400 - 150) * ((100vw - 1200px) / (3840 - 1200)));
-  /* @media screen and (max-width: 1025px){ 
-    height: 100%;
-  } */
+  padding-top: calc(150px + (400 - 150) * ((100vw - 1200px) / (3840 - 1200)));  
 }
 
 .scrollbar-track{
@@ -56,164 +73,49 @@ button{
   
   .scrollbar-thumb{
     background: #02172d!important;
-    border-radius: 0!important; 
-    @media screen and (max-width: 1025px){  
-      width: 4px;
-      left: auto;
-      right: 0;
-    }
-    
-    .scrollbar-thumb-y{
-      @media screen and (max-width: 1025px){
-        height: 56px;
-      }
-    }         
+    border-radius: 0!important;          
   }
 }
 
 
-// Swiper Slider
+//cursor follow ball
 
-.swiper{
-    .swiper-wrapper{
-      .swiper-slide {
-        box-sizing: border-box;
-        width: auto;
-      }
-    }  
-}
-
-.swiper-cards{
-  .swiper{
-    .swiper-wrapper{
-      .swiper-slide {
-        &:first-of-type{
-          margin-left: calc(74px + (272 - 74) * ((100vw - 1200px) / (3840 - 1200)));
-          @media screen and (max-width: 1024px){
-              margin-left: calc(18px + (60 - 18) * ((100vw - 300px) / (1024 - 300)));
-          }
-        }
-        &:last-of-type{
-            margin-right: calc(30px + (225 - 30) * ((100vw - 1200px) / (3840 - 1200)));
-            @media screen and (max-width: 1024px){
-                margin-right: calc(18px + (60 - 18) * ((100vw - 300px) / (1024 - 300)));
-            }
-        }
-      }
-    }  
-    .swiper-button-prev, .swiper-button-next{
+.cursor_leer, .cursor_ver, .cursor_deslizar, .cursor_dot, .cursor_conocer{
+  position: fixed;
+  transform: scale(0);
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 4000;
+  opacity: .95;
+  @media screen and (max-width: 480px){
       display: none;
-      position: absolute;
-      background: rgb(255, 255, 255);   
-      top: 0;
-      bottom: 0;
-      margin-top: auto;
-      margin-bottom: auto;
-      width: calc(56px + (126 - 56) * ((100vw - 1200px) / (3840 - 1200)));
-      height: 100%;    
-      color: #032E59; 
-      @media screen and (max-width: 1024px){
-        width: calc(46px + (100 - 46) * ((100vw - 300px) / (1024 - 300)));
+  }
+  
+  .circle{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $yellow-2;
+      border-radius: 50%;
+      width: calc(95px + (200 - 95) * ((100vw - 1200px) / (3840 - 1200)));
+      height: calc(95px + (200 - 95) * ((100vw - 1200px) / (3840 - 1200)));
+      
+      span{
+          @include font-level-4;
+          font-weight: 400;
+          line-height: 100%;
+          color: $deep-blue;          
       }
-      &::after{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: calc(26px + (78 - 26) * ((100vw - 1200px) / (3840 - 1200)));
-        height: calc(26px + (78 - 26) * ((100vw - 1200px) / (3840 - 1200))); 
-        background-color: rgb(255, 255, 255);
-        border-radius: 50%;
-        font-size: calc(15px + (42 - 15) * ((100vw - 1200px) / (3840 - 1200)));
-        font-weight: bold;
-        border: calc(1.5px + (2.5 - 1.5) * ((100vw - 1200px) / (3840 - 1200))) solid #032E59;
-        @media screen and (max-width: 1024px){
-          width: calc(21px + (46 - 21) * ((100vw - 300px) / (1024 - 300)));
-          height: calc(21px + (46 - 21) * ((100vw - 300px) / (1024 - 300))); 
-          font-size: calc(10px + (20 - 10) * ((100vw - 300px) / (1024 - 300)));
-        }
-      }
-      &.swiper-button-disabled{
-        display: none;
-      }
-      @media screen and (min-width: 1025px){
-        &:hover{
-          color: rgb(255, 255, 255); 
-          &::after{
-            background-color: #032E59;
-            border: calc(1.5px + (2.5 - 1.5) * ((100vw - 1200px) / (3840 - 1200))) solid #032E59;
-          }
-        }
-      }
-    }  
-    .swiper-button-prev{
-      background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 28%, rgba(255, 255, 255, 0) 100%);
-      left: 0;
-      justify-content: left;    
-    }
-    .swiper-button-next{
-      background: rgb(255, 255, 255);
-      background: linear-gradient(-90deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 28%, rgba(255, 255, 255, 0) 100%);
-      right: 0;
-      justify-content: right;  
-    }
+      
   }
 }
 
-.swiper-btns{
-  .swiper{ 
-    .swiper-button-prev, .swiper-button-next{
-      position: absolute;
-      background: rgb(255, 255, 255);   
-      top: 0;
-      bottom: 0;
-      margin-top: auto;
-      margin-bottom: auto;
-      width: calc(56px + (126 - 56) * ((100vw - 1200px) / (3840 - 1200)));
-      height: 100%;    
-      color: #032E59; 
-      @media screen and (max-width: 1024px){
-        width: calc(46px + (100 - 46) * ((100vw - 300px) / (1024 - 300)));
-      }
-      &::after{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: calc(26px + (78 - 26) * ((100vw - 1200px) / (3840 - 1200)));
-        height: calc(26px + (78 - 26) * ((100vw - 1200px) / (3840 - 1200))); 
-        background-color: rgb(255, 255, 255);
-        border-radius: 50%;
-        font-size: calc(15px + (42 - 15) * ((100vw - 1200px) / (3840 - 1200)));
-        font-weight: bold;
-        border: calc(1.5px + (2.5 - 1.5) * ((100vw - 1200px) / (3840 - 1200))) solid #032E59;
-        @media screen and (max-width: 1024px){
-          width: calc(21px + (46 - 21) * ((100vw - 300px) / (1024 - 300)));
-          height: calc(21px + (46 - 21) * ((100vw - 300px) / (1024 - 300))); 
-          font-size: calc(10px + (20 - 10) * ((100vw - 300px) / (1024 - 300)));
-        }
-      }
-      &.swiper-button-disabled{
-        display: none;
-      }
-      @media screen and (min-width: 1025px){
-        &:hover{
-          color: rgb(255, 255, 255); 
-          &::after{
-            background-color: #032E59;
-            border: calc(1.5px + (2.5 - 1.5) * ((100vw - 1200px) / (3840 - 1200))) solid #032E59;
-          }
-        }
-      }
-    }  
-    .swiper-button-prev{
-      background: linear-gradient(90deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 28%, rgba(255, 255, 255, 0) 100%);
-      left: 0;
-      justify-content: left;    
-    }
-    .swiper-button-next{
-      background: rgb(255, 255, 255);
-      background: linear-gradient(-90deg, rgb(255, 255, 255) 0%, rgb(255, 255, 255) 28%, rgba(255, 255, 255, 0) 100%);
-      right: 0;
-      justify-content: right;  
-    }
+.cursor_dot{
+  .circle{
+    background-color: $yellow-2;
+    border-radius: 50%;
+    width: calc(40px + (70 - 40) * ((100vw - 1200px) / (3840 - 1200)));
+    height: calc(40px + (70 - 40) * ((100vw - 1200px) / (3840 - 1200)));
   }
 }

@@ -1,0 +1,122 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.overlay{
+    position: fixed;
+    background-color: rgba(255, 255, 255, .9);
+    backdrop-filter: blur(10px);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: .3s;  
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards; 
+
+    .close_btn{
+        @include btn-ver-mas;  
+        position: absolute;
+        top: calc(27px + (72 - 27) * ((100vw - 1200px) / (3840 - 1200)));
+        right: calc(35px + (370 - 35) * ((100vw - 1200px) / (3840 - 1200)));
+        opacity: 0;
+        animation-name: growUp;
+        animation-delay: .2s;
+        animation-duration: .5s;  
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;              
+        @media screen and (min-width: 1025px){
+            &:hover{
+                border: $line-1 solid $deep-blue;
+                background-color: $deep-blue;
+            }
+        }
+    }
+
+    .btns{
+        text-align: center;
+        opacity: 0;
+        animation-name: growUp;
+        animation-delay: .2s;
+        animation-duration: .5s;  
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;  
+        p{
+            @include font-level-4;
+            font-weight: 400;
+            color: $deep-blue;
+            margin-bottom: calc(20px + (46 - 20) * ((100vw - 1200px) / (3840 - 1200)));
+        }
+        a{
+            font-size: calc(48px + (140 - 48) * ((100vw - 1200px) / (3840 - 1200)));
+            font-weight: 400;
+            line-height: 126%;
+            color: $deep-blue;
+            text-decoration: none; 
+            @media screen and (min-width: 1025px){
+                &:hover{
+                    color: $green-1;
+                    text-decoration: underline;
+                }
+            }
+        }
+    } 
+
+    &.close_animation{
+        opacity: 1;
+        animation-name: fadeOut;
+        animation-delay: .5s;
+        animation-duration: .3s;  
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards; 
+        .btns, .close_btn{
+            opacity: 1;
+            animation-name: growDown;            
+            animation-duration: .2s;  
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: forwards; 
+        }
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes growUp {
+    0% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes growDown {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}

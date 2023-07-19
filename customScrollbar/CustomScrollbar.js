@@ -1,10 +1,21 @@
 import { useRef, useEffect } from 'react';
+import { useRouter } from "next/router";
+import { useAppContext } from '../context/AppContext';
 import SmoothScrollbar from 'smooth-scrollbar';
+import { gsap, Circ } from 'gsap';
+import ScrollToPlugin from "../node_modules/gsap/ScrollToPlugin";
+import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import $ from "jquery";
+gsap.registerPlugin(ScrollTrigger, ScrollToPlugin);
 
 export default function Layout({ children, ...rest }) {
   
   let $content = useRef();
   let scrollbar = useRef();
+
+  const router = useRouter();
+
+  const { advancedFilterStatus } = useAppContext();
 
   useEffect(() => {
 
@@ -12,25 +23,71 @@ export default function Layout({ children, ...rest }) {
 
     scrollbar.current = SmoothScrollbar.init(contentScroll, {
       damping: 0.075,
-      delegateTo: document.querySelector('#content-root'),
+      delegateTo: document.querySelector('#scroll-container'),
     });
 
     scrollbar.current.setPosition(0, 0);
-    scrollbar.current.track.xAxis.element.remove();   
+    scrollbar.current.track.xAxis.element.remove();
 
-    return () => {      
-      if (scrollbar.current) {
+    ScrollTrigger.scrollerProxy(contentScroll, {
+      scrollTop(value) {
+        if (arguments.length) {
+          scrollbar.current.scrollTop = value;
+        }
+        return scrollbar.current.scrollTop;
+      }
+    });
+    
+    ScrollTrigger.defaults({ scroller: contentScroll });
+    scrollbar.current.addListener(ScrollTrigger.update);    
+    
+    
+    setTimeout(() => {
+      // Solo es necesario para corregir la posición del marcador; no es necesario en producción
+      if (document.querySelector('.gsap-marker-scroller-start')) {
+        const markers = gsap.utils.toArray('[class *= "gsap-marker"]');	
+        scrollbar.current.addListener(({ offset }) => {  
+          gsap.set(markers, { marginTop: -offset.y })
+        });
+      } 
+    }, 1000);    
+      
+
+ /*   return () => {      
+       if (scrollbar.current) {
         scrollbar.current.destroy();
         scrollbar.current = null;
-      }
-    };
+      } 
+    }; */
     
-  }, []);
+  }, []); 
+
+  
+  useEffect(() => {
+    if(router.route === '/producciones'){
+      
+      function scrollToNav(e) {
+        const btnId = e.target.dataset.id;
+        
+        if(btnId !== undefined && btnId.includes('triggerScrollTo')){
+          gsap.to(scrollbar.current, {
+            scrollTo: {y: $("#productions-nav").offset().top + scrollbar.current.offset.y + 1},
+            duration: 0.8,
+            ease: Circ.easeOut
+          });          
+        } 
+      } 
+
+      $(".filters").on('click', scrollToNav);   
+      
+      return () => {
+        $(".filters").off();
+      };
+    }
+  }, [advancedFilterStatus]);
 
 
   return (
-    <div data-scrollbar ref={$content} {...rest} id="#content-root">
-      <div className="container">{children}</div>
-    </div>
+    <div data-scrollbar ref={$content} {...rest} id="scroll-container"><main>{children}</main></div>
   );
 }

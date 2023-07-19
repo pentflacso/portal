@@ -3,17 +3,60 @@
 .wrapper {
     @include container-width-1;
     column-count: 4;
-    column-gap: 50px;
-    color: $deep-blue;
-    line-height: 140%;
+    column-gap: calc(74px + (272 - 74) * ((100vw - 1200px) / (3840 - 1200)));
     margin-bottom: calc(74px + (272 - 74) * ((100vw - 1200px) / (3840 - 1200)));
-    @include font-level-4;
-}
+    @media screen and (max-width: 1024px){
+      column-count: 2;
+      column-gap: calc(25px + (125 - 25) * ((100vw - 300px) / (1024 - 300)));
+      margin-bottom: calc(60px + (180 - 60) * ((100vw - 300px) / (1024 - 300)));
+    } 
 
-.link{
-  color: rgba(3, 46, 89, 0.5);
-  text-decoration: none;
-  &:hover{
-    color:$deep-blue;
-  }
+    h2{
+      @include font-level-1;
+      font-weight: 400;
+      line-height: 60%;
+      color: $deep-blue;
+      margin-bottom: calc(48px + (100 - 48) * ((100vw - 1200px) / (3840 - 1200)));
+      @media screen and (max-width: 1024px){
+        margin-bottom: calc(30px + (110 - 30) * ((100vw - 300px) / (1024 - 300)));
+      }
+    }
+
+    .team_area{
+      margin-bottom: calc(22px + (50 - 22) * ((100vw - 1200px) / (3840 - 1200)));
+      padding-left: calc(1px + (3 - 1) * ((100vw - 1200px) / (3840 - 1200)));
+      @media screen and (max-width: 1024px){
+        margin-bottom: calc(15px + (45 - 15) * ((100vw - 300px) / (1024 - 300)));
+        padding-left: 0;
+      }
+      &:last-of-type{
+        margin-bottom: 0;
+        padding-bottom: calc(125px + (315 - 125) * ((100vw - 1200px) / (3840 - 1200)));
+      }
+
+      h5{
+        @include font-level-4;
+        font-weight: 500;
+        line-height: 140%;
+        color: $deep-blue;
+        border-bottom: $line-1 solid transparent;
+      }
+
+      .member{
+        display: table;
+        @include font-level-4;
+        font-weight: 400;
+        line-height: 140%;
+        color: $gray-1;
+        text-decoration: none;
+        border-bottom: $line-1 solid transparent;
+        @media screen and (min-width: 1025px){
+          &:hover{
+            color: $green-1;
+            border-bottom: $line-1 solid $green-2;
+          }
+        }
+      }
+
+    }
 }
