@@ -32,17 +32,21 @@ export default function ArticlesList({ data }){
     };
 
 
+    //Nuevo
+    useEffect(() => {       
+        if(dataLimit.length === dataToUse.length){
+            setAvailablePlusData(false)
+        } else{
+            setAvailablePlusData(true)
+        }        
+    }, [dataLimit]);  
+
+
     //Cada vez que el contador o la data a utilizar cambia, se ejecuta el siguiente condicional
     useEffect(() => {       
         if(dataToUse.length >= 7){
-            setAvailablePlusData(true)
             setDataLimit(dataToUse.slice(0, itemCount))
-        } else if(dataToUse.length < itemCount){
-            setAvailablePlusData(false)
-        }
-
-        dataLimit.length < itemCount && setAvailablePlusData(false)
-        
+        }        
     }, [itemCount, dataToUse]);  
 
 
