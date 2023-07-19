@@ -55,6 +55,7 @@
             margin-bottom: calc(14px + (64 - 14) * ((100vw - 1200px) / (3840 - 1200)));
             &.info{
                 display: block;
+                width: 100%;
                 color: $green-1;
                 margin-bottom: calc(28px + (90 - 28) * ((100vw - 1200px) / (3840 - 1200)));
                 span{

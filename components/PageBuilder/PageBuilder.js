@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import Link from 'next/link';
+import MetaTags from '../../components/library/MetaTags/MetaTags';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import HomeHeading from '../../components/home/HomeHeading/HomeHeading';
@@ -23,8 +24,7 @@ import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns'
 import Footer from '../../components/library/Footer/Footer';
 
 export default function PageBuilder({data, stylesx, explorerBtn}){
-
-    const { setDataStrip } = useAppContext();
+    const { setDataStrip, windowSize } = useAppContext();
 
     useEffect(() => {
          setDataStrip(data[0].strip);
@@ -94,6 +94,13 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
 
     return(
     <>
+            <MetaTags
+                pageTitle={data[0].pageTitle}
+                shareTitle={data[0].shareTitle}
+                keywords={data[0].keywords}
+                description={data[0].description}
+            />
+
             <MainWrapper>  
                 
                 {data ? data.map((data, i) => (
@@ -174,9 +181,16 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                                 modules={[Navigation, FreeMode]}
                                 spaceBetween={0}
                                 slidesPerView={"auto"}
-                                navigation={true}  
+                                navigation={
+                                    data.typeCard[0].value == 0 ? 
+                                        windowSize >= 1025 ? false : true 
+                                    : true
+                                }  
                                 freeMode={false}   
-                                grabCursor={false}    
+                                grabCursor={
+                                    data.typeCard[0].value != 3 ? 
+                                        true :false 
+                                }    
                                 className={`${styleCard(data.typeCard[0].value)} swiper-cards`}       
                             >   
                                 {data.cards.map((item, p) => (

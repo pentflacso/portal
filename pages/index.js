@@ -63,13 +63,7 @@ function Home({data}){
   
     if(Object.keys(data).length > 0){  
         return(
-            <>
-                <MetaTags
-                    pageTitle={'FLACSO | PENT — Un espacio de capacitación, investigación, creación e innovación en educación y tecnologías digitales.'}
-                    shareTitle={'FLACSO | PENT — Un espacio de capacitación, investigación, creación e innovación en educación y tecnologías digitales.'}
-                    keywords={'flacso, pent, posgrado, educación, tecnologías, tics, educación en línea, fabio tarasow, christian milillo, monica trech, gisela schwartzman, tecnologías digitales, tecnologías de la información y la comunicación, cursos, talleres, diplomaturas, flacso, facultad latinoamericana de ciencias sociales, tecnología educativa, innovación educativa, EdTech, contacto, newsletter, redes sociales'}
-                    description={'Somos un espacio de capacitación, investigación, creación e innovación en educación y tecnologías digitales.'}
-                />    
+            <>   
                 <PageBuilder data={ data } stylesx={styles} />
                 
                 {windowSize >= 1025 &&

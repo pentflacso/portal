@@ -3,8 +3,6 @@ import { useEffect } from 'react';
 import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
 
-
-import MetaTags from '../../components/library/MetaTags/MetaTags';
 import PageBuilder from '../../components/PageBuilder/PageBuilder';
 import styles from "./equipo.module.scss";
 
@@ -62,13 +60,7 @@ export default function Equipo({data}){
 
     if(Object.keys(data).length > 0){  
         return(
-            <>
-                <MetaTags
-                    pageTitle={'Equipo — FLACSO | PENT'}
-                    shareTitle={'Equipo — FLACSO | PENT'}
-                    keywords={'especialistas, equipo, profesionales, disciplinas, interdiscipinario, expertise, administración, coordinación, desarrollo institucional, comunicación, desarrollo, docentes, gestión de contenidos, diseño, programación, diplomas superiores, especialización, posgrado, quiénes somos, acerca de'}
-                    description={'Somos un equipo de especialistas en educación y tecnologías digitales.'}
-                />            
+            <>            
                 <PageBuilder data={ data } stylesx={styles} />
                 {windowSize >= 1025 &&
             <div className="cursor_conocer">

@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { useAppContext } from '../../context/AppContext';
 import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
-import MetaTags from '../../components/library/MetaTags/MetaTags';
 import PageBuilder from '../../components/PageBuilder/PageBuilder';
 import styles from "./asesorias.module.scss";
 
@@ -138,12 +137,6 @@ export default function Asesorias({data}){
     if(Object.keys(data).length > 0){  
         return(
             <>
-                <MetaTags
-                    pageTitle={'Asesorías — FLACSO | PENT'}
-                    shareTitle={'Asesorías — FLACSO | PENT'}
-                    keywords={'publicaciones, producciones, papers, artículos, trabajos académicos, ponencias, conferencias, divulgación académica, abstract, material didáctico, material didáctico hipermedial, actualización profesional, aplicaciones digitales, aprendizaje en línea, ciudadanía digital, comunidades de práctica, consumos culturales, didáctica, dispositivos tecnopedagógicos, educación en línea, entornos digitales, formación docente, inclusión, infancias, jóvenes, materiales didácticos, metodología de investigación, microlearning, neurociencias, políticas tecno-educativas, programación, redes sociales, subjetividades, tendencias educativas, tutoría y moderación'}
-                    description={'Publicaciones del equipo del PENT.'}
-                />
                 <PageBuilder data={ data } stylesx={styles} />
                 {windowSize >= 1025 &&
                     <>

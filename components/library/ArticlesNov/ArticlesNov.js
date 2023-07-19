@@ -52,7 +52,7 @@ export default function ArticlesNov({ data, category }){
                 try{
                     //console.log(`/dataNovedades/${category ? category + "/": ""}novedades-${NOTES_TO_FETCH + notesOffset}-${notesOffset}.json`);
 
-                    const res = await fetch(`/dataNovedades/${category ? category + "/": ""}novedades-${NOTES_TO_FETCH + notesOffset}-${notesOffset}.json`);
+                    const res = await fetch(`https://redaccion.pent.org.ar/data/news/${category ? category: "all"}/${NOTES_TO_FETCH + notesOffset}/${notesOffset}`);
                     //const res = await fetch(`/dataNovedades/novedades-${NOTES_TO_FETCH + notesOffset}-${notesOffset}.json`);
 
                     const newNotes = await res.json();

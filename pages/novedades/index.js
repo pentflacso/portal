@@ -16,10 +16,15 @@ import styles from "./novedades.module.scss";
 
 function Novedades(d){
 
-    const data = Object.values(d);
+    let  {strip, ...data}  = d;
+    data =  Object.values(data);
 
-    const { windowSize } = useAppContext();  
+    const { windowSize, setDataStrip } = useAppContext();  
 
+    useEffect(() => {
+        setDataStrip(strip);
+    }, [])
+    
     const exploringBtnsData = [
         {title: 'Formación', path: 'formacion'},
         {title: 'Producciones', path: 'producciones'},
@@ -123,7 +128,8 @@ function Novedades(d){
 
 export async function getServerSideProps() {
     // Fetch data from external API
-    const res = await fetch(`https://flacso.pent.org.ar/api/novedades-12-0.json`)   
+    //const res = await fetch(`https://flacso.pent.org.ar/api/novedades-12-0.json`)   
+    const res = await fetch(`https://redaccion.pent.org.ar/data/news`)   
    const data = await res.json()
 
     // Pass data to the page via props
