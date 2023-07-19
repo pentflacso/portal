@@ -17,11 +17,6 @@ function Index(data){
     const [ shareModal, setShareModal ] = useState(false); 
     const router = useRouter(); 
 
-    const DescriptionexploringBtn = [
-        {title: 'VII Jornadas de Educación a Distancia y Universidad', path: 'formacion'},
-        {title: 'Metaverso: ¿un nuevo territorio para enseñar y aprender en línea?', path: 'producciones'},
-        {title: 'Tecnologías digitales en el capitalismo de plataformas', path: 'asesorias'}
-    ]
 
     const exploringBtnsData = [
         {title: 'Propuestas de formación', path: 'formacion'},
@@ -29,7 +24,7 @@ function Index(data){
         {title: 'Nuestras producciones', path: 'producciones'}        
     ]
 
-    const license = `El texto de la nota ${ data.title } de Proyecto Educación y Nuevas Tecnologías se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Nota disponible en: <a href="${ data.url }" target="_blank">${ data.url }</a>`
+    const license = `<p>El texto de la nota ${ data.title } de Proyecto Educación y Nuevas Tecnologías se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Nota disponible en: <a href="${ data.url }" target="_blank">${ data.url }</a></p>`
 
     useEffect(() => {   
 
@@ -115,7 +110,7 @@ function Index(data){
                     </div>
                     <section className={styles.col_right}>
                         <h2>Ultimas novedades</h2>
-                        <ExploringBtns data={DescriptionexploringBtn} dataStyle="btnMedium" /> 
+                        <ExploringBtns data={data.latest_news} dataStyle="btnMedium" /> 
                     </section>
                 </div>
 
