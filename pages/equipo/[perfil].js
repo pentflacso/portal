@@ -11,9 +11,15 @@ import styles from "./perfil.module.scss";
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 
 
-function Perfil(data){   
+function Perfil(d){   
 
-    const { windowSize } = useAppContext();
+    const { windowSize, setDataStrip } = useAppContext();
+
+    let  {strip, ...data}  = d;
+    
+    useEffect(() => {
+        setDataStrip(strip);
+    }, [])
 
     useEffect(() => {
 

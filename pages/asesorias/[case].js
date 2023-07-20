@@ -12,11 +12,17 @@ import styles from './case.module.scss';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 
 
-function Index(data){
-
-    const { windowSize, setCurrentArticleHashtag } = useAppContext();    
+function Index(d){
+    const { windowSize, setCurrentArticleHashtag, setDataStrip } = useAppContext();    
     const [ shareModal, setShareModal ] = useState(false);  
     const router = useRouter();
+
+    let  {strip, ...data}  = d;
+    
+    useEffect(() => {
+        setDataStrip(strip);
+    }, [])
+
 
     const exploringBtnsData = [
         {title: 'Propuestas de formación', path: 'formacion'},        

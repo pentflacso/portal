@@ -3,7 +3,6 @@ import { useAppContext } from '../context/AppContext';
 
 import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
-import MetaTags from '../components/library/MetaTags/MetaTags';
 import PageBuilder from '../components/PageBuilder/PageBuilder';
 import styles from "./index.module.scss";
 
@@ -11,9 +10,7 @@ function Home({data}){
     
     const { windowSize } = useAppContext();   
 
-    useEffect(() => {
-
-        
+    useEffect(() => {   
         if(windowSize >= 1025){    
             
             // Follow custom cursor

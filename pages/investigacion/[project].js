@@ -12,9 +12,9 @@ import styles from './project.module.scss';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 
 
-function Index(data){
+function Index(d){
 
-    const { windowSize, setCurrentArticleHashtag } = useAppContext();    
+    const { windowSize, setCurrentArticleHashtag, setDataStrip } = useAppContext();    
     const [ shareModal, setShareModal ] = useState(false);  
     const router = useRouter();
 
@@ -23,6 +23,12 @@ function Index(data){
         {title: 'Asesorías y soluciones a medida', path: 'asesorias'},
         {title: 'Investigación y divulgación', path: 'investigacion'}
     ]
+
+    let  {strip, ...data}  = d;
+    
+    useEffect(() => {
+        setDataStrip(strip);
+    }, [])
 
     
     useEffect(() => {   

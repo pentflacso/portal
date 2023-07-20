@@ -23,6 +23,8 @@ import LeafsItem from '../../components/asesorias/LeafsItem/LeafsItem';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
 import Footer from '../../components/library/Footer/Footer';
 
+
+
 export default function PageBuilder({data, stylesx, explorerBtn}){
     const { setDataStrip, windowSize } = useAppContext();
 
@@ -228,7 +230,7 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                 {explorerBtn ? <ExploringBtns data={exploringBtnsData} /> : "" }
                 
                 <Footer />
-            </MainWrapper>
+            </MainWrapper>            
         </> 
     )
 }
