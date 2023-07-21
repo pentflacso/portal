@@ -39,32 +39,34 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
     ]
 
     function styleCard(typeCard){
+        //Formacion
         if(typeCard == 0){
             return stylesx.carrousel_formacion;
-
+        //Home
         }else if(typeCard == 1){
             return stylesx.carrousel_novedades;
-
+        //Asesoria - clientes
         }else if(typeCard == 3){
             return stylesx.carrousel_proyects;
-
+        //Investigacion
         } else if(typeCard == 4){
             return stylesx.carrousel_projects;
         } 
     }
 
-    const FormatCard = ({type, alt, url, title, lead, href, description}) =>{     
+    const FormatCard = ({type, alt, url, title, lead, href, description}) =>{ 
         if(type == 0){
+        //Formacion    
             return(
                 <article className={stylesx.card}>
                     <img src={url} alt={alt} />
                     <h5>{title}</h5>
                     <p>{description}</p>
-                    <a href={url} rel="noopener noreferrer" target="_blank" className="cta_btn">Más información</a>
+                    <a href={href} rel="noopener noreferrer" target="_blank" className="cta_btn">Más información</a>
                 </article>
             )
-
         }else if(type == 1){
+        //Home
             return(
                 <a href={href} rel="noopener noreferrer" target="_blank" className={stylesx.card_new}>
                     <div className={stylesx.info}>
@@ -76,13 +78,16 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
             )
             
         }else if(type == 3){
+        //Asesoria - clientes
             return(    
                 <article className={stylesx.card_proyect}>
                     <img alt={alt} src={url} />
                     <h5>{title}</h5>                    
                 </article>
             )
+
         }else if(type == 4){
+        //Investigacion
             return(    
                 <article className={stylesx.card}>
                     <span>{lead}</span>

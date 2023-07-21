@@ -54,8 +54,8 @@ export default function NavBar(){
 
             <div className={isLoading ? `${styles.fade_overlay}` : `${styles.fade_overlay} ${styles.off}`} />     
         </header>
-
-        {announcementStatus && <Announcement data={ dataStrip } />}
+        
+        {announcementStatus && (dataStrip != "")  && <Announcement data={ dataStrip } />}
     </>
     );
 }
