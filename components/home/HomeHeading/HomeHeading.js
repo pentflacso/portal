@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect, useState  } from 'react';
+import { useRef, useLayoutEffect, useState, useEffect  } from 'react';
 import { gsap } from 'gsap';
 import { TextPlugin } from 'gsap/dist/TextPlugin';
 import styles from "./HomeHeading.module.scss";
@@ -11,7 +11,7 @@ export default function HomeHeading({ title, initial, final }){
     const [captions, setCaption] = useState(title);
     const tl = gsap.timeline({ repeat: -1 });
  
-    useLayoutEffect(() => {
+    useEffect(() => {
 
         let ctx = gsap.context(() => {
 
