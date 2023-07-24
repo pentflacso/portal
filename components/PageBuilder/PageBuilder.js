@@ -102,11 +102,11 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
             />
 
             <MainWrapper>  
-                
+                <section className={stylesx.pageBuilder}>
                 {data ? data.map((data, i) => (
-                    <section key={i}>
+                    <div key={i} data-id={data.block_class}  >
                         {(data.block_type === "highlighted" && i == 1) &&
-                            <PageHeading title={data.title[0].value} margin_bottom_type={2}  />
+                            <PageHeading title={data.title[0].value}  />
                         }
 
 
@@ -114,44 +114,36 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                             <HomeHeading title={data.title} final={data.finalwords} initial={data.initialwords}   />
                         }
                         {data.block_type === "videocover" && 
-                            <CoverVideo data={data}  />
+                            <CoverVideo data={data}  data-order={i}  />
                         }
                         {data.block_type === "sectionselector" && 
-                            <SectionSelector data={data.MemberData}  />
+                            <SectionSelector data={data.MemberData}  data-order={i} />
                         }
                         {data.block_type === "skillbox" && 
-                            <KeysBox data={data.keyFeatures} />
+                            <KeysBox data={data.keyFeatures}  data-order={i} />
                         }
                         {data.block_type === "marquee" && 
-                                <div className={stylesx.marquee_1}>
                                     <TextMarquee data={data.marquee} />
-                                </div>
                         }
                         {data.block_type === "accordion" &&
-                            <div className={stylesx.themes_accordion}>
                                 <ThemesAccordion data={data.accordion} />
-                            </div>    
                         }  
 
                         {(data.block_type === "highlighted" && i !== 1) &&
-                            <div className={stylesx.highlight_paragraph}>
                                 <HighlightParagraph title={data.title} />
-                            </div>    
                         }
                         {data.block_type === "sliderquotes" &&
-                            <Quotes items={data.quotes}/>                               
+                            <Quotes items={data.quotes}  data-order={i} />                               
                         }
                         {data.block_type === "brandsbanner" &&
-                            <div className={stylesx.brands_marquee} >
                                 <BrandsMarquee partners={data.partners}/>
-                            </div>                            
                         }
                         {data.block_type === "twocolums" &&
-                            <TwoColumsText texto={data.description[0].value}/>
+                            <TwoColumsText texto={data.description[0].value}  data-order={i}/>
 
                         }
                         {data.block_type === "teammembers" &&
-                            <TeamData team={data.roster} title={data.block_title} />
+                            <TeamData team={data.roster} title={data.block_title}  data-order={i} />
                         }
                         {data.block_type === "sliderperson" &&
                             <Swiper 
@@ -222,9 +214,9 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                         {data.block_type === "lastnews" &&
                             <NewsSelector data={data.NewsData} />                              
                         }
-                    </section>
+                    </div>
                 )): ""}
-                
+                </section>
                 {explorerBtn ? <ExploringBtns data={exploringBtnsData} /> : "" }
                 
                 <Footer />

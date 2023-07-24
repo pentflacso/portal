@@ -1,62 +1,69 @@
 @import "../../styles/themeStyles.module.scss";
 
-.marquee_1{
-    margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
-    @media screen and (max-width: 1024px){
-        margin-bottom: calc(30px + (100 - 30) * ((100vw - 300px) / (1024 - 300)));
-    }
-}
-
-.marquee_2{
-    margin-bottom: calc(55px + (270 - 55) * ((100vw - 1200px) / (3840 - 1200)));
-    @media screen and (max-width: 1024px){
-        margin-bottom: calc(30px + (100 - 30) * ((100vw - 300px) / (1024 - 300)));
-    }
-}
-
-.highlight_paragraph{
-    @include container-width-1;
-    margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
-    @media screen and (max-width: 1024px){
-        margin-bottom: calc(45px + (145 - 45) * ((100vw - 300px) / (1024 - 300)));
-    }
-}
-
-.keys_box{
-    margin-bottom: calc(110px + (290 - 110) * ((100vw - 1200px) / (3840 - 1200)));
-    @media screen and (max-width: 1024px){
-        margin-bottom: calc(75px + (165 - 75) * ((100vw - 300px) / (1024 - 300)));
-    }
-}
-
-.carrousel_proyects{
-    margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
-    @media screen and (max-width: 1024px){
-        margin-bottom: calc(35px + (100 - 35) * ((100vw - 300px) / (1024 - 300)));
-    }
-    .card_proyect{
-        width: calc(450px + (1320 - 450) * ((100vw - 1200px) / (3840 - 1200)));
-        margin-left: calc(32px + (82 - 32) * ((100vw - 1200px) / (3840 - 1200)));
+.pageBuilder
+{
+    // Marquesinas 1, 2, 3
+    div[data-id="marquee_1"],div[data-id="marquee_2"],div[data-id="marquee_3"]{
+        margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
         @media screen and (max-width: 1024px){
-            width: calc(255px + (880 - 255) * ((100vw - 300px) / (1024 - 300)));
-            margin-left: 0;
-        }
-        img{
-            width: 100%;
-            height: auto;
-        }
-        h5{
-            @include font-level-3;
-            font-weight: 400;
-            color: $deep-blue;
+            margin-bottom: calc(30px + (100 - 30) * ((100vw - 300px) / (1024 - 300)));
         }
     }
-}
 
+     // Marquesina 4
+     div[data-id="marquee_2"]{
+        margin-bottom: calc(55px + (270 - 55) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(30px + (100 - 30) * ((100vw - 300px) / (1024 - 300)));
+        }
+    }
 
-.brands_marquee{
-    margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
-    @media screen and (max-width: 1024px){
-        margin-bottom: calc(35px + (100 - 35) * ((100vw - 300px) / (1024 - 300)));
+     // Headings
+    div[data-id="highlighted_2"],div[data-id="highlighted_3"]{
+        @include container-width-1;
+        margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(45px + (145 - 45) * ((100vw - 300px) / (1024 - 300)));
+        }
+    }
+
+     // Botones
+    div[data-id="skillbox_1"]{
+        margin-bottom: calc(110px + (290 - 110) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(75px + (165 - 75) * ((100vw - 300px) / (1024 - 300)));
+        }
+    }
+  // Slider proyectos
+    div[data-id="slidercard_2"]{
+        margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(35px + (100 - 35) * ((100vw - 300px) / (1024 - 300)));
+        }
+        .card_proyect{
+            width: calc(450px + (1320 - 450) * ((100vw - 1200px) / (3840 - 1200)));
+            margin-left: calc(32px + (82 - 32) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1024px){
+                width: calc(255px + (880 - 255) * ((100vw - 300px) / (1024 - 300)));
+                margin-left: 0;
+            }
+            img{
+                width: 100%;
+                height: auto;
+            }
+            h5{
+                @include font-level-3;
+                font-weight: 400;
+                color: $deep-blue;
+            }
+        }
+    }
+
+   // BrandsMarquee
+    div[data-id="brandsbanner_1"]{
+        margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(35px + (100 - 35) * ((100vw - 300px) / (1024 - 300)));
+        }
     }
 }
