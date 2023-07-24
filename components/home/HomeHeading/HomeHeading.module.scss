@@ -11,7 +11,8 @@
         line-height: 120%;
         margin-bottom: calc(30px + (80 - 30) * ((100vw - 300px) / (1024 - 300)));
     } 
-    span{
+    strong{
+        font-weight: 400;
         background-image: url(../../../public/assets/images/line_bottom_yellow.svg);
         background-repeat: repeat-x;
         background-size: 
@@ -27,9 +28,16 @@
             padding-bottom: calc(4px + (8 - 4) * ((100vw - 300px) / (1024 - 300)));
         }
     }
-    br{
+    br[data-context="mobile"]{
+        
+        @media screen and (min-width: 1024px){
+            display: none;
+        }            
+         
+    }
+    br[data-context="desktop"]{
         &.mobile{
-            @media screen and (min-width: 1024px){
+            @media screen and (max-width: 1024px){
                 display: none;
             }            
         } 
