@@ -5,8 +5,13 @@ import styles from "./FormFooter.module.scss";
 const FormFooter  = () => {
 
   const [email, setEmail] = useState('');
-  const [status, setStatus] = useState("");
+  const [status, setStatus] = useState();
 
+  const validateEmail = (email) => {
+    // Expresión regular para validar el formato del email
+    const emailRegex = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+    return emailRegex.test(email);
+  };
 
   const handleEmailChange = (event) => {
     setEmail(event.target.value);
@@ -16,6 +21,11 @@ const FormFooter  = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    //Validacion de Mail
+    if (!validateEmail(email)) {
+      setStatus(false);
+      return;
+    }    
 
     // Realizar la solicitud utilizando fetch
     fetch(`https://redaccion.pent.org.ar/data/newsletter/${encodeURIComponent(email)}`)
@@ -42,7 +52,9 @@ const FormFooter  = () => {
             />
 
             <button className={styles.btn_send} type="submit" />
-            <p>{/*status == true ? "true": "false"*/}</p>
+            {status == true ? <p>Correcto</p> : ""}
+            {status == false ? <p>In-Correcto</p> : ""}
+            
         </form>
     </div>
   );
