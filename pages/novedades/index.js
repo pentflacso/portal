@@ -14,15 +14,12 @@ import { gsap } from 'gsap';
 import styles from "./novedades.module.scss";
 
 
-function Novedades(d){
-
-    let  {strip, ...data}  = d;
-    data =  Object.values(data);
+function Novedades(data){
 
     const { windowSize, setDataStrip } = useAppContext();  
 
     useEffect(() => {
-        setDataStrip(strip);
+        setDataStrip(data.strip);
     }, [])
     
     const exploringBtnsData = [
@@ -31,7 +28,7 @@ function Novedades(d){
         {title: 'Asesorías', path: 'asesorias'}
     ]
     
-    const filtro = ["prensa", "empleos", "evento"];
+    const filtro = data.categories;
 
 
     //Follow cursor 
@@ -103,7 +100,7 @@ function Novedades(d){
                         })}
                     </Swiper>          
                 </div>            
-                <ArticlesNov data={data} />
+                <ArticlesNov data={data.news} totalData={data.totalData} />
             </section>
 
             <section>
