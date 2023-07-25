@@ -33,7 +33,8 @@ export default function HomeHeading({ title, initial, final }){
 
     return(
         <header>
-            <h2 className={styles.heading}>{initial[0].value}<br className={styles.mobile} /> <span ref={element} /><br />{final[0].value}</h2>
+
+            <h2 className={styles.heading}><span dangerouslySetInnerHTML={{__html: initial[0].value }}></span><strong ref={element} /><span dangerouslySetInnerHTML={{__html: final[0].value }}></span></h2>
         </header>
     );
 }

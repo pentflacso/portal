@@ -17,7 +17,7 @@ function Index(d){
     const { windowSize, setCurrentArticleHashtag, setDataStrip } = useAppContext();
     
     let  {strip, ...data}  = d;
-    data =  Object.values(data);
+    
 
     useEffect(() => {
         setDataStrip(strip);

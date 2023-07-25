@@ -14,13 +14,20 @@ export default function TextMarquee({ data }){
       if(Array.isArray(data)){
         data.forEach((value, title) => {
           if (contValues === 1) {
-            t = value.value + ' — ' + value.value + ' — ';
+            if(value.value[0]!="+")
+            {
+              t = value.value + ' — ' + value.value + ' —&nbsp;';
+            }else
+            {
+              t = value.value + '  ' + value.value + '&nbsp;';
+            }
           } else {
-            t += value.value + ' — ';
+            t += value.value + ' —&nbsp;';
           }
           cont++;
         });
-    
+        
+       // t+="&nbsp;";
         setFieldValue(t);
       }
     }, [data]);
