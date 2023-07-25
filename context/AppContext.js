@@ -44,7 +44,7 @@ export default function AppProvider({ children }) {
   const [ announcementStatus, setAnnouncementStatus ] = useState();
   
   
-  const [ dataStrip, setDataStrip ] = useState();  
+  const [ dataStrip, setDataStrip ] = useState("");
   
   const menuOverlay = useRef();  
 

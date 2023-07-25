@@ -19,6 +19,8 @@ function Index(d){
 
     let  {strip, ...data}  = d;
     
+    console.log(strip);
+
     useEffect(() => {
         setDataStrip(strip);
     }, [])

@@ -29,7 +29,7 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
     const { setDataStrip, windowSize } = useAppContext();
 
     useEffect(() => {
-         setDataStrip(data[0].strip);
+        setDataStrip(data[0].strip);
     }, [])
 
     const exploringBtnsData = [
@@ -111,6 +111,7 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
             <MainWrapper>  
                 <section className={stylesx.pageBuilder}>
                 {data ? data.map((data, i) => (
+                    data.block_type === "header" ? "" :
                     <div key={i} data-id={data.block_class}  >
                         {(data.block_type === "highlighted" && i == 1) &&
                             <PageHeading title={data.title[0].value}  />
