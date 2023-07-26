@@ -14,15 +14,16 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { gsap } from 'gsap';
 import styles from "./novedades.module.scss";
 
-function Index(d){
-
-    const data = Object.values(d);
+function Index(data){
+    useEffect(() => {
+        setDataStrip(data.strip);
+    }, [])
 
     //Router
     const router = useRouter();
     const {category} = router.query;
 
-    const { windowSize } = useAppContext(); 
+    const { windowSize, setDataStrip } = useAppContext(); 
 
     const exploringBtnsData = [
         {title: 'Formación', path: 'formacion'},
@@ -30,7 +31,7 @@ function Index(d){
         {title: 'Asesorías', path: 'asesorias'}
     ]
 
-    const filtro = ["prensa", "empleos", "evento"];
+    const filtro = data.categories;
     
 
     //Follow cursor 
@@ -102,7 +103,7 @@ function Index(d){
                         })}
                     </Swiper>          
                 </div>
-                <ArticlesNov data={data} category={category} />
+                <ArticlesNov data={data.news} category={category} totalData={data.totalData} />
             </section>
 
             <section>
@@ -130,6 +131,7 @@ export async function getServerSideProps({query}) {
     const res = await fetch(`https://redaccion.pent.org.ar/data/news/${query.category}`)
     const data = await res.json()
 
+    console.log(`https://redaccion.pent.org.ar/data/news/${query.category}`);
     // Pass data to the page via props
     return { props:  {...data }   }
 }
