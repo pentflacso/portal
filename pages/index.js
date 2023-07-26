@@ -9,9 +9,7 @@ function Home({data}){
     
     const { windowSize } = useAppContext();   
 
-    useEffect(() => {
-
-        
+    useEffect(() => {   
         if(windowSize >= 1025){    
             
             // Follow custom cursor

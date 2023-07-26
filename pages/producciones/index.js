@@ -16,8 +16,8 @@ import styles from "./producciones.module.scss";
 
 function Producciones(d){  
 
-    let  {strip, ...data}  = d;
-    data =  Object.values(data);
+
+    let data =  d.products;
 
     const content = useRef();   
     const pageHeading = useRef();
@@ -34,7 +34,7 @@ function Producciones(d){
     const { dataArticles, setDataArticles, currentArticleHashtag, currentArticleAuthor, searchInArticles, windowSize, advancedFilterStatus, setDataStrip } = useAppContext();    
     
     useEffect(() => {
-        setDataStrip(strip);
+        setDataStrip(d.strip);
    }, [])
 
     //Mandamos la data a dataArticles dentro de AppContext

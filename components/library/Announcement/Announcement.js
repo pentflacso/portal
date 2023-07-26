@@ -13,7 +13,7 @@ export default function Announcement({data}){
         }, "500");    
     }
 
-   if(data ){ 
+   if(data != "" ){ 
         return( 
             <div className={!announcementOutAnimation ? `${styles.announcement}` : `${styles.announcement} ${styles.animation_out}` }>   
 

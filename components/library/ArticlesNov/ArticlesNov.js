@@ -4,7 +4,7 @@ import Card from '../Card/Card';
 import styles from "./ArticlesNov.module.scss";
 
 
-export default function ArticlesNov({ data, category }){
+export default function ArticlesNov({ data, category, totalData }){
 
     const { windowSize } = useAppContext();
 
@@ -35,6 +35,8 @@ export default function ArticlesNov({ data, category }){
         setNotesOffset(NOTES_TO_FETCH);
         setCachedNotes(data.slice(NOTES_TO_SHOW));
         setShowLoadMore(true);
+
+        
     }, [category])
 
     const handleChangePagination = async (e) => {
@@ -42,6 +44,7 @@ export default function ArticlesNov({ data, category }){
 
 		//Verifica hay 6 notas guardadas en el cache pide 12 mas
 		if (cachedNotes.length <= NOTES_TO_SHOW) {
+            
 			//Une las notas mostradas con las Notas guardadas para mostrar
 			setNotesToShow(notesToShow.concat(cachedNotes));
 
@@ -50,12 +53,14 @@ export default function ArticlesNov({ data, category }){
 
             }else{
                 try{
-                    //console.log(`/dataNovedades/${category ? category + "/": ""}novedades-${NOTES_TO_FETCH + notesOffset}-${notesOffset}.json`);
 
-                    const res = await fetch(`https://redaccion.pent.org.ar/data/news/${category ? category: "all"}/${NOTES_TO_FETCH + notesOffset}/${notesOffset}`);
-                    //const res = await fetch(`/dataNovedades/novedades-${NOTES_TO_FETCH + notesOffset}-${notesOffset}.json`);
+                    const res = await fetch(`https://redaccion.pent.org.ar/data/news/${category ? category : "all"}/${NOTES_TO_FETCH + notesOffset}/${notesOffset}`);
 
-                    const newNotes = await res.json();
+                    //const res = await fetch(`/dataNovedades/${category ? category + "/": ""}novedades-${NOTES_TO_FETCH + notesOffset}-${notesOffset}.json`);
+
+                    const {news} = await res.json()
+                    
+                    const newNotes = news;
 
                     setCachedNotes(newNotes);
                     setNotesOffset(notesOffset + NOTES_TO_FETCH);
@@ -66,7 +71,7 @@ export default function ArticlesNov({ data, category }){
                 }
                 
                 catch(error) {
-                    console.log(`Hubo un error => ${error.message}`);
+                    //console.log(`Hubo un error => ${error.message}`);
                     setShowLoadMore(false);            
                 }
             }

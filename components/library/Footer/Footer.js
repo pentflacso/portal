@@ -1,4 +1,5 @@
 import styles from "./Footer.module.scss";
+import FormFoooter from "../FormFooter/FormFooter";
 
 export default function Footer(){
     return(
@@ -14,10 +15,11 @@ export default function Footer(){
                     <div className={styles.col_right}>
                         <h4>Newsletter</h4>
                         <p>Si te interesa estar al tanto de propuestas de formación, búsquedas laborales, eventos especiales, actividades en línea y novedades del PENT FLACSO, te invitamos a registrarte.</p>
-                            <div className={styles.input_group}>
+                            {/*<div className={styles.input_group}>
                                 <input type="email" className={styles.input_email} placeholder="Colocá tu email" aria-label="" />
                                 <button className={styles.btn_send} type="button" />
-                            </div>                      
+    </div>*/}
+    <FormFoooter />                      
                     </div>
                 </div>
 
