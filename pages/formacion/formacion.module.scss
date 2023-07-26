@@ -1,34 +1,44 @@
 @import "../../styles/themeStyles.module.scss";
 
-.marquee_1{
-    margin-bottom: calc(50px + (200 - 50) * ((100vw - 1200px) / (3840 - 1200)));
-    @media screen and (max-width: 1024px){
-        margin-bottom: calc(30px + (100 - 30) * ((100vw - 300px) / (1024 - 300)));
-    }
-}
-
-.marquee_2{
-    margin-bottom: calc(95px + (280 - 95) * ((100vw - 1200px) / (3840 - 1200)));
-}
-
-.carrousel_formacion{    
-    margin-bottom: calc(35px + (150 - 35) * ((100vw - 1200px) / (3840 - 1200)));   
-    @media screen and (max-width: 1024px){
-        margin-bottom: calc(35px + (100 - 35) * ((100vw - 300px) / (1024 - 300)));
-    } 
-    .card{
-        @include basic-card-1; 
-        img{
-            margin-bottom: calc(20px + (40 - 20) * ((100vw - 1200px) / (3840 - 1200)));
-            @media screen and (max-width: 1024px){
-                margin-bottom: calc(10px + (30 - 10) * ((100vw - 300px) / (1024 - 300)));
-            } 
+.pageBuilder
+{     
+    div[data-id="highlighted_1"]{
+        margin-bottom: calc(70px + (220 - 70) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(40px + (140 - 40) * ((100vw - 300px) / (1024 - 300)));
         }
-        p{
-            margin-bottom: calc(25px + (75 - 25) * ((100vw - 1200px) / (3840 - 1200)));
-            @media screen and (max-width: 1024px){
-                margin-bottom: calc(20px + (55 - 20) * ((100vw - 300px) / (1024 - 300)));
-            } 
+    }
+
+    div[data-id="marquee_1"]{
+        margin-bottom: calc(50px + (200 - 50) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(30px + (100 - 30) * ((100vw - 300px) / (1024 - 300)));
+        }
+    }
+    
+    div[data-id="marquee_2"]{
+        margin-bottom: calc(95px + (280 - 95) * ((100vw - 1200px) / (3840 - 1200)));
+    }
+
+    .carrousel_formacion{    
+        margin-bottom: calc(35px + (150 - 35) * ((100vw - 1200px) / (3840 - 1200)));   
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(35px + (100 - 35) * ((100vw - 300px) / (1024 - 300)));
+        } 
+        .card{
+            @include basic-card-1; 
+            img{
+                margin-bottom: calc(20px + (40 - 20) * ((100vw - 1200px) / (3840 - 1200)));
+                @media screen and (max-width: 1024px){
+                    margin-bottom: calc(10px + (30 - 10) * ((100vw - 300px) / (1024 - 300)));
+                } 
+            }
+            p{
+                margin-bottom: calc(25px + (75 - 25) * ((100vw - 1200px) / (3840 - 1200)));
+                @media screen and (max-width: 1024px){
+                    margin-bottom: calc(20px + (55 - 20) * ((100vw - 300px) / (1024 - 300)));
+                } 
+            }
         }
     }
 }

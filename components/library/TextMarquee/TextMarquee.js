@@ -5,6 +5,8 @@ import styles from "./TextMarquee.module.scss";
 export default function TextMarquee({ data }){
     const [fieldValue, setFieldValue] = useState('');
 
+    console.log(data)
+
     //Concatena los valores de data
     useEffect(() => {
       let t = '';
