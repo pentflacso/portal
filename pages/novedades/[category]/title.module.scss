@@ -77,13 +77,22 @@
             }
         }
 
-        video, img{
+        video {
             width: 100%;
             height: auto;
             margin-bottom: calc(24px + (56 - 24) * ((100vw - 1200px) / (3840 - 1200)));
             @media screen and (max-width: 1024px){
                 margin-bottom: calc(15px + (50 - 15) * ((100vw - 300px) / (1024 - 300))); 
             }
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+        }
+
+        .body {
+            margin-bottom: calc(35px + (105 - 35) * ((100vw - 1200px) / (3840 - 1200)));
         }
 
         .share_btn{

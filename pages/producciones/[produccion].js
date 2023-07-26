@@ -103,7 +103,7 @@ function Index(d){
                         <h1>{data.title}</h1>
                         { data.authors ?
                             <div className={styles.authors}>
-                                <p>{data.lead} | <span>Por —</span>&nbsp;</p>
+                                <p>{data.types} | <span>Por —</span>&nbsp;</p>
                                 {data.authors.map((a, i) => (
                                     <Fragment key={i}>
                                     <Link  href={a.link}>{a.title}<span>{i<data.authors.length -1 ? "," : ""}</span></Link>
@@ -147,7 +147,7 @@ function Index(d){
 export async function getServerSideProps({query}) {
     // Fetch data from external API
     /* const res = await fetch(`https://flacso.pent.org.ar/api/producciones/${query.produccion}.json`) */
-    const res = await fetch(`https://redaccion.pent.org.ar/data/production/203`)
+    const res = await fetch(`https://redaccion.pent.org.ar/data/production/${query.produccion}`)
     const data = await res.json()
     // Pass data to the page via props
     return { props:  {...data }   }

@@ -106,7 +106,7 @@ function Index(d){
 
                         <article>
                             { data.body ?           
-                                <div dangerouslySetInnerHTML={{__html: data.body }} /> :
+                                <div className={styles.body} dangerouslySetInnerHTML={{__html: data.body }} /> :
                             ""}
 
                             <button type="button" className={styles.share_btn} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button> 
@@ -127,7 +127,7 @@ function Index(d){
 
                 <section>
                     <div className={styles.marquee}>
-                        <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                        <TextMarquee data={[{value:"Seguir explorando"}]} />
                     </div>
                     <ExploringBtns data={exploringBtnsData} />      
                 </section> 
