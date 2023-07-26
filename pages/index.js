@@ -1,6 +1,5 @@
 import { useEffect } from 'react';
 import { useAppContext } from '../context/AppContext';
-
 import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
 import PageBuilder from '../components/PageBuilder/PageBuilder';

@@ -26,11 +26,12 @@ import Footer from '../../components/library/Footer/Footer';
 
 
 export default function PageBuilder({data, stylesx, explorerBtn}){
-    const { setDataStrip, windowSize } = useAppContext();
+    const { setDataStrip, windowSize, announcementStatus } = useAppContext();
 
     useEffect(() => {
-        setDataStrip(data[0].strip);
+        setDataStrip(data[0].strip);    
     }, [])
+
 
     const exploringBtnsData = [
         {title: 'Formación', path: 'formacion'},
@@ -54,7 +55,8 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
         } 
     }
 
-    const FormatCard = ({type, alt, url, title, lead, href, description}) =>{ 
+
+    /* const FormatCard = ({type, alt, url, title, lead, href, description}) =>{     
         if(type == 0){
         //Formacion    
             return(
@@ -97,7 +99,7 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                 </article> 
             )
         } 
-    }
+    } */
 
     return(
     <>
@@ -116,8 +118,6 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                         {(data.block_type === "highlighted" && i == 1) &&
                             <PageHeading title={data.title[0].value}  />
                         }
-
-
                         {(data.block_type === "wordscover" && i == 1) &&
                             <HomeHeading title={data.title} final={data.finalwords} initial={data.initialwords}   />
                         }
@@ -125,7 +125,7 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                             <CoverVideo data={data}  data-order={i}  />
                         }
                         {data.block_type === "sectionselector" && 
-                            <SectionSelector data={data.MemberData}  data-order={i} />
+                            <SectionSelector data={data.MemberData} data-order={i} />
                         }
                         {data.block_type === "skillbox" && 
                             <KeysBox data={data.keyFeatures}  data-order={i} />
@@ -193,9 +193,9 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                                 }    
                                 className={`${styleCard(data.typeCard[0].value)} swiper-cards`}       
                             >   
-                                {data.cards.map((item, p) => (
-                                    <SwiperSlide key={p}>
-                                        <FormatCard 
+                                {data.cards.map((item, i) => (
+                                    <SwiperSlide key={i}>
+                                    {/*    <FormatCard 
                                             type={data.typeCard[0].value} 
                                             title={item.title} 
                                             description={item.description}
@@ -204,7 +204,40 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                                             lead={item.state} 
                                             href={item.link.href}
                                             cta={item.link.title}
-                                        />
+                                    /> */}
+
+                                        {data.typeCard[0].value === '0' &&
+                                            <article className={stylesx.card}>
+                                                <img src={item.img.url} alt={item.img.alt} />
+                                                <h5>{item.title}</h5>
+                                                <p>{item.description}</p>
+                                                <a href={item.img.url} rel="noopener noreferrer" target="_blank" className="cta_btn">Más información</a>
+                                            </article>
+                                        }                                
+                                        {data.typeCard[0].value === '1' &&
+                                            <a href={item.link.href} rel="noopener noreferrer" target="_blank" className={stylesx.card_new}>
+                                                <div className={stylesx.info}>
+                                                    <h5>{item.title}</h5>
+                                                    <p>{item.description}</p>
+                                                </div>                       
+                                                <img src={item.img.url} alt={item.img.alt} />                    
+                                            </a>
+                                        }
+                                        {data.typeCard[0].value === '3' &&
+                                            <article className={stylesx.card_proyect}>
+                                                <img alt={item.img.alt} src={item.img.url} />
+                                                <h5>{item.title}</h5>                    
+                                            </article>
+                                        }
+                                        {data.typeCard[0].value === '4' &&
+                                            <article className={stylesx.card}>
+                                                <span>{item.state}</span>
+                                                <h5>{item.title}</h5>
+                                                <p>{item.description}</p>
+                                                <a href={item.link.href} rel="noopener noreferrer" target="_blank" className="cta_btn">Más información</a>
+                                            </article> 
+                                        }          
+
                                     </SwiperSlide>
                                 ))}                            
                             </Swiper>     

@@ -11,7 +11,7 @@
     }
 
      // Marquesina 4
-     div[data-id="marquee_2"]{
+     div[data-id="marquee_4"]{
         margin-bottom: calc(55px + (270 - 55) * ((100vw - 1200px) / (3840 - 1200)));
         @media screen and (max-width: 1024px){
             margin-bottom: calc(30px + (100 - 30) * ((100vw - 300px) / (1024 - 300)));
@@ -43,6 +43,7 @@
         .card_proyect{
             width: calc(450px + (1320 - 450) * ((100vw - 1200px) / (3840 - 1200)));
             margin-left: calc(32px + (82 - 32) * ((100vw - 1200px) / (3840 - 1200)));
+            cursor: pointer;
             @media screen and (max-width: 1024px){
                 width: calc(255px + (880 - 255) * ((100vw - 300px) / (1024 - 300)));
                 margin-left: 0;

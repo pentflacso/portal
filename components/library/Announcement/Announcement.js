@@ -1,6 +1,5 @@
 import { useAppContext } from '../../../context/AppContext';
 import { useState } from 'react';
-import Link from "next/link";
 import styles from "./Announcement.module.scss";
 
 export default function Announcement({data}){
