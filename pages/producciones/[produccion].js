@@ -26,6 +26,8 @@ function Index(d){
     const [ shareModal, setShareModal ] = useState(false);  
     const router = useRouter();
 
+    const license = `<p>La producción ${ data.title } se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Disponible en: <a href="${ data.url }" target="_blank">${ data.url }</a></p>`
+
     const exploringBtnsData = [
         {title: 'Propuestas de formación', path: 'formacion'},        
         {title: 'Asesorías y soluciones a medida', path: 'asesorias'},
@@ -100,7 +102,7 @@ function Index(d){
                 <div className={styles.pin_block}> 
                     <header className={styles.col_left}>                
                         <Link className={styles.back_arrow} href="/producciones" ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver producciones</strong></span></Link>
-                        <h1>{data.title}</h1>
+                        <h1>{data.title}.</h1>
                         { data.authors ?
                             <div className={styles.authors}>
                                 <p>{data.types} | <span>Por —</span>&nbsp;</p>
@@ -125,12 +127,17 @@ function Index(d){
                         { data.img ? <img src={ data.img } alt={ data.title } className={styles.imgTop} /> : ""}
                         { data.body && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.body }} /> }
 
+                        { license ?
+                                <div className={styles.legal}>                         
+                                    <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Cómo citar</h4>" + `<p>${ data.quote }</p>` + "<h4>Licencia</h4>"+ license }}/>                  
+                                </div>
+                            : "" }
 
                     </article>
                 </div> 
                 <section>
                     <div className={styles.marquee}>
-                        <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                        <TextMarquee data={[{value:"Seguir explorando"}]} />
                     </div>
                     <ExploringBtns data={exploringBtnsData} />  
                 </section>
