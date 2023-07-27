@@ -49,7 +49,8 @@ function Index(d){
                 pinSpacing: false,
                 scrub: true,
                 //markers: true
-            });       
+            });     
+            
  
             return () => {
                 ScrollTrigger.getAll().forEach(t => t.kill());  
@@ -100,7 +101,7 @@ function Index(d){
 
             
                 <div className={styles.pin_block}> 
-                    <header className={styles.col_left}>                
+                    <header className={styles.col_left} data-pinblock="header">                
                         <Link className={styles.back_arrow} href="/producciones" ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver producciones</strong></span></Link>
                         <h1>{data.title}.</h1>
                         { data.authors ?
@@ -124,7 +125,6 @@ function Index(d){
 
                     </header>
                     <article className={styles.col_right}>
-                        { data.img ? <img src={ data.img } alt={ data.title } className={styles.imgTop} /> : ""}
                         { data.body && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.body }} /> }
 
                         { data.hashtags && 
