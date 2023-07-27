@@ -127,6 +127,13 @@ function Index(d){
                         { data.img ? <img src={ data.img } alt={ data.title } className={styles.imgTop} /> : ""}
                         { data.body && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.body }} /> }
 
+                        { data.hashtags && 
+                        <div className={styles.hashtags}>
+                            <p>Ver más de:</p>
+                            { data.hashtags.map((hashtags , key) => <button type="button" key={key} onClick={ () => filterByTag(`${hashtags}`)}>{hashtags}</button>) }                            
+                        </div>
+                        }
+
                         { license ?
                                 <div className={styles.legal}>                         
                                     <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Cómo citar</h4>" + `<p>${ data.quote }</p>` + "<h4>Licencia</h4>"+ license }}/>                  
