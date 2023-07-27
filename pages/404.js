@@ -1,36 +1,29 @@
 import MainWrapper from '../components/library/MainWrapper/MainWrapper';
 import TextMarquee from '../components/library/TextMarquee/TextMarquee';
-import HighlightParagraph from '../components/library/HighlightParagraph/HighlightParagraph';
+import PageHeading from '../components/library/PageHeading/PageHeading';
 import ExploringBtns from '../components/library/ExploringBtns/ExploringBtns';
 import Footer from '../components/library/Footer/Footer';
 import styles from "./404.module.scss";
 
 
 export default function Error404() {
+
   const exploringBtnsData = [
-    {title: 'Portada', path: ''},
-    {title: 'Formación', path: 'formacion'},
-    {title: 'Asesorías', path: 'asesorias'},
-    {title: 'Producciones', path: 'producciones'},
-    {title: 'Investigación', path: 'investigacion'},
-    {title: 'Novedades', path: 'novedades'},
-    {title: 'Equipo', path: 'equipo'}             
+    {title: 'Propuestas de formación', path: 'formacion'},
+    {title: 'Asesorías y soluciones a medida ', path: 'asesorias'},
+    {title: 'Investigación y divulgación', path: 'investigacion'}        
   ]
 
   return (
     <MainWrapper> 
 
+      <div className={styles.page_heading}>
+        <PageHeading title="Ouch! la página que estas buscando<br data-contex='desk'> actualmente <span>no está disponible.</span>" />
+      </div>  
+
       <div className={styles.marquee}>
-        <TextMarquee data={[{ value: "Error 404" }]} />
-      </div>
-
-
-      <div className={styles.highlight}>
-        <HighlightParagraph title={[{ value: "El contenido que estás buscando ya no está en esta ubicación. Te invitamos a <span>seguir explorando:</span>" }]} />
-      </div>
-
-
-      
+        <TextMarquee data={[{ value: "Seguir explorando" }]} />
+      </div>          
 
       <ExploringBtns data={exploringBtnsData} />
 

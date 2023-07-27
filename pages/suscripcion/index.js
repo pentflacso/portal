@@ -7,14 +7,11 @@ import styles from "./suscripcion.module.scss";
 
 
 export default function Suscripcion() {
+
   const exploringBtnsData = [
-    {title: 'Portada', path: ''},
-    {title: 'Formación', path: 'formacion'},
-    {title: 'Asesorías', path: 'asesorias'},
-    {title: 'Producciones', path: 'producciones'},
-    {title: 'Investigación', path: 'investigacion'},
-    {title: 'Novedades', path: 'novedades'},
-    {title: 'Equipo', path: 'equipo'}             
+    {title: 'Propuestas de formación', path: 'formacion'},
+    {title: 'Asesorías y soluciones a medida ', path: 'asesorias'},
+    {title: 'Investigación y divulgación', path: 'investigacion'}        
   ]
 
   return (
@@ -25,7 +22,7 @@ export default function Suscripcion() {
       </div>
 
       <div className={styles.highlight}>
-        <HighlightParagraph title={[{ value: "Te suscribiste al boletín y novedades del PENT, pronto recibirás novedades. Te invitamos a <span>seguir explorando:</span>" }]} />
+        <HighlightParagraph title={[{ value: "Te suscribiste al boletín y novedades del PENT, pronto recibirás novedades. Te invitamos a <span>seguir explorando</span>" }]} />
       </div>      
 
       <ExploringBtns data={exploringBtnsData} />

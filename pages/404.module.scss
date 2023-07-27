@@ -1,19 +1,16 @@
 @import "../styles/themeStyles.module.scss";
 
-.marquee{
-    margin-bottom: calc(45px + (245 - 45) * ((100vw - 1200px) / (3840 - 1200)));
-     @media screen and (max-width: 1024px){
-        margin-bottom: calc(40px + (80 - 40) * ((100vw - 300px) / (1024 - 300)));
-    }
-    h2{
-        //font-size: calc(200px + (680 - 200) * ((100vw - 1200px) / (3840 - 1200)));
+.page_heading{
+    margin-bottom: calc(70px + (220 - 70) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(40px + (140 - 40) * ((100vw - 300px) / (1024 - 300)));
     }
 }
 
-.highlight{
-    @include container-width-1;
-    margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+.marquee{
+    margin-bottom: calc(42px + (145 - 42) * ((100vw - 1200px) / (3840 - 1200)));
     @media screen and (max-width: 1024px){
-        margin-bottom: calc(45px + (145 - 45) * ((100vw - 300px) / (1024 - 300)));
+        margin-bottom: calc(30px + (100 - 30) * ((100vw - 300px) / (1024 - 300)));
     }
 }
+
