@@ -52,67 +52,6 @@
             }
             .col_right{
                 grid-area: right;
-                .input_group{  
-                    position: relative;                  
-                    .input_email{
-                        width: 100%;
-                        background-color: transparent;
-                        border-top-style: none;
-                        border-right-style: none;
-                        border-left-style: none;
-                        border-bottom: solid $line-1 $white;  
-                        @include font-level-4;
-                        font-family: 'Roboto', sans-serif;
-                        font-weight: 300;                        
-                        line-height: 100%;
-                        color: $white; 
-                        padding:
-                        calc(8px + (26 - 8) * ((100vw - 1200px) / (3840 - 1200)))
-                        0
-                        calc(18px + (56 - 18) * ((100vw - 1200px) / (3840 - 1200)))
-                        0
-                        ;
-                        @media screen and (max-width: 1025px){ 
-                            padding:
-                            calc(8px + (26 - 8) * ((100vw - 300px) / (1024 - 300)))
-                            0
-                            calc(12px + (18 - 12) * ((100vw - 300px) / (1024 - 300)))
-                            0
-                            ;
-                        }
-                        &::placeholder {                      
-                            color: $gray-2;
-                        }
-                        &:focus {
-                            outline: none;
-                            &::placeholder {                      
-                                color: transparent;
-                            }
-                        }
-                    }
-                    .btn_send{
-                        position: absolute;
-                        top: 0;
-                        right: 0;
-                        width: calc(36px + (96 - 36) * ((100vw - 1200px) / (3840 - 1200)));
-                        height: calc(36px + (96 - 36) * ((100vw - 1200px) / (3840 - 1200)));
-                        background-color: $green-2;
-                        background-image: url(../../../public/assets/icons/arrow_next_icon.svg);
-                        background-repeat: no-repeat;
-                        background-position: center;
-                        background-size: 55%;    
-                        border-radius: 50%;
-                        @media screen and (max-width: 1025px){ 
-                            width: calc(27px + (57 - 27) * ((100vw - 300px) / (1024 - 300)));
-                            height: calc(27px + (57 - 27) * ((100vw - 300px) / (1024 - 300))); 
-                        }
-                        @media screen and (min-width: 1025px){
-                            &:hover{
-                                background-color: $white; 
-                            }
-                        }
-                    }
-                }
             }
         }
         .info_bottom{
