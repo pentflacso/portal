@@ -34,9 +34,9 @@ export default function ArticlesNov({ data, category, totalData }){
         setNotesToShow(data.slice(0, NOTES_TO_SHOW));        
         setNotesOffset(NOTES_TO_FETCH);
         setCachedNotes(data.slice(NOTES_TO_SHOW));
-        setShowLoadMore(true);
 
-        
+        data.length != 0 ? setShowLoadMore(true): setShowLoadMore(false) ;
+
     }, [category])
 
     const handleChangePagination = async (e) => {
