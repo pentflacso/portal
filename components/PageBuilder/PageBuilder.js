@@ -224,10 +224,10 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                                             </a>
                                         }
                                         {data.typeCard[0].value === '3' &&
-                                            <article className={stylesx.card_proyect}>
+                                            <Link href={item.link.href} className={stylesx.card_proyect}>
                                                 <img alt={item.img.alt} src={item.img.url} />
                                                 <h5>{item.title}</h5>                    
-                                            </article>
+                                            </Link>
                                         }
                                         {data.typeCard[0].value === '4' &&
                                             <article className={stylesx.card}>
