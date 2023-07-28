@@ -38,9 +38,9 @@ export default function NewsSelector({ data }){
                             { showNews === i &&
                                 <div className={styles.description_marquee}>
                                     <Marquee speed="150" gradientWidth="0" direction="left">
-                                        <div dangerouslySetInnerHTML={{__html: e.description }} />
-                                        <div dangerouslySetInnerHTML={{__html: e.description }} />
-                                        <div dangerouslySetInnerHTML={{__html: e.description }} />
+                                        <div dangerouslySetInnerHTML={{__html: "&nbsp;— " + e.title + " — " + e.description }} />
+                                        <div dangerouslySetInnerHTML={{__html: "&nbsp;— " + e.title + " — " + e.description }} />
+                                        <div dangerouslySetInnerHTML={{__html: "&nbsp;— " + e.title + " — " + e.description }} />
                                     </Marquee>      
                                 </div>      
                             }

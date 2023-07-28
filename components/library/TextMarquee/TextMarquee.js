@@ -32,8 +32,6 @@ export default function TextMarquee({ data }){
       }
     }, [data]);
 
-
-
     return(
         <>
         <Marquee speed="140" gradientWidth="0" direction="left">

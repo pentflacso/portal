@@ -1,7 +1,7 @@
 @import "../../../styles/themeStyles.module.scss";
 .input_group{  
     position: relative;                  
-    .input_email{
+    .input_email, .email_sended{
         width: 100%;
         background-color: transparent;
         border-top-style: none;
@@ -11,7 +11,6 @@
         @include font-level-4;
         font-family: 'Roboto', sans-serif;
         font-weight: 300;                        
-        line-height: 100%;
         color: $white; 
         padding:
         calc(8px + (26 - 8) * ((100vw - 1200px) / (3840 - 1200)))
@@ -36,6 +35,32 @@
                 color: transparent;
             }
         }
+        &.email_error{
+            color: $yellow-1; 
+        }        
+        .sended_icon{
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: calc(36px + (96 - 36) * ((100vw - 1200px) / (3840 - 1200)));
+            height: calc(36px + (96 - 36) * ((100vw - 1200px) / (3840 - 1200)));
+            background-color: transparent;
+            background-image: url(../../../public/assets/icons/check_icon.svg);
+            background-repeat: no-repeat;
+            background-position: center;
+            background-size: 0%;    
+            border-radius: 50%;
+            border: $line-1 solid $green-2;
+            animation-name: growUp;
+            animation-duration: .2s;  
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: forwards;  
+            @media screen and (max-width: 1025px){ 
+                width: calc(27px + (57 - 27) * ((100vw - 300px) / (1024 - 300)));
+                height: calc(27px + (57 - 27) * ((100vw - 300px) / (1024 - 300))); 
+                border: $line-1-mobile solid $green-2;
+            }
+        }
     }
     .btn_send{
         position: absolute;
@@ -48,7 +73,7 @@
         background-repeat: no-repeat;
         background-position: center;
         background-size: 55%;    
-        border-radius: 50%;
+        border-radius: 50%; 
         @media screen and (max-width: 1025px){ 
             width: calc(27px + (57 - 27) * ((100vw - 300px) / (1024 - 300)));
             height: calc(27px + (57 - 27) * ((100vw - 300px) / (1024 - 300))); 
@@ -58,9 +83,25 @@
                 background-color: $white; 
             }
         }
+        &.sending{   
+            background-image: none;
+            background-color: transparent;
+            border: $line-1 solid transparent; 
+            border-top: $line-1 solid $green-2;
+            animation: spin .4s linear infinite;     
+            @media screen and (max-width: 1025px){ 
+                border: $line-1-mobile solid $green-2;
+            }         
+        }
     }
+}
+  
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
 
-    .inputHidden{
-        display: none;
-    }
+@keyframes growUp {
+    0% { background-size: 0%; }
+    100% { background-size: 55%; }
 }

@@ -26,6 +26,8 @@ function Index(d){
     const [ shareModal, setShareModal ] = useState(false);  
     const router = useRouter();
 
+    const license = `<p>La producción ${ data.title } se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Disponible en: <a href="${ data.url }" target="_blank">${ data.url }</a></p>`
+
     const exploringBtnsData = [
         {title: 'Propuestas de formación', path: 'formacion'},        
         {title: 'Asesorías y soluciones a medida', path: 'asesorias'},
@@ -47,7 +49,8 @@ function Index(d){
                 pinSpacing: false,
                 scrub: true,
                 //markers: true
-            });       
+            });     
+            
  
             return () => {
                 ScrollTrigger.getAll().forEach(t => t.kill());  
@@ -98,12 +101,12 @@ function Index(d){
 
             
                 <div className={styles.pin_block}> 
-                    <header className={styles.col_left}>                
+                    <header className={styles.col_left} data-pinblock="header">                
                         <Link className={styles.back_arrow} href="/producciones" ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver producciones</strong></span></Link>
-                        <h1>{data.title}</h1>
+                        <h1>{data.title}.</h1>
                         { data.authors ?
                             <div className={styles.authors}>
-                                <p>{data.lead} | <span>Por —</span>&nbsp;</p>
+                                <p>{data.types} | <span>Por —</span>&nbsp;</p>
                                 {data.authors.map((a, i) => (
                                     <Fragment key={i}>
                                     <Link  href={a.link}>{a.title}<span>{i<data.authors.length -1 ? "," : ""}</span></Link>
@@ -122,15 +125,26 @@ function Index(d){
 
                     </header>
                     <article className={styles.col_right}>
-                        { data.img ? <img src={ data.img } alt={ data.title } className={styles.imgTop} /> : ""}
                         { data.body && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.body }} /> }
 
+                        { data.hashtags && 
+                        <div className={styles.hashtags}>
+                            <p>Ver más de:</p>
+                            { data.hashtags.map((hashtags , key) => <button type="button" key={key} onClick={ () => filterByTag(`${hashtags}`)}>{hashtags}</button>) }                            
+                        </div>
+                        }
+
+                        { license ?
+                                <div className={styles.legal}>                         
+                                    <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Cómo citar</h4>" + `<p>${ data.quote }</p>` + "<h4>Licencia</h4>"+ license }}/>                  
+                                </div>
+                            : "" }
 
                     </article>
                 </div> 
                 <section>
                     <div className={styles.marquee}>
-                        <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                        <TextMarquee data={[{value:"Seguir explorando"}]} />
                     </div>
                     <ExploringBtns data={exploringBtnsData} />  
                 </section>
@@ -147,7 +161,7 @@ function Index(d){
 export async function getServerSideProps({query}) {
     // Fetch data from external API
     /* const res = await fetch(`https://flacso.pent.org.ar/api/producciones/${query.produccion}.json`) */
-    const res = await fetch(`https://redaccion.pent.org.ar/data/production/203`)
+    const res = await fetch(`https://redaccion.pent.org.ar/data/production/${query.produccion}`)
     const data = await res.json()
     // Pass data to the page via props
     return { props:  {...data }   }
