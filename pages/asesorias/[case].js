@@ -118,7 +118,7 @@ function Index(d){
 
                 <section>
                     <div className={styles.marquee}>
-                        <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                        <TextMarquee data={[{value:"Seguir explorando"}]} />
                     </div>
                     <ExploringBtns data={exploringBtnsData} />  
                 </section>
