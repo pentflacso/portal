@@ -63,7 +63,7 @@ const FormFooter  = () => {
         </form>
         :
         <div className={styles.email_sended}>
-          <p>Gracias, te hemos enviado un correo</p>
+          <span>Gracias, te hemos enviado un correo</span>
           <div className={styles.sended_icon}/>
         </div>        
       }
