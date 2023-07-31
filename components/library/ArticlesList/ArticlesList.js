@@ -7,7 +7,6 @@ import styles from "./ArticlesList.module.scss";
 export default function ArticlesList({ data }){
 
     const { windowSize } = useAppContext();
-
     //Data a utilizar
     const [dataToUse, setDataToUse] = useState(data);
     //Data limitada por cantidad a mostrar 

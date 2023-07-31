@@ -1,5 +1,11 @@
 @import "../../styles/themeStyles.module.scss";
 
+.page_heading{
+    margin-bottom: calc(5px + (10 - 5) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(25px + (50 - 25) * ((100vw - 300px) / (1024 - 300)));
+    }
+}
 
 .marquee{
     margin-bottom: calc(42px + (145 - 42) * ((100vw - 1200px) / (3840 - 1200)));
