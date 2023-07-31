@@ -73,8 +73,11 @@ function Novedades(data){
             description={'Enterate de las novedades más recientes del PENT FLACSO.'}
         />
            
-        <MainWrapper>    
-            <PageHeading title="<span>Novedades</span>" margin_bottom_type={1} />
+        <MainWrapper> 
+
+            <div className={styles.page_heading}>   
+                <PageHeading title="<span>Novedades</span>" />
+            </div>
 
             <section>
                 <div className={styles.filters_cont}>

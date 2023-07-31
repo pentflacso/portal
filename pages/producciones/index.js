@@ -169,8 +169,8 @@ function Producciones(d){
 
         <MainWrapper>    
             <div ref={content}>    
-                <div ref={pageHeading}>
-                    <PageHeading title="<span>Producciones</span>" margin_bottom_type={1} />        
+                <div ref={pageHeading} className={styles.page_heading}>
+                    <PageHeading title="<span>Producciones</span>" />        
                 </div> 
 
                 <section id="productions-nav">    
@@ -182,7 +182,7 @@ function Producciones(d){
 
                 <section> 
                     <div className={styles.marquee}>
-                        <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                        <TextMarquee data={[{ value: "SEGUIR EXPLORANDO" }]} />
                     </div>
                     <ExploringBtns data={exploringBtnsData} />
                 </section>
