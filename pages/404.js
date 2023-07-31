@@ -18,7 +18,7 @@ export default function Error404() {
     <MainWrapper> 
 
       <div className={styles.page_heading}>
-        <PageHeading title="Ouch! la página que estas buscando<br data-contex='desk'> actualmente <span>no está disponible.</span>" />
+        <PageHeading title="¡Ouch! La página que estas buscando<br data-contex='desk'> actualmente <span>no está disponible.</span>" />
       </div>  
 
       <div className={styles.marquee}>
