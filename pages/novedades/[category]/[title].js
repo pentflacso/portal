@@ -22,9 +22,6 @@ function Index(d){
         setDataStrip(strip);
     }, [])
     
-
-    console.log(data);
-
     const [ shareModal, setShareModal ] = useState(false); 
     const router = useRouter(); 
 
