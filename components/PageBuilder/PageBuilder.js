@@ -211,7 +211,7 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                                                 <img src={item.img.url} alt={item.img.alt} />
                                                 <h5>{item.title}</h5>
                                                 <p>{item.description}</p>
-                                                <a href={item.img.url} rel="noopener noreferrer" target="_blank" className="cta_btn">Más información</a>
+                                                <a href={item.link.href} rel="noopener noreferrer" target="_blank" className="cta_btn">Más información</a>
                                             </article>
                                         }                                
                                         {data.typeCard[0].value === '1' &&

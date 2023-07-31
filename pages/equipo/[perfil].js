@@ -1,4 +1,3 @@
-import { redirect } from 'next/navigation';
 import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
@@ -10,6 +9,7 @@ import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
 import styles from "./perfil.module.scss";
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
+import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 
 
 function Perfil(d){       
@@ -145,7 +145,7 @@ export async function getServerSideProps({query}) {
           redirect: {
             destination: '/equipo',
             permanent: false, // Puedes cambiarlo a true si deseas un redireccionamiento permanente (301)
-          },
+          }
         }
       }
 
@@ -153,8 +153,10 @@ export async function getServerSideProps({query}) {
     const res = await fetch(`https://redaccion.pent.org.ar/data/person/${query.perfil}`)
     const data = await res.json()
   
+    return handleServerRedirect(res, data);
+
     // Pass data to the page via props
-    return { props: data  }
+    //return { props: data  }
   }
 
   export default Perfil

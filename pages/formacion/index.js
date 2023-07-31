@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 import { useAppContext } from '../../context/AppContext';
+import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
 import PageBuilder from '../../components/PageBuilder/PageBuilder';
@@ -143,6 +144,7 @@ export async function getServerSideProps() {
     const data = await res.json()
   
     // Pass data to the page via props
-    return { props: data  }
-    //return { props: data.data  }
+    return handleServerRedirect(res, data); 
+    //return { props: data  }
+
 }
