@@ -1,3 +1,4 @@
+import { redirect } from 'next/navigation';
 import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
@@ -11,8 +12,7 @@ import styles from "./perfil.module.scss";
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 
 
-function Perfil(d){   
-
+function Perfil(d){       
     const { windowSize, setDataStrip } = useAppContext();
 
     let  {strip, ...data}  = d;
@@ -140,8 +140,16 @@ function Perfil(d){
 
 export async function getServerSideProps({query}) {
     // Fetch data from external API 
-    console.log(query.perfil);
-    // const res = await fetch(`https://flacso.pent.org.ar/api/perfil-${query.perfil}.php`)
+    if (query.perfil === "equipo-pent") {
+        return {
+          redirect: {
+            destination: '/equipo',
+            permanent: false, // Puedes cambiarlo a true si deseas un redireccionamiento permanente (301)
+          },
+        }
+      }
+
+
     const res = await fetch(`https://redaccion.pent.org.ar/data/person/${query.perfil}`)
     const data = await res.json()
   
