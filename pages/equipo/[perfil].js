@@ -84,17 +84,18 @@ function Perfil(d){
                         <header>
                             <Link className={styles.back_arrow} href="/equipo" ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver equipo</strong></span></Link>
                             <h1 className={styles.name_and_position}>{data.title}<br /><span>{data.position}</span></h1>
+                            {windowSize <= 1025 && data.image !== '' && <div className={styles.img_mobile}><img src={data.image} alt={`Imagen de ${data.title}`} /></div>}
                         </header>
                         <article className={styles.cv} dangerouslySetInnerHTML={{__html: data.body }} />
-                        <div className={styles.networks}>{data.networks.map((n, i) => (
-                            <span key={i}>
+                        <div className={styles.networks_wrapper}>{data.networks.map((n, i) => (
+                            <span className={styles.network} key={i}>
                              <a target="_blank" href={n.src}>{n.title}</a>
                             {i < data.networks.length -1 ? <strong>|</strong> : ""}
                             </span>
                         )) }</div>
                     </div>
                     <div className={styles.col_right}>
-                        <img src={data.image} alt={`Imagen de ${data.title}`} />
+                        {data.image !== '' && <img src={data.image} alt={`Imagen de ${data.title}`} />}
                     </div>
                 </div>
                 {

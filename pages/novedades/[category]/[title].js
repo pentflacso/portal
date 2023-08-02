@@ -1,5 +1,5 @@
 import { useAppContext } from '../../../context/AppContext';
-import { useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useRouter } from "next/router";
 import MetaTags from '../../../components/library/MetaTags/MetaTags';
 import ShareBtns from '../../../components/library/ShareBtns/ShareBtns';
@@ -13,52 +13,56 @@ import MainWrapper from '../../../components/library/MainWrapper/MainWrapper';
 
 function Index(d){
 
+    const { windowSize, setDataStrip } = useAppContext(); 
     let  {strip, ...data}  = d;
-    
-
-    const { windowSize, setDataStrip } = useAppContext();  
-
-    useEffect(() => {
-        setDataStrip(strip);
-    }, [])
-    
-
-    console.log(data);
-
-    const [ shareModal, setShareModal ] = useState(false); 
-    const router = useRouter(); 
-
-
     const exploringBtnsData = [
         {title: 'Propuestas de formación', path: 'formacion'},
         {title: 'Asesorías y soluciones a medida', path: 'asesorias'},
         {title: 'Nuestras producciones', path: 'producciones'}        
     ]
-
     const license = `<p>El texto de la nota ${ data.title } de Proyecto Educación y Nuevas Tecnologías se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Nota disponible en: <a href="${ data.url }" target="_blank">${ data.url }</a></p>`
+    const [ elementHeight, setElementHeight ] = useState(0);
+    const [ shareModal, setShareModal ] = useState(false);   
+    const router = useRouter(); 
+    const element = useRef(null);  
 
-    useEffect(() => {   
 
-        if(windowSize >= 1025 ){    
+    useEffect(() => {
+        setDataStrip(strip);
+    }, []);    
+    
 
-            const heightPinOff = document.querySelector(`.${styles.pin_block}`).offsetHeight;
+    useEffect(() => {
+        if(windowSize >= 1025 ){
+            if (!element.current) return;
+            const resizeObserver = new ResizeObserver(() => {
+            setElementHeight(element.current.offsetHeight);
+            });
+            resizeObserver.observe(element.current);            
+            return () => resizeObserver.disconnect();
+        }
+      }, [elementHeight, windowSize]);
+    
+
+    useEffect(() => {      
+        
+        if(windowSize >= 1025){    
 
             ScrollTrigger.create({
                 trigger: `#__next`,
                 start: "top top", 
-                end: () => `+=${heightPinOff} center`,            
+                end: () => `+=${elementHeight} center`,            
                 pin: `.${styles.col_right}`,
                 pinSpacing: false,
                 scrub: true,
-                //markers: true
-            });       
- 
+            });     
+            
             return () => {
                 ScrollTrigger.getAll().forEach(t => t.kill());  
             };         
-        }      
+        } 
          
-    }, [windowSize]);
+    }, [elementHeight]);
     
 
     const mobileShare = () => {
@@ -91,7 +95,7 @@ function Index(d){
 
             {shareModal && <ShareBtns shareurl={`https://pent-portal-testing.vercel.app${router.asPath}`} setShareModal={setShareModal} />}
 
-                <div className={styles.pin_block}>  
+                <div className={styles.pin_block} ref={element}>  
                     <div className={styles.col_left}>
 
                         <header>
@@ -109,7 +113,11 @@ function Index(d){
                                 <div className={styles.body} dangerouslySetInnerHTML={{__html: data.body }} /> :
                             ""}
 
-                            <button type="button" className={styles.share_btn} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button> 
+                            {windowSize >= 1025 ?
+                                <button type="button" className={`${styles.btn} ${styles.share_btn}`} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
+                            :
+                                <button type="button" className={`${styles.btn} ${styles.share_btn}`} onClick={ () => mobileShare() }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
+                            }
 
                             { license ?
                                 <div className={styles.legal}>                         

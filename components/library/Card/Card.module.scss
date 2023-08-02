@@ -44,6 +44,7 @@
             @include font-level-4;
             margin-right: calc(18px + (42 - 18) * ((100vw - 1200px) / (3840 - 1200)));
             color: $green-1;
+            line-height: 130%;
         }
     }
 

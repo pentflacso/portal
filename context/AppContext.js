@@ -60,7 +60,7 @@ export default function AppProvider({ children }) {
   useEffect(() =>{ 
 
     router.events.on('routeChangeStart', (url) => {     
-      if(url !== currentRoute && url !== '/novedades/prensa' && url !== '/novedades/empleos' && url !== '/novedades/evento'){
+      if(url !== currentRoute && url !== '/novedades/Empleos' && url !== '/novedades/Eventos' && url !== '/novedades/Prensa' && url !== '/novedades/Propuestas' && url !== '/novedades/Proyectos'){
         setLoadingState(true);
       } else{
         setLoadingState(false);
