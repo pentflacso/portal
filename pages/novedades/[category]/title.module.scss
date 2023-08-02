@@ -12,13 +12,6 @@
         margin-bottom: calc(5px + (10 - 5) * ((100vw - 300px) / (1024 - 300)));
     }
 
-    @media screen and (min-width: 1024px){
-        header
-            {
-                height: 80vh !important;
-            }
-        }
-
     .col_left{
         grid-area: left; 
 
@@ -195,8 +188,10 @@
                 ;
             }
         }
+
         @media screen and (min-width: 1025px){
             padding-left: calc(100px + (350 - 100) * ((100vw - 1200px) / (3840 - 1200)));
+            height: 80vh !important;
         }
     }
 }
