@@ -56,6 +56,19 @@
             }
         }
 
+        .img_mobile{
+            width: calc(160px + (400 - 160) * ((100vw - 300px) / (1024 - 300)));
+            height: calc(160px + (400 - 160) * ((100vw - 300px) / (1024 - 300)));
+            margin-bottom: calc(22px + (62 - 22) * ((100vw - 300px) / (1024 - 300)));
+            overflow: hidden;
+            img{
+                background-color: $green-2;
+                padding-top: calc(8px + (16 - 8) * ((100vw - 300px) / (1024 - 300)));
+                width: 100%;
+                height: auto;
+            }
+        }        
+
         .cv{
             p{
                 @include font-level-4;
@@ -89,26 +102,32 @@
     }
 }
 
-.networks{
+.networks_wrapper{
     margin-bottom: calc(24px + (56 - 24) * ((100vw - 1200px) / (3840 - 1200)));
-                @media screen and (max-width: 1024px){
-                    margin-bottom: calc(15px + (50 - 15) * ((100vw - 300px) / (1024 - 300)));
-                }
-    a{
-        @include font-level-4;
-                color: $gray-1;
-                font-weight: 400;
-                line-height: 144%;
-                text-decoration: none;
-                border-bottom: $line-1 solid transparent;
-
-                &:hover{
-                    color: $green-1;
-                    border-bottom: $line-1 solid $green-2;
-                  } 
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(15px + (50 - 15) * ((100vw - 300px) / (1024 - 300))); 
     }
-    strong{
-        padding: 0 10px;
+    .network{
+        @include font-level-4;
+        color: $gray-1;
+        a{
+            color: $gray-1;
+            font-weight: 400;
+        }   
+        strong{            
+            font-weight: 400;
+            margin: 0 calc(8px + (16 - 8) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1024px){
+                margin: 0 calc(5px + (15 - 5) * ((100vw - 300px) / (1024 - 300))); 
+            }
+        }      
+        @media screen and (min-width: 1025px){
+            &:hover{
+                a{
+                    color: $green-1;
+                }                
+            }
+        }
     }
 }
 
@@ -163,6 +182,7 @@
                 @include font-level-4;
                 margin-right: calc(18px + (42 - 18) * ((100vw - 1200px) / (3840 - 1200)));
                 color: $green-1;
+                line-height: 130%;
             }
         }
     }

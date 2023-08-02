@@ -108,7 +108,7 @@ function Novedades(data){
 
             <section>
                 <div className={styles.marquee}>
-                    <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                    <TextMarquee data={[{value: "SEGUIR EXPLORANDO"}]} />
                 </div>
                 <ExploringBtns data={exploringBtnsData} />
             </section>
