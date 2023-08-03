@@ -249,7 +249,7 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                             <ParagraphAndButton 
                                 paragraph={data.description[0].value}
                                 iconBtn={data.icon[0].img}
-                                urlBtn={data.description[0].value}
+                                urlBtn={data.link[0].src}
                             />    
                         }
                         {data.block_type === "lastnews" &&
