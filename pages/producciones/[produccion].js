@@ -108,7 +108,7 @@ function Index(d){
 
             
                 <div className={styles.pin_block} ref={element}> 
-                    <header className={styles.col_left} data-pinblock="header">                
+                    <header className={styles.col_left}>                
                         <Link className={styles.back_arrow} href="/producciones" ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver producciones</strong></span></Link>
                         <h1>{data.title}.</h1>
                         { data.authors ?
@@ -124,7 +124,11 @@ function Index(d){
                         }
                         
                         <div className={styles.btns}>
-                            <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
+                            {windowSize >= 1025 ?
+                                <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
+                            :
+                                <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => mobileShare() }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
+                            }                            
 
                             { data.download || data.link ? <Link className={`${styles.btn} ${styles.download}`} href={ data.download ? data.download : data.link } target="_blank"><span><img src="/assets/icons/download_icon.svg" alt="icono de descarga"/>{ data.download ? "Descargar" : "Acceder" }</span></Link> : "" }
 

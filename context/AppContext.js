@@ -23,7 +23,7 @@ export default function AppProvider({ children }) {
   //Guarda lo que el usuario escribe en la barra de búsqueda
   const [queryArticles, setQueryArticles] = useState('');
 
-  const queryArticlesKeys = ["lead", "title", "description"];
+  const queryArticlesKeys = ["lead", "title", "subtitle", "description", "year"];
 
   const [ articlesFiltersStatus, setArticlesFiltersStatus ] = useState({ hashtag: 0, author: 0, query: 0 });
 
@@ -150,7 +150,7 @@ export default function AppProvider({ children }) {
   //Filtra dataArticles, a partir de lo que el usuario escribe en el input que se encuentra en ProductionsAdvancedFilters
 
   const searchInArticles = (dataArticles) => { 
-    return dataArticles.filter( (item) => queryArticlesKeys.some(key => normalizeText(item[key]).includes(normalizeText(queryArticles))) );         
+    return dataArticles.filter( (item) => queryArticlesKeys.some(key => normalizeText(item[key]).includes(normalizeText(queryArticles))) );            
   };
 
   useEffect(() => {

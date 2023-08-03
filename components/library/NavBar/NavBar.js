@@ -49,6 +49,7 @@ export default function NavBar(){
                         </div>
                         <button type="button" className={styles.close_btn} onClick={ () => handleClose() }><span/><span/></button> 
                     </div>
+                    <div className={styles.bg_close} onClick={ () => handleClose() }/>
                 </div>
             } 
 
