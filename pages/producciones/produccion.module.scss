@@ -242,6 +242,17 @@
                     height: 100%;
                 }
             }
+
+            div[data-type="img-w-pie"]{
+                padding-top: calc(24px + (56 - 24) * ((100vw - 1200px) / (3840 - 1200)));                
+                @media screen and (max-width: 1024px){
+                    padding-top: calc(15px + (50 - 15) * ((100vw - 300px) / (1024 - 300))); 
+                }
+                p{
+                    @include font-level-5;
+                    color: $gray-1;
+                }
+            }
         }
 
         .hashtags{
