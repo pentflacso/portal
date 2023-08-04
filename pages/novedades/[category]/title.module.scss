@@ -53,6 +53,21 @@
             }
         }
 
+        h3{
+            @include font-level-3;
+            color: $deep-blue;
+            font-weight: 500;
+            padding-top: calc(28px + (95 - 28) * ((100vw - 1200px) / (3840 - 1200)));
+            margin-bottom: calc(24px + (56 - 24) * ((100vw - 1200px) / (3840 - 1200)));
+            strong{
+                font-weight: 500;
+            }
+            @media screen and (max-width: 1024px){
+                padding-top: calc(22px + (82 - 22) * ((100vw - 300px) / (1024 - 300))); 
+                margin-bottom: calc(15px + (50 - 15) * ((100vw - 300px) / (1024 - 300))); 
+            } 
+        }
+
         p{
             @include font-level-4;
             color: $deep-blue;
