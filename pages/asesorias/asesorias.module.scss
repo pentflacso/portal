@@ -35,14 +35,17 @@
         }
     }
   // Slider proyectos
-    div[data-id="slidercard_2"]{
+    .carrousel_proyects{
         margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+        user-select: none;
         @media screen and (max-width: 1024px){
             margin-bottom: calc(35px + (100 - 35) * ((100vw - 300px) / (1024 - 300)));
         }
         .card_proyect{
+            display: inline-block;
             width: calc(450px + (1320 - 450) * ((100vw - 1200px) / (3840 - 1200)));
             margin-left: calc(32px + (82 - 32) * ((100vw - 1200px) / (3840 - 1200)));
+            text-decoration: none;
             cursor: pointer;
             @media screen and (max-width: 1024px){
                 width: calc(255px + (880 - 255) * ((100vw - 300px) / (1024 - 300)));
