@@ -2,6 +2,13 @@
 
 .pageBuilder
 {
+    div[data-id="highlighted_1"]{
+        margin-bottom: calc(70px + (220 - 70) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(40px + (140 - 40) * ((100vw - 300px) / (1024 - 300)));
+        }
+    }
+
     // Marquesinas 1, 2, 3
     div[data-id="marquee_1"],div[data-id="marquee_2"],div[data-id="marquee_3"]{
         margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
