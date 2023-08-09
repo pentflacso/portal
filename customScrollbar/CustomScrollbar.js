@@ -88,6 +88,6 @@ export default function Layout({ children, ...rest }) {
 
 
   return (
-    <div data-scrollbar ref={$content} {...rest} id="scroll-container"><main>{children}</main></div>
+    <div data-scrollbar ref={$content} {...rest} id="scroll-container"><main className='main-container'>{children}</main></div>
   );
 }

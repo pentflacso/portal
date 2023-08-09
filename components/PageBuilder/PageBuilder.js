@@ -55,52 +55,6 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
         } 
     }
 
-
-    /* const FormatCard = ({type, alt, url, title, lead, href, description}) =>{     
-        if(type == 0){
-        //Formacion    
-            return(
-                <article className={stylesx.card}>
-                    <img src={url} alt={alt} />
-                    <h5>{title}</h5>
-                    <p>{description}</p>
-                    <a href={href} rel="noopener noreferrer" target="_blank" className="cta_btn">Más información</a>
-                </article>
-            )
-        }else if(type == 1){
-        //Home
-            return(
-                <a href={href} rel="noopener noreferrer" target="_blank" className={stylesx.card_new}>
-                    <div className={stylesx.info}>
-                        <h5>{title}</h5>
-                        <p>{description}</p>
-                    </div>                       
-                    <img src={url} alt={alt} />                    
-                </a>
-            )
-            
-        }else if(type == 3){
-        //Asesoria - clientes
-            return(    
-                <article className={stylesx.card_proyect}>
-                    <img alt={alt} src={url} />
-                    <h5>{title}</h5>                    
-                </article>
-            )
-
-        }else if(type == 4){
-        //Investigacion
-            return(    
-                <article className={stylesx.card}>
-                    <span>{lead}</span>
-                    <h5>{title}</h5>
-                    <p>{description}</p>
-                    <a href={href} rel="noopener noreferrer" target="_blank" className="cta_btn">Más información</a>
-                </article> 
-            )
-        } 
-    } */
-
     return(
     <>
             <MetaTags
@@ -114,7 +68,7 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                 <section className={stylesx.pageBuilder}>
                 {data ? data.map((data, i) => (
                     data.block_type === "header" ? "" :
-                    <div key={i} data-id={data.block_class}  >
+                    <div key={i} data-id={data.block_class}>
                         {(data.block_type === "highlighted" && i == 1) &&
                             <PageHeading title={data.title[0].value}  />
                         }
@@ -195,16 +149,6 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                             >   
                                 {data.cards.map((item, i) => (
                                     <SwiperSlide key={i}>
-                                    {/*    <FormatCard 
-                                            type={data.typeCard[0].value} 
-                                            title={item.title} 
-                                            description={item.description}
-                                            url={item.img.url}
-                                            alt={item.img.alt}
-                                            lead={item.state} 
-                                            href={item.link.href}
-                                            cta={item.link.title}
-                                    /> */}
 
                                         {data.typeCard[0].value === '0' &&
                                             <article className={stylesx.card}>

@@ -10,7 +10,7 @@
     height: 100vh;    
 
     .search_container{
-        position: absolute;
+        position: fixed;
         z-index: 100;
         top: -100vh;
         width: 100%;
@@ -19,6 +19,10 @@
         animation-duration: 0.8s;  
         animation-timing-function: ease-in-out;
         animation-fill-mode: forwards; 
+        @media screen and (max-width: 1024px){
+            height: 100vh;
+            overflow: scroll;
+        }
 
         .close_btn{
             @include btn-ver-mas;  
@@ -51,7 +55,7 @@
             padding:
             calc(70px + (230 - 70) * ((100vw - 1200px) / (3840 - 1200)))
             0
-            calc(25px + (60 - 25) * ((100vw - 1200px) / (3840 - 1200)))
+            calc(35px + (100 - 35) * ((100vw - 1200px) / (3840 - 1200)))
             0;   
             opacity: 0;
             animation-name: fadeIn;
@@ -144,7 +148,7 @@
 
             .switch_filter{                
                 @include inner-width;
-                margin-bottom: calc(30px + (80 - 30) * ((100vw - 1200px) / (3840 - 1200)));
+                margin-bottom: calc(32px + (80 - 32) * ((100vw - 1200px) / (3840 - 1200)));
                 display: flex;
                 @media screen and (max-width: 1024px){
                     @include container-width-1;  
@@ -224,41 +228,55 @@
 
             .filter_tags{
                 @include inner-width;
+                column-count: 3;
                 @media screen and (max-width: 1024px){
                     @include container-width-1;  
+                    column-count: 1;
                 }
                 .btn_filter{
-                    @include btn-ver-mas;
-                    margin: 
-                    0
-                    calc(6px + (20 - 6) * ((100vw - 1200px) / (3840 - 1200)))
-                    calc(8px + (24 - 8) * ((100vw - 1200px) / (3840 - 1200)))
-                    0;
-                    color: $gray-1;
+                    display: block;
+                    @include font-level-4;
+                    font-weight: 400;
+                    color: $gray-2;
+                    margin-bottom: calc(8px + (20 - 8) * ((100vw - 1200px) / (3840 - 1200)));
+                    color: $gray-2;
                     opacity: 0;
-                    transform: scale(0.8);
-                    animation-name: fadeInZoom;
-                    animation-duration: 0.6s;  
+                    animation-name: fadeIn;
+                    animation-duration: 0.3s;  
                     animation-timing-function: ease-in-out;
                     animation-fill-mode: forwards; 
+                    &:before{
+                        content: '';
+                        display: inline-block;
+                        width: calc(8px + (18 - 8) * ((100vw - 1200px) / (3840 - 1200)));
+                        height: calc(8px + (18 - 8) * ((100vw - 1200px) / (3840 - 1200)));
+                        border-radius: 50%;
+                        border: $line-1 solid $gray-5;
+                        margin-right: calc(5px + (15 - 5) * ((100vw - 1200px) / (3840 - 1200)));
+                    }
                     @media screen and (max-width: 1024px){
-                        margin: 
-                        0
-                        calc(4px + (10 - 4) * ((100vw - 300px) / (1024 - 300)))
-                        calc(6px + (14 - 6) * ((100vw - 300px) / (1024 - 300)))
-                        0;
+                        margin-bottom: calc(8px + (16 - 8) * ((100vw - 300px) / (1024 - 300)));
+                        &:before{
+                            width: calc(6px + (16 - 6) * ((100vw - 300px) / (1024 - 300)));
+                            height: calc(6px + (16 - 6) * ((100vw - 300px) / (1024 - 300)));
+                            border-width: $line-1-mobile;
+                            margin-right: calc(4px + (10 - 4) * ((100vw - 300px) / (1024 - 300)));
+                        }
                     }
                     @media screen and (min-width: 1024px){
                         &:hover{
-                            background-color: $gray-6;
-                            border-color: $gray-2;
-                            color: $deep-blue;
+                            color: $deep-blue;  
+                            &:before{
+                                border-color: $gray-2;
+                            }                          
                         }                
                     }
-                    &.active{
-                        background-color: $green-2;
-                        border-color: $green-2;
+                    &.active{                        
                         color: $deep-blue;
+                        &:before{
+                            border-color: $green-2;
+                            background-color: $green-2;
+                        } 
                     }
                 }
             }
@@ -275,6 +293,9 @@
         animation-duration: 0.4s;  
         animation-timing-function: ease-in-out;
         animation-fill-mode: forwards; 
+        @media screen and (max-width: 1024px){
+            display: none;
+        }
     }
 
     &.animation_out{
@@ -331,17 +352,6 @@
     }
     100% {
         opacity: 1;
-    }
-}
-
-@keyframes fadeInZoom {
-    0% {
-        opacity: 0;
-        transform: scale(0.8);
-    }
-    100% {
-        opacity: 1;
-        transform: scale(1);
     }
 }
 

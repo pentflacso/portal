@@ -45,8 +45,14 @@
         }
         .card{
             @include basic-card-2; 
+            width: calc(415px + (1140 - 415) * ((100vw - 1200px) / (3840 - 1200)));
             @media screen and (max-width: 1024px){
                 width: calc(255px + (880 - 255) * ((100vw - 300px) / (1024 - 300)));
+            }            
+        }
+        :last-of-type{
+            .card{
+                padding-bottom: calc(34.8px + (90 - 34.8) * ((100vw - 1388px) / (3840 - 1388)));  
             }
         }
     }   

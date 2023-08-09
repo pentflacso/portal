@@ -78,7 +78,9 @@ function Index(data){
         />    
      
         <MainWrapper> 
-            <PageHeading title="<h1><span>Novedades</span></h1>" margin_bottom_type={1} />
+            <div className={styles.page_heading}> 
+                <PageHeading title="<h1><span>Novedades</span></h1>"/>
+            </div>
 
             <section>
                 <div className={styles.filters_cont}>
@@ -109,7 +111,7 @@ function Index(data){
 
             <section>
                 <div className={styles.marquee}>
-                    <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                    <TextMarquee data={[{value: "SEGUIR EXPLORANDO"}]} />
                 </div>
                 <ExploringBtns data={exploringBtnsData} />
             </section>
