@@ -84,10 +84,12 @@ function Index(d){
     return(
     <>
         <MetaTags
-            pageTitle={'Novedades — FLACSO | PENT'}
-            shareTitle={'FLACSO | PENT'}
-            keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
-            description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
+            pageTitle={ data.title + ' — FLACSO | PENT' }
+            shareTitle={ data.title }
+            keywords={ data.category + ', educación, tecnología, TICS'}
+            description={ data.teaser }
+            img={ data.image }
+            url={ data.url }
 
         />
 

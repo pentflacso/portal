@@ -90,14 +90,15 @@ function Index(d){
         }, 200);                   
     };
 
-
+console.log(data)
     return(
     <>
         <MetaTags
-            pageTitle={'Producciones — FLACSO | PENT'}
-            shareTitle={'FLACSO | PENT'}
-            keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
+            pageTitle={ data.title + ' — FLACSO | PENT'}
+            shareTitle={ data.title }
+            keywords={ data.keywords }
             description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
+            url={ data.url }
         />        
 
 
