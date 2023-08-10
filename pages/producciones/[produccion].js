@@ -111,7 +111,7 @@ console.log(data)
                 <div className={styles.pin_block} ref={element}> 
                     <header className={styles.col_left}>                
                         <Link className={styles.back_arrow} href="/producciones" ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver producciones</strong></span></Link>
-                        <h1>{data.title}.</h1>
+                        <h1>{data.title}</h1>
                         { data.authors ?
                             <div className={styles.authors}>
                                 <p>{data.types} | {data.year} | <span>Por —</span>&nbsp;</p>
