@@ -80,7 +80,7 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
                             <>
                                 {hashtagsArticlesList && hashtagsArticlesList.map((hashtag) => {   
                                         return ( 
-                                        <button type="button" key={hashtag.name} data-id="triggerScrollTo" onClick={ () => stateCurrentHashtag(hashtag.name) } className={currentArticleHashtag === hashtag.name  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>{hashtag.name}</button>
+                                        <button type="button" key={hashtag.name} data-id="triggerScrollTo" onClick={ () => stateCurrentHashtag(hashtag.name) } className={currentArticleHashtag === hashtag.name  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>{hashtag.name.slice(1)}</button>
                                         );
                                     })
                                 }

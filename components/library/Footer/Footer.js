@@ -15,17 +15,13 @@ export default function Footer(){
                     <div className={styles.col_right}>
                         <h4>Newsletter</h4>
                         <p>Si te interesa estar al tanto de propuestas de formación, búsquedas laborales, eventos especiales, actividades en línea y novedades del PENT FLACSO, te invitamos a registrarte.</p>
-                            {/*<div className={styles.input_group}>
-                                <input type="email" className={styles.input_email} placeholder="Colocá tu email" aria-label="" />
-                                <button className={styles.btn_send} type="button" />
-    </div>*/}
-    <FormFoooter />                      
+                        <FormFoooter />                      
                     </div>
                 </div>
 
                 <div className={styles.info_bottom}>
                     <div className={styles.col_left}>
-                        <p>©2022 Proyecto Educación y Nuevas Tecnologías<br /> Facultad Latinoamericana de Ciencias Sociales <span>—</span> Sede Argentina</p>
+                        <p>©2023 Proyecto Educación y Nuevas Tecnologías<br /> Facultad Latinoamericana de Ciencias Sociales <span>—</span> Sede Argentina</p>
                     </div>
                     <div className={styles.col_right}>
                         <h4>Seguinos</h4>

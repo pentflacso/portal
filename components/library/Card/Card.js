@@ -6,10 +6,10 @@ import $ from "jquery";
 import styles from "./Card.module.scss";
 
 
-export default function Card({ lead, title, subtitle, description, category, hashtags, date, url }){
+export default function Card({ lead, title, subtitle, description, category, hashtags, date, url, year }){
 
   const { windowSize } = useAppContext();   
-
+  
 
   useEffect(() => {
 
@@ -43,7 +43,7 @@ export default function Card({ lead, title, subtitle, description, category, has
         ?
           <>
             <span>{lead}</span>
-            <h5>{title}&nbsp;<span>{subtitle}</span></h5>
+            <h5>{title}&nbsp;<span>{subtitle}.&nbsp;{year !== '' && `(${year})`}</span></h5>
             { description && <p>{description}</p> }  
             <ul className={styles.hashtags}>{ hashtags.map((hashtags , i) => <li key={i}>{hashtags}</li>) }</ul>                            
           </>

@@ -1,36 +1,39 @@
 @import "../styles/themeStyles.module.scss";
 
-.marquee_1{
-    margin-bottom: calc(45px + (245 - 45) * ((100vw - 1200px) / (3840 - 1200)));
-    @media screen and (max-width: 1024px){
-        margin-bottom: calc(40px + (80 - 40) * ((100vw - 300px) / (1024 - 300)));
+.pageBuilder
+{ 
+    div[data-id="marquee_1"], div[data-id="marquee_2"]{
+        margin-bottom: calc(45px + (245 - 45) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(40px + (80 - 40) * ((100vw - 300px) / (1024 - 300)));
+        }
     }
-}
 
-.carrousel_novedades{
-    margin-bottom: calc(55px + (310 - 55) * ((100vw - 1200px) / (3840 - 1200)));
-    @media screen and (max-width: 1024px){
-        margin-bottom: calc(40px + (90 - 40) * ((100vw - 300px) / (1024 - 300)));
-    }
-    .card_new{
-        @include basic-card-1;        
-        .info{
-            height: calc(166px + (430 - 166) * ((100vw - 1200px) / (3840 - 1200)));
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-            @media screen and (max-width: 1024px){
-                height: calc(130px + (300 - 130) * ((100vw - 300px) / (1024 - 300)));
-            }
-            h5{
-                margin-bottom: 0;
-            }
-            p{
-                margin-bottom: calc(20px + (40 - 20) * ((100vw - 1200px) / (3840 - 1200)));
+    .carrousel_novedades{
+        margin-bottom: calc(55px + (310 - 55) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(40px + (90 - 40) * ((100vw - 300px) / (1024 - 300)));
+        }
+        .card_new{
+            @include basic-card-1;        
+            .info{
+                height: calc(166px + (430 - 166) * ((100vw - 1200px) / (3840 - 1200)));
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
                 @media screen and (max-width: 1024px){
-                    margin-bottom: calc(11px + (30 - 11) * ((100vw - 300px) / (1024 - 300)));
+                    height: calc(130px + (300 - 130) * ((100vw - 300px) / (1024 - 300)));
                 }
-            }
-        }        
+                h5{
+                    margin-bottom: 0;
+                }
+                p{
+                    margin-bottom: calc(20px + (40 - 20) * ((100vw - 1200px) / (3840 - 1200)));
+                    @media screen and (max-width: 1024px){
+                        margin-bottom: calc(11px + (30 - 11) * ((100vw - 300px) / (1024 - 300)));
+                    }
+                }
+            }        
+        }
     }
 }

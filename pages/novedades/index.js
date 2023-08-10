@@ -73,8 +73,11 @@ function Novedades(data){
             description={'Enterate de las novedades más recientes del PENT FLACSO.'}
         />
            
-        <MainWrapper>    
-            <PageHeading title="<span>Novedades</span>" margin_bottom_type={1} />
+        <MainWrapper> 
+
+            <div className={styles.page_heading}>   
+                <PageHeading title="<span>Novedades</span>" />
+            </div>
 
             <section>
                 <div className={styles.filters_cont}>
@@ -105,7 +108,7 @@ function Novedades(data){
 
             <section>
                 <div className={styles.marquee}>
-                    <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                    <TextMarquee data={[{value: "SEGUIR EXPLORANDO"}]} />
                 </div>
                 <ExploringBtns data={exploringBtnsData} />
             </section>

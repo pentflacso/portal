@@ -1,5 +1,5 @@
 import { useAppContext } from '../../context/AppContext';
-import { useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useRouter } from "next/router";
 import { Fragment } from 'react';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
@@ -15,48 +15,56 @@ import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 function Index(d){
 
     const { windowSize, setCurrentArticleHashtag, setDataStrip } = useAppContext();
-    
-    let  {strip, ...data}  = d;
-    
-
-    useEffect(() => {
-        setDataStrip(strip);
-    }, [])
-
     const [ shareModal, setShareModal ] = useState(false);  
-    const router = useRouter();
+    const [ elementHeight, setElementHeight ] = useState(0);  
+    const router = useRouter();  
+    const element = useRef(null); 
+    let {strip, ...data} = d;   
 
-    const license = `<p>La producción ${ data.title } se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Disponible en: <a href="${ data.url }" target="_blank">${ data.url }</a></p>`
+    const license = `<p>La producción ${ data.title } se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Disponible en: <a href="${ data.url }" target="_blank">${ data.url }</a></p>`  
 
     const exploringBtnsData = [
         {title: 'Propuestas de formación', path: 'formacion'},        
         {title: 'Asesorías y soluciones a medida', path: 'asesorias'},
         {title: 'Investigación y divulgación', path: 'investigacion'}
-    ]
+    ] 
 
+    useEffect(() => {
+        setDataStrip(strip);
+    }, []);   
+
+
+    useEffect(() => {
+        if(windowSize >= 1025 ){
+            if (!element.current) return;
+            const resizeObserver = new ResizeObserver(() => {
+            setElementHeight(element.current.offsetHeight);
+            });
+            resizeObserver.observe(element.current);            
+            return () => resizeObserver.disconnect();
+        }
+      }, [elementHeight, windowSize]);
+      
     
     useEffect(() => {   
 
         if(windowSize >= 1025 ){    
 
-            const heightPinOff = document.querySelector(`.${styles.pin_block}`).offsetHeight;
-
             ScrollTrigger.create({
                 trigger: `#__next`,
                 start: "top top", 
-                end: () => `+=${heightPinOff} center`,            
+                end: () => `+=${elementHeight} center`,            
                 pin: `.${styles.col_left}`,
                 pinSpacing: false,
                 scrub: true,
-                //markers: true
-            });       
- 
+            });     
+            
             return () => {
                 ScrollTrigger.getAll().forEach(t => t.kill());  
             };         
-        }      
+        }     
          
-    }, [windowSize]); 
+    }, [elementHeight]); 
   
 
     const mobileShare = () => {
@@ -99,13 +107,13 @@ function Index(d){
             {shareModal && <ShareBtns shareurl={`https://pent-portal-testing.vercel.app${router.asPath}`} setShareModal={setShareModal} />}
 
             
-                <div className={styles.pin_block}> 
+                <div className={styles.pin_block} ref={element}> 
                     <header className={styles.col_left}>                
                         <Link className={styles.back_arrow} href="/producciones" ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver producciones</strong></span></Link>
                         <h1>{data.title}.</h1>
                         { data.authors ?
                             <div className={styles.authors}>
-                                <p>{data.types} | <span>Por —</span>&nbsp;</p>
+                                <p>{data.types} | {data.year} | <span>Por —</span>&nbsp;</p>
                                 {data.authors.map((a, i) => (
                                     <Fragment key={i}>
                                     <Link  href={a.link}>{a.title}<span>{i<data.authors.length -1 ? "," : ""}</span></Link>
@@ -116,7 +124,11 @@ function Index(d){
                         }
                         
                         <div className={styles.btns}>
-                            <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
+                            {windowSize >= 1025 ?
+                                <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
+                            :
+                                <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => mobileShare() }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
+                            }                            
 
                             { data.download || data.link ? <Link className={`${styles.btn} ${styles.download}`} href={ data.download ? data.download : data.link } target="_blank"><span><img src="/assets/icons/download_icon.svg" alt="icono de descarga"/>{ data.download ? "Descargar" : "Acceder" }</span></Link> : "" }
 
@@ -124,7 +136,6 @@ function Index(d){
 
                     </header>
                     <article className={styles.col_right}>
-                        { data.img ? <img src={ data.img } alt={ data.title } className={styles.imgTop} /> : ""}
                         { data.body && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.body }} /> }
 
                         { data.hashtags && 
