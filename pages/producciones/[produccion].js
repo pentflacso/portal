@@ -2,6 +2,7 @@ import { useAppContext } from '../../context/AppContext';
 import { useRef, useEffect, useState } from 'react';
 import { useRouter } from "next/router";
 import { Fragment } from 'react';
+import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
@@ -174,8 +175,10 @@ export async function getServerSideProps({query}) {
     /* const res = await fetch(`https://flacso.pent.org.ar/api/producciones/${query.produccion}.json`) */
     const res = await fetch(`https://redaccion.pent.org.ar/data/production/${query.produccion}`)
     const data = await res.json()
+
+    return handleServerRedirect(res, data);
     // Pass data to the page via props
-    return { props:  {...data }   }
+    //return { props:  {...data }   }
 }
 
 export default Index;

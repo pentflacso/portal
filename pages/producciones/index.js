@@ -1,6 +1,7 @@
 import { useAppContext } from '../../context/AppContext';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import { useRef, useEffect } from 'react';
+import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import ProductionsNav from '../../components/producciones/ProductionsNav/ProductionsNav';
@@ -207,8 +208,11 @@ export async function getServerSideProps() {
     const res = await fetch(`https://redaccion.pent.org.ar/data/productions`);
     const data = await res.json()
 
+
+    return handleServerRedirect(res, data);
     // Pass data to the page via props
-    return { props:  {...data}   }
+    //return { props:  {...data}   }
+
   }
 
   export default Producciones;

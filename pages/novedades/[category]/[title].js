@@ -1,6 +1,7 @@
 import { useAppContext } from '../../../context/AppContext';
 import { useRef, useEffect, useState } from 'react';
 import { useRouter } from "next/router";
+import { handleServerRedirect } from '../../../Middleware/ErrorRedirect';
 import MetaTags from '../../../components/library/MetaTags/MetaTags';
 import ShareBtns from '../../../components/library/ShareBtns/ShareBtns';
 import TextMarquee from '../../../components/library/TextMarquee/TextMarquee';
@@ -15,6 +16,7 @@ function Index(d){
 
     const { windowSize, setDataStrip } = useAppContext(); 
     let  {strip, ...data}  = d;
+    
     const exploringBtnsData = [
         {title: 'Propuestas de formación', path: 'formacion'},
         {title: 'Asesorías y soluciones a medida', path: 'asesorias'},
@@ -158,8 +160,10 @@ export async function getServerSideProps({query}) {
     const res = await fetch(`https://redaccion.pent.org.ar/data/new/${query.category}/${query.title}`)
     const data = await res.json()
 
+
+    return handleServerRedirect(res, data);
     // Pass data to the page via props
-    return { props:  {...data }   }
+    //return { props:  {...data }   }
 }
 
   export default Index;

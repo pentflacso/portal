@@ -1,6 +1,7 @@
 import { useAppContext } from '../../context/AppContext';
 import { useRef, useEffect, useState } from 'react';
 import { useRouter } from "next/router";
+import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
@@ -98,6 +99,8 @@ function Index(d){
                     <Link className={styles.back_arrow} href="/asesorias"><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver asesorías</strong></span></Link>
                     <h1 className={styles.content} dangerouslySetInnerHTML={{__html: data.title}} />
                         
+                    { data.type_product ?<p className='type_product'>{data.type_product}</p> : ""}
+
                     <div className={styles.btns}>
                         {windowSize >= 1025 ?
                             <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
@@ -132,7 +135,11 @@ export async function getServerSideProps({query}) {
     const res = await fetch(`https://redaccion.pent.org.ar/data/cases/${query.case}`)
     const data = await res.json()
     // Pass data to the page via props
-    return { props:  {...data }   }
+    
+    return handleServerRedirect(res, data);
+    //return { props:  {...data }   }
+
+
 }
 
 export default Index;
