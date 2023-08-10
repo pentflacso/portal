@@ -69,36 +69,14 @@
             }
         }
 
-        .authors{
+        .type_of_product{
             @include font-level-4;
-            color: $deep-blue;
+            color: $green-1;
             font-weight: 400;
             line-height: 144%;
             margin-bottom: calc(40px + (100 - 40) * ((100vw - 1200px) / (3840 - 1200)));
             @media screen and (max-width: 1024px){
                 margin-bottom: calc(20px + (80 - 20) * ((100vw - 300px) / (1024 - 300)));
-            }
-            
-            p{
-                margin: 0;
-                display: inline-block;
-                span{
-                    color: $gray-2;
-                }
-            }
-            a{
-                color: $gray-2;
-                display: inline-block;
-                &:last-of-type{
-                    span{
-                        display: none;
-                    }
-                }
-                @media screen and (min-width: 1025px){
-                    &:hover{
-                        color: $green-1;
-                    }
-                }
             }
         }
         
@@ -116,17 +94,7 @@
                             margin-right: calc(8px + (16 - 8) * ((100vw - 300px) / (1024 - 300))); 
                         }
                     }
-                }           
-                &.download{
-                    span{                        
-                        img{
-                            width: calc(12px + (28 - 12) * ((100vw - 1200px) / (3840 - 1200)));
-                            @media screen and (max-width: 1024px){
-                                width: calc(8px + (18 - 8) * ((100vw - 300px) / (1024 - 300))); 
-                            }
-                        }
-                    }
-                }                     
+                }                               
                 &.share{
                     span{                        
                         img{

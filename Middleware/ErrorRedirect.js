@@ -8,7 +8,6 @@ export function handleServerRedirect(res, data) {
         }
       }
   } else if (res.status === 400 || data.status == false){
-    console.log("entre");
     return {
         redirect: {
           destination: '/404',
