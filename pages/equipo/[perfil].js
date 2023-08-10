@@ -71,10 +71,12 @@ function Perfil(d){
     return(
     <>
         <MetaTags
-            pageTitle={'Equipo — FLACSO | PENT'}
-            shareTitle={'FLACSO | PENT'}
-            keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
+            pageTitle={ data.title + ' — FLACSO | PENT'}
+            shareTitle={ data.title }
+            keywords={'Educación, Tecnología, TICs, especialista'}
             description={'Somos un equipo de especialistas en educación y tecnologías digitales'}
+            url={ data.url }
+            img={ data.image }
         />
 
 

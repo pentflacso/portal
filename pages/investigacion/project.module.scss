@@ -194,6 +194,12 @@
                     margin-bottom: calc(15px + (50 - 15) * ((100vw - 300px) / (1024 - 300))); 
                 }
             }
+
+            img {
+                width: 100%;
+                height: auto;
+            }
+
         }
 
         .hashtags{
