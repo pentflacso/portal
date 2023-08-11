@@ -9,10 +9,10 @@ import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
 import styles from "./perfil.module.scss";
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
+import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 
 
-function Perfil(d){   
-
+function Perfil(d){       
     const { windowSize, setDataStrip } = useAppContext();
 
     let  {strip, ...data}  = d;
@@ -142,14 +142,23 @@ function Perfil(d){
 }
 
 export async function getServerSideProps({query}) {
-    // Fetch data from external API 
-    console.log(query.perfil);
-    // const res = await fetch(`https://flacso.pent.org.ar/api/perfil-${query.perfil}.php`)
+
+    if (query.perfil === "equipo-pent") {
+        return {
+          redirect: {
+            destination: '/equipo',
+            permanent: false, // Puedes cambiarlo a true si deseas un redireccionamiento permanente (301)
+          }
+        }
+      }
+
     const res = await fetch(`https://redaccion.pent.org.ar/data/person/equipo/${query.perfil}`)
     const data = await res.json()
   
+    return handleServerRedirect(res, data);
+
     // Pass data to the page via props
-    return { props: data  }
+    //return { props: data  }
   }
 
   export default Perfil

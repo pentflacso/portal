@@ -237,6 +237,7 @@
                 ;
             }
         }
+
         @media screen and (min-width: 1025px){
             padding-left: calc(100px + (350 - 100) * ((100vw - 1200px) / (3840 - 1200)));
         }

@@ -1,5 +1,6 @@
 import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
+import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
 
@@ -79,5 +80,6 @@ export async function getServerSideProps() {
     const data = await res.json()
   
     // Pass data to the page via props
-    return { props: data  }
+    return handleServerRedirect(res, data);     
+    //return { props: data  }
   }
