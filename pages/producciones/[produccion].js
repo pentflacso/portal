@@ -97,8 +97,9 @@ console.log(data)
             pageTitle={ data.title + ' — FLACSO | PENT'}
             shareTitle={ data.title }
             keywords={ data.keywords }
-            description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
+            description={ data.teaser }
             url={ data.url }
+            img= 'https://pent-portal-testing.vercel.app/assets/images/producciones_thumb_shared.jpg' 
         />        
 
 
