@@ -9,10 +9,10 @@ import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
 import styles from "./perfil.module.scss";
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
-import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 
 
-function Perfil(d){       
+function Perfil(d){   
+
     const { windowSize, setDataStrip } = useAppContext();
 
     let  {strip, ...data}  = d;
@@ -67,14 +67,14 @@ function Perfil(d){
 
     }, [windowSize]);
 
-    console.log(data)
+
     return(
     <>
         <MetaTags
             pageTitle={ data.title + ' — FLACSO | PENT'}
             shareTitle={ data.title }
             keywords={'Educación, Tecnología, TICs, especialista'}
-            description={ data.teaser }
+            description={'Somos un equipo de especialistas en educación y tecnologías digitales'}
             url={ data.url }
             img={ data.image }
         />
@@ -84,7 +84,7 @@ function Perfil(d){
                 <div className={styles.pin_block}>
                     <div className={styles.col_left}>
                         <header>
-                            <Link className={styles.back_arrow} href="/equipo" ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver equipo</strong></span></Link>
+                            <Link className={styles.back_arrow} href="/producciones" ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver producciones</strong></span></Link>
                             <h1 className={styles.name_and_position}>{data.title}<br /><span>{data.position}</span></h1>
                             {windowSize <= 1025 && data.image !== '' && <div className={styles.img_mobile}><img src={data.image} alt={`Imagen de ${data.title}`} /></div>}
                         </header>
@@ -96,9 +96,9 @@ function Perfil(d){
                             </span>
                         )) }</div>
                     </div>
-                    <div className={styles.col_right}>
+                    {/* <div className={styles.col_right}>
                         {data.image !== '' && <img src={data.image} alt={`Imagen de ${data.title}`} />}
-                    </div>
+                    </div> */}
                 </div>
                 {
                 data.productions && (<section  className={styles.producciones}>
@@ -142,23 +142,14 @@ function Perfil(d){
 }
 
 export async function getServerSideProps({query}) {
-
-    if (query.perfil === "equipo-pent") {
-        return {
-          redirect: {
-            destination: '/equipo',
-            permanent: false, // Puedes cambiarlo a true si deseas un redireccionamiento permanente (301)
-          }
-        }
-      }
-
-    const res = await fetch(`https://redaccion.pent.org.ar/data/person/equipo/${query.perfil}`)
+    // Fetch data from external API 
+    console.log(query.perfil);
+    // const res = await fetch(`https://flacso.pent.org.ar/api/perfil-${query.perfil}.php`)
+    const res = await fetch(`https://redaccion.pent.org.ar/data/person/autores/${query.perfil}`)
     const data = await res.json()
   
-    return handleServerRedirect(res, data);
-
     // Pass data to the page via props
-    //return { props: data  }
+    return { props: data  }
   }
 
   export default Perfil
