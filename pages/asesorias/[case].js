@@ -22,9 +22,9 @@ function Index(d){
     let  {strip, ...data}  = d;
     
     const exploringBtnsData = [
-        {title: 'Propuestas de formación', path: 'formacion'},        
-        {title: 'Asesorías y soluciones a medida', path: 'asesorias'},
-        {title: 'Investigación y divulgación', path: 'investigacion'}
+        {title: 'Propuestas de formación', path: '/formacion'},        
+        {title: 'Asesorías y soluciones a medida', path: '/asesorias'},
+        {title: 'Investigación y divulgación', path: '/investigacion'}
     ]
 
     useEffect(() => {

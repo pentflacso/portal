@@ -106,7 +106,7 @@ export default function SectionSelector({data}){
                             </div>                            
                             <h4>{data.title}</h4>
                             <p dangerouslySetInnerHTML={{__html: data.description }} />
-                            <Link href={`${data.linked_path}`} className={styles.go_to_page}>Conocer más</Link> 
+                            <Link href={`${data.link}`} className={styles.go_to_page}>Conocer más</Link> 
                         </div>                   
                     </article>            
                 </SwiperSlide>

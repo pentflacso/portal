@@ -206,6 +206,9 @@
 
             a{
                 color: $deep-blue;
+                strong{
+                    font-weight: 400;
+                }
                 @media screen and (min-width: 1025px){
                     &:hover{
                         color: $green-1;
