@@ -12,18 +12,19 @@ export default function Baja() {
     {title: 'Facebook', path: 'https://www.facebook.com/pentflacso.argentina'},
     {title: 'Twitter', path: 'https://twitter.com/pent_flacso'},
     {title: 'Instagram', path: 'https://www.instagram.com/pentflacso/'},
-    {title: 'LinkedIn', path: 'https://ar.linkedin.com/company/pentflacso'}          
+    {title: 'LinkedIn', path: 'https://ar.linkedin.com/company/pentflacso'},
+    {title: 'YouTube', path: 'https://www.youtube.com/user/PENTFLACSO'}           
   ]
 
   return (
     <MainWrapper> 
 
       <div className={styles.highlight}>
-        <HighlightParagraph title={[{ value: "Has <span>cancelado tu suscripción</span>.<br/> ¡Te vamos a extrañar!" }]} />
+        <HighlightParagraph title={[{ value: "Has cancelado tu suscripción.<br/> Sigamos en contacto en <span>redes sociales</span>" }]} />
       </div>  
 
       <div className={styles.marquee}>
-        <TextMarquee data={[{ value: "SIGAMOS EN CONTACTO" }]} />
+        <TextMarquee data={[{ value: "SEGUINOS" }]} />
       </div>    
 
       <ExploringBtns data={exploringBtnsData} />

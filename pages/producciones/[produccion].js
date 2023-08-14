@@ -25,9 +25,9 @@ function Index(d){
     const license = `<p>La producción ${ data.title } se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Disponible en: <a href="${ data.url }" target="_blank">${ data.url }</a></p>`  
 
     const exploringBtnsData = [
-        {title: 'Propuestas de formación', path: 'formacion'},        
-        {title: 'Asesorías y soluciones a medida', path: 'asesorias'},
-        {title: 'Investigación y divulgación', path: 'investigacion'}
+        {title: 'Propuestas de formación', path: '/formacion'},        
+        {title: 'Asesorías y soluciones a medida', path: '/asesorias'},
+        {title: 'Investigación y divulgación', path: '/investigacion'}
     ] 
 
     useEffect(() => {
