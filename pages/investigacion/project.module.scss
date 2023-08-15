@@ -262,42 +262,34 @@
 }
 
 .related {
-    h3{
-        @include font-level-3;
+    h2{
+        @include container-width-1;
+        @include font-level-4;
         color: $deep-blue;
-        font-weight: 500;
-        padding-top: calc(28px + (95 - 28) * ((100vw - 1200px) / (3840 - 1200)));
-        margin-bottom: calc(24px + (56 - 24) * ((100vw - 1200px) / (3840 - 1200)));
-        @media screen and (max-width: 1024px){
-            padding-top: calc(22px + (82 - 22) * ((100vw - 300px) / (1024 - 300))); 
-            margin-bottom: calc(15px + (50 - 15) * ((100vw - 300px) / (1024 - 300))); 
-        } 
+        font-weight: 400; 
+        padding-left: calc(2px + (6 - 2) * ((100vw - 1200px) / (3840 - 1200)));
+        padding-bottom: calc(9px + (20 - 9) * ((100vw - 1200px) / (3840 - 1200)));
+        margin-bottom: calc(50px + (110 - 50) * ((100vw - 1200px) / (3840 - 1200)));
+        border-bottom: $line-1 solid $gray-5;
     }
 }
 
 .carrousel{
 
-    .swiper-button-next {
-        right: 0 !important;
-    }
+    
  
     margin-bottom: calc(60px + (160 - 60) * ((100vw - 1200px) / (3840 - 1200)));
     @media screen and (max-width: 1024px){
         margin-bottom: calc(35px + (115 - 35) * ((100vw - 300px) / (1024 - 300)));
     }
 
-    .swiperSlide
-    {
-        margin-left: 0 !important;
-    }
+    
 
     .card{
 
         @include basic-card-2; 
 
-        margin-left: 0 !important;
-        margin-right: calc(32px + 50 * (100vw - 1200px) / 2640);
-      
+        
         width: calc(415px + (1140 - 415) * ((100vw - 1200px) / (3840 - 1200)));
         @media screen and (max-width: 1024px){
             width: calc(255px + (880 - 255) * ((100vw - 300px) / (1024 - 300)));

@@ -67,7 +67,7 @@ function Perfil(d){
 
     }, [windowSize]);
 
-    console.log(data)
+   
     return(
     <>
         <MetaTags
