@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useAppContext } from '../context/AppContext';
+import { handleServerRedirect } from '../Middleware/ErrorRedirect';
 import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
 import PageBuilder from '../components/PageBuilder/PageBuilder';
@@ -78,8 +79,10 @@ export async function getServerSideProps() {
     const res = await fetch(`https://redaccion.pent.org.ar/data/section/75`)
     const data = await res.json()
 
+
+    return handleServerRedirect(res, data);
     // Pass data to the page via props
-    return { props: data  }
+    //return { props: data  }
 }
 
 export default Home;

@@ -2,6 +2,7 @@ import { useAppContext } from '../../context/AppContext';
 import { useRef, useEffect, useState } from 'react';
 import { useRouter } from "next/router";
 import { Fragment } from 'react';
+import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
@@ -132,7 +133,7 @@ console.log(data)
                                 <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => mobileShare() }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
                             }                            
 
-                            { data.download || data.link ? <Link className={`${styles.btn} ${styles.download}`} href={ data.download ? data.download : data.link } target="_blank"><span><img src="/assets/icons/download_icon.svg" alt="icono de descarga"/>{ data.download ? "Descargar" : "Acceder" }</span></Link> : "" }
+                            { data.download || data.link ? <Link className={data.download ? `${styles.btn} ${styles.download}` : `${styles.btn} ${styles.link}`} href={ data.download ? data.download : data.link } target="_blank"><span><img src={data.download ? `/assets/icons/download_icon.svg` : `/assets/icons/access_icon.svg` } alt="icono de descarga"/>{ data.download ? "Descargar" : "Acceder" }</span></Link> : "" }
 
                         </div>                       
 
@@ -176,8 +177,10 @@ export async function getServerSideProps({query}) {
     /* const res = await fetch(`https://flacso.pent.org.ar/api/producciones/${query.produccion}.json`) */
     const res = await fetch(`https://redaccion.pent.org.ar/data/production/${query.produccion}`)
     const data = await res.json()
+
+    return handleServerRedirect(res, data);
     // Pass data to the page via props
-    return { props:  {...data }   }
+    //return { props:  {...data }   }
 }
 
 export default Index;

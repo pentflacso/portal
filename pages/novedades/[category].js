@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
+import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
@@ -133,9 +134,10 @@ export async function getServerSideProps({query}) {
     const res = await fetch(`https://redaccion.pent.org.ar/data/news/${query.category}`)
     const data = await res.json()
 
-    console.log(`https://redaccion.pent.org.ar/data/news/${query.category}`);
+    
+    return handleServerRedirect(res, data);
     // Pass data to the page via props
-    return { props:  {...data }   }
+    //return { props:  {...data }   }
 }
 
   export default Index;
