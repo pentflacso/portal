@@ -11,6 +11,10 @@ import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import ShareBtns from '../../components/library/ShareBtns/ShareBtns';
 import styles from './project.module.scss';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
+import { Navigation } from 'swiper';
+import { Swiper, SwiperSlide } from "swiper/react";
+
+
 
 
 function Index(d){
@@ -77,7 +81,7 @@ function Index(d){
             setCurrentArticleHashtag(value);  
         }, 200);                   
     };
-
+ console.log(data)
 
     return(
     <>
@@ -111,9 +115,36 @@ function Index(d){
                     <article className={styles.col_right}>
                         { data.img ? <img src={ data.img } alt={ data.title } className={styles.imgTop} /> : ""}
                         { data.body && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.body }} /> }
-
-                      
+                        { data.articles && <div className={ styles.related }>
+                        <h3>Novedades</h3>
                         
+                        <Swiper
+                                modules={[Navigation]}
+                                spaceBetween={0}
+                                slidesPerView={"auto"}
+                                navigation={
+                                   
+                                        true
+                                    
+                                }  
+                                freeMode={false}   
+                                grabCursor={
+                                    false 
+                                }    
+                                className={`${styles.carrousel} swiper-cards`}       
+                            >   
+                        {data.articles.map((item, i) => (
+                            <SwiperSlide key={i}  className={styles.swiperSlide}>
+                            <Link href={item.path} rel="noopener noreferrer"  className={styles.card} >
+                                <div>
+                                    <h5>{item.title}</h5>
+                                    <p>{item.description}</p>
+                                </div>                       
+                                    
+                            </Link> </SwiperSlide> 
+                            ))}
+                            </Swiper>  
+                            </div> }
                     </article>
                 </div>
 
