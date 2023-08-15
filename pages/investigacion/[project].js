@@ -81,7 +81,7 @@ function Index(d){
             setCurrentArticleHashtag(value);  
         }, 200);                   
     };
- console.log(data)
+ 
 
     return(
     <>
@@ -115,38 +115,37 @@ function Index(d){
                     <article className={styles.col_right}>
                         { data.img ? <img src={ data.img } alt={ data.title } className={styles.imgTop} /> : ""}
                         { data.body && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.body }} /> }
-                        { data.articles && <div className={ styles.related }>
-                        <h3>Novedades</h3>
                         
-                        <Swiper
-                                modules={[Navigation]}
-                                spaceBetween={0}
-                                slidesPerView={"auto"}
-                                navigation={
-                                   
-                                        true
-                                    
-                                }  
-                                freeMode={false}   
-                                grabCursor={
-                                    false 
-                                }    
-                                className={`${styles.carrousel} swiper-cards`}       
-                            >   
-                        {data.articles.map((item, i) => (
-                            <SwiperSlide key={i}  className={styles.swiperSlide}>
-                            <Link href={item.path} rel="noopener noreferrer"  className={styles.card} >
-                                <div>
-                                    <h5>{item.title}</h5>
-                                    <p>{item.description}</p>
-                                </div>                       
-                                    
-                            </Link> </SwiperSlide> 
-                            ))}
-                            </Swiper>  
-                            </div> }
+
+                    
+
+                            
                     </article>
                 </div>
+
+                { data.articles && <section className={ styles.related }>
+                <h2>Notas relacionadas</h2>
+                <Swiper
+                modules={[Navigation]}
+                spaceBetween={0}
+                slidesPerView={"auto"}
+                navigation={true}  
+                freeMode={false}   
+                grabCursor={windowSize >= 1025 ? true : false} 
+                className={`${styles.carrousel} swiper-cards`}
+                >
+                {data.articles.map((data, i)=>(
+                    <SwiperSlide key={i}>                                        
+                        <Link href={data.path} className={`${styles.card} clickable`}>   
+                            <span>{data.lead}</span>
+                            <h5>{data.title}&nbsp;<span>{data.subtitle}</span></h5>
+                            { data.description && <p>{data.description}</p> }  
+                                                      
+                        </Link>                     
+                    </SwiperSlide> 
+                ))} 
+                </Swiper>
+                </section> }
 
                 <section>
                     <div className={styles.marquee}>
