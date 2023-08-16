@@ -97,7 +97,7 @@ function Index(d){
         <MetaTags
             pageTitle={'Producciones — FLACSO | PENT'}
             shareTitle={'FLACSO | PENT'}
-            keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
+            keywords={data.keywords}
             description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
         />        
 
