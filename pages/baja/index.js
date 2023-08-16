@@ -20,7 +20,7 @@ export default function Baja() {
     <MainWrapper> 
 
       <div className={styles.highlight}>
-        <HighlightParagraph title={[{ value: "Has cancelado tu suscripción.<br/> Sigamos en contacto en <span>redes sociales</span>" }]} />
+        <HighlightParagraph title={[{ value: "Has cancelado tu suscripción.<br/> ¡Sigamos en contacto en <span>redes sociales</span>!" }]} />
       </div>  
 
       <div className={styles.marquee}>

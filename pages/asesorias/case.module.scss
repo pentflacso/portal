@@ -12,11 +12,11 @@
     display: grid;
     grid-template-areas: 'left right';
     grid-template-columns: 50% 50%; 
-    margin-bottom: calc(120px + (420 - 120) * ((100vw - 1200px) / (3840 - 1200)));    
+    margin-bottom: calc(80px + (350 - 80) * ((100vw - 1200px) / (3840 - 1200)));    
     @media screen and (max-width: 1024px){
         grid-template-areas: 'left' 'right';
         grid-template-columns: 100% 100%; 
-        margin-bottom: calc(50px + (175 - 50) * ((100vw - 300px) / (1024 - 300)));
+        margin-bottom: calc(25px + (95 - 25) * ((100vw - 300px) / (1024 - 300)));
     }
         
     .col_left{
