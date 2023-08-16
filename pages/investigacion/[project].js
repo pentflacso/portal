@@ -13,6 +13,7 @@ import styles from './project.module.scss';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
+import Card from '../../components/library/Card/Card';
 
 
 
@@ -135,13 +136,8 @@ function Index(d){
                 className={`${styles.carrousel} swiper-cards`}
                 >
                 {data.articles.map((data, i)=>(
-                    <SwiperSlide key={i}>                                        
-                        <Link href={data.path} className={`${styles.card} clickable`}>   
-                            <span>{data.lead}</span>
-                            <h5>{data.title}&nbsp;<span>{data.subtitle}</span></h5>
-                            { data.description && <p>{data.description}</p> }  
-                                                      
-                        </Link>                     
+                    <SwiperSlide className={ styles.note } key={i}>                                        
+                    <Card { ...data}/>                     
                     </SwiperSlide> 
                 ))} 
                 </Swiper>
