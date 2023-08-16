@@ -285,14 +285,19 @@
 
     
 
-    .card{
-
-        @include basic-card-2; 
+    .note{
 
         
-        width: calc(415px + (1140 - 415) * ((100vw - 1200px) / (3840 - 1200)));
+
+        margin-left: calc(32px + (82 - 32) * ((100vw - 1200px) / (3840 - 1200))) !important;
+
+        &:first-of-type{
+            margin-left: calc(103px + 378 * (100vw - 1200px) / 2640) !important;
+        }
+
+        width: calc(415px + (1140 - 415) * ((100vw - 1200px) / (3840 - 1200))) !important;
         @media screen and (max-width: 1024px){
-            width: calc(255px + (880 - 255) * ((100vw - 300px) / (1024 - 300)));
+            width: calc(255px + (880 - 255) * ((100vw - 300px) / (1024 - 300))) !important;
         }            
     }
     :last-of-type{
