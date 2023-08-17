@@ -149,6 +149,9 @@
                 @media screen and (max-width: 1024px){
                     margin-bottom: calc(15px + (50 - 15) * ((100vw - 300px) / (1024 - 300))); 
                 }
+                span{
+                    color: $gray-2;
+                }
             }
 
             a{
