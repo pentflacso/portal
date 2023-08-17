@@ -82,7 +82,7 @@ function Index(d){
             });
         }
     };
- console.log(data.articles)
+
 
     return(
     <>
