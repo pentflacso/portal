@@ -18,9 +18,9 @@ function Index(d){
     let  {strip, ...data}  = d;
     
     const exploringBtnsData = [
-        {title: 'Propuestas de formación', path: 'formacion'},
-        {title: 'Asesorías y soluciones a medida', path: 'asesorias'},
-        {title: 'Nuestras producciones', path: 'producciones'}        
+        {title: 'Propuestas de formación', path: '/formacion'},
+        {title: 'Asesorías y soluciones a medida', path: '/asesorias'},
+        {title: 'Nuestras producciones', path: '/producciones'}        
     ]
     const license = `<p>El texto de la nota ${ data.title } de Proyecto Educación y Nuevas Tecnologías se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Nota disponible en: <a href="${ data.url }" target="_blank">${ data.url }</a></p>`
     const [ elementHeight, setElementHeight ] = useState(0);
@@ -64,7 +64,7 @@ function Index(d){
             };         
         } 
          
-    }, [elementHeight]);
+    }, [elementHeight, router]);
     
 
     const mobileShare = () => {
@@ -86,10 +86,12 @@ function Index(d){
     return(
     <>
         <MetaTags
-            pageTitle={'Novedades — FLACSO | PENT'}
-            shareTitle={'FLACSO | PENT'}
-            keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
-            description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
+            pageTitle={ data.title + ' — FLACSO | PENT' }
+            shareTitle={ data.title }
+            keywords={ data.category + ', educación, tecnología, TICS'}
+            description={ data.teaser }
+            img={ data.image }
+            url={ data.url }
 
         />
 

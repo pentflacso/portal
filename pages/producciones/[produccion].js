@@ -25,9 +25,9 @@ function Index(d){
     const license = `<p>La producción ${ data.title } se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Disponible en: <a href="${ data.url }" target="_blank">${ data.url }</a></p>`  
 
     const exploringBtnsData = [
-        {title: 'Propuestas de formación', path: 'formacion'},        
-        {title: 'Asesorías y soluciones a medida', path: 'asesorias'},
-        {title: 'Investigación y divulgación', path: 'investigacion'}
+        {title: 'Propuestas de formación', path: '/formacion'},        
+        {title: 'Asesorías y soluciones a medida', path: '/asesorias'},
+        {title: 'Investigación y divulgación', path: '/investigacion'}
     ] 
 
     useEffect(() => {
@@ -91,14 +91,18 @@ function Index(d){
         }, 200);                   
     };
 
-
+console.log(data)
     return(
     <>
         <MetaTags
-            pageTitle={'Producciones — FLACSO | PENT'}
-            shareTitle={'FLACSO | PENT'}
-            keywords={data.keywords}
-            description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
+        
+        
+            pageTitle={ data.title + ' — FLACSO | PENT'}
+            shareTitle={ data.title }
+            keywords={ data.keywords }
+            description={ data.teaser }
+            url={ data.url }
+            img= 'https://pent-portal-testing.vercel.app/assets/images/producciones_thumb_shared.jpg' 
         />        
 
 
@@ -111,7 +115,7 @@ function Index(d){
                 <div className={styles.pin_block} ref={element}> 
                     <header className={styles.col_left}>                
                         <Link className={styles.back_arrow} href="/producciones" ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver producciones</strong></span></Link>
-                        <h1>{data.title}.</h1>
+                        <h1>{data.title}</h1>
                         { data.authors ?
                             <div className={styles.authors}>
                                 <p>{data.types} | {data.year} | <span>Por —</span>&nbsp;</p>
@@ -131,7 +135,7 @@ function Index(d){
                                 <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => mobileShare() }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
                             }                            
 
-                            { data.download || data.link ? <Link className={`${styles.btn} ${styles.download}`} href={ data.download ? data.download : data.link } target="_blank"><span><img src="/assets/icons/download_icon.svg" alt="icono de descarga"/>{ data.download ? "Descargar" : "Acceder" }</span></Link> : "" }
+                            { data.download || data.link ? <Link className={data.download ? `${styles.btn} ${styles.download}` : `${styles.btn} ${styles.link}`} href={ data.download ? data.download : data.link } target="_blank"><span><img src={data.download ? `/assets/icons/download_icon.svg` : `/assets/icons/access_icon.svg` } alt="icono de descarga"/>{ data.download ? "Descargar" : "Acceder" }</span></Link> : "" }
 
                         </div>                       
 

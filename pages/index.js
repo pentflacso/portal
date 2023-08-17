@@ -65,7 +65,7 @@ function Home({data}){
                 
                 {windowSize >= 1025 &&
                     <div className="cursor_leer">
-                        <div className="circle"><span>Leer</span></div>
+                        <div className="circle"><span>Ver</span></div>
                     </div> 
                 }    
             </>

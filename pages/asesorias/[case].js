@@ -22,9 +22,9 @@ function Index(d){
     let  {strip, ...data}  = d;
     
     const exploringBtnsData = [
-        {title: 'Propuestas de formación', path: 'formacion'},        
-        {title: 'Asesorías y soluciones a medida', path: 'asesorias'},
-        {title: 'Investigación y divulgación', path: 'investigacion'}
+        {title: 'Propuestas de formación', path: '/formacion'},        
+        {title: 'Asesorías y soluciones a medida', path: '/asesorias'},
+        {title: 'Investigación y divulgación', path: '/investigacion'}
     ]
 
     useEffect(() => {
@@ -84,10 +84,12 @@ function Index(d){
     return(
     <>
         <MetaTags
-            pageTitle={'Asesorias — FLACSO | PENT'}
-            shareTitle={'FLACSO | PENT'}
-            keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
-            description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
+            pageTitle={ data.title + ' — FLACSO | PENT'}
+            shareTitle={ data.title }
+            keywords={ data.keywords }
+            description={ data.teaser }
+            url={ data.url }
+            img={ data.image }
         />       
         
         <MainWrapper>
@@ -97,9 +99,9 @@ function Index(d){
             <div className={styles.pin_block} ref={element}> 
                 <header className={styles.col_left}>                
                     <Link className={styles.back_arrow} href="/asesorias"><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver asesorías</strong></span></Link>
-                    <h1 className={styles.content} dangerouslySetInnerHTML={{__html: data.title}} />
+                    <h1 className={styles.content} >{ data.title } <span>— { data.teaser } </span></h1>
                         
-                    { data.type_product ?<p className='type_product'>{data.type_product}</p> : ""}
+                    { data.type_product ?<p className={styles.type_of_product}>{data.type_product}</p> : ""}
 
                     <div className={styles.btns}>
                         {windowSize >= 1025 ?
@@ -117,7 +119,7 @@ function Index(d){
 
             <section>
                 <div className={styles.marquee}>
-                    <TextMarquee data={[{value:"SEGUIR EXPLORANDO&nbsp;—&nbsp;"}]} />
+                    <TextMarquee data={[{value:"SEGUIR EXPLORANDO"}]} />
                 </div>
                 <ExploringBtns data={exploringBtnsData} />  
             </section>
