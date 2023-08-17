@@ -52,8 +52,6 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
 
                     <div className={styles.switch_filter}>
 
-                        
-                        
                         <div className={styles.switch_box}>
 
                             {currentArticleHashtag !== 'all' && <button type="button" data-id="triggerScrollTo" onClick={ () => stateCurrentHashtag('all') } className={styles.clear_btn}>Quitar</button>}
@@ -78,18 +76,29 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
                             showFilters === 'hashtags'                            
                             ?
                             <>
-                                {hashtagsArticlesList && hashtagsArticlesList.map((hashtag) => {   
-                                        return ( 
-                                        <button type="button" key={hashtag.name} data-id="triggerScrollTo" onClick={ () => stateCurrentHashtag(hashtag.name) } className={currentArticleHashtag === hashtag.name  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>{hashtag.name.slice(1)}</button>
+                                {hashtagsArticlesList && hashtagsArticlesList
+                                    .sort((a, b) => a.name.localeCompare(b.name))
+                                    .map((hashtag) => {   
+                                        return (
+                                            <button type="button" key={hashtag.name} data-id="triggerScrollTo" onClick={ () => stateCurrentHashtag(hashtag.name) } className={currentArticleHashtag === hashtag.name  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>{
+                                                hashtag.name
+                                                .slice(1)
+                                                .replace(/([a-z])([A-Z])/g, '$1 $2')
+                                                .split(' ')
+                                                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                                                .join(' ')
+                                            }</button>
                                         );
                                     })
                                 }
                             </>
                             :
                             <>
-                                {authorsArticlesList && authorsArticlesList.map((author) => {   
+                                {authorsArticlesList && authorsArticlesList
+                                    .sort((a, b) => a.name.localeCompare(b.name))
+                                    .map((author) => {   
                                         return ( 
-                                        <button type="button" key={author.name} data-id="triggerScrollTo" onClick={ () => statecurrentAuthor(author.name) } className={currentArticleAuthor === author.name  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>{author.name}</button>
+                                            <button type="button" key={author.name} data-id="triggerScrollTo" onClick={ () => statecurrentAuthor(author.name) } className={currentArticleAuthor === author.name  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>{author.name}</button>
                                         );
                                     })
                                 }

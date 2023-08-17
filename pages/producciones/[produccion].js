@@ -95,6 +95,8 @@ console.log(data)
     return(
     <>
         <MetaTags
+        
+        
             pageTitle={ data.title + ' — FLACSO | PENT'}
             shareTitle={ data.title }
             keywords={ data.keywords }
