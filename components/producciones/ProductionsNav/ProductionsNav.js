@@ -58,7 +58,8 @@ export default function ProductionsNav(){
     //Se ejecuta una función que chequea si ya se encuentran en el listado que almacena los autores y hashtags, y en caso de ser negativo, envían el nombre al estado que contiene el listado correspondiente
 
     function addHashtag( hashtag ) {
-        isInHashtagsList(hashtag) && setHashtagsArticlesList( [...hashtagsArticlesList, {name: hashtag }] )   
+        console.log("has: ", hashtag)   
+        isInHashtagsList(hashtag) && setHashtagsArticlesList( [...hashtagsArticlesList, {name: hashtag }] )
     } 
 
     function addAuthor( author ) {
@@ -72,6 +73,7 @@ export default function ProductionsNav(){
         if(dataArticles !== undefined){
             dataArticles.map((articles) => {
                 articles.hashtags.map((hashtag) => {
+                    //console.log("hashtag: ", hashtag);
                     return (
                         addHashtag(hashtag) 
                     );     
