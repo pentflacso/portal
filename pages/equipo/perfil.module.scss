@@ -78,7 +78,7 @@
                 margin-bottom: calc(24px + (56 - 24) * ((100vw - 1200px) / (3840 - 1200)));
                 @media screen and (max-width: 1024px){
                     margin-bottom: calc(15px + (50 - 15) * ((100vw - 300px) / (1024 - 300))); 
-                    line-height: 150%;
+                    line-height: 160%;
                 }
             }
         }
