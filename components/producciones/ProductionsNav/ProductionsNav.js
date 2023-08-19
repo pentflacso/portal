@@ -7,8 +7,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./ProductionsNav.module.scss";
 
 
-export default function ProductionsNav(){
-
+export default function ProductionsNav({dataHashtags}){
     const { dataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, articlesFiltersCounter, advancedFilterStatus, setAdvancedFilterStatus } = useAppContext();
     
     const [advancedFilterOutAnimation, setAdvancedFilterOutAnimation] = useState(false);
@@ -26,10 +25,8 @@ export default function ProductionsNav(){
             }, 600); 
         }       
     }
-
-    
+   
     //Cambia el estado con el hashtags seleccionado
-
     const stateCurrentHashtag = (hashtag) => {
         if(hashtag === 'all'){
             setCurrentArticleHashtag('all')
@@ -40,14 +37,7 @@ export default function ProductionsNav(){
         }       
     }
 
-
-    //Chequea si un determinado hashtags o autor ya se encuentra en su listado  
-
-    function isInHashtagsList( hashtag ) {  
-        const findToName = hashtagsArticlesList.find(value => value.name === hashtag);
-        return hashtag === undefined ? undefined : findToName === undefined;   
-    }
-
+    //Chequea si un determinado hashtags o autor ya se encuentra en su listado
     function isInAuthorsList( author ) {  
         const findToName = authorsArticlesList.find(value => value.name === author);
         return author === undefined ? undefined : findToName === undefined;   
@@ -56,28 +46,20 @@ export default function ProductionsNav(){
 
     //Estas funciones reciben por parámetro el nombre de los autores y hashtags
     //Se ejecuta una función que chequea si ya se encuentran en el listado que almacena los autores y hashtags, y en caso de ser negativo, envían el nombre al estado que contiene el listado correspondiente
-
-    function addHashtag( hashtag ) {
-        console.log("has: ", hashtag)   
-        isInHashtagsList(hashtag) && setHashtagsArticlesList( [...hashtagsArticlesList, {name: hashtag }] )
-    } 
-
     function addAuthor( author ) {
         isInAuthorsList(author) && setAuthorsArticlesList( [...authorsArticlesList, {name: author }] )   
     }
 
-
     //Mapea los artículos y envía el nombre de los autores y hashtags a las funciones addHashtag o addAuthor, según corresponda
 
     useEffect(() => {
+        if(dataHashtags){        
+            const has = dataHashtags.map(tag => ({ name: tag }));
+            setHashtagsArticlesList( [...has] )
+        }
+        
         if(dataArticles !== undefined){
             dataArticles.map((articles) => {
-                articles.hashtags.map((hashtag) => {
-                    //console.log("hashtag: ", hashtag);
-                    return (
-                        addHashtag(hashtag) 
-                    );     
-                })  
                 articles.authors.map((author) => {
                     return (
                         addAuthor(author) 
@@ -85,7 +67,7 @@ export default function ProductionsNav(){
                 })        
             })
         }        
-    }, [dataArticles, hashtagsArticlesList, authorsArticlesList]); 
+    }, [dataHashtags, dataArticles, authorsArticlesList]); 
 
 
     return(

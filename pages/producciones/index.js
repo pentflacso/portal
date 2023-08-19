@@ -179,7 +179,7 @@ const keywords_join = [...keywords, ...d.keyword_hashtag].join(', ');
 
                 <section id="productions-nav">    
                     <div className={`${styles.productions_nav}`} ref={productionsNav}>
-                        <ProductionsNav/>   
+                        <ProductionsNav dataHashtags={d.filter}/>   
                     </div>       
                     {dataArticles !== undefined && <ArticlesList data={searchInArticles(dataArticles)}/>}     
                 </section> 
@@ -207,15 +207,11 @@ const keywords_join = [...keywords, ...d.keyword_hashtag].join(', ');
 
 export async function getServerSideProps() {
     // Fetch data from external API
-    //const res = await fetch(`https://flacso.pent.org.ar/api/produciones.json`)
     const res = await fetch(`https://redaccion.pent.org.ar/data/productions`);
     const data = await res.json()
-
-
+    
+    //MiddleWare 404 | 505
     return handleServerRedirect(res, data);
-    // Pass data to the page via props
-    //return { props:  {...data}   }
-
   }
 
   export default Producciones;
