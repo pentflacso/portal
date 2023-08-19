@@ -11,7 +11,7 @@ export default function ProductionsNav({dataHashtags}){
     const { dataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, articlesFiltersCounter, advancedFilterStatus, setAdvancedFilterStatus } = useAppContext();
     
     const [advancedFilterOutAnimation, setAdvancedFilterOutAnimation] = useState(false);
-
+    const [has, setHas] = useState([]);
 
     //Muestra u oculta los filtros avanzados 
     function changeAdvancedFilterStatus(value) {
@@ -54,10 +54,10 @@ export default function ProductionsNav({dataHashtags}){
 
     useEffect(() => {
         if(dataHashtags){        
-            const has = dataHashtags.map(tag => ({ name: tag }));
+            setHas(dataHashtags.map(tag => ({ name: tag })));
             setHashtagsArticlesList( [...has] )
         }
-        
+
         if(dataArticles !== undefined){
             dataArticles.map((articles) => {
                 articles.authors.map((author) => {
@@ -90,7 +90,7 @@ export default function ProductionsNav({dataHashtags}){
                         <button type="button" data-id="triggerScrollTo" onClick={ () => stateCurrentHashtag('all') } className={currentArticleHashtag === 'all'  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>Ver todo</button> 
                     </SwiperSlide>  
 
-                    {hashtagsArticlesList && hashtagsArticlesList.map((hashtag) => {
+                    {has && has.map((hashtag) => {
                         return (  
                             <SwiperSlide key={hashtag.name}>
                                 <button type="button" data-id="triggerScrollTo" onClick={ () => stateCurrentHashtag(hashtag.name) } className={currentArticleHashtag === hashtag.name  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>{hashtag.name}</button>  
