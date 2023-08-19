@@ -84,6 +84,7 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
                                                 hashtag.name
                                                 .slice(1)
                                                 .replace(/([a-z])([A-Z])/g, '$1 $2')
+                                                .replace(/([ ])Y([A-Z])/g, '$1 Y $2')
                                                 .split(' ')
                                                 .map(word => word.charAt(0).toUpperCase() + word.slice(1))
                                                 .join(' ')
