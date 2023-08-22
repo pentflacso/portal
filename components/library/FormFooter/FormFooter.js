@@ -33,10 +33,9 @@ const FormFooter  = () => {
 
     if (!emailValidator.test(email) ){
       setEmailError(true);
-      console.log('incorrecto')      
+    
     } else {
-      setEmailError(false);
-      console.log('correcto')  
+      setEmailError(false);  
       sendMail();
       setSending(true);    
     }

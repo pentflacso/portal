@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import TagManager from 'react-gtm-module';
 import { useAppContext } from '../context/AppContext';
 import { handleServerRedirect } from '../Middleware/ErrorRedirect';
 import { gsap, Back, Elastic } from 'gsap';
@@ -7,7 +8,16 @@ import PageBuilder from '../components/PageBuilder/PageBuilder';
 import styles from "./index.module.scss";
 
 function Home({data}){
-    
+   /* 
+    useEffect(() => {  
+        TagManager.dataLayer({
+            dataLayer: {
+            event: 'Home',
+            variable_name: 'prueba'
+            },
+        }); 
+    }, []);
+*/
     const { windowSize } = useAppContext();   
 
     useEffect(() => {   
