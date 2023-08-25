@@ -22,7 +22,7 @@ function Index(d){
     const element = useRef(null); 
     let {strip, ...data} = d;   
 
-    const license = `<p>La producción ${ data.title } se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Disponible en: <a href="${ data.url }" target="_blank">${ data.url }</a></p>`  
+    const license = `<p>La producción ${ data.title } se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Disponible en: <a href="${ data.link ? data.link : data.url }" target="_blank">${ data.link ? data.link : data.url }</a></p>`  
 
     const exploringBtnsData = [
         {title: 'Propuestas de formación', path: '/formacion'},        
