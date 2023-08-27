@@ -109,6 +109,16 @@
                         margin-right: calc(5px + (15 - 5) * ((100vw - 300px) / (1024 - 300))); 
                     } 
                 }
+                &.link{
+                    span{                        
+                        img{
+                            width: calc(16px + (36 - 16) * ((100vw - 1200px) / (3840 - 1200)));
+                            @media screen and (max-width: 1024px){
+                                width: calc(10px + (23 - 10) * ((100vw - 300px) / (1024 - 300))); 
+                            }
+                        }
+                    }
+                } 
                 @media screen and (min-width: 1024px){
                     &:hover{       
                         span{

@@ -109,6 +109,9 @@ function Index(d){
                         :
                             <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => mobileShare() }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
                         }
+
+                        { data.link ? <Link className={`${styles.btn} ${styles.link}`} href={ data.link } target="_blank"><span><img src="/assets/icons/access_icon.svg" alt="acceder"/>Acceder</span></Link> : "" }
+
                     </div>                       
 
                 </header>
