@@ -160,10 +160,7 @@ export async function getServerSideProps({query}) {
     /* const res = await fetch(`https://flacso.pent.org.ar/api/novedades/${query.category}-${query.title}.json`) */
     
     const res = await fetch(`https://redaccion.pent.org.ar/data/new/${query.category}/${query.title}`)
-    const data = await res.json()
-
-
-    return handleServerRedirect(res, data);
+    return handleServerRedirect(res);
     // Pass data to the page via props
     //return { props:  {...data }   }
 }

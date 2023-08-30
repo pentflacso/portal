@@ -1,5 +1,6 @@
 import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
+import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
 import Link from 'next/link';
 import Footer from '../../components/library/Footer/Footer';
@@ -146,10 +147,11 @@ export async function getServerSideProps({query}) {
     console.log(query.perfil);
     // const res = await fetch(`https://flacso.pent.org.ar/api/perfil-${query.perfil}.php`)
     const res = await fetch(`https://redaccion.pent.org.ar/data/person/autores/${query.perfil}`)
-    const data = await res.json()
+    //MiddleWare 404 | 505
+    return handleServerRedirect(res);
   
     // Pass data to the page via props
-    return { props: data  }
+    //return { props: data  }
   }
 
   export default Perfil

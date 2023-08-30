@@ -80,9 +80,7 @@ export default function Asesorias({data}){
 export async function getServerSideProps() {
     // Fetch data from external API
     const res = await fetch(`https://redaccion.pent.org.ar/data/section/49`)
-    const data = await res.json()
-
-    return handleServerRedirect(res, data);
+    return handleServerRedirect(res);
     // Pass data to the page via props
     //return { props: data  }
 }

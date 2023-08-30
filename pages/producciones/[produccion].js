@@ -91,7 +91,6 @@ function Index(d){
         }, 200);                   
     };
 
-console.log(data)
     return(
     <>
         <MetaTags
@@ -178,9 +177,8 @@ export async function getServerSideProps({query}) {
     // Fetch data from external API
     /* const res = await fetch(`https://flacso.pent.org.ar/api/producciones/${query.produccion}.json`) */
     const res = await fetch(`https://redaccion.pent.org.ar/data/production/${query.produccion}`)
-    const data = await res.json()
-
-    return handleServerRedirect(res, data);
+    //MiddleWare 404 | 505
+    return handleServerRedirect(res);
     // Pass data to the page via props
     //return { props:  {...data }   }
 }

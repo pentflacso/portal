@@ -207,11 +207,9 @@ const keywords_join = [...keywords, ...d.keyword_hashtag].join(', ');
 
 export async function getServerSideProps() {
     // Fetch data from external API
-    const res = await fetch(`https://redaccion.pent.org.ar/data/productions`);
-    const data = await res.json()
-    
+    const res = await fetch(`https://redaccion.pent.org.ar/data/productions`); 
     //MiddleWare 404 | 505
-    return handleServerRedirect(res, data);
+    return handleServerRedirect(res);
   }
 
   export default Producciones;
