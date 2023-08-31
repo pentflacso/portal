@@ -10,6 +10,7 @@ import Link from 'next/link';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import ShareBtns from '../../components/library/ShareBtns/ShareBtns';
 import styles from './project.module.scss';
+import ThemesAccordion from '../../components/investigacion/ThemesAccordion/ThemesAccordion';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -112,10 +113,17 @@ function Index(d){
                 </header>
                 <article className={styles.col_right}>
                     { data.img ? <img src={ data.img } alt={ data.title } className={styles.imgTop} /> : ""}
-                    { data.body && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.body }} /> }                                   
+                    { data.body && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.body }} /> } 
                 </article>
-            </div>                
-
+            </div>
+            {data.acordion && data.acordion.length > 0 && (
+                <section className={styles.news_acordion}>         
+                    <h2>Resultados</h2>
+                    <div className={styles.accordion}>
+                        <ThemesAccordion data={data.acordion} />
+                    </div>       
+                </section>
+            )}        
             {data.articles && data.articles.length > 0 && (<section className={styles.news_related}>
                 <h2>Notas relacionadas</h2>
                 <Swiper

@@ -144,7 +144,6 @@ function Perfil(d){
 
 export async function getServerSideProps({query}) {
     // Fetch data from external API 
-    console.log(query.perfil);
     // const res = await fetch(`https://flacso.pent.org.ar/api/perfil-${query.perfil}.php`)
     const res = await fetch(`https://redaccion.pent.org.ar/data/person/autores/${query.perfil}`)
     //MiddleWare 404 | 505
