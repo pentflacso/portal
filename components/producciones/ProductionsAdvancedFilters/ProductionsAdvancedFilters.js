@@ -4,7 +4,7 @@ import styles from "./ProductionsAdvancedFilters.module.scss";
 
 export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus, stateCurrentHashtag, advancedFilterOutAnimation }){
 
-    const { hashtagsArticlesList, currentArticleHashtag, authorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, queryArticles, setQueryArticles } = useAppContext();
+    const { hashtagsArticlesList, currentArticleHashtag, authorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, queryArticles, setQueryArticles, countDataToUse } = useAppContext();
 
     const [ showFilters, setShowFilters ] = useState('hashtags');
 
@@ -66,9 +66,9 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
                             <button type="button" className={showFilters === 'authors' ? `${styles.switch_btn} ${styles.active}` : `${styles.switch_btn}`} onClick={ () => changeShowFilters('authors') }>Filtrar por autor<span><img src="/assets/icons/triangle_icon.svg" alt="Icono de flecha" /></span></button>
 
                         </div>                        
-                        
-                        
-
+                        <div className={styles.resultContent}>
+                            <span className={styles.resultData} ><span className={styles.resultNone}>Se encontraron</span> <strong>{countDataToUse}</strong> resultados.</span>
+                        </div>
                     </div>                    
 
                     <div className={styles.filter_tags}>                        

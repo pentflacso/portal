@@ -6,9 +6,10 @@ import styles from "./ArticlesList.module.scss";
 
 export default function ArticlesList({ data }){
 
-    const { windowSize } = useAppContext();
+    const { windowSize, setCountDataToUse } = useAppContext();
     //Data a utilizar
     const [dataToUse, setDataToUse] = useState(data);
+    
     //Data limitada por cantidad a mostrar 
     const [dataLimit, setDataLimit] = useState(data.slice(0,6));
     //Contador
@@ -19,7 +20,10 @@ export default function ArticlesList({ data }){
 
     //Al cambiar la data actualiza los siguientes estados
     useEffect(() => {
-        setDataToUse(data)
+        setDataToUse(data);
+
+        setCountDataToUse(data.length);
+
         setDataLimit(data.slice(0,6))
         setItemCount(6)
     }, [data]); 
