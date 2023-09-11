@@ -10,7 +10,7 @@ export default function Footer(){
                     <div className={styles.col_left}>
                         <h4>Contactanos</h4>
                         <p>pent@flacso.org.ar<br /> Tucumán 1966, CABA, Argentina<br /> (54-11) 5238-9300 int 352</p>
-                        <p>Horario de atención:<br /> días hábiles, por correo electrónico.</p>                        
+                        <p>Atención administrativa:<br /> días hábiles, por correo electrónico.</p>                        
                     </div>
                     <div className={styles.col_right}>
                         <h4>Newsletter</h4>

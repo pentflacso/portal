@@ -135,10 +135,7 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                                 modules={[Navigation, FreeMode]}
                                 spaceBetween={0}
                                 slidesPerView={"auto"}
-                                navigation={
-                                    data.typeCard[0].value == 0 ? 
-                                        windowSize >= 1025 ? false : true 
-                                    : true
+                                navigation={true
                                 }  
                                 freeMode={false}   
                                 grabCursor={
