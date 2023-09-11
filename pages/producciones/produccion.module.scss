@@ -201,11 +201,15 @@
                 margin-bottom: calc(24px + (56 - 24) * ((100vw - 1200px) / (3840 - 1200)));                
                 @media screen and (max-width: 1024px){
                     margin-bottom: calc(15px + (50 - 15) * ((100vw - 300px) / (1024 - 300))); 
+                    line-height: 160%;
                 }
             }
 
             a{
                 color: $deep-blue;
+                strong{
+                    font-weight: 400;
+                }
                 @media screen and (min-width: 1025px){
                     &:hover{
                         color: $green-1;
@@ -231,6 +235,7 @@
                     margin-bottom: calc(24px + (56 - 24) * ((100vw - 1200px) / (3840 - 1200)));                
                     @media screen and (max-width: 1024px){
                         margin-bottom: calc(15px + (50 - 15) * ((100vw - 300px) / (1024 - 300))); 
+                        line-height: 160%;
                     }
                 }
             }
@@ -275,6 +280,9 @@
                 @include font-level-4;
                 display: inline-block;
                 line-height: 144%;
+                @media screen and (max-width: 1024px){
+                    line-height: 160%;
+                }
             }
             p{color: $deep-blue;}
 
@@ -309,6 +317,9 @@
                     color: $deep-blue;
                     font-weight: 500;
                     margin-bottom: calc(14px + (46 - 24) * ((100vw - 1200px) / (3840 - 1200)));
+                    @media screen and (max-width: 1024px){
+                        line-height: 160%;
+                    }
                 }
                 p, a{
                     @include font-level-5;
@@ -316,6 +327,10 @@
                     font-weight: 400;
                     line-height: 144%;
                     margin-bottom: calc(14px + (46 - 14) * ((100vw - 1200px) / (3840 - 1200)));   
+                    @media screen and (max-width: 1024px){
+                        margin-bottom: calc(15px + (50 - 15) * ((100vw - 300px) / (1024 - 300))); 
+                        line-height: 160%;
+                    }
                     &:last-of-type{
                         margin-bottom: 0;
                     }                 

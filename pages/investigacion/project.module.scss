@@ -12,26 +12,19 @@
     display: grid;
     grid-template-areas: 'left right';
     grid-template-columns: 50% 50%; 
-    margin-bottom: calc(120px + (420 - 120) * ((100vw - 1200px) / (3840 - 1200)));
+    margin-bottom: calc(60px + (300 - 60) * ((100vw - 1200px) / (3840 - 1200)));    
     @media screen and (max-width: 1024px){
         grid-template-areas: 'left' 'right';
         grid-template-columns: 100% 100%; 
-        margin-bottom: calc(50px + (175 - 50) * ((100vw - 300px) / (1024 - 300)));
+        margin-bottom: calc(25px + (95 - 25) * ((100vw - 300px) / (1024 - 300)));
     }
-
-    @media screen and (min-width: 1024px){
-        header
-            {
-                height: 80vh !important;
-            }
-        }
-
+        
     .col_left{
         grid-area: left;  
         padding-right: calc(100px + (290 - 100) * ((100vw - 1200px) / (3840 - 1200)));
         @media screen and (max-width: 1024px){
             padding-right: 0;
-        }
+        }       
 
         .back_arrow{
             text-decoration: none;
@@ -61,49 +54,15 @@
         }
 
         h1{
-            @include font-level-1;
+            @include font-level-2;
+            line-height: 130%;
             font-weight: 400;     
             color: $deep-blue;  
             margin-bottom: calc(36px + (80 - 36) * ((100vw - 1200px) / (3840 - 1200))); 
             @media screen and (max-width: 1024px){
+                @include font-level-1;
+                line-height: normal;
                 margin-bottom: calc(20px + (80 - 20) * ((100vw - 300px) / (1024 - 300)));
-            }
-        }
-
-        .authors{
-            @include font-level-4;
-            color: $deep-blue;
-            font-weight: 400;
-            line-height: 144%;
-            /* margin-bottom: calc(20px + (50 - 20) * ((100vw - 1200px) / (3840 - 1200)));
-            @media screen and (max-width: 1024px){
-                margin-bottom: calc(15px + (50 - 15) * ((100vw - 300px) / (1024 - 300)));
-            } */
-            margin-bottom: calc(40px + (100 - 40) * ((100vw - 1200px) / (3840 - 1200)));
-            @media screen and (max-width: 1024px){
-                margin-bottom: calc(20px + (80 - 20) * ((100vw - 300px) / (1024 - 300)));
-            }
-            
-            p{
-                margin: 0;
-                display: inline-block;
-                span{
-                    color: $gray-2;
-                }
-            }
-            a{
-                color: $gray-2;
-                display: inline-block;
-                &:last-of-type{
-                    span{
-                        display: none;
-                    }
-                }
-                @media screen and (min-width: 1025px){
-                    &:hover{
-                        color: $green-1;
-                    }
-                }
             }
         }
         
@@ -121,17 +80,7 @@
                             margin-right: calc(8px + (16 - 8) * ((100vw - 300px) / (1024 - 300))); 
                         }
                     }
-                }           
-                &.download{
-                    span{                        
-                        img{
-                            width: calc(12px + (28 - 12) * ((100vw - 1200px) / (3840 - 1200)));
-                            @media screen and (max-width: 1024px){
-                                width: calc(8px + (18 - 8) * ((100vw - 300px) / (1024 - 300))); 
-                            }
-                        }
-                    }
-                }                     
+                }                             
                 &.share{
                     span{                        
                         img{
@@ -164,21 +113,28 @@
     }
 
     .col_right{ 
-        grid-area: right;  
+        grid-area: right;        
 
         .content{
-            padding-top: calc(38px + (60 - 38) * ((100vw - 1200px) / (3840 - 1200)));
+            padding-top: calc(60px + (145 - 60) * ((100vw - 1200px) / (3840 - 1200)));
             margin-bottom: calc(38px + (60 - 38) * ((100vw - 1200px) / (3840 - 1200)));
             @media screen and (max-width: 1024px){
                 padding-top: calc(30px + (100 - 30) * ((100vw - 300px) / (1024 - 300)));
                 margin-bottom: calc(30px + (100 - 30) * ((100vw - 300px) / (1024 - 300))); 
             }
+            >:first-child{
+                margin-top: 0;
+                padding-top: 0;
+            } 
             h3{
                 @include font-level-3;
                 color: $deep-blue;
                 font-weight: 500;
                 padding-top: calc(28px + (95 - 28) * ((100vw - 1200px) / (3840 - 1200)));
                 margin-bottom: calc(24px + (56 - 24) * ((100vw - 1200px) / (3840 - 1200)));
+                strong{
+                    font-weight: 500;
+                }
                 @media screen and (max-width: 1024px){
                     padding-top: calc(22px + (82 - 22) * ((100vw - 300px) / (1024 - 300))); 
                     margin-bottom: calc(15px + (50 - 15) * ((100vw - 300px) / (1024 - 300))); 
@@ -189,9 +145,25 @@
                 color: $deep-blue;
                 font-weight: 400;
                 line-height: 144%;
-                margin-bottom: calc(24px + (56 - 24) * ((100vw - 1200px) / (3840 - 1200)));
+                margin-bottom: calc(24px + (56 - 24) * ((100vw - 1200px) / (3840 - 1200)));                
                 @media screen and (max-width: 1024px){
                     margin-bottom: calc(15px + (50 - 15) * ((100vw - 300px) / (1024 - 300))); 
+                    line-height: 160%;
+                }
+                span{
+                    color: $gray-2;
+                }
+            }
+
+            a{
+                color: $deep-blue;
+                strong{
+                    font-weight: 400;
+                }
+                @media screen and (min-width: 1025px){
+                    &:hover{
+                        color: $green-1;
+                    }
                 }
             }
 
@@ -200,30 +172,53 @@
                 height: auto;
             }
 
-        }
-
-        .hashtags{
-            margin-bottom: calc(38px + (60 - 38) * ((100vw - 1200px) / (3840 - 1200)));
-            @media screen and (max-width: 1024px){
-                margin-bottom: calc(30px + (100 - 30) * ((100vw - 300px) / (1024 - 300))); 
-            }
-
-            p, button{
-                @include font-level-4;
-                display: inline-block;
-            }
-            p{color: $deep-blue;}
-
-            button{
-                color: $green-1;
-                padding: revert;
-                @media screen and (min-width: 1024px){
-                    &:hover{
-                        text-decoration: underline;
+            ul{
+                padding-left: calc(15px + (38 - 15) * ((100vw - 1200px) / (3840 - 1200)));    
+                @media screen and (max-width: 1024px){
+                    padding-left: calc(12px + (28 - 12) * ((100vw - 300px) / (1024 - 300))); 
+                }   
+                li{
+                    @include font-level-4;
+                    color: $deep-blue;
+                    font-weight: 400;
+                    line-height: 144%;
+                    margin-bottom: calc(24px + (56 - 24) * ((100vw - 1200px) / (3840 - 1200)));                
+                    @media screen and (max-width: 1024px){
+                        margin-bottom: calc(15px + (50 - 15) * ((100vw - 300px) / (1024 - 300))); 
+                        line-height: 160%;
                     }
-                } 
+                }
             }
-        } 
+
+            div[data-type="video"]{
+                position: relative;
+                padding-bottom: 56.25%;
+                height: 0;
+                overflow: hidden;
+                margin-bottom: calc(24px + (56 - 24) * ((100vw - 1200px) / (3840 - 1200)));
+                @media screen and (max-width: 1024px){
+                    margin-bottom: calc(15px + (50 - 15) * ((100vw - 300px) / (1024 - 300))); 
+                }
+                iframe{
+                    position: absolute;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+
+            div[data-type="img-w-pie"]{
+                padding-top: calc(24px + (56 - 24) * ((100vw - 1200px) / (3840 - 1200)));                
+                @media screen and (max-width: 1024px){
+                    padding-top: calc(15px + (50 - 15) * ((100vw - 300px) / (1024 - 300))); 
+                }
+                p{
+                    @include font-level-5;
+                    color: $gray-1;
+                }
+            }
+        }
 
         .legal{
             background-color: $gray-6;
@@ -245,13 +240,20 @@
                     color: $deep-blue;
                     font-weight: 500;
                     margin-bottom: calc(14px + (46 - 24) * ((100vw - 1200px) / (3840 - 1200)));
+                    @media screen and (max-width: 1024px){
+                        line-height: 160%;
+                    }
                 }
                 p, a{
                     @include font-level-5;
                     color: $deep-blue;
                     font-weight: 400;
                     line-height: 144%;
-                    margin-bottom: calc(14px + (46 - 14) * ((100vw - 1200px) / (3840 - 1200)));   
+                    margin-bottom: calc(14px + (46 - 14) * ((100vw - 1200px) / (3840 - 1200)));
+                    @media screen and (max-width: 1024px){
+                        margin-bottom: calc(15px + (50 - 15) * ((100vw - 300px) / (1024 - 300))); 
+                        line-height: 160%;
+                    }   
                     &:last-of-type{
                         margin-bottom: 0;
                     }                 
@@ -261,7 +263,30 @@
     }
 }
 
-.related {
+.news_related, .news_acordion{
+    margin-bottom: calc(80px + (240 - 80) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(35px + (135 - 35) * ((100vw - 300px) / (1024 - 300)));
+    } 
+
+    h2{
+        @include container-width-1;
+        @include font-level-4;
+        color: $deep-blue;
+        font-weight: 400; 
+        padding-left: calc(2px + (6 - 2) * ((100vw - 1200px) / (3840 - 1200)));
+
+        padding-bottom: calc(10px + (20 - 9) * ((100vw - 1200px) / (3840 - 1200)));
+    }
+
+    .accordion{
+        @include container-width-1;
+        &>div{
+            width: 100%; 
+        }
+    }
+}
+.news_related{
     h2{
         @include container-width-1;
         @include font-level-4;
@@ -272,37 +297,38 @@
         margin-bottom: calc(50px + (110 - 50) * ((100vw - 1200px) / (3840 - 1200)));
         border-bottom: $line-1 solid $gray-5;
     }
-}
-
-.carrousel{
-
-    
- 
-    margin-bottom: calc(60px + (160 - 60) * ((100vw - 1200px) / (3840 - 1200)));
-    @media screen and (max-width: 1024px){
-        margin-bottom: calc(35px + (115 - 35) * ((100vw - 300px) / (1024 - 300)));
-    }
-
-    
-
-    .note{
-
         
-
-        margin-left: calc(32px + (82 - 32) * ((100vw - 1200px) / (3840 - 1200))) !important;
-
-        &:first-of-type{
-            margin-left: calc(103px + 378 * (100vw - 1200px) / 2640) !important;
-        }
-
-        width: calc(415px + (1140 - 415) * ((100vw - 1200px) / (3840 - 1200))) !important;
+    .card{
+        @include basic-card-2;
+        width: calc(490px + (1340 - 490) * ((100vw - 1200px) / (3840 - 1200)));
+        margin-left: calc(32px + (82 - 32) * ((100vw - 1200px) / (3840 - 1200)));          
+        padding-bottom: calc(15px + (30 - 15) * ((100vw - 1200px) / (3840 - 1200)));    
         @media screen and (max-width: 1024px){
-            width: calc(255px + (880 - 255) * ((100vw - 300px) / (1024 - 300))) !important;
-        }            
-    }
-    :last-of-type{
-        .card{
-            padding-bottom: calc(34.8px + (90 - 34.8) * ((100vw - 1388px) / (3840 - 1388)));  
+            width: calc(255px + (880 - 255) * ((100vw - 300px) / (1024 - 300)));
+        }   
+    
+        h5{
+            margin-bottom: calc(18px + (44 - 18) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1024px){
+                margin-bottom: calc(15px + (55 - 15) * ((100vw - 300px) / (1024 - 300)));
+            }
+        }
+        p{
+            margin-bottom: calc(14px + (64 - 14) * ((100vw - 1200px) / (3840 - 1200)));
+            &.info{
+                display: block;
+                width: 100%;
+                color: $green-1;
+                margin-bottom: calc(28px + (90 - 28) * ((100vw - 1200px) / (3840 - 1200)));
+                @media screen and (max-width: 1024px){
+                    margin-bottom: calc(15px + (55 - 15) * ((100vw - 300px) / (1024 - 300)));
+                }
+                span{
+                    color: $gray-2;
+                    border-bottom: none;
+                    margin-bottom: 0;
+                }
+            }
         }
     }
 }

@@ -18,9 +18,9 @@ function Index(d){
     let  {strip, ...data}  = d;
     
     const exploringBtnsData = [
-        {title: 'Propuestas de formación', path: 'formacion'},
-        {title: 'Asesorías y soluciones a medida', path: 'asesorias'},
-        {title: 'Nuestras producciones', path: 'producciones'}        
+        {title: 'Propuestas de formación', path: '/formacion'},
+        {title: 'Asesorías y soluciones a medida', path: '/asesorias'},
+        {title: 'Nuestras producciones', path: '/producciones'}        
     ]
     const license = `<p>El texto de la nota ${ data.title } de Proyecto Educación y Nuevas Tecnologías se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Nota disponible en: <a href="${ data.url }" target="_blank">${ data.url }</a></p>`
     const [ elementHeight, setElementHeight ] = useState(0);
@@ -64,7 +64,7 @@ function Index(d){
             };         
         } 
          
-    }, [elementHeight]);
+    }, [elementHeight, router]);
     
 
     const mobileShare = () => {
@@ -160,10 +160,7 @@ export async function getServerSideProps({query}) {
     /* const res = await fetch(`https://flacso.pent.org.ar/api/novedades/${query.category}-${query.title}.json`) */
     
     const res = await fetch(`https://redaccion.pent.org.ar/data/new/${query.category}/${query.title}`)
-    const data = await res.json()
-
-
-    return handleServerRedirect(res, data);
+    return handleServerRedirect(res);
     // Pass data to the page via props
     //return { props:  {...data }   }
 }

@@ -153,12 +153,11 @@ export async function getServerSideProps({query}) {
       }
 
     const res = await fetch(`https://redaccion.pent.org.ar/data/person/equipo/${query.perfil}`)
-    const data = await res.json()
-  
-    return handleServerRedirect(res, data);
 
-    // Pass data to the page via props
-    //return { props: data  }
+    return handleServerRedirect(res);
+
+        // Pass data to the page via props
+        //return { props: data  }
   }
 
   export default Perfil

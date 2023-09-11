@@ -25,9 +25,9 @@ function Index(d){
     const license = `<p>La producción ${ data.title } se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Disponible en: <a href="${ data.link ? data.link : data.url }" target="_blank">${ data.link ? data.link : data.url }</a></p>`  
 
     const exploringBtnsData = [
-        {title: 'Propuestas de formación', path: 'formacion'},        
-        {title: 'Asesorías y soluciones a medida', path: 'asesorias'},
-        {title: 'Investigación y divulgación', path: 'investigacion'}
+        {title: 'Propuestas de formación', path: '/formacion'},        
+        {title: 'Asesorías y soluciones a medida', path: '/asesorias'},
+        {title: 'Investigación y divulgación', path: '/investigacion'}
     ] 
 
     useEffect(() => {
@@ -91,10 +91,11 @@ function Index(d){
         }, 200);                   
     };
 
-console.log(data)
     return(
     <>
         <MetaTags
+        
+        
             pageTitle={ data.title + ' — FLACSO | PENT'}
             shareTitle={ data.title }
             keywords={ data.keywords }
@@ -176,9 +177,8 @@ export async function getServerSideProps({query}) {
     // Fetch data from external API
     /* const res = await fetch(`https://flacso.pent.org.ar/api/producciones/${query.produccion}.json`) */
     const res = await fetch(`https://redaccion.pent.org.ar/data/production/${query.produccion}`)
-    const data = await res.json()
-
-    return handleServerRedirect(res, data);
+    //MiddleWare 404 | 505
+    return handleServerRedirect(res);
     // Pass data to the page via props
     //return { props:  {...data }   }
 }

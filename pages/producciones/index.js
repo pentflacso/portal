@@ -19,7 +19,6 @@ function Producciones(d){
 
 
     let data =  d.products;
-
     const content = useRef();   
     const pageHeading = useRef();
     const productionsNav = useRef();
@@ -58,7 +57,7 @@ function Producciones(d){
         } else if(currentArticleHashtag === 'all' && currentArticleAuthor !== 'all'){
             return setDataArticles(data.filter((article) => article.authors.includes(currentArticleAuthor)))
         }            
-    }, [currentArticleHashtag, currentArticleAuthor]);    
+    }, [currentArticleHashtag, currentArticleAuthor]);   
 
 
     useEffect(() => {
@@ -159,13 +158,17 @@ function Producciones(d){
     }, [advancedFilterStatus]);
 
 
+const keywords = ['publicaciones, producciones, papers, artículos, trabajos académicos, ponencias, conferencias, divulgación académica, abstract, material didáctico, material didáctico hipermedial, actualización profesional, aplicaciones digitales, aprendizaje en línea, ciudadanía digital, comunidades de práctica, consumos culturales, didáctica, dispositivos tecnopedagógicos, educación en línea, entornos digitales, formación docente, inclusión, infancias, jóvenes, materiales didácticos, metodología de investigación, microlearning, neurociencias, políticas tecno-educativas, programación, redes sociales, subjetividades, tendencias educativas, tutoría y moderación'];
+
+const keywords_join = [...keywords, ...d.keyword_hashtag].join(', ');
+
+
     return(
     <>
         <MetaTags
             pageTitle={'Producciones — FLACSO | PENT'}
             shareTitle={'Producciones — FLACSO | PENT'}
-            keywords={'publicaciones, producciones, papers, artículos, trabajos académicos, ponencias, conferencias, divulgación académica, abstract, material didáctico, material didáctico hipermedial, actualización profesional, aplicaciones digitales, aprendizaje en línea, ciudadanía digital, comunidades de práctica, consumos culturales, didáctica, dispositivos tecnopedagógicos, educación en línea, entornos digitales, formación docente, inclusión, infancias, jóvenes, materiales didácticos, metodología de investigación, microlearning, neurociencias, políticas tecno-educativas, programación, redes sociales, subjetividades, tendencias educativas, tutoría y moderación'}
-            description={'Publicaciones del equipo del PENT.'}
+            keywords={keywords_join}
         />
 
         <MainWrapper>    
@@ -176,7 +179,7 @@ function Producciones(d){
 
                 <section id="productions-nav">    
                     <div className={`${styles.productions_nav}`} ref={productionsNav}>
-                        <ProductionsNav/>   
+                        <ProductionsNav dataHashtags={d.filter}/>   
                     </div>       
                     {dataArticles !== undefined && <ArticlesList data={searchInArticles(dataArticles)}/>}     
                 </section> 
@@ -204,15 +207,9 @@ function Producciones(d){
 
 export async function getServerSideProps() {
     // Fetch data from external API
-    //const res = await fetch(`https://flacso.pent.org.ar/api/produciones.json`)
-    const res = await fetch(`https://redaccion.pent.org.ar/data/productions`);
-    const data = await res.json()
-
-
-    return handleServerRedirect(res, data);
-    // Pass data to the page via props
-    //return { props:  {...data}   }
-
+    const res = await fetch(`https://redaccion.pent.org.ar/data/productions`); 
+    //MiddleWare 404 | 505
+    return handleServerRedirect(res);
   }
 
   export default Producciones;

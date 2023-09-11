@@ -65,7 +65,6 @@ export default function ArticlesNov({ data, category, totalData }){
                             }
                           }
                       } else if (res.status === 400 || data.status == false){
-                        console.log("entre");
                         return {
                             redirect: {
                               destination: '/404',
@@ -88,7 +87,6 @@ export default function ArticlesNov({ data, category, totalData }){
                 }
                 
                 catch(error) {
-                    //console.log(`Hubo un error => ${error.message}`);
                     setShowLoadMore(false);            
                 }
             }

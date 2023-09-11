@@ -77,9 +77,7 @@ export default function Equipo({data}){
 export async function getServerSideProps() {
     // Fetch data from external API
     const res = await fetch(`https://redaccion.pent.org.ar/data/section/52`) 
-    const data = await res.json()
-  
-    // Pass data to the page via props
-    return handleServerRedirect(res, data);     
+    
+    return handleServerRedirect(res);
     //return { props: data  }
   }
