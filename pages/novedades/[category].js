@@ -27,9 +27,9 @@ function Index(data){
     const { windowSize, setDataStrip } = useAppContext(); 
 
     const exploringBtnsData = [
-        {title: 'Formación', path: 'formacion'},
-        {title: 'Producciones', path: 'producciones'},
-        {title: 'Asesorías', path: 'asesorias'}
+        {title: 'Formación', path: '/formacion'},
+        {title: 'Producciones', path: '/producciones'},
+        {title: 'Asesorías', path: '/asesorias'}
     ]
 
     const filtro = data.categories;
