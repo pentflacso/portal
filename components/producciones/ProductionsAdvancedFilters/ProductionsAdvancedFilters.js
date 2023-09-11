@@ -67,7 +67,7 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
 
                         </div>                        
                         <div className={styles.resultContent}>
-                            <span className={styles.resultData} ><span className={styles.resultNone}>Se encontraron</span> <strong>{countDataToUse}</strong> resultados.</span>
+                            <span className={styles.resultData} ><span className={styles.resultNone}>{countDataToUse == 1 ? "Se encontró" :"Se encontraron"}</span> <strong>{countDataToUse}</strong> {countDataToUse == 1 ? "resultado" :"resultados"}.</span>
                         </div>
                     </div>                    
 
