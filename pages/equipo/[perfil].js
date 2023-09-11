@@ -1,5 +1,5 @@
 import { useAppContext } from '../../context/AppContext';
-import { useEffect } from 'react';
+import { useEffect, Fragment } from 'react';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
 import Link from 'next/link';
 import Footer from '../../components/library/Footer/Footer';
@@ -10,6 +10,7 @@ import $ from "jquery";
 import styles from "./perfil.module.scss";
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
+import Card from '../../components/library/Card/Card';
 
 
 function Perfil(d){       
@@ -104,26 +105,49 @@ function Perfil(d){
                 data.productions && (<section  className={styles.producciones}>
 
                 <h2>Producciones</h2>
-                <Swiper
-                modules={[Navigation, FreeMode]}
-                spaceBetween={0}
-                slidesPerView={"auto"}
-                navigation={true}  
-                freeMode={false}   
-                grabCursor={windowSize >= 1025 ? true : false} 
-                className={`${styles.carrousel_novedades} swiper-cards`}
-                >
-                {data.productions.map((data, i)=>(
-                    <SwiperSlide key={i}>                                        
-                        <Link href={data.link} className={`${styles.card} clickable`}>   
-                            <span>{data.lead}</span>
-                            <h5>{data.title}&nbsp;<span>{data.subtitle}</span></h5>
-                            { data.description && <p>{data.description}</p> }  
-                            <ul className={styles.hashtags}>{ data.hashtags.map((hashtags , i) => <li key={i}>{hashtags}</li>) }</ul>                          
-                        </Link>                     
-                    </SwiperSlide> 
-                ))} 
-                </Swiper>
+                {windowSize >= 1025 ?
+            <>
+                {data.productions.length !== 0 ?  
+                <div className={styles.containerList}>
+                    <div className={styles.col_left}>
+                        {data.productions.map((data, i) => {
+                            return (
+                                <Fragment key={i}>                    
+                                    { i % 2 === 0 && <Card { ...data} /> }
+                                </Fragment>                                        
+                            );
+                        })}
+                    </div>
+
+                    <div className={styles.col_right}>
+                        {data.productions.map((data, i) => {
+                            return (
+                                <Fragment key={i}>                    
+                                    { i % 2 !== 0 && <Card {...data} /> }
+                                </Fragment>                                        
+                            );
+                        })}
+                    </div>
+                </div>
+                : <></>
+                }
+            </>
+            :
+            <>
+                {data.productions.length !== 0 ?  
+                    <div className={styles.content}>
+                        {data.productions.map((data, i) => {
+                            return (
+                                <Fragment key={i}>                    
+                                    <Card { ...data}/>
+                                </Fragment>                                        
+                            );
+                        })}
+                    </div>
+                : <></>
+                }
+            </>
+            }
 
             </section>)
             }
