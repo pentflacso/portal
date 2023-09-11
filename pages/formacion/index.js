@@ -36,7 +36,7 @@ export default function Formacion({data}){
                 xSet(pos.x);
                 ySet(pos.y);
             });
-            $(`.${styles.carrousel_formacion}`).on("mouseenter", function mouseEnterContainer() {
+            $(`.swiper-wrapper`).on("mouseenter", function mouseEnterContainer() {
                 gsap.to(".cursor_deslizar", {
                     duration: 0.8,
                     scale: 1,
@@ -44,7 +44,7 @@ export default function Formacion({data}){
                     ease: Elastic.easeOut.config( 1, 0.6)
                 });
             });
-            $(`.${styles.carrousel_formacion}`).on("mouseleave", function mouseLeaveContainer() {
+            $(`.swiper-wrapper`).on("mouseleave", function mouseLeaveContainer() {
                 gsap.to(".cursor_deslizar", {
                     duration: 0.8,
                     scale: 0,
@@ -52,7 +52,7 @@ export default function Formacion({data}){
                     ease: Back.easeOut.config(3)
                 });
             });   
-            $(`.${styles.carrousel_formacion} .cta_btn`).on("mouseenter", function mouseEnterCta() {
+            $(`.swiper-wrapper .cta_btn`).on("mouseenter", function mouseEnterCta() {
                 gsap.to(".cursor_deslizar", {
                     duration: 0.8,
                     scale: 0,
@@ -60,7 +60,7 @@ export default function Formacion({data}){
                     ease: Back.easeOut.config(3)
                 });
             }); 
-            $(`.${styles.carrousel_formacion} .cta_btn`).on("mouseleave", function mouseLeaveCta() {
+            $(`.swiper-wrapper .cta_btn`).on("mouseleave", function mouseLeaveCta() {
                 gsap.to(".cursor_deslizar", {
                     duration: 0.8,
                     scale: 1,
