@@ -187,4 +187,33 @@
             }
         }
     }
+
+    .containerList{
+        @include container-width-1;
+        
+        
+        display: flex;
+        justify-content: space-between;
+
+        .col_left, .col_right{
+            width: 47.7%
+        }  
+        .content{
+            width: 100%;
+        }
+
+        .no_data{
+            @include font-level-4;
+            font-style: 400;
+            color: $gray-1;
+        }
+    }
+
+    .content{
+        width: 100%;
+        padding: 2vw;
+    }
+ 
+
 }
+
