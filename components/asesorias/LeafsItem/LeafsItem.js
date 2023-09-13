@@ -33,8 +33,7 @@ export default function LeafsItem({ items }){
 
 
     useEffect(() => {
-        if(windowSize >= 1025){
-            
+        if(windowSize >= 1025){            
             // Follow custom cursor
             const ball = document.querySelector(".cursor_dot");
             gsap.set(".cursor_dot", {xPercent: -46, yPercent: -32});       
@@ -57,25 +56,44 @@ export default function LeafsItem({ items }){
                 xSet(pos.x);
                 ySet(pos.y);
             });
-            $(`.${styles.leaf_item}`).on("mouseenter", function mouseEnterContainer() {
+        }
+                                  
+    }, []);
+
+
+    useEffect(() => {  
+
+        if(windowSize >= 1025){  
+            function mouseEnterContainer() {
                 gsap.to(".cursor_dot", {
                     duration: 0.8,
                     scale: 1,
                     opacity: 1,
                     ease: Elastic.easeOut.config( 1, 0.6)
                 });
-            });
-            $(`.${styles.leaf_item}`).on("mouseleave", function mouseLeaveContainer() {
+            };
+
+            function mouseLeaveContainer() {
                 gsap.to(".cursor_dot", {
                     duration: 0.8,
                     scale: 0,
                     opacity: 0,
                     ease: Back.easeOut.config(3)
                 });
-            });  
+            };      
+        
+            $(`.${styles.inactive}`).on("mouseenter", mouseEnterContainer );
+            $(`.${styles.inactive}`).on("mouseleave", mouseLeaveContainer );            
+            
+            return () => {
+                $(`.${styles.leaf_item}`).off("mouseenter");
+                $(`.${styles.leaf_item}`).off("mouseleave");
+                mouseLeaveContainer();         
+            }; 
         }
                                   
-    }, []);
+    }, [currentLeaf]);
+
 
 
     return(
@@ -86,7 +104,7 @@ export default function LeafsItem({ items }){
                 {
                     items.map((item, i) => {                   
                         return ( 
-                            <div key={i} className={styles.leaf_item} onClick={ () => changeCurrentLeaf(`leaf_${i}`)}>
+                            <div key={i} className={currentLeaf !== `leaf_${i}` ? `${styles.leaf_item} ${styles.inactive}` : `${styles.leaf_item}`} onClick={ () => changeCurrentLeaf(`leaf_${i}`)}>
                                 <img src={item.img.url} alt={item.img.alt} />
                                 <h5>{item.title}</h5>
                                 <p>{item.description}</p>

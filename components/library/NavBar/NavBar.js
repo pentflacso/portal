@@ -40,10 +40,11 @@ export default function NavBar(){
                 <div className={styles.overlay} ref={menuOverlay}> 
                     <div className={styles.wrapper}>
                         <div className={styles.sections}>
+                            <Link href='/' onClick={ () => changePage('/') } className={currentRoute === '/' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Portada</Link>
                             <Link href='/formacion' onClick={ () => changePage('/formacion') } className={currentRoute === '/formacion' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Formación</Link>
                             <Link href='/asesorias' onClick={ () => changePage('/asesorias') }className={currentRoute === '/asesorias' || currentRoute === '/asesorias/[case]' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Asesorías</Link>
-                            <Link href='/producciones' onClick={ () => changePage('/producciones') } className={currentRoute === '/producciones' || currentRoute === '/producciones/[produccion]' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Producciones</Link>
-                            <Link href='/investigacion' onClick={ () => changePage('/investigacion') } className={currentRoute === '/investigacion' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Investigación</Link>
+                            <Link href='/producciones' onClick={ () => changePage('/producciones') } className={currentRoute === '/producciones' || currentRoute === '/producciones/[produccion]' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Producciones</Link>                            
+                            <Link href='/investigacion' onClick={ () => changePage('/investigacion') } className={currentRoute === '/investigacion' || currentRoute === '/investigacion/[project]' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Investigación</Link>
                             <Link href='/novedades' onClick={ () => changePage('/novedades') } className={currentRoute === '/novedades' || currentRoute === '/novedades/[category]' || currentRoute === '/novedades/[category]/[title]' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Novedades</Link>
                             <Link href='/equipo' onClick={ () => changePage('/equipo') } className={currentRoute === '/equipo' || currentRoute === '/equipo/[perfil]' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Equipo</Link>
                         </div>
