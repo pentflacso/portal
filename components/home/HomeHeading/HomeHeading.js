@@ -1,4 +1,4 @@
-import { useRef, useLayoutEffect, useState, useEffect  } from 'react';
+import { useRef, useEffect  } from 'react';
 import { gsap } from 'gsap';
 import { TextPlugin } from 'gsap/dist/TextPlugin';
 import styles from "./HomeHeading.module.scss";
@@ -7,24 +7,22 @@ gsap.registerPlugin(TextPlugin);
 export default function HomeHeading({ title, initial, final }){
 
     const element = useRef(null);
-    //const captions = ["capacitación", "investigación", "creación", "innovación"];
-    const [captions, setCaption] = useState(title);
     const tl = gsap.timeline({ repeat: -1 });
  
     useEffect(() => {
 
         let ctx = gsap.context(() => {
 
-            for (let i = 0; i < captions.length; i++) {
+            for (let i = 0; i < title.length; i++) {
                 tl.to(element.current, { duration: 2 }).fromTo(
                     element.current,
                 { text: element.current, opacity: 1 },
-                { text: captions[i].value, duration: 1, opacity: 1 },
+                { text: title[i].value, duration: 1, opacity: 1 },
                 "<"
                 );
             }
 
-            }, element); 
+        }, element); 
 
         return () => ctx.revert(); 
 
