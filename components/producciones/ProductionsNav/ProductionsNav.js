@@ -8,7 +8,7 @@ import styles from "./ProductionsNav.module.scss";
 
 
 export default function ProductionsNav({dataHashtags}){
-    const { dataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, articlesFiltersCounter, advancedFilterStatus, setAdvancedFilterStatus } = useAppContext();
+    const { dataArticles, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, articlesFiltersCounter, advancedFilterStatus, setAdvancedFilterStatus } = useAppContext();
     
     const [advancedFilterOutAnimation, setAdvancedFilterOutAnimation] = useState(false);
     const [has, setHas] = useState([]);

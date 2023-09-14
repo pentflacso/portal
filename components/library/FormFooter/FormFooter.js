@@ -58,7 +58,7 @@ const FormFooter  = () => {
                 onChange={handleInputChange}
                 onClick={ () => clearErrorMessenge() }
             />      
-            <button className={!sending ? styles.btn_send : `${styles.btn_send} ${styles.sending}`} type="submit" />            
+            <button className={!sending ? styles.btn_send : `${styles.btn_send} ${styles.sending}`} type="submit" aria-label="Enviar registro" />            
         </form>
         :
         <div className={styles.email_sended}>

@@ -24,12 +24,36 @@
             overflow: scroll;
         }
 
-        .close_btn{
-            @include btn-ver-mas;  
+        .resultContent{ 
             position: absolute;
-            z-index: 1000;
             top: calc(27px + (72 - 27) * ((100vw - 1200px) / (3840 - 1200)));
             right: calc(35px + (370 - 35) * ((100vw - 1200px) / (3840 - 1200)));
+
+            .resultData{
+                align-items: center;
+                @include font-level-4;
+                color: $deep-blue;
+                padding-right: calc(20px + (72 - 27) * ((100vw - 1200px) / (3840 - 1200)));
+                
+                @media screen and (max-width: 520px){                            
+                    @include font-level-5;
+                }
+
+                .resultNone{
+                    @media screen and (max-width: 920px){                            
+                        display:none;
+                    }
+                }
+            }                    
+        }
+
+        .close_btn{
+            @include btn-ver-mas;  
+            //position: absolute;
+            //top: calc(27px + (72 - 27) * ((100vw - 1200px) / (3840 - 1200)));
+            //right: calc(35px + (370 - 35) * ((100vw - 1200px) / (3840 - 1200)));            
+            z-index: 1000;
+
             opacity: 0;
             animation-name: fadeIn;
             animation-delay: 0.7s;
@@ -155,7 +179,7 @@
                     margin-bottom: calc(22px + (60 - 22) * ((100vw - 300px) / (1024 - 300)));
                 }
 
-                .resultContent, .switch_box{
+                .switch_box{
                     position: relative;
                     height: calc(36px + (80 - 36) * ((100vw - 1200px) / (3840 - 1200)));
                     &:nth-child(1){
@@ -205,32 +229,6 @@
                     }
                 }
                 
-                .resultContent{
-                    display: flex;
-                    align-items: flex-end;
-                    margin-left: auto;
-                    
-                    .resultData{
-                        align-items: center;
-                        @include font-level-4;
-                        color: $deep-blue;
-                        padding-left: 10px;
-                        
-
-                        @media screen and (max-width: 520px){                            
-                            @include font-level-5;
-                        }
-
-                        .resultNone{
-                            @media screen and (max-width: 920px){                            
-                                display:none;
-                            }
-                        }
-
-
-                    }                    
-                }
-
                 .clear_btn{
                     position: absolute;
                     top: 0;

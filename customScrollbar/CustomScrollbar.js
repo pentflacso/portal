@@ -62,7 +62,24 @@ export default function Layout({ children, ...rest }) {
     
   }, []); 
 
-  
+  useEffect(() => {
+    // Esta función se ejecutará cada vez que cambie la ruta
+    const handleRouteChange = (url) => {
+      // Aquí puedes realizar las acciones que desees al cambiar la ruta
+      scrollbar.current.setPosition(0, 0);
+      // Por ejemplo, puedes realizar una llamada a una API o actualizar el estado de tu componente.
+    };
+    
+    // Suscribirse a los cambios de ruta
+    router.events.on('routeChangeComplete', handleRouteChange);
+
+    // Es importante cancelar la suscripción cuando el componente se desmonte
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router]);
+
+
   useEffect(() => {
     if(router.route === '/producciones'){
       

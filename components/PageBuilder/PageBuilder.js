@@ -121,7 +121,7 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                                 <SwiperSlide key={m}>
                                     <Link className={stylesx.member} href={item.alias}>
                                         <div className={stylesx.img_container}>
-                                            <img alt={item.alt} src={item.img.url}/>
+                                            <img alt={item.img.alt} src={item.img.url}/>
                                         </div>
                                         <h5>{item.nombre}</h5>
                                     </Link>            

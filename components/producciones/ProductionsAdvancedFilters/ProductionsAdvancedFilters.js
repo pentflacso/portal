@@ -39,8 +39,11 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
         <div className={advancedFilterOutAnimation === true ? `${styles.wrapper} ${styles.animation_out} filters` : `${styles.wrapper} filters`}>
 
             <div className={styles.search_container}>
-
-                <button type="button" data-id="triggerScrollTo" className={styles.close_btn} onClick={ () => changeAdvancedFilterStatus(false) }>Cerrar</button>  
+                <div className={styles.resultContent}>
+                    <span className={styles.resultData} ><span className={styles.resultNone}>{countDataToUse == 1 ? "Se encontró" :"Se encontraron"}</span> <strong>{countDataToUse}</strong> {countDataToUse == 1 ? "resultado" :"resultados"}</span>
+    
+                    <button type="button" data-id="triggerScrollTo" className={styles.close_btn} onClick={ () => changeAdvancedFilterStatus(false) } aria-label="Cerrar filtros">Cerrar</button>  
+                </div>
 
                 <div className={styles.wrapper}>                                      
 
@@ -65,9 +68,6 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
 
                             <button type="button" className={showFilters === 'authors' ? `${styles.switch_btn} ${styles.active}` : `${styles.switch_btn}`} onClick={ () => changeShowFilters('authors') }>Filtrar por autor<span><img src="/assets/icons/triangle_icon.svg" alt="Icono de flecha" /></span></button>
 
-                        </div>                        
-                        <div className={styles.resultContent}>
-                            <span className={styles.resultData} ><span className={styles.resultNone}>{countDataToUse == 1 ? "Se encontró" :"Se encontraron"}</span> <strong>{countDataToUse}</strong> {countDataToUse == 1 ? "resultado" :"resultados"}.</span>
                         </div>
                     </div>                    
 
