@@ -53,9 +53,12 @@ export default function ProductionsNav({dataHashtags}){
     //Mapea los artículos y envía el nombre de los autores y hashtags a las funciones addHashtag o addAuthor, según corresponda
 
     useEffect(() => {
-        if(dataHashtags && dataHashtags.length != 0){        
+        if(dataHashtags){
+                   
             setHas(dataHashtags.map(tag => ({ name: tag })));
-            setHashtagsArticlesList( [...has] )
+            if(has.length > 0){
+                setHashtagsArticlesList( [...has] )
+            }
         }
 
         if(dataArticles !== undefined){
