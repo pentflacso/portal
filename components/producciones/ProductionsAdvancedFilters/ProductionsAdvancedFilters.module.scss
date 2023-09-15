@@ -38,20 +38,11 @@
                 @media screen and (max-width: 520px){                            
                     @include font-level-5;
                 }
-
-                .resultNone{
-                    @media screen and (max-width: 920px){                            
-                        display:none;
-                    }
-                }
             }                    
         }
 
         .close_btn{
-            @include btn-ver-mas;  
-            //position: absolute;
-            //top: calc(27px + (72 - 27) * ((100vw - 1200px) / (3840 - 1200)));
-            //right: calc(35px + (370 - 35) * ((100vw - 1200px) / (3840 - 1200)));            
+            @include btn-ver-mas;           
             z-index: 1000;
 
             opacity: 0;

@@ -4,8 +4,8 @@ import styles from "./ProductionsAdvancedFilters.module.scss";
 
 export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus, stateCurrentHashtag, advancedFilterOutAnimation }){
 
-    const { hashtagsArticlesList, currentArticleHashtag, authorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, queryArticles, setQueryArticles, countDataToUse } = useAppContext();
-
+    const { hashtagsArticlesList, currentArticleHashtag, authorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, queryArticles, setQueryArticles, countDataToUse, articlesFiltersCounter } = useAppContext();
+    
     const [ showFilters, setShowFilters ] = useState('hashtags');
 
 
@@ -40,11 +40,12 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
 
             <div className={styles.search_container}>
                 <div className={styles.resultContent}>
-                    <span className={styles.resultData} ><span className={styles.resultNone}>{countDataToUse == 1 ? "Se encontró" :"Se encontraron"}</span> <strong>{countDataToUse}</strong> {countDataToUse == 1 ? "resultado" :"resultados"}</span>
+                { articlesFiltersCounter > 0 &&
+                    <span className={styles.resultData} ><strong>{countDataToUse}</strong> {countDataToUse == 1 ? "resultado" :"resultados"}</span>
+                }
     
                     <button type="button" data-id="triggerScrollTo" className={styles.close_btn} onClick={ () => changeAdvancedFilterStatus(false) } aria-label="Cerrar filtros">Cerrar</button>  
                 </div>
-
                 <div className={styles.wrapper}>                                      
 
                     <div className={styles.search_cont}>
