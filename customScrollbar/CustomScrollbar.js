@@ -22,7 +22,7 @@ export default function Layout({ children, ...rest }) {
     const contentScroll = $content.current;
 
     scrollbar.current = SmoothScrollbar.init(contentScroll, {
-      damping: 0.075,
+      damping: 0.06,
       delegateTo: document.querySelector('#scroll-container'),
     });
 
@@ -50,8 +50,7 @@ export default function Layout({ children, ...rest }) {
           gsap.set(markers, { marginTop: -offset.y })
         });
       } 
-    }, 1000);    
-      
+    }, 1000);          
 
  /*   return () => {      
        if (scrollbar.current) {
@@ -77,7 +76,7 @@ export default function Layout({ children, ...rest }) {
     return () => {
       router.events.off('routeChangeComplete', handleRouteChange);
     };
-  }, [router]);
+  }, []);
 
 
   useEffect(() => {
