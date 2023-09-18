@@ -1,6 +1,7 @@
 import { useAppContext } from '../../../context/AppContext';
-import { useEffect, useState } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { useRouter } from "next/router";
+import { handleServerRedirect } from '../../../Middleware/ErrorRedirect';
 import MetaTags from '../../../components/library/MetaTags/MetaTags';
 import ShareBtns from '../../../components/library/ShareBtns/ShareBtns';
 import TextMarquee from '../../../components/library/TextMarquee/TextMarquee';
@@ -11,43 +12,59 @@ import Link from 'next/link';
 import styles from './title.module.scss';
 import MainWrapper from '../../../components/library/MainWrapper/MainWrapper';
 
-function Index(data){
+function Index(d){
 
-    const { windowSize } = useAppContext();
-    const [ shareModal, setShareModal ] = useState(false); 
-    const router = useRouter(); 
-
-
+    const { windowSize, setDataStrip } = useAppContext(); 
+    let  {strip, ...data}  = d;
+    
     const exploringBtnsData = [
-        {title: 'Propuestas de formación', path: 'formacion'},
-        {title: 'Asesorías y soluciones a medida', path: 'asesorias'},
-        {title: 'Nuestras producciones', path: 'producciones'}        
+        {title: 'Propuestas de formación', path: '/formacion'},
+        {title: 'Asesorías y soluciones a medida', path: '/asesorias'},
+        {title: 'Nuestras producciones', path: '/producciones'}        
     ]
-
     const license = `<p>El texto de la nota ${ data.title } de Proyecto Educación y Nuevas Tecnologías se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Nota disponible en: <a href="${ data.url }" target="_blank">${ data.url }</a></p>`
+    const [ elementHeight, setElementHeight ] = useState(0);
+    const [ shareModal, setShareModal ] = useState(false);   
+    const router = useRouter(); 
+    const element = useRef(null);  
 
-    useEffect(() => {   
 
-        if(windowSize >= 1025 ){    
+    useEffect(() => {
+        setDataStrip(strip);
+    }, []);    
+    
 
-            const heightPinOff = document.querySelector(`.${styles.pin_block}`).offsetHeight;
+    useEffect(() => {
+        if(windowSize >= 1025 ){
+            if (!element.current) return;
+            const resizeObserver = new ResizeObserver(() => {
+            setElementHeight(element.current.offsetHeight);
+            });
+            resizeObserver.observe(element.current);            
+            return () => resizeObserver.disconnect();
+        }
+      }, [elementHeight, windowSize]);
+    
+
+    useEffect(() => {      
+        
+        if(windowSize >= 1025){    
 
             ScrollTrigger.create({
                 trigger: `#__next`,
                 start: "top top", 
-                end: () => `+=${heightPinOff} center`,            
+                end: () => `+=${elementHeight} center`,            
                 pin: `.${styles.col_right}`,
                 pinSpacing: false,
                 scrub: true,
-                //markers: true
-            });       
- 
+            });     
+            
             return () => {
                 ScrollTrigger.getAll().forEach(t => t.kill());  
             };         
-        }      
+        } 
          
-    }, [windowSize]);
+    }, [elementHeight, router]);
     
 
     const mobileShare = () => {
@@ -69,10 +86,12 @@ function Index(data){
     return(
     <>
         <MetaTags
-            pageTitle={'Novedades — FLACSO | PENT'}
-            shareTitle={'FLACSO | PENT'}
-            keywords={'Género, Enseñanza, Derecho, Academia, Docentes, Universidad'}
-            description={'Un espacio de capacitación, investigación y creación en educación y tecnologías digitales.'}
+            pageTitle={ data.title + ' — FLACSO | PENT' }
+            shareTitle={ data.title }
+            keywords={ data.category + ', educación, tecnología, TICS'}
+            description={ data.teaser }
+            img={ data.image }
+            url={ data.url }
 
         />
 
@@ -80,7 +99,7 @@ function Index(data){
 
             {shareModal && <ShareBtns shareurl={`https://pent-portal-testing.vercel.app${router.asPath}`} setShareModal={setShareModal} />}
 
-                <div className={styles.pin_block}>  
+                <div className={styles.pin_block} ref={element}>  
                     <div className={styles.col_left}>
 
                         <header>
@@ -95,10 +114,14 @@ function Index(data){
 
                         <article>
                             { data.body ?           
-                                <div dangerouslySetInnerHTML={{__html: data.body }} /> :
+                                <div className={styles.body} dangerouslySetInnerHTML={{__html: data.body }} /> :
                             ""}
 
-                            <button type="button" className={styles.share_btn} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button> 
+                            {windowSize >= 1025 ?
+                                <button type="button" className={`${styles.btn} ${styles.share_btn}`} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
+                            :
+                                <button type="button" className={`${styles.btn} ${styles.share_btn}`} onClick={ () => mobileShare() }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
+                            }
 
                             { license ?
                                 <div className={styles.legal}>                         
@@ -116,7 +139,7 @@ function Index(data){
 
                 <section>
                     <div className={styles.marquee}>
-                        <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                        <TextMarquee data={[{value:"Seguir explorando"}]} />
                     </div>
                     <ExploringBtns data={exploringBtnsData} />      
                 </section> 
@@ -137,10 +160,9 @@ export async function getServerSideProps({query}) {
     /* const res = await fetch(`https://flacso.pent.org.ar/api/novedades/${query.category}-${query.title}.json`) */
     
     const res = await fetch(`https://redaccion.pent.org.ar/data/new/${query.category}/${query.title}`)
-    const data = await res.json()
-
+    return handleServerRedirect(res);
     // Pass data to the page via props
-    return { props:  {...data }   }
+    //return { props:  {...data }   }
 }
 
   export default Index;

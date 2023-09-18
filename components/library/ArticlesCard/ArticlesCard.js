@@ -5,7 +5,7 @@ export default function ArticlesCard({section, category, title, authors, descrip
     return( 
     <div className={styles.wrapper}>
         <span className={styles.category}>{category}</span>            
-        <h4>{title} <span className={styles.authors}>Por - { authors } </span></h4> 
+        <h4>{title} <span className={styles.authors}>Por — { authors } </span></h4> 
 
         <p>{ description }</p>
 
@@ -18,7 +18,7 @@ export default function ArticlesCard({section, category, title, authors, descrip
     return( 
     <div className={styles.wrapper}>                       
         <h4>{title}</h4>
-        <p className={styles.info}><span className={styles.category}>{category} -</span> <span className={styles.date}>{date}</span></p> 
+        <p className={styles.info}><span className={styles.category}>{category} —</span> <span className={styles.date}>{date}</span></p> 
         <p>{ description }</p>        
     </div> 
     ); 

@@ -72,8 +72,7 @@
     }       
 }
 
-.overlay{
-    background-color: rgba(33,35,36,.4);
+.overlay{    
     position: fixed;
     z-index: 110;
     top: 0;
@@ -83,8 +82,20 @@
     animation-name: fadeIn;
     animation-duration: 0.2s;
     animation-timing-function: ease-in-out;
+
+    .bg_close{
+        background-color: rgba(33,35,36,.4);
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;         
+    }
   
     .wrapper{   
+        position: absolute;
+        z-index: 2;
         display: flex;
         justify-content: right;
         align-items: center;
@@ -94,6 +105,8 @@
         0
         0
         ;   
+        top: 0;
+        right: 0;
         @media screen and (max-width: 1024px){
             justify-content: normal;
             display: grid;

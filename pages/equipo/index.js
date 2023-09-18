@@ -1,5 +1,6 @@
 import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
+import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
 
@@ -76,8 +77,7 @@ export default function Equipo({data}){
 export async function getServerSideProps() {
     // Fetch data from external API
     const res = await fetch(`https://redaccion.pent.org.ar/data/section/52`) 
-    const data = await res.json()
-  
-    // Pass data to the page via props
-    return { props: data  }
+    
+    return handleServerRedirect(res);
+    //return { props: data  }
   }

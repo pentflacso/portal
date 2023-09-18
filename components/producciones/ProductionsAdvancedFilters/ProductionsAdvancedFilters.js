@@ -4,8 +4,8 @@ import styles from "./ProductionsAdvancedFilters.module.scss";
 
 export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus, stateCurrentHashtag, advancedFilterOutAnimation }){
 
-    const { hashtagsArticlesList, currentArticleHashtag, authorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, queryArticles, setQueryArticles } = useAppContext();
-
+    const { hashtagsArticlesList, currentArticleHashtag, authorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, queryArticles, setQueryArticles, countDataToUse, articlesFiltersCounter } = useAppContext();
+    
     const [ showFilters, setShowFilters ] = useState('hashtags');
 
 
@@ -39,9 +39,13 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
         <div className={advancedFilterOutAnimation === true ? `${styles.wrapper} ${styles.animation_out} filters` : `${styles.wrapper} filters`}>
 
             <div className={styles.search_container}>
-
-                <button type="button" data-id="triggerScrollTo" className={styles.close_btn} onClick={ () => changeAdvancedFilterStatus(false) }>Cerrar</button>  
-
+                <div className={styles.resultContent}>
+                { articlesFiltersCounter > 0 &&
+                    <span className={styles.resultData} ><strong>{countDataToUse}</strong> {countDataToUse == 1 ? "resultado" :"resultados"}</span>
+                }
+    
+                    <button type="button" data-id="triggerScrollTo" className={styles.close_btn} onClick={ () => changeAdvancedFilterStatus(false) } aria-label="Cerrar filtros">Cerrar</button>  
+                </div>
                 <div className={styles.wrapper}>                                      
 
                     <div className={styles.search_cont}>
@@ -52,8 +56,6 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
 
                     <div className={styles.switch_filter}>
 
-                        
-                        
                         <div className={styles.switch_box}>
 
                             {currentArticleHashtag !== 'all' && <button type="button" data-id="triggerScrollTo" onClick={ () => stateCurrentHashtag('all') } className={styles.clear_btn}>Quitar</button>}
@@ -67,10 +69,7 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
 
                             <button type="button" className={showFilters === 'authors' ? `${styles.switch_btn} ${styles.active}` : `${styles.switch_btn}`} onClick={ () => changeShowFilters('authors') }>Filtrar por autor<span><img src="/assets/icons/triangle_icon.svg" alt="Icono de flecha" /></span></button>
 
-                        </div>                        
-                        
-                        
-
+                        </div>
                     </div>                    
 
                     <div className={styles.filter_tags}>                        
@@ -78,18 +77,30 @@ export default function ProductionsAdvancedFilters({ changeAdvancedFilterStatus,
                             showFilters === 'hashtags'                            
                             ?
                             <>
-                                {hashtagsArticlesList && hashtagsArticlesList.map((hashtag) => {   
-                                        return ( 
-                                        <button type="button" key={hashtag.name} data-id="triggerScrollTo" onClick={ () => stateCurrentHashtag(hashtag.name) } className={currentArticleHashtag === hashtag.name  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>{hashtag.name}</button>
+                                {hashtagsArticlesList && hashtagsArticlesList
+                                    .sort((a, b) => a.name.localeCompare(b.name))
+                                    .map((hashtag) => {   
+                                        return (
+                                            <button type="button" key={hashtag.name} data-id="triggerScrollTo" onClick={ () => stateCurrentHashtag(hashtag.name) } className={currentArticleHashtag === hashtag.name  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>{
+                                                hashtag.name
+                                                .slice(1)
+                                                .replace(/([a-z])([A-Z])/g, '$1 $2')
+                                                .replace(/([ ])Y([A-Z])/g, '$1 Y $2')
+                                                .split(' ')
+                                                .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+                                                .join(' ')
+                                            }</button>
                                         );
                                     })
                                 }
                             </>
                             :
                             <>
-                                {authorsArticlesList && authorsArticlesList.map((author) => {   
+                                {authorsArticlesList && authorsArticlesList
+                                    .sort((a, b) => a.name.localeCompare(b.name))
+                                    .map((author) => {   
                                         return ( 
-                                        <button type="button" key={author.name} data-id="triggerScrollTo" onClick={ () => statecurrentAuthor(author.name) } className={currentArticleAuthor === author.name  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>{author.name}</button>
+                                            <button type="button" key={author.name} data-id="triggerScrollTo" onClick={ () => statecurrentAuthor(author.name) } className={currentArticleAuthor === author.name  ? `${styles.btn_filter} ${styles.active}` : `${styles.btn_filter}`}>{author.name}</button>
                                         );
                                     })
                                 }

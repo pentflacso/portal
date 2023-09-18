@@ -6,10 +6,10 @@ import styles from "./ArticlesList.module.scss";
 
 export default function ArticlesList({ data }){
 
-    const { windowSize } = useAppContext();
-
+    const { windowSize, setCountDataToUse } = useAppContext();
     //Data a utilizar
     const [dataToUse, setDataToUse] = useState(data);
+    
     //Data limitada por cantidad a mostrar 
     const [dataLimit, setDataLimit] = useState(data.slice(0,6));
     //Contador
@@ -20,7 +20,10 @@ export default function ArticlesList({ data }){
 
     //Al cambiar la data actualiza los siguientes estados
     useEffect(() => {
-        setDataToUse(data)
+        setDataToUse(data);
+
+        setCountDataToUse(data.length);
+
         setDataLimit(data.slice(0,6))
         setItemCount(6)
     }, [data]); 
@@ -32,17 +35,30 @@ export default function ArticlesList({ data }){
     };
 
 
-    //Cada vez que el contador o la data a utilizar cambia, se ejecuta el siguiente condicional
+    //Nuevo
     useEffect(() => {       
-        if(dataToUse.length >= 7){
+        if(dataLimit.length === dataToUse.length){
+            setAvailablePlusData(false)
+        } else{
+            setAvailablePlusData(true)
+        }        
+    }, [dataLimit]);  
+
+
+    //Cada vez que el contador o la data a utilizar cambia, se ejecuta el siguiente condicional
+
+    useEffect(() => {
+        if(dataToUse.length > itemCount && dataToUse.length != 6 ){
             setAvailablePlusData(true)
             setDataLimit(dataToUse.slice(0, itemCount))
-        } else if(dataToUse.length < itemCount){
+
+        }else if(dataToUse.length <= itemCount && dataLimit.length < itemCount){
+            setDataLimit(dataToUse.slice(0, itemCount))
+            setAvailablePlusData(false)
+
+        }else if(dataToUse.length = itemCount){
             setAvailablePlusData(false)
         }
-
-        dataLimit.length < itemCount && setAvailablePlusData(false)
-        
     }, [itemCount, dataToUse]);  
 
 

@@ -44,12 +44,16 @@
             @include font-level-4;
             margin-right: calc(18px + (42 - 18) * ((100vw - 1200px) / (3840 - 1200)));
             color: $green-1;
+            line-height: 130%;
         }
     }
 
     &.new{
         h5{
             margin-bottom: calc(18px + (44 - 18) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1024px){
+                margin-bottom: calc(15px + (55 - 15) * ((100vw - 300px) / (1024 - 300)));
+            }
         }
         p{
             margin-bottom: calc(14px + (64 - 14) * ((100vw - 1200px) / (3840 - 1200)));
@@ -58,6 +62,9 @@
                 width: 100%;
                 color: $green-1;
                 margin-bottom: calc(28px + (90 - 28) * ((100vw - 1200px) / (3840 - 1200)));
+                @media screen and (max-width: 1024px){
+                    margin-bottom: calc(15px + (55 - 15) * ((100vw - 300px) / (1024 - 300)));
+                }
                 span{
                     color: $gray-2;
                     border-bottom: none;

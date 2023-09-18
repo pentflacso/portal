@@ -1,4 +1,5 @@
 import PageBuilder from '../../components/PageBuilder/PageBuilder';
+import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import styles from "./investigacion.module.scss";
 
 export default function Investigacion({data}){    
@@ -18,8 +19,7 @@ export default function Investigacion({data}){
 export async function getServerSideProps() {
     // Fetch data from external API
     const res = await fetch(`https://redaccion.pent.org.ar/data/section/66`)    
-    const data = await res.json()
-  
+    return handleServerRedirect(res);
     // Pass data to the page via props
-    return { props: data  }
+    //return { props: data  }
 }

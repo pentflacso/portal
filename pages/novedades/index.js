@@ -1,5 +1,6 @@
 import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
+import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
@@ -14,15 +15,12 @@ import { gsap } from 'gsap';
 import styles from "./novedades.module.scss";
 
 
-function Novedades(d){
-
-    let  {strip, ...data}  = d;
-    data =  Object.values(data);
+function Novedades(data){
 
     const { windowSize, setDataStrip } = useAppContext();  
 
     useEffect(() => {
-        setDataStrip(strip);
+        setDataStrip(data.strip);
     }, [])
     
     const exploringBtnsData = [
@@ -31,7 +29,7 @@ function Novedades(d){
         {title: 'Asesorías', path: 'asesorias'}
     ]
     
-    const filtro = ["prensa", "empleos", "evento"];
+    const filtro = data.categories;
 
 
     //Follow cursor 
@@ -76,8 +74,11 @@ function Novedades(d){
             description={'Enterate de las novedades más recientes del PENT FLACSO.'}
         />
            
-        <MainWrapper>    
-            <PageHeading title="<span>Novedades</span>" margin_bottom_type={1} />
+        <MainWrapper> 
+
+            <div className={styles.page_heading}>   
+                <PageHeading title="<span>Novedades</span>" />
+            </div>
 
             <section>
                 <div className={styles.filters_cont}>
@@ -103,12 +104,12 @@ function Novedades(d){
                         })}
                     </Swiper>          
                 </div>            
-                <ArticlesNov data={data} />
+                <ArticlesNov data={data.news} totalData={data.totalData} />
             </section>
 
             <section>
                 <div className={styles.marquee}>
-                    <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                    <TextMarquee data={[{value: "SEGUIR EXPLORANDO"}]} />
                 </div>
                 <ExploringBtns data={exploringBtnsData} />
             </section>
@@ -130,10 +131,9 @@ export async function getServerSideProps() {
     // Fetch data from external API
     //const res = await fetch(`https://flacso.pent.org.ar/api/novedades-12-0.json`)   
     const res = await fetch(`https://redaccion.pent.org.ar/data/news`)   
-   const data = await res.json()
-
+    return handleServerRedirect(res);
     // Pass data to the page via props
-    return { props:  {...data }   }
+    //return { props:  {data }   }
 }
 
 export default Novedades;

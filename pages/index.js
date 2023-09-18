@@ -1,19 +1,26 @@
 import { useEffect } from 'react';
+import TagManager from 'react-gtm-module';
 import { useAppContext } from '../context/AppContext';
-
+import { handleServerRedirect } from '../Middleware/ErrorRedirect';
 import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
-import MetaTags from '../components/library/MetaTags/MetaTags';
 import PageBuilder from '../components/PageBuilder/PageBuilder';
 import styles from "./index.module.scss";
 
 function Home({data}){
-    
+   /* 
+    useEffect(() => {  
+        TagManager.dataLayer({
+            dataLayer: {
+            event: 'Home',
+            variable_name: 'prueba'
+            },
+        }); 
+    }, []);
+*/
     const { windowSize } = useAppContext();   
 
-    useEffect(() => {
-
-        
+    useEffect(() => {   
         if(windowSize >= 1025){    
             
             // Follow custom cursor
@@ -68,7 +75,7 @@ function Home({data}){
                 
                 {windowSize >= 1025 &&
                     <div className="cursor_leer">
-                        <div className="circle"><span>Leer</span></div>
+                        <div className="circle"><span>Ver</span></div>
                     </div> 
                 }    
             </>
@@ -80,10 +87,9 @@ function Home({data}){
 export async function getServerSideProps() {
     // Fetch data from external API
     const res = await fetch(`https://redaccion.pent.org.ar/data/section/75`)
-    const data = await res.json()
-
+    return handleServerRedirect(res);
     // Pass data to the page via props
-    return { props: data  }
+    //return { props: data  }
 }
 
 export default Home;

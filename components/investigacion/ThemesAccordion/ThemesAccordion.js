@@ -119,9 +119,7 @@ export default function ThemesAccordion({data}){
                             <h3 className={styles.accordion}>{e.title}</h3>
                             <span className={`${styles.js_link} js_link`}><FontAwesomeIcon icon={faAngleDown} /></span>
                         </div>
-                        <div className={`${styles.contenido} contenido`}>
-                            <p>{e.description}</p>
-                        </div>
+                        <div className={`${styles.contenido} contenido`} dangerouslySetInnerHTML={{__html: e.description }} />
                     </div> 
                 </div>                                             
                 );

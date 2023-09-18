@@ -1,6 +1,7 @@
 import { useAppContext } from '../../context/AppContext';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import { useRef, useEffect } from 'react';
+import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
 import ProductionsNav from '../../components/producciones/ProductionsNav/ProductionsNav';
@@ -16,9 +17,8 @@ import styles from "./producciones.module.scss";
 
 function Producciones(d){  
 
-    let  {strip, ...data}  = d;
-    data =  Object.values(data);
 
+    let data =  d.products;
     const content = useRef();   
     const pageHeading = useRef();
     const productionsNav = useRef();
@@ -34,7 +34,7 @@ function Producciones(d){
     const { dataArticles, setDataArticles, currentArticleHashtag, currentArticleAuthor, searchInArticles, windowSize, advancedFilterStatus, setDataStrip } = useAppContext();    
     
     useEffect(() => {
-        setDataStrip(strip);
+        setDataStrip(d.strip);
    }, [])
 
     //Mandamos la data a dataArticles dentro de AppContext
@@ -57,7 +57,7 @@ function Producciones(d){
         } else if(currentArticleHashtag === 'all' && currentArticleAuthor !== 'all'){
             return setDataArticles(data.filter((article) => article.authors.includes(currentArticleAuthor)))
         }            
-    }, [currentArticleHashtag, currentArticleAuthor]);    
+    }, [currentArticleHashtag, currentArticleAuthor]);   
 
 
     useEffect(() => {
@@ -158,31 +158,35 @@ function Producciones(d){
     }, [advancedFilterStatus]);
 
 
+const keywords = ['publicaciones, producciones, papers, artículos, trabajos académicos, ponencias, conferencias, divulgación académica, abstract, material didáctico, material didáctico hipermedial, actualización profesional, aplicaciones digitales, aprendizaje en línea, ciudadanía digital, comunidades de práctica, consumos culturales, didáctica, dispositivos tecnopedagógicos, educación en línea, entornos digitales, formación docente, inclusión, infancias, jóvenes, materiales didácticos, metodología de investigación, microlearning, neurociencias, políticas tecno-educativas, programación, redes sociales, subjetividades, tendencias educativas, tutoría y moderación'];
+
+const keywords_join = [...keywords, ...d.keyword_hashtag].join(', ');
+
+
     return(
     <>
         <MetaTags
             pageTitle={'Producciones — FLACSO | PENT'}
             shareTitle={'Producciones — FLACSO | PENT'}
-            keywords={'publicaciones, producciones, papers, artículos, trabajos académicos, ponencias, conferencias, divulgación académica, abstract, material didáctico, material didáctico hipermedial, actualización profesional, aplicaciones digitales, aprendizaje en línea, ciudadanía digital, comunidades de práctica, consumos culturales, didáctica, dispositivos tecnopedagógicos, educación en línea, entornos digitales, formación docente, inclusión, infancias, jóvenes, materiales didácticos, metodología de investigación, microlearning, neurociencias, políticas tecno-educativas, programación, redes sociales, subjetividades, tendencias educativas, tutoría y moderación'}
-            description={'Publicaciones del equipo del PENT.'}
+            keywords={keywords_join}
         />
 
         <MainWrapper>    
             <div ref={content}>    
-                <div ref={pageHeading}>
-                    <PageHeading title="<span>Producciones</span>" margin_bottom_type={1} />        
+                <div ref={pageHeading} className={styles.page_heading}>
+                    <PageHeading title="<span>Producciones</span>" />        
                 </div> 
 
                 <section id="productions-nav">    
                     <div className={`${styles.productions_nav}`} ref={productionsNav}>
-                        <ProductionsNav/>   
+                        <ProductionsNav dataHashtags={d.filter}/>   
                     </div>       
                     {dataArticles !== undefined && <ArticlesList data={searchInArticles(dataArticles)}/>}     
                 </section> 
 
                 <section> 
                     <div className={styles.marquee}>
-                        <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                        <TextMarquee data={[{ value: "SEGUIR EXPLORANDO" }]} />
                     </div>
                     <ExploringBtns data={exploringBtnsData} />
                 </section>
@@ -203,12 +207,9 @@ function Producciones(d){
 
 export async function getServerSideProps() {
     // Fetch data from external API
-    //const res = await fetch(`https://flacso.pent.org.ar/api/produciones.json`)
-    const res = await fetch(`https://redaccion.pent.org.ar/data/productions`);
-    const data = await res.json()
-
-    // Pass data to the page via props
-    return { props:  {...data}   }
+    const res = await fetch(`https://redaccion.pent.org.ar/data/productions`); 
+    //MiddleWare 404 | 505
+    return handleServerRedirect(res);
   }
 
   export default Producciones;

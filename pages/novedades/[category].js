@@ -1,6 +1,7 @@
 import { useRouter } from 'next/router';
 import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
+import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
@@ -14,23 +15,24 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { gsap } from 'gsap';
 import styles from "./novedades.module.scss";
 
-function Index(d){
-
-    const data = Object.values(d);
+function Index(data){
+    useEffect(() => {
+        setDataStrip(data.strip);
+    }, [])
 
     //Router
     const router = useRouter();
     const {category} = router.query;
 
-    const { windowSize } = useAppContext(); 
+    const { windowSize, setDataStrip } = useAppContext(); 
 
     const exploringBtnsData = [
-        {title: 'Formación', path: 'formacion'},
-        {title: 'Producciones', path: 'producciones'},
-        {title: 'Asesorías', path: 'asesorias'}
+        {title: 'Formación', path: '/formacion'},
+        {title: 'Producciones', path: '/producciones'},
+        {title: 'Asesorías', path: '/asesorias'}
     ]
 
-    const filtro = ["prensa", "empleos", "evento"];
+    const filtro = data.categories;
     
 
     //Follow cursor 
@@ -76,7 +78,9 @@ function Index(d){
         />    
      
         <MainWrapper> 
-            <PageHeading title="<h1><span>Novedades</span></h1>" margin_bottom_type={1} />
+            <div className={styles.page_heading}> 
+                <PageHeading title="<h1><span>Novedades</span></h1>"/>
+            </div>
 
             <section>
                 <div className={styles.filters_cont}>
@@ -102,12 +106,12 @@ function Index(d){
                         })}
                     </Swiper>          
                 </div>
-                <ArticlesNov data={data} category={category} />
+                <ArticlesNov data={data.news} category={category} totalData={data.totalData} />
             </section>
 
             <section>
                 <div className={styles.marquee}>
-                    <TextMarquee data="SEGUIR EXPLORANDO&nbsp;—&nbsp;" />
+                    <TextMarquee data={[{value: "SEGUIR EXPLORANDO"}]} />
                 </div>
                 <ExploringBtns data={exploringBtnsData} />
             </section>
@@ -128,10 +132,9 @@ export async function getServerSideProps({query}) {
     // Fetch data from external API
     //const res = await fetch(`https://flacso.pent.org.ar/api/novedades${query.category}.json`)
     const res = await fetch(`https://redaccion.pent.org.ar/data/news/${query.category}`)
-    const data = await res.json()
-
+    return handleServerRedirect(res);
     // Pass data to the page via props
-    return { props:  {...data }   }
+    //return { props:  {...data }   }
 }
 
   export default Index;

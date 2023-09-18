@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 
 import { useAppContext } from '../../context/AppContext';
+import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
 import PageBuilder from '../../components/PageBuilder/PageBuilder';
@@ -35,7 +36,7 @@ export default function Formacion({data}){
                 xSet(pos.x);
                 ySet(pos.y);
             });
-            $(`.${styles.carrousel_formacion}`).on("mouseenter", function mouseEnterContainer() {
+            $(`.swiper-wrapper`).on("mouseenter", function mouseEnterContainer() {
                 gsap.to(".cursor_deslizar", {
                     duration: 0.8,
                     scale: 1,
@@ -43,7 +44,7 @@ export default function Formacion({data}){
                     ease: Elastic.easeOut.config( 1, 0.6)
                 });
             });
-            $(`.${styles.carrousel_formacion}`).on("mouseleave", function mouseLeaveContainer() {
+            $(`.swiper-wrapper`).on("mouseleave", function mouseLeaveContainer() {
                 gsap.to(".cursor_deslizar", {
                     duration: 0.8,
                     scale: 0,
@@ -51,7 +52,7 @@ export default function Formacion({data}){
                     ease: Back.easeOut.config(3)
                 });
             });   
-            $(`.${styles.carrousel_formacion} .cta_btn`).on("mouseenter", function mouseEnterCta() {
+            $(`.swiper-wrapper .cta_btn`).on("mouseenter", function mouseEnterCta() {
                 gsap.to(".cursor_deslizar", {
                     duration: 0.8,
                     scale: 0,
@@ -59,7 +60,7 @@ export default function Formacion({data}){
                     ease: Back.easeOut.config(3)
                 });
             }); 
-            $(`.${styles.carrousel_formacion} .cta_btn`).on("mouseleave", function mouseLeaveCta() {
+            $(`.swiper-wrapper .cta_btn`).on("mouseleave", function mouseLeaveCta() {
                 gsap.to(".cursor_deslizar", {
                     duration: 0.8,
                     scale: 1,
@@ -140,9 +141,7 @@ export async function getServerSideProps() {
     // Fetch data from external API
     //const res = await fetch(`https://flacso.pent.org.ar/api/formacion.php`)
     const res = await fetch(`https://redaccion.pent.org.ar/data/section/48`)
-    const data = await res.json()
-  
-    // Pass data to the page via props
-    return { props: data  }
-    //return { props: data.data  }
+    return handleServerRedirect(res);
+    //return { props: data  }
+
 }

@@ -2,7 +2,7 @@ import Head from "next/head";
 import { useRouter } from "next/router";
 
 
-export default function MetaTags({ pageTitle, shareTitle, keywords, description  }){     
+export default function MetaTags({ pageTitle, shareTitle, keywords, description, img, url  }){     
     
     const router = useRouter();
 
@@ -22,19 +22,19 @@ export default function MetaTags({ pageTitle, shareTitle, keywords, description 
                 <meta name="twitter:site" content="@pent_flacso"/>
                 <meta name="twitter:card" content="summary_large_image"/>
                 <meta name="twitter:creator" content="@pent_flacso"/>
-                <meta name="twitter:image" content=""/>
+                <meta name="twitter:image" content={ img }/>
                 <meta name="twitter:description" content={description}/>
 
                 <meta property="og:title" content={shareTitle} />
                 <meta property="og:description" content={description} />
-                <meta property="og:url" content={router.route}/>
+                <meta property="og:url" content={url ? url : router.route}/>
                 <meta property="og:type" content="article"/>
                 <meta property="og:site_name" content="FLACSO | PENT" />
                 <meta property="og:locale" content="es_LA"/>
-                <meta property="og:image" itemProp="image" content=""/>
+                <meta property="og:image" itemProp="image" content={ img }/>
             </Head>
             
-            <img src='' alt="FLACSO | PENT" style={{display: 'none'}}/>
+            <img src={ img } alt="FLACSO | PENT" style={{display: 'none'}}/>
         </>
     );
 }

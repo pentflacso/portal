@@ -8,6 +8,6 @@ export default function MainWrapper({ children }) {
     if(windowSize >= 1025) {
         return(<CustomScrollbar>{children}</CustomScrollbar>);
     } else {
-        return (<main>{children}</main>);
+        return (<main className='main-container'>{children}</main>);
     }
 }
