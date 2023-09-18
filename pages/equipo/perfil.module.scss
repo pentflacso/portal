@@ -133,13 +133,14 @@
 }
 
 .producciones{
-    margin-bottom: calc(80px + (240 - 80) * ((100vw - 1200px) / (3840 - 1200)));
+    @include container-width-1;
+    margin-bottom: calc(80px + (240 - 80) * ((100vw - 1200px) / (3840 - 1200)));    
     @media screen and (max-width: 1024px){
-        margin-bottom: calc(35px + (135 - 35) * ((100vw - 300px) / (1024 - 300)));
+        margin-bottom: calc(65px + (185 - 65) * ((100vw - 300px) / (1024 - 300)));
     } 
 
     h2{
-        @include container-width-1;
+        width: 100%;
         @include font-level-4;
         color: $deep-blue;
         font-weight: 400; 
@@ -147,6 +148,9 @@
         padding-bottom: calc(9px + (20 - 9) * ((100vw - 1200px) / (3840 - 1200)));
         margin-bottom: calc(50px + (110 - 50) * ((100vw - 1200px) / (3840 - 1200)));
         border-bottom: $line-1 solid $gray-5;
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(35px + (100 - 35) * ((100vw - 300px) / (1024 - 300)));
+        }
     }
 
     .card{
@@ -188,19 +192,13 @@
         }
     }
 
-    .containerList{
-        @include container-width-1;
-        
-        
+    .containerList{        
         display: flex;
         justify-content: space-between;
 
         .col_left, .col_right{
             width: 47.7%
         }  
-        .content{
-            width: 100%;
-        }
 
         .no_data{
             @include font-level-4;
@@ -208,12 +206,4 @@
             color: $gray-1;
         }
     }
-
-    .content{
-        width: 100%;
-        padding: 2vw;
-    }
- 
-
 }
-
