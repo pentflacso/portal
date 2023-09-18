@@ -134,8 +134,8 @@ function Perfil(d){
             </>
             :
             <>
-                {data.productions.length !== 0 ?  
-                    <div className={styles.content}>
+                {data.productions.length !== 0 ?                 
+                    <>
                         {data.productions.map((data, i) => {
                             return (
                                 <Fragment key={i}>                    
@@ -143,7 +143,7 @@ function Perfil(d){
                                 </Fragment>                                        
                             );
                         })}
-                    </div>
+                    </>
                 : <></>
                 }
             </>

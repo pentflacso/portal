@@ -21,7 +21,7 @@
     }
 
     .carrousel_formacion{    
-        margin-bottom: calc(35px + (150 - 35) * ((100vw - 1200px) / (3840 - 1200)));   
+        margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));  
         @media screen and (max-width: 1024px){
             margin-bottom: calc(35px + (100 - 35) * ((100vw - 300px) / (1024 - 300)));
         } 

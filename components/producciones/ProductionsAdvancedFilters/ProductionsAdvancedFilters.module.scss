@@ -26,42 +26,39 @@
 
         .resultContent{ 
             position: absolute;
-            top: calc(27px + (72 - 27) * ((100vw - 1200px) / (3840 - 1200)));
-            right: calc(35px + (370 - 35) * ((100vw - 1200px) / (3840 - 1200)));
-
-            .resultData{
-                align-items: center;
-                @include font-level-4;
-                color: $deep-blue;
-                padding-right: calc(20px + (72 - 27) * ((100vw - 1200px) / (3840 - 1200)));
-                
-                @media screen and (max-width: 520px){                            
-                    @include font-level-5;
-                }
-            }                    
-        }
-
-        .close_btn{
-            @include btn-ver-mas;           
-            z-index: 1000;
-
+            z-index: 1000; 
             opacity: 0;
             animation-name: fadeIn;
             animation-delay: 0.7s;
             animation-duration: 0.6s;  
             animation-timing-function: ease-in-out;
-            animation-fill-mode: forwards;              
-            @media screen and (min-width: 1025px){
-                &:hover{
-                    border: $line-1 solid $deep-blue;
-                    background-color: $deep-blue;
-                }
-            }
+            animation-fill-mode: forwards;     
+            top: calc(27px + (72 - 27) * ((100vw - 1200px) / (3840 - 1200)));
+            right: calc(35px + (370 - 35) * ((100vw - 1200px) / (3840 - 1200)));
             @media screen and (max-width: 1024px){
                 top: calc(21px + (34 - 21) * ((100vw - 300px) / (1024 - 300)));
                 right: calc(10px + (18 - 10) * ((100vw - 300px) / (1024 - 300)));
-            } 
-        }
+            }
+
+            .resultData{
+                align-items: center;
+                @include font-level-4;
+                color: $deep-blue;
+                padding-right: calc(20px + (72 - 27) * ((100vw - 1200px) / (3840 - 1200)));                
+                @media screen and (max-width: 1024px){                           
+                    padding-right: calc(12px + (34 - 12) * ((100vw - 300px) / (1024 - 300)));     
+                }
+            }   
+            .close_btn{
+                @include btn-ver-mas;          
+                @media screen and (min-width: 1025px){
+                    &:hover{
+                        border: $line-1 solid $deep-blue;
+                        background-color: $deep-blue;
+                    }
+                }                 
+            }                 
+        }        
 
         .wrapper{
             position: relative;
@@ -184,10 +181,10 @@
                         height: calc(31px + (67 - 31) * ((100vw - 300px) / (1024 - 300)));
                         &:nth-child(1){
                             margin-right: calc(15px + (45 - 15) * ((100vw - 300px) / (1024 - 300)));
-                            width: calc(115px + (260 - 115) * ((100vw - 300px) / (1024 - 300)));
+                            width: calc(128px + (260 - 128) * ((100vw - 300px) / (1024 - 300)));
                         }
                         &:nth-child(2){
-                            width: calc(96px + (215 - 96) * ((100vw - 300px) / (1024 - 300)));
+                            width: calc(106px + (215 - 106) * ((100vw - 300px) / (1024 - 300)));
                         }
                     }
                     .switch_btn{
