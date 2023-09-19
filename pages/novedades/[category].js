@@ -100,7 +100,7 @@ function Index(data){
                         {filtro && filtro.map((c, key) => {
                             return (
                                 <SwiperSlide key={key}> 
-                                    <Link href={"/novedades/"+ c} className={category == c ? `${styles.btn_filter} ${styles.active}` : styles.btn_filter }>{c}</Link>
+                                    <Link href={"/novedades/"+ c.toLowerCase()} className={category == c.toLowerCase() ? `${styles.btn_filter} ${styles.active}` : styles.btn_filter }>{c}</Link>
                                 </SwiperSlide>
                             );
                         })}
