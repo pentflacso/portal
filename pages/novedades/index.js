@@ -98,7 +98,7 @@ function Novedades(data){
                         {filtro && filtro.map((category, i) => {
                             return (  
                                 <SwiperSlide key={i}>
-                                    <Link href={"/novedades/"+ category} className={styles.btn_filter}>{category}</Link>  
+                                    <Link href={"/novedades/"+ category.toLowerCase()} className={styles.btn_filter}>{category}</Link>  
                                 </SwiperSlide> 
                             );
                         })}
