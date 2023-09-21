@@ -1,5 +1,5 @@
 import { useAppContext } from '../../context/AppContext';
-import { useEffect } from 'react';
+import { useEffect, useState , Fragment } from 'react';
 import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
@@ -19,8 +19,11 @@ function Novedades(data){
 
     const { windowSize, setDataStrip } = useAppContext();  
 
+    const [filtro , setFiltro] = useState(data.categories);
+
     useEffect(() => {
         setDataStrip(data.strip);
+        setFiltro(data.categories);
     }, [])
     
     const exploringBtnsData = [
@@ -29,8 +32,10 @@ function Novedades(data){
         {title: 'Asesorías', path: 'asesorias'}
     ]
     
-    const filtro = data.categories;
-
+    //const filtro = data.categories;
+    const quitarAcentos = (str)=> {
+        return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+    }
 
     //Follow cursor 
 
@@ -93,15 +98,16 @@ function Novedades(data){
                     >       
                         <SwiperSlide> 
                             <Link href="/novedades/" className={`${styles.btn_filter} ${styles.active}`}>Todos</Link>
-                        </SwiperSlide>
+                        
 
                         {filtro && filtro.map((category, i) => {
                             return (  
-                                <SwiperSlide key={i}>
-                                    <Link href={"/novedades/"+ category.toLowerCase()} className={styles.btn_filter}>{category}</Link>  
-                                </SwiperSlide> 
+                                <Fragment key={i}>
+                                    <Link href={"/novedades/"+ quitarAcentos(category.toLowerCase())} className={styles.btn_filter}>{category}</Link>  
+                                </Fragment> 
                             );
                         })}
+                        </SwiperSlide>
                     </Swiper>          
                 </div>            
                 <ArticlesNov data={data.news} totalData={data.totalData} />
