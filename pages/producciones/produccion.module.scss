@@ -268,11 +268,36 @@
                     color: $gray-1;
                 }
             }
+
+            div[data-type="insta-video"]{
+                background-color: $gray-6;
+                padding: calc(35px + (56 - 35) * ((100vw - 1200px) / (3840 - 1200)));  
+                display: flex;  
+                justify-content: center;        
+                margin: calc(30px + (80 - 30) * ((100vw - 1200px) / (3840 - 1200))) 0;       
+                @media screen and (max-width: 1024px){
+                    padding: calc(15px + (50 - 15) * ((100vw - 300px) / (1024 - 300))); 
+                    margin: calc(25px + (80 - 25) * ((100vw - 300px) / (1024 - 300))) 0; 
+                }
+                iframe{
+                    overflow: hidden!important;
+                    margin: 0!important;
+                    max-width: 0!important;
+                    min-width: calc(280px + (650 - 280) * ((100vw - 1200px) / (3840 - 1200)))!important;
+                    height: calc(400px + (750 - 280) * ((100vw - 1200px) / (3840 - 1200)))!important;
+                    @media screen and (max-width: 1024px){
+                        min-width: calc(245px + (650 - 245) * ((100vw - 300px) / (1024 - 300)))!important;
+                        height: calc(360px + (785 - 280) * ((100vw - 300px) / (1024 - 300)))!important;
+                    }
+                }
+            }
         }
 
         .hashtags{
-            margin-bottom: calc(38px + (60 - 38) * ((100vw - 1200px) / (3840 - 1200)));
+            padding-top: calc(5px + (75 - 5) * ((100vw - 1200px) / (3840 - 1200)));
+            margin-bottom: calc(30px + (60 - 30) * ((100vw - 1200px) / (3840 - 1200)));
             @media screen and (max-width: 1024px){
+                padding-top: 0; 
                 margin-bottom: calc(30px + (100 - 30) * ((100vw - 300px) / (1024 - 300))); 
             }
 
@@ -305,9 +330,9 @@
             }
             
             .box{
-                margin-bottom: calc(22px + (70 - 22) * ((100vw - 1200px) / (3840 - 1200)));
+                margin-bottom: calc(25px + (80 - 25) * ((100vw - 1200px) / (3840 - 1200)));
                 @media screen and (max-width: 1024px){
-                    margin-bottom: calc(15px + (45 - 15) * ((100vw - 300px) / (1024 - 300))); 
+                    margin-bottom: calc(20px + (55 - 20) * ((100vw - 300px) / (1024 - 300))); 
                 }
                 &:last-of-type{
                     margin-bottom: 0;
@@ -316,8 +341,9 @@
                     @include font-level-4;
                     color: $deep-blue;
                     font-weight: 500;
-                    margin-bottom: calc(14px + (46 - 24) * ((100vw - 1200px) / (3840 - 1200)));
+                    margin-bottom: calc(12px + (40 - 12) * ((100vw - 1200px) / (3840 - 1200)));
                     @media screen and (max-width: 1024px){
+                        margin-bottom: calc(10px + (20 - 10) * ((100vw - 300px) / (1024 - 300)));
                         line-height: 160%;
                     }
                 }
@@ -325,15 +351,10 @@
                     @include font-level-5;
                     color: $deep-blue;
                     font-weight: 400;
-                    line-height: 144%;
-                    margin-bottom: calc(14px + (46 - 14) * ((100vw - 1200px) / (3840 - 1200)));   
+                    line-height: 144%;   
                     @media screen and (max-width: 1024px){
-                        margin-bottom: calc(15px + (50 - 15) * ((100vw - 300px) / (1024 - 300))); 
                         line-height: 160%;
-                    }
-                    &:last-of-type{
-                        margin-bottom: 0;
-                    }                 
+                    }                
                 }
             }
         }        
