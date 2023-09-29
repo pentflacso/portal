@@ -108,7 +108,7 @@ function Index(d){
                             <h1>{data.title}</h1>
                                 
                             <p className={styles.info}>
-                                {data.category} {data.date ? <>— <span>{data.date}</span></> : ''}
+                                {data.category} {data.date ? <><span> — {data.date}</span></> : ''}
                             </p>
                         </header>
 

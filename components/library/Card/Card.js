@@ -50,7 +50,7 @@ export default function Card({ lead, title, subtitle, description, category, has
           :    
           <>    
             <h5>{title}</h5>
-            <p className={styles.info}>{category} —&nbsp;<span>{date}</span></p>
+            <p className={styles.info}>{category}<span>&nbsp;—&nbsp;{date}</span></p>
             { description && <p>{description}</p> }
           </>
         }

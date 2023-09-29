@@ -151,7 +151,8 @@ function Index(d){
 
                         { license ?
                                 <div className={styles.legal}>                         
-                                    <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Cómo citar</h4>" + `<p>${ data.quote }</p>` + "<h4>Licencia</h4>"+ license }}/>                  
+                                    <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Cómo citar</h4>" + `<p>${ data.quote }</p>`}}/> 
+                                    <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>" + `<p>${license}</p>`}}/>               
                                 </div>
                             : "" }
 
