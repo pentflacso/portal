@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { Fragment } from 'react';
 import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import MetaTags from '../../components/library/MetaTags/MetaTags';
+import MetaProducts from '../../components/library/MetaProducts/MetaProducts';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
 import Footer from '../../components/library/Footer/Footer'
@@ -23,6 +24,9 @@ function Index(d){
     let {strip, ...data} = d;   
 
     const license = `<p>La producción ${ data.title } se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Disponible en: <a href="${ data.link ? data.link : data.url }" target="_blank">${ data.link ? data.link : data.url }</a></p>`  
+
+
+    const metaLicense = `La producción ${ data.title } se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Disponible en: ${ data.link ? data.link : data.url }`;
 
     const exploringBtnsData = [
         {title: 'Propuestas de formación', path: '/formacion'},        
@@ -102,8 +106,19 @@ function Index(d){
             description={ data.teaser }
             url={ data.url }
             img= 'https://pent-portal-testing.vercel.app/assets/images/producciones_thumb_shared.jpg' 
-        />        
-
+            />        
+        <MetaProducts 
+            title={data.title}        
+            description={data.teaser}        
+            keywords={ data.keywords }
+            author={ data.authors ? data.authors.map((a, i) => ( a.title ) )  : "" }
+            publisher={"FLACSO PENT"}
+            year={ data.year &&  data.year}
+            resourceLink={ data.link &&  data.link}
+            license={ metaLicense &&  metaLicense}
+            category={ data.types &&  data.types}
+            oaiIdentifier=""        
+        />
 
         
         <MainWrapper>
