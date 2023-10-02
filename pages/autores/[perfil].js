@@ -116,7 +116,7 @@ function Perfil(d){
                 >
                 {data.productions.map((data, i)=>(
                     <SwiperSlide key={i}>                                        
-                        <Link href={data.link} className={`${styles.card} clickable`}>   
+                        <Link href={data.url} className={`${styles.card} clickable`}>   
                             <span>{data.lead}</span>
                             <h5>{data.title}&nbsp;<span>{data.subtitle}</span></h5>
                             { data.description && <p>{data.description}</p> }  
