@@ -204,14 +204,23 @@ export async function getServerSideProps(context) {
     // Fetch data from external API
     const res = await fetch(`https://redaccion.pent.org.ar/data/production/${query.produccion}`)
     const referrer = context.req.headers.referer;
-    const prevUrl = referrer || "/producciones";
-
+    
     let pathnameParts = "";
+    let prevUrl = "";
+
     if(referrer){
+        //Pagina Interna
         const referrerURL = new URL(referrer);
         pathnameParts = referrerURL.pathname.split('/').filter(part => part);
+        
+        prevUrl = pathnameParts[1] && pathnameParts[1] == query.produccion ? "/producciones" : referrer;
+
+    }else{
+        //Pagina Externa
+        prevUrl = "/producciones"
     }
 
+    //
     //MiddleWare 404 | 505
     const data = await handleServerRedirect(res);
 
