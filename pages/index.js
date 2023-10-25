@@ -8,7 +8,7 @@ import PageBuilder from '../components/PageBuilder/PageBuilder';
 import styles from "./index.module.scss";
 
 function Home({data}){
-    
+/*    
     useEffect(() => {
         TagManager.initialize({ gtmId: process.env.NEXT_PUBLIC_TAGMANAGER_GTM_ID });  
         TagManager.dataLayer({
@@ -17,8 +17,8 @@ function Home({data}){
             type: 'home'
             },
         }); 
-    }, []);
-
+    }, []);  
+*/
     const { windowSize } = useAppContext();   
 
     useEffect(() => {   
