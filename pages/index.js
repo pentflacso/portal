@@ -17,6 +17,16 @@ function Home({data}){
             },
         }); 
     }, []);
+
+    useEffect(() => {
+        TagManager.initialize({ gtmId: process.env.NEXT_PUBLIC_TAGMANAGER_GTM_ID });  
+        TagManager.dataLayer({
+            dataLayer: {
+            event: 'page_view',
+            type: 'home'
+            },
+        }); 
+    }, []);    
 */
     const { windowSize } = useAppContext();   
 

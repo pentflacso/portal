@@ -14,14 +14,17 @@ import ShareBtns from '../../components/library/ShareBtns/ShareBtns';
 import styles from './produccion.module.scss';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 
-function Index(d){
+function Index({dataProduct , prevUrl, pathName}){
 
     const { windowSize, setCurrentArticleHashtag, setDataStrip } = useAppContext();
     const [ shareModal, setShareModal ] = useState(false);  
     const [ elementHeight, setElementHeight ] = useState(0);  
     const router = useRouter();  
-    const element = useRef(null); 
-    let {strip, ...data} = d;   
+    const element = useRef(null);
+    let {strip, ...data} = dataProduct;
+    
+    const [ stringPrevUrl , setStringPrevUrl ]= useState("Ver producciones");  
+
 
     const license = `<p>La producción ${ data.title } se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Disponible en: <a href="${ data.link ? data.link : data.url }" target="_blank">${ data.link ? data.link : data.url }</a></p>`  
 
@@ -36,6 +39,13 @@ function Index(d){
 
     useEffect(() => {
         setDataStrip(strip);
+
+        setStringPrevUrl(
+            prevUrl == "/producciones" ? 
+                "Ver producciones" : 
+                `Volver a ${pathName[0]}` 
+        );
+
     }, []);   
 
 
@@ -128,7 +138,7 @@ function Index(d){
             
                 <div className={styles.pin_block} ref={element}> 
                     <header className={styles.col_left}>                
-                        <Link className={styles.back_arrow} href="/producciones" ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver producciones</strong></span></Link>
+                        <Link className={styles.back_arrow} href={prevUrl} ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>{stringPrevUrl}</strong></span></Link>
                         <h1>{data.title}</h1>
                         { data.authors ?
                             <div className={styles.authors}>
@@ -189,14 +199,32 @@ function Index(d){
     );
 }
 
-export async function getServerSideProps({query}) {
+export async function getServerSideProps(context) {
+    const {query} = context;
     // Fetch data from external API
-    /* const res = await fetch(`https://flacso.pent.org.ar/api/producciones/${query.produccion}.json`) */
     const res = await fetch(`https://redaccion.pent.org.ar/data/production/${query.produccion}`)
+    const referrer = context.req.headers.referer;
+    
+    let pathnameParts = "";
+    let prevUrl = "";
+
+    if(referrer){
+        //Pagina Interna
+        const referrerURL = new URL(referrer);
+        pathnameParts = referrerURL.pathname.split('/').filter(part => part);
+        
+        prevUrl = pathnameParts[1] && pathnameParts[1] == query.produccion ? "/producciones" : referrer;
+
+    }else{
+        //Pagina Externa
+        prevUrl = "/producciones"
+    }
+
+    //
     //MiddleWare 404 | 505
-    return handleServerRedirect(res);
-    // Pass data to the page via props
-    //return { props:  {...data }   }
+    const data = await handleServerRedirect(res);
+
+    return { props:{ dataProduct:{...data.props}, prevUrl: prevUrl, pathName: pathnameParts } };
 }
 
 export default Index;

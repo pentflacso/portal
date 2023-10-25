@@ -41,6 +41,11 @@
                     background-position: bottom;
                     padding-bottom: calc(5px + (8 - 5) * ((100vw - 300px) / (1024 - 300)));
                 }
+
+                a{
+                    color: $deep-blue;                    
+                    text-decoration: none;
+                }
             } 
             @media screen and (max-width: 1024px){
                 @include font-level-2; 
