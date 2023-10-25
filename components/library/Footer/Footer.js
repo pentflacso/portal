@@ -9,7 +9,7 @@ export default function Footer(){
                 <div className={styles.info_top}>
                     <div className={styles.col_left}>
                         <h4>Contactanos</h4>
-                        <p>pent@flacso.org.ar<br /> Tucumán 1966, CABA, Argentina<br /> (54-11) 5238-9300 int 352</p>
+                        <p><a href="mailto:pent@flacso.org.ar" rel="noopener noreferrer">pent@flacso.org.ar</a><br /> Tucumán 1966, CABA, Argentina<br /> (54-11) 5238-9300 int 352</p>
                         <p>Atención administrativa:<br /> días hábiles, por correo electrónico.</p>                        
                     </div>
                     <div className={styles.col_right}>
