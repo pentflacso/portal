@@ -1,0 +1,238 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.overlay{
+    position: fixed;
+    background-color: rgba(33,35,36,.4);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    animation-name: fadeIn;
+    animation-duration: .3s;  
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards; 
+    overflow: auto;    
+
+    .close_btn{
+        position: absolute;
+        top: calc(20px + (60 - 20) * ((100vw - 1200px) / (3840 - 1200)));
+        right: calc(20px + (60 - 20) * ((100vw - 1200px) / (3840 - 1200)));
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: $white;
+        border: $line-1 solid $gray-4;
+        width: calc(40px + (110 - 40) * ((100vw - 1200px) / (3840 - 1200)));
+        height: calc(40px + (110 - 40) * ((100vw - 1200px) / (3840 - 1200)));            
+        border-radius: 50%;   
+        transition: all .3s;
+        @media screen and (max-width: 1024px){
+            border: $line-1-mobile solid $white;
+            width: calc(28px + (56 - 28) * ((100vw - 300px) / (1024 - 300)));
+            height: calc(28px + (56 - 28) * ((100vw - 300px) / (1024 - 300)));
+            margin-left: auto;
+            margin-bottom: calc(25px + (55 - 25) * ((100vw - 300px) / (1024 - 300)));
+        }
+        @media screen and (min-width: 1024px){
+            &:hover{
+                background-color: $deep-blue;
+                border-color: $deep-blue;
+                color: $white;
+                span{  
+                    background-color: $white;
+                }
+            }
+        }
+        span{                    
+            position: absolute;
+            width: calc(20px + (46 - 20) * ((100vw - 1200px) / (3840 - 1200)));
+            height: calc(2.2px + (6 - 2.2) * ((100vw - 1200px) / (3840 - 1200)));
+            background-color: $deep-blue;
+            @media screen and (max-width: 1024px){
+                width: calc(15px + (32 - 15) * ((100vw - 300px) / (1024 - 300)));
+                height: calc(1.5px + (2.5 - 1.5) * ((100vw - 300px) / (1024 - 300)));
+            }
+            &:nth-of-type(1){
+                transform: rotate(-45deg);
+            }
+            &:nth-of-type(2){
+                transform: rotate(45deg);
+            }
+        }
+    }
+
+    .wrapper{
+        position: relative;
+        background-color: $white;
+        width: calc(550px + (1450 - 550) * ((100vw - 1200px) / (3840 - 1200)));
+        padding: calc(45px + (120 - 45) * ((100vw - 1200px) / (3840 - 1200)));
+        opacity: 0;
+        animation-name: growUp;
+        animation-delay: .2s;
+        animation-duration: .5s;  
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;  
+        h4{
+            @include font-level-1;
+            font-weight: 400;
+            line-height: 130%;
+            color: $deep-blue;
+            margin-bottom: calc(30px + (80 - 30) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1025px){ 
+                margin-bottom: calc(25px + (55 - 25) * ((100vw - 300px) / (1025 - 300)));
+            } 
+        }
+        p{
+            @include font-level-3;
+            font-weight: 400;
+            line-height: 130%;
+            color: $deep-blue;
+            margin-bottom: calc(25px + (70 - 25) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1025px){
+                margin-bottom: calc(20px + (50 - 20) * ((100vw - 300px) / (1200 - 300)));
+            }
+        }
+        .input{
+            font-family: 'Roboto', sans-serif;
+            @include font-level-4;
+            font-weight: 400;
+            color: $deep-blue;
+            display: block;                            
+            width: 100%;
+            padding: calc(6px + (18 - 6) * ((100vw - 1200px) / (3840 - 1200))) calc(3px + (4 - 3) * ((100vw - 1200px) / (3840 - 1200))); 
+            box-sizing: border-box;
+            border: none;   
+            border-bottom: calc(1.5px + (3 - 1.5) * ((100vw - 1200px) / (3840 - 1200))) solid $green-2;            
+            @media screen and (max-width: 1025px){
+                border-bottom: calc(1.5px + (2.5 - 1.5) * ((100vw - 300px) / (1200 - 300))) solid $yellow-1;                             
+            }
+            &:last-of-type{
+                margin-bottom: calc(30px + (70 - 30) * ((100vw - 1200px) / (3840 - 1200)));
+                @media screen and (max-width: 1025px){
+                    margin-bottom: calc(16px + (40 - 16) * ((100vw - 300px) / (1200 - 300)));                                    
+                }
+            }
+            &::placeholder {                                
+                opacity: 1;  
+                color: $gray-2;                          
+            }
+            &:focus {
+                transition: all 0.2s ease; 
+                outline: none;
+                &::placeholder {                            
+                    opacity: 0;
+                    color: $deep-blue;   
+                }
+            }                       
+        }
+
+        .checkbox{
+            display: grid;
+            grid-template-columns: 5% 95%;
+            width: 100%; 
+            font-family: 'Roboto', sans-serif;
+            @include font-level-4;
+            font-weight: 400;
+            color: $deep-blue;                       
+            margin-bottom: calc(30px + (70 - 30) * ((100vw - 1200px) / (3840 - 1200))); 
+            cursor: pointer;
+            @media screen and (max-width: 1025px){
+                margin-bottom: calc(16px + (40 - 16) * ((100vw - 300px) / (1200 - 300)));                                    
+            } 
+
+            input[type="checkbox"] {
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                cursor: pointer;
+                -webkit-appearance: none;
+                appearance: none;             
+                font: inherit;
+                width: calc(18px + (42 - 18) * ((100vw - 1200px) / (3840 - 1200)));
+                height: calc(18px + (42 - 18) * ((100vw - 1200px) / (3840 - 1200)));
+                border: $line-1 solid $green-2;  
+
+                &::before {
+                    content: "";
+                    width: 0.65em;
+                    height: 0.65em;
+                    clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+                    transform: scale(0);
+                    transform-origin: bottom left;
+                    transition: 120ms transform ease-in-out;
+                    background-color: $deep-blue;
+                } 
+
+                &:checked {
+                    background-color: $green-2;
+                    &::before{
+                        transform: scale(1);    
+                    }
+                }        
+            }                                          
+        }
+
+        .send_btn{
+            @include btn-ver-mas;
+        }
+    } 
+
+    &.close_animation{
+        opacity: 1;
+        animation-name: fadeOut;
+        animation-delay: .5s;
+        animation-duration: .3s;  
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards; 
+        .wrapper, .close_btn{
+            opacity: 1;
+            animation-name: growDown;            
+            animation-duration: .2s;  
+            animation-timing-function: ease-in-out;
+            animation-fill-mode: forwards; 
+        }
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes growUp {
+    0% {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes growDown {
+    0% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    100% {
+        opacity: 0;
+        transform: scale(0.9);
+    }
+}

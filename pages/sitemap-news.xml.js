@@ -1,0 +1,45 @@
+function generateSiteMap(data) {
+
+    const urlSetInitial = `<?xml version="1.0" encoding="UTF-8"?>
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`; 
+    
+    const urlSetEnd = `</urlset>`;
+
+    const listUrl = data.news.map(n => {
+        //const fecha = new Date(n.date);
+        //const year = fecha.getFullYear();
+        //const month = fecha.getMonth() + 1;
+        //const day = fecha.getDate();      
+
+        return `<url>
+                    <loc>
+                    https://pent.flacso.org.ar/${n.url}
+                    </loc>
+                    <lastmod>${n.date}</lastmod>        
+                </url>`;
+    }).join('');
+
+    const xml = `${urlSetInitial}${listUrl}${urlSetEnd}`;
+
+    return xml;
+
+  }
+
+  function SiteMapNews() {
+    // getServerSideProps will do the heavy lifting
+  }
+
+
+export async function getServerSideProps({res}) {
+    const request = await fetch(`https://redaccion.pent.org.ar/data/news/all/20/0`);
+    const data = await request.json();
+    // We generate the XML sitemap with the posts data
+    const sitemap = generateSiteMap(data);
+  
+    res.setHeader('Content-Type', 'text/xml');
+    // we send the XML to the browser
+    res.write(sitemap);
+    res.end();
+}
+
+export default SiteMapNews;

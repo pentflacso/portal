@@ -2,14 +2,14 @@ import ReactDOM from 'react-dom';
 import React, { useState } from 'react';
 import styles from "./ShareBtns.module.scss";
 
-export default function ShareBtns({ shareurl, setShareModal}){
+export default function ShareBtns({ shareurl, setModal}){
 
     const [ closeAnimation, setCloseAnimation] = useState(false);
 
     function closeShareModal() {
         setCloseAnimation(true);
         setTimeout(() => {
-            setShareModal(false);
+            setModal('hidden');
         }, "800");    
     }
 
