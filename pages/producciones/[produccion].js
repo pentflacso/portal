@@ -11,13 +11,14 @@ import Footer from '../../components/library/Footer/Footer'
 import Link from 'next/link';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import ShareBtns from '../../components/library/ShareBtns/ShareBtns';
+import DownloadModal from '../../components/library/DownloadModal/DownloadModal';
 import styles from './produccion.module.scss';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 
 function Index(d){
 
     const { windowSize, setCurrentArticleHashtag, setDataStrip } = useAppContext();
-    const [ shareModal, setShareModal ] = useState(false);  
+    const [ modal, setModal ] = useState('hidden');  
     const [ elementHeight, setElementHeight ] = useState(0);  
     const router = useRouter();  
     const element = useRef(null); 
@@ -97,9 +98,7 @@ function Index(d){
 
     return(
     <>
-        <MetaTags
-        
-        
+        <MetaTags      
             pageTitle={ data.title + ' — FLACSO | PENT'}
             shareTitle={ data.title }
             keywords={ data.keywords }
@@ -123,7 +122,8 @@ function Index(d){
         
         <MainWrapper>
 
-            {shareModal && <ShareBtns shareurl={`https://pent-portal-testing.vercel.app${router.asPath}`} setShareModal={setShareModal} />}
+            {modal === 'share' && <ShareBtns shareurl={`https://pent-portal-testing.vercel.app${router.asPath}`} setModal={setModal} />}
+            {modal === 'download' && <DownloadModal archive={data.download} setModal={setModal} />}   
 
             
                 <div className={styles.pin_block} ref={element}> 
@@ -144,12 +144,16 @@ function Index(d){
                         
                         <div className={styles.btns}>
                             {windowSize >= 1025 ?
-                                <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
+                                <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => setModal('share') }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
                             :
                                 <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => mobileShare() }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
-                            }                            
+                            }    
 
-                            { data.download || data.link ? <Link className={data.download ? `${styles.btn} ${styles.download}` : `${styles.btn} ${styles.link}`} href={ data.download ? data.download : data.link } target="_blank"><span><img src={data.download ? `/assets/icons/download_icon.svg` : `/assets/icons/access_icon.svg` } alt="icono de descarga"/>{ data.download ? "Descargar" : "Acceder" }</span></Link> : "" }
+                            {/* { data.download && <button type="button" className={`${styles.btn} ${styles.download}`} onClick={ () => setModal('download') }><span><img src={`/assets/icons/download_icon.svg`} alt="icono de descarga"/>Descargar</span></button>}
+
+                            { data.link && <Link className={`${styles.btn} ${styles.link}`} href={ data.link } target="_blank"><span><img src={`/assets/icons/access_icon.svg`} alt="icono de accesoi"/>Acceder</span></Link> }   */}    
+
+                            { data.download || data.link ? <Link className={data.download ? `${styles.btn} ${styles.download}` : `${styles.btn} ${styles.link}`} href={ data.download ? data.download : data.link } target="_blank"><span><img src={data.download ? `/assets/icons/download_icon.svg` : `/assets/icons/access_icon.svg` } alt="icono de descarga"/>{ data.download ? "Descargar" : "Acceder" }</span></Link> : "" }                      
 
                         </div>                       
 
