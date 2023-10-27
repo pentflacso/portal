@@ -1,7 +1,8 @@
 function generateSiteMap(data) {
 
     const urlSetInitial = `<?xml version="1.0" encoding="UTF-8"?>
-    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">`; 
+    <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:news="http://www.google.com/schemas/sitemap-news/0.9">`; 
     
     const urlSetEnd = `</urlset>`;
 
@@ -15,7 +16,15 @@ function generateSiteMap(data) {
                     <loc>
                     https://pent.flacso.org.ar/${n.url}
                     </loc>
-                    <lastmod>${n.date}</lastmod>        
+                    <lastmod>${n.dateXML}</lastmod>
+                    <news:news>
+                      <news:publication>
+                        <news:name>PENT FLACSO</news:name>
+                        <news:language>es</news:language>
+                      </news:publication>
+                      <news:publication_date>${n.dateXML}</news:publication_date>
+                      <news:title>${n.title}</news:title>                      
+                    </news:news>       
                 </url>`;
     }).join('');
 
