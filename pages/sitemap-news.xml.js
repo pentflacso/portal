@@ -7,11 +7,6 @@ function generateSiteMap(data) {
     const urlSetEnd = `</urlset>`;
 
     const listUrl = data.news.map(n => {
-        //const fecha = new Date(n.date);
-        //const year = fecha.getFullYear();
-        //const month = fecha.getMonth() + 1;
-        //const day = fecha.getDate();      
-
         return `<url>
                     <loc>
                     https://pent.flacso.org.ar/${n.url}
