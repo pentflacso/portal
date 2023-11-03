@@ -163,7 +163,7 @@ function Index({dataProduct , prevUrl, pathName}){
 
                             { data.link && <Link className={`${styles.btn} ${styles.link}`} href={ data.link } target="_blank"><span><img src={`/assets/icons/access_icon.svg`} alt="icono de accesoi"/>Acceder</span></Link> }   */}    
 
-                            { data.download || data.link ? <Link className={data.download ? `${styles.btn} ${styles.download}` : `${styles.btn} ${styles.link}`} href={ data.download ? data.download : data.link } target="_blank"><span id="produccionBtnLinkAndDownloadCTA"><img src={data.download ? `/assets/icons/download_icon.svg` : `/assets/icons/access_icon.svg` } alt="icono de descarga"/>{ data.download ? "Descargar" : "Acceder" }</span></Link> : "" }                      
+                            { data.download || data.link ? <Link className={data.download ? `${styles.btn} ${styles.download}` : `${styles.btn} ${styles.link}`} href={ data.download ? data.download : data.link } target="_blank"><span id="produccionBtnLinkAndDownloadCTA" ><img src={data.download ? `/assets/icons/download_icon.svg` : `/assets/icons/access_icon.svg` } alt="icono de descarga"/>{ data.download ? "Descargar" : "Acceder" }</span></Link> : "" }                      
 
                         </div>                       
 
