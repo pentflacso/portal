@@ -19,7 +19,7 @@ export default function Announcement({data}){
 
                 <button type="button" aria-label="Cerrar anuncio" className={styles.close_btn} onClick={ () => closeAnnouncement() }><span/><span/></button> 
                 
-                <div className={styles.info} dangerouslySetInnerHTML={{ __html:  data.body }}></div>          
+                <div id="announcementCTA" className={styles.info} dangerouslySetInnerHTML={{ __html:  data.body }}></div>          
             
             </div>
         );
