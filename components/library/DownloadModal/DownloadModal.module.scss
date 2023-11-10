@@ -31,11 +31,11 @@
         border-radius: 50%;   
         transition: all .3s;
         @media screen and (max-width: 1024px){
-            border: $line-1-mobile solid $white;
+            top: calc(10px + (30 - 10) * ((100vw - 300px) / (1024 - 300)));
+            right: calc(10px + (30 - 10) * ((100vw - 300px) / (1024 - 300)));
+            border: $line-1-mobile solid $gray-4;
             width: calc(28px + (56 - 28) * ((100vw - 300px) / (1024 - 300)));
             height: calc(28px + (56 - 28) * ((100vw - 300px) / (1024 - 300)));
-            margin-left: auto;
-            margin-bottom: calc(25px + (55 - 25) * ((100vw - 300px) / (1024 - 300)));
         }
         @media screen and (min-width: 1024px){
             &:hover{
@@ -76,14 +76,18 @@
         animation-duration: .5s;  
         animation-timing-function: ease-in-out;
         animation-fill-mode: forwards;  
+        @media screen and (max-width: 1025px){
+            width: calc(280px + (955 - 280) * ((100vw - 300px) / (1200 - 300)));
+            padding: calc(20px + (65 - 20) * ((100vw - 300px) / (1200 - 300)));
+        }
         h4{
             @include font-level-1;
             font-weight: 400;
             line-height: 130%;
             color: $deep-blue;
-            margin-bottom: calc(30px + (80 - 30) * ((100vw - 1200px) / (3840 - 1200)));
+            margin-bottom: calc(25px + (60 - 25) * ((100vw - 1200px) / (3840 - 1200)));
             @media screen and (max-width: 1025px){ 
-                margin-bottom: calc(25px + (55 - 25) * ((100vw - 300px) / (1025 - 300)));
+                margin-bottom: calc(12px + (30 - 12) * ((100vw - 300px) / (1025 - 300)));
             } 
         }
         p{
@@ -93,7 +97,8 @@
             color: $deep-blue;
             margin-bottom: calc(25px + (70 - 25) * ((100vw - 1200px) / (3840 - 1200)));
             @media screen and (max-width: 1025px){
-                margin-bottom: calc(20px + (50 - 20) * ((100vw - 300px) / (1200 - 300)));
+                @include font-level-4;
+                margin-bottom: calc(15px + (45 - 15) * ((100vw - 300px) / (1200 - 300)));
             }
         }
         .input{
@@ -108,12 +113,16 @@
             border: none;   
             border-bottom: calc(1.5px + (3 - 1.5) * ((100vw - 1200px) / (3840 - 1200))) solid $green-2;            
             @media screen and (max-width: 1025px){
-                border-bottom: calc(1.5px + (2.5 - 1.5) * ((100vw - 300px) / (1200 - 300))) solid $yellow-1;                             
+                padding: 
+                calc(6px + (18 - 6) * ((100vw - 300px) / (1200 - 300)))
+                calc(3px + (4 - 3) * ((100vw - 300px) / (1200 - 300)))
+                ;
+                border-bottom: calc(1.5px + (2.5 - 1.5) * ((100vw - 300px) / (1200 - 300))) solid $green-2;                             
             }
             &:last-of-type{
-                margin-bottom: calc(30px + (70 - 30) * ((100vw - 1200px) / (3840 - 1200)));
+                margin-bottom: calc(18px + (50 - 18) * ((100vw - 1200px) / (3840 - 1200)));
                 @media screen and (max-width: 1025px){
-                    margin-bottom: calc(16px + (40 - 16) * ((100vw - 300px) / (1200 - 300)));                                    
+                    margin-bottom: calc(15px + (40 - 16) * ((100vw - 300px) / (1200 - 300)));                                    
                 }
             }
             &::placeholder {                                
@@ -141,7 +150,8 @@
             margin-bottom: calc(30px + (70 - 30) * ((100vw - 1200px) / (3840 - 1200))); 
             cursor: pointer;
             @media screen and (max-width: 1025px){
-                margin-bottom: calc(16px + (40 - 16) * ((100vw - 300px) / (1200 - 300)));                                    
+                @include font-level-5;
+                margin-bottom: calc(20px + (60 - 20) * ((100vw - 300px) / (1200 - 300)));                                                
             } 
 
             input[type="checkbox"] {
@@ -152,9 +162,14 @@
                 -webkit-appearance: none;
                 appearance: none;             
                 font: inherit;
-                width: calc(18px + (42 - 18) * ((100vw - 1200px) / (3840 - 1200)));
-                height: calc(18px + (42 - 18) * ((100vw - 1200px) / (3840 - 1200)));
+                width: calc(16px + (40 - 16) * ((100vw - 1200px) / (3840 - 1200)));
+                height: calc(16px + (40 - 16) * ((100vw - 1200px) / (3840 - 1200)));
                 border: $line-1 solid $green-2;  
+                @media screen and (max-width: 1025px){
+                    width: calc(13px + (30 - 13) * ((100vw - 300px) / (1200 - 300)));
+                    height: calc(13px + (30 - 13) * ((100vw - 300px) / (1200 - 300)));
+                    border: calc(1.5px + (2.5 - 1.5) * ((100vw - 300px) / (1200 - 300))) solid $green-2;                               
+                }
 
                 &::before {
                     content: "";
@@ -173,7 +188,13 @@
                         transform: scale(1);    
                     }
                 }        
-            }                                          
+            }    
+            
+            span{
+                @media screen and (max-width: 1025px){
+                    margin-left: 5px;                                
+                } 
+            }
         }
 
         .send_btn{
