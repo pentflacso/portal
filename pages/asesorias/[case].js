@@ -69,7 +69,7 @@ function Index(d){
         if (navigator.share) {
           navigator
             .share({
-              url: `https://pent-portal-testing.vercel.app${router.asPath}`,
+              url: `https://pent.flacso.org.ar${router.asPath}`,
             })
             .then(() => {
               console.log("Successfully shared");
@@ -94,7 +94,7 @@ function Index(d){
         
         <MainWrapper>
 
-            {shareModal && <ShareBtns shareurl={`https://pent-portal-testing.vercel.app${router.asPath}`} setShareModal={setShareModal} />}
+            {shareModal && <ShareBtns shareurl={`https://pent.flacso.org.ar${router.asPath}`} setShareModal={setShareModal} />}
             
             <div className={styles.pin_block} ref={element}> 
                 <header className={styles.col_left}>                

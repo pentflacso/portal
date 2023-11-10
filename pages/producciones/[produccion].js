@@ -46,7 +46,6 @@ function Index({dataProduct , prevUrl, pathName}){
                 "Ver producciones" : 
                 `Volver a ${pathName[0]}` 
         );
-
     }, []);   
 
 
@@ -87,7 +86,7 @@ function Index({dataProduct , prevUrl, pathName}){
         if (navigator.share) {
           navigator
             .share({
-              url: `https://pent-portal-testing.vercel.app${router.asPath}`,
+                url: `https://pent.flacso.org.ar${router.asPath}`,
             })
             .then(() => {
               console.log("Successfully shared");
@@ -114,7 +113,7 @@ function Index({dataProduct , prevUrl, pathName}){
             keywords={ data.keywords }
             description={ data.teaser }
             url={ data.url }
-            img= 'https://pent-portal-testing.vercel.app/assets/images/producciones_thumb_shared.jpg' 
+            img= 'https://pent.flacso.org.ar/assets/images/producciones_thumb_shared.jpg' 
             />        
         <MetaProducts 
             title={data.title}        
@@ -132,7 +131,7 @@ function Index({dataProduct , prevUrl, pathName}){
         
         <MainWrapper>
 
-            {modal === 'share' && <ShareBtns shareurl={`https://pent-portal-testing.vercel.app${router.asPath}`} setModal={setModal} />}
+            {modal === 'share' && <ShareBtns shareurl={`https://pent.flacso.org.ar${router.asPath}`} setModal={setModal} />}
             {modal === 'download' && <DownloadModal archive={data.download} setModal={setModal} />}   
 
             
@@ -159,9 +158,9 @@ function Index({dataProduct , prevUrl, pathName}){
                                 <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => mobileShare() }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
                             }    
 
-                            { data.download && <button type="button" className={`${styles.btn} ${styles.download}`} onClick={ () => setModal('download') }><span><img src={`/assets/icons/download_icon.svg`} alt="icono de descarga"/>Descargar</span></button>}
+                            { data.download && <button type="button" className={`${styles.btn} ${styles.download}`} onClick={ () => setModal('download') }><span id="produccionBtnLinkAndDownloadCTA"><img src={`/assets/icons/download_icon.svg`} alt="icono de descarga"/>Descargar</span></button>}
 
-                            { data.link && <Link className={`${styles.btn} ${styles.link}`} href={ data.link } target="_blank"><span><img src={`/assets/icons/access_icon.svg`} alt="icono de accesoi"/>Acceder</span></Link> }    
+                            { data.link && <Link className={`${styles.btn} ${styles.link}`} href={ data.link } target="_blank"><span id="produccionBtnLinkAndDownloadCTA"><img src={`/assets/icons/access_icon.svg`} alt="icono de accesoi"/>Acceder</span></Link> }    
 
                             {/* { data.download || data.link ? <Link className={data.download ? `${styles.btn} ${styles.download}` : `${styles.btn} ${styles.link}`} href={ data.download ? data.download : data.link } target="_blank"><span id="produccionBtnLinkAndDownloadCTA" ><img src={data.download ? `/assets/icons/download_icon.svg` : `/assets/icons/access_icon.svg` } alt="icono de descarga"/>{ data.download ? "Descargar" : "Acceder" }</span></Link> : "" }  */}                     
 
@@ -217,8 +216,11 @@ export async function getServerSideProps(context) {
         const referrerURL = new URL(referrer);
         pathnameParts = referrerURL.pathname.split('/').filter(part => part);
         
-        prevUrl = pathnameParts[1] && pathnameParts[1] == query.produccion ? "/producciones" : referrer;
-
+        if(referrerURL.origin.split('//')[1] == context.req.headers.host){
+            prevUrl = pathnameParts[1] && pathnameParts[1] == query.produccion ? "/producciones" : referrer;
+        }else{
+            prevUrl = "/producciones";
+        }
     }else{
         //Pagina Externa
         prevUrl = "/producciones"
