@@ -8,9 +8,7 @@ function generateSiteMap(data) {
 
     const listUrl = data.news.map(n => {
         return `<url>
-                    <loc>
-                    https://pent.flacso.org.ar/${n.url}
-                    </loc>
+                    <loc>https://pent.flacso.org.ar${n.url}</loc>
                     <lastmod>${n.dateXML}</lastmod>
                     <news:news>
                       <news:publication>
