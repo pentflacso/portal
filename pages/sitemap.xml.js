@@ -38,6 +38,7 @@ export async function getServerSideProps({res}) {
     // we send the XML to the browser
     res.write(sitemap);
     res.end();
+    return { props: {} };    
 }
 
 export default SiteMapNews;

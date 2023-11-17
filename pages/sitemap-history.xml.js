@@ -27,18 +27,13 @@ export async function getServerSideProps({res, query}) {
     const page = query.page;
 
     // Define el número de resultados por página
-    const resultadosPorPagina = 50;
+    const cantidad = 50;
     const numeroDePagina = parseInt(page, 10) || 0;
 
-    const inicial = numeroDePagina * resultadosPorPagina;
-    const final = (numeroDePagina + 1) * resultadosPorPagina;
+    const inicial = numeroDePagina * cantidad;
 
-    //console.log("inicial: ", inicial, " final: ", final)
-
-    const request = await fetch(`https://redaccion.pent.org.ar/data/xmlhistory/${final}/${inicial}`);
+    const request = await fetch(`https://redaccion.pent.org.ar/data/xmlhistory/${cantidad}/${inicial}`);
     const data = await request.json();
-
-    //console.log("cantidad: ", data.urls.length);
 
     // We generate the XML sitemap with the posts data
     const sitemap = generateSiteMap(data);
