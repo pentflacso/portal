@@ -1,8 +1,94 @@
 import ReactDOM from 'react-dom';
 import React, { useState } from 'react';
 import styles from "./DownloadModal.module.scss";
+import Select from 'react-select';
+import { useAppContext } from '../../../context/AppContext';
+
 
 export default function DownloadModal({ setModal }){
+    const [ email, setEmail ] = useState('');
+    const [ emailError, setEmailError ] = useState(false);   
+    const { setItemstorage } = useAppContext();
+
+
+    // Expresión regular para validar el formato del email
+    const emailValidator = /^\w+([.-_+]?\w+)*@\w+([.-]?\w+)*(\.\w{2,10})+$/;
+  
+    const handleInputChange = (event) => {
+      setEmail(event.target.value);   
+    };
+  
+    const validate = (event) => {
+      event.preventDefault();
+
+      if (emailValidator.test(email) /*resto de validacion */){
+          setEmailError(false);  
+          localStorage.setItem('downloadModal', true);
+          setItemstorage(true);
+        } else {
+          setEmailError(true);
+      }
+    };
+
+    const options = [
+        { value: 'AF', label: 'Afganistán' },
+        { value: 'AL', label: 'Albania' },
+        { value: 'DE', label: 'Alemania' },
+        { value: 'AD', label: 'Andorra' },
+        { value: 'AO', label: 'Angola' },
+        { value: 'AI', label: 'Anguilla' },
+        { value: 'AQ', label: 'Antártida' },
+        { value: 'AG', label: 'Antigua y Barbuda' },
+        { value: 'AN', label: 'Antillas Holandesas' },
+        { value: 'SA', label: 'Arabia Saudí' },
+        { value: 'DZ', label: 'Argelia' },
+        { value: 'AR', label: 'Argentina' },
+        { value: 'AM', label: 'Armenia' },
+        { value: 'AW', label: 'Aruba' },
+        { value: 'AU', label: 'Australia' },
+        { value: 'AT', label: 'Austria' },
+        { value: 'AZ', label: 'Azerbaiyán' },
+        { value: 'BS', label: 'Bahamas' },
+        { value: 'BH', label: 'Bahrein' },
+        { value: 'BD', label: 'Bangladesh' },
+        { value: 'BB', label: 'Barbados' },
+        { value: 'BE', label: 'Bélgica' },
+        { value: 'BZ', label: 'Belice' },
+        { value: 'BJ', label: 'Benin' },
+        { value: 'BM', label: 'Bermudas' },
+        { value: 'BY', label: 'Bielorrusia' },
+        { value: 'MM', label: 'Birmania' },
+        { value: 'BO', label: 'Bolivia' },
+        { value: 'BA', label: 'Bosnia y Herzegovina' },
+        { value: 'BW', label: 'Botswana' },
+        { value: 'BR', label: 'Brasil' },
+        { value: 'BN', label: 'Brunei' },
+        { value: 'BG', label: 'Bulgaria' },
+        { value: 'BF', label: 'Burkina Faso' },
+        { value: 'BI', label: 'Burundi' },
+        { value: 'BT', label: 'Bután' },
+        { value: 'CV', label: 'Cabo Verde' },
+        { value: 'KH', label: 'Camboya' },
+        { value: 'CM', label: 'Camerún' },
+        { value: 'CA', label: 'Canadá' },
+        { value: 'TD', label: 'Chad' },
+        { value: 'CL', label: 'Chile' },
+        { value: 'CN', label: 'China' },
+        { value: 'CY', label: 'Chipre' },
+        { value: 'VA', label: 'Ciudad del Vaticano (Santa Sede)' },
+        { value: 'CO', label: 'Colombia' },
+//Faltan crear api
+        { value: 'UY', label: 'Uruguay' },
+        { value: 'UZ', label: 'Uzbekistán' },
+        { value: 'VU', label: 'Vanuatu' },
+        { value: 'VE', label: 'Venezuela' },
+        { value: 'VN', label: 'Vietnam' },
+        { value: 'YE', label: 'Yemen' },
+        { value: 'YU', label: 'Yugoslavia' },
+        { value: 'ZM', label: 'Zambia' },
+        { value: 'ZW', label: 'Zimbabue' }        
+    ]
+
 
     const [ closeAnimation, setCloseAnimation] = useState(false);
 
@@ -23,14 +109,16 @@ export default function DownloadModal({ setModal }){
                 <h4>Descargar</h4>
                 <p>Gracias por tu interés. Completá tus datos y te enviaremos el archivo a tu correo electrónico en este instante.</p>
 
-                <form>
+                <form onSubmit={validate}>
                     <input className={styles.input} type="text" name="Nombre" placeholder="Nombre" data-required="true" required />                    
 
                     <input className={styles.input} type="text" name="Apellido" placeholder="Apellido" data-required="true" required />
                  
                     {/* <input className={styles.input} type="text" name="País" placeholder="País" data-required="true" required />  */} 
 
-                    {/* <div className={styles.custom_select}>
+                    <div className={styles.custom_select}>
+                        <Select options={options} name="Pais" />
+                        {/* 
                     <select >
                         <option value="" disabled selected>País</option>
                         <option value="AF">Afganistán</option>
@@ -268,9 +356,18 @@ export default function DownloadModal({ setModal }){
                         <option value="ZM">Zambia</option>
                         <option value="ZW">Zimbabue</option>
                     </select> 
-                    </div>         */}
+                    */}
+                    </div>         
                    
-                    <input className={styles.input} type="email" name="Email" placeholder="Email" data-required="true" required />
+                    <input
+                        onChange={handleInputChange}
+                        className={styles.input}
+                        type="email" 
+                        name="Email"
+                        placeholder="Email" 
+                        data-required="true" 
+                        required 
+                    />
 
                     <label className={styles.checkbox}><input type="checkbox" value="checkbox" defaultChecked /><span>Deseo recibir descuentos, becas y novedades.</span></label>
 

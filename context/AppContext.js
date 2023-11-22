@@ -43,7 +43,10 @@ export default function AppProvider({ children }) {
 
   const [ announcementStatus, setAnnouncementStatus ] = useState();
   
+  //Modal Download Storage
+  const [ itemStorage, setItemstorage ] = useState(false);
   
+  //Banner Amarillo
   const [ dataStrip, setDataStrip ] = useState("");
   
   const [ countDataToUse, setCountDataToUse ] = useState(0);
@@ -164,6 +167,6 @@ export default function AppProvider({ children }) {
 
   return (
 
-    <AppContext.Provider value={{ dataArticles, setDataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, queryArticles, setQueryArticles, searchInArticles, articlesFiltersCounter, windowSize, isLoading, setLoadingState, currentRoute, setCurrentRoute, menuBtnAnimation, advancedFilterStatus, setAdvancedFilterStatus, changePage, handleClose, menuOverlay, changeMenuState, menuState, setMenuState, announcementStatus, setAnnouncementStatus, dataStrip, setDataStrip, countDataToUse, setCountDataToUse }}> {children} </AppContext.Provider>
+    <AppContext.Provider value={{ dataArticles, setDataArticles, hashtagsArticlesList, setHashtagsArticlesList, currentArticleHashtag, setCurrentArticleHashtag, authorsArticlesList, setAuthorsArticlesList, currentArticleAuthor, setCurrentArticleAuthor, queryArticles, setQueryArticles, searchInArticles, articlesFiltersCounter, windowSize, isLoading, setLoadingState, currentRoute, setCurrentRoute, menuBtnAnimation, advancedFilterStatus, setAdvancedFilterStatus, changePage, handleClose, menuOverlay, changeMenuState, menuState, setMenuState, announcementStatus, setAnnouncementStatus, dataStrip, setDataStrip, countDataToUse, setCountDataToUse, itemStorage, setItemstorage }}> {children} </AppContext.Provider>
   );
 }

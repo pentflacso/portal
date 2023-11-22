@@ -16,8 +16,8 @@ import styles from './produccion.module.scss';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 
 function Index({dataProduct , prevUrl, pathName}){
-
-    const { windowSize, setCurrentArticleHashtag, setDataStrip } = useAppContext();
+    const { windowSize, setCurrentArticleHashtag, setDataStrip, itemStorage, setItemstorage } = useAppContext();
+    
     const [ modal, setModal ] = useState('hidden');  
     const [ elementHeight, setElementHeight ] = useState(0);  
     const router = useRouter();  
@@ -38,6 +38,17 @@ function Index({dataProduct , prevUrl, pathName}){
         {title: 'Investigación y divulgación', path: '/investigacion'}
     ] 
 
+    //Variable para cambiar el estado del Modal
+    useEffect(() => {
+        if(localStorage.getItem("downloadModal") == "true"){
+            setItemstorage(true);
+        }else{
+            setItemstorage(false);
+        }
+        console.log("Boton Modal De descarga: ",itemStorage);
+    }, [itemStorage]);
+
+    
     useEffect(() => {
         setDataStrip(strip);
 
@@ -150,7 +161,7 @@ function Index({dataProduct , prevUrl, pathName}){
                                 ) ) } 
                             </div> : ""
                         }
-                        
+
                         <div className={styles.btns}>
                             {windowSize >= 1025 ?
                                 <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => setModal('share') }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
