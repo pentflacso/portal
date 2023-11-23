@@ -149,7 +149,12 @@
                 right: 1rem;
                 pointer-events: none;
             }
-            
+            .react-martin__placeholder{
+                background-color:red;
+
+
+            }
+/*          
             &::before {
                 border-left: var(--size) solid transparent;
                 border-right: var(--size) solid transparent;
@@ -163,7 +168,7 @@
                 border-top: var(--size) solid black;
                 top: 55%;
             }
-            
+*/            
             select {              
                 max-height: 200px!important;
                 appearance: none;
