@@ -5,15 +5,15 @@ function generateSiteMap(data) {
   
   const urlSetEnd = `</sitemapindex>`;
 
-  const listUrl = data.page.map(n => {
-      return ` <sitemap>
-                  <loc>
-                  https://pent.flacso.org.ar/sitemap-${n}.xml
-                  </loc>      
-              </sitemap>`;
-  }).join('');
+  const urlNews = `<sitemap><loc>https://pent.flacso.org.ar/sitemap-news.xml</loc></sitemap>`;
 
-  const xml = `${urlSetInitial}${listUrl}${urlSetEnd}`;
+  //Sitemap History
+  let urlHistory = "";
+
+  for (let i = 0; i < data; i++) {
+    urlHistory +=`<sitemap><loc>https://pent.flacso.org.ar/sitemap-history.xml?page=${i}</loc></sitemap>`;
+  }
+  const xml = `${urlSetInitial}${urlNews}${urlHistory}${urlSetEnd}`;
 
   return xml;
 
@@ -25,17 +25,20 @@ function generateSiteMap(data) {
 
 
 export async function getServerSideProps({res}) {
-    //const request = await fetch(`https://redaccion.pent.org.ar/data/news/all/20/0`);
-    //const data = await request.json();
+    const request = await fetch(`https://redaccion.pent.org.ar/data/xmlpagehistory`);
+    const data = await request.json();
     
-    const data = {page: ["history-index", "news"]};
+    const contenidoPorPagina = 50;
+    const cantidadPaginas = Math.ceil(data.page / contenidoPorPagina);
+
     // We generate the XML sitemap with the posts data
-    const sitemap = generateSiteMap(data);
+    const sitemap = generateSiteMap(cantidadPaginas);
   
     res.setHeader('Content-Type', 'text/xml');
     // we send the XML to the browser
     res.write(sitemap);
     res.end();
+    return { props: {} };    
 }
 
 export default SiteMapNews;

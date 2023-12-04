@@ -87,7 +87,7 @@ function Index({dataProduct , prevUrl, pathName}){
         if (navigator.share) {
           navigator
             .share({
-              url: `https://pent-portal-testing.vercel.app${router.asPath}`,
+              url: `https://pent.flacso.org.ar${router.asPath}`,
             })
             .then(() => {
               console.log("Successfully shared");
@@ -114,7 +114,7 @@ function Index({dataProduct , prevUrl, pathName}){
             keywords={ data.keywords }
             description={ data.teaser }
             url={ data.url }
-            img= 'https://pent-portal-testing.vercel.app/assets/images/producciones_thumb_shared.jpg' 
+            img= 'https://pent.flacso.org.ar/assets/images/producciones_thumb_shared.jpg' 
             />        
         <MetaProducts 
             title={data.title}        
@@ -132,7 +132,7 @@ function Index({dataProduct , prevUrl, pathName}){
         
         <MainWrapper>
 
-            {modal === 'share' && <ShareBtns shareurl={`https://pent-portal-testing.vercel.app${router.asPath}`} setModal={setModal} />}
+            {modal === 'share' && <ShareBtns shareurl={`https://pent.flacso.org.ar${router.asPath}`} setModal={setModal} />}
             {modal === 'download' && <DownloadModal archive={data.download} setModal={setModal} />}   
 
             

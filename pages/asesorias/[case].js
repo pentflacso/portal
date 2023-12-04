@@ -15,7 +15,7 @@ import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 
 function Index(d){
     const { windowSize, setDataStrip } = useAppContext();    
-    const [ shareModal, setShareModal ] = useState(false);  
+    const [ modal, setModal ] = useState('hidden');  
     const [ elementHeight, setElementHeight ] = useState(0);  
     const router = useRouter();
     const element = useRef(null); 
@@ -69,7 +69,7 @@ function Index(d){
         if (navigator.share) {
           navigator
             .share({
-              url: `https://pent-portal-testing.vercel.app${router.asPath}`,
+              url: `https://pent.flacso.org.ar${router.asPath}`,
             })
             .then(() => {
               console.log("Successfully shared");
@@ -94,7 +94,7 @@ function Index(d){
         
         <MainWrapper>
 
-            {shareModal && <ShareBtns shareurl={`https://pent-portal-testing.vercel.app${router.asPath}`} setShareModal={setShareModal} />}
+            {modal === 'share' && <ShareBtns shareurl={`https://pent.flacso.org.ar${router.asPath}`} setModal={setModal} />}
             
             <div className={styles.pin_block} ref={element}> 
                 <header className={styles.col_left}>                
@@ -105,7 +105,7 @@ function Index(d){
 
                     <div className={styles.btns}>
                         {windowSize >= 1025 ?
-                            <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
+                            <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => setModal('share') }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
                         :
                             <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => mobileShare() }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
                         }
