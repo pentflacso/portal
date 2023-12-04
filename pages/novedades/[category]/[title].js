@@ -24,7 +24,7 @@ function Index(d){
     ]
     const license = `<p>El texto de la nota ${ data.title } de Proyecto Educación y Nuevas Tecnologías se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Nota disponible en: <a href="${ data.url }" target="_blank">${ data.url }</a></p>`
     const [ elementHeight, setElementHeight ] = useState(0);
-    const [ shareModal, setShareModal ] = useState(false);   
+    const [ modal, setModal ] = useState('hidden');    
     const router = useRouter(); 
     const element = useRef(null);  
 
@@ -71,7 +71,7 @@ function Index(d){
         if (navigator.share) {
           navigator
             .share({
-              url: `https://pent-portal-testing.vercel.app${router.asPath}`,
+              url: `https://pent.flacso.org.ar${router.asPath}`,
             })
             .then(() => {
               console.log("Successfully shared");
@@ -97,7 +97,7 @@ function Index(d){
 
         <MainWrapper>
 
-            {shareModal && <ShareBtns shareurl={`https://pent-portal-testing.vercel.app${router.asPath}`} setShareModal={setShareModal} />}
+            {modal === 'share' && <ShareBtns shareurl={`https://pent.flacso.org.ar${router.asPath}`} setModal={setModal} />}
 
                 <div className={styles.pin_block} ref={element}>  
                     <div className={styles.col_left}>
@@ -118,7 +118,7 @@ function Index(d){
                             ""}
 
                             {windowSize >= 1025 ?
-                                <button type="button" className={`${styles.btn} ${styles.share_btn}`} onClick={ () => setShareModal(true) }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
+                                <button type="button" className={`${styles.btn} ${styles.share_btn}`} onClick={ () => setModal('share') }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
                             :
                                 <button type="button" className={`${styles.btn} ${styles.share_btn}`} onClick={ () => mobileShare() }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
                             }
