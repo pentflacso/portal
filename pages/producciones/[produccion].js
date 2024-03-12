@@ -151,7 +151,6 @@ function Index({dataProduct , prevUrl, pathName}){
                                 ) ) } 
                             </div> : ""
                         }
-                        
                         <div className={styles.btns}>
                             {windowSize >= 1025 ?
                                 <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => setModal('share') }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
