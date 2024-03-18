@@ -21,7 +21,7 @@ export default function Footer(){
 
                 <div className={styles.info_bottom}>
                     <div className={styles.col_left}>
-                        <p>©2023 Proyecto Educación y Nuevas Tecnologías<br /> Facultad Latinoamericana de Ciencias Sociales <span>—</span> Sede Argentina</p>
+                        <p>©{new Date().getFullYear()} Proyecto Educación y Nuevas Tecnologías<br /> Facultad Latinoamericana de Ciencias Sociales <span>—</span> Sede Argentina</p>
                     </div>
                     <div className={styles.col_right}>
                         <h4>Seguinos</h4>
