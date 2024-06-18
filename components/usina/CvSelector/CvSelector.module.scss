@@ -1,0 +1,197 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.container{
+    @include container-width-1; 
+    height: calc(320px + (880 - 320) * ((100vw - 1200px) / (3840 - 1200)));
+    display: grid;
+    grid-template-areas: 'nombre-docente imagen-docente texto-docente';
+    grid-template-columns: calc(100% / 3) calc(100% / 3) calc(100% / 3);    
+    margin-bottom: calc(85px + (350 - 85) * ((100vw - 1200px) / (3840 - 1200)));   
+    @media screen and (max-width: 1024px){
+        width: 100%;
+        height: auto;
+        display: block;
+        margin-bottom: calc(50px + (150 - 50) * ((100vw - 300px) / (1024 - 300)));
+    }        
+
+    .cta_title{
+        grid-area: nombre-docente;
+        margin-top: calc(75px + (200 - 75) * ((100vw - 1200px) / (3840 - 1200))); 
+  
+        .wrapper{                     
+            position: relative; 
+            transition: all 0.6s ease;                   
+                 
+            button{
+                display: block;
+                background-color: transparent;
+                outline: inherit;
+                border: none;
+                position: relative;
+                font-size: calc(28px + (66 - 28) * ((100vw - 1200px) / (3840 - 1200)));
+                font-weight: 400;
+                line-height: 120%; 
+                letter-spacing: -0.015em;
+                color: $gray-4;    
+                margin: 0 0 calc(12px + (34 - 12) * ((100vw - 1200px) / (3840 - 1200))) 0;
+                cursor: pointer;
+                transition: all 0.3s ease;
+
+                span{
+                    position: absolute;
+                    width: calc(6px + (16 - 6) * ((100vw - 1200px) / (3840 - 1200)));
+                    height: 0%;
+                    background-color: transparent;
+                    left: 1%;
+                    top: 0;
+                    transition: all 0.3s ease;
+                }
+
+                &:hover{
+                    padding-left: calc(20px + (56 - 20) * ((100vw - 1200px) / (3840 - 1200)));
+                    transition: all 0.3s ease;
+                    span{                            
+                        height: 100%;
+                        background-color: $gray-4;
+                    }
+                }
+
+                &.active{
+                    color: $deep-blue; 
+                    padding-left: calc(20px + (56 - 20) * ((100vw - 1200px) / (3840 - 1200)));
+
+                    span{
+                        height: 100%;
+                        background-color: $yellow-1;
+                    }
+                }                        
+            }
+        }
+    }
+
+    .imagen_docente{
+        position: relative;
+        grid-area: imagen-docente;
+        overflow: hidden;
+        
+        img{
+            position: absolute;
+            width: auto;
+            height: calc(314px + (860 - 314) * ((100vw - 1200px) / (3840 - 1200)));
+            z-index: 2;
+            margin: 0 auto;  
+            left: 0;
+            right: 0;  
+            bottom: 0;  
+            display: none;
+            transform: translate(0px, 20px);
+            &.visible{
+                display: inline;
+            }            
+        }
+
+        span{
+            background-color: $gray-6;
+            position: absolute;
+            width: calc(248px + (680 - 248) * ((100vw - 1200px) / (3840 - 1200)));
+            height: calc(248px + (680 - 248) * ((100vw - 1200px) / (3840 - 1200)));
+            left: 0;
+            right: 0;
+            bottom: 0;
+            margin: 0 auto;
+            z-index: 1;  
+        }
+    }
+
+    .texto_docente{
+        grid-area: texto-docente;
+        margin-top: calc(75px + (200 - 75) * ((100vw - 1200px) / (3840 - 1200))); 
+        padding-left: calc(14px + (54 - 14) * ((100vw - 1200px) / (3840 - 1200)));
+        padding-top: calc(3px + (12 - 3) * ((100vw - 1200px) / (3840 - 1200)));
+        
+        p{
+            @include font-level-4;
+            line-height: 144%;
+            color: $deep-blue;
+            margin-top: 0;
+            margin-bottom: calc(35px + (85 - 35) * ((100vw - 1200px) / (3840 - 1200)));
+            strong{
+                font-weight: 400;
+                border-bottom: $line-2 solid $yellow-1;
+            }
+        }
+        .cv_view{
+            @include btn-ver-mas;
+        }
+    }
+}
+
+.slide_mobile{
+    width: 100vw; 
+
+    .wrapper{
+        @include container-width-1;
+        
+        .img_docente{
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
+            width: calc(160px + (580 - 160) * ((100vw - 300px) / (1024 - 300))); 
+            height: calc(200px + (700 - 200) * ((100vw - 300px) / (1024 - 300))); 
+            margin-bottom: calc(15px + (45 - 15) * ((100vw - 300px) / (1024 - 300)));
+            img{
+                z-index: 2;
+                width: auto;
+                height: 100%;
+            } 
+            span{
+                position: absolute;
+                z-index: 1;
+                background-color: $gray-6;
+                width: 100%; 
+                height: calc(155px + (550 - 155) * ((100vw - 300px) / (1024 - 300))); 
+            }
+        }
+    
+        h4{
+            @include font-level-2;    
+            font-weight: 400;
+            line-height: 120%; 
+            color: $deep-blue;
+            margin-bottom: calc(15px + (45 - 15) * ((100vw - 300px) / (1024 - 300)));
+        }
+    
+        p{
+            @include font-level-4;
+            line-height: 144%;
+            color: $deep-blue;
+            margin-top: 0;
+            margin-bottom: calc(30px + (85 - 30) * ((100vw - 300px) / (1024 - 300)));
+            strong{
+                font-weight: 400;
+                border-bottom: $line-2 solid $yellow-1;
+            }
+        }
+    
+        .go_to_page{
+            @include btn-ver-mas;
+        } 
+    }       
+}
+
+
+.slide_docente{
+    animation-name: slideDocente;
+    animation-duration: .6s;
+    animation-fill-mode: forwards;
+}
+
+@keyframes slideDocente {
+    0% {
+      transform: translate(0px, 20px);
+    }
+    100% {
+      transform: translate(0px, 0px);
+    }
+}
