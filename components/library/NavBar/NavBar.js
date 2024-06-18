@@ -13,49 +13,53 @@ export default function NavBar(){
       }, []);    
 
     return(
-    <>      
-        <header>        
-            <nav className={styles.navbar}>                
+    <>    
+        {currentRoute !== '/usinadev' && currentRoute !== '/usinadev/[propuesta]' ?  
+            <header>        
+                <nav className={styles.navbar}>                
 
-                <div className={styles.nav_btns}>
+                    <div className={styles.nav_btns}>
 
-                    {currentRoute === '/' 
-                    ?
-                        <h1 className={styles.brand}>
-                            <Link href='/' ><span>FLACSO PENT</span></Link>
-                        </h1>
-                    :
-                        <h3 className={styles.brand}>
-                            <Link href='/' ><span>FLACSO PENT</span></Link>
+                        {currentRoute === '/' 
+                        ?
+                            <h1 className={styles.brand}>
+                                <Link href='/' ><span>FLACSO PENT</span></Link>
+                            </h1>
+                        :
+                            <h3 className={styles.brand}>
+                                <Link href='/' ><span>FLACSO PENT</span></Link>
 
-                        </h3>
-                    }                
+                            </h3>
+                        }                
 
-                    { !menuState && <button type="button" className={!menuBtnAnimation ? styles.menu_btn : `${styles.menu_btn} ${styles.grow}`} onClick={ () => changeMenuState(true) }>Menú</button> }                
+                        { !menuState && <button type="button" className={!menuBtnAnimation ? styles.menu_btn : `${styles.menu_btn} ${styles.grow}`} onClick={ () => changeMenuState(true) }>Menú</button> }                
 
-                </div>  
-            </nav>
+                    </div>  
+                </nav>
 
-            { menuState &&
-                <div className={styles.overlay} ref={menuOverlay}> 
-                    <div className={styles.wrapper}>
-                        <div className={styles.sections}>
-                            <Link href='/' onClick={ () => changePage('/') } className={currentRoute === '/' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Portada</Link>
-                            <Link href='/formacion' onClick={ () => changePage('/formacion') } className={currentRoute === '/formacion' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Formación</Link>
-                            <Link href='/asesorias' onClick={ () => changePage('/asesorias') }className={currentRoute === '/asesorias' || currentRoute === '/asesorias/[case]' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Asesorías</Link>
-                            <Link href='/producciones' onClick={ () => changePage('/producciones') } className={currentRoute === '/producciones' || currentRoute === '/producciones/[produccion]' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Producciones</Link>                            
-                            <Link href='/investigacion' onClick={ () => changePage('/investigacion') } className={currentRoute === '/investigacion' || currentRoute === '/investigacion/[project]' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Investigación</Link>
-                            <Link href='/novedades' onClick={ () => changePage('/novedades') } className={currentRoute === '/novedades' || currentRoute === '/novedades/[category]' || currentRoute === '/novedades/[category]/[title]' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Novedades</Link>
-                            <Link href='/equipo' onClick={ () => changePage('/equipo') } className={currentRoute === '/equipo' || currentRoute === '/equipo/[perfil]' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Equipo</Link>
+                { menuState &&
+                    <div className={styles.overlay} ref={menuOverlay}> 
+                        <div className={styles.wrapper}>
+                            <div className={styles.sections}>
+                                <Link href='/' onClick={ () => changePage('/') } className={currentRoute === '/' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Portada</Link>
+                                <Link href='/formacion' onClick={ () => changePage('/formacion') } className={currentRoute === '/formacion' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Formación</Link>
+                                <Link href='/asesorias' onClick={ () => changePage('/asesorias') }className={currentRoute === '/asesorias' || currentRoute === '/asesorias/[case]' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Asesorías</Link>
+                                <Link href='/producciones' onClick={ () => changePage('/producciones') } className={currentRoute === '/producciones' || currentRoute === '/producciones/[produccion]' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Producciones</Link>                            
+                                <Link href='/investigacion' onClick={ () => changePage('/investigacion') } className={currentRoute === '/investigacion' || currentRoute === '/investigacion/[project]' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Investigación</Link>
+                                <Link href='/novedades' onClick={ () => changePage('/novedades') } className={currentRoute === '/novedades' || currentRoute === '/novedades/[category]' || currentRoute === '/novedades/[category]/[title]' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Novedades</Link>
+                                <Link href='/equipo' onClick={ () => changePage('/equipo') } className={currentRoute === '/equipo' || currentRoute === '/equipo/[perfil]' ? `${styles.btn_section} ${styles.active}` : `${styles.btn_section}`}>Equipo</Link>
+                            </div>
+                            <button type="button" className={styles.close_btn} onClick={ () => handleClose() }><span/><span/></button> 
                         </div>
-                        <button type="button" className={styles.close_btn} onClick={ () => handleClose() }><span/><span/></button> 
+                        <div className={styles.bg_close} onClick={ () => handleClose() }/>
                     </div>
-                    <div className={styles.bg_close} onClick={ () => handleClose() }/>
-                </div>
-            } 
+                } 
 
-            <div className={isLoading ? `${styles.fade_overlay}` : `${styles.fade_overlay} ${styles.off}`} />     
-        </header>
+                <div className={isLoading ? `${styles.fade_overlay}` : `${styles.fade_overlay} ${styles.off}`} />     
+            </header>
+            :
+            ''
+        }
         
         {announcementStatus && (dataStrip != "")  && <Announcement data={ dataStrip } />}
     </>

@@ -1,0 +1,18 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.wrapper{
+    background-color: $yellow-1;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: calc(6px + (14 - 6) * ((100vw - 1200px) / (3840 - 1200))) 0;
+    h2{   
+        @include font-level-4; 
+        font-weight: 400;
+        line-height: 100%;
+        color: $deep-blue;
+        overflow: hidden;
+        margin: 0;
+    }
+}
