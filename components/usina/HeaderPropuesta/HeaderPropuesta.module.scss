@@ -1,0 +1,100 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.wrapper{
+    @include container-width-1;
+    display: grid;
+    grid-template-areas: 'left right';
+    grid-template-columns: 50% 50%; 
+    margin-bottom: calc(80px + (220 - 80) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        grid-template-areas: 'left' 'right';
+        grid-template-columns: 100%; 
+        margin-bottom: calc(30px + (100 - 30) * ((100vw - 300px) / (1024 - 300)));
+    }
+
+    .col_left{
+        grid-area: left;
+        padding-right: calc(88px + (360 - 88) * ((100vw - 1200px) / (3840 - 1200)));  
+        .back_arrow{
+            text-decoration: none;
+            span{
+                display: flex;
+                align-items: center;    
+                @include font-level-4;
+                color: $deep-blue;    
+                line-height: 105%;   
+                margin-bottom: calc(36px + (80 - 36) * ((100vw - 1200px) / (3840 - 1200)));   
+                @media screen and (max-width: 1024px){
+                    margin-bottom: calc(25px + (80 - 25) * ((100vw - 300px) / (1024 - 300)));
+                }                            
+                img{
+                    width: calc(12px + (28 - 12) * ((100vw - 1200px) / (3840 - 1200)));
+                    height: auto;
+                    margin-right: calc(10px + (26 - 10) * ((100vw - 1200px) / (3840 - 1200)));
+                    @media screen and (max-width: 1024px){
+                        width: calc(10px + (22 - 10) * ((100vw - 300px) / (1024 - 300)));
+                    }
+                }
+                strong{
+                    font-weight: 400;
+                    border-bottom: $line-2 solid $yellow-1; 
+                }                      
+            }                       
+        }
+        .title{
+            @include font-level-2;
+            line-height: 130%;
+            font-weight: 400;     
+            color: $deep-blue;  
+            margin-bottom: calc(36px + (80 - 36) * ((100vw - 1200px) / (3840 - 1200))); 
+            @media screen and (max-width: 1024px){
+                @include font-level-1;
+                line-height: normal;
+                margin-bottom: calc(20px + (80 - 20) * ((100vw - 300px) / (1024 - 300)));
+            }
+        }        
+        p{
+            @include font-level-4;
+            color: $deep-blue;
+            font-weight: 400;
+            line-height: 144%;
+            margin-bottom: calc(30px + (100 - 30) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1024px){
+                margin-bottom: calc(20px + (80 - 20) * ((100vw - 300px) / (1024 - 300)));
+            }
+        } 
+        .triangles{
+            p{
+                display: inline-block;       
+                background-image: url(../../../public/assets/icons/triangle_green_icon.svg);         
+                background-repeat: no-repeat;
+                background-size: auto 62%;
+                background-position: left center;   
+                margin-bottom: 0;
+                padding-left: calc(16px + (40 - 16) * ((100vw - 1200px) / (3840 - 1200)));   
+                @media screen and (max-width: 1024px){
+                    padding-left: calc(21px + (45 - 21) * ((100vw - 300px) / (1024 - 300)));
+                }          
+                &:nth-child(1){
+                    margin-right: calc(18px + (70 - 18) * ((100vw - 1200px) / (3840 - 1200)));
+                    @media screen and (max-width: 1024px){
+                        margin-right: calc(12px + (45 - 12) * ((100vw - 300px) / (1024 - 300)));
+                    }
+                }
+            }
+        } 
+        .poster{
+            width: 100%;
+            height: auto;
+        }   
+    }
+
+    .col_right{
+        grid-area: right;
+        padding-top: calc(50px + (120 - 50) * ((100vw - 1200px) / (3840 - 1200)));  
+        .poster{
+            width: 100%;
+            height: auto;
+        }
+    }     
+}
