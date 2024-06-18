@@ -1,0 +1,70 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.wrapper{
+    position: relative;
+    @include container-width-1;
+    //background-color: antiquewhite;
+
+    h2{
+        font-size: calc(148px + (408 - 148) * ((100vw - 1200px) / (3840 - 1200)));    
+        text-transform: uppercase;
+        color: $deep-blue;
+        font-weight: 600;
+        line-height: 100%;
+        margin-left: calc(-8px + (-20 - -8) * ((100vw - 1200px) / (3840 - 1200)));
+        margin-bottom: calc(45px + (100 - 45) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){ 
+            font-size: calc(40px + (170 - 40) * ((100vw - 300px) / (1200 - 300)));   
+            margin-bottom: calc(25px + (75 - 25) * ((100vw - 300px) / (1024 - 300)));          
+        }
+    }
+
+    .video_pill{
+        position: absolute;
+        width: calc(325px + (880 - 325) * ((100vw - 1200px) / (3840 - 1200)));
+        height: calc(125px + (350 - 125) * ((100vw - 1200px) / (3840 - 1200)));
+        top: calc(10px + (22 - 10) * ((100vw - 1200px) / (3840 - 1200)));
+        right: 0;
+        border-radius: calc(148px + (408 - 148) * ((100vw - 1200px) / (3840 - 1200)));
+        overflow: hidden;
+        @media screen and (max-width: 1024px){
+            top: calc(2px + (10 - 2) * ((100vw - 300px) / (1200 - 300)));
+            width: calc(84px + (350 - 84) * ((100vw - 300px) / (1200 - 300)));
+            height: calc(35px + (148 - 35) * ((100vw - 300px) / (1200 - 300)));
+        } 
+        video{
+           width: 100%; 
+           height: auto;           
+        }
+    }
+
+    p{
+        @include font-level-2; 
+        font-weight: 400;
+        line-height: 130%;
+        color: $deep-blue;
+        width: calc(900px + (2350 - 900) * ((100vw - 1200px) / (3840 - 1200))); 
+        margin-bottom: calc(80px + (280 - 80) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            width: 100%;
+            margin-bottom: calc(40px + (145 - 40) * ((100vw - 300px) / (1024 - 300)));
+        }
+        span{
+            background-image: url(../../../public/assets/images/line_bottom_yellow.svg);
+            background-repeat: repeat-x;
+            background-size: 
+            calc(30px + (90 - 30) * ((100vw - 1200px) / (3840 - 1200)))
+            calc(8px + (16 - 8) * ((100vw - 1200px) / (3840 - 1200)));
+            background-position: bottom;
+            padding-bottom: calc(3.5px + (10 - 3.5) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1024px){
+                background-size: 
+                calc(16px + (60 - 16) * ((100vw - 300px) / (1024 - 300)))
+                calc(10px + (20 - 10) * ((100vw - 300px) / (1024 - 300)));
+                background-position: bottom;
+                padding-bottom: calc(4.5px + (8 - 4.5) * ((100vw - 300px) / (1024 - 300)));
+            }
+        }    
+    }
+
+}
