@@ -6,6 +6,11 @@
     grid-template-areas: 'left right';
     grid-template-columns: 50% 50%; 
     margin-bottom: calc(80px + (220 - 80) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        grid-template-areas: 'left' 'right';
+        grid-template-columns: 100% 100%; 
+        margin-bottom: calc(50px + (150 - 50) * ((100vw - 300px) / (1024 - 300)));
+    }
     
     h3{
         @include font-level-2;    
@@ -13,6 +18,9 @@
         line-height: 120%; 
         color: $deep-blue;
         margin-bottom: calc(22px + (45 - 22) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1025px){
+            margin-bottom: calc(15px + (45 - 15) * ((100vw - 300px) / (1200 - 300)));                                    
+        }
     }
 
     p{
@@ -21,14 +29,17 @@
         color: $deep-blue;
         margin-bottom: calc(15px + (45 - 15) * ((100vw - 1200px) / (3840 - 1200)));
         @media screen and (max-width: 1024px){
-            margin-bottom: calc(20px + (55 - 20) * ((100vw - 300px) / (1024 - 300)));
+            margin-bottom: calc(15px + (45 - 15) * ((100vw - 300px) / (1024 - 300)));
         }
     }
 
     .col_left{
         grid-area: left;
         padding-top: calc(20px + (70 - 20) * ((100vw - 1200px) / (3840 - 1200)));  
-        padding-right: calc(50px + (240 - 50) * ((100vw - 1200px) / (3840 - 1200)));          
+        padding-right: calc(50px + (240 - 50) * ((100vw - 1200px) / (3840 - 1200)));     
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(35px + (135 - 35) * ((100vw - 300px) / (1024 - 300)));
+        }     
         p{
             margin-bottom: calc(15px + (60 - 15) * ((100vw - 1200px) / (3840 - 1200)));
             @media screen and (max-width: 1024px){
@@ -75,7 +86,7 @@
             .textarea{
                 margin-bottom: calc(18px + (50 - 18) * ((100vw - 1200px) / (3840 - 1200)));
                 @media screen and (max-width: 1025px){
-                    margin-bottom: calc(15px + (40 - 16) * ((100vw - 300px) / (1200 - 300)));                                    
+                    margin-bottom: calc(15px + (40 - 15) * ((100vw - 300px) / (1200 - 300)));                                    
                 }
             }
             .send_btn{
@@ -87,12 +98,18 @@
     .col_right{
         grid-area: right;
         padding-left: calc(40px + (220 - 40) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            padding-left: 0;
+        }
         .tariffs{
             background-color: $gray-6;
             padding:
             calc(20px + (70 - 20) * ((100vw - 1200px) / (3840 - 1200)))
             calc(30px + (95 - 30) * ((100vw - 1200px) / (3840 - 1200)))
-            ;            
+            ;  
+            @media screen and (max-width: 1024px){
+                padding: calc(12px + (24 - 12) * ((100vw - 300px) / (1024 - 300)));
+            }          
             .prices{
                 display: grid;
                 grid-template-areas: 'left right';
@@ -100,11 +117,17 @@
                 border-bottom: $line-1 solid $gray-3;
                 padding-bottom: calc(22px + (65 - 22) * ((100vw - 1200px) / (3840 - 1200)));
                 margin-bottom: calc(22px + (65 - 22) * ((100vw - 1200px) / (3840 - 1200)));
+                @media screen and (max-width: 1024px){
+                    grid-template-areas: 'left' 'right';
+                    grid-template-columns: 100% 100%; 
+                    padding-bottom: calc(15px + (40 - 15) * ((100vw - 300px) / (1024 - 300)));
+                    margin-bottom: calc(15px + (45 - 15) * ((100vw - 300px) / (1024 - 300)));
+                } 
                 p{                    
                     margin-bottom: 0;
                     &.price{
                         @include font-level-3;
-                        font-weight: 500;
+                        font-weight: 500; 
                         span{
                             font-weight: 300;
                         }
@@ -112,6 +135,9 @@
                 }              
                 .left{
                     grid-area: left;
+                    @media screen and (max-width: 1025px){
+                        margin-bottom: calc(15px + (45 - 15) * ((100vw - 300px) / (1200 - 300)));                                    
+                    }
                 }
                 .right{
                     grid-area: right;
@@ -125,6 +151,9 @@
                 background-position: left center;
                 background-size: auto 85%;
                 padding-left: calc(18px + (45 - 18) * ((100vw - 1200px) / (3840 - 1200)));
+                @media screen and (max-width: 1024px){
+                    padding-left: calc(15px + (35 - 15) * ((100vw - 300px) / (1024 - 300)));
+                } 
                 @media screen and (min-width: 1024px){
                     &:hover{
                         text-decoration: underline;
@@ -136,6 +165,10 @@
                 background-color: $yellow-1;
                 border: $yellow-1;
                 margin-top: calc(5px + (25 - 5) * ((100vw - 1200px) / (3840 - 1200)));
+                @media screen and (max-width: 1024px){
+                    border: $yellow-1;
+                    margin-top: calc(4px + (8 - 4) * ((100vw - 300px) / (1024 - 300)));
+                }
             }
         }
     }

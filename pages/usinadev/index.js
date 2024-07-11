@@ -11,7 +11,6 @@ import KeysBox from '../../components/library/KeysBox/KeysBox';
 import Quotes from '../../components/library/Quotes/Quotes';
 import ParagraphAndButton from '../../components/asesorias/ParagraphAndButton/ParagraphAndButton';
 import Footer from '../../components/library/Footer/Footer';
-//import PageBuilder from '../../components/PageBuilder/PageBuilder';
 import styles from "./usina.module.scss";
 
 export default function Usina({/* data */}){
@@ -64,19 +63,19 @@ export default function Usina({/* data */}){
 
     const dataKeysBox =[
         {
-            "img": "https://redaccion.pent.org.ar/sites/default/files/2023-06/keyFeatures1.svg",            
+            "img": "/assets/images/usina/usina_keyfeatures_1.svg",            
             "description": "Propuestas que otorgan certificación del PENT FLACSO una palabra."
         },
         {
-            "img": "https://redaccion.pent.org.ar/sites/default/files/2023-06/keyFeatures1.svg",            
+            "img": "/assets/images/usina/usina_keyfeatures_2.svg",            
             "description": "Inscripción abierta a personas extranjeras y residentes en el exterior."
         },
         {
-            "img": "https://redaccion.pent.org.ar/sites/default/files/2023-06/keyFeatures1.svg",            
+            "img": "/assets/images/usina/usina_keyfeatures_3.svg",            
             "description": "Capacitación con tiempos flexibles en modalidad virtual loren ipsum."
         },
         {
-            "img": "https://redaccion.pent.org.ar/sites/default/files/2023-06/keyFeatures1.svg",            
+            "img": "/assets/images/usina/usina_keyfeatures_4.svg",            
             "description": "Aprendizaje con guía y acompamiento de tutores y tutoras loren ipsum."
         }
     ]
@@ -196,7 +195,7 @@ export default function Usina({/* data */}){
                 </div>
 
                 <ParagraphAndButton 
-                    paragraph={"Si te interesa una propuesta de la Usina para tu institución o grupo cerrado, escribinos a <span>asesoriaspent@flacso.org.ar</span>."}
+                    paragraph={'Si te interesa una propuesta de la Usina para tu institución o grupo cerrado, escribinos a <a href="mailto:usinapent@flacso.org.ar" rel="noopener noreferrer">usinapent@flacso.org.ar</a>'}
                     iconBtn={"https://redaccion.pent.org.ar/sites/default/files/2023-06/mail_icon.svg"}
                     urlBtn={"mailto:asesoriaspent@flacso.org.ar"}
                 /> 

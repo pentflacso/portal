@@ -38,6 +38,11 @@
 
         .brand{  
             line-height: 0px;
+            transition: all .1s;
+            &.hidden{
+                opacity: 0;
+                transition: all .1s;
+            }
             a{
                 background-image: url('/assets/images/marca_flacso_pent.svg');
                 background-repeat: no-repeat;
