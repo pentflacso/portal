@@ -1,5 +1,5 @@
-import { useRef, useEffect, useState } from 'react';
-import { useAppContext } from '../../context/AppContext';
+import { useRef, useEffect, useLayoutEffect, useState } from 'react';
+//import { useAppContext } from '../../context/AppContext';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import NavBarUsina from '../../components/usina/NavBarUsina/NavBarUsina';
 import HeaderPropuesta from '../../components/usina/HeaderPropuesta/HeaderPropuesta';
@@ -14,16 +14,17 @@ import KeysBox from '../../components/library/KeysBox/KeysBox';
 import ParagraphAndButton from '../../components/asesorias/ParagraphAndButton/ParagraphAndButton';
 import Footer from '../../components/library/Footer/Footer';
 //import PageBuilder from '../../components/PageBuilder/PageBuilder';
-import { gsap } from 'gsap';
+//import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import styles from "./propuesta.module.scss";
 
 export default function Index({/* data */}){
 
-  const { currentRoute, windowSize } = useAppContext();
+  //const { currentRoute, windowSize } = useAppContext();
   const container = useRef();
-  const navBarBrand = useRef();  
-  const [ inscriptionBtnStatus, setInscriptionBtnStatus ] = useState(false);
+  const navBarBrand = useRef();
+  const [ elementHeight, setElementHeight ] = useState(0);  
+  const [ brandVisibility, setBrandVisibility ] = useState(true);
 
     const dataCards = [
         {
@@ -74,22 +75,22 @@ export default function Index({/* data */}){
     ]
 
     const dataKeysBox = [
-        {
-            "img": "https://redaccion.pent.org.ar/sites/default/files/2023-06/keyFeatures1.svg",            
-            "description": "Propuestas que otorgan certificación del PENT FLACSO una palabra."
-        },
-        {
-            "img": "https://redaccion.pent.org.ar/sites/default/files/2023-06/keyFeatures1.svg",            
-            "description": "Inscripción abierta a personas extranjeras y residentes en el exterior."
-        },
-        {
-            "img": "https://redaccion.pent.org.ar/sites/default/files/2023-06/keyFeatures1.svg",            
-            "description": "Capacitación con tiempos flexibles en modalidad virtual loren ipsum."
-        },
-        {
-            "img": "https://redaccion.pent.org.ar/sites/default/files/2023-06/keyFeatures1.svg",            
-            "description": "Aprendizaje con guía y acompamiento de tutores y tutoras loren ipsum."
-        }
+      {
+        "img": "/assets/images/usina/usina_keyfeatures_1.svg",            
+        "description": "Propuestas que otorgan certificación del PENT FLACSO una palabra."
+      },
+      {
+          "img": "/assets/images/usina/usina_keyfeatures_2.svg",            
+          "description": "Inscripción abierta a personas extranjeras y residentes en el exterior."
+      },
+      {
+          "img": "/assets/images/usina/usina_keyfeatures_3.svg",            
+          "description": "Capacitación con tiempos flexibles en modalidad virtual loren ipsum."
+      },
+      {
+          "img": "/assets/images/usina/usina_keyfeatures_4.svg",            
+          "description": "Aprendizaje con guía y acompamiento de tutores y tutoras loren ipsum."
+      }
     ]
 
     const dataAccordion = [
@@ -143,7 +144,7 @@ export default function Index({/* data */}){
               "alt": "Fabio Tarasow",
               "url": "https://redaccion.pent.org.ar/sites/default/files/2023-06/fabio_tarasow.png"
             },
-            "linked_path": [{ "title": "", "src": "https://pent-portal-testing.vercel.app/equipo/fabio-tarasow" }],
+            "linked_path": [{ "title": "", "src": "https://pent.flacso.org.ar/equipo/fabio-tarasow" }],
             "cta_title": [{ "value": "Fabio Tarasow" }]
         },
         {
@@ -157,7 +158,7 @@ export default function Index({/* data */}){
               "alt": "Mónica Trech",
               "url": "https://redaccion.pent.org.ar/sites/default/files/2023-07/monica_trech.png"
             },
-            "linked_path": [{ "title": "", "src": "https://pent-portal-testing.vercel.app/equipo/fabio-tarasow" }],
+            "linked_path": [{ "title": "", "src": "https://pent.flacso.org.ar/equipo/monica-trech" }],
             "cta_title": [{ "value": "Mónica Trech" }]
         },
         {
@@ -171,7 +172,7 @@ export default function Index({/* data */}){
               "alt": "Gisela Schwartzman",
               "url": "https://redaccion.pent.org.ar/sites/default/files/2023-07/gisela_schwartzman.png"
             },
-            "linked_path": [{ "title": "", "src": "https://pent-portal-testing.vercel.app/equipo/fabio-tarasow" }],
+            "linked_path": [{ "title": "", "src": "https://pent.flacso.org.ar/equipo/gisela-schwartzman" }],
             "cta_title": [{ "value": "Gisela Schwartzman" }]
         },
         {
@@ -185,59 +186,38 @@ export default function Index({/* data */}){
               "alt": "Corina Rogovsky",
               "url": "https://redaccion.pent.org.ar/sites/default/files/2023-07/monica_trech.png"
             },
-            "linked_path": [{ "title": "", "src": "https://pent-portal-testing.vercel.app/equipo/fabio-tarasow" }],
+            "linked_path": [{ "title": "", "src": "https://pent.flacso.org.ar/equipo/corina-rogovsky" }],
             "cta_title": [{ "value": "Corina Rogovsky" }]
         }
     ]
 
+  useLayoutEffect(() => {
+    if(container.current){
+      const resizeObserver = new ResizeObserver(() => {
+        setElementHeight(container.current.offsetHeight);
+      });
+      resizeObserver.observe(container.current);
+      return () => resizeObserver.disconnect();
+    }    
+  }, []);
 
-  useEffect(() => {
-
-    let ctx;
-
-    const t = gsap.to(navBarBrand.current, {
-      opacity: 0,
-      duration: 0.2,
-      paused: true,
+  useEffect(() => {   
+    setBrandVisibility(true);
+    let st = ScrollTrigger.create({
+      trigger: navBarBrand.current,
+      start: "top top",
+      end: "top top",
+      onEnter: () => setBrandVisibility(false),
+      onEnterBack: () => setBrandVisibility(true),
     });
-
-    ctx = gsap.context(() => {                
-      ScrollTrigger.create({
-        trigger: container.current,
-        start: "top top", 
-        end: '+=5000%',   
-        onEnter: function onEnter() {
-          t.play();
-          setInscriptionBtnStatus(true);
-        },
-        onEnterBack: function onEnterBack() {
-          t.play();
-          setInscriptionBtnStatus(true);
-        },
-        onLeave: function onLeave() {
-          t.reverse();
-          setInscriptionBtnStatus(false);
-        },
-        onLeaveBack: function onLeaveBack() {
-          t.reverse();
-          setInscriptionBtnStatus(false);
-        }, 
-        //markers: true        
-      });         
-    }, container);
-
-    return () => {
-      ctx.revert();
-      //ScrollTrigger.getAll().forEach(t => t.kill());
-    }
-
-  }, [currentRoute, windowSize]);
+    return () => st.revert();      
+  }, [elementHeight]);
 
 
   return(
         <>      
           {/* La barra de navegación irá por fuera del PageBuilder */} 
-          <NavBarUsina refNavBrand={navBarBrand} startDate={"Inicio 18 de junio"} inscriptionBtnStatus={inscriptionBtnStatus} />
+          <NavBarUsina refNavBrand={navBarBrand} brandVisibility={brandVisibility} startDate={"Inicio 18 de junio"} />
             
           <div ref={container}>
 
@@ -307,7 +287,7 @@ export default function Index({/* data */}){
                 </div>
 
                 <ParagraphAndButton 
-                    paragraph={"Si te interesa una propuesta de la Usina para tu institución o grupo cerrado, escribinos a <span>asesoriaspent@flacso.org.ar</span>."}
+                    paragraph={'Si te interesa una propuesta de la Usina para tu institución o grupo cerrado, escribinos a <a href="mailto:usinapent@flacso.org.ar" rel="noopener noreferrer">usinapent@flacso.org.ar</a>.'}
                     iconBtn={"https://redaccion.pent.org.ar/sites/default/files/2023-06/mail_icon.svg"}
                     urlBtn={"mailto:asesoriaspent@flacso.org.ar"}
                 /> 
