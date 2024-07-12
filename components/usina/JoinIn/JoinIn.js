@@ -7,7 +7,7 @@ export default function JoinIn(){
 
             <div className={styles.col_left}>
                 <h3>Consultas</h3>
-                <p>Completá el siguiente formulario y nos pondremos en contacto para responder tus dudas, o escribinos a <a href='' rel="noopener noreferrer" target="_blank" className="inscripcion_btn">usinapent@flacso.org.ar</a>.</p>
+                <p>Completá el siguiente formulario y nos pondremos en contacto para responder tus dudas, o escribinos a <a href="mailto:usinapent@flacso.org.ar" rel="noopener noreferrer">usinapent@flacso.org.ar</a>.</p> 
 
                 <form className={styles.inquiry_form}>
                     <input className={styles.input} type="text" name="Nombre" placeholder="Nombre" data-required="true" required />                    
@@ -20,7 +20,6 @@ export default function JoinIn(){
 
                     <button type="submit" className={styles.send_btn}>Enviar</button>
                 </form>
-
             </div>
 
             <div className={styles.col_right}>

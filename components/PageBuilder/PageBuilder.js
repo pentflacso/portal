@@ -82,7 +82,7 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                             <SectionSelector data={data.MemberData} data-order={i} />
                         }
                         {data.block_type === "skillbox" && 
-                            <KeysBox data={data.keyFeatures}  data-order={i} />
+                            <KeysBox data={data.keyFeatures} data-order={i} />
                         }
                         {data.block_type === "marquee" && 
                                     <TextMarquee data={data.marquee} />
