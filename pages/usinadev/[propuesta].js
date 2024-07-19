@@ -12,6 +12,7 @@ import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import KeysBox from '../../components/library/KeysBox/KeysBox';
 import ParagraphAndButton from '../../components/asesorias/ParagraphAndButton/ParagraphAndButton';
+import Quotes from '../../components/library/Quotes/Quotes';
 import Footer from '../../components/library/Footer/Footer';
 //import PageBuilder from '../../components/PageBuilder/PageBuilder';
 //import { gsap } from 'gsap';
@@ -191,6 +192,58 @@ export default function Index({/* data */}){
         }
     ]
 
+    const dataQuotes =[
+      {
+          "description": [
+            {
+              "value": "\u201cAprend\u00ed a analizar y evaluar c\u00f3mo se gestionan las TIC en las instituciones, a planificar y dise\u00f1ar proyectos. Destaco la variedad de contenidos, formatos y lenguajes en todo el recorrido.\u201d"
+            }
+          ],
+          "img": {
+            "alt": "Imagen de Silvina Servedio",
+            "url": "https://redaccion.pent.org.ar/sites/default/files/2023-07/silvina_servedio_img_cita_1.jpg"
+          },
+          "subtitle": [
+            {
+              "value": "Estudiante de la Diplomatura superior\u003Cbr\u003E  en educaci\u00f3n y nuevas tecnolog\u00edas"
+            }
+          ],
+          "name": [{ "value": "Silvina Paula Servedio" }]
+      },
+      {
+          "description": [
+            {
+              "value": "\u201cMe fascin\u00f3 el an\u00e1lisis de los desaf\u00edos sociotecnol\u00f3gicos que tenemos por delante en el campo, desde una preocupaci\u00f3n educativa y \u00e9tica que busca actuar de modo integral en la realidad social.\u201d"
+            }
+          ],
+          "img": {
+            "alt": "Imagen de Cristian Morales",
+            "url": "https://redaccion.pent.org.ar/sites/default/files/2023-07/cristian_morales_img_cita_1.jpg"
+          },
+          "subtitle": [
+            {
+              "value": "Estudiante de la Diplomatura superior\u003Cbr\u003E  en educaci\u00f3n y nuevas tecnolog\u00edas"
+            }
+          ],
+          "name": [{ "value": "Cristian Emanuel Morales" }]
+      },
+      {
+          "description": [
+            {
+              "value": "\u201cLa experiencia me dio pautas sobre la motivaci\u00f3n, la necesidad de meterse en los relatos, el jugar y desestructurar la actividad, aprovechar las posibilidades de los lenguajes, y c\u00f3mo integrar todo esto en las clases.\u201d"
+            }
+          ],
+          "img": {
+            "alt": "Imagen de Mar\u00eda Angelina Denti",
+            "url": "https://redaccion.pent.org.ar/sites/default/files/2023-08/maria_angelina_denti_img_cita_0.webp"
+          },
+          "subtitle": [
+            { "value": "Estudiante del taller Narrativa transmedia" }
+          ],
+          "name": [{ "value": "Mar\u00eda Angelina Denti" }]
+      }
+  ]
+
   useLayoutEffect(() => {
     if(container.current){
       const resizeObserver = new ResizeObserver(() => {
@@ -245,6 +298,12 @@ export default function Index({/* data */}){
                 <div className={styles.team}>
                     <CvSelector data={dataTeam}/>  
                 </div> 
+
+                <div className={styles.marquee_2}>
+                    <TextMarquee data={[{ value: "TESTIMONIOS" }]} />
+                </div>
+
+                <Quotes items={dataQuotes}/> 
 
                 <div className={styles.marquee}>
                     <TextMarquee data={[{ value: "SUMATE" }]} />
