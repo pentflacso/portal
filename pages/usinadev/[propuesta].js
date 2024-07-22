@@ -299,17 +299,17 @@ export default function Index({/* data */}){
                     <CvSelector data={dataTeam}/>  
                 </div> 
 
-                <div className={styles.marquee_2}>
-                    <TextMarquee data={[{ value: "TESTIMONIOS" }]} />
-                </div>
-
-                <Quotes items={dataQuotes}/> 
-
                 <div className={styles.marquee}>
                     <TextMarquee data={[{ value: "SUMATE" }]} />
                 </div> 
 
                 <JoinIn />
+
+                <div className={styles.marquee_2}>
+                    <TextMarquee data={[{ value: "TESTIMONIOS" }]} />
+                </div>
+
+                <Quotes items={dataQuotes}/> 
 
                 <div className={styles.marquee}>
                     <TextMarquee data={[{ value: "OTRAS PROPUESTAS" }]} />
