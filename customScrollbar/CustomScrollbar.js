@@ -102,6 +102,19 @@ export default function Layout({ children, ...rest }) {
     }
   }, [advancedFilterStatus]);
 
+  useEffect(() => {
+    const hash = router.asPath.split('#')[1];
+    if (hash) {
+      const element = document.getElementsByName(hash)[0];
+      if (element) {
+        setTimeout(() => {
+          const elementPosition = element.getBoundingClientRect().top + scrollbar.current.scrollTop - 100;
+
+          scrollbar.current.scrollTo(0, elementPosition, 600);
+        }, 0); // El timeout puede ser ajustado según necesidad
+      }
+    }
+  }, [router.asPath]); // Escucha los cambios en la ruta, incluyendo el hash
 
   return (
     <div data-scrollbar ref={$content} {...rest} id="scroll-container"><main className='main-container'>{children}</main></div>

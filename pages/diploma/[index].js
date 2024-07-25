@@ -7,7 +7,7 @@ const HomePage = () => {
     const { url } = req; // Captura la URL actual.
   
     if (url) {
-      const destinationURL = `https://flacso.pent.org.ar/diploma/e-learning/`;
+      const destinationURL = `https://flacso.pent.org.ar/diploma`;
       res.writeHead(302, { Location: destinationURL });
       res.end();
     }

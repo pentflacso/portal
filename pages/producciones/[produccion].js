@@ -15,233 +15,210 @@ import DownloadModal from '../../components/library/DownloadModal/DownloadModal'
 import styles from './produccion.module.scss';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 
-function Index({ dataProduct, prevUrl, pathName }) {
-    const { windowSize, setCurrentArticleHashtag, setDataStrip, itemStorage, setItemstorage } = useAppContext();
+function Index({dataProduct , prevUrl, pathName}){
 
-    const [modal, setModal] = useState('hidden');
-    const [elementHeight, setElementHeight] = useState(0);
-    const router = useRouter();
+    const { windowSize, setCurrentArticleHashtag, setDataStrip } = useAppContext();
+    const [ modal, setModal ] = useState('hidden');  
+    const [ elementHeight, setElementHeight ] = useState(0);  
+    const router = useRouter();  
     const element = useRef(null);
-    let { strip, ...data } = dataProduct;
-
-    const [stringPrevUrl, setStringPrevUrl] = useState("Ver producciones");
-
-
-    const license = `<p>La producción ${data.title} se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Disponible en: <a href="${data.link ? data.link : data.url}" target="_blank">${data.link ? data.link : data.url}</a></p>`
+    let {strip, ...data} = dataProduct;
+    
+    const [ stringPrevUrl , setStringPrevUrl ]= useState("Ver producciones");  
 
 
-    const metaLicense = `La producción ${data.title} se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Disponible en: ${data.link ? data.link : data.url}`;
+    const license = `<p>La producción ${ data.title } se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Disponible en: <a href="${ data.link ? data.link : data.url }" target="_blank">${ data.link ? data.link : data.url }</a></p>`  
+
+
+    const metaLicense = `La producción ${ data.title } se encuentra bajo licencia Creative Commons Attribution-NonCommercial-NoDerivs 3.0 Unported License. Disponible en: ${ data.link ? data.link : data.url }`;
 
     const exploringBtnsData = [
-        { title: 'Propuestas de formación', path: '/formacion' },
-        { title: 'Asesorías y soluciones a medida', path: '/asesorias' },
-        { title: 'Investigación y divulgación', path: '/investigacion' }
-    ]
-
-    //Variable para cambiar el estado del Modal
-    useEffect(() => {
-        if (localStorage.getItem("downloadModal") == "true") {
-            setItemstorage(true);
-        } else {
-            setItemstorage(false);
-        }
-        console.log("Boton Modal De descarga: ", itemStorage);
-    }, [itemStorage]);
-
+        {title: 'Propuestas de formación', path: '/formacion'},        
+        {title: 'Asesorías y soluciones a medida', path: '/asesorias'},
+        {title: 'Investigación y divulgación', path: '/investigacion'}
+    ] 
 
     useEffect(() => {
         setDataStrip(strip);
 
         setStringPrevUrl(
-            prevUrl == "/producciones" ?
-                "Ver producciones" :
-                `Volver a ${pathName[0]}`
+            prevUrl == "/producciones" ? 
+                "Ver producciones" : 
+                `Volver a ${pathName[0]}` 
         );
-    }, []);
+
+    }, []);   
 
 
     useEffect(() => {
-        if (windowSize >= 1025) {
+        if(windowSize >= 1025 ){
             if (!element.current) return;
             const resizeObserver = new ResizeObserver(() => {
-                setElementHeight(element.current.offsetHeight);
+            setElementHeight(element.current.offsetHeight);
             });
-            resizeObserver.observe(element.current);
+            resizeObserver.observe(element.current);            
             return () => resizeObserver.disconnect();
         }
-    }, [elementHeight, windowSize]);
+      }, [elementHeight, windowSize]);
+      
+    
+    useEffect(() => {   
 
-
-    useEffect(() => {
-
-        if (windowSize >= 1025) {
+        if(windowSize >= 1025 ){    
 
             ScrollTrigger.create({
                 trigger: `#__next`,
-                start: "top top",
-                end: () => `+=${elementHeight} center`,
+                start: "top top", 
+                end: () => `+=${elementHeight} center`,            
                 pin: `.${styles.col_left}`,
                 pinSpacing: false,
                 scrub: true,
-            });
-
+            });     
+            
             return () => {
-                ScrollTrigger.getAll().forEach(t => t.kill());
-            };
-        }
-
-    }, [elementHeight]);
-
+                ScrollTrigger.getAll().forEach(t => t.kill());  
+            };         
+        }     
+         
+    }, [elementHeight]); 
+  
 
     const mobileShare = () => {
         if (navigator.share) {
-            navigator
-                .share({
-                    url: `https://pent.flacso.org.ar${router.asPath}`,
-                })
-                .then(() => {
-                    console.log("Successfully shared");
-                })
-                .catch((error) => {
-                    console.error("Something went wrong", error);
-                });
+          navigator
+            .share({
+              url: `https://pent.flacso.org.ar${router.asPath}`,
+            })
+            .then(() => {
+              console.log("Successfully shared");
+            })
+            .catch((error) => {
+              console.error("Something went wrong", error);
+            });
         }
     };
 
     const filterByTag = (value) => {
         router.push('/producciones');
 
-        setTimeout(function () {
-            setCurrentArticleHashtag(value);
-        }, 200);
+        setTimeout(function(){
+            setCurrentArticleHashtag(value);  
+        }, 200);                   
     };
 
-    return (
-        <>
-            <MetaTags
-                pageTitle={data.title + ' — FLACSO | PENT'}
-                shareTitle={data.title}
-                keywords={data.keywords}
-                description={data.teaser}
-                url={data.url}
-                img='https://pent.flacso.org.ar/assets/images/producciones_thumb_shared.jpg'
-            />
-            <MetaProducts
-                title={data.title}
-                description={data.teaser}
-                keywords={data.keywords}
-                author={data.authors ? data.authors.map((a, i) => (a.title)) : ""}
-                publisher={"FLACSO PENT"}
-                year={data.year && data.year}
-                resourceLink={data.link && data.link}
-                license={metaLicense && metaLicense}
-                category={data.types && data.types}
-                oaiIdentifier=""
-            />
+    return(
+    <>
+        <MetaTags      
+            pageTitle={ data.title + ' — FLACSO | PENT'}
+            shareTitle={ data.title }
+            keywords={ data.keywords }
+            description={ data.teaser }
+            url={ data.url }
+            img= 'https://pent.flacso.org.ar/assets/images/producciones_thumb_shared.jpg' 
+            />        
+        <MetaProducts 
+            title={data.title}        
+            description={data.teaser}        
+            keywords={ data.keywords }
+            author={ data.authors ? data.authors.map((a, i) => ( a.title ) )  : "" }
+            publisher={"FLACSO PENT"}
+            year={ data.year &&  data.year}
+            resourceLink={ data.link &&  data.link}
+            license={ metaLicense &&  metaLicense}
+            category={ data.types &&  data.types}
+            oaiIdentifier=""        
+        />
 
+        
+        <MainWrapper>
 
-            <MainWrapper>
+            {modal === 'share' && <ShareBtns shareurl={`https://pent.flacso.org.ar${router.asPath}`} setModal={setModal} />}
+            {modal === 'download' && <DownloadModal archive={data.download} setModal={setModal} />}   
 
-                {modal === 'share' && <ShareBtns shareurl={`https://pent.flacso.org.ar${router.asPath}`} setModal={setModal} />}
-                {modal === 'download' && <DownloadModal archive={data.download} setModal={setModal} />}
-
-
-                <div className={styles.pin_block} ref={element}>
-                    <header className={styles.col_left}>
-                        <Link className={styles.back_arrow} href={prevUrl} ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha" /><strong>{stringPrevUrl}</strong></span></Link>
+            
+                <div className={styles.pin_block} ref={element}> 
+                    <header className={styles.col_left}>                
+                        <Link className={styles.back_arrow} href={prevUrl} ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>{stringPrevUrl}</strong></span></Link>
                         <h1>{data.title}</h1>
-                        {data.authors ?
+                        { data.authors ?
                             <div className={styles.authors}>
                                 <p>{data.types} | {data.year} | <span>Por —</span>&nbsp;</p>
                                 {data.authors.map((a, i) => (
                                     <Fragment key={i}>
-                                        <Link href={a.link}>{a.title}<span>{i < data.authors.length - 1 ? "," : ""}</span></Link>
-                                        &nbsp;
+                                    <Link  href={a.link}>{a.title}<span>{i<data.authors.length -1 ? "," : ""}</span></Link>
+                                    &nbsp;
                                     </Fragment>
-                                ))}
+                                ) ) } 
                             </div> : ""
                         }
-
                         <div className={styles.btns}>
                             {windowSize >= 1025 ?
-                                <button type="button" className={`${styles.btn} ${styles.share}`} onClick={() => setModal('share')}><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir" />Compartir</span></button>
-                                :
-                                <button type="button" className={`${styles.btn} ${styles.share}`} onClick={() => mobileShare()}><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir" />Compartir</span></button>
-                            }
+                                <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => setModal('share') }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
+                            :
+                                <button type="button" className={`${styles.btn} ${styles.share}`} onClick={ () => mobileShare() }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
+                            }    
 
-                            {data.download &&
-                                itemStorage == false ?
-                                <button type="button" className={`${styles.btn} ${styles.download}`} onClick={() => setModal('download')}>
-                                    <span id="produccionBtnLinkAndDownloadCTA"><img src={`/assets/icons/download_icon.svg`} alt="icono de descarga" />Descargar</span>
-                                </button>
-                                :
-                                <Link className={`${styles.btn} ${styles.download}`} href={data.download} target="_blank">
-                                    <span id="produccionBtnLinkAndDownloadCTA"><img src="/assets/icons/download_icon.svg" alt="icono de descarga" />Descargar</span>
-                                </Link>
-                            }
+                            {/* { data.download && <button type="button" className={`${styles.btn} ${styles.download}`} onClick={ () => setModal('download') }><span><img src={`/assets/icons/download_icon.svg`} alt="icono de descarga"/>Descargar</span></button>}
 
-                            {data.link && <Link className={`${styles.btn} ${styles.link}`} href={data.link} target="_blank"><span id="produccionBtnLinkAndDownloadCTA"><img src={`/assets/icons/access_icon.svg`} alt="icono de accesoi" />Acceder</span></Link>}
+                            { data.link && <Link className={`${styles.btn} ${styles.link}`} href={ data.link } target="_blank"><span><img src={`/assets/icons/access_icon.svg`} alt="icono de accesoi"/>Acceder</span></Link> }   */}    
 
-                            {/* { data.download || data.link ? <Link className={data.download ? `${styles.btn} ${styles.download}` : `${styles.btn} ${styles.link}`} href={ data.download ? data.download : data.link } target="_blank"><span id="produccionBtnLinkAndDownloadCTA" ><img src={data.download ? `/assets/icons/download_icon.svg` : `/assets/icons/access_icon.svg` } alt="icono de descarga"/>{ data.download ? "Descargar" : "Acceder" }</span></Link> : "" }  */}
+                            { data.download || data.link ? <Link className={data.download ? `${styles.btn} ${styles.download}` : `${styles.btn} ${styles.link}`} href={ data.download ? data.download : data.link } target="_blank"><span id="produccionBtnLinkAndDownloadCTA" ><img src={data.download ? `/assets/icons/download_icon.svg` : `/assets/icons/access_icon.svg` } alt="icono de descarga"/>{ data.download ? "Descargar" : "Acceder" }</span></Link> : "" }                      
 
-                        </div>
+                        </div>                       
 
                     </header>
                     <article className={styles.col_right}>
-                        {data.body && <div className={styles.content} dangerouslySetInnerHTML={{ __html: data.body }} />}
+                        { data.body && <div className={styles.content} dangerouslySetInnerHTML={{__html: data.body }} /> }
 
-                        {data.hashtags &&
-                            <div className={styles.hashtags}>
-                                <p>Ver más de:</p>
-                                {data.hashtags.map((hashtags, key) => <button type="button" key={key} onClick={() => filterByTag(`${hashtags}`)}>{hashtags}</button>)}
-                            </div>
+                        { data.hashtags && 
+                        <div className={styles.hashtags}>
+                            <p>Ver más de:</p>
+                            { data.hashtags.map((hashtags , key) => <button type="button" key={key} onClick={ () => filterByTag(`${hashtags}`)}>{hashtags}</button>) }                            
+                        </div>
                         }
 
-                        {license ?
-                            <div className={styles.legal}>
-                                <div className={styles.box} dangerouslySetInnerHTML={{ __html: "<h4>Cómo citar</h4>" + `<p>${data.quote}</p>` }} />
-                                <div className={styles.box} dangerouslySetInnerHTML={{ __html: "<h4>Licencia</h4>" + `<p>${license}</p>` }} />
-                            </div>
-                            : ""}
+                        { license ?
+                                <div className={styles.legal}>                         
+                                    <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Cómo citar</h4>" + `<p>${ data.quote }</p>`}}/> 
+                                    <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>" + `<p>${license}</p>`}}/>               
+                                </div>
+                            : "" }
 
                     </article>
-                </div>
+                </div> 
                 <section>
                     <div className={styles.marquee}>
-                        <TextMarquee data={[{ value: "Seguir explorando" }]} />
+                        <TextMarquee data={[{value:"Seguir explorando"}]} />
                     </div>
-                    <ExploringBtns data={exploringBtnsData} />
+                    <ExploringBtns data={exploringBtnsData} />  
                 </section>
 
                 <Footer />
+            
+        </MainWrapper>
+        
 
-            </MainWrapper>
-
-
-        </>
+    </>
     );
 }
 
 export async function getServerSideProps(context) {
-    const { query } = context;
+    const {query} = context;
     // Fetch data from external API
     const res = await fetch(`https://redaccion.pent.org.ar/data/production/${query.produccion}`)
     const referrer = context.req.headers.referer;
-
+    
     let pathnameParts = "";
     let prevUrl = "";
 
-    if (referrer) {
+    if(referrer){
         //Pagina Interna
         const referrerURL = new URL(referrer);
         pathnameParts = referrerURL.pathname.split('/').filter(part => part);
+        
+        prevUrl = pathnameParts[1] && pathnameParts[1] == query.produccion ? "/producciones" : referrer;
 
-        if (referrerURL.origin.split('//')[1] == context.req.headers.host) {
-            prevUrl = pathnameParts[1] && pathnameParts[1] == query.produccion ? "/producciones" : referrer;
-        } else {
-            prevUrl = "/producciones";
-        }
-    } else {
+    }else{
         //Pagina Externa
         prevUrl = "/producciones"
     }
@@ -250,7 +227,7 @@ export async function getServerSideProps(context) {
     //MiddleWare 404 | 505
     const data = await handleServerRedirect(res);
 
-    return { props: { dataProduct: { ...data.props }, prevUrl: prevUrl, pathName: pathnameParts } };
+    return { props:{ dataProduct:{...data.props}, prevUrl: prevUrl, pathName: pathnameParts } };
 }
 
 export default Index;
