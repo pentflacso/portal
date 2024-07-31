@@ -4,46 +4,19 @@ import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 import styles from "./CvSelector.module.scss";
 
-export default function CvSelector({data}){    
+export default function CvSelector({persons}){    
 
     const { windowSize } = useAppContext();
 
-    const [dataSelector, setDataSeletor] = useState(data);
+    const [dataSelector, setDataSeletor] = useState(persons);
 
 
-    //Crea las variables que se consume de la API. 
-    useEffect(() => {
-        const newDataSelector = data.map((item, index) => {
-            const hyphenated = item.picture.alt.replace(/\s+/g, '-');
-  
-            // Obtener la primera palabra
-            const firstWord = hyphenated.split('-')[0].toLowerCase();
-            
-            // Obtener las iniciales de las palabras restantes en minúscula y sin acentos
-            const initials = hyphenated.split('-').slice(1).map(word => word.charAt(0).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '')).join('');
-            
-            // Concatenar la primera palabra y las iniciales
-            const id = `${firstWord}-${initials}`;
-            const title = item.cta_title[0].value;
-            const picture = item.picture.url;
-            const name = item.picture.alt;
-            const description = item.description[0].value;
-            const link = item.linked_path[0].src;
-
-            return { id, link, title, description, name , picture  , key: index };
-        });
-        
     
-        setDataSeletor(newDataSelector);
-    }, [data]);
 
 
+    const [ personSelected, setpersonSelected ] = useState(persons[0].nid);
 
-    const [ titleSelected, setTitleSelected ] = useState('fabio-t');
-
-    const changeTitleStatus = (title) => {
-        setTitleSelected(title);
-    };
+   
 
     return(
 
@@ -53,9 +26,9 @@ export default function CvSelector({data}){
             <>            
                 <div className={styles.cta_title}>               
                     <div className={styles.wrapper}>
-                        {dataSelector.map((data, item) => {
+                        {persons.map((data, item) => {
                             return (
-                                <button onClick={ () => changeTitleStatus(`${data.id}`)} className={titleSelected === `${data.id}` ? `${styles.active}` : `${styles.inactive}`} key={item}><span />{data.title}</button>
+                                <button onClick={ () => setpersonSelected(`${data.nid}`)} className={personSelected === `${data.nid}` ? `${styles.active}` : `${styles.inactive}`} key={item}><span />{data.nombre}</button>
                             );
                         })}
                     </div>
@@ -64,7 +37,7 @@ export default function CvSelector({data}){
                 <div className={styles.imagen_docente}>
                     {dataSelector.map((data, item) => {
                         return (
-                            <img src={data.picture} alt={data.picture} className={titleSelected === data.id ? `${styles.visible} ${styles.slide_docente}` : ''} key={item} />              
+                            <img src={data.img.url} alt={data.img.alt} className={personSelected === data.nid ? `${styles.visible} ${styles.slide_docente}` : ''} key={item} />              
                         );
                     })}
                     <span />
@@ -74,10 +47,10 @@ export default function CvSelector({data}){
                     {dataSelector.map((data, item) => {
                         return (
                         <div key={item}>
-                            { titleSelected === `${data.id}` &&
+                            { personSelected === `${data.nid}` &&
                             <> 
-                                <p dangerouslySetInnerHTML={{__html: data.description }} />          
-                                <a href={`${data.link}`} rel="noopener noreferrer" target="_blank" className={styles.cv_view}>Ver CV</a>                             
+                                <p dangerouslySetInnerHTML={{__html: data.bio }} />          
+                                <a href={`${data.alias}`} rel="noopener noreferrer" target="_blank" className={styles.cv_view}>Ver CV</a>                             
                             </>
                             }                                        
                         </div>

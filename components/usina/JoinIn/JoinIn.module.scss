@@ -125,14 +125,17 @@
                 } 
                 p{                    
                     margin-bottom: 0;
-                    &.price{
-                        @include font-level-3;
-                        font-weight: 500; 
-                        span{
-                            font-weight: 300;
-                        }
-                    }
+                    
                 }              
+                h5{
+                    @include font-level-3;
+                    font-weight: 300; 
+                    color: $deep-blue;
+                    em{
+                        font-weight: 700;
+                        font-style: normal;
+                    }
+                }
                 .left{
                     grid-area: left;
                     @media screen and (max-width: 1025px){

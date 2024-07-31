@@ -1,13 +1,13 @@
 import styles from "./JoinIn.module.scss";
 
-export default function JoinIn(){
+export default function JoinIn({blockProps,formURL}){
 
     return(
         <div className={styles.wrapper}>
 
             <div className={styles.col_left}>
-                <h3>Consultas</h3>
-                <p>Completá el siguiente formulario y nos pondremos en contacto para responder tus dudas, o escribinos a <a href="mailto:usinapent@flacso.org.ar" rel="noopener noreferrer">usinapent@flacso.org.ar</a>.</p> 
+                <h3>{ blockProps.field_formandprices_title[0].value }</h3>
+                { blockProps.field_formandprices_description && <div dangerouslySetInnerHTML={{__html: blockProps.field_formandprices_description[0].value }} /> }
 
                 <form className={styles.inquiry_form}>
                     <input className={styles.input} type="text" name="Nombre" placeholder="Nombre" data-required="true" required />                    
@@ -24,21 +24,17 @@ export default function JoinIn(){
 
             <div className={styles.col_right}>
                 <div className={styles.tariffs}>
-                    <h3>Aranceles</h3>
+                    <h3>{ blockProps.field_formandprices_cardtitle[0].value }</h3>
                     <div className={styles.prices}>
-                        <div className={styles.left}>
-                            <p>Residentes en Argentina</p>
-                            <p className={styles.price}><span>AR$</span> 25,000</p>
+                        <div className={styles.left }>
+                            <div dangerouslySetInnerHTML={{__html: blockProps.field_formandprices_arg[0].value }} />
                         </div>
                         <div className={styles.right}>
-                            <p>Residentes en el extranjero</p>
-                            <p className={styles.price}><span>USD</span> 80</p>
+                            <div dangerouslySetInnerHTML={{__html: blockProps.field_formandprices_int[0].value }} />
                         </div>
                     </div>
-                    <p>Inicio — 9 de diciembre de 2023</p>
-                    <p>Días y horarios de cursada — Jueves 9, 16, 23 y 30 de noviembre de 2023, de 18 a 20h (GMT -3)</p>
-                    <p><a href='' rel="noopener noreferrer" target="_blank" className={styles.download_programa}>Descargar programa</a></p>
-                    <a href='' rel="noopener noreferrer" target="_blank" className={styles.inscripcion_btn}>Inscribirme</a>
+                    <div dangerouslySetInnerHTML={{__html: blockProps.field_formandprices_carddescript[0].value }} />
+                    <a href={formURL} rel="noopener noreferrer" target="_blank" className={styles.inscripcion_btn}>Inscribirme</a>
                 </div>
             </div>
             

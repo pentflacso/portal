@@ -2,7 +2,7 @@ import { useAppContext } from '../../context/AppContext';
 import { useEffect } from 'react';
 import { Navigation, FreeMode } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
-import Link from 'next/link';
+import Link from "next/link";
 import MetaTags from '../../components/library/MetaTags/MetaTags';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import PageHeading from '../../components/library/PageHeading/PageHeading';
@@ -22,6 +22,12 @@ import NewsSelector from '../../components/home/NewsSelector/NewsSelector';
 import LeafsItem from '../../components/asesorias/LeafsItem/LeafsItem';
 import ExploringBtns from '../../components/library/ExploringBtns/ExploringBtns';
 import Footer from '../../components/library/Footer/Footer';
+import HeaderPropuesta from '../../components/usina/HeaderPropuesta/HeaderPropuesta';
+import CvSelector from '../../components/usina/CvSelector/CvSelector';
+import JoinIn from '../../components/usina/JoinIn/JoinIn';
+import SliderCourses from '../../components/library/SliderCourses/SliderCourses';
+import UsinaHero from '../../components/usina/HeroHeader/HeroHeader';
+
 
 
 
@@ -66,48 +72,48 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
 
             <MainWrapper>  
                 <section className={stylesx.pageBuilder}>
-                {data ? data.map((data, i) => (
-                    data.block_type === "header" ? "" :
-                    <div key={i} data-id={data.block_class}>
-                        {(data.block_type === "highlighted" && i == 1) &&
-                            <PageHeading title={data.title[0].value}  />
+                {data ? data.map((dataBlock, i) => (
+                    dataBlock.block_type === "header" ? "" :
+                    <div key={i} data-id={dataBlock.block_class}>
+                        {(dataBlock.block_type === "highlighted" && i == 1) &&
+                            <PageHeading title={dataBlock.title[0].value}  />
                         }
-                        {(data.block_type === "wordscover" && i == 1) &&
-                            <HomeHeading title={data.title} final={data.finalwords} initial={data.initialwords}   />
+                        {(dataBlock.block_type === "wordscover" && i == 1) &&
+                            <HomeHeading title={dataBlock.title} final={dataBlock.finalwords} initial={dataBlock.initialwords}   />
                         }
-                        {data.block_type === "videocover" && 
-                            <CoverVideo data={data}  data-order={i}  />
+                        {dataBlock.block_type === "videocover" && 
+                            <CoverVideo data={dataBlock}  data-order={i}  />
                         }
-                        {data.block_type === "sectionselector" && 
-                            <SectionSelector data={data.MemberData} data-order={i} />
+                        {dataBlock.block_type === "sectionselector" && 
+                            <SectionSelector data={dataBlock.MemberData} data-order={i} />
                         }
-                        {data.block_type === "skillbox" && 
-                            <KeysBox data={data.keyFeatures} data-order={i} />
+                        {dataBlock.block_type === "skillbox" && 
+                            <KeysBox data={dataBlock.keyFeatures} data-order={i} />
                         }
-                        {data.block_type === "marquee" && 
-                                    <TextMarquee data={data.marquee} />
+                        {dataBlock.block_type === "marquee" && 
+                                    <TextMarquee data={dataBlock.marquee} />
                         }
-                        {data.block_type === "accordion" &&
-                                <ThemesAccordion data={data.accordion} />
+                        {dataBlock.block_type === "accordion" &&
+                                <ThemesAccordion data={dataBlock.accordion} />
                         }  
 
-                        {(data.block_type === "highlighted" && i !== 1) &&
-                                <HighlightParagraph title={data.title} />
+                        {(dataBlock.block_type === "highlighted" && i !== 1) &&
+                                <HighlightParagraph title={dataBlock.title} />
                         }
-                        {data.block_type === "sliderquotes" &&
-                            <Quotes items={data.quotes}  data-order={i} />                               
+                        {dataBlock.block_type === "sliderquotes" &&
+                            <Quotes items={dataBlock.quotes}  data-order={i} />                               
                         }
-                        {data.block_type === "brandsbanner" &&
-                                <BrandsMarquee partners={data.partners}/>
+                        {dataBlock.block_type === "brandsbanner" &&
+                                <BrandsMarquee partners={dataBlock.partners}/>
                         }
-                        {data.block_type === "twocolums" &&
-                            <TwoColumsText texto={data.description[0].value}  data-order={i}/>
+                        {dataBlock.block_type === "twocolums" &&
+                            <TwoColumsText texto={dataBlock.description[0].value}  data-order={i}/>
 
                         }
-                        {data.block_type === "teammembers" &&
-                            <TeamData team={data.roster} title={data.block_title}  data-order={i} />
+                        {dataBlock.block_type === "teammembers" &&
+                            <TeamData team={dataBlock.roster} title={dataBlock.block_title}  data-order={i} />
                         }
-                        {data.block_type === "sliderperson" &&
+                        {dataBlock.block_type === "sliderperson" &&
                             <Swiper 
                             modules={[Navigation, FreeMode]}
                             spaceBetween={0}
@@ -117,7 +123,7 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                             grabCursor={false}  
                             className={`${stylesx.carrousel_members} swiper-cards members`}                       
                             >   
-                            {data.members.map((item, m) => (
+                            {dataBlock.members.map((item, m) => (
                                 <SwiperSlide key={m}>
                                     <Link className={stylesx.member} href={item.alias}>
                                         <div className={stylesx.img_container}>
@@ -129,7 +135,7 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                             ))}                            
                             </Swiper>
                         }
-                        {(data.block_type === "slidercard" && data.typeCard[0].value != 2) &&
+                        {(dataBlock.block_type === "slidercard" && dataBlock.typeCard[0].value != 2) &&
 
                             <Swiper
                                 modules={[Navigation, FreeMode]}
@@ -139,15 +145,15 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                                 }  
                                 freeMode={false}   
                                 grabCursor={
-                                    data.typeCard[0].value != 3 ? 
+                                    dataBlock.typeCard[0].value != 3 ? 
                                         true :false 
                                 }    
-                                className={`${styleCard(data.typeCard[0].value)} swiper-cards`}       
+                                className={`${styleCard(dataBlock.typeCard[0].value)} swiper-cards`}       
                             >   
-                                {data.cards.map((item, i) => (
+                                {dataBlock.cards.map((item, i) => (
                                     <SwiperSlide key={i}>
 
-                                        {data.typeCard[0].value === '0' &&
+                                        {dataBlock.typeCard[0].value === '0' &&
                                             <article className={stylesx.card}>
                                                 <img src={item.img.url} alt={item.img.alt} />
                                                 <h5>{item.title}</h5>
@@ -155,7 +161,7 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                                                 <a href={item.link.href} rel="noopener noreferrer" target="_blank" className="cta_btn">Más información</a>
                                             </article>
                                         }                                
-                                        {data.typeCard[0].value === '1' &&
+                                        {dataBlock.typeCard[0].value === '1' &&
                                             <a href={item.link.href} rel="noopener noreferrer" target="_blank" className={stylesx.card_new}>
                                                 <div className={stylesx.info}>
                                                     <h5>{item.title}</h5>
@@ -164,13 +170,13 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                                                 <img src={item.img.url} alt={item.img.alt} />                    
                                             </a>
                                         }
-                                        {data.typeCard[0].value === '3' &&
+                                        {dataBlock.typeCard[0].value === '3' &&
                                             <Link href={item.link.href} className={stylesx.card_proyect}>
                                                 <img alt={item.img.alt} src={item.img.url} />
                                                 <h5>{item.title}</h5>                    
                                             </Link>
                                         }
-                                        {data.typeCard[0].value === '4' &&
+                                        {dataBlock.typeCard[0].value === '4' &&
                                             <article className={stylesx.card}>
                                                 <span>{item.state}</span>
                                                 <h5>{item.title}</h5>
@@ -183,19 +189,36 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                                 ))}                            
                             </Swiper>     
                         }
-                        {(data.block_type === "slidercard" && data.typeCard[0].value == 2) && 
-                            <LeafsItem items={data.cards} />   
+                        {(dataBlock.block_type === "slidercard" && dataBlock.typeCard[0].value == 2) && 
+                            <LeafsItem items={dataBlock.cards} />   
                         }                        
-                        {data.block_type === "info" &&
+                        {dataBlock.block_type === "info" &&
                             <ParagraphAndButton 
-                                paragraph={data.description[0].value}
-                                iconBtn={data.icon[0].img}
-                                urlBtn={data.link[0].src}
+                                paragraph={dataBlock.description[0].value}
+                                iconBtn={dataBlock.icon[0].img}
+                                urlBtn={dataBlock.link[0].src}
                             />    
                         }
-                        {data.block_type === "lastnews" &&
-                            <NewsSelector data={data.NewsData} />                              
+                        {dataBlock.block_type === "lastnews" &&
+                            <NewsSelector data={dataBlock.NewsData} />                              
                         }
+                        {dataBlock.block_type === "text_and_video" &&
+                            <HeaderPropuesta blockProps={dataBlock} />                              
+                        }
+                        {dataBlock.block_type === "personslist" &&
+                            <CvSelector persons={dataBlock.field_person} />                              
+                        }
+                        {dataBlock.block_type === "formandprices" &&
+                            <JoinIn blockProps={dataBlock} formURL={data[0].form} />                              
+                        }
+                        {dataBlock.block_type === "automatic_course_slider" &&
+                            <SliderCourses dataCourses={dataBlock.courses} />                              
+                        }
+                        {dataBlock.block_type === "hero_usina" &&
+                            <UsinaHero blockProps={dataBlock} />                              
+                        }
+
+
                     </div>
                 )): ""}
                 </section>

@@ -4,21 +4,21 @@ import EditionsModal from '../../../components/usina/EditionsModal/EditionsModal
 import Link from "next/link";
 import styles from "./NavBarUsina.module.scss";
 
-export default function NavBarUsina({ refNavBrand, brandVisibility, startDate }){
+export default function NavBarUsina({ refNavBrand, brandVisibility, startDate, formURL,listCourses }){
 
     const { currentRoute, isLoading } = useAppContext();
     const [ modal, setModal ] = useState('hidden');      
 
     return(
         <>
-            {modal === 'edicionesUsina' && <EditionsModal setModal={setModal} />} 
+            {modal === 'edicionesUsina' && <EditionsModal setModal={setModal} courses={listCourses} />} 
 
             <header>        
-                <nav className={currentRoute === '/usinadev' ? `${styles.navbar}` : `${styles.navbar} ${styles.proposal}`}>                
+                <nav className={currentRoute === '/usina' ? `${styles.navbar}` : `${styles.navbar} ${styles.proposal}`}>                
 
                     <div className={styles.nav_btns}>
 
-                        {currentRoute === '/usinadev' 
+                        {currentRoute === '/usina' 
                         ?
                             <h1 className={styles.brand}>
                                 <Link href='/' ><span>FLACSO PENT</span></Link>
@@ -29,13 +29,13 @@ export default function NavBarUsina({ refNavBrand, brandVisibility, startDate })
                             </h3>
                         }                
 
-                        {currentRoute === '/usinadev'
+                        {currentRoute === '/usina'
                         ? 
                             <button type="button" className={styles.editions_btn} onClick={ () => setModal('edicionesUsina')}>Próximas Ediciones</button>
                         :
                             <div className={brandVisibility ? `${styles.insciption_btn}` : `${styles.insciption_btn} ${styles.active}`}>
-                                <p>{startDate}</p>
-                                <a href="https://inscripcion.flacso.org.ar/inscripcion_interesados_datpersonal.php?idpo=10542" rel="noopener noreferrer" target="_blank">Inscribirme</a>
+                                <p>Inicio {startDate}</p>
+                                <a href={formURL} rel="noopener noreferrer" target="_blank">Inscribirme</a>
                             </div>
                         }             
 

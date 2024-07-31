@@ -170,15 +170,16 @@
                     margin-bottom: calc(6px + (20 - 6) * ((100vw - 300px) / (1025 - 300)));
                 }
             }
-            .interested_btn{
+            .cta{
                 grid-area: interested;
                 text-align: right;   
                 @media screen and (max-width: 1024px){
                     text-align: left; 
                 }            
-                button{
-                    @include btn-ver-mas;
+                a,button{                
+                @include btn-ver-mas;
                 }
+                
             }
         }
 
