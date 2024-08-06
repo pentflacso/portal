@@ -91,7 +91,23 @@
             }
             .send_btn{
                 @include btn-ver-mas;
+                
+                &[disabled]
+                {
+                    background-color: $gray-6;
+                    border-color:$gray-6;
+                    background-image: url(/assets/spinners/loader-button.svg);
+                    background-repeat: no-repeat;
+                    background-position: calc((14px + 26 * (100vw - 1200px) / 2640) * .5) center;
+                    padding-left:  calc((14px + 26 * (100vw - 1200px) / 2640) * 2);
+                    background-size: auto 50%;
+                    &:hover{
+                        color: $deep-blue;
+
+                    }
+                }
             }
+
         }
     }
 
@@ -167,9 +183,34 @@
                 @include btn-ver-mas;
                 background-color: $yellow-1;
                 border: $yellow-1;
-                margin-top: calc(5px + (25 - 5) * ((100vw - 1200px) / (3840 - 1200)));
                 @media screen and (max-width: 1024px){
                     border: $yellow-1;
+                }
+            }
+            h4{
+                @include font-level-3;
+                font-weight: 300; 
+                color: $deep-blue;
+                em{
+                    font-weight: 700;
+                    font-style: normal;
+                }
+            }
+            .buttonContainer
+            {
+                margin-top: calc((5px + (25 - 5) * ((100vw - 1200px) / (3840 - 1200))) * 3);
+
+                &:nth-child(1)
+                {
+                    margin-top: calc(5px + (25 - 5) * ((100vw - 1200px) / (3840 - 1200)));
+
+                }
+                p{
+                    margin-bottom: calc(5px + (25 - 5) * ((100vw - 1200px) / (3840 - 1200)));
+                    margin-top: calc(5px + (25 - 5) * ((100vw - 1200px) / (3840 - 1200)));
+
+                }
+                @media screen and (max-width: 1024px){
                     margin-top: calc(4px + (8 - 4) * ((100vw - 300px) / (1024 - 300)));
                 }
             }

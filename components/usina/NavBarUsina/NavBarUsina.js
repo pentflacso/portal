@@ -1,6 +1,8 @@
 import { useAppContext } from '../../../context/AppContext';
 import { useState } from 'react';
 import EditionsModal from '../../../components/usina/EditionsModal/EditionsModal';
+import GroupsModal from '../../../components/usina/GroupsModal/GroupsModal';
+
 import Link from "next/link";
 import styles from "./NavBarUsina.module.scss";
 
@@ -12,6 +14,7 @@ export default function NavBarUsina({ refNavBrand, brandVisibility, startDate, f
     return(
         <>
             {modal === 'edicionesUsina' && <EditionsModal setModal={setModal} courses={listCourses} />} 
+            {modal === 'comisionesPropuesta' && <GroupsModal setModal={setModal} groups={formURL} />} 
 
             <header>        
                 <nav className={currentRoute === '/usina' ? `${styles.navbar}` : `${styles.navbar} ${styles.proposal}`}>                
@@ -31,11 +34,15 @@ export default function NavBarUsina({ refNavBrand, brandVisibility, startDate, f
 
                         {currentRoute === '/usina'
                         ? 
-                            <button type="button" className={styles.editions_btn} onClick={ () => setModal('edicionesUsina')}>Próximas Ediciones</button>
+                            <button type="button" className={styles.editions_btn} onClick={ () => setModal('edicionesUsina')}>Próximas ediciones</button>
                         :
                             <div className={brandVisibility ? `${styles.insciption_btn}` : `${styles.insciption_btn} ${styles.active}`}>
                                 <p>Inicio {startDate}</p>
-                                <a href={formURL} rel="noopener noreferrer" target="_blank">Inscribirme</a>
+                                { formURL.length > 1 ? 
+                                <button type="button" onClick={ () => setModal('comisionesPropuesta')}>Inscribirme</button>
+                                :
+                                <a href={formURL[0].uri} rel="noopener noreferrer" target="_blank">Inscribirme</a>
+                                }
                             </div>
                         }             
 

@@ -8,7 +8,6 @@ import styles from "./SliderCourses.module.scss";
 
 export default function SliderCourses( {dataCourses} ){
     const router = useRouter();
-    console.log(router.asPath);
     return (
     <Swiper
         modules={[Navigation, FreeMode]}

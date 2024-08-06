@@ -110,7 +110,7 @@
                         padding-right: calc(16px + (28 - 16) * ((100vw - 300px) / (1200 - 300)));;
                     }
                 }
-                a{
+                a,button{
                     background-color: $white;
                     border-color: $white;
                 }
@@ -129,7 +129,7 @@
                 }
             }
     
-            a{
+            a,button{
                 @include btn-ver-mas;
                 background-color: transparent;
                 border-color: $yellow-1;

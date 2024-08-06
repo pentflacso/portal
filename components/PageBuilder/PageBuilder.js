@@ -25,6 +25,7 @@ import Footer from '../../components/library/Footer/Footer';
 import HeaderPropuesta from '../../components/usina/HeaderPropuesta/HeaderPropuesta';
 import CvSelector from '../../components/usina/CvSelector/CvSelector';
 import JoinIn from '../../components/usina/JoinIn/JoinIn';
+import CTA from '../../components/library/CTA/CTA';
 import SliderCourses from '../../components/library/SliderCourses/SliderCourses';
 import UsinaHero from '../../components/usina/HeroHeader/HeroHeader';
 
@@ -209,10 +210,13 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                             <CvSelector persons={dataBlock.field_person} />                              
                         }
                         {dataBlock.block_type === "formandprices" &&
-                            <JoinIn blockProps={dataBlock} formURL={data[0].form} />                              
+                            <JoinIn blockProps={dataBlock} formURL={data[0].form}   origin={data[0].title}/>                              
                         }
                         {dataBlock.block_type === "automatic_course_slider" &&
                             <SliderCourses dataCourses={dataBlock.courses} />                              
+                        }
+                        {dataBlock.block_type === "cta" &&
+                            <CTA blockProps={dataBlock} />                              
                         }
                         {dataBlock.block_type === "hero_usina" &&
                             <UsinaHero blockProps={dataBlock} />                              

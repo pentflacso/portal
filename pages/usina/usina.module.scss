@@ -1,27 +1,40 @@
 @import "../../styles/themeStyles.module.scss";
 
-.marquee{
-    margin-bottom: calc(50px + (200 - 50) * ((100vw - 1200px) / (3840 - 1200)));
-    @media screen and (max-width: 1024px){
-        margin-bottom: calc(30px + (100 - 30) * ((100vw - 300px) / (1024 - 300)));
+
+.pageBuilder
+{
+    div[data-id="marquee_1"],div[data-id="marquee_3"]{
+        margin-bottom: calc(50px + (200 - 50) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(30px + (100 - 30) * ((100vw - 300px) / (1024 - 300)));
+        }
+    
     }
+    div[data-id="marquee_2"]{
+        margin-bottom: calc(95px + (280 - 95) * ((100vw - 1200px) / (3840 - 1200)));
+
+    
+    }
+    div[data-id="highlighted_1"], div[data-id="highlighted_2"]{
+        @include container-width-1;
+        margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(45px + (145 - 45) * ((100vw - 300px) / (1024 - 300)));
+        }
+    }
+  
+    div[data-id="skillbox_1"]{
+        margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(65px + (165 - 65) * ((100vw - 300px) / (1024 - 300)));
+        }
+    }
+    
+
+
+   
 }
 
-.marquee_2{
-    margin-bottom: calc(95px + (280 - 95) * ((100vw - 1200px) / (3840 - 1200)));
-}
 
-.highlighted{
-    @include container-width-1;
-    margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
-    @media screen and (max-width: 1024px){
-        margin-bottom: calc(45px + (145 - 45) * ((100vw - 300px) / (1024 - 300)));
-    }
-}
 
-.keybox{
-    margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));
-    @media screen and (max-width: 1024px){
-        margin-bottom: calc(65px + (165 - 65) * ((100vw - 300px) / (1024 - 300)));
-    }
-}
+

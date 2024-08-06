@@ -6,6 +6,8 @@ import * as fbq from '../lib/fpixel';
 import AppContext from '../context/AppContext';
 import NavBar from '../components/library/NavBar/NavBar';
 import "../styles/globals.scss";
+import "../styles/specific.css";
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 import "../styles/swiperStyles.scss";
