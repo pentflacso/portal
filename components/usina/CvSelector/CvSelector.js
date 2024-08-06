@@ -50,7 +50,7 @@ export default function CvSelector({persons}){
                             { personSelected === `${data.nid}` &&
                             <> 
                                 <p dangerouslySetInnerHTML={{__html: data.bio }} />          
-                                <a href={`${data.alias}`} rel="noopener noreferrer" target="_blank" className={styles.cv_view}>Ver CV</a>                             
+                                <a href={data.alias} rel="noopener noreferrer" target="_blank" className={styles.cv_view}>Ver CV</a>                             
                             </>
                             }                                        
                         </div>
@@ -73,12 +73,12 @@ export default function CvSelector({persons}){
                     <article className={styles.slide_mobile}>
                         <div className={styles.wrapper}>
                             <div className={`${styles.img_docente}`}>
-                                <img src={data.picture} alt={data.picture}/>
+                                <img src={data.img.url} alt={data.img.alt} />
                                 <span />
                             </div>                            
-                            <h4>{data.title}</h4>
-                            <p dangerouslySetInnerHTML={{__html: data.description }} />
-                            <a href={`${data.link}`} rel="noopener noreferrer" target="_blank" className={styles.cv_view}>Ver CV</a>
+                            <h4>{data.nombre}</h4>
+                            <p dangerouslySetInnerHTML={{__html: data.bio }} />
+                            <a href={data.alias} rel="noopener noreferrer" target="_blank" className={styles.cv_view}>Ver CV</a>
                         </div>                   
                     </article>            
                 </SwiperSlide>
