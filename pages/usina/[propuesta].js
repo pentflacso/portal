@@ -1,5 +1,6 @@
 import { useRef, useEffect, useLayoutEffect, useState } from 'react';
 import NavBarUsina from '../../components/usina/NavBarUsina/NavBarUsina';
+import MetaTags from '../../components/library/MetaTags/MetaTags';
 import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import Footer from '../../components/library/Footer/Footer';
 import PageBuilder from '../../components/PageBuilder/PageBuilder';
@@ -39,7 +40,7 @@ function Index({data , prevUrl, pathName}){
   return(
         <>      
           {/* La barra de navegación irá por fuera del PageBuilder */} 
-
+         
            <NavBarUsina refNavBrand={navBarBrand} brandVisibility={brandVisibility} startDate={data.data[0].startDate} formURL = {data.data[0].form}/>
             
           <div ref={container}>
@@ -47,7 +48,6 @@ function Index({data , prevUrl, pathName}){
                    
                <PageBuilder data={ data.data } stylesx={styles} />
                 
-
                
 
                 <Footer />

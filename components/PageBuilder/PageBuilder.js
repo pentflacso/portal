@@ -66,9 +66,10 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
     <>
             <MetaTags
                 pageTitle={data[0].pageTitle}
-                shareTitle={data[0].shareTitle}
-                keywords={data[0].keywords}
+                shareTitle={data[0].titleShare}
+                keywords={data[0].keyword}
                 description={data[0].description}
+                img={data[0].image}
             />
 
             <MainWrapper>  

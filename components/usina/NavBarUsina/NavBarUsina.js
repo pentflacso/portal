@@ -35,7 +35,7 @@ export default function NavBarUsina({ refNavBrand, brandVisibility, startDate, f
                         
                             <button type="button" className={styles.editions_btn} onClick={ () => setModal('edicionesUsina')}>Próximas ediciones</button>
                         }
-                         { currentRoute && currentRoute !== '/usina' &&    <div className={brandVisibility ? `${styles.insciption_btn}` : `${styles.insciption_btn} ${styles.active}`}>
+                         { currentRoute && currentRoute != '/usina' && formURL &&   <div className={brandVisibility ? `${styles.insciption_btn}` : `${styles.insciption_btn} ${styles.active}`}>
                                 <p>Inicio {startDate}</p>
                                 {  formURL?.length > 1 ? 
                                 <button type="button" onClick={ () => setModal('comisionesPropuesta')}>Inscribirme</button>

@@ -169,6 +169,8 @@ const keywords_join = [...keywords, ...d.keyword_hashtag].join(', ');
             pageTitle={'Producciones — FLACSO | PENT'}
             shareTitle={'Producciones — FLACSO | PENT'}
             keywords={keywords_join}
+            img="https://pent.flacso.org.ar/assets/images/producciones_thumb_shared.jpg"
+            description = "Producciones académicas y materiales didácticos sobre educación y nuevas tecnologías."
         />
 
         <MainWrapper>    
