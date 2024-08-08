@@ -33,7 +33,7 @@ export default function GroupsModal({ setModal,groups }){
                             <div className={styles.title}><p>{d.title}</p></div>
                             
                             <div  className={styles.cta}>
-                           <Link href={d.uri} className={styles.interested_btn}>Elegir</Link>  
+                           <Link href={d.uri} className={styles.interested_btn}  rel="noopener noreferrer" target="_blank">Elegir</Link>  
                            </div>
                         </div>
                     ))} 
