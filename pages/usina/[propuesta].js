@@ -50,7 +50,6 @@ function Index({data , prevUrl, pathName}){
                 
                
 
-                <Footer />
 
                 
                
