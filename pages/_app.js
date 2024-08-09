@@ -6,6 +6,8 @@ import * as fbq from '../lib/fpixel';
 import AppContext from '../context/AppContext';
 import NavBar from '../components/library/NavBar/NavBar';
 import "../styles/globals.scss";
+import "../styles/specific.css";
+
 import 'swiper/css';
 import 'swiper/css/navigation';
 import "../styles/swiperStyles.scss";
@@ -17,7 +19,7 @@ export default function App({ Component, pageProps }) {
     }, []);
 
     const router = useRouter();
-
+    
     useEffect(() => {
         // This pageview only triggers the first time (it's important for Pixel to have real information)
         fbq.pageview()
@@ -35,7 +37,7 @@ export default function App({ Component, pageProps }) {
 
     return(
         <AppContext>       
-            <NavBar/>
+            {router.pathname != "/usina/[propuesta]" && <NavBar/> }
             {/* Global Site Code Pixel - Facebook Pixel */}
             <Script
                 id="fb-pixel"

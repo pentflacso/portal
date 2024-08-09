@@ -38,7 +38,7 @@
         }
     }
 
-    p{
+    .description{
         @include font-level-2; 
         font-weight: 400;
         line-height: 130%;
@@ -49,9 +49,10 @@
             width: 100%;
             margin-bottom: calc(40px + (145 - 40) * ((100vw - 300px) / (1024 - 300)));
         }
-        span{
+        strong{
             background-image: url(../../../public/assets/images/line_bottom_yellow.svg);
             background-repeat: repeat-x;
+            font-weight: normal;
             background-size: 
             calc(30px + (90 - 30) * ((100vw - 1200px) / (3840 - 1200)))
             calc(8px + (16 - 8) * ((100vw - 1200px) / (3840 - 1200)));

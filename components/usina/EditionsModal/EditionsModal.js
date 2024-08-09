@@ -1,31 +1,12 @@
 import ReactDOM from 'react-dom';
 import React, { useState } from 'react';
+import Link from "next/link";
+
 import styles from "./EditionsModal.module.scss";
 
-export default function EditionsModal({ setModal }){
+export default function EditionsModal({ setModal,courses }){
 
-    const dataEditions = [
-        {
-            "title": "Laboratorio de inteligencia artificial y educación",
-            "duration": "4 semanas",
-            "start": "9 de diciembre de 2023"
-        },
-        {
-            "title": "Taller de aplicaciones y herramientas digitales para enseñar y aprender",
-            "duration": "2 semanas",
-            "start": "12 de marzo de 2024"
-        },
-        {
-            "title": "Laboratorio de inteligencia artificial y educación",
-            "duration": "2 semanas",
-            "start": "6 de junio de 2024"
-        },
-        {
-            "title": "Taller de aplicaciones y herramientas digitales para enseñar y aprender",
-            "duration": "6 semanas",
-            "start": "26 de septiembre de 2023"
-        }
-    ]
+    
 
     const [ currentContent, setCurrentContent] = useState('editions');
     const [ closeAnimation, setCloseAnimation] = useState(false);
@@ -47,20 +28,22 @@ export default function EditionsModal({ setModal }){
 
                 {currentContent === 'editions' ?
                 <>
-                    <h4>Próximas Ediciones</h4>
-                    {dataEditions.map((d, i) => (
+                    <h4>Próximas ediciones</h4>
+                    {courses.map((d, i) => (
                         <div className={styles.edition_box} key={i}>
                             <div className={styles.title}><p>{d.title}</p></div>
                             <div className={styles.duration}><p><span>Duración</span><br />{d.duration}</p></div>
                             <div className={styles.start}><p><span>Inicio</span><br />{d.start}</p></div>
-                            <div className={styles.interested_btn} onClick={ () => setCurrentContent('subscription') }><button type="button">Me interesa</button></div>
+                            <div  className={styles.cta}>
+                            { d.status == 0 ? <Link href={d.path} className={styles.interested_btn}>Ver más</Link> : 
+                            <button type="button" className={styles.interested_btn} onClick={ () => setCurrentContent('subscription') }>Me interesa</button>}</div>
                         </div>
                     ))} 
                 </>
                 :
                 <>
                     <div className={styles.subscription}>
-                        <button type="button" className={styles.back_arrow} onClick={ () => setCurrentContent('editions') }><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/>Próximas Ediciones</button> 
+                        <button type="button" className={styles.back_arrow} onClick={ () => setCurrentContent('editions') }><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/>Próximas ediciones</button> 
 
                         <h4>Descargar</h4>
                         <p>Gracias por tu interés. Completá tus datos y te contactaremos cuando se habilite la próxima edición.</p>

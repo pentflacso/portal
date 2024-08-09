@@ -1,6 +1,7 @@
 import { useAppContext } from '../../../context/AppContext';
-import styles from "./Footer.module.scss";
+import Link from "next/link";
 import FormFoooter from "../FormFooter/FormFooter";
+import styles from "./Footer.module.scss";
 
 export default function Footer(){
 
@@ -13,7 +14,7 @@ export default function Footer(){
                 <div className={styles.info_top}>
                     <div className={styles.col_left}>                        
                         <h4>Contactanos</h4>
-                        {currentRoute !== '/usinadev' && currentRoute !== '/usinadev/[propuesta]' ?
+                        {currentRoute !== '/usina' && currentRoute !== '/usina/[propuesta]' ?
                         <> 
                             <p><a href="mailto:pent@flacso.org.ar" rel="noopener noreferrer">pent@flacso.org.ar</a><br /> Tucumán 1966, CABA, Argentina<br /> (54-11) 5238-9300 int 352</p>
                             <p>Atención administrativa:<br /> días hábiles, por correo electrónico.</p> 
@@ -22,11 +23,11 @@ export default function Footer(){
                         <>
                             <p><a href="mailto:usinapent@flacso.org.ar" rel="noopener noreferrer">usinapent@flacso.org.ar</a><br /> Tucumán 1966, CABA, Argentina<br /></p>
                             <div className={styles.access_links}>
-                                <a href="https://pent.flacso.org.ar/equipo" rel="noopener noreferrer" target="_blank">El PENT FLACSO</a><br />
-                                <a href="https://pent.flacso.org.ar/formacion" rel="noopener noreferrer" target="_blank">Formación</a><br />
-                                <a href="https://pent.flacso.org.ar/asesorias" rel="noopener noreferrer" target="_blank">Asesorías</a><br />
-                                <a href="https://pent.flacso.org.ar/producciones" rel="noopener noreferrer" target="_blank">Producciones</a><br />
-                                <a href="https://pent.flacso.org.ar/investigacion" rel="noopener noreferrer" target="_blank">Investigación</a>
+                                <Link href="/equipo" rel="noopener noreferrer" target="_blank">El PENT FLACSO</Link><br />
+                                <Link href="/formacion" rel="noopener noreferrer" target="_blank">Formación</Link><br />
+                                <Link href="/asesorias" rel="noopener noreferrer" target="_blank">Asesorías</Link><br />
+                                <Link href="/producciones" rel="noopener noreferrer" target="_blank">Producciones</Link><br />
+                                <Link href="/investigacion" rel="noopener noreferrer" target="_blank">Investigación</Link>
                             </div>
                         </>
                         }                                               

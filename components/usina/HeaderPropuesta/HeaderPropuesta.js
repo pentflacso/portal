@@ -1,23 +1,30 @@
 import Link from 'next/link';
 import styles from "./HeaderPropuesta.module.scss";
 
-export default function HeaderPropuesta(){
+export default function HeaderPropuesta({blockProps}){
 
     return(
         <header className={styles.wrapper}>    
 
             <div className={styles.col_left}>
-                <Link className={styles.back_arrow} href="/usinadev" ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Usina de experiencias</strong></span></Link>
-                <h1 className={styles.title}>Laboratorio de inteligencia artificial y educación</h1>
-                <p>Explorá herramientas, usos e implicancias en el ámbito educativo para desarrollar ideas transformadoras con inteligencia artificial.</p>
+                <Link className={styles.back_arrow} href="/usina" ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Usina de experiencias</strong></span></Link>
+                <h1 className={styles.title}>{blockProps.field_text_and_video_title[0].value}</h1>
+                <p>{blockProps.field_text_and_video_description[0].value}</p>
                 <div className={styles.triangles}>
-                    <p>4 semanas</p>
-                    <p>100% virtual</p>
+                    {blockProps.field_text_and_video_data.map((data,i)=>
+                       ( <p key={i}>{data.value}</p>)
+                    )}
+                    
+                   
                 </div>
             </div> 
 
             <div className={styles.col_right}>
-                <img src="../assets/images/propuesta_usina_demo.jpg" alt='Porter de la propuesta' className={styles.poster} />
+            <video width="320" height="240" poster={blockProps.field_text_and_video_poster.url} autoPlay muted loop className={styles.poster} >
+  <source src={blockProps.field_text_and_video_mp4}  type="video/mp4" />
+  <source src={blockProps.field_text_and_video_webm}  type="video/webm" />
+</video>
+               
             </div> 
 
         </header> 
