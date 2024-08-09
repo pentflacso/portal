@@ -3,8 +3,9 @@ import { Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from "swiper/react";
 
 export default function Quotes({items}){
-    return(
-    <>
+
+    return (
+    <> {items.field_visible && items.field_visible[0].value && (
         <Swiper
             modules={[Navigation]}
             spaceBetween={0}
@@ -31,7 +32,8 @@ export default function Quotes({items}){
             ))
             }
             <div className={styles.line} />     
-        </Swiper>         
+        </Swiper>  )}   
     </>
     );
+
 }
