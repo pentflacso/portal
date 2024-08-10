@@ -20,7 +20,7 @@ export default function HeaderPropuesta({blockProps}){
             </div> 
 
             <div className={styles.col_right}>
-            <video width="320" height="240" poster={blockProps.field_text_and_video_poster.url} autoPlay muted loop className={styles.poster} >
+            <video width="320" height="240" poster={blockProps.field_text_and_video_poster.url} autoPlay muted loop className={styles.poster} playsInline > >
   <source src={blockProps.field_text_and_video_mp4}  type="video/mp4" />
   <source src={blockProps.field_text_and_video_webm}  type="video/webm" />
 </video>
