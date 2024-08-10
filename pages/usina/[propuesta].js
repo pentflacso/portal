@@ -57,33 +57,41 @@ function Index({data , prevUrl, pathName}){
         </>
   )
 }
-
 export async function getServerSideProps(context) {
-  const {query} = context;
-  // Fetch data from external API
-  const res = await fetch(`https://redaccion.pent.org.ar/data/courses/${query.propuesta}`)
+  const { query } = context;
+  const { propuesta, revisionid } = query;
+  console.log(`https://redaccion.pent.org.ar/data/courses/${propuesta}${revisionid ? `?revisionid=${revisionid}` : ''}`);
+  // Incluye `revisionid` en la llamada a la API si es necesario
+  const res = await fetch(`https://redaccion.pent.org.ar/data/courses/${propuesta}${revisionid ? `?revisionid=${revisionid}` : ''}`);
+  
   const referrer = context.req.headers.referer;
   
   let pathnameParts = "";
   let prevUrl = "";
 
-  if(referrer){
-      //Pagina Interna
-      const referrerURL = new URL(referrer);
-      pathnameParts = referrerURL.pathname.split('/').filter(part => part);
-      
-      prevUrl = pathnameParts[1] && pathnameParts[1] == query.produccion ? "/usina" : referrer;
+  if (referrer) {
+    // Página interna
+    const referrerURL = new URL(referrer);
+    pathnameParts = referrerURL.pathname.split('/').filter(part => part);
+    
+    prevUrl = pathnameParts[1] && pathnameParts[1] === query.produccion ? "/usina" : referrer;
 
-  }else{
-      //Pagina Externa
-      prevUrl = "/usina"
+  } else {
+    // Página externa
+    prevUrl = "/usina";
   }
 
-  //
-  //MiddleWare 404 | 505
+  // MiddleWare 404 | 505
   const data = await handleServerRedirect(res);
 
-  return { props:{ data:{...data.props}, prevUrl: prevUrl, pathName: pathnameParts } };
+  return { 
+    props: { 
+      data: { ...data.props }, 
+      prevUrl: prevUrl, 
+      pathName: pathnameParts,
+      revisionid: revisionid || null // Incluye `revisionid` en los props
+    } 
+  };
 }
 
 export default Index;
