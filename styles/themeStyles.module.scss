@@ -151,6 +151,47 @@ $line-2: calc(3px + (6 - 3) * ((100vw - 1200px) / (3840 - 1200)));
         @include btn-ver-mas;
     }
 }
+@mixin course-card-1 {
+    display: flex;
+    flex-wrap: wrap;
+    background-color: $gray-6;
+    width: calc(450px + (1150 - 450) * ((100vw - 1200px) / (3840 - 1200)));
+    padding: calc(15px + (60 - 15) * ((100vw - 1200px) / (3840 - 1200)));
+    margin-left: calc(32px + (82 - 32) * ((100vw - 1200px) / (3840 - 1200)));
+    color: $deep-blue;  
+    text-decoration: none;    
+    @media screen and (max-width: 1024px){
+        width: calc(255px + (880 - 255) * ((100vw - 300px) / (1024 - 300)));
+        padding: calc(12px + (24 - 12) * ((100vw - 300px) / (1024 - 300)));
+        margin-left: 0;
+    } 
+    img{
+        width: 100%;
+        height: auto;
+    }
+    h5{
+        @include font-level-2; 
+        font-weight: 400;
+        line-height: 130%;
+        margin-bottom: calc(50px + (150 - 50) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(25px + (75 - 25) * ((100vw - 300px) / (1024 - 300)));
+        }
+        a{
+            color: $deep-blue;  
+            text-decoration: none;  
+        }
+    }
+    p{
+        @include font-level-4; 
+        font-weight: 400;
+        line-height: 140%;
+    }
+    .cta_btn{
+        @include btn-ver-mas;
+        align-self: flex-end;
+    }
+}
 
 @mixin basic-card-2 {
     display: flex;
@@ -199,3 +240,4 @@ $line-2: calc(3px + (6 - 3) * ((100vw - 1200px) / (3840 - 1200)));
         @include btn-ver-mas;
     }
 }
+

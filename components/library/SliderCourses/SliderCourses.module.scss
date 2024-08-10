@@ -6,10 +6,10 @@
         margin-bottom: calc(35px + (100 - 35) * ((100vw - 300px) / (1024 - 300)));
     } 
     .card{
-        @include basic-card-1;
+        @include course-card-1;
         position: relative; 
         h5{
-            margin-bottom: calc(30px + (110 - 30) * ((100vw - 1200px) / (3840 - 1200)));
+            margin-bottom: calc((30px + (110 - 30) * ((100vw - 1200px) / (3840 - 1200))) / 2);
             width: 100%;
             @media screen and (max-width: 1024px){
                 margin-bottom: calc(25px + (75 - 25) * ((100vw - 300px) / (1024 - 300)));
@@ -38,8 +38,16 @@
                 background-repeat: no-repeat;
                 background-size: auto 80%;
                 background-position: left center;   
+                
                 margin-bottom: 0;             
                 &:nth-child(1){
+                    margin-right: calc(18px + (70 - 18) * ((100vw - 1200px) / (3840 - 1200)));
+                    text-transform: uppercase;
+                    @media screen and (max-width: 1024px){
+                        margin-right: calc(12px + (45 - 12) * ((100vw - 300px) / (1024 - 300)));
+                    }
+                }
+                &:nth-child(2){
                     background-image: url(../../../public/assets/icons/duration_icon.svg);
                     padding-left: calc(21px + (55 - 21) * ((100vw - 1200px) / (3840 - 1200)));
                     margin-right: calc(18px + (70 - 18) * ((100vw - 1200px) / (3840 - 1200)));
@@ -48,7 +56,7 @@
                         margin-right: calc(12px + (45 - 12) * ((100vw - 300px) / (1024 - 300)));
                     }
                 }
-                &:nth-child(2){
+                &:nth-child(3){
                     padding-left: calc(24px + (62 - 24) * ((100vw - 1200px) / (3840 - 1200)));
                     background-image: url(../../../public/assets/icons/modality_icon.svg);   
                     @media screen and (max-width: 1024px){
