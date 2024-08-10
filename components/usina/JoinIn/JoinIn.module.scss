@@ -34,12 +34,14 @@
     }
 
     .col_left{
-        grid-area: left;
+        grid-area: right;
+        @media screen and (min-width: 1024px){
+            grid-area: left;
+
+        }
         padding-top: calc(20px + (70 - 20) * ((100vw - 1200px) / (3840 - 1200)));  
         padding-right: calc(50px + (240 - 50) * ((100vw - 1200px) / (3840 - 1200)));     
-        @media screen and (max-width: 1024px){
-            margin-bottom: calc(35px + (135 - 35) * ((100vw - 300px) / (1024 - 300)));
-        }     
+            
         p{
             margin-bottom: calc(15px + (60 - 15) * ((100vw - 1200px) / (3840 - 1200)));
             @media screen and (max-width: 1024px){
@@ -112,11 +114,17 @@
     }
 
     .col_right{
-        grid-area: right;
-        padding-left: calc(40px + (220 - 40) * ((100vw - 1200px) / (3840 - 1200)));
+        grid-area: left;
+        @media screen and (min-width: 1024px){
+            grid-area: right;
+
+        }        padding-left: calc(40px + (220 - 40) * ((100vw - 1200px) / (3840 - 1200)));
         @media screen and (max-width: 1024px){
             padding-left: 0;
         }
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(35px + (135 - 35) * ((100vw - 300px) / (1024 - 300)));
+        } 
         .tariffs{
             background-color: $gray-6;
             padding:
