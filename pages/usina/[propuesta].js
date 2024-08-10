@@ -57,6 +57,7 @@ function Index({data , prevUrl, pathName}){
         </>
   )
 }
+
 export async function getServerSideProps(context) {
   const { query } = context;
   const { propuesta, revisionid } = query;
