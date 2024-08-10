@@ -123,7 +123,8 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                             navigation={true}  
                             freeMode={false}   
                             grabCursor={false}  
-                            className={`${stylesx.carrousel_members} swiper-cards members`}                       
+                            className={`${stylesx.carrousel_members} swiper-cards members`}    
+                                              
                             >   
                             {dataBlock.members.map((item, m) => (
                                 <SwiperSlide key={m}>
