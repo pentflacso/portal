@@ -17,6 +17,8 @@
             margin-bottom: calc(20px + (60 - 20) * ((100vw - 1200px) / (3840 - 1200)));         
             @media screen and (max-width: 1024px){
                 // margin-bottom: calc(25px + (75 - 25) * ((100vw - 300px) / (1024 - 300)));
+                @include font-level-2;
+                font-weight: 400;
                 margin-bottom: calc(20px + (55 - 20) * ((100vw - 300px) / (1024 - 300)));
             }
         }
