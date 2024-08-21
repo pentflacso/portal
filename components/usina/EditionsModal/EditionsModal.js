@@ -35,7 +35,7 @@ export default function EditionsModal({ setModal,courses }){
                             <div className={styles.duration}><p><span>Duración</span><br />{d.duration}</p></div>
                             <div className={styles.start}><p><span>Inicio</span><br />{d.start}</p></div>
                             <div  className={styles.cta}>
-                            { d.status == 0 ? <Link href={d.path} className={styles.interested_btn}>Ver más</Link> : 
+                            { d.status == 0 ? <Link href={d.path} className={styles.interested_btn} onClick={ () => closeShareModal() }>Ver más</Link> : 
                             <button type="button" className={styles.interested_btn} onClick={ () => setCurrentContent('subscription') }>Me interesa</button>}</div>
                         </div>
                     ))} 

@@ -10,8 +10,8 @@ export default function SliderCourses( {dataCourses} ){
     const router = useRouter();
     return (
     <Swiper
-    touchRatio={0.2} // Reducir la sensibilidad
-    threshold={10} 
+        //touchRatio={0.2} // Reducir la sensibilidad
+        //threshold={10} 
         modules={[Navigation, FreeMode]}
         spaceBetween={0}
         slidesPerView={"auto"}
@@ -24,16 +24,25 @@ export default function SliderCourses( {dataCourses} ){
              router.asPath !== item.path  ?  (<SwiperSlide key={i}>                           
                     <article className={styles.card}>
                         {item.status == 0 && <InscriptionMarquee data={[{ value: "Inscripción abierta — Inscripción abierta" }]} />}
-                        { item.image && <Link href={item.path} ><img src={item.image} alt={item.title} /></Link>}
+                        {/* { item.image && <Link href={item.path} ><img src={item.image} alt={item.title} /></Link>} */}
 
-                        <h5><Link href={item.path} >{item.title}</Link></h5>
-                        <p>{item.description}</p>
-                        <div className={styles.duration_and_modality}>
+                        { item.image && <img src={item.image} alt={item.title} />}
+
+                        {/* <h5><Link href={item.path}>{item.title}</Link></h5> */}
+                        <h5>{item.format} — {item.title}</h5>
+                        
+                        {/* <div className={styles.duration_and_modality}>
                             <p>{item.format}</p>
                             <p>{item.duration}</p>
                             <p>{item.mode}</p>
-                        </div>                                    
-                        <Link href={item.path} className={styles.cta_btn}>Más información</Link>
+                        </div>    */}
+                        <p className={styles.description}>{item.description}</p>    
+                        <div className={styles.duration_and_modality}>
+                            {/* <p>{item.format}</p> */}
+                            <p>{item.duration}</p>
+                            <p>{item.mode}</p>
+                        </div>                             
+                        <Link href={item.path} className={`${styles.cta_btn} cta_btn`}>Más información</Link>
                     </article>                   
             </SwiperSlide>) : ""
         )}                            
