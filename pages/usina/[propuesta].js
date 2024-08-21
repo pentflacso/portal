@@ -43,16 +43,8 @@ function Index({data , prevUrl, pathName}){
          
            <NavBarUsina refNavBrand={navBarBrand} brandVisibility={brandVisibility} startDate={data.data[0].startDate} formURL = {data.data[0].form}/>
             
-          <div ref={container}>
-
-                   
-               <PageBuilder data={ data.data } stylesx={styles} />
-                
-               
-
-
-                
-               
+          <div ref={container}>                   
+              <PageBuilder data={ data.data } stylesx={styles} />                      
           </div>       
         </>
   )
