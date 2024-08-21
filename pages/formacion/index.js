@@ -1,5 +1,4 @@
 import { useEffect } from 'react';
-
 import { useAppContext } from '../../context/AppContext';
 import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import { gsap, Back, Elastic } from 'gsap';

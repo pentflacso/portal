@@ -1,12 +1,8 @@
 @import "../../../styles/themeStyles.module.scss";
 
 .cta{
-    @include container-width-1;
-
-
     .button{
-        @include btn-ver-mas;
-        
+        @include btn-ver-mas;        
         background-image: url(../../../public/assets/icons/download_icon.svg);
         background-repeat: no-repeat;
         background-position: left center;
@@ -15,8 +11,7 @@
         padding-left:  calc((14px + 26 * (100vw - 1200px) / 2640) * 2.5);
         background-size: auto 50%;
         &:hover{
-            background-image: url(../../../public/assets/icons/download_white_icon.svg);
-            
+            background-image: url(../../../public/assets/icons/download_white_icon.svg);            
         }
         @media screen and (max-width: 1024px)
         {
