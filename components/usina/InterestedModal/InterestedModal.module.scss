@@ -114,7 +114,7 @@
             }
         }
 
-        .input{
+        .input, .textarea{
             font-family: 'Roboto', sans-serif;
             @include font-level-4;
             font-weight: 400;

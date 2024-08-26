@@ -5,31 +5,17 @@ import PageBuilder from '../../components/PageBuilder/PageBuilder';
 import Footer from '../../components/library/Footer/Footer';
 import styles from "./usina.module.scss";
 
-export default function Usina({ data }){
-
-    
+export default function Usina({ data }){    
 
     return(
       <>      
       {/* La barra de navegación irá por fuera del PageBuilder */} 
 
-       <NavBarUsina listCourses={data[1].courses}/>
-        
-
-               
-           <PageBuilder data={ data } stylesx={styles} />
-            
-
-           
-
-
-            
-           
+        <NavBarUsina listCourses={data[1].courses}/>      
+        <PageBuilder data={ data } stylesx={styles} />                
     </>
     )
-
 }
-
  
   export async function getServerSideProps() {
     // Fetch data from external API

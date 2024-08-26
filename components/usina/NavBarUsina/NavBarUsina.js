@@ -7,15 +7,16 @@ import InterestedModal from '../InterestedModal/InterestedModal';
 import Link from "next/link";
 import styles from "./NavBarUsina.module.scss";
 
-export default function NavBarUsina({ refNavBrand, brandVisibility, startDate, formURL,listCourses }){
+export default function NavBarUsina({ refNavBrand, brandVisibility, startDate, formURL, courseStatus, listCourses }){
 
     const { currentRoute, isLoading } = useAppContext();
     const [ modal, setModal ] = useState('hidden');      
+
+
     return(
         <>
             {modal === 'edicionesUsina' && <EditionsModal setModal={setModal} courses={listCourses} />} 
             {modal === 'comisionesPropuesta' && <GroupsModal setModal={setModal} groups={formURL} />} 
-
             {modal === 'meInteresa' && <InterestedModal setModal={setModal} />} 
 
             <header>        
@@ -34,25 +35,30 @@ export default function NavBarUsina({ refNavBrand, brandVisibility, startDate, f
                             </h3>
                         }                
 
-                        {currentRoute === '/usina' &&
-                        
+                        {currentRoute === '/usina' &&                        
                             <button type="button" className={styles.editions_btn} onClick={ () => setModal('edicionesUsina')}>Próximas ediciones</button>
                         }
-                         {/* { currentRoute && currentRoute != '/usina' && formURL &&   <div className={brandVisibility ? `${styles.insciption_btn}` : `${styles.insciption_btn} ${styles.active}`}>
-                                <p>Inicio {startDate}</p>
-                                {  formURL?.length > 1 ? 
-                                <button type="button" onClick={ () => setModal('comisionesPropuesta')}>Insscribirme</button>
-                                :
-                                <a href={formURL[0]?.uri} rel="noopener noreferrer" target="_blank">Inscribirme</a>
-                                }
-                            </div>
-                        } */}       
 
                         { currentRoute && currentRoute != '/usina' && formURL &&  <div className={brandVisibility ? `${styles.insciption_btn}` : `${styles.insciption_btn} ${styles.active}`}>
-                                <p>Inició en noviembre</p>
-                                <button type="button" onClick={ () => setModal('meInteresa')}>Me interesa</button>
+                            
+                                {courseStatus === '0' ?
+                                <>
+                                    <p>Inicio {startDate}</p>
+                                    {  formURL?.length > 1 ? 
+                                    <button type="button" onClick={ () => setModal('comisionesPropuesta')}>Inscribirme</button>
+                                    :
+                                    <a href={formURL[0]?.uri} rel="noopener noreferrer" target="_blank">Inscribirme</a>
+                                    }
+                                </>                                
+                                :
+                                <>
+                                    <p>Inició el {startDate}</p>
+                                    <button type="button" onClick={ () => setModal('meInteresa')}>Me interesa</button>
+                                </>                              
+                                }
+                                
                             </div>
-                        }      
+                        }          
 
                     </div>  
                 </nav> 

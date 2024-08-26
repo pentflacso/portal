@@ -36,12 +36,12 @@ function Index({data , prevUrl, pathName}){
     return () => st.revert();      
   }, [elementHeight]);
 
-
+  // blockProps={dataBlock} origin={data[0].title}
   return(
         <>      
           {/* La barra de navegación irá por fuera del PageBuilder */} 
          
-           <NavBarUsina refNavBrand={navBarBrand} brandVisibility={brandVisibility} startDate={data.data[0].startDate} formURL = {data.data[0].form}/>
+           <NavBarUsina courseStatus={data.data[0].status[0].value} refNavBrand={navBarBrand} brandVisibility={brandVisibility} startDate={data.data[0].startDate} formURL = {data.data[0].form} />
             
           <div ref={container}>                   
               <PageBuilder data={ data.data } stylesx={styles} />                      

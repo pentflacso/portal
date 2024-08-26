@@ -212,7 +212,7 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                             <CvSelector persons={dataBlock.field_person} />                              
                         }
                         {dataBlock.block_type === "formandprices" &&
-                            <JoinIn blockProps={dataBlock} formURL={data[0].form}   origin={data[0].title}/>                              
+                            <JoinIn blockProps={dataBlock} formURL={data[0].form} origin={data[0].title}/>                              
                         }
                         {dataBlock.block_type === "automatic_course_slider" &&
                             <SliderCourses dataCourses={dataBlock.courses} />                              
