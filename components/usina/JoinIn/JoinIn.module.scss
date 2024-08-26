@@ -35,9 +35,8 @@
 
     .col_left{
         grid-area: right;
-        @media screen and (min-width: 1024px){
+        @media screen and (min-width: 1025px){
             grid-area: left;
-
         }
         padding-top: calc(20px + (70 - 20) * ((100vw - 1200px) / (3840 - 1200)));  
         padding-right: calc(50px + (240 - 50) * ((100vw - 1200px) / (3840 - 1200)));     
@@ -64,7 +63,8 @@
                 padding: calc(7px + (18 - 7) * ((100vw - 1200px) / (3840 - 1200))) calc(3px + (4 - 3) * ((100vw - 1200px) / (3840 - 1200))); 
                 box-sizing: border-box;
                 border: none;   
-                border-bottom: calc(1.5px + (3 - 1.5) * ((100vw - 1200px) / (3840 - 1200))) solid $green-2;            
+                border-bottom: calc(1.5px + (3 - 1.5) * ((100vw - 1200px) / (3840 - 1200))) solid $green-2;  
+                border-radius: 0;          
                 @media screen and (max-width: 1025px){
                     padding: 
                     calc(6px + (18 - 6) * ((100vw - 300px) / (1200 - 300)))
@@ -115,10 +115,10 @@
 
     .col_right{
         grid-area: left;
-        @media screen and (min-width: 1024px){
+        padding-left: calc(40px + (220 - 40) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (min-width: 1025px){
             grid-area: right;
-
-        }        padding-left: calc(40px + (220 - 40) * ((100vw - 1200px) / (3840 - 1200)));
+        }        
         @media screen and (max-width: 1024px){
             padding-left: 0;
         }
@@ -148,8 +148,7 @@
                     margin-bottom: calc(15px + (45 - 15) * ((100vw - 300px) / (1024 - 300)));
                 } 
                 p{                    
-                    margin-bottom: 0;
-                    
+                    margin-bottom: 0;                    
                 }              
                 h5{
                     @include font-level-3;
@@ -196,7 +195,7 @@
                 }
             }
             h4{
-                @include font-level-3;
+                @include font-level-4;
                 font-weight: 300; 
                 color: $deep-blue;
                 em{
@@ -206,21 +205,16 @@
             }
             .buttonContainer
             {
-                margin-top: calc((5px + (25 - 5) * ((100vw - 1200px) / (3840 - 1200))) * 3);
-
-                &:nth-child(1)
-                {
-                    margin-top: calc(5px + (25 - 5) * ((100vw - 1200px) / (3840 - 1200)));
-
+                margin-top: calc((15px + (25 - 15) * ((100vw - 1200px) / (3840 - 1200))));
+                @media screen and (max-width: 1024px){
+                    margin-top: calc(15px + (25 - 15) * ((100vw - 300px) / (1024 - 300)));
                 }
                 p{
                     margin-bottom: calc(5px + (25 - 5) * ((100vw - 1200px) / (3840 - 1200)));
-                    margin-top: calc(5px + (25 - 5) * ((100vw - 1200px) / (3840 - 1200)));
-
-                }
-                @media screen and (max-width: 1024px){
-                    margin-top: calc(4px + (8 - 4) * ((100vw - 300px) / (1024 - 300)));
-                }
+                    @media screen and (max-width: 1024px){
+                        margin-bottom: calc(5px + (25 - 5) * ((100vw - 300px) / (1024 - 300)));
+                    }
+                }                
             }
         }
     }
