@@ -40,7 +40,7 @@ export default function NavBarUsina({ refNavBrand, brandVisibility, startDate, f
                                 {  formURL?.length > 1 ? 
                                 <button type="button" class="btn-inscribirme" onClick={ () => setModal('comisionesPropuesta')}>Inscribirme</button>
                                 :
-                                <a href={formURL[0]?.uri} rel="noopener noreferrer" target="_blank">Inscribirme</a>
+                                <a href={formURL[0]?.uri} rel="noopener noreferrer"  class="btn-inscribirme"  target="_blank">Inscribirme</a>
                                 }
                             </div>
                         }             
