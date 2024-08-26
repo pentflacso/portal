@@ -146,11 +146,11 @@ export default function JoinIn({ blockProps, origin, formURL }) {
           <div dangerouslySetInnerHTML={{ __html: blockProps.field_formandprices_carddescript[0].value }} />
           { formURL.length == 1 &&
                     <div className={styles.buttonContainer}>
-<a href={formURL[0].uri} rel="noopener noreferrer" target="_blank" className={styles.inscripcion_btn}>Inscribirme</a></div>
+<a href={formURL[0].uri} rel="noopener noreferrer" target="_blank" className={`${styles.inscripcion_btn} btn-inscribirme`}>Inscribirme</a></div>
           }
           { formURL.length > 1 &&  formURL.map((dataForm, i) => (
              <div className={styles.buttonContainer}><p>{dataForm.title}</p>
-          <a href={dataForm.uri} rel="noopener noreferrer" target="_blank" className={`${styles.inscripcion_btn} registration`}>Inscribirme</a>
+          <a href={dataForm.uri} rel="noopener noreferrer" target="_blank" className={`${styles.inscripcion_btn} btn-inscribirme`}>Inscribirme</a>
           </div> ))}
           
         </div>
