@@ -150,7 +150,7 @@ export default function JoinIn({ blockProps, origin, formURL }) {
           }
           { formURL.length > 1 &&  formURL.map((dataForm, i) => (
              <div className={styles.buttonContainer}><p>{dataForm.title}</p>
-          <a href={dataForm.uri} rel="noopener noreferrer" target="_blank" className={styles.inscripcion_btn}>Inscribirme</a>
+          <a href={dataForm.uri} rel="noopener noreferrer" target="_blank" className={`${styles.inscripcion_btn} registration`}>Inscribirme</a>
           </div> ))}
           
         </div>
