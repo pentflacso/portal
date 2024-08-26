@@ -12,7 +12,6 @@ export default function NavBarUsina({ refNavBrand, brandVisibility, startDate, f
     const { currentRoute, isLoading } = useAppContext();
     const [ modal, setModal ] = useState('hidden');      
 
-
     return(
         <>
             {modal === 'edicionesUsina' && <EditionsModal setModal={setModal} courses={listCourses} />} 
