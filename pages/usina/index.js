@@ -5,7 +5,6 @@ import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import PageBuilder from '../../components/PageBuilder/PageBuilder';
 import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
-// import Footer from '../../components/library/Footer/Footer';
 import styles from "./usina.module.scss";
 
 export default function Usina({ data }){
@@ -53,23 +52,7 @@ export default function Usina({ data }){
                 opacity: 0,
                 ease: Back.easeOut.config(3)
             });
-        });   
-        $(`.swiper-wrapper .cta_btn`).on("mouseenter", function mouseEnterCta() {
-            gsap.to(".cursor_deslizar", {
-                duration: 0.8,
-                scale: 0,
-                opacity: 0,
-                ease: Back.easeOut.config(3)
-            });
-        }); 
-        $(`.swiper-wrapper .cta_btn`).on("mouseleave", function mouseLeaveCta() {
-            gsap.to(".cursor_deslizar", {
-                duration: 0.8,
-                scale: 1,
-                opacity: 1,
-                ease: Elastic.easeOut.config( 1, 0.6)
-            });
-        });     
+        });       
     }           
   }, [windowSize]);
 
