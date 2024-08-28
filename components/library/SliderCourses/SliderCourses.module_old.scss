@@ -1,39 +1,25 @@
 @import "../../../styles/themeStyles.module.scss";
 
-.wrapper{    
-    @include container-width-1;
-    column-count: 2;
-    column-gap: calc(47px + (130 - 47) * ((100vw - 1200px) / (3840 - 1200)));
-    margin-bottom: calc(45px + (195 - 45) * ((100vw - 1200px) / (3840 - 1200)));  
+.carrousel_propuestas_usina{    
+    margin-bottom: calc(85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200)));  
     @media screen and (max-width: 1024px){
-        column-count: 1;
-        column-gap: 0;
         margin-bottom: calc(35px + (100 - 35) * ((100vw - 300px) / (1024 - 300)));
     } 
     .card{ 
         @include course-card-1;
         position: relative; 
-        margin:
-        0
-        0
-        calc(48px + (142 - 48) * ((100vw - 1200px) / (3840 - 1200)))
-        0;
-        @media screen and (max-width: 1024px){
-            margin-bottom: calc(35px + (105 - 35) * ((100vw - 300px) / (1024 - 300)));
-        }
         h5{
             width: 100%;
             line-height: 120%;
             @include font-level-2;
+            // margin-bottom: calc((30px + (110 - 30) * ((100vw - 1200px) / (3840 - 1200))) / 2);   
             margin-bottom: calc(20px + (60 - 20) * ((100vw - 1200px) / (3840 - 1200)));         
             @media screen and (max-width: 1024px){
+                // margin-bottom: calc(25px + (75 - 25) * ((100vw - 300px) / (1024 - 300)));
                 margin-bottom: calc(20px + (55 - 20) * ((100vw - 300px) / (1024 - 300)));
             }
         }
-        .image{
-            width: 100%;
-        }
-        img{            
+        img{
             margin-bottom: calc(20px + (40 - 20) * ((100vw - 1200px) / (3840 - 1200)));
             @media screen and (max-width: 1024px){
                 margin-bottom: calc(10px + (30 - 10) * ((100vw - 300px) / (1024 - 300)));
@@ -44,37 +30,6 @@
             @media screen and (max-width: 1024px){
                 margin-bottom: calc(20px + (55 - 20) * ((100vw - 300px) / (1024 - 300)));
             }           
-        }
-        .inscription_status{
-            position: absolute;
-            top: 0;
-            right: 0;
-            background-color: $yellow-1;
-            @include font-level-4; 
-            font-weight: 400;
-            line-height: 100%;            
-            padding:
-            calc(6px + (20 - 6) * ((100vw - 1200px) / (3840 - 1200)))
-            calc(16px + (54 - 16) * ((100vw - 1200px) / (3840 - 1200)))
-            ;
-            border-radius: 
-            0
-            0
-            0
-            calc(16px + (38 - 16) * ((100vw - 1200px) / (3840 - 1200)))
-            ;
-            @media screen and (max-width: 1024px){
-                padding:
-                calc(4px + (14 - 4) * ((100vw - 300px) / (1024 - 300)))
-                calc(11px + (24 - 11) * ((100vw - 300px) / (1024 - 300)))
-                ;
-                border-radius: 
-                0
-                0
-                0
-                calc(14px + (28 - 14) * ((100vw - 300px) / (1024 - 300)))
-                ;
-            }
         }
         .description{
             width: 100%;
@@ -92,8 +47,10 @@
         }
         .duration_and_modality{
             width: 100%;
+            // margin-bottom: calc(15px + (45 - 15) * ((100vw - 1200px) / (3840 - 1200)));
             margin-bottom: calc(25px + (65 - 25) * ((100vw - 1200px) / (3840 - 1200)));
             @media screen and (max-width: 1024px){
+              // margin-bottom: calc(22px + (60 - 22) * ((100vw - 300px) / (1024 - 300)));
               margin-bottom: calc(20px + (55 - 20) * ((100vw - 300px) / (1024 - 300)));
             }
             p{
@@ -103,6 +60,13 @@
                 background-position: left center;          
                 margin-bottom: 0;    
                 line-height: 120%;         
+            /*     &:nth-child(1){
+                    margin-right: calc(16px + (56 - 16) * ((100vw - 1200px) / (3840 - 1200)));
+                    border-bottom: $line-2 solid $yellow-1;
+                    @media screen and (max-width: 1024px){
+                        margin-right: calc(12px + (45 - 12) * ((100vw - 300px) / (1024 - 300)));
+                    }
+                } */
                 &:nth-child(1){
                     background-image: url(../../../public/assets/icons/duration_icon.svg);
                     padding-left: calc(20px + (50 - 20) * ((100vw - 1200px) / (3840 - 1200)));
