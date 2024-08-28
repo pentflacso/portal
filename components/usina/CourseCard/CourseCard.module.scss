@@ -1,0 +1,114 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.card{ 
+    @include course-card-1;
+    position: relative; 
+    margin:
+    0
+    0
+    calc(48px + (142 - 48) * ((100vw - 1200px) / (3840 - 1200)))
+    0;
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc(35px + (105 - 35) * ((100vw - 300px) / (1024 - 300)));
+    }
+    h5{
+        width: 100%;
+        line-height: 120%;
+        @include font-level-2;
+        margin-bottom: calc(20px + (60 - 20) * ((100vw - 1200px) / (3840 - 1200)));         
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(20px + (55 - 20) * ((100vw - 300px) / (1024 - 300)));
+        }
+    }
+    .image{
+        width: 100%;
+    }
+    img{            
+        margin-bottom: calc(20px + (40 - 20) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(10px + (30 - 10) * ((100vw - 300px) / (1024 - 300)));
+        } 
+    }
+    p{
+        margin-bottom: calc(20px + (60 - 20) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(20px + (55 - 20) * ((100vw - 300px) / (1024 - 300)));
+        }           
+    }
+    .inscription_status{
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: $yellow-1;
+        @include font-level-4; 
+        font-weight: 400;
+        line-height: 100%;            
+        padding:
+        calc(6px + (20 - 6) * ((100vw - 1200px) / (3840 - 1200)))
+        calc(16px + (54 - 16) * ((100vw - 1200px) / (3840 - 1200)))
+        ;
+        border-radius: 
+        0
+        0
+        0
+        calc(16px + (38 - 16) * ((100vw - 1200px) / (3840 - 1200)))
+        ;
+        @media screen and (max-width: 1024px){
+            padding:
+            calc(4px + (14 - 4) * ((100vw - 300px) / (1024 - 300)))
+            calc(11px + (24 - 11) * ((100vw - 300px) / (1024 - 300)))
+            ;
+            border-radius: 
+            0
+            0
+            0
+            calc(14px + (28 - 14) * ((100vw - 300px) / (1024 - 300)))
+            ;
+        }
+    }
+    .description{
+        width: 100%;
+        strong{    
+            font-weight: 400;
+            background-image: url(../../../public/assets/icons/triangle_green_icon.svg);         
+            background-repeat: no-repeat;
+            background-size: auto 62%;
+            background-position: left center;   
+            padding-left: calc(16px + (40 - 16) * ((100vw - 1200px) / (3840 - 1200)));   
+            @media screen and (max-width: 1024px){
+                padding-left: calc(21px + (45 - 21) * ((100vw - 300px) / (1024 - 300)));
+            }          
+        }
+    }
+    .duration_and_modality{
+        width: 100%;
+        margin-bottom: calc(25px + (65 - 25) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(20px + (55 - 20) * ((100vw - 300px) / (1024 - 300)));
+        }
+        p{
+            display: inline-block;                
+            background-repeat: no-repeat;
+            background-size: auto 80%;
+            background-position: left center;          
+            margin-bottom: 0;    
+            line-height: 120%;         
+            &:nth-child(1){
+                background-image: url(../../../public/assets/icons/duration_icon.svg);
+                padding-left: calc(20px + (50 - 20) * ((100vw - 1200px) / (3840 - 1200)));
+                margin-right: calc(16px + (56 - 16) * ((100vw - 1200px) / (3840 - 1200)));
+                @media screen and (max-width: 1024px){
+                    padding-left: calc(21px + (40 - 21) * ((100vw - 300px) / (1024 - 300)));
+                    margin-right: calc(12px + (45 - 12) * ((100vw - 300px) / (1024 - 300)));
+                }
+            }
+            &:nth-child(2){
+                padding-left: calc(22px + (55 - 22) * ((100vw - 1200px) / (3840 - 1200)));
+                background-image: url(../../../public/assets/icons/modality_icon.svg);   
+                @media screen and (max-width: 1024px){
+                    padding-left: calc(21px + (45 - 21) * ((100vw - 300px) / (1024 - 300)));
+                }               
+            }
+        }
+    }       
+}
