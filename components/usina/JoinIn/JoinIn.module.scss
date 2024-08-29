@@ -53,7 +53,7 @@
             }
         }
         .inquiry_form{
-            .input, .textarea{
+            .input, .textarea, .phone_input input{
                 font-family: 'Roboto', sans-serif;
                 @include font-level-4;
                 font-weight: 400;
@@ -89,6 +89,17 @@
                 margin-bottom: calc(18px + (50 - 18) * ((100vw - 1200px) / (3840 - 1200)));
                 @media screen and (max-width: 1025px){
                     margin-bottom: calc(15px + (40 - 15) * ((100vw - 300px) / (1200 - 300)));                                    
+                }
+            }
+            .phone_input{
+                >div{
+                    @include font-level-4;
+                    padding-left: calc(5px + (10 - 5) * ((100vw - 1200px) / (3840 - 1200))); 
+                    border-bottom: calc(1.5px + (3 - 1.5) * ((100vw - 1200px) / (3840 - 1200))) solid $green-2; 
+                    @media screen and (max-width: 1025px){
+                        padding-left: calc(5px + (8 - 5) * ((100vw - 300px) / (1200 - 300)));
+                        border-bottom: calc(1.5px + (2.5 - 1.5) * ((100vw - 300px) / (1200 - 300))) solid $green-2;                             
+                    }                    
                 }
             }
             .send_btn{

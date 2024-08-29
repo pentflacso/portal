@@ -3,6 +3,7 @@ import NavBarUsina from '../../components/usina/NavBarUsina/NavBarUsina';
 import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import PageBuilder from '../../components/PageBuilder/PageBuilder';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import WhatsappBtn from '../../components/usina/WhatsappBtn/WhatsappBtn';
 import styles from "./propuesta.module.scss";
 
 function Index({ data }){
@@ -10,6 +11,7 @@ function Index({ data }){
   const navBarBrand = useRef();
   const [ elementHeight, setElementHeight ] = useState(0);  
   const [ brandVisibility, setBrandVisibility ] = useState(true);
+  const [ whatsAppBtnStatus, setWhatsAppBtnStatus] = useState(0);
 
   useLayoutEffect(() => {
     if(container.current){
@@ -34,8 +36,31 @@ function Index({ data }){
   }, [elementHeight]);
 
 
+  useEffect(() => {  
+    let stOne = ScrollTrigger.create({
+      trigger: navBarBrand.current,
+      start: "top top",
+      end: "top top",
+      onEnter: () => setWhatsAppBtnStatus(1),
+      onEnterBack: () => setWhatsAppBtnStatus(0),            
+    });
+    let stTwo = ScrollTrigger.create({
+      trigger: "#footer",    
+      start: "top bottom",
+      end: "top bottom",  
+      onEnter: () => setWhatsAppBtnStatus(2),
+      onEnterBack: () => setWhatsAppBtnStatus(3),       
+    });
+    return () => {
+      stOne.revert();
+      stTwo.revert();
+    };
+  }, [elementHeight]);
+
+
   return(
     <>      
+     <WhatsappBtn whatsAppBtnStatus={whatsAppBtnStatus} />      
       {/* La barra de navegación irá por fuera del PageBuilder */}       
       <NavBarUsina refNavBrand={navBarBrand} brandVisibility={brandVisibility} startDate={data.data[0].startDate} formURL = {data.data[0].form}/>            
       <div ref={container}>
