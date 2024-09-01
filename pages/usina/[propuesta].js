@@ -1,18 +1,17 @@
 import { useRef, useEffect, useLayoutEffect, useState } from 'react';
 import NavBarUsina from '../../components/usina/NavBarUsina/NavBarUsina';
-import MetaTags from '../../components/library/MetaTags/MetaTags';
 import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
-import Footer from '../../components/library/Footer/Footer';
 import PageBuilder from '../../components/PageBuilder/PageBuilder';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import WhatsappBtn from '../../components/usina/WhatsappBtn/WhatsappBtn';
 import styles from "./propuesta.module.scss";
 
-function Index({data , prevUrl, pathName}){
-  //const { currentRoute, windowSize } = useAppContext();
+function Index({ data }){
   const container = useRef();
   const navBarBrand = useRef();
   const [ elementHeight, setElementHeight ] = useState(0);  
   const [ brandVisibility, setBrandVisibility ] = useState(true);
+  const [ whatsAppBtnStatus, setWhatsAppBtnStatus] = useState(0);
 
   useLayoutEffect(() => {
     if(container.current){
@@ -36,17 +35,38 @@ function Index({data , prevUrl, pathName}){
     return () => st.revert();      
   }, [elementHeight]);
 
-  // blockProps={dataBlock} origin={data[0].title}
+
+  useEffect(() => {  
+    let stOne = ScrollTrigger.create({
+      trigger: navBarBrand.current,
+      start: "top top",
+      end: "top top",
+      onEnter: () => setWhatsAppBtnStatus(1),
+      onEnterBack: () => setWhatsAppBtnStatus(0),            
+    });
+    let stTwo = ScrollTrigger.create({
+      trigger: "#footer",    
+      start: "top bottom",
+      end: "top bottom",  
+      onEnter: () => setWhatsAppBtnStatus(2),
+      onEnterBack: () => setWhatsAppBtnStatus(3),       
+    });
+    return () => {
+      stOne.revert();
+      stTwo.revert();
+    };
+  }, [elementHeight]);
+
+
   return(
-        <>      
-          {/* La barra de navegación irá por fuera del PageBuilder */} 
-         
-           <NavBarUsina courseStatus={data.data[0].status[0].value} refNavBrand={navBarBrand} brandVisibility={brandVisibility} startDate={data.data[0].startDate} formURL = {data.data[0].form} />
-            
-          <div ref={container}>                   
-              <PageBuilder data={ data.data } stylesx={styles} />                      
-          </div>       
-        </>
+    <>      
+     <WhatsappBtn whatsAppBtnStatus={whatsAppBtnStatus} />      
+      {/* La barra de navegación irá por fuera del PageBuilder */}       
+      <NavBarUsina courseStatus={data.data[0].status[0].value} refNavBrand={navBarBrand} brandVisibility={brandVisibility} startDate={data.data[0].startDate} formURL = {data.data[0].form}/>            
+      <div ref={container}>
+        <PageBuilder data={ data.data } stylesx={styles} />                        
+      </div>     
+    </>
   )
 }
 

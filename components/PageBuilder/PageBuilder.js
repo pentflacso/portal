@@ -26,10 +26,8 @@ import HeaderPropuesta from '../../components/usina/HeaderPropuesta/HeaderPropue
 import CvSelector from '../../components/usina/CvSelector/CvSelector';
 import JoinIn from '../../components/usina/JoinIn/JoinIn';
 import CTA from '../../components/library/CTA/CTA';
-import SliderCourses from '../../components/library/SliderCourses/SliderCourses';
+import GridCourses from '../library/GridCourses/GridCourses';
 import UsinaHero from '../../components/usina/HeroHeader/HeroHeader';
-
-
 
 
 export default function PageBuilder({data, stylesx, explorerBtn}){
@@ -215,7 +213,7 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                             <JoinIn blockProps={dataBlock} formURL={data[0].form} origin={data[0].title}/>                              
                         }
                         {dataBlock.block_type === "automatic_course_slider" &&
-                            <SliderCourses dataCourses={dataBlock.courses} />                              
+                            <GridCourses dataCourses={dataBlock.courses} />                              
                         }
                         {dataBlock.block_type === "cta" &&
                             <CTA blockProps={dataBlock} />                              

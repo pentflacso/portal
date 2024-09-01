@@ -1,0 +1,19 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.wrapper{    
+    @include container-width-1;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: calc(45px + (195 - 45) * ((100vw - 1200px) / (3840 - 1200)));  
+    @media screen and (max-width: 1024px){
+        flex-wrap: wrap;
+        margin-bottom: calc(35px + (100 - 35) * ((100vw - 300px) / (1024 - 300)));
+    } 
+
+    .col_left, .col_right{
+        width: 47.7%;
+        @media screen and (max-width: 1024px){
+            width: 100%;
+        } 
+    }  
+}
