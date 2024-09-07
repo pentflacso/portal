@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { GoogleReCaptchaProvider, GoogleReCaptcha } from "react-google-recaptcha-v3";
 import PhoneInput from 'react-phone-number-input';
 import styles from "./JoinIn.module.scss";
@@ -8,7 +8,22 @@ export default function JoinIn({ blockProps, origin, formURL }) {
     const [submitting, setSubmitting] = useState(0);
     const [refreshReCaptcha, setRefreshReCaptcha] = useState(false);
     const [phoneValue, setPhoneValue] = useState();
+    const [countryCode, setCountryCode] = useState(''); // Inicialmente vacío
+
+    useEffect(() => {
+      const fetchCountryCode = async () => {
+        try {
+          const response = await fetch('https://ipapi.co/json/');
+          const data = await response.json();
+          setCountryCode(data.country_code || 'AR'); // 'AR' como fallback
+        } catch (error) {
+          console.error('Error fetching country code:', error);
+          setCountryCode('AR'); // En caso de error, usar 'AR' como fallback
+        }
+      };
   
+      fetchCountryCode();
+    }, []);
 
   const [formData, setFormData] = useState({
     firstname: '',
@@ -21,16 +36,30 @@ export default function JoinIn({ blockProps, origin, formURL }) {
   const [submitted, setSubmitted] = useState(false);
 
   const handleChange = (e) => {
+    
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
       token: token
     });
+    console.log(formData)
   };
+
+  const handleChangePhone = (v) => {
+    setFormData({
+      ...formData,
+      ["phone"]: v,
+      token: token
+    });
+  };
+
+
   const setTokenFunc = (getToken) => {
     setToken(getToken);
     
   };
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -106,10 +135,11 @@ export default function JoinIn({ blockProps, origin, formURL }) {
             />
             
             <PhoneInput
-            defaultCountry="AR"
+            defaultCountry={countryCode}
+
             placeholder="Teléfono"
-            value={phoneValue}
-            onChange={setPhoneValue}
+            value={formData.phone}
+            onChange={handleChangePhone}
             className={styles.phone_input}/>
 
             <textarea
