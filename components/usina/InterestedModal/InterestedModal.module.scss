@@ -113,8 +113,8 @@
                 color: $gray-1;
             }
         }
-
-        .input, .textarea{
+        
+        .input, .textarea, .phone_input input{
             font-family: 'Roboto', sans-serif;
             @include font-level-4;
             font-weight: 400;
@@ -149,11 +149,35 @@
                     opacity: 0;
                     color: $deep-blue;   
                 }
-            }                       
+            }   
+                                
         }
-
+        .phone_input{
+            >div{
+                @include font-level-4;
+                padding-left: calc(5px + (10 - 5) * ((100vw - 1200px) / (3840 - 1200))); 
+                @media screen and (max-width: 1025px){
+                    padding-left: calc(5px + (8 - 5) * ((100vw - 300px) / (1200 - 300)));
+                }                    
+            }
+        }
         .send_btn{
             @include btn-ver-mas;
+            
+            &[disabled]
+            {
+                background-color: $gray-6;
+                border-color:$gray-6;
+                background-image: url(/assets/spinners/loader-button.svg);
+                background-repeat: no-repeat;
+                background-position: calc((14px + 26 * (100vw - 1200px) / 2640) * .5) center;
+                padding-left:  calc((14px + 26 * (100vw - 1200px) / 2640) * 2);
+                background-size: auto 50%;
+                &:hover{
+                    color: $deep-blue;
+
+                }
+            }
         }
     } 
 

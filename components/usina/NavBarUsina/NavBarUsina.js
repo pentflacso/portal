@@ -19,7 +19,7 @@ export default function NavBarUsina({ refNavBrand, brandVisibility, startDate, f
             {modal === 'meInteresa' && <InterestedModal setModal={setModal} />} 
 
             <header>        
-                <nav className={currentRoute === '/usina' ? `${styles.navbar}` : `${styles.navbar} ${styles.proposal}`}>                
+                <nav className={currentRoute === '/usina' ? `${styles.navbar}` : `${styles.navbar} ${styles.proposal} test ${styles['status' + courseStatus]} ?`}>                
 
                     <div className={styles.nav_btns}>
 
@@ -43,7 +43,7 @@ export default function NavBarUsina({ refNavBrand, brandVisibility, startDate, f
                             
                                 {courseStatus === '0' ?
                                 <>
-                                    <p>Inicio {startDate}</p>
+                                    <p>Inicia el {startDate}</p>
                                     {  formURL?.length > 1 ? 
                                     <button type="button" className="btn-inscribirme"  onClick={ () => setModal('comisionesPropuesta')}>Inscribirme</button>
                                     :
