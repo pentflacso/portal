@@ -36,7 +36,6 @@ export default function WhatsappBtn({ whatsAppBtnStatus,course }){
             setWrapperFade(false);           
         }     
     },[whatsAppBtnStatus]);
-
     return(
         <>
             {wrapperShow && 
