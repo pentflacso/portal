@@ -8,7 +8,7 @@ export default function Footer(){
     const { currentRoute } = useAppContext();
 
     return(
-        <footer className={styles.footer_site}>
+        <footer id="footer" className={styles.footer_site}>
             <div className={styles.wrapper}>
 
                 <div className={styles.info_top}>

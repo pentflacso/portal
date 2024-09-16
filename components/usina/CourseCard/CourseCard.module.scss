@@ -39,7 +39,38 @@
         position: absolute;
         top: 0;
         right: 0;
-        background-color: $yellow-1;
+        background-color: $yellow-2;
+        @include font-level-4; 
+        font-weight: 400;
+        line-height: 100%;            
+        padding:
+        calc(6px + (20 - 6) * ((100vw - 1200px) / (3840 - 1200)))
+        calc(16px + (54 - 16) * ((100vw - 1200px) / (3840 - 1200)))
+        ;
+        border-radius: 
+        0
+        0
+        0
+        calc(16px + (38 - 16) * ((100vw - 1200px) / (3840 - 1200)))
+        ;
+        @media screen and (max-width: 1024px){
+            padding:
+            calc(4px + (14 - 4) * ((100vw - 300px) / (1024 - 300)))
+            calc(11px + (24 - 11) * ((100vw - 300px) / (1024 - 300)))
+            ;
+            border-radius: 
+            0
+            0
+            0
+            calc(14px + (28 - 14) * ((100vw - 300px) / (1024 - 300)))
+            ;
+        }
+    }
+    .inscription_closed{
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color: $gray-7;
         @include font-level-4; 
         font-weight: 400;
         line-height: 100%;            

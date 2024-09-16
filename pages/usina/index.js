@@ -7,6 +7,7 @@ import { gsap, Back, Elastic } from 'gsap';
 import $ from "jquery";
 import styles from "./usina.module.scss";
 
+
 export default function Usina({ data }){
 
   const { windowSize } = useAppContext();

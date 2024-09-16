@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { GoogleReCaptchaProvider, GoogleReCaptcha } from "react-google-recaptcha-v3";
-
+import PhoneInput from 'react-phone-number-input';
 import styles from "./JoinIn.module.scss";
-
 
 export default function JoinIn({ blockProps, origin, formURL }) {
     const [token, setToken] = useState("");
     const [submitting, setSubmitting] = useState(0);
-
     const [refreshReCaptcha, setRefreshReCaptcha] = useState(false);
+    const [phoneValue, setPhoneValue] = useState();
   
 
   const [formData, setFormData] = useState({
@@ -16,10 +15,20 @@ export default function JoinIn({ blockProps, origin, formURL }) {
     lastname: '',
     email: '',
     message: '',
+    phone: '',
     origin: origin,
     token: token
   });
   const [submitted, setSubmitted] = useState(false);
+
+  const updatePhone = (e) => {
+    setPhoneValue(e);
+    setFormData({
+      ...formData,
+      phone: e,
+      token: token
+    });
+  };
 
   const handleChange = (e) => {
     setFormData({
@@ -37,11 +46,7 @@ export default function JoinIn({ blockProps, origin, formURL }) {
     
     if(!submitting)
     {
-
-        setSubmitting(1);
-
-
-    
+      setSubmitting(1);    
     try {
         const response = await fetch('https://redaccion.pent.org.ar/data/usina/contact', {
         method: 'POST',
@@ -50,21 +55,19 @@ export default function JoinIn({ blockProps, origin, formURL }) {
         },
         body: new URLSearchParams(formData)
         });
-
+        console.log(response);
         if (response.ok) {
         setSubmitted(true);
         setSubmitting(false);
         }else{
             alert('Hubo un error al enviar el formulario');
-
         }
     } catch (err) {
+      console.log(err);
         setRefreshReCaptcha(!refreshReCaptcha);
         console.log(err);
         alert('Hubo un error al enviar el formulario');
         setSubmitting(false);
-
-
     }
 }
     
@@ -113,6 +116,15 @@ export default function JoinIn({ blockProps, origin, formURL }) {
               required
             />
             
+            <PhoneInput
+            defaultCountry="AR"
+            placeholder="Teléfono"
+            value={phoneValue}
+            onChange={updatePhone}
+            className={styles.phone_input}
+            rules={{ required: true }} 
+            />
+
             <textarea
               className={styles.textarea}
               name="message"
@@ -149,7 +161,7 @@ export default function JoinIn({ blockProps, origin, formURL }) {
 <a href={formURL[0].uri} rel="noopener noreferrer" target="_blank" className={`${styles.inscripcion_btn} btn-inscribirme`}>Inscribirme</a></div>
           }
           { formURL.length > 1 &&  formURL.map((dataForm, i) => (
-             <div className={styles.buttonContainer}><p>{dataForm.title}</p>
+             <div className={styles.buttonContainer} key={i}><p>{dataForm.title}</p>
           <a href={dataForm.uri} rel="noopener noreferrer" target="_blank" className={`${styles.inscripcion_btn} btn-inscribirme`}>Inscribirme</a>
           </div> ))}
           
