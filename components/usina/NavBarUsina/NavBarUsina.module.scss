@@ -1,5 +1,26 @@
 @import "../../../styles/themeStyles.module.scss";
 
+.status0{
+    .nav_btns  .insciption_btn{
+        background-color: $yellow-1;
+    }
+    
+}
+.status1{
+    
+    .nav_btns  .insciption_btn{
+        background-color: $gray-7;
+    }
+    
+}
+.status2{
+   
+    .nav_btns  .insciption_btn{
+        background-color: $gray-7;
+    }
+    
+}
+
 .navbar{
     position: fixed;
     z-index: 100;
@@ -89,7 +110,6 @@
             }
 
             &.active{
-                background-color: $yellow-1;
                 padding: 
                 calc(4px + (8 - 4) * ((100vw - 1200px) / (3840 - 1200)))
                 calc(4px + (8 - 4) * ((100vw - 1200px) / (3840 - 1200)))

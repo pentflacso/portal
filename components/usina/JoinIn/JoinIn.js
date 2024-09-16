@@ -30,10 +30,20 @@ export default function JoinIn({ blockProps, origin, formURL }) {
     lastname: '',
     email: '',
     message: '',
+    phone: '',
     origin: origin,
     token: token
   });
   const [submitted, setSubmitted] = useState(false);
+
+  const updatePhone = (e) => {
+    setPhoneValue(e);
+    setFormData({
+      ...formData,
+      phone: e,
+      token: token
+    });
+  };
 
   const handleChange = (e) => {
     
@@ -74,7 +84,7 @@ export default function JoinIn({ blockProps, origin, formURL }) {
         },
         body: new URLSearchParams(formData)
         });
-
+        console.log(response);
         if (response.ok) {
         setSubmitted(true);
         setSubmitting(false);
@@ -82,6 +92,7 @@ export default function JoinIn({ blockProps, origin, formURL }) {
             alert('Hubo un error al enviar el formulario');
         }
     } catch (err) {
+      console.log(err);
         setRefreshReCaptcha(!refreshReCaptcha);
         console.log(err);
         alert('Hubo un error al enviar el formulario');
@@ -138,9 +149,17 @@ export default function JoinIn({ blockProps, origin, formURL }) {
             defaultCountry={countryCode}
 
             placeholder="Teléfono"
+<<<<<<< HEAD
             value={formData.phone}
             onChange={handleChangePhone}
             className={styles.phone_input}/>
+=======
+            value={phoneValue}
+            onChange={updatePhone}
+            className={styles.phone_input}
+            rules={{ required: true }} 
+            />
+>>>>>>> 2c5875f824b5c8011343dddf4e0f9050b97ccb09
 
             <textarea
               className={styles.textarea}

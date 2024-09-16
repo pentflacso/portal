@@ -1,6 +1,8 @@
 import ReactDOM from 'react-dom';
 import React, { useState } from 'react';
 import { GoogleReCaptchaProvider, GoogleReCaptcha } from "react-google-recaptcha-v3";
+import PhoneInput from 'react-phone-number-input';
+
 import styles from "./InterestedModal.module.scss";
 
 export default function InterestedModal({ setModal }){    
@@ -9,16 +11,28 @@ export default function InterestedModal({ setModal }){
     const [token, setToken] = useState("");
     const [submitting, setSubmitting] = useState(0);    
     const [refreshReCaptcha, setRefreshReCaptcha] = useState(false);
-    const [submitted, setSubmitted] = useState(false);  
+    const [phoneValue, setPhoneValue] = useState();
 
+        
     const [formData, setFormData] = useState({
         firstname: '',
         lastname: '',
         email: '',
         message: '',
+        phone: '',
         origin: origin,
         token: token
-    });    
+    });
+    const [submitted, setSubmitted] = useState(false);
+
+    const updatePhone = (e) => {
+        setPhoneValue(e);
+        setFormData({
+        ...formData,
+        phone: e,
+        token: token
+        });
+    };
 
     const handleChange = (e) => {
         setFormData({
@@ -35,34 +49,35 @@ export default function InterestedModal({ setModal }){
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-    
+        
         if(!submitting)
         {
-            setSubmitting(1);        
-            try {
-                const response = await fetch('https://redaccion.pent.org.ar/data/usina/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                body: new URLSearchParams(formData)
-                });
-
-                if (response.ok) {
-                setSubmitted(true);
-                setSubmitting(false);
-                }else{
-                    alert('Hubo un error al enviar el formulario');
-
-                }
-            } catch (err) {
-                setRefreshReCaptcha(!refreshReCaptcha);
-                console.log(err);
-                alert('Hubo un error al enviar el formulario');
-                setSubmitting(false);
+          setSubmitting(1);    
+        try {
+            const response = await fetch('https://redaccion.pent.org.ar/data/usina/interest', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded'
+            },
+            body: new URLSearchParams(formData)
+            });
+            console.log(response);
+    
+            if (response.ok) {
+            setSubmitted(true);
+            setSubmitting(false);
+            closeShareModal()
+            }else{
+                alert('Hubo un error al enviar el formulario 1 ');
             }
-        }    
-    };
+        } catch (err) {
+            setRefreshReCaptcha(!refreshReCaptcha);
+            console.log(err);
+            alert('Hubo un error al enviar el formulario 2');
+            setSubmitting(false);
+        }
+        }
+    }
 
     function closeShareModal() {
         setCloseAnimation(true);
@@ -111,14 +126,15 @@ export default function InterestedModal({ setModal }){
                     data-required="true"
                     required
                     />
-                    
-                    <textarea
-                    className={styles.textarea}
-                    name="message"
-                    placeholder="Consulta..."
-                    value={formData.message}
-                    onChange={handleChange}
+                     <PhoneInput
+                    defaultCountry="AR"
+                    placeholder="Teléfono"
+                    value={phoneValue}
+                    onChange={updatePhone}
+                    className={styles.phone_input}
+                    rules={{ required: true }} 
                     />
+                    
                     <button type="submit" className={styles.send_btn} disabled={submitting ? "disabled" : ""} >Enviar</button>
                     <GoogleReCaptchaProvider reCaptchaKey="6LfdgyAqAAAAANgn3ng6R3SXVze9toP9tTwcdUJU">
                         <GoogleReCaptcha
