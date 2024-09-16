@@ -60,7 +60,7 @@ function Index({ data }){
 
   return(
     <>      
-     <WhatsappBtn whatsAppBtnStatus={whatsAppBtnStatus} />      
+     <WhatsappBtn whatsAppBtnStatus={whatsAppBtnStatus} course = {data.data[0].titleShare} />      
       {/* La barra de navegación irá por fuera del PageBuilder */}       
       <NavBarUsina courseStatus={data.data[0].status[0].value} refNavBrand={navBarBrand} brandVisibility={brandVisibility} startDate={data.data[0].startDate} formURL = {data.data[0].form}/>            
       <div ref={container}>
