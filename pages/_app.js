@@ -39,12 +39,11 @@ export default function App({ Component, pageProps }) {
         <AppContext>       
             {router.pathname != "/usina/[propuesta]" && <NavBar/> }
             {/* Global Site Code Pixel - Facebook Pixel */}
-            {/*<Script
+            <Script
                 id="fb-pixel"
                 strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
                 __html: `
-                    <!-- Meta Pixel Code -->
                     <script>
                     !function(f,b,e,v,n,t,s)
                     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -60,10 +59,9 @@ export default function App({ Component, pageProps }) {
                     <noscript><img height="1" width="1" style="display:none"
                     src="https://www.facebook.com/tr?id=${fbq.FB_PIXEL_ID}&ev=PageView&noscript=1"
                     /></noscript>
-                    <!-- End Meta Pixel Code -->
                 `,
                 }}
-            />   */}
+            />   
                      
             <Component {...pageProps} />                    
         </AppContext>

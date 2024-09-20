@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import {useEffect} from "react";
 import { GoogleReCaptchaProvider, GoogleReCaptcha } from "react-google-recaptcha-v3";
 import PhoneInput from 'react-phone-number-input';
 import styles from "./JoinIn.module.scss";
@@ -138,7 +139,7 @@ export default function JoinIn({ blockProps, origin, formURL }) {
             />
             
             <PhoneInput
-            defaultCountry="AR"
+            defaultCountry={countryCode}
             placeholder="Teléfono"
             onChange={updatePhone}
             className={styles.phone_input}
