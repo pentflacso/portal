@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from "./WhatsappBtn.module.scss";
 
-export default function WhatsappBtn({ whatsAppBtnStatus }){
+export default function WhatsappBtn({ whatsAppBtnStatus,course }){
 
     const [menssageState, setMenssageState] = useState(1);
     const [menssageShow, setMenssageShow] = useState(true);
@@ -36,12 +36,12 @@ export default function WhatsappBtn({ whatsAppBtnStatus }){
             setWrapperFade(false);           
         }     
     },[whatsAppBtnStatus]);
-
+    
     return(
         <>
             {wrapperShow && 
                 <div className={!wrapperFade ? `${styles.whatsapp_wrapper}` : `${styles.whatsapp_wrapper} ${styles.hide}`}>
-                    <a href="https://api.whatsapp.com/send/?phone=541125162758&text&type=phone_number&app_absent=0" rel="noopener noreferrer" target="_blank" className={`${styles.whatsapp_btn}`}><img src="/assets/icons/whatsapp_icon.svg" alt="Logo de WhatsApp" /></a>
+                    <a href={`https://api.whatsapp.com/send/?phone=5491156645418&text=Hola+me+interesa+cursar: ${course}`} rel="noopener noreferrer" target="_blank" className={`${styles.whatsapp_btn}`}><img src="/assets/icons/whatsapp_icon.svg" alt="Logo de WhatsApp" /></a>
                     {menssageShow &&
                     <div className={!menssageHide ? `${styles.message_wrapper}` : `${styles.message_wrapper} ${styles.hide}`}>
                         <div className={menssageState === 1 ? `${styles.message} ${styles.one} ${styles.show}` : `${styles.message} ${styles.one} ${styles.hide}`}>
