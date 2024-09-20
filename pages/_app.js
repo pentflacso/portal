@@ -19,27 +19,27 @@ export default function App({ Component, pageProps }) {
     }, []);
 
     const router = useRouter();
-    
+    /*
     useEffect(() => {
         // This pageview only triggers the first time (it's important for Pixel to have real information)
-        fbq.pageview()
+        /*fbq.pageview()*/
     
-        const handleRouteChange = () => {
+        /*const handleRouteChange = () => {
           fbq.pageview()
-        }
+        }*/
     
-        router.events.on('routeChangeComplete', handleRouteChange)
+        /*router.events.on('routeChangeComplete', handleRouteChange)
         return () => {
           router.events.off('routeChangeComplete', handleRouteChange)
         }
     }, [router.events])
-
+*/
 
     return(
         <AppContext>       
             {router.pathname != "/usina/[propuesta]" && <NavBar/> }
             {/* Global Site Code Pixel - Facebook Pixel */}
-            <Script
+            {/*<Script
                 id="fb-pixel"
                 strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
@@ -63,7 +63,7 @@ export default function App({ Component, pageProps }) {
                     <!-- End Meta Pixel Code -->
                 `,
                 }}
-            />   
+            />   */}
                      
             <Component {...pageProps} />                    
         </AppContext>

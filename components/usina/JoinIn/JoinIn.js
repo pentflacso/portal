@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { GoogleReCaptchaProvider, GoogleReCaptcha } from "react-google-recaptcha-v3";
 import PhoneInput from 'react-phone-number-input';
 import styles from "./JoinIn.module.scss";
@@ -55,13 +55,7 @@ export default function JoinIn({ blockProps, origin, formURL }) {
     console.log(formData)
   };
 
-  const handleChangePhone = (v) => {
-    setFormData({
-      ...formData,
-      ["phone"]: v,
-      token: token
-    });
-  };
+
 
 
   const setTokenFunc = (getToken) => {
@@ -144,26 +138,14 @@ export default function JoinIn({ blockProps, origin, formURL }) {
             />
             
             <PhoneInput
-            defaultCountry={countryCode}
-
+            defaultCountry="AR"
             placeholder="Teléfono"
-<<<<<<< HEAD
-            value={formData.phone}
-            onChange={handleChangePhone}
-            className={styles.phone_input}/>
-=======
-            value={phoneValue}
             onChange={updatePhone}
             className={styles.phone_input}
             rules={{ required: true }} 
-            />
-<<<<<<< HEAD
->>>>>>> 2c5875f824b5c8011343dddf4e0f9050b97ccb09
-=======
             value={formData.phone}
-            onChange={handleChangePhone}
-            className={styles.phone_input}/>
->>>>>>> 6d9ed98d42a28aaf46c007e4f9e37acad8bf796d
+            />
+        
 
             <textarea
               className={styles.textarea}
