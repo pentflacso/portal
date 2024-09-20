@@ -61,7 +61,6 @@ export default function InterestedModal({ setModal }){
             },
             body: new URLSearchParams(formData)
             });
-            console.log(response);
     
             if (response.ok) {
             setSubmitted(true);
@@ -72,7 +71,6 @@ export default function InterestedModal({ setModal }){
             }
         } catch (err) {
             setRefreshReCaptcha(!refreshReCaptcha);
-            console.log(err);
             alert('Hubo un error al enviar el formulario 2');
             setSubmitting(false);
         }
