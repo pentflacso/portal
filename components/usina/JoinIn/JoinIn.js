@@ -84,7 +84,6 @@ export default function JoinIn({ blockProps, origin, formURL }) {
         },
         body: new URLSearchParams(formData)
         });
-        console.log(response);
         if (response.ok) {
         setSubmitted(true);
         setSubmitting(false);
@@ -94,7 +93,6 @@ export default function JoinIn({ blockProps, origin, formURL }) {
     } catch (err) {
       console.log(err);
         setRefreshReCaptcha(!refreshReCaptcha);
-        console.log(err);
         alert('Hubo un error al enviar el formulario');
         setSubmitting(false);
     }
@@ -159,7 +157,13 @@ export default function JoinIn({ blockProps, origin, formURL }) {
             className={styles.phone_input}
             rules={{ required: true }} 
             />
+<<<<<<< HEAD
 >>>>>>> 2c5875f824b5c8011343dddf4e0f9050b97ccb09
+=======
+            value={formData.phone}
+            onChange={handleChangePhone}
+            className={styles.phone_input}/>
+>>>>>>> 6d9ed98d42a28aaf46c007e4f9e37acad8bf796d
 
             <textarea
               className={styles.textarea}

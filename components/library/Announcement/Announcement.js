@@ -33,9 +33,10 @@ console.log(router.asPath);
 
     if (shouldDisplay && data.body) {
         return( 
-            <div className={!announcementOutAnimation ? `${styles.announcement}` : `${styles.announcement} ${styles.animation_out}` }>   
+            <div className={!announcementOutAnimation ? `${styles.announcement} ${data.type==1 ? styles.duelo : ''}` : `${styles.announcement} ${styles.animation_out} ${data.type==1 ? styles.duelo : ''}` }>   
                 <button type="button" aria-label="Cerrar anuncio" className={styles.close_btn} onClick={closeAnnouncement}><span/><span/></button> 
-                <div id="announcementCTA" className={styles.info} dangerouslySetInnerHTML={{ __html:  data.body }}></div>          
+
+ <div id="announcementCTA" className={styles.info} dangerouslySetInnerHTML={{ __html:  data.body }}></div>          
             </div>
         );
     } else {
