@@ -8,7 +8,22 @@ export default function JoinIn({ blockProps, origin, formURL }) {
     const [submitting, setSubmitting] = useState(0);
     const [refreshReCaptcha, setRefreshReCaptcha] = useState(false);
     const [phoneValue, setPhoneValue] = useState();
+    const [countryCode, setCountryCode] = useState(''); // Inicialmente vacío
+
+    useEffect(() => {
+      const fetchCountryCode = async () => {
+        try {
+          const response = await fetch('https://ipapi.co/json/');
+          const data = await response.json();
+          setCountryCode(data.country_code || 'AR'); // 'AR' como fallback
+        } catch (error) {
+          console.error('Error fetching country code:', error);
+          setCountryCode('AR'); // En caso de error, usar 'AR' como fallback
+        }
+      };
   
+      fetchCountryCode();
+    }, []);
 
   const [formData, setFormData] = useState({
     firstname: '',
@@ -31,16 +46,30 @@ export default function JoinIn({ blockProps, origin, formURL }) {
   };
 
   const handleChange = (e) => {
+    
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
       token: token
     });
+    console.log(formData)
   };
+
+  const handleChangePhone = (v) => {
+    setFormData({
+      ...formData,
+      ["phone"]: v,
+      token: token
+    });
+  };
+
+
   const setTokenFunc = (getToken) => {
     setToken(getToken);
     
   };
+
+  
   const handleSubmit = async (e) => {
     e.preventDefault();
     
@@ -55,7 +84,6 @@ export default function JoinIn({ blockProps, origin, formURL }) {
         },
         body: new URLSearchParams(formData)
         });
-        console.log(response);
         if (response.ok) {
         setSubmitted(true);
         setSubmitting(false);
@@ -65,7 +93,6 @@ export default function JoinIn({ blockProps, origin, formURL }) {
     } catch (err) {
       console.log(err);
         setRefreshReCaptcha(!refreshReCaptcha);
-        console.log(err);
         alert('Hubo un error al enviar el formulario');
         setSubmitting(false);
     }
@@ -124,6 +151,9 @@ export default function JoinIn({ blockProps, origin, formURL }) {
             className={styles.phone_input}
             rules={{ required: true }} 
             />
+            value={formData.phone}
+            onChange={handleChangePhone}
+            className={styles.phone_input}/>
 
             <textarea
               className={styles.textarea}
