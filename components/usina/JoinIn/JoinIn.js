@@ -55,13 +55,7 @@ export default function JoinIn({ blockProps, origin, formURL }) {
     console.log(formData)
   };
 
-  const handleChangePhone = (v) => {
-    setFormData({
-      ...formData,
-      ["phone"]: v,
-      token: token
-    });
-  };
+
 
 
   const setTokenFunc = (getToken) => {
@@ -146,14 +140,12 @@ export default function JoinIn({ blockProps, origin, formURL }) {
             <PhoneInput
             defaultCountry="AR"
             placeholder="Teléfono"
-            value={phoneValue}
             onChange={updatePhone}
             className={styles.phone_input}
             rules={{ required: true }} 
-            />
             value={formData.phone}
-            onChange={handleChangePhone}
-            className={styles.phone_input}/>
+            />
+        
 
             <textarea
               className={styles.textarea}
