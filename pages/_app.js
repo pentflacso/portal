@@ -44,6 +44,12 @@ export default function App({ Component, pageProps }) {
                 strategy="afterInteractive"
                 dangerouslySetInnerHTML={{
                 __html: `
+
+
+
+
+                
+                    <!-- Meta Pixel Code -->
                     <script>
                     !function(f,b,e,v,n,t,s)
                     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -53,12 +59,15 @@ export default function App({ Component, pageProps }) {
                     t.src=v;s=b.getElementsByTagName(e)[0];
                     s.parentNode.insertBefore(t,s)}(window, document,'script',
                     'https://connect.facebook.net/en_US/fbevents.js');
-                    fbq('init', '${fbq.FB_PIXEL_ID}');
+                    fbq('init', '211080436747141');
                     fbq('track', 'PageView');
                     </script>
                     <noscript><img height="1" width="1" style="display:none"
-                    src="https://www.facebook.com/tr?id=${fbq.FB_PIXEL_ID}&ev=PageView&noscript=1"
+                    src="https://www.facebook.com/tr?id=211080436747141&ev=PageView&noscript=1"
                     /></noscript>
+                    <!-- End Meta Pixel Code -->
+                    
+
                 `,
                 }}
             />   
