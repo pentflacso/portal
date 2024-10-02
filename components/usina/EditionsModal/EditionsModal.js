@@ -45,7 +45,7 @@ export default function EditionsModal({ setModal,courses }){
                     <div className={styles.subscription}>
                         <button type="button" className={styles.back_arrow} onClick={ () => setCurrentContent('editions') }><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/>Próximas ediciones</button> 
 
-                        <h4>Descargar</h4>
+                        <h4>Mantenerme al tanto</h4>
                         <p>Gracias por tu interés. Completá tus datos y te contactaremos cuando se habilite la próxima edición.</p>
 
                         <form>
