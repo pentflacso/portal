@@ -20,7 +20,7 @@ export default function DownloadModal({ archive, setModal}){
             
             <button type="button" className={styles.close_btn} onClick={ () => closeShareModal() }><span/><span/></button> 
 
-                <h4>Descargar</h4>
+                <h4>Contactar</h4>
                 <p>Gracias por tu interés. Colocá tus datos y te enviaremos el archivo de inmediato a tu correo electrónico.</p>
 
                 <form>
