@@ -23,8 +23,8 @@ export default function Quotes({items}){
                                 <img src={item.img.url} alt={item.img.alt} />
                             </div>
                             <div className={styles.text_cont}>
-                                <h4>{item.description[0].value}</h4>
-                                <p><strong>{item.name[0].value}</strong><br /><span dangerouslySetInnerHTML={{__html: `${item.subtitle[0].value}` }} /></p> 
+                                <h4>{item.description[0]?.value}</h4>
+                                <p><strong>{item.name[0]?.value}</strong><br /><span dangerouslySetInnerHTML={{__html: `${item.subtitle[0]?.value}` }} /></p> 
                             </div>
                         </div>
                     </div>
