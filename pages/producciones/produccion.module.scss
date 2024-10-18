@@ -115,6 +115,18 @@
                     }
                 }           
                 &.download{
+                    background-color: $green-2;
+                    border-color: $green-2;
+                    margin-right: calc(5px + (20 - 5) * ((100vw - 1200px) / (3840 - 1200)));
+                    @media screen and (min-width: 1024px){
+                        &:hover{
+                            background-color: $deep-blue;
+                            border-color: $deep-blue;
+                        }
+                    }
+                    @media screen and (max-width: 1024px){
+                        margin-right: calc(5px + (15 - 5) * ((100vw - 300px) / (1024 - 300))); 
+                    }
                     span{                        
                         img{
                             width: calc(12px + (28 - 12) * ((100vw - 1200px) / (3840 - 1200)));
@@ -122,7 +134,7 @@
                                 width: calc(8px + (18 - 8) * ((100vw - 300px) / (1024 - 300))); 
                             }
                         }
-                    }
+                    }                     
                 }   
                 &.link{
                     span{                        
@@ -142,11 +154,7 @@
                                 width: calc(9px + (21 - 9) * ((100vw - 300px) / (1024 - 300))); 
                             }
                         }
-                    }
-                    margin-right: calc(5px + (20 - 5) * ((100vw - 1200px) / (3840 - 1200)));
-                    @media screen and (max-width: 1024px){
-                        margin-right: calc(5px + (15 - 5) * ((100vw - 300px) / (1024 - 300))); 
-                    } 
+                    }                    
                 }
                 @media screen and (min-width: 1024px){
                     &:hover{       
