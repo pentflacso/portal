@@ -37,8 +37,9 @@ export default function App({ Component, pageProps }) {
 
     return(
         <AppContext>       
-            {router.pathname != "/usina/[propuesta]" && <NavBar/> }
-            
+            {router.pathname != "/usina" && <NavBar/>
+            && router.pathname != "/usina/[propuesta]" && <NavBar/>
+            && router.pathname != "/certificacion-ia" && <NavBar/>}            
                      
             <Component {...pageProps} />                    
         </AppContext>

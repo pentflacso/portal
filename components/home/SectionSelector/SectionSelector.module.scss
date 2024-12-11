@@ -28,7 +28,7 @@
                 outline: inherit;
                 border: none;
                 position: relative;
-                font-size: calc(28px + (66 - 28) * ((100vw - 1200px) / (3840 - 1200)));
+                @include font-level-2;    
                 font-weight: 400;
                 line-height: 120%; 
                 letter-spacing: -0.015em;

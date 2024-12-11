@@ -1,0 +1,127 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.legales{
+    background-color: #032e59;
+    padding:
+    calc(75px + (160 - 75) * ((100vw - 1200px) / (3840 - 1200)))
+    0
+    calc(20px + (40 - 20) * ((100vw - 1200px) / (3840 - 1200)))
+    0
+    ; 
+    @media screen and (max-width: 1025px){  
+        padding:
+        calc(50px + (150 - 50) * ((100vw - 300px) / (1025 - 300)))
+        0
+        calc(15px + (30 - 15) * ((100vw - 300px) / (1025 - 300)))
+        0
+        ;
+    }
+
+    .wrapper{
+        @include container-width-1;    
+        
+        h3{            
+            @include font-level-3;
+            font-weight: 400;
+            line-height: 130%;   
+            color: $white;         
+            max-width: 575px;
+            margin-bottom: calc(48px + (128 - 48) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1025px){ 
+                max-width: 100%;
+                margin-bottom: calc(34px + (84 - 34) * ((100vw - 300px) / (1025 - 300)));
+            }
+        }
+        
+        h4, p, a{       
+            @include font-level-5;
+            line-height: 135%;
+            letter-spacing: 0.02em;
+        }
+
+        h4{
+            font-weight: 500;
+            color: $white;
+        }
+
+        p{
+            font-weight: 300;
+            color: rgba(255,255,255, .6);                    
+            margin-bottom: calc(15px + (30 - 15) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1025px){ 
+                margin-bottom: calc(15px + (30 - 15) * ((100vw - 300px) / (1025 - 300)));
+            }
+        }
+
+        .info{
+            column-count: 3;
+            column-gap: calc(50px + (158 - 50) * ((100vw - 1200px) / (3840 - 1200)));
+            margin-bottom: calc(60px + (140 - 60) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1025px){ 
+                column-count: 1;
+                column-gap: 0;
+                margin-bottom: calc(20px + (60 - 20) * ((100vw - 300px) / (1025 - 300)));
+            }                        
+        }
+
+        .footer{
+            border-top: calc(0.5px + (1 - 0.5) * ((100vw - 1200px) / (3840 - 1200))) solid rgba(255,255,255, .2);
+            padding-top: calc(20px + (40 - 20) * ((100vw - 1200px) / (3840 - 1200)));
+            display: grid;
+            grid-template-areas: 'col-left col-right';
+            grid-template-columns: 50% 50%;     
+            @media screen and (max-width: 1025px){ 
+                grid-template-areas: 'col-left' 'col-right';
+                grid-template-columns: 100%;
+                padding-top: calc(15px + (30 - 15) * ((100vw - 300px) / (1025 - 300)));
+            }  
+            .col_left{
+                grid-area: col-left;
+                @media screen and (max-width: 1025px){ 
+                    margin-bottom: calc(20px + (40 - 20) * ((100vw - 300px) / (1025 - 300)));
+                }
+                a{                    
+                    color: $white;            
+                    text-decoration: none;                     
+                }
+            }     
+            .col_right{
+                grid-area: col-right;
+                display: flex;
+                justify-content: right;
+                align-items: flex-end;
+                @media screen and (max-width: 1025px){ 
+                    justify-content: left;
+                }
+                a{
+                    display: flex;
+                    justify-content: center;
+                    width: calc(20px + (45 - 20) * ((100vw - 1200px) / (3840 - 1200)));
+                    height: calc(20px + (45 - 20) * ((100vw - 1200px) / (3840 - 1200)));
+                    margin-right: calc(14px + (26 - 14) * ((100vw - 1200px) / (3840 - 1200)));
+                    text-decoration: none;
+                    opacity: 1;
+                    @media screen and (max-width: 1025px){ 
+                        width: calc(22px + (40 - 22) * ((100vw - 300px) / (1025 - 300)));
+                        height: calc(22px + (40 - 22) * ((100vw - 300px) / (1025 - 300)));
+                        margin-right: calc(20px + (30 - 20) * ((100vw - 300px) / (1025 - 300)));
+                    }
+                    @media screen and (min-width: 1025px){ 
+                        &:hover{
+                            opacity: .4;
+                        }
+                    }                    
+                    &:last-of-type{
+                        margin-right: 0;
+                    }
+                    img{
+                        width: auto;
+                        height: 100%;
+                    }
+                }                
+
+            }     
+        }
+
+    }
+}

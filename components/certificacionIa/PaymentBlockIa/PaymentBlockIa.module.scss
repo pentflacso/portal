@@ -1,0 +1,135 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.wrapper{
+    @include container-width-1;
+    display: grid;
+    grid-template-areas: 'left right';
+    grid-template-columns: 40% 60%; 
+    margin-bottom: calc(115px + (400 - 115) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        grid-template-areas: 'left' 'right';
+        grid-template-columns: 100% 100%; 
+        margin-bottom: calc(35px + (115 - 35) * ((100vw - 300px) / (1024 - 300)));
+    }
+    
+    h3{
+        @include font-level-2;    
+        font-weight: 400;
+        line-height: 120%; 
+        color: $deep-blue;
+        margin-bottom: calc(15px + (35 - 15) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(15px + (45 - 15) * ((100vw - 300px) / (1200 - 300)));                                    
+        }
+    }
+
+    p{
+        @include font-level-4;
+        line-height: 144%;
+        color: $deep-blue;
+
+        a{
+            color: $deep-blue;
+            text-decoration: none;
+            border-bottom: $line-2 solid $yellow-1;
+            transition: all .2s ease-out;
+            @media screen and (min-width: 1025px){
+                &:hover{
+                    border-bottom: $line-2 solid $deep-blue; 
+                    transition: all .2s ease-in;
+                }
+            }
+        }        
+    }
+
+    .col_left{
+        grid-area: left;        
+        padding-top: calc(19px + (49 - 19) * ((100vw - 1200px) / (3840 - 1200)));  
+        padding-right: calc(55px + (255 - 55) * ((100vw - 1200px) / (3840 - 1200)));     
+        @media screen and (max-width: 1024px){
+            margin-bottom: calc(18px + (58 - 18) * ((100vw - 300px) / (1024 - 300)));
+        }
+        p{
+            margin-bottom: calc(15px + (45 - 15) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1024px){
+                margin-bottom: calc(14px + (40 - 14) * ((100vw - 300px) / (1024 - 300)));
+            }           
+        }
+    }
+
+    .col_right{
+        grid-area: right;
+        display: flex;
+        column-gap: calc(25px + (55 - 25) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1025px){  
+            flex-wrap: wrap;
+        }
+       
+        .payment_card{
+            background-color: $gray-6; 
+            padding: 
+            calc(25px + (65 - 25) * ((100vw - 1200px) / (3840 - 1200)))
+            calc(28px + (68 - 28) * ((100vw - 1200px) / (3840 - 1200)))
+            ;
+            width: 50%;  
+            @media screen and (max-width: 1024px){  
+                width: 100%;
+                margin-bottom: calc(20px + (40 - 20) * ((100vw - 300px) / (1025 - 300)));
+                padding: calc(20px + (45 - 20) * ((100vw - 300px) / (1025 - 300)));
+            }
+
+            .country_tag{
+                display: flex;
+                width: fit-content;
+                background-color: $yellow-1;
+                padding: 0 2%;                
+                margin-bottom: calc(22px + (62 - 22) * ((100vw - 1200px) / (3840 - 1200)));
+                @media screen and (max-width: 1024px){  
+                    margin-bottom: calc(20px + (40 - 20) * ((100vw - 300px) / (1025 - 300)));                   
+                }
+            }
+
+            .bonus{
+                margin-bottom: calc(25px + (60 - 25) * ((100vw - 1200px) / (3840 - 1200)));
+                @media screen and (max-width: 1024px){  
+                    margin-bottom: calc(20px + (40 - 20) * ((100vw - 300px) / (1025 - 300)));
+                }
+            }
+
+            .price{
+                line-height: 125%;
+                margin-bottom: calc(25px + (65 - 25) * ((100vw - 1200px) / (3840 - 1200)));
+                @media screen and (max-width: 1024px){  
+                    margin-bottom: calc(20px + (45 - 20) * ((100vw - 300px) / (1025 - 300)));
+                }
+                span{
+                    @include font-level-2;
+                    font-weight: 300;
+                    line-height: 110%;
+                    strong{
+                        font-weight: 500;
+                    }
+                }
+            }
+
+            .disclaiment{
+                border-top: solid $line-1 $gray-4;
+                padding-top: calc(20px + (60 - 20) * ((100vw - 1200px) / (3840 - 1200)));
+                @media screen and (max-width: 1024px){  
+                    padding-top: calc(18px + (42 - 18) * ((100vw - 300px) / (1025 - 300)));
+                }
+                p{
+                    @include font-level-5;    
+                    line-height: 130%;
+                    margin-bottom: calc(15px + (30 - 15) * ((100vw - 1200px) / (3840 - 1200)));
+                    @media screen and (max-width: 1024px){  
+                        margin-bottom: calc(12px + (24 - 12) * ((100vw - 300px) / (1025 - 300)));
+                    }
+                    &:last-child{
+                        margin-bottom: 0;
+                    }              
+                }              
+            }
+        }
+    }
+}
