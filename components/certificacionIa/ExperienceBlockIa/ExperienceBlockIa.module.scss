@@ -1,0 +1,248 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.wrapper{        
+    display: grid;
+    grid-template-areas: 'col-left col-right';
+    grid-template-columns: 50% 50%;
+    @include container-width-1;   
+    margin-bottom: calc(85px + (245 - 85) * ((100vw - 1200px) / (3840 - 1200)));     
+    @media screen and (max-aspect-ratio: 16/9){  
+        margin-bottom: 8vh;               
+    }    
+    @media screen and (max-width: 1024px){
+        grid-template-areas: 'col-right';
+        grid-template-columns: 100%;
+        margin-bottom: calc(55px + (150 - 55) * ((100vw - 300px) / (1024 - 300)));
+    }
+
+    .col_left{
+        height: 70vh;
+        @media screen and (max-width: 1024px){
+            display: none;
+        }       
+    }
+
+    .img_container{
+        position: relative;
+        user-select: none;
+        @media screen and (max-width: 1024px){
+            width: 90%;    
+        }
+        &.show_mobile{
+            display: none;
+            @media screen and (max-width: 1024px){
+                display: block;
+                width: 95%;    
+            }
+        }
+        .img_wrapper{
+            position: absolute;
+            opacity: 0;
+            @media screen and (max-width: 1024px){
+                position: relative;   
+            }
+            img{                
+                height: auto;
+                @media screen and (min-aspect-ratio: 23/9){
+                    width: 75%;               
+                }
+                @media screen and (min-aspect-ratio: 19/9) and (max-aspect-ratio: 23/9){
+                    width: 88%;        
+                } 
+                @media screen and (max-aspect-ratio: 19/9){
+                    width: 100%;                     
+                }  
+                &.exp_1_el_2, &.exp_1_el_3, &.exp_1_el_4, &.exp_2_el_2, &.exp_2_el_3, &.exp_2_el_4, &.exp_3_el_2, &.exp_3_el_3, &.exp_3_el_4{
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                }
+                &.exp_1_el_2{
+                    z-index: 4;
+                    animation-name: animExp1El2;   
+                    animation-duration: 1.5s;                        
+                    animation-iteration-count: infinite;
+                    animation-direction: alternate;    
+                    animation-timing-function: ease-in-out;
+                }
+                &.exp_1_el_4{
+                    z-index: 3; 
+                    animation-name: animExp1El4;   
+                    animation-duration: 2s;                        
+                    animation-iteration-count: infinite;
+                    animation-direction: alternate;    
+                    animation-timing-function: ease-in-out;
+                }
+                &.exp_2_el_2{
+                    animation-name: animExp2El2;   
+                    animation-duration: 2s;                        
+                    animation-iteration-count: infinite;
+                    animation-direction: alternate;    
+                    animation-timing-function: ease-in-out;
+                }
+                &.exp_2_el_3{
+                    animation-name: animExp2El3;   
+                    animation-duration: 1.5s;                        
+                    animation-iteration-count: infinite;
+                    animation-direction: alternate;    
+                    animation-timing-function: ease-in-out;
+                }
+                &.exp_2_el_4{
+                    animation-name: animExp2El4;   
+                    animation-duration: 1.5s;                        
+                    animation-iteration-count: infinite;
+                    animation-direction: alternate;    
+                    animation-timing-function: ease-in-out;
+                }
+                &.exp_3_el_2{
+                    z-index: 4;
+                }
+                &.exp_3_el_3{
+                    z-index: 3;  
+                    animation-name: animExp3El3;   
+                    animation-duration: .8s;                        
+                    animation-iteration-count: infinite;
+                    animation-direction: alternate;    
+                    animation-timing-function: ease-in-out;               
+                }     
+                &.exp_3_el_4{
+                    z-index: 2;  
+                    animation-name: animExp3El4;   
+                    animation-duration: .8s;                        
+                    animation-iteration-count: infinite;
+                    animation-direction: alternate;    
+                    animation-timing-function: ease-in-out;                       
+                }
+            }
+            &.active{
+                opacity: 1;
+            }
+        }  
+    } 
+
+    .col_right{
+        padding-left: calc(150px + (450 - 150) * ((100vw - 1200px) / (3840 - 1200)));
+        @media screen and (max-width: 1024px){
+            padding-left: 0;
+        }
+        .experience_text_box{
+            height: 80vh;
+            @media screen and (max-width: 1024px){
+                height: auto;
+                margin-bottom: calc(65px + (235 - 65) * ((100vw - 300px) / (1200 - 300)));      
+            }
+            &:nth-child(1){                   
+                padding-top: calc(118px + (318 - 118) * ((100vw - 1200px) / (3840 - 1200)));
+                @media screen and (max-width: 1024px){
+                    padding-top: 0;                       
+                }
+            }
+            &:nth-child(2){
+                .show_mobile{
+                    @media screen and (max-width: 1024px){
+                        margin-bottom: calc(22px + (75 - 22) * ((100vw - 300px) / (1200 - 300)));                                        
+                    }
+                }                               
+            }
+            &:nth-child(3){                   
+                height: calc(250px + (550 - 250) * ((100vh - 600px) / (1222 - 600))); 
+                @media screen and (max-width: 1024px){
+                    height: auto;  
+                    margin-bottom: 0;     
+                }  
+                .show_mobile{
+                    @media screen and (max-width: 1024px){
+                        margin-bottom: calc(25px + (85 - 25) * ((100vw - 300px) / (1200 - 300)));                   
+                    }
+                }              
+            }
+            .title{
+                @include font-level-2;
+                font-weight: 400;
+                color: $deep-blue;                       
+                line-height: 120%;
+                margin-bottom: calc(15px + (35 - 15) * ((100vw - 1200px) / (3840 - 1200)));
+                @media screen and (max-width: 1024px){
+                    margin-bottom: calc(15px + (45 - 15) * ((100vw - 300px) / (1200 - 300)));                                    
+                }
+            }
+            .description{
+                @include font-level-4;
+                line-height: 144%;
+                color: $deep-blue;
+            }          
+        }
+    }
+}
+
+@keyframes animExp1El2 {
+    from {
+        margin-left: 10%;
+        margin-top: -5%;
+    }
+  
+    to {
+        margin-left: 0%;
+        margin-top: 0%;
+    }
+}
+
+@keyframes animExp1El4 {
+    from {
+        margin-left: 0%;
+        margin-top: 0%;
+    }
+  
+    to {
+        margin-left: -5%;
+        margin-top: -5%;
+    }
+}
+
+@keyframes animExp2El2 {
+    from {
+        margin-top: 0%;
+    }
+  
+    to {
+        margin-top: 10%;
+    }
+}
+
+@keyframes animExp2El3 {
+    from {
+        margin-left: 18%;
+    }  
+    to {
+        margin-left: 0%;
+    }
+}
+
+@keyframes animExp2El4 {
+    from {
+        margin-left: -10%;
+    }  
+    to {
+        margin-left: 0%;
+    }
+}
+
+@keyframes animExp3El3 {
+    from {
+        margin-left: 0%;
+    }  
+    to {
+        margin-left: 4%;
+    }
+}
+
+@keyframes animExp3El4 {
+    from {
+        margin-left: 4%;
+    }  
+    to {
+        margin-left: 0%;
+    }
+}
