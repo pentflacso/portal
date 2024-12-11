@@ -23,7 +23,7 @@ export default function ThemesAccordion({data}){
         });
     
         setDataAccordion(newDataAccordion);
-    }, [data]);
+    }, []);
 
     useEffect(() => {
         const accordion_items = $(".wrapper");
