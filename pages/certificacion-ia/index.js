@@ -16,7 +16,8 @@ import styles from "./certificacion.module.scss";
 
 export default function Index(){
   const { windowSize } = useAppContext();
-  const navBarBrand = useRef();
+  const themesAccordion = useRef(null);
+  const navBarBrand = useRef(null);
   const [ brandVisibility, setBrandVisibility ] = useState(true);
 
 
@@ -30,28 +31,13 @@ export default function Index(){
       onEnterBack: () => setBrandVisibility(true),
     });
     return () => st.revert();      
-  }, [navBarBrand.current]);
-
-
-  useEffect(() => {
-    if(windowSize >= 1025 ){
-      let timeOutResize; 
-      function workAfterResizeIsDone() {
-        window.location.reload();
-      }  
-      window.addEventListener("resize", ()=> {
-          clearTimeout(timeOutResize);
-          timeOutResize = setTimeout(workAfterResizeIsDone, 100);
-      });  
-      return () => window.removeEventListener("resize", null);
-    }
   }, [windowSize]);
 
   
   return(
     <>
       <NavBarIa refNavBrand={navBarBrand} brandVisibility={brandVisibility}/>
-
+        
         <MainWrapper>  
 
           <HeroIa />         
@@ -62,50 +48,52 @@ export default function Index(){
                 <TextMarquee data={[{ value: "APRENDIZAJES CLAVES" }]} />
             </div>  
 
-            <ThemesAccordion
-                data={[
-                    {
-                      "description": [
-                        {
-                          "value": "<p>Desarrollarás competencias para diseñar e implementar estrategias educativas que integren de manera ética y efectiva la inteligencia artificial, a fin de potenciar el aprendizaje activo, colaborativo y significativo, en diversos contextos educativos. Comprenderás los fundamentos de la IA, sus diferentes tipos y aplicaciones en el ámbito educativo.</p>",
-                          "format": "basic_html"
-                        }
-                      ],
-                      "title": [{ "value": "Creación de estrategias educativas" }],
-                      "field_hidden": [{ "value": "0" }]
-                    },
-                    {
-                      "description": [
-                        {
-                          "value": "<p>Conocerás diferentes herramientas basadas en IA para integrarlas en diferentes áreas de la tarea educativa. Adquirirás criterios para seleccionarlas y utilizarlas en función de los objetivos de aprendizaje y las necesidades de los estudiantes. Desarrollarás habilidades para crear y adaptar materiales educativos con IA.</p>",
-                          "format": "basic_html"
-                        }
-                      ],
-                      "title": [{ "value": "Exploración de herramientas" }],
-                      "field_hidden": [{ "value": "0" }]
-                    },
-                    {
-                      "description": [
-                        {
-                          "value": "<p>Incorporarás una mirada tecno-pedagógica tanto al momento de diseñar como de evaluar los aprendizajes con IA. Aplicarás estrategias de evaluación, que tomen en consideración el uso de la IA. Reflexionarás sobre las mejores prácticas para la evaluación del aprendizaje en un contexto mediado por la IA.</p>",
-                          "format": "basic_html"
-                        }
-                      ],
-                      "title": [{ "value": "Planificación y evaluación" }],
-                      "field_hidden": [{ "value": "0" }]
-                    },
-                    {
-                      "description": [
-                        {
-                          "value": "<p>Desarrollarás criterios para analizar y aplicar de manera responsable la IA en los procesos de enseñanza y aprendizaje. Compartirás experiencias, analizarás ventajas y desventajas de la IA en la educación, así como su impacto potencial en el aprendizaje y la enseñanza. Reflexionarás sobre las implicaciones éticas y sociales del uso de la IA en la educación.</p>",
-                          "format": "basic_html"
-                        }
-                      ],
-                      "title": [{ "value": "Análisis y uso crítico" }],
-                      "field_hidden": [{ "value": "0" }]
-                    }
-                ]} 
-            /> 
+            <div ref={themesAccordion}>
+              <ThemesAccordion
+                  data={[
+                      {
+                        "description": [
+                          {
+                            "value": "<p>Desarrollarás competencias para diseñar e implementar estrategias educativas que integren de manera ética y efectiva la inteligencia artificial, a fin de potenciar el aprendizaje activo, colaborativo y significativo, en diversos contextos educativos. Comprenderás los fundamentos de la IA, sus diferentes tipos y aplicaciones en el ámbito educativo.</p>",
+                            "format": "basic_html"
+                          }
+                        ],
+                        "title": [{ "value": "Creación de estrategias educativas" }],
+                        "field_hidden": [{ "value": "0" }]
+                      },
+                      {
+                        "description": [
+                          {
+                            "value": "<p>Conocerás diferentes herramientas basadas en IA para integrarlas en diferentes áreas de la tarea educativa. Adquirirás criterios para seleccionarlas y utilizarlas en función de los objetivos de aprendizaje y las necesidades de los estudiantes. Desarrollarás habilidades para crear y adaptar materiales educativos con IA.</p>",
+                            "format": "basic_html"
+                          }
+                        ],
+                        "title": [{ "value": "Exploración de herramientas" }],
+                        "field_hidden": [{ "value": "0" }]
+                      },
+                      {
+                        "description": [
+                          {
+                            "value": "<p>Incorporarás una mirada tecno-pedagógica tanto al momento de diseñar como de evaluar los aprendizajes con IA. Aplicarás estrategias de evaluación, que tomen en consideración el uso de la IA. Reflexionarás sobre las mejores prácticas para la evaluación del aprendizaje en un contexto mediado por la IA.</p>",
+                            "format": "basic_html"
+                          }
+                        ],
+                        "title": [{ "value": "Planificación y evaluación" }],
+                        "field_hidden": [{ "value": "0" }]
+                      },
+                      {
+                        "description": [
+                          {
+                            "value": "<p>Desarrollarás criterios para analizar y aplicar de manera responsable la IA en los procesos de enseñanza y aprendizaje. Compartirás experiencias, analizarás ventajas y desventajas de la IA en la educación, así como su impacto potencial en el aprendizaje y la enseñanza. Reflexionarás sobre las implicaciones éticas y sociales del uso de la IA en la educación.</p>",
+                            "format": "basic_html"
+                          }
+                        ],
+                        "title": [{ "value": "Análisis y uso crítico" }],
+                        "field_hidden": [{ "value": "0" }]
+                      }
+                  ]} 
+              /> 
+            </div>
             
             <div className={styles.cta_1}>
               <CTA blockProps={
@@ -122,7 +110,7 @@ export default function Index(){
                 <TextMarquee data={[{ value: "EXPERIENCIA PENT" }]} />
             </div>  
 
-            <ExperienceBlockIa />
+            <ExperienceBlockIa themesAccordionRef={themesAccordion} />
 
             <div className={styles.marquee_4}>
                 <TextMarquee data={[{ value: "EQUIPO DOCENTE" }]} />
@@ -179,7 +167,7 @@ export default function Index(){
 
             <FooterIa />  
 
-        </MainWrapper> 
+        </MainWrapper>         
     </>
   )
 }

@@ -4,50 +4,61 @@ import { gsap } from 'gsap';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import styles from "./ExperienceBlockIa.module.scss";
 
-export default function ExperienceBlockIa() {
+export default function ExperienceBlockIa({ themesAccordionRef }) {
 
     const { windowSize } = useAppContext();
     const container = useRef(null);
-    const colLeft = useRef(null);
+    const colRight = useRef(null);
     const textOne = useRef(null);
     const textTwo = useRef(null);
     const textThree = useRef(null);
-    const [containerHeight, setContainerHeight] = useState(0);
-    const [currentImage, setCurrentImage] = useState('1');
+    const [themesAccordionHeight, setThemesAccordionHeight] = useState(0);
+    const [colRightHeight, setColRightHeight] = useState(0);
+    const [currentImage, setCurrentImage] = useState('1');  
+
 
     useEffect(() => {
         if(windowSize >= 1025 ){
-            if (!colLeft.current) return;
+            if (!colRight.current) return;
             const resizeObserver = new ResizeObserver(() => {
-            setContainerHeight(colLeft.current.offsetHeight);
+            setColRightHeight(colRight.current.offsetHeight);
             });
-            resizeObserver.observe(colLeft.current);            
+            resizeObserver.observe(colRight.current);            
             return () => resizeObserver.disconnect();
         }
-      }, [windowSize]);
+    }, [windowSize]);
 
+
+    useEffect(() => {
+        if(windowSize >= 1025 ){
+            if (!themesAccordionRef.current) return;
+            const resizeObserver = new ResizeObserver(() => {
+            setThemesAccordionHeight(themesAccordionRef.current.offsetHeight);
+            });
+            resizeObserver.observe(themesAccordionRef.current);            
+            return () => resizeObserver.disconnect();
+        }      
+    }, [windowSize]);
       
-      useEffect(() => {
+      
+    useEffect(() => {
         if(windowSize >= 1025 ){   
             let st = ScrollTrigger.create({
-                trigger: colLeft.current,
+                trigger: colRight.current,
                 start: "top 16.5%", 
-                end: () => `+=${containerHeight} 76%`,          
+                end: () => `+=${colRightHeight} 76%`,          
                 pin: `.${styles.col_left}`,
                 pinSpacing: false,
                 scrub: true
             });    
             return () => st.revert();         
         } 
-    }, [containerHeight, windowSize]);
+    }, [windowSize, themesAccordionHeight, colRightHeight]);
 
 
     useEffect(() => {
-
         if(windowSize >= 1025 ){ 
-
             let ctx = gsap.context(() => {  
-
                 ScrollTrigger.create({
                     trigger: textOne.current,
                     start: "top top",
@@ -66,7 +77,7 @@ export default function ExperienceBlockIa() {
             }, container);     
             return () => ctx.revert(); 
         } 
-    }, [containerHeight, windowSize]);
+    }, [windowSize, themesAccordionHeight, colRightHeight]);
 
 
     return (
@@ -101,7 +112,7 @@ export default function ExperienceBlockIa() {
 
             </div>
 
-            <div className={styles.col_right} ref={colLeft}>
+            <div className={styles.col_right} ref={colRight}>
 
                 <div className={styles.experience_text_box} ref={textOne}>
                     <div className={`${styles.img_container} ${styles.show_mobile}`}>
