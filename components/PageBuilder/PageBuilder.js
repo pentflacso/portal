@@ -91,20 +91,20 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                             <KeysBox data={dataBlock.keyFeatures} data-order={i} />
                         }
                         {dataBlock.block_type === "marquee" && 
-                                    <TextMarquee data={dataBlock.marquee} />
+                            <TextMarquee data={dataBlock.marquee} />
                         }
                         {dataBlock.block_type === "accordion" &&
-                                <ThemesAccordion data={dataBlock.accordion} />
+                            <ThemesAccordion data={dataBlock.accordion} />
                         }  
 
                         {(dataBlock.block_type === "highlighted" && i !== 1) &&
-                                <HighlightParagraph title={dataBlock.title} />
+                            <HighlightParagraph title={dataBlock.title} />
                         }
                         {dataBlock.block_type === "sliderquotes" &&
                             <Quotes items={dataBlock.quotes}  data-order={i} />                               
                         }
                         {dataBlock.block_type === "brandsbanner" &&
-                                <BrandsMarquee partners={dataBlock.partners}/>
+                            <BrandsMarquee partners={dataBlock.partners}/>
                         }
                         {dataBlock.block_type === "twocolums" &&
                             <TwoColumsText texto={dataBlock.description[0].value}  data-order={i}/>

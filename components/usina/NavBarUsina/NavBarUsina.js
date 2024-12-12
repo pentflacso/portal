@@ -50,6 +50,11 @@ export default function NavBarUsina({ refNavBrand, brandVisibility, startDate, f
                                     <a href={formURL[0]?.uri} rel="noopener noreferrer"  className="btn-inscribirme"  target="_blank">Inscribirme</a>
                                     }
                                 </>                                
+                                : courseStatus === '1' ?
+                                <>
+                                    <p>Próximamente</p>
+                                    <button type="button" onClick={ () => setModal('meInteresa')}>Me interesa</button>
+                                </>  
                                 :
                                 <>
                                     <p>Inició el {startDate}</p>

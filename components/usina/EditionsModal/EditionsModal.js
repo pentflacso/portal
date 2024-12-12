@@ -1,13 +1,10 @@
 import ReactDOM from 'react-dom';
 import React, { useState } from 'react';
 import Link from "next/link";
-
 import styles from "./EditionsModal.module.scss";
 
-export default function EditionsModal({ setModal,courses }){
-
-    
-
+export default function EditionsModal({ setModal, courses }){
+   
     const [ currentContent, setCurrentContent] = useState('editions');
     const [ closeAnimation, setCloseAnimation] = useState(false);
 
@@ -16,8 +13,7 @@ export default function EditionsModal({ setModal,courses }){
         setTimeout(() => {
             setModal('hidden');
         }, "800");    
-    }
-    
+    }    
 
     const modalContent = (   
         <div className={!closeAnimation ? `${styles.overlay}` : `${styles.overlay} ${styles.close_animation}` }>            
@@ -33,7 +29,11 @@ export default function EditionsModal({ setModal,courses }){
                         <div className={styles.edition_box} key={i}>
                             <div className={styles.title}><p>{d.title}</p></div>
                             <div className={styles.duration}><p><span>Duración</span><br />{d.duration}</p></div>
-                            <div className={styles.start}><p><span>Inicio</span><br />{d.start}</p></div>
+                            <div className={styles.start}>
+                                <p><span>Inicio</span><br />
+                                { d.status == 1 ? 'Próximamente' : `${d.start}`}
+                                </p>
+                            </div>                            
                             <div  className={styles.cta}>
                             { d.status == 0 ? <Link href={d.path} className={styles.interested_btn} onClick={ () => closeShareModal() }>Ver más</Link> : 
                             <button type="button" className={styles.interested_btn} onClick={ () => setCurrentContent('subscription') }>Me interesa</button>}</div>
