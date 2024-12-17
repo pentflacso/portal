@@ -1,0 +1,188 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.navbar{
+    position: fixed;
+    z-index: 100;
+    background-color: transparent;
+    top: 0;
+    left: 0;
+    right: 0;  
+    
+    &.proposal{
+        .nav_btns{
+            background-color: transparent;
+            backdrop-filter: blur(0px);
+        }
+    }
+    
+    .nav_btns{
+        left: 0;
+        right: 0; 
+        padding: 
+        calc(10px + (24 - 10) * ((100vw - 1200px) / (3840 - 1200)))
+        calc(35px + (370 - 35) * ((100vw - 1200px) / (3840 - 1200)))
+        ; 
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        z-index: 102;
+        position: absolute;
+        @media screen and (max-width: 1024px){   
+            padding: 
+            calc(8px + (16 - 8) * ((100vw - 300px) / (1200 - 300)))
+            calc(10px + (20 - 10) * ((100vw - 300px) / (1200 - 300)))
+            ;     
+        }
+
+        .brand{  
+            line-height: 0px;
+            transition: all .1s;
+            &.hidden{
+                opacity: 0;
+                transition: all .1s;
+            }
+            a{
+                background-image: url('/assets/images/marca_flacso_pent.svg');
+                background-repeat: no-repeat;
+                background-size: 100% auto;
+                display: block;
+                width: calc(114px + (300 - 114) * ((100vw - 1200px) / (3840 - 1200)));
+                height: calc(56px + (148 - 56) * ((100vw - 1200px) / (3840 - 1200)));                
+                @media screen and (max-width: 1024px){  
+                    width: calc(85px + (185 - 85) * ((100vw - 300px) / (1200 - 300)));    
+                    height: calc(42px + (91 - 42) * ((100vw - 300px) / (1200 - 300)));    
+                } 
+                span{
+                    display: none;
+                }
+            }          
+        }
+    
+/*        .editions_btn{
+            @include btn-ver-mas;
+            background-color: transparent;
+            border-color: $green-2;  
+            @media screen and (max-width: 1024px){  
+                border-color: $green-2;
+            }
+            @media screen and (min-width: 1024px){
+                &:hover{
+                    background-color: $green-2;
+                    border-color: $green-2;
+                    color: $deep-blue;
+                }
+            } 
+        }  
+  */
+        .insciption_btn{
+            padding: 0;
+            border-radius: 50px;
+            display: flex;        
+            align-items: center;
+            transition: all .2s; 
+            @media screen and (max-width: 1024px){  
+                padding: 0;
+                position: absolute;
+                right: calc(8px + (24 - 8) * ((100vw - 300px) / (1200 - 300))); 
+            }
+
+            &.active{
+                background-color: $yellow-1;
+                padding: 
+                calc(4px + (8 - 4) * ((100vw - 1200px) / (3840 - 1200)))
+                calc(4px + (8 - 4) * ((100vw - 1200px) / (3840 - 1200)))
+                calc(4px + (8 - 4) * ((100vw - 1200px) / (3840 - 1200)))
+                calc(22px + (68 - 22) * ((100vw - 1200px) / (3840 - 1200)));
+                @media screen and (max-width: 1024px){  
+                    padding:
+                    calc(3px + (6 - 3) * ((100vw - 300px) / (1200 - 300)))
+                    calc(3px + (6 - 3) * ((100vw - 300px) / (1200 - 300)))
+                    calc(3px + (6 - 3) * ((100vw - 300px) / (1200 - 300)))
+                    calc(18px + (32 - 18) * ((100vw - 300px) / (1200 - 300)));
+                }
+                p{
+                    @include font-level-4;  
+                    padding-right: calc(18px + (56 - 18) * ((100vw - 1200px) / (3840 - 1200)));
+                    opacity: 1;
+                    @media screen and (max-width: 1024px){ 
+                        padding-right: calc(16px + (28 - 16) * ((100vw - 300px) / (1200 - 300)));;
+                    }
+                }
+                a,button{
+                    background-color: $white;
+                    border-color: $white;
+                }
+            }
+    
+            p{
+                transition: all .2s; 
+                font-size: 0px;
+                font-weight: 400;
+                color: $deep-blue;
+                margin: 0;
+                padding-right: 0;
+                opacity: 0;
+                @media screen and (max-width: 1024px){ 
+                    padding-right: calc(16px + (28 - 16) * ((100vw - 300px) / (1200 - 300)));;
+                }
+            }
+    
+            a, button{
+                @include btn-ver-mas;
+                background-color: transparent;
+                border-color: $yellow-1;
+                background-color: $yellow-1;  
+                @media screen and (max-width: 1024px){  
+                    border-color: $yellow-1;
+                    background-color: $yellow-1;
+                }
+                @media screen and (min-width: 1024px){
+                    &:hover{
+                        background-color: $deep-blue;
+                        border-color: $deep-blue;
+                        color: $white;
+                    }
+                }
+            }
+        }             
+    }       
+}
+/* 
+.fade_overlay{
+    background-color: $white;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 90;  
+    animation-name: fadeIn;
+    animation-duration: .2s;  
+    animation-timing-function: ease-in-out;
+    animation-fill-mode: forwards;  
+    &.off{
+        animation-name: fadeOut;
+        animation-duration: .2s;  
+        animation-timing-function: ease-in-out;
+        animation-fill-mode: forwards;  
+    }
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+        visibility: hidden;
+    }
+} */

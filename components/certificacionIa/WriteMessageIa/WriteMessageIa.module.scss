@@ -1,0 +1,52 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.wrapper{
+    background-color: $deep-blue;
+    height: calc(990px + (3360 - 990) * ((100vw - 1200px) / (3840 - 1200)));
+    padding:
+    calc(114px + (440 - 114) * ((100vw - 1200px) / (3840 - 1200)))
+    calc(92px + (522 - 92) * ((100vw - 1200px) / (3840 - 1200)))
+    ;
+    margin-bottom: calc(90px + (370 - 90) * ((100vw - 1200px) / (3840 - 1200))); 
+    @media screen and (max-width: 1024px){  
+        height: calc(625px + (2115 - 625) * ((100vw - 300px) / (1200 - 300)));
+        padding:
+        calc(65px + (265 - 65) * ((100vw - 300px) / (1200 - 300)))
+        calc(15px + (30 - 15) * ((100vw - 300px) / (1200 - 300)))
+        ;
+        margin-bottom: calc(55px + (235 - 55) * ((100vw - 300px) / (1200 - 300))); 
+    }
+    p{
+        display: inline;
+        font-size: calc(45px + (145 - 45) * ((100vw - 1200px) / (3840 - 1200)));
+        line-height: 130%;
+        font-weight: 400;
+        color: $white; 
+        margin-right: calc(10px + (20 - 10) * ((100vw - 1200px) / (3840 - 1200))); 
+        @media screen and (max-width: 1024px){
+            font-size: calc(20px + (65 - 20) * ((100vw - 300px) / (1024 - 300)));
+            font-weight: 300;
+        } 
+    }
+    .text_cursor{
+        display: inline-block;
+        background-color: $yellow-1;
+        width: calc(19px + (79 - 19) * ((100vw - 1200px) / (3840 - 1200)));
+        height: calc(35px + (125 - 35) * ((100vw - 1200px) / (3840 - 1200)));
+        animation: 1s cursorAnim infinite;
+        animation-timing-function: step-end; 
+        @media screen and (max-width: 1024px){
+            width: calc(10px + (35 - 10) * ((100vw - 300px) / (1024 - 300)));
+            height: calc(15px + (55 - 15) * ((100vw - 300px) / (1024 - 300)));
+        }
+    }
+}
+
+@keyframes cursorAnim{
+    0%{
+        visibility: hidden;
+    }
+    50%{
+        visibility: visible;
+    }
+}

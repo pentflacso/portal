@@ -76,7 +76,6 @@
                     margin: calc(24px + (66 - 24) * ((100vw - 1200px) / (3840 - 1200))) 0;
                     transition: all .5s;
                     @media screen and (max-width: 1024px){
-                        line-height: 135%;
                         margin: calc(14px + (54 - 14) * ((100vw - 300px) / (1024 - 300))) 0;
                         padding-right: calc(50px + (150 - 50) * ((100vw - 300px) / (1024 - 300)));
                     }
@@ -104,7 +103,7 @@
                         height: calc(30px + (60 - 30) * ((100vw - 300px) / (1024 - 300))); 
                         font-size: calc(13px + (32 - 13) * ((100vw - 300px) / (1024 - 300)));
                         border: $line-1-mobile solid transparent;
-                        top: calc(-2px + (18 - -2) * ((100vw - 300px) / (1024 - 300)));
+                        top: calc(-4px + (14 - -4) * ((100vw - 300px) / (1024 - 300)));
                         right: 2px;
                     }
                     &:hover{

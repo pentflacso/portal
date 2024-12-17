@@ -1,0 +1,207 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.wrapper{        
+    height: 100vh;
+    margin-top: calc(-150px + (-400 - -150) * ((100vw - 1200px) / (3840 - 1200)));  
+    position: relative;
+    @media screen and (max-width: 1024px){  
+        height: auto;
+        margin-top: calc(-35px + (-85 - -35) * ((100vw - 300px) / (1024 - 300))); 
+    }
+
+    .info{
+        display: grid;
+        grid-template-areas: 'col-left col-right';
+        grid-template-columns: 50% 50%;
+        @include container-width-1;   
+        @media screen and (max-width: 1024px){  
+            grid-template-areas: 'col-right' 'col-left';
+            grid-template-columns: 100% 100%;
+        }
+
+        .col_left{
+            grid-area: col-left;
+            display: flex;
+            flex-wrap: wrap;
+            align-content: center;
+            padding-top: calc(135px + (185 - 135) * ((100vh - 600px) / (1222 - 600)));
+            padding-right: calc(80px + (220 - 80) * ((100vw - 1200px) / (3840 - 1200)));
+            @media screen and (max-width: 1024px){  
+                padding-top: 0;
+                padding-right: 0;
+            }
+            .headline{
+                font-size: calc(60px + (160 - 60) * ((100vw - 1200px) / (3840 - 1200)));
+                font-weight: 500;
+                line-height: 90%;
+                color: $deep-blue;
+                margin-bottom: calc(12px + (24 - 12) * ((100vw - 1200px) / (3840 - 1200))); 
+                @media screen and (max-width: 1024px){
+                    font-size: calc(35px + (125 - 35) * ((100vw - 300px) / (1024 - 300)));
+                    margin-bottom: calc(10px + (24 - 10) * ((100vw - 300px) / (1024 - 300)));
+                }
+            }
+            .description{
+                @include font-level-3;
+                font-weight: 400;
+                line-height: 128%;
+                color: $deep-blue;
+                margin-bottom: calc((30px + (80 - 30) * ((100vw - 1200px) / (3840 - 1200))));
+                @media screen and (max-width: 1024px){
+                    font-size: calc(13.5px + (48.5 - 13.5) * ((100vw - 300px) / (1024 - 300)));
+                    margin-bottom: calc(18px + (50 - 18) * ((100vw - 300px) / (1024 - 300)));
+                }
+            }
+            .features{
+                display: flex;
+                @media screen and (max-width: 1024px){
+                    flex-wrap: wrap;
+                    margin-bottom: calc(10px + (40 - 10) * ((100vw - 300px) / (1024 - 300)));
+                } 
+                p{
+                    @include font-level-3;
+                    font-weight: 400;
+                    line-height: 100%;
+                    color: $deep-blue;   
+                    background-image: url(../../../public/assets/icons/green_triangle.svg);
+                    background-repeat: no-repeat;
+                    background-position: left center; 
+                    background-size: calc(15px + (35 - 15) * ((100vw - 1200px) / (3840 - 1200))) auto;     
+                    padding-left: calc(20px + (46 - 20) * ((100vw - 1200px) / (3840 - 1200)));   
+                    &:first-child{
+                        margin-right: calc(25px + (65 - 25) * ((100vw - 1200px) / (3840 - 1200)));   
+                        @media screen and (max-width: 1024px){
+                            margin-right: calc(18px + (68 - 18) * ((100vw - 300px) / (1024 - 300))); 
+                        } 
+                    }    
+                    @media screen and (max-width: 1024px){
+                        background-size: calc(10px + (34 - 10) * ((100vw - 300px) / (1024 - 300)));
+                        padding-left: calc(13px + (46 - 13) * ((100vw - 300px) / (1024 - 300)));
+                        font-size: calc(13.5px + (48.5 - 13.5) * ((100vw - 300px) / (1024 - 300)));
+                    }        
+                }
+            }    
+        }
+    
+        .col_right{
+            grid-area: col-right;
+            height: calc(400px + (900 - 400) * ((100vh - 600px) / (1222 - 600)));
+            display: flex;
+            align-items: center;
+            user-select: none;
+            @media screen and (max-width: 1024px){  
+                height: auto;
+                margin-bottom: calc(15px + (65 - 15) * ((100vw - 300px) / (1024 - 300)));
+            }
+            .img_wrapper{
+                position: relative;
+                margin: 0 auto;
+                margin-top: 15%;
+                @media screen and (min-aspect-ratio: 23/9){
+                    width: 50%;                   
+                }
+                @media screen and (min-aspect-ratio: 19/9) and (max-aspect-ratio: 23/9){
+                    width: 64%;                 
+                } 
+                @media screen and (min-aspect-ratio: 16/9) and (max-aspect-ratio: 19/9){
+                    width: 82%;                      
+                }  
+                @media screen and (max-aspect-ratio: 16/9){
+                    width: 85%;                      
+                } 
+                @media screen and (max-width: 1024px){  
+                    margin-top: 0;
+                    width: 92%;
+                }
+                img{
+                    height: auto;
+                    width: 100%;   
+                    &.el_2, &.el_3, &.el_4, &.el_5{
+                        position: absolute;
+                        top: 0;
+                        bottom: 0;
+                        left: 0;
+                        right: 0;
+                    }  
+                    &.el_2{
+                        z-index: 4;
+                    }
+                    &.el_3{
+                        z-index: 3;  
+                        animation-name: animEl3;   
+                        animation-duration: 1s;                        
+                        animation-iteration-count: infinite;
+                        animation-direction: alternate;    
+                        animation-timing-function: ease-in-out;               
+                    }     
+                    &.el_4{
+                        z-index: 2;  
+                        animation-name: animEl4;   
+                        animation-duration: 4s;                        
+                        animation-iteration-count: infinite;
+                        animation-direction: alternate;    
+                        animation-timing-function: ease-in-out;                       
+                    }     
+                    &.el_5{
+                        z-index: 1;   
+                        animation-name: animEl5;   
+                        animation-duration: 3s;                        
+                        animation-iteration-count: infinite;
+                        animation-direction: alternate;    
+                        animation-timing-function: ease-in-out;                       
+                    }    
+                }
+            }            
+        }
+    }   
+    
+    .marquee{
+        position: absolute;
+        bottom: calc((-15px + (-65 - -15) * ((100vw - 1200px) / (3840 - 1200))));
+        @media screen and (max-width: 1024px){  
+            position: static;
+        }
+    }
+}
+
+@keyframes animEl3 {
+    from {
+      margin-left: 3%;
+      margin-top: -2%;
+    }
+  
+    to {
+      margin-left: 0%;
+      margin-top: 0%;
+    }
+}
+
+@keyframes animEl4 {
+    from {
+      margin-left: 5%;
+      margin-top: -10%;
+      transform: rotate(0);
+    }
+  
+    to {
+      margin-left: 0%;
+      margin-top: 0%;
+      transform: rotate(0);
+      transform: rotate(-4deg);
+    }
+}
+
+@keyframes animEl5 {
+    from {
+      margin-left: 0%;
+      margin-top: 0%;
+      transform: rotate(0);
+    }
+  
+    to {
+      margin-left: 4%;
+      margin-top: 6%;
+      transform: rotate(0);
+      transform: rotate(8deg);
+    }
+}
