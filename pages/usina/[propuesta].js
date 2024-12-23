@@ -1,10 +1,12 @@
 import { useRef, useEffect, useLayoutEffect, useState } from 'react';
+import { useRouter } from 'next/router';
 import NavBarUsina from '../../components/usina/NavBarUsina/NavBarUsina';
 import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import PageBuilder from '../../components/PageBuilder/PageBuilder';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import WhatsappBtn from '../../components/usina/WhatsappBtn/WhatsappBtn';
 import styles from "./propuesta.module.scss";
+import stylesVerano from "./propuestaVerano.module.scss";
 
 function Index({ data }){
   const container = useRef();
@@ -12,6 +14,18 @@ function Index({ data }){
   const [ elementHeight, setElementHeight ] = useState(0);  
   const [ brandVisibility, setBrandVisibility ] = useState(true);
   const [ whatsAppBtnStatus, setWhatsAppBtnStatus] = useState(0);
+  const [ customStyles, setCustomStyles] = useState('default');
+  const router = useRouter();
+
+
+  useEffect(() => {    
+    if(router.asPath == '/usina/verano'){
+      setCustomStyles('verano');
+    } else{
+      setCustomStyles('default');
+    }
+  }, [router.asPath]);
+
 
   useLayoutEffect(() => {
     if(container.current){
@@ -64,7 +78,10 @@ function Index({ data }){
       {/* La barra de navegación irá por fuera del PageBuilder */}       
       <NavBarUsina courseStatus={data.data[0].status[0].value} refNavBrand={navBarBrand} brandVisibility={brandVisibility} startDate={data.data[0].startDate} formURL = {data.data[0].form}/>            
       <div ref={container}>
-        <PageBuilder data={ data.data } stylesx={styles} />                        
+        <PageBuilder
+        data={ data.data }
+        stylesx={ customStyles === 'verano' ? stylesVerano : styles }
+        />                        
       </div>     
     </>
   )
