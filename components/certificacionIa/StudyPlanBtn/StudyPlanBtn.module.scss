@@ -1,0 +1,15 @@
+@import "../../../styles/themeStyles.module.scss";
+
+.wrapper{
+    display: flex;
+    @include container-width-1;
+    padding-top: calc((30px + (60 - 30) * ((100vw - 1200px) / (3840 - 1200))));
+    margin-bottom: calc((85px + (290 - 85) * ((100vw - 1200px) / (3840 - 1200))));
+    @media screen and (max-width: 1024px){
+        margin-bottom: calc((65px + (185 - 65) * ((100vw - 300px) / (1024 - 300))) );
+    }
+    .cta_btn{
+        @include btn-ver-mas;     
+        margin-left: auto;   
+    }
+}

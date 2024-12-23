@@ -7,6 +7,7 @@ import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import WriteMessageIa from '../../components/certificacionIa/WriteMessageIa/WriteMessageIa';
 import ThemesAccordion from '../../components/investigacion/ThemesAccordion/ThemesAccordion';
 import CTA from '../../components/library/CTA/CTA';
+//import StudyPlanBtn from '../../components/certificacionIa/StudyPlanBtn/StudyPlanBtn';
 import ExperienceBlockIa from '../../components/certificacionIa/ExperienceBlockIa/ExperienceBlockIa';
 import CvSelector from '../../components/usina/CvSelector/CvSelector';
 import PaymentBlockIa from '../../components/certificacionIa/PaymentBlockIa/PaymentBlockIa';
@@ -94,6 +95,8 @@ export default function Index(){
                   ]} 
               /> 
             </div>
+
+            {/* <StudyPlanBtn /> */}
             
             <div className={styles.cta_1}>
               <CTA blockProps={
