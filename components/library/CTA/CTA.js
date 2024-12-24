@@ -1,6 +1,4 @@
-import { useEffect, useState, Fragment  } from 'react';
 import styles from "./CTA.module.scss";
-
 
 export default function CTA({ blockProps }){
     return(

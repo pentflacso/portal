@@ -2,7 +2,7 @@
 
 .container{
     @include container-width-1; 
-    height: calc(320px + (880 - 320) * ((100vw - 1200px) / (3840 - 1200)));
+    //height: calc(320px + (880 - 320) * ((100vw - 1200px) / (3840 - 1200)));
     display: grid;
     grid-template-areas: 'nombre-docente imagen-docente texto-docente';
     grid-template-columns: calc(100% / 3) calc(100% / 3) calc(100% / 3);    
@@ -73,11 +73,12 @@
         position: relative;
         grid-area: imagen-docente;
         overflow: hidden;
+        height: calc(320px + (880 - 320) * ((100vw - 1200px) / (3840 - 1200)));
         
         img{
             position: absolute;
             width: auto;
-            height: calc(314px + (860 - 314) * ((100vw - 1200px) / (3840 - 1200)));
+            height: calc(314px + (874 - 314) * ((100vw - 1200px) / (3840 - 1200)));
             z-index: 2;
             margin: 0 auto;  
             left: 0;
@@ -107,7 +108,7 @@
         grid-area: texto-docente;
         margin-top: calc(75px + (200 - 75) * ((100vw - 1200px) / (3840 - 1200))); 
         padding-left: calc(14px + (54 - 14) * ((100vw - 1200px) / (3840 - 1200)));
-        padding-top: calc(3px + (12 - 3) * ((100vw - 1200px) / (3840 - 1200)));
+        //padding-top: calc(3px + (12 - 3) * ((100vw - 1200px) / (3840 - 1200)));
         
         p{
             @include font-level-4;
