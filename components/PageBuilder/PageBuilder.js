@@ -91,10 +91,10 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
                             <KeysBox data={dataBlock.keyFeatures} data-order={i} />
                         }
                         {dataBlock.block_type === "marquee" && 
-                            <TextMarquee data={dataBlock.marquee} />
+                            <TextMarquee data={dataBlock.marquee}   data-order={i} />
                         }
                         {dataBlock.block_type === "accordion" &&
-                            <ThemesAccordion data={dataBlock.accordion} />
+                            <ThemesAccordion data={dataBlock.accordion}  data-order={i} />
                         }  
 
                         {(dataBlock.block_type === "highlighted" && i !== 1) &&
