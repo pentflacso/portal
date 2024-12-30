@@ -60,7 +60,7 @@ export default function Usina({ data }){
   return(
     <>      
       {/* La barra de navegación irá por fuera del PageBuilder */}
-      <NavBarUsina listCourses={data[1].courses}/>
+      <NavBarUsina listCourses={data[3].courses}/>
 
       <PageBuilder data={ data } stylesx={styles} />   
       {windowSize >= 1025 &&
