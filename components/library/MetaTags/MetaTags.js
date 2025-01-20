@@ -31,7 +31,7 @@ export default function MetaTags({ pageTitle, shareTitle, keywords, description,
                 <meta property="og:type" content="article"/>
                 <meta property="og:site_name" content="FLACSO | PENT" />
                 <meta property="og:locale" content="es_LA"/>
-                <meta property="og:image" content={img ? "" : img} />
+                <meta property="og:image" content={img ? img : ""} />
             </Head>
             
             <img src={img}  alt="FLACSO | PENT" style={{display: 'none'}}/>
