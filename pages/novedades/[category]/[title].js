@@ -99,57 +99,58 @@ function Index(d){
 
             {modal === 'share' && <ShareBtns shareurl={`https://pent.flacso.org.ar${router.asPath}`} setModal={setModal} />}
 
-                <div className={styles.pin_block} ref={element}>  
-                    <div className={styles.col_left}>
+                <div className={styles.overflow_wrapper}>
 
-                        <header>
-                            <Link className={styles.back_arrow} href="/novedades" ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver novedades</strong></span></Link>
+                    <div className={styles.pin_block}>  
+                        <div className={styles.col_left} ref={element}>
 
-                            <h1>{data.title}</h1>
-                                
-                            <p className={styles.info}>
-                                {data.category} {data.date ? <><span> — {data.date}</span></> : ''}
-                            </p>
-                        </header>
+                            <header>
+                                <Link className={styles.back_arrow} href="/novedades" ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>Ver novedades</strong></span></Link>
 
-                        <article>
-                            { data.body ?           
-                                <div className={styles.body} dangerouslySetInnerHTML={{__html: data.body }} /> :
-                            ""}
+                                <h1>{data.title}</h1>
+                                    
+                                <p className={styles.info}>
+                                    {data.category} {data.date ? <><span> — {data.date}</span></> : ''}
+                                </p>
+                            </header>
 
-                            {windowSize >= 1025 ?
-                                <button type="button" className={`${styles.btn} ${styles.share_btn}`} onClick={ () => setModal('share') }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
-                            :
-                                <button type="button" className={`${styles.btn} ${styles.share_btn}`} onClick={ () => mobileShare() }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
-                            }
+                            <article>
+                                { data.body ?           
+                                    <div className={styles.body} dangerouslySetInnerHTML={{__html: data.body }} /> :
+                                ""}
 
-                            { license ?
-                                <div className={styles.legal}>                         
-                                    <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ license }}/>                  
-                                </div>
-                            : "" }
-                        </article>
+                                {windowSize >= 1025 ?
+                                    <button type="button" className={`${styles.btn} ${styles.share_btn}`} onClick={ () => setModal('share') }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
+                                :
+                                    <button type="button" className={`${styles.btn} ${styles.share_btn}`} onClick={ () => mobileShare() }><span><img src="/assets/icons/share_icon.svg" alt="icono de compartir"/>Compartir</span></button>
+                                }
 
+                                { license ?
+                                    <div className={styles.legal}>                         
+                                        <div className={styles.box} dangerouslySetInnerHTML={{__html: "<h4>Licencia</h4>"+ license }}/>                  
+                                    </div>
+                                : "" }
+                            </article>
+
+                        </div>
+                        <section className={styles.col_right}>
+                            <h2>Ultimas novedades</h2>
+                            <ExploringBtns data={data.latest_news} dataStyle="btnMedium" /> 
+                        </section>
                     </div>
-                    <section className={styles.col_right}>
-                        <h2>Ultimas novedades</h2>
-                        <ExploringBtns data={data.latest_news} dataStyle="btnMedium" /> 
-                    </section>
-                </div>
 
-                <section>
-                    <div className={styles.marquee}>
-                        <TextMarquee data={[{value:"Seguir explorando"}]} />
-                    </div>
-                    <ExploringBtns data={exploringBtnsData} />      
-                </section> 
+                    <section>
+                        <div className={styles.marquee}>
+                            <TextMarquee data={[{value:"Seguir explorando"}]} />
+                        </div>
+                        <ExploringBtns data={exploringBtnsData} />      
+                    </section> 
 
-                <Footer />
-            
+                    <Footer />
+
+                </div>            
         
-        </MainWrapper>
-        
-        
+        </MainWrapper>      
     </>  
 )           
 

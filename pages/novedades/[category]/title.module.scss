@@ -1,5 +1,9 @@
 @import "../../../styles/themeStyles.module.scss";
 
+.overflow_wrapper{
+    overflow: hidden;
+}
+
 .pin_block {
     @include container-width-1;
     display: grid;

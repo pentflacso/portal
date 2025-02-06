@@ -31,6 +31,12 @@ body{
   background-color: $white;
 }
 
+@font-face {
+    font-family: RobotoMarquee;
+    font-weight: 700;
+    src: url("/fonts/roboto-marquee.woff") format("woff");
+}
+
 //.main-container{
   //overflow: hidden;
 //}
