@@ -135,9 +135,10 @@ function Index({dataProduct , prevUrl, pathName}){
             {modal === 'share' && <ShareBtns shareurl={`https://pent.flacso.org.ar${router.asPath}`} setModal={setModal} />}
             {modal === 'download' && <DownloadModal archive={data.download} setModal={setModal} />}   
 
-            
-                <div className={styles.pin_block} ref={element}> 
-                    <header className={styles.col_left}>                
+            <div className={styles.overflow_wrapper}>
+                
+                <div className={styles.pin_block}> 
+                    <header className={styles.col_left} ref={element}>                
                         <Link className={styles.back_arrow} href={prevUrl} ><span><img src="/assets/icons/arrow_prev_icon.svg" alt="icono de flecha"/><strong>{stringPrevUrl}</strong></span></Link>
                         <h1>{data.title}</h1>
                         { data.authors ?
@@ -194,6 +195,8 @@ function Index({dataProduct , prevUrl, pathName}){
                 </section>
 
                 <Footer />
+
+            </div>  
             
         </MainWrapper>
         
