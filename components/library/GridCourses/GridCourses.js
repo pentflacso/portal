@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { useEffect, useState, Fragment } from 'react';
 import { useRouter } from "next/router";
 import CourseCard from "../../usina/CourseCard/CourseCard";
 import styles from "./GridCourses.module.scss";
@@ -6,12 +6,18 @@ import styles from "./GridCourses.module.scss";
 export default function GridCourses({ dataCourses }){
 
     const router = useRouter();
+    const [dataFiltered, setDataFiltered] = useState();
+
+    useEffect(() =>{   
+        const filtredCards = dataCourses.filter(x => x.path !== router.asPath);
+        setDataFiltered(filtredCards);
+    }, [dataCourses]);
 
     return (
         <div className={styles.wrapper}>
 
             <div className={styles.col_left}>
-                {dataCourses.map((item, i) => {
+                {dataFiltered?.map((item, i) => {
                     return (
                         router.asPath !== item.path  ?  
                         <Fragment key={i}>
@@ -22,7 +28,7 @@ export default function GridCourses({ dataCourses }){
             </div>
 
             <div className={styles.col_right}>
-                {dataCourses.map((item, i) => {
+                {dataFiltered?.map((item, i) => {
                     return (
                         router.asPath !== item.path  ?  
                         <Fragment key={i}>
