@@ -1,4 +1,5 @@
 import { useEffect, useState, Fragment } from 'react';
+import { useAppContext } from '../../../context/AppContext';
 import { useRouter } from "next/router";
 import CourseCard from "../../usina/CourseCard/CourseCard";
 import styles from "./GridCourses.module.scss";
@@ -7,6 +8,7 @@ export default function GridCourses({ dataCourses }){
 
     const router = useRouter();
     const [dataFiltered, setDataFiltered] = useState();
+    const { windowSize } = useAppContext();
 
     useEffect(() =>{   
         const filtredCards = dataCourses.filter(x => x.path !== router.asPath);
@@ -16,28 +18,43 @@ export default function GridCourses({ dataCourses }){
     return (
         <div className={styles.wrapper}>
 
-            <div className={styles.col_left}>
-                {dataFiltered?.map((item, i) => {
-                    return (
-                        router.asPath !== item.path  ?  
-                        <Fragment key={i}>
-                            { i % 2 === 0 && <CourseCard { ...item}/> }
-                        </Fragment> : ""
-                    );
-                })}
-            </div>
+            {windowSize >= 1025 ?
+                <>
 
-            <div className={styles.col_right}>
-                {dataFiltered?.map((item, i) => {
-                    return (
-                        router.asPath !== item.path  ?  
-                        <Fragment key={i}>
-                            { i % 2 !== 0 && <CourseCard { ...item}/> }
-                        </Fragment> : ""
-                    );
-                })}
-            </div>
+                    <div className={styles.col_left}>
+                        {dataFiltered?.map((item, i) => {
+                            return (
+                                router.asPath !== item.path  ?  
+                                <Fragment key={i}>
+                                    { i % 2 === 0 && <CourseCard { ...item}/> }
+                                </Fragment> : ""
+                            );
+                        })}
+                    </div>
 
+                    <div className={styles.col_right}>
+                        {dataFiltered?.map((item, i) => {
+                            return (
+                                router.asPath !== item.path  ?  
+                                <Fragment key={i}>
+                                    { i % 2 !== 0 && <CourseCard { ...item}/> }
+                                </Fragment> : ""
+                            );
+                        })}
+                    </div>
+                </>
+                :
+                <div className={styles.container}>
+                    {dataFiltered?.map((item, i) => {
+                        return (
+                            router.asPath !== item.path  ?  
+                            <Fragment key={i}>
+                                <CourseCard { ...item}/>
+                            </Fragment> : ""
+                        );
+                    })}
+                </div>
+            }
         </div>
     )
 }
