@@ -11,7 +11,7 @@ export default function Announcement({ data }) {
     const currentPath = router.asPath;
 
     useEffect(() => {
-        if (data.exception) {
+        if (data?.exception) {
             const exceptions = data.exception.split(',').map(exc => exc.trim());
             const matchException = exceptions.some(exception => {
                 // Si termina en *, es un wildcard
@@ -29,7 +29,7 @@ export default function Announcement({ data }) {
                 setShouldDisplay(false);
             }
         }
-    }, [data.exception, currentPath]);
+    }, [data?.exception, currentPath]);
 
     function closeAnnouncement() {
         setAnnouncementOutAnimation(true);
@@ -38,7 +38,7 @@ export default function Announcement({ data }) {
         }, 500);
     }
 
-    if (shouldDisplay && data.body) {
+    if (shouldDisplay && data?.body) {
         return (
             <div className={!announcementOutAnimation
                 ? `${styles.announcement} ${data.type == 1 ? styles.duelo : ''}`

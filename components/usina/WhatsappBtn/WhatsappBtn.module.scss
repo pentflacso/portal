@@ -166,3 +166,8 @@
         visibility: hidden;
     }
 }
+
+.overlapping
+{
+    bottom: calc(64px + (70 - 64) * ((100vw - 1200px) / (3840 - 1200)));
+}

@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useAppContext } from '../../context/AppContext';
+
 import NavBarUsina from '../../components/usina/NavBarUsina/NavBarUsina';
 import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import PageBuilder from '../../components/PageBuilder/PageBuilder';
@@ -10,7 +11,7 @@ import styles from "./usina.module.scss";
 
 export default function Usina({ data }){
 
-  const { windowSize } = useAppContext();
+  const { windowSize } = useAppContext();  
 
   useEffect(() => {
         
