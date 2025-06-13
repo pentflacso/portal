@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import styles from "./WhatsappBtn.module.scss";
 
-export default function WhatsappBtn({ whatsAppBtnStatus,course }){
+export default function WhatsappBtn({ whatsAppBtnStatus,course, announcementOverlapping }){
 
     const [menssageState, setMenssageState] = useState(1);
     const [menssageShow, setMenssageShow] = useState(true);
@@ -37,10 +37,12 @@ export default function WhatsappBtn({ whatsAppBtnStatus,course }){
         }     
     },[whatsAppBtnStatus]);
     
+    const overlapping = announcementOverlapping ? styles.overlapping : ''; 
+
     return(
         <>
             {wrapperShow && 
-                <div className={!wrapperFade ? `${styles.whatsapp_wrapper}` : `${styles.whatsapp_wrapper} ${styles.hide}`}>
+                <div className={!wrapperFade ? `${styles.whatsapp_wrapper} ${overlapping}` : `${styles.whatsapp_wrapper} ${styles.hide}`}>
                     <a href={`https://api.whatsapp.com/send/?phone=5491156645418&text=Hola+me+interesa+cursar: ${course}`} rel="noopener noreferrer" target="_blank" className={`${styles.whatsapp_btn}`}><img src="/assets/icons/whatsapp_icon.svg" alt="Logo de WhatsApp" /></a>
                     {menssageShow &&
                     <div className={!menssageHide ? `${styles.message_wrapper}` : `${styles.message_wrapper} ${styles.hide}`}>
