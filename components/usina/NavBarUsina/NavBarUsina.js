@@ -1,4 +1,6 @@
 import { useAppContext } from '../../../context/AppContext';
+import React, { useEffect } from 'react';
+import Announcement from '../../../components/library/Announcement/Announcement';
 import { useState } from 'react';
 import EditionsModal from '../../../components/usina/EditionsModal/EditionsModal';
 import GroupsModal from '../../../components/usina/GroupsModal/GroupsModal';
@@ -9,9 +11,13 @@ import styles from "./NavBarUsina.module.scss";
 
 export default function NavBarUsina({ refNavBrand, brandVisibility, startDate, formURL, courseStatus, listCourses }){
 
-    const { currentRoute, isLoading } = useAppContext();
+    const { isLoading, currentRoute, announcementStatus, setAnnouncementStatus, dataStrip } = useAppContext();
+    
     const [ modal, setModal ] = useState('hidden');      
-
+  
+    useEffect(() =>{   
+        setAnnouncementStatus(true);
+      }, []); 
     return(
         <>
             {modal === 'edicionesUsina' && <EditionsModal setModal={setModal} courses={listCourses} />} 
@@ -69,7 +75,9 @@ export default function NavBarUsina({ refNavBrand, brandVisibility, startDate, f
                     </div>  
                 </nav> 
 
-                <div className={isLoading ? `${styles.fade_overlay}` : `${styles.fade_overlay} ${styles.off}`} />  
+                <div className={isLoading ? `${styles.fade_overlay}` : `${styles.fade_overlay} ${styles.off}`} /> 
+                        {announcementStatus && (dataStrip != "")  && <Announcement data={ dataStrip } />}
+ 
             </header>        
         </>
     );

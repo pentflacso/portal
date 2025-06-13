@@ -1,4 +1,6 @@
 import { useRef, useEffect, useLayoutEffect, useState } from 'react';
+import { useAppContext } from '../../context/AppContext';
+
 import { useRouter } from 'next/router';
 import NavBarUsina from '../../components/usina/NavBarUsina/NavBarUsina';
 import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
@@ -17,6 +19,16 @@ function Index({ data }){
   const [ customStyles, setCustomStyles] = useState('default');
   const router = useRouter();
 
+
+  const { windowSize, setDataStrip,announcementStatus } = useAppContext();  
+  
+
+
+
+      useEffect(() => {
+          setDataStrip(data.data[0].strip);
+      }, [])
+      
 
   useEffect(() => {    
     if(router.asPath == '/usina/verano'){
@@ -74,7 +86,7 @@ function Index({ data }){
 
   return(
     <>      
-     <WhatsappBtn whatsAppBtnStatus={whatsAppBtnStatus} course = {data.data[0].titleShare} />      
+     <WhatsappBtn whatsAppBtnStatus={whatsAppBtnStatus} course = {data.data[0].titleShare} announcementOverlapping = {announcementStatus} />      
       {/* La barra de navegación irá por fuera del PageBuilder */}       
       <NavBarUsina courseStatus={data.data[0].status[0].value} refNavBrand={navBarBrand} brandVisibility={brandVisibility} startDate={data.data[0].startDate} formURL = {data.data[0].form}/>            
       <div ref={container}>

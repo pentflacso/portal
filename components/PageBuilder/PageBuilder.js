@@ -60,7 +60,6 @@ export default function PageBuilder({data, stylesx, explorerBtn}){
         } 
     }
 
-    console.log(data[0]);
 
     return(
     <>
