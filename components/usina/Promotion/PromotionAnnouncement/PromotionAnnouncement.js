@@ -1,0 +1,40 @@
+import { useState } from 'react';
+import styles from "./PromotionAnnouncement.module.scss";
+
+export default function PromotionAnnouncement({ setModal, setAnnouncementState }) {
+    const [announcementOutAnimation, setAnnouncementOutAnimation] = useState(false);
+
+    function closeAnnouncement() {
+        setAnnouncementOutAnimation(true);
+        setTimeout(() => {
+            setAnnouncementState(false);
+        }, 500);
+    }
+
+    function showPromotion() {
+        setAnnouncementOutAnimation(true);
+        setTimeout(() => {
+            setModal(true);
+            setAnnouncementState(false);
+        }, 500);
+    }
+
+    return(
+        <div className={!announcementOutAnimation
+            ? `${styles.promotion_announcement}`
+            : `${styles.promotion_announcement} ${styles.animation_out}`}
+        >
+            <button
+                type="button"
+                aria-label="Cerrar anuncio"
+                className={styles.close_btn}
+                onClick={closeAnnouncement}
+            >
+                <span /><span />
+            </button>
+            <div className={styles.info}>
+                <p>🔥 <strong>75% de descuento + Packs a precios super bajos</strong> — ¡Válido hasta el 18 de Agosto! — </p> <button type="button" onClick={showPromotion}>Más info</button>
+            </div>
+        </div>
+    );
+}
