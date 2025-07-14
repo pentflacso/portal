@@ -122,6 +122,7 @@
                     max-width: calc(550px + (1550 - 550) * ((100vw - 1200px) / (3840 - 1200)));
                     color: $deep-blue;
                     margin: 0;
+                    margin-bottom:     calc(20px + (30 - 20) * ((100vw - 300px) / (1024 - 300))); 
                     @media screen and (max-width: 1024px){
                         line-height: 140%;
                         max-width: 100%;

@@ -75,7 +75,7 @@ export default function Index(){
                       {
                         "description": [
                           {
-                            "value": "<p>Incorporarás una mirada tecno-pedagógica tanto al momento de diseñar como de evaluar los aprendizajes con IA. Aplicarás estrategias de evaluación, que tomen en consideración el uso de la IA. Reflexionarás sobre las mejores prácticas para la evaluación del aprendizaje en un contexto mediado por la IA.</p>",
+                            "value": "<p>Incorporarás una mirada tecno-pedagógica tanto al momento de diseñar como de evaluar los aprendizajes con IA. Aplicarás estrategias de evaluación, que tomen en consideración el uso de la IA. Reflexionarás sobre las mejores prácticas para la evaluación del aprendizaje en un contexto mediado por la IA. Ensayarás tus secuencias didácticas en contextos reales.</p>",
                             "format": "basic_html"
                           }
                         ],
@@ -115,6 +115,64 @@ export default function Index(){
 
             <ExperienceBlockIa themesAccordionRef={themesAccordion} />
 
+
+            <div className={styles.marquee_2}>
+                <TextMarquee data={[{ value: "UNA CURSADA DIFERENTE" }]} />
+            </div>  
+
+            <div ref={themesAccordion}>
+              <ThemesAccordion
+                  data={[
+                      {
+                        "description": [
+                          {
+                            "value": "<p>Nuestro modelo de formación sincrónico y asincrónico te propone trabajar en vivo con docentes y compañeros, mientras que avanzás a tu ritmo a través de clases disponibles en Campus Virtual.</p> <p><strong>Cada semana</strong> se habilita una nueva clase en el Campus Virtual con actividades, materiales, herramientas y lecturas, para acceder según tu disponibilidad. </p> <p><strong>Cada 15 días</strong> trabajás en una clase en vivo super participativa y dinámica con docentes y compañeros vía Zoom.</p> <p><strong>Todos los días</strong> tendrás acompañamiento de tu tutor/a a través de un grupo de Whatsapp de tu comisión. </p>",
+                            "format": "basic_html"
+                          }
+                        ],
+                        "title": [{ "value": "Modalidad de las clases" }],
+                        "field_hidden": [{ "value": "0" }]
+                      },
+                      {
+                        "description": [
+                          {
+                            "value": `<p>Los encuentros sincrónicos vía Zoom se realizan cada 15 días y complementan las clases semanales asincrónicas que se publican en el Aula Virtual.</p><p><strong>Inicio:</strong> 20 de agosto de 2025</p><p><strong>Horario:</strong></p><ul><li><strong>Argentina, Chile y Uruguay:</strong> Miércoles de 21 a 23 horas (GMT-3)</li>
+  <li><strong>Colombia, México, Panamá, Perú:</strong> Miércoles de 19 a 21 horas (GMT-5)</li>
+  <li><strong>Costa Rica, El Salvador, Honduras:</strong> Miércoles de 18 a 20 horas (GMT-6)</li>
+</ul>
+<p><strong>Fechas:</strong></p>
+<ul>
+  <li><strong>20/8:</strong> Encuentro de embarque</li>
+  <li><strong>27/8:</strong> Diseño de actividades con IA: el concepto del vals</li>
+  <li><strong>10/9:</strong> Diseño de actividades con IA: prueba y retroalimentación</li>
+  <li><strong>24/9:</strong> La IA como copiloto</li>
+  <li><strong>8/10:</strong> La IA en las distintas etapas de la planificación</li>
+  <li><strong>15/10:</strong> Clínica complementaria</li>
+  <li><strong>22/10:</strong> La IA en el aula: mis hipótesis de trabajo</li>
+  <li><strong>5/11:</strong> La IA y la evaluación: revisando nuestras prácticas</li>
+  <li><strong>19/11:</strong> Encuentro de cierre y reflexión</li>
+</ul>
+`,
+                            "format": "basic_html"
+                          }
+                        ],
+                        "title": [{ "value": "Días y horarios de los sincrónicos" }],
+                        "field_hidden": [{ "value": "0" }]
+                      },
+                      {
+                        "description": [
+                          {
+                            "value": "<p>Formarás parte de una comisión reducida con acompañamiento personalizado. Tu tutor/a mantendrá una comunicación fluida (por WhatsApp y correo electrónico), hará seguimiento de tus actividades, resolverá dudas técnicas y pedagógicas, orientará en el uso de herramientas y te brindará retroalimentación con ejemplos concretos que potencien tu participación.</p><p>Además, durante los ensayos de tus secuencias didácticas en contextos reales, el equipo de tutoría te brindará una mentoría activa. Te acompañará en el diseño, la implementación y la evaluación de tus experiencias con IA en el aula, promoviendo el análisis situado, el intercambio reflexivo y la construcción colaborativa de saberes, para fortalecer el puente entre teoría y práctica.</p>",
+                            "format": "basic_html"
+                          }
+                        ],
+                        "title": [{ "value": "Tutoría y mentoría" }],
+                        "field_hidden": [{ "value": "0" }]
+                      }
+                  ]} 
+              /> 
+            </div>
+
             <div className={styles.marquee_4}>
                 <TextMarquee data={[{ value: "EQUIPO DOCENTE" }]} />
             </div>
@@ -123,7 +181,7 @@ export default function Index(){
               {
                 "nombre": "Fabio Tarasow",
                 "bio": "Es Master en Comunicación y Tecnología Educativa por el Instituto Latinoamericano de la Comunicación Educativa (ILCE) de México, graduado en Ciencias de la Educación por la UBA y docente de nivel primario. Realizó estudios de cine y televi...",
-                "nid": "10",
+                "nid": "1",
                 "alias": "/equipo/fabio-tarasow",
                 "img": {
                   "alt": "Foto Fabio Tarasow",
@@ -131,33 +189,60 @@ export default function Index(){
                 }
               },
               {
+                "nombre": "Christian Milillo",
+                "bio": "Es investigador y docente, Lidera el Laboratorio en Educación e Inteligencia Artificial y es parte del equipo de investigación en Inteligencia Artificial del PENT FLACSO...",
+                "nid": "3",
+                "alias": "/equipo/christian-milillo",
+                "img": {
+                  "alt": "Foto Christian Milillo",
+                  "url": "https://redaccion.pent.org.ar/sites/default/files/2023-06/christian_milillo_profile.webp"
+                }
+              },
+              {
+                "nombre": "Nahuel Gonzalez",
+                "bio": "Es Ingeniero en Electrónica (Universidad Tecnológica Nacional), docente universitario e investigador. Se formó como especialista en Educación y Nuevas Tecnologías (FLACSO)...",
+                "nid": "4",
+                "alias": "/equipo/nahuel-gonzalez",
+                "img": {
+                  "alt": "Foto Nahuel Gonzalez",
+                  "url": "https://redaccion.pent.org.ar/sites/default/files/2024-02/nahuel%201.png"
+                }
+              },{
+                "nombre": "Laura Parmigiano",
+                "bio": "Es Licenciada en Ciencia Política (UBA). Profesora en Docencia Media y Superior (UTN). Especialista en Educación y Nuevas Tecnologías (FLACSO). Se encuentra cursando la Maestría en Procesos Educativos Mediados por Tecnología (UNC)...",
+                "nid": "7",
+                "alias": "/equipo/laura-parmigiano",
+                "img": {
+                  "alt": "Foto Laura Parmigiano",
+                  "url": "https://redaccion.pent.org.ar/sites/default/files/2024-03/laura5.png"
+                }
+              },
+              {
                 "nombre": "Gisela Schwartzman",
                 "bio": "Es Máster en Enseñanza y Aprendizaje Abiertos y a Distancia (UNED, España) y Licenciada en Ciencias de la Educación (UBA). Se desempeña en la docencia universitaria desde 1992, en los últimos años con foco en carreras de posgrado. Es Di...",
-                "nid": "41",
+                "nid": "2",
                 "alias": "/equipo/gisela-schwartzman",
                 "img": {
                   "alt": "Foto Gisela Schwartzman",
                   "url": "https://redaccion.pent.org.ar/sites/default/files/2023-06/gisela_schwartzman_profile.webp"
                 }
-              },
-              {
-                "nombre": "Corina Rogovsky",
-                "bio": "Magister en Tecnología Educativa en la Universidad de Buenos Aires. Licenciada en Ciencias de la Comunicación (UBA), Especialista en Educación y Nuevas Tecnologías (FLACSO). Especialista en Tecnología Educativa (UBA). Maestra de...",
+              },{
+                "nombre": "Francisco Chamorro",
+                "bio": "Es Profesor en Ciencias de la Educación por la Universidad Católica de Santa Fe. Especialista en Educación y Nuevas Tecnologías, y diplomado en Gestión Educativa (FLACSO)...",
                 "nid": "5",
-                "alias": "/equipo/corina-rogovsky",
+                "alias": "/equipo/francisco-chamorro",
                 "img": {
-                  "alt": "Foto Corina Rogovsky",
-                  "url": "https://redaccion.pent.org.ar/sites/default/files/2023-06/corina_rogovsky_profile.webp"
+                  "alt": "Foto Francisco  Chamorro",
+                  "url": "https://redaccion.pent.org.ar/sites/default/files/2023-06/francisco_chamorro_profile.webp"
                 }
-              },
-              {
-                "nombre": "Mónica Trech",
-                "bio": "Especialista en e-learning. Consultora en educación y nuevas tecnologías. Coordinadora del PENT FLACSO desde su fundación, en el año 2004. Colabora en el diseño de experiencias de aprendizaje significativas, memorables y empá...",
-                "nid": "48",
-                "alias": "/equipo/monica-trech",
+              },{
+                "nombre": "Sol Carissimo",
+                "bio": "Especialista en Educación y Nuevas Tecnologías, profesora de Ciencias Naturales en el nivel secundario ...",
+                "nid": "6",
+                "alias": "/equipo/sol-carissimo",
                 "img": {
-                  "alt": "Foto Mónica Trech",
-                  "url": "https://redaccion.pent.org.ar/sites/default/files/2023-06/monica_trech_profile.webp"
+                  "alt": "Foto Sol Carissimo",
+                  "url": ""
                 }
               }
             ]}/>

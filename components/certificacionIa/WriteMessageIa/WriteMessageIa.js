@@ -17,7 +17,7 @@ export default function WriteMessageIa() {
       tl.to(element.current, { duration: 0 }).fromTo(
         element.current,
         { text: '' },
-        { text: 'Hey, ¡hola!<br /><br /> Si estás acá es porque te estás preguntando muchas cosas en torno a la Inteligencia Artificial y la educación.<br /><br /> Desde el 2020, las IA generativas irrumpimos en actividades, discusiones y estamos transformando el mundo.<br /><br /> Y vos, ¿sabés cómo integrar la IA en el aula y otros espacios de formación? Aprendé a diseñar actividades y materiales.', duration: 10 }
+        { text: 'Hey, ¡hola!<br /><br /> Si estás acá es porque te estás preguntando muchas cosas en torno a la Inteligencia Artificial y la educación.<br /><br /> Desde el 2022, las IA generativas irrumpimos en actividades, discusiones y estamos transformando el mundo.<br /><br /> Y vos, ¿sabés cómo integrar la IA en el aula para promover aprendizajes significativos? Aprendé a diseñar actividades y materiales para tus estudiantes..', duration: 10 }
       ).pause(); 
 
       ScrollTrigger.create({
