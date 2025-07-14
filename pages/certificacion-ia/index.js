@@ -102,7 +102,7 @@ export default function Index(){
               <CTA blockProps={
                   {
                       "field_button_cta": [{ "value": "Descargar plan de estudio" }],
-                      "field_button_file": "https://redaccion.pent.org.ar/sites/default/files/2024-08/Escape_programa_2024.pdf",
+                      "field_button_file": "https://redaccion.pent.org.ar/sites/default/files/2025-07/Programa%20-%20Certificacio%CC%81n%20IA%20%28Pu%CC%81blico%29.pdf",
                       "field_button_type": [{ "value": "file" }],
                       "field_hidden": []
                   }}
@@ -236,13 +236,13 @@ export default function Index(){
                   "url": "https://redaccion.pent.org.ar/sites/default/files/2023-06/francisco_chamorro_profile.webp"
                 }
               },{
-                "nombre": "Sol Carissimo",
+                "nombre": "María Sol Carissimo",
                 "bio": "Especialista en Educación y Nuevas Tecnologías, profesora de Ciencias Naturales en el nivel secundario ...",
                 "nid": "6",
-                "alias": "/equipo/sol-carissimo",
+                "alias": "/equipo/maria-sol-carissimo",
                 "img": {
                   "alt": "Foto Sol Carissimo",
-                  "url": ""
+                  "url": "https://redaccion.pent.org.ar/sites/default/files/2025-07/TOMA_2-removebg-preview.png"
                 }
               }
             ]}/>
