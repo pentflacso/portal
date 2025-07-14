@@ -2,6 +2,7 @@ import { useRef, useEffect, useState } from 'react';
 import { useAppContext } from '../../context/AppContext';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import NavBarIa from '../../components/certificacionIa/NavBarIa/NavBarIa';
+import MetaTags from '../../components/library/MetaTags/MetaTags';
 import HeroIa from '../../components/certificacionIa/HeroIa/HeroIa';
 import TextMarquee from '../../components/library/TextMarquee/TextMarquee';
 import WriteMessageIa from '../../components/certificacionIa/WriteMessageIa/WriteMessageIa';
@@ -22,6 +23,9 @@ export default function Index(){
   const [ brandVisibility, setBrandVisibility ] = useState(true);
 
 
+  
+
+
   useEffect(() => {   
     setBrandVisibility(true);
     let st = ScrollTrigger.create({
@@ -37,8 +41,20 @@ export default function Index(){
   
   return(
     <>
+
+      <MetaTags
+          pageTitle= 'Certificación - Enseñanza y Aprendizaje con Inteligencia Artificial — FLACSO | PENT' 
+          shareTitle='Certificación - Enseñanza y Aprendizaje con Inteligencia Artificial — FLACSO | PENT' 
+          keywords='IA, educación, tecnología, TICS'
+          description='Llevá la IA a tus espacios de formación e integrala en las actividades con estudiantes y el proceso de planificación.  Desarrollá secuencias didácticas, materiales y estrategias de evaluación propiciando un uso crítico, ético y responsable.'
+          img='/assets/images/certificacion_ia/ia_cover.png'
+          url='http://pent.flacso.org.ar/certificacion-ia'
+
+      />
       <NavBarIa refNavBrand={navBarBrand} brandVisibility={brandVisibility}/>
         
+
+
         <MainWrapper>  
 
           <HeroIa />         
