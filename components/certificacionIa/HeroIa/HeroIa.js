@@ -8,10 +8,10 @@ export default function HeroIa(){
 
             <div className={styles.info}>            
                 <div className={styles.col_left}>
-                    <h1 className={styles.headline}>IA para innovar<br /> en educación</h1>
+                    <h1 className={styles.headline}>IA para innovar<br /> en el aula</h1>
                     <p className={styles.description}>Aprendé a diseñar propuestas de enseñanza que integren la inteligencia artificial.</p>
                     <div className={styles.features}>
-                        <p>Curso de posgrado</p>
+                        <p>Certificación universitaria</p>
                         <p>14 semanas</p>
                     </div>
                 </div>

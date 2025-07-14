@@ -17,19 +17,19 @@ export default function PaymentBlockIa() {
         <div className={styles.payment_card}>
           <p className={styles.country_tag}>Residentes en Argentina</p>
           <p className={styles.bonus}>Bonificaciones disponibles para grupos e instituciones.</p>
-          <p className={styles.price}>10 cuotas de<br /><span>AR$ <strong>25,000</strong></span><br />+ matrícula AR$ 26.000<br />+ derecho a coloquio</p>
+          <p className={styles.price}>6 cuotas de<br /><span>AR$ <em>115,000</em> <strong>85,000*</strong></span></p>
           <div className={styles.disclaiment}>
-            <p>*Este importe se incrementará un 20% de forma trimestral.</p>
-            <p>La tramitación del título tiene un costo adicional. Ver información <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank">aquí</a>.</p>
+            <p>* Valor con descuento por tiempo limitado.</p>
           </div>
         </div>
 
         <div className={styles.payment_card}>
           <p className={styles.country_tag}>Residentes en el extranjero</p>
           <p className={styles.bonus}>Bonificaciones disponibles para grupos e instituciones.</p>
-          <p className={styles.price}>10 cuotas de<br /><span>USD <strong>175</strong></span><br />+ matrícula USD 175<br />+ derecho a coloquio</p>
+          <p className={styles.price}>6 cuotas de<br /><span>USD <strong>110</strong></span><br />o <strong>650 USD</strong> en un pago.</p>
           <div className={styles.disclaiment}>
-            <p>La tramitación del título tiene un costo adicional. Ver información <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank">aquí</a>.</p>
+           
+            <p>* Valor con descuento por tiempo limitado.</p>
           </div>
         </div>
 

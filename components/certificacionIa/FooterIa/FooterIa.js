@@ -10,19 +10,22 @@ export default function FooterIa(){
                 <h3>Información detallada, en cumplimiento con la Resolución 4600-E/2017 del Ministerio de Educación de la Nación (República Argentina).</h3>
 
                 <h4>A. Denominación de la carrera</h4>
-                <p>Diploma Superior en Ciencias Sociales con mención en Educación En Línea y Entornos Virtuales Multiplataforma.</p>                
+                <p>Certificación de Estudios de Posgrado en Enseñanza y Aprendizaje con Inteligencia Artificial. </p>                
 
                 <h4>B. Titulación que se expide</h4>
-                <p>Diplomado/a Superior en Ciencias Sociales con mención en Educación en Línea y Entornos Virtuales multiplataforma. (Título propio)</p>             
+                <p>Certificación de Estudios de Posgrado en Enseñanza y Aprendizaje con Inteligencia Artificial. (Título propio)</p>             
                
                 <h4>C. Grado académico de la carrera</h4>
-                <p>Posgrado.</p>       
+                <p>Curso de posgrado.</p>       
                  
                 <h4>D. Resolución Ministerial que otorga a la titulación el debido reconocimiento oficial y la consecuente validez del título en cuestión</h4>
-                <p>RM 2022-1340-APN-ME.</p>         
+                <p>No aplica. Esta propuesta académica cuenta con la aprobación del Consejo Académico de la FLACSO Argentina según la Resolución 23-03-24.</p>         
                  
                 <h4>E. Requisitos de admisión</h4>
-                <p>La diplomatura está destinada a profesionales interesados/as en el campo de la educación en línea. Abarca a quienes ya se desarrollan en este campo o a aquellos/as que busquen iniciarse en el mismo en diversos ámbitos (por ejemplo: universitarios, de educación formal, en organismos estatales en diversos niveles jurisdiccionales, en empresas y en otras organizaciones de la sociedad civil, entre otros).</p><p>Se requiere título de educación superior universitario o no universitario de 4 años como mínimo, en las áreas de educación, psicología, humanidades, ciencias sociales o en el campo de las tecnologías de la información y las comunicaciones. Serán también admitidos profesionales de otros campos que estén interesados en la formación ofrecida y/o que se desarrollen laboralmente en la educación en línea / e-learning o en instancias de formación en general. En estos casos se requerirá la presentación de un currículum abreviado.</p><p>Esta heterogeneidad de perfiles no sólo es viabilizada sino que es esperada y valorada en la medida que refleja la realidad de este campo de conocimientos y desarrollo que es per se interdisciplinario. La propuesta de este diploma asume el desarrollo de contenidos y actividades de aprendizaje que ponen en juego esta multiplicidad de perfiles profesionales.</p><p>La metodología que estructura esta propuesta académica prevé además la diversidad de experiencias y niveles de conocimientos de los destinatarios.</p>               
+                <p>El curso de posgrado está destinado a docentes del ámbito escolar.<br />
+                    Es requisito contar con un título universitario y/o terciario no universitario de 4 años de duración.<br />
+                    La metodología que estructura esta propuesta académica prevé además la diversidad de experiencias y niveles de conocimientos de los destinatarios.<br />
+                    </p>               
 
                 <h4>F. Resolución de acreditación emitida por la COMISIÓN NACIONAL DE EVALUACIÓN Y ACREDITACIÓN UNIVERSITARIA, cuando se trate de una titulación incorporada al régimen del artículo 43 de la Ley No 24.521 o de una carrera de posgrado.</h4>
                 <p>No aplica.</p>
@@ -31,10 +34,10 @@ export default function FooterIa(){
                 <p>Educación a distancia.</p>               
                   
                 <h4>H. Duración</h4>
-                <p>10 meses.</p>
+                <p>14 semanas.</p>
                
                 <h4>I. Carga Horaria</h4>
-                <p>279 horas reloj.</p>                                
+                <p>110 horas reloj.</p>                                
 
             </div>
 

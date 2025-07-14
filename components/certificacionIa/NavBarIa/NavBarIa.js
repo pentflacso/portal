@@ -21,11 +21,11 @@ export default function NavBarIa({ refNavBrand, brandVisibility }){
                         </h3>                
 
                         <div className={brandVisibility ? `${styles.insciption_btn}` : `${styles.insciption_btn} ${styles.active}`}>                            
-                            <p>Inicia el 18 de Junio</p>  
+                            <p>Inicia el 20 de agosto</p>  
                                
-                            {/* <a href="https://www.google.com/" rel="noopener noreferrer" className="btn-inscribirme" target="_blank">Inscribirme</a> */}
+                         <a href="https://inscripcion2.flacso.org.ar/index.php?idp=13182" rel="noopener noreferrer" className="btn-inscribirme" target="_blank">Inscribirme</a> 
 
-                            <button type="button" className="btn-inscribirme" onClick={ () => setModal('meInteresa')}>Inscribirme</button> 
+                           {/* <button type="button" className="btn-inscribirme" onClick={ () => setModal('meInteresa')}>Inscribirme</button> */}
                         </div>                               
 
                     </div>  

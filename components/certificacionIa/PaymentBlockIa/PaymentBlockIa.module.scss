@@ -4,7 +4,7 @@
     @include container-width-1;
     display: grid;
     grid-template-areas: 'left right';
-    grid-template-columns: 40% 60%; 
+    grid-template-columns: 35% 65%; 
     margin-bottom: calc(115px + (400 - 115) * ((100vw - 1200px) / (3840 - 1200)));
     @media screen and (max-width: 1024px){
         grid-template-areas: 'left' 'right';
@@ -108,6 +108,10 @@
                     line-height: 110%;
                     strong{
                         font-weight: 500;
+                    }
+                    em{
+                        text-decoration: line-through;
+                        font-style: normal;
                     }
                 }
             }
