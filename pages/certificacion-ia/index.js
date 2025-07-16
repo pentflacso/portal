@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect, useLayoutEffect, useState } from 'react';
 import { useAppContext } from '../../context/AppContext';
 import MainWrapper from '../../components/library/MainWrapper/MainWrapper';
 import NavBarIa from '../../components/certificacionIa/NavBarIa/NavBarIa';
@@ -14,17 +14,53 @@ import CvSelector from '../../components/usina/CvSelector/CvSelector';
 import PaymentBlockIa from '../../components/certificacionIa/PaymentBlockIa/PaymentBlockIa';
 import FooterIa from '../../components/certificacionIa/FooterIa/FooterIa';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
+import WhatsappBtn from '../../components/usina/WhatsappBtn/WhatsappBtn';
+
 import styles from "./certificacion.module.scss";
 
 export default function Index(){
-  const { windowSize } = useAppContext();
+    const container = useRef();
+
   const themesAccordion = useRef(null);
   const navBarBrand = useRef(null);
   const [ brandVisibility, setBrandVisibility ] = useState(true);
+  const [ whatsAppBtnStatus, setWhatsAppBtnStatus] = useState(0);
+  const { windowSize, setDataStrip,announcementStatus } = useAppContext();  
 
+  const [ elementHeight, setElementHeight ] = useState(0);  
 
   
+  useEffect(() => {  
+    let stOne = ScrollTrigger.create({
+      trigger: navBarBrand.current,
+      start: "top top",
+      end: "top top",
+      onEnter: () => setWhatsAppBtnStatus(1),
+      onEnterBack: () => setWhatsAppBtnStatus(0),            
+    });
+    let stTwo = ScrollTrigger.create({
+      trigger: "#footer",    
+      start: "top bottom",
+      end: "top bottom",  
+      onEnter: () => setWhatsAppBtnStatus(2),
+      onEnterBack: () => setWhatsAppBtnStatus(3),       
+    });
+    return () => {
+      stOne.revert();
+      stTwo.revert();
+    };
+  }, [elementHeight]);
 
+
+  useLayoutEffect(() => {
+    if(container.current){
+      const resizeObserver = new ResizeObserver(() => {
+        setElementHeight(container.current.offsetHeight);
+      });
+      resizeObserver.observe(container.current);
+      return () => resizeObserver.disconnect();
+    }    
+  }, []);
 
   useEffect(() => {   
     setBrandVisibility(true);
@@ -38,7 +74,48 @@ export default function Index(){
     return () => st.revert();      
   }, [windowSize]);
 
+  useEffect(() => {  
+    let stOne = ScrollTrigger.create({
+      trigger: navBarBrand.current,
+      start: "top top",
+      end: "top top",
+      onEnter: () => setWhatsAppBtnStatus(1),
+      onEnterBack: () => setWhatsAppBtnStatus(0),            
+    });
+    let stTwo = ScrollTrigger.create({
+      trigger: "#footer",    
+      start: "top bottom",
+      end: "top bottom",  
+      onEnter: () => setWhatsAppBtnStatus(2),
+      onEnterBack: () => setWhatsAppBtnStatus(3),       
+    });
+    return () => {
+      stOne.revert();
+      stTwo.revert();
+    };
+  }, [elementHeight]);
   
+  useEffect(() => {  
+    let stOne = ScrollTrigger.create({
+      trigger: navBarBrand.current,
+      start: "top top",
+      end: "top top",
+      onEnter: () => setWhatsAppBtnStatus(1),
+      onEnterBack: () => setWhatsAppBtnStatus(0),            
+    });
+    let stTwo = ScrollTrigger.create({
+      trigger: "#footer",    
+      start: "top bottom",
+      end: "top bottom",  
+      onEnter: () => setWhatsAppBtnStatus(2),
+      onEnterBack: () => setWhatsAppBtnStatus(3),       
+    });
+    return () => {
+      stOne.revert();
+      stTwo.revert();
+    };
+  }, [elementHeight]);
+
   return(
     <>
 
@@ -51,6 +128,8 @@ export default function Index(){
           url='http://pent.flacso.org.ar/certificacion-ia'
 
       />
+      
+      <WhatsappBtn whatsAppBtnStatus={whatsAppBtnStatus} course = "Certificación - Enseñar y Aprender con Inteligencia Artificial" announcementOverlapping = {false} />      
       <NavBarIa refNavBrand={navBarBrand} brandVisibility={brandVisibility}/>
         
 
@@ -253,12 +332,12 @@ export default function Index(){
                 }
               },{
                 "nombre": "María Sol Carissimo",
-                "bio": "Especialista en Educación y Nuevas Tecnologías, profesora de Ciencias Naturales en el nivel secundario ...",
+                "bio": "Es Especialista en Tecnología Educativa y apasionada por la integración de la inteligencia artificial en el ámbito educativo, con una sólida formación en ciencias naturales y pedagogía...",
                 "nid": "6",
                 "alias": "/equipo/maria-sol-carissimo",
                 "img": {
                   "alt": "Foto Sol Carissimo",
-                  "url": "https://redaccion.pent.org.ar/sites/default/files/2025-07/TOMA_2-removebg-preview.png"
+                  "url": "https://redaccion.pent.org.ar/sites/default/files/2025-07/Frame%202%20%282%29.png"
                 }
               }
             ]}/>
