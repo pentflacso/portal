@@ -42,13 +42,12 @@
             }                       
         }
         .title{
-            @include font-level-2;
-            line-height: 130%;
+            @include font-level-1;
+            line-height: 120%;
             font-weight: 400;     
             color: $deep-blue;  
             margin-bottom: calc(36px + (80 - 36) * ((100vw - 1200px) / (3840 - 1200))); 
             @media screen and (max-width: 1024px){
-                @include font-level-1;
                 line-height: normal;
                 margin-bottom: calc(20px + (80 - 20) * ((100vw - 300px) / (1024 - 300)));
             }
