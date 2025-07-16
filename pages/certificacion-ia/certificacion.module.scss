@@ -7,6 +7,14 @@
     }
 }
 
+.marquee_4{
+    margin-top: calc(50px + (200 - 50) * ((100vw - 1200px) / (3840 - 1200)));
+    @media screen and (max-width: 1024px){
+        margin-top: calc(30px + (100 - 30) * ((100vw - 300px) / (1024 - 300)));
+    }
+}
+
+
 .marquee_3{
     margin-bottom: calc(50px + (200 - 50) * ((100vw - 1200px) / (3840 - 1200)));
     @media screen and (max-width: 1024px){
