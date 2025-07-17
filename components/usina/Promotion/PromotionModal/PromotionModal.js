@@ -22,6 +22,7 @@ export default function PromotionModal({ setModal, setAnnouncementState }){
         reason: '',
         source: '',
         phone: '',
+        motivation: '',
         country: '',
     });
     const [submitted, setSubmitted] = useState(false);
@@ -282,7 +283,7 @@ export default function PromotionModal({ setModal, setAnnouncementState }){
                                     rules={{ required: true }} 
                                 />
 
-                                <input className={styles.input} type="text" name="Motivo" placeholder="¿Por qué te interesa cursar con nosotros?" data-required="true" required />
+                                <input onChange={handleChange}  className={styles.input} type="text" name="motivation" placeholder="¿Por qué te interesa cursar con nosotros?" data-required="true" required />
 
                                 <div className={formData.reason === '' ? `${styles.custom_select} ${styles.default}` : `${styles.custom_select}`}>
                                     <select onChange={handleChange} name="reason" value={formData.reason}>                          
