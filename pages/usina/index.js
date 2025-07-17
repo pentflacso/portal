@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useAppContext } from '../../context/AppContext';
-
 import NavBarUsina from '../../components/usina/NavBarUsina/NavBarUsina';
+import Promotion from '../../components/usina/Promotion/Promotion';
 import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import PageBuilder from '../../components/PageBuilder/PageBuilder';
 import { gsap, Back, Elastic } from 'gsap';
@@ -62,6 +62,8 @@ export default function Usina({ data }){
     <>      
       {/* La barra de navegación irá por fuera del PageBuilder */}
       <NavBarUsina listCourses={data[3].courses}/>
+
+      <Promotion />
 
       <PageBuilder data={ data } stylesx={styles} />   
       {windowSize >= 1025 &&

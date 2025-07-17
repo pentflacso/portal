@@ -1,10 +1,10 @@
 import { useRef, useEffect, useLayoutEffect, useState } from 'react';
 import { useAppContext } from '../../context/AppContext';
-
 import { useRouter } from 'next/router';
 import NavBarUsina from '../../components/usina/NavBarUsina/NavBarUsina';
 import { handleServerRedirect } from '../../Middleware/ErrorRedirect';
 import PageBuilder from '../../components/PageBuilder/PageBuilder';
+import Promotion from '../../components/usina/Promotion/Promotion';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import WhatsappBtn from '../../components/usina/WhatsappBtn/WhatsappBtn';
 import styles from "./propuesta.module.scss";
@@ -90,6 +90,9 @@ function Index({ data }){
       {/* La barra de navegación irá por fuera del PageBuilder */}       
       <NavBarUsina courseStatus={data.data[0].status[0].value} refNavBrand={navBarBrand} brandVisibility={brandVisibility} startDate={data.data[0].startDate} formURL = {data.data[0].form}/>            
       <div ref={container}>
+        
+        <Promotion />
+        
         <PageBuilder
         data={ data.data }
         stylesx={ customStyles === 'verano' ? stylesVerano : styles }
