@@ -138,6 +138,12 @@
             }
         }
 
+        .terms p{
+            @include font-level-5;
+            margin-top: calc(35px + (95 - 35) * ((100vw - 1200px) / (3840 - 1200)));
+
+        }
+
         .promotions_content{           
             display: grid;
             grid-template-areas: 'left right';
