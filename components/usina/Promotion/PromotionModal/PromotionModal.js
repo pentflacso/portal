@@ -181,7 +181,7 @@ export default function PromotionModal({ setModal, setAnnouncementState }){
                         </div>   
 
                         <div className={styles.col_right}>
-                            <h4>Si ya cursaste en FLACSO</h4>
+                            <h4>Si ya conocés FLACSO</h4>
                             <p className={styles.big_word}>PACKS</p>
                             <p><strong>Packs a precios super bajos.</strong> Armá tus trayectos a medida con los cursos PENT que te interesan y seguí formándote con nosotros.</p>                            
                             <div className={styles.prices}>
