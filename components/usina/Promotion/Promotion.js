@@ -10,7 +10,7 @@ export default function Promotion(){
     useEffect(() => {
         setTimeout(() => {
             setModalState(true);
-        }, "800");          
+        }, "5000");          
     }, []);
 
     return(

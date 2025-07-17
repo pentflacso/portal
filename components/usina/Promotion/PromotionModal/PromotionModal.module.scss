@@ -14,6 +14,19 @@
     animation-fill-mode: forwards; 
     overflow: auto;      
 
+    .terms
+    {
+        a{
+            font-size: 11px;
+            color: #000033;
+        }
+
+    }
+    .price{
+         font-size: calc(40px + (40 - 30) * ((100vw - 1200px) / (3840 - 1200))) !important;
+
+    }
+
     .close_btn{
         position: absolute;
         top: calc(20px + (60 - 20) * ((100vw - 1200px) / (3840 - 1200)));
@@ -239,7 +252,17 @@
                 }
             }
 
-            .input{
+.phone_input{
+            >div{
+                @include font-level-4;
+                padding-left: calc(5px + (10 - 5) * ((100vw - 1200px) / (3840 - 1200))); 
+                @media screen and (max-width: 1025px){
+                    padding-left: calc(5px + (8 - 5) * ((100vw - 300px) / (1200 - 300)));
+                }                    
+            }
+        }
+
+            .input,.phone_input input{
                 font-family: 'Roboto', sans-serif;
                 @include font-level-4;
                 font-weight: 400;
@@ -345,6 +368,21 @@
                 margin-top: calc(30px + (80 - 30) * ((100vw - 1200px) / (3840 - 1200)));
                 @media screen and (max-width: 1024px){
                     margin-top: calc(20px + (60 - 20) * ((100vw - 300px) / (1200 - 300)));                                    
+                }
+
+                &[disabled]
+                {
+                    background-color: $gray-6;
+                    border-color:$gray-6;
+                    background-image: url(/assets/spinners/loader-button.svg);
+                    background-repeat: no-repeat;
+                    background-position: calc((14px + 26 * (100vw - 1200px) / 2640) * .5) center;
+                    padding-left:  calc((14px + 26 * (100vw - 1200px) / 2640) * 2);
+                    background-size: auto 50%;                
+                    &:hover{
+                        color: $deep-blue;
+
+                    }
                 }
             }
         }
