@@ -292,6 +292,7 @@ export default function PromotionModal({ setModal, setAnnouncementState }){
                                         <option value="Motivos económicos">Motivos económicos</option>
                                         <option value="Falta de tiempo">Falta de tiempo</option>
                                         <option value="Elegí otra propuesta">Elegí una propuesta de otra institución</option>
+                                        <option value="Puntaje docente">Por un tema de puntaje docente</option>
                                         <option value="No entendía la temática">No entendía la temática</option>
                                         <option value="Miedo o incertidumbre por el modo de cursar">Miedo o incertidumbre por el modo de cursar</option>
                                         <option value="No me sentía capacitado/a">No me sentía capacitado/a</option>
