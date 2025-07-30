@@ -106,6 +106,7 @@ export async function getServerSideProps(context) {
   const { query } = context;
   const { propuesta, revisionid } = query;
   // Incluye `revisionid` en la llamada a la API si es necesario
+  console.log(`https://redaccion.pent.org.ar/data/courses/${propuesta}${revisionid ? `?revisionid=${revisionid}` : ''}`);
   const res = await fetch(`https://redaccion.pent.org.ar/data/courses/${propuesta}${revisionid ? `?revisionid=${revisionid}` : ''}`);
   
   const referrer = context.req.headers.referer;
