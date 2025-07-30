@@ -20,7 +20,7 @@ export default function PaymentBlockIa() {
           <p className={styles.bonus}>Bonificaciones disponibles para grupos e instituciones.</p>
           <p className={styles.price}>6 cuotas de<br /><span>AR$ <em>115,000</em> <strong>85,000*</strong></span></p>
           <div className={styles.disclaiment}>
-            <p>* Valor con descuento por tiempo limitado.</p>
+            <p>* Valor promocional y financiación hasta el 8 de agosto.</p>
           </div>
         </div>
 
@@ -30,7 +30,7 @@ export default function PaymentBlockIa() {
           <p className={styles.price}>6 cuotas de<br /><span>USD <em>130</em> <strong>110*</strong></span><br />o <strong>650 USD</strong> en un pago.</p>
           <div className={styles.disclaiment}>
            
-            <p>* Valor con descuento por tiempo limitado.</p>
+            <p>* Valor promocional y financiación hasta el 8 de agosto.</p>
 
           </div>
         </div>
