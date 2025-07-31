@@ -97,7 +97,7 @@
             }
 
             .price{
-                line-height: 125%;
+                line-height: 200%;
                 margin-bottom: calc(25px + (65 - 25) * ((100vw - 1200px) / (3840 - 1200)));
                 @media screen and (max-width: 1024px){  
                     margin-bottom: calc(20px + (45 - 20) * ((100vw - 300px) / (1025 - 300)));
@@ -109,11 +109,12 @@
                     strong{
                         font-weight: 500;
                     }
-                    em{
+                   
+                }
+                 em{
                         text-decoration: line-through;
                         font-style: normal;
                     }
-                }
             }
 
             .disclaiment{
