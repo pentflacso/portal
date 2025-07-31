@@ -7,7 +7,7 @@ export default function PaymentBlockIa() {
 
       <div className={styles.col_left}>
         <h3>Formas de pago</h3>
-        <p>Ver modalidades de pago <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank">aquí</a>.</p>       
+        <p>Ver modalidades de pago <a href="https://www.flacso.org.ar/consultas/pagos" rel="noopener noreferrer" target="_blank">aquí</a>.</p>       
         <p>Consultar por bonificaciones especiales y facilidades de pago a <a href="mailto:pent_ia@flacso.org.ar" rel="noopener noreferrer" target="_blank">pent_ia@flacso.org.ar</a></p>  
         <p>Conocer beneficios aplicables por convenios de FLACSO Argentina con asociaciones, sindicatos y otras instituciones <a href="https://www.google.com/" rel="noopener noreferrer" target="_blank">aquí</a>.</p>
         <p>Fecha límite para inscribirse: lunes 18/8, 17hs Argentina.</p>
