@@ -20,7 +20,7 @@ export default function PaymentBlockIa() {
           <p className={styles.bonus}>Bonificaciones disponibles para grupos e instituciones.</p>
           <p className={styles.price}>4 cuotas de<br /><span>ARS <em>165,000</em> <strong>125,000</strong>*</span><br />o un pago de ARS  <em>650.000</em><strong> 500.000</strong>*.</p>
           <div className={styles.disclaiment}>
-            <p>* Valor promocional y financiación hasta el 8 de agosto.</p>
+            <p>* Valor promocional y financiación hasta el 18 de agosto.</p>
           </div>
         </div>
 
