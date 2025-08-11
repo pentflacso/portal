@@ -18,7 +18,7 @@ export default function PaymentBlockIa() {
         <div className={styles.payment_card}>
           <p className={styles.country_tag}>Residentes en Argentina</p>
           <p className={styles.bonus}>Bonificaciones disponibles para grupos e instituciones.</p>
-          <p className={styles.price}>6 cuotas de<br /><span>ARS <em>115,000</em> <strong>85,000</strong>*</span><br />o ARS  <em>650.000</em><strong> 450.000</strong>* en un pago.</p>
+          <p className={styles.price}>3 cuotas de<br /><span>ARS <em>165,000</em> <strong>125,000</strong>*</span><br />o ARS  <em>650.000</em><strong> 500.000</strong>* en un pago.</p>
           <div className={styles.disclaiment}>
             <p>* Valor promocional y financiación hasta el 8 de agosto.</p>
           </div>
@@ -27,10 +27,10 @@ export default function PaymentBlockIa() {
         <div className={styles.payment_card}>
           <p className={styles.country_tag}>Residentes en el extranjero</p>
           <p className={styles.bonus}>Bonificaciones disponibles para grupos e instituciones.</p>
-          <p className={styles.price}>6 cuotas de<br />USD <span><em>130</em> <strong>110</strong>*</span><br />o USD <em>750</em><strong> 650</strong>* en un pago.</p>
+          <p className={styles.price}>4 cuotas de<br />USD <span><em>195</em> <strong>165</strong>*</span><br />o USD <em>750</em><strong> 650</strong>* en un pago.</p>
           <div className={styles.disclaiment}>
            
-            <p>* Valor promocional y financiación hasta el 8 de agosto.</p>
+            <p>* Valor promocional y financiación hasta el 18 de agosto.</p>
 
           </div>
         </div>
