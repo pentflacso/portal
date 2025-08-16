@@ -35,7 +35,7 @@ export default function Index(){
       trigger: navBarBrand.current,
       start: "top top",
       end: "top top",
-      onEnter: () => setWhatsAppBtnStatus(1),
+      onEnter: () => { setWhatsAppBtnStatus(1);},
       onEnterBack: () => setWhatsAppBtnStatus(0),            
     });
     let stTwo = ScrollTrigger.create({
@@ -117,7 +117,7 @@ export default function Index(){
   }, [elementHeight]);
 
   return(
-    <>
+    <div ref={container}>
 
       <MetaTags
           pageTitle= 'Certificación - Enseñanza y Aprendizaje con Inteligencia Artificial — FLACSO | PENT' 
@@ -134,7 +134,7 @@ export default function Index(){
         
 
 
-        <MainWrapper>  
+        <MainWrapper >  
 
           <HeroIa />         
 
@@ -231,9 +231,9 @@ export default function Index(){
                       {
                         "description": [
                           {
-                            "value": `<p>Los encuentros sincrónicos vía Zoom se realizan cada 15 días y complementan las clases semanales asincrónicas que se publican en el Aula Virtual.</p><p><strong>Inicio:</strong> 20 de agosto de 2025</p><p><strong>Horario:</strong></p><ul><li><strong>Argentina, Chile y Uruguay:</strong> Miércoles de 21 a 23 horas (GMT-3)</li>
-  <li><strong>Colombia, México, Panamá, Perú:</strong> Miércoles de 19 a 21 horas (GMT-5)</li>
-  <li><strong>Costa Rica, El Salvador, Honduras:</strong> Miércoles de 18 a 20 horas (GMT-6)</li>
+                            "value": `<p>Los encuentros sincrónicos vía Zoom se realizan cada 15 días y complementan las clases semanales asincrónicas que se publican en el Aula Virtual.</p><p><strong>Inicio:</strong> 20 de agosto de 2025</p><p><strong>Horario:</strong></p><ul><li><strong>Argentina, Chile y Uruguay:</strong> Miércoles de 21 a 23 h (GMT-3)</li>
+  <li><strong>Colombia, México, Panamá, Perú:</strong> Miércoles de 19 a 21 h (GMT-5)</li>
+  <li><strong>Costa Rica, El Salvador, Honduras:</strong> Miércoles de 18 a 20 h (GMT-6)</li>
 </ul>
 <p><strong>Fechas:</strong></p>
 <ul>
@@ -351,6 +351,6 @@ export default function Index(){
             <FooterIa />  
 
         </MainWrapper>         
-    </>
+    </div>
   )
 }
