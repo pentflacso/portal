@@ -15,7 +15,6 @@ import PaymentBlockIa from '../../components/certificacionIa/PaymentBlockIa/Paym
 import FooterIa from '../../components/certificacionIa/FooterIa/FooterIa';
 import ScrollTrigger from 'gsap/dist/ScrollTrigger';
 import WhatsappBtn from '../../components/usina/WhatsappBtn/WhatsappBtn';
-
 import styles from "./certificacion.module.scss";
 
 export default function Index(){
