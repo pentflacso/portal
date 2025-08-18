@@ -61,7 +61,7 @@ export default function PaymentBlockIa() {
         <div className={styles.payment_card}>
           <p className={styles.country_tag}>Residentes en Argentina</p>
           {/* Usamos el estado 'vacantes' aquí */}
-          <p className={styles.bonus}>Últimas {vacantes} vacantes.</p>
+          <p className={styles.bonus}>Inscripción cerrada.</p>
           <p className={styles.price}>4 cuotas de<br /><span>ARS <em>165,000</em> <strong>125,000</strong>*</span><br />o un pago de ARS  <em>650.000</em><strong> 500.000</strong>*.</p>
           <div className={styles.disclaiment}>
             <p>* Valor promocional y financiación hasta el 18 de agosto o hasta agotar vacantes.</p>
@@ -71,7 +71,7 @@ export default function PaymentBlockIa() {
         <div className={styles.payment_card}>
           <p className={styles.country_tag}>Residentes en el extranjero</p>
           {/* Y también aquí */}
-          <p className={styles.bonus}>Últimas {vacantes} vacantes.</p>
+          <p className={styles.bonus}>Inscripción cerrada.</p>
           <p className={styles.price}>4 cuotas de<br />USD <span><em>195</em> <strong>165</strong>*</span><br />o un pago de USD <em>750</em><strong> 650</strong>*.</p>
           <div className={styles.disclaiment}>
             <p>* Valor promocional y financiación hasta el 18 de agosto o hasta agotar vacantes.</p>

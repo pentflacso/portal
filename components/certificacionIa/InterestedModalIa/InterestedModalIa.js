@@ -66,11 +66,11 @@ export default function InterestedModalIA({ setModal }){
             setSubmitting(false);
             closeShareModal()
             }else{
-                alert('Hubo un error al enviar el formulario 1 ');
+                alert('Hubo un error al enviar el formulario ERR:1 ');
             }
         } catch (err) {
             setRefreshReCaptcha(!refreshReCaptcha);
-            alert('Hubo un error al enviar el formulario 2');
+            alert('Hubo un error al enviar el formulario ERR:2');
             setSubmitting(false);
         }
         }
