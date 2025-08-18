@@ -232,22 +232,22 @@ export default function Index(){
                         "description": [
                           {
                             "value": `<p>Los encuentros sincrónicos vía Zoom se realizan cada 15 días y complementan las clases semanales asincrónicas que se publican en el Aula Virtual.</p><p><strong>Inicio:</strong> 20 de agosto de 2025</p><p><strong>Horario:</strong></p><ul><li><strong>Argentina, Chile y Uruguay:</strong> Miércoles de 21 a 23 h (GMT-3)</li>
-  <li><strong>Colombia, México, Panamá, Perú:</strong> Miércoles de 19 a 21 h (GMT-5)</li>
-  <li><strong>Costa Rica, El Salvador, Honduras:</strong> Miércoles de 18 a 20 h (GMT-6)</li>
-</ul>
-<p><strong>Fechas:</strong></p>
-<ul>
-  <li><strong>20/8:</strong> Encuentro de embarque</li>
-  <li><strong>27/8:</strong> Diseño de actividades con IA: el concepto del vals</li>
-  <li><strong>10/9:</strong> Diseño de actividades con IA: prueba y retroalimentación</li>
-  <li><strong>24/9:</strong> La IA como copiloto</li>
-  <li><strong>8/10:</strong> La IA en las distintas etapas de la planificación</li>
-  <li><strong>15/10:</strong> Clínica complementaria</li>
-  <li><strong>22/10:</strong> La IA en el aula: mis hipótesis de trabajo</li>
-  <li><strong>5/11:</strong> La IA y la evaluación: revisando nuestras prácticas</li>
-  <li><strong>19/11:</strong> Encuentro de cierre y reflexión</li>
-</ul>
-`,
+                            <li><strong>Colombia, México, Panamá, Perú:</strong> Miércoles de 19 a 21 h (GMT-5)</li>
+                            <li><strong>Costa Rica, El Salvador, Honduras:</strong> Miércoles de 18 a 20 h (GMT-6)</li>
+                          </ul>
+                          <p><strong>Fechas:</strong></p>
+                          <ul>
+                            <li><strong>20/8:</strong> Encuentro de embarque</li>
+                            <li><strong>27/8:</strong> Diseño de actividades con IA: el concepto del vals</li>
+                            <li><strong>10/9:</strong> Diseño de actividades con IA: prueba y retroalimentación</li>
+                            <li><strong>24/9:</strong> La IA como copiloto</li>
+                            <li><strong>8/10:</strong> La IA en las distintas etapas de la planificación</li>
+                            <li><strong>15/10:</strong> Clínica complementaria</li>
+                            <li><strong>22/10:</strong> La IA en el aula: mis hipótesis de trabajo</li>
+                            <li><strong>5/11:</strong> La IA y la evaluación: revisando nuestras prácticas</li>
+                            <li><strong>19/11:</strong> Encuentro de cierre y reflexión</li>
+                          </ul>
+                          `,
                             "format": "basic_html"
                           }
                         ],
