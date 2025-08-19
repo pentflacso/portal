@@ -33,7 +33,7 @@ export default function PromotionAnnouncement({ setModal, setAnnouncementState }
                 <span /><span />
             </button>
             <div className={styles.info}>
-                <p>🔥 <strong>Hasta 75% de descuento + Packs a precios super bajos</strong> — ¡Válido hasta el 18 de Agosto! — </p> <button type="button" onClick={showPromotion}>Más info</button>
+                <p>🔥 <strong>Hasta 50% de descuento + Packs a precios super bajos</strong> — ¡Válido hasta el 15 de septiembre! — </p> <button type="button" onClick={showPromotion}>Más info</button>
             </div>
         </div>
     );

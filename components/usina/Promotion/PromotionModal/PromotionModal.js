@@ -85,15 +85,15 @@ export default function PromotionModal({ setModal, setAnnouncementState }){
     const getPrices = () => {
         if (isArgentina) {
             return {
-                pack2: { price: '100,000', currency: 'AR$' },
-                pack3: { price: '130,000', currency: 'AR$' },
-                coupon: { price: '30.000', currency: 'AR$' }
+                pack2: { price: '120,000', currency: 'AR$' },
+                pack3: { price: '150,000', currency: 'AR$' },
+                coupon: { price: '50.000', currency: 'AR$' }
             };
         } else {
             return {
                 pack2: { price: '100', currency: 'USD' },
                 pack3: { price: '130', currency: 'USD' },
-                coupon: { price: '30', currency: 'USD' }
+                coupon: { price: '45', currency: 'USD' }
             };
         }
     };
@@ -174,8 +174,8 @@ export default function PromotionModal({ setModal, setAnnouncementState }){
 
                         <div className={styles.col_left}>
                             <h4>¿Primera vez en FLACSO?</h4>
-                            <p className={styles.big_word}>-75%</p>
-                            <p><strong>Tenés hasta un 75% de descuento.</strong> Accedé a un cupón de descuento para tu primer curso PENT y viví una experiencia única.</p>
+                            <p className={styles.big_word}>-50%</p>
+                            <p><strong>Tenés hasta un 50% de descuento.</strong> Accedé a un cupón de descuento para tu primer curso PENT y viví una experiencia única.</p>
                             <p>¡Quedan pocos cupones!</p>
                             <button type="button" className={styles.cta_btn} onClick={ () => setCurrentContent('form') }>Quiero mi cupón</button>
                         </div>   
