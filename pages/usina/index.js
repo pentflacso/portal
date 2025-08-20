@@ -63,6 +63,7 @@ export default function Usina({ data }){
       {/* La barra de navegación irá por fuera del PageBuilder */}
       <NavBarUsina listCourses={data[3].courses}/>
 
+      <Promotion />
 
       <PageBuilder data={ data } stylesx={styles} />   
       {windowSize >= 1025 &&
