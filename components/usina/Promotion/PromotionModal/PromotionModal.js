@@ -91,8 +91,8 @@ export default function PromotionModal({ setModal, setAnnouncementState }){
             };
         } else {
             return {
-                pack2: { price: '100', currency: 'USD' },
-                pack3: { price: '130', currency: 'USD' },
+                pack2: { price: '90', currency: 'USD' },
+                pack3: { price: '120', currency: 'USD' },
                 coupon: { price: '45', currency: 'USD' }
             };
         }
